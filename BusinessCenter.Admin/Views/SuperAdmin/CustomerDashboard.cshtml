@@ -1,0 +1,240 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.SearchDataMvcViewModel
+@{
+    ViewBag.Title = "DCRA - Customer Dashboard Details";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @if ((int)Session["Admincount"] == 3)
+        {
+            @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @Html.ActionLink(" Business Center Admin Portal ", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @Html.ActionLink("Customer", "CustomerHome", "Admin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            <span class="easy-breadcrumb_segment-separator">  Quick Search Dashboard </span>
+        }
+        else
+        {
+            @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @Html.ActionLink(" Business Center Admin Portal ", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @Html.ActionLink("Customer", "CustomerHome", "Admin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            <span class="easy-breadcrumb_segment-separator"> Quick Search Dashboard </span>
+        }
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">@ViewBag.UserName Dashboard</h2>
+            </div>
+        </div>
+    </div>
+    <div class="search_tag">
+        <div class="container">
+            <div class="col-md-6 col-sm-12 col-xs-12 no-pad custom-alignment">
+                @if (@ViewBag.RecordCount == "1")
+                {
+                    <p>
+                        <span>  @ViewBag.RecordCount </span>Records displayed
+                    </p>
+
+                }
+                else
+                {
+                    <p>
+                        <span>  @ViewBag.RecordCount </span>Records displayed
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="register_form" style="background-color: #D3D1D1;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 sidebar-outer" style="">
+
+                    @Html.HiddenFor(model => model.ID, new { @id = "userid" })
+
+                    <div class="search_result">
+                        <div class="container srch_filter">
+                            <div class="col-xs-12 no-pad filters">
+                                <label class="col-xs-12 col-sm-1 no-pad">Filter:</label>
+                                <div class="btn_wrapper">
+                                    @*<div class="col-xs-9 col-sm-9 smartbuttonsdiv">*@
+                                    @if (Convert.ToInt32(@ViewBag.BBLCount) == 0)
+                                    {
+                                        <input type="submit" value="BBL(@ViewBag.BBLCount)" name="BusinessName" disabled class="mouseAuto" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="BBL(@ViewBag.BBLCount)" id="BBL" name="BusinessName" class="searchbutn" />
+                                    }
+                                    @if (Convert.ToInt32(@ViewBag.OPLACount) == 0)
+                                    {
+                                        <input type="submit" value="OPLA(@ViewBag.OPLACount)" name="FirstName" disabled class="mouseAuto" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="OPLA(@ViewBag.OPLACount)" id="OPLA" name="FirstName" class="searchbutn" />
+                                    }
+                                    @if (Convert.ToInt32(@ViewBag.ABRACount) == 0)
+                                    {
+                                        <input type="submit" value="ABRA(@ViewBag.ABRACount)" name="LastName" disabled class="mouseAuto" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="ABRA(@ViewBag.ABRACount)" id="ABRA" name="LastName" class="searchbutn" />
+                                    }
+                                    @if (Convert.ToInt32(@ViewBag.CBECount) == 0)
+                                    {
+                                        <input type="submit" value="CBE(@ViewBag.CBECount)" name="LastName" disabled class="mouseAuto" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="CBE(@ViewBag.CBECount)" id="CBE" name="LastName" class="searchbutn" />
+                                    }
+                                    @if (Convert.ToInt32(@ViewBag.CORPCount) == 0)
+                                    {
+                                        <input type="submit" value="CORP(@ViewBag.CORPCount)" name="LicenseNumber" disabled class="mouseAuto" />
+                                    }
+                                    else
+                                    {
+                                        <input type="submit" value="CORP(@ViewBag.CORPCount)" id="CORP" name="LicenseNumber" class="searchbutn" />
+                                    }
+
+                                    @*</div>*@
+                                </div>
+                                <input type="text" placeholder="Enter Keyword" id="keywordfield" style="font-weight:bold;" />&nbsp;
+                                <input type="submit" value="CLEAR FILTER" id="btnClear" name="Clear All" class="searchbutn clr-btn" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="searchblock">
+                        <div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+                            <p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="~/images/camera-loader.gif" alt="not showing" /></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+<script>
+    $(document).ready(function () {
+        //DisplayAll();
+        var kwditem = "All";
+        Searchkeyworddata(kwditem);
+    });
+
+    //function DisplayAll() {
+    //    $.ajax({
+    //        url: '/SuperAdmin/UserDashboardPartial',
+    //        type: 'Get',
+    //        cache: false,
+    //        data: { id: $('#userid').val(), keyword: '' },
+    //        success: function (data) {
+    //            $("#searchblock").empty().append(data);
+    //        },
+    //        error: function () {
+    //            alert("something seems wrong");
+    //        }
+    //    });
+    //}
+
+    $("#BBL").click(function () {
+        $("#keywordfield").val("Business License");
+        Searchkeyworddata("BBL");
+        RemoveActivefrmbtns();
+        $("#BBL").toggleClass('active');
+    });
+    $("#CORP").click(function () {
+
+        $("#keywordfield").val("Corporate Registration");
+        Searchkeyworddata("CORP");
+        RemoveActivefrmbtns();
+        $("#CORP").toggleClass('active');
+    });
+    $("#OPLA").click(function () {
+        $("#keywordfield").val("Professional License");
+        Searchkeyworddata("OPLA");
+        RemoveActivefrmbtns();
+        $("#OPLA").toggleClass('active');
+    });
+    $("#CBE").click(function () {
+        $("#keywordfield").val("Certified Business Enterprise");
+        Searchkeyworddata("CBE");
+        RemoveActivefrmbtns();
+        $("#CBE").toggleClass('active');
+    });
+    $("#ABRA").click(function () {
+        $("#keywordfield").val("Alcoholic Beverage License");
+        Searchkeyworddata("ABRA");
+        RemoveActivefrmbtns();
+        $("#ABRA").toggleClass('active');
+    });
+    $("#btnClear").click(function () {
+        $("#keywordfield").val('');
+        var kwditem = "All";
+        Searchkeyworddata(kwditem);
+        Removeall();
+    });
+
+    $("#keywordfield").keyup(function () {
+        // alert("Hi");
+        var kwditem = $("#keywordfield").val();
+        Searchkeyworddata(kwditem);
+
+    });
+    function Removeall() {
+        $("#btnBusinessName").removeClass('active');
+        $("#BBL").removeClass('active');
+        $("#btnFirstName").removeClass('active');
+        $("#btnLastName").removeClass('active');
+    }
+    function RemoveActivefrmbtns() {
+        $("#btnBusinessName").removeClass('active');
+        $("#BBL").removeClass('active');
+        $("#btnFirstName").removeClass('active');
+        $("#btnLastName").removeClass('active');
+        $("#btnClear").removeClass('active');
+    }
+
+    function Searchkeyworddata(kwditem) {
+        var url = window.location.href;
+        var userid = url.substring(url.lastIndexOf('=') + 1);
+        $.ajax({
+            url: "/SuperAdmin/UserDashboardPartial",
+            type: 'Get',
+            cache: false,
+            // data: { id: $('#userid').val(), keyword: $("#keywordfield").val() },
+            data: { id: userid, keyword: kwditem },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#searchblock").empty().append(data);
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
+<style>
+    .mouseAuto {
+        cursor: auto !important;
+    }
+</style>

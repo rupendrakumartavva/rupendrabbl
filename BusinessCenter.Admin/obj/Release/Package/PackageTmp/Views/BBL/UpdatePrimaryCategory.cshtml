@@ -1,0 +1,695 @@
+﻿@model BusinessCenter.Admin.Models.PrimaryLicenseCategoryModel
+@{
+    ViewBag.Title = "DCRA - Update Primary Category";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("BBL", "ApplicationReview", "BBL")*@
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Metadata</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Activity", "BusinessActivities", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = @ViewBag.ActivityId }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Update Primary Category</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Update Primary Category</h2>
+            </div>
+        </div>
+    </div>
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <div class="row">
+                    <form method="POST">
+                        <div class="form_wrapper reg-err-placement">
+
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+                            <p style="text-align: center; color:red; font-size: 19px; margin-bottom: 10px;"><span id="msg">@ViewBag.ErrMsg </span></p>
+                            @Html.HiddenFor(model => model.ActivityID)
+                            @Html.HiddenFor(model => model.PrimaryID)
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Category Id")
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Application Type")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.CategoryCode, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "categorycode",
+                                name = "categorycode",
+                                placeholder = "Category Code",
+                                onfocus = "this.placeholder = ''",
+                                onblur = "this.placeholder = 'Category Code'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.CategoryCode, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    @Html.DropDownListFor(model => model.App_Type, Enum.GetNames(typeof(BusinessCenter.Admin.Models.ApplicationType)).Select(e => new SelectListItem { Text = e }), "Select One", new { @class = "form-control custom-dropdown", id = "BusinessType-dropdown", @onchange = "ChangeBusinessType()" })
+
+                                    @Html.ValidationMessageFor(model => model.App_Type, "", new { @class = "error-message error" })
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Primary Category")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Description, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "description",
+                                name = "description",
+                                placeholder = "Primary Category",
+                                onfocus = "this.placeholder = ''",
+                                onblur = "this.placeholder = 'Primary Category'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Endorsement")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Endorsement, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "endorsement",
+                                name = "endorsement",
+                                placeholder = "Endorsement",
+                                onfocus = "this.placeholder = ''",
+                                onblur = "this.placeholder = 'Endorsement'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.Endorsement, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Fee Code ")
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group reg-err-placement">
+                                        @*@Html.EditorFor(model => model.Fee_Code, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    @class = "form-control",
+                                                    placeholder = "Fee_Code",
+                                                    name = "Fee_Code",
+                                                    id = "feecode",
+                                                    onfocus = "this.placeholder = ''",
+                                                    onblur = "this.placeholder = 'Fee Code'"
+
+                                                }
+                                            })*@
+                                        @Html.DropDownListFor(model => model.Fee_Code, Enum.GetNames(typeof(BusinessCenter.Admin.Models.FeeCode)).Select(e => new SelectListItem { Text = e, Value = e }), "Select One", new { @class = "form-control  custom-dropdown", id = "feecode-dropdown", name = "feecode-dropdown", disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.Fee_Code, "", new { @class = "error-message error" })
+                                        @Html.HiddenFor(model => model.Fee_Code, new { id = "hiddenend" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Primary Units A")
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Primary Units B")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.UnitOne, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "unitone",
+                                            name = "unitone",
+                                            placeholder = "",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''"
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.UnitOne, "", new { @class = "error-message error" })
+                                        <span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="msgunit">@ViewBag.Unitmsg</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.UnitTwo, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "unittwo",
+                                            name = "unittwo",
+                                            placeholder = "",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''",
+                                            disabled = "disabled"
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.UnitTwo, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            @if (Model.Fee_Code.ToUpper() != "S")
+                            {
+                                <div id="question1-div">
+                                    <div class="clearfix">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group " style="text-align: left;">
+                                                @Html.Label("Primary Units A Question")
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ">
+                                                @*<input type="text" class="form-control" id="question1" name="question1" placeholder="" />*@
+                                                @Html.EditorFor(model => model.UserQuestion1, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "question1",
+                                            name = "question1",
+                                            //placeholder = "Primary Units B",
+                                            //onfocus = "this.placeholder = ''",
+                                            //onblur = "this.placeholder = 'Primary Units B'"
+                                        }
+                                    })
+                                                @Html.ValidationMessageFor(model => model.UserQuestion1, "", new { @class = "error-message error" })
+                                                @Html.HiddenFor(model => model.UserQuestion1, new { id = "hiddenend" })
+                                                <span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="msgunitQustion">@ViewBag.UnitQuestionmsg</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Status")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center; padding-left: 20px;">
+                                        @Html.RadioButtonFor(model => model.Status, "true", new { id = "active" })<span class="radiospace">Active</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center; padding-left: 40px;">
+                                        @Html.RadioButtonFor(model => model.Status, "false", new { id = "inactive" })<span class="radiospace">Inactive</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this Primary have a Secondary License Category?")
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.IsSecondaryLicenseCategory, "true", new { id = "subyes" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.IsSecondaryLicenseCategory, "false", new { id = "subno" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this Primary have a Sub-Category?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.IsSubCategory, "true", new { id = "subsubyes" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.IsSubCategory, "false", new { id = "subsubno" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Should this business be located only in District of Columbia? ")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.BusinessMustbeinDC, "Yes", new { id = "dcyes" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.BusinessMustbeinDC, "No", new { id = "dcno" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+
+                                        @Html.Label("Will this business require CofO?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.CofORequired, "Yes", new { id = "cofoyes", onclick = "ifCofoYes()" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.CofORequired, "No", new { id = "cofono", onclick = "ifCofoNo()" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Is HOP/eHOP allowed for this business?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.HOP_EHOPAllowed, "Yes", new { id = "hopyes", onclick = "ifHopYes()" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center; ">
+                                        @Html.RadioButtonFor(model => model.HOP_EHOPAllowed, "No", new { id = "hopno", onclick = "ifHopNo()" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this License be exempted from fee?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.ExemptfromAllFees, "Yes", new { id = "exemptyes" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.ExemptfromAllFees, "No", new { id = "exemptno" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this License Category require a Background Investigation?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.IsBackgroundInvestigation, "true", new { id = "Isbackgroundyes" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.RadioButtonFor(model => model.IsBackgroundInvestigation, "false", new { id = "Isbackgroundno" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Should a PDF copy of Basic Business License be generated?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+
+                                        @Html.RadioButtonFor(m => m.IsPDFShow, "true", new { id = "IsPDFShowYes" }) <span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+
+                                        @Html.RadioButtonFor(m => m.IsPDFShow, "false", new { id = "IsPDFShowNo" }) <span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="text-align: center; color:green; font-size: 19px; margin-bottom:25px;height:15px;">
+                                <span id="msg">
+                                    @ViewBag.Status
+                                </span>
+                            </p>
+
+                            <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+
+                                <button type="button" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back</button>
+                                <button type="submit" id="btnUpdate" class="btn btn-default">Update Primary Category</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Hidden("HiddenName", null, new { @class = "hiddencss" });
+                                                                  if (IsPost)
+                                                                  {
+                                                                      if (ViewBag.IsPrmaryUpdate == true)
+                                                                      {
+                                                                        <script>
+                                                                            $(function () {
+                                                                                $('.homemodal-body h3.error_message').empty().append('Primary License Category is updated successfully');
+                                                                                $("#registermodal-container").modal('show');
+                                                                            });
+                                                                            $(".yes-btn").on("click", function () {
+                                                                                $('#registermodal-container').modal('hide');
+                                                                                @*var url = "/BBL/UpdatePrimaryCategory?primaryId=" + '@ViewBag.PrimaryId';
+                                                                                window.location.href = url;*@
+
+                                                                            });
+                                                                        </script>
+                                                                      }
+                                                                  }
+
+                                                                <style>
+                                                                    .radiospace {
+                                                                        padding-left: 7px;
+                                                                    }
+                                                                </style>
+                                                                @*<script>
+                                                                        function ifCofoYes() {
+                                                                            $('#hopyes').prop('checked', false);
+                                                                            $('#hopno').prop('checked', true);
+                                                                        }
+
+                                                                        function ifCofoNo() {
+                                                                            $('#hopyes').prop('checked', true);
+                                                                            $('#hopno').prop('checked', false);
+                                                                        }
+
+                                                                        function ifHopYes() {
+                                                                            $('#cofoyes').prop('checked', false);
+                                                                            $('#cofono').prop('checked', true);
+                                                                        }
+
+                                                                        function ifHopNo() {
+                                                                            $('#cofoyes').prop('checked', true);
+                                                                            $('#cofono').prop('checked', false);
+                                                                        }
+                                                                    </script>*@
+
+                                                                <script>
+                                                                    function ChangeBusinessType() {
+                                                                        var stateId = $("#BusinessType-dropdown option:selected").text();
+                                                                        if (stateId == 'Individual') {
+                                                                            $('#IsPDFShowNo').prop('disabled', "disabled");
+                                                                            $('#IsPDFShowYes').prop('disabled', "disabled");
+                                                                            $('#IsPDFShowNo').prop('checked', "checked");
+                                                                        } else {
+                                                                            $('#IsPDFShowYes').prop('checked', "checked");
+                                                                            $('#IsPDFShowNo').removeAttr('disabled', "disabled");
+                                                                            $('#IsPDFShowYes').removeAttr('disabled', "disabled");
+
+                                                                        }
+                                                                    }
+                                                                    //FillCity
+                                                                    $(window).click(function () {
+                                                                        msg.innerHTML = "";
+                                                                    });
+
+                                                                    $(document).ready(function () {
+
+                                                                        var label = document.getElementById("msg");
+                                                                        if (label.innerHTML.trim() == 'Primary Category Updated Successfully'.trim()) {
+                                                                            label.scrollIntoView();
+                                                                            //label.focus();
+                                                                        }
+                                                                    });
+
+                                                                    $(":input").on("keyup", function () {
+                                                                        msg.innerHTML = "";
+                                                                    });
+                                                                    $(":input").on("focus", function () {
+                                                                        msg.innerHTML = "";
+                                                                    });
+                                                                    $("#btnBack").click(function () {
+                                                                        var url = "/BBL/PrimaryCategories?activityId=" + $("#ActivityID").val();
+                                                                        window.location.href = url;
+
+                                                                    });
+
+                                                                    //$("#btnUpdate").click(function (e) {
+                                                                    //    e.preventDefault();
+                                                                    //    //  now trigger the form validation, result is 1 or 0
+                                                                    //    var result = $('form').valid();
+                                                                    //    if (result == 1) {
+                                                                    //        UpdatePrimaryCategory();
+                                                                    //    }
+                                                                    //});
+                                                                    function UpdatePrimaryCategory() {
+                                                                        var businessindc = '';
+                                                                        if ($('#dcyes').is(':checked')) {
+                                                                            businessindc = "YES";
+                                                                        }
+                                                                        else if ($('#dcno').is(':checked')) {
+                                                                            businessindc = "NO";
+                                                                        }
+
+                                                                        var coforeq = '';
+                                                                        if ($('#cofoyes').is(':checked')) {
+                                                                            coforeq = "YES";
+                                                                        }
+                                                                        else if ($('#cofono').is(':checked')) {
+                                                                            coforeq = "NO";
+                                                                        }
+
+                                                                        var hopallow = '';
+                                                                        if ($('#hopyes').is(':checked')) {
+                                                                            hopallow = "YES";
+                                                                        }
+                                                                        else if ($('#hopno').is(':checked')) {
+                                                                            hopallow = "NO";
+                                                                        }
+
+                                                                        var exemptfee = '';
+                                                                        if ($('#exemptyes').is(':checked')) {
+                                                                            exemptfee = "YES";
+                                                                        }
+                                                                        else if ($('#exemptno').is(':checked')) {
+                                                                            exemptfee = "NO";
+                                                                        }
+                                                                        var status = '';
+                                                                        if ($('#active').is(':checked')) {
+                                                                            status = true;
+                                                                        }
+                                                                        else if ($('#inactive').is(':checked')) {
+                                                                            status = false;
+                                                                        }
+                                                                        var subcategory = '';
+                                                                        if ($('#subyes').is(':checked')) {
+                                                                            subcategory = true;
+                                                                        }
+                                                                        else if ($('#subno').is(':checked')) {
+                                                                            subcategory = false;
+                                                                        }
+                                                                        var subsubsubcategory = '';
+                                                                        if ($('#subsubyes').is(':checked')) {
+                                                                            subsubsubcategory = true;
+                                                                        }
+                                                                        else if ($('#subsubno').is(':checked')) {
+                                                                            subsubsubcategory = false;
+                                                                        }
+                                                                        var primarydata = {
+                                                                            ActivityId: '@ViewBag.ActivityId',
+                                                                            PrimaryId: '@ViewBag.PrimaryId',
+                                                                            Description: $("#description").val(),
+                                                                            Endorsement: $("#endorsement").val(),
+                                                                            CategoryCode: $("#categorycode").val(),
+                                                                            UnitOne: $("#unitone").val(),
+                                                                            UnitTwo: $("#unittwo").val(),
+                                                                            APP_Type: $("#App_Type").val(),
+                                                                            Status: status,
+                                                                            BusinessMustbeinDC: businessindc,
+                                                                            CofORequired: coforeq,
+                                                                            HOP_EHOPAllowed: hopallow,
+                                                                            ExemptfromAllFees: exemptfee,
+                                                                            AllowSubCategory: subcategory,
+                                                                            AllowSubSubCategory: subsubsubcategory,
+                                                                            Fee_Code: $("#feecode-dropdown option:selected").text()
+                                                                        };
+                                                                        $.ajax({
+                                                                            url: '/BBL/UpdatePrimaryCategory',
+                                                                            type: "Post",
+                                                                            data: primarydata,
+                                                                            success: editSuccess,
+                                                                            error: editFailure
+                                                                        });
+                                                                    }
+                                                                    function editSuccess(data) {
+                                                                        if (data.status == "3") {
+                                                                            $('input').trigger('reset');
+                                                                            msg.innerHTML = "The given primary category already exists for this activity.Try new category ";
+
+                                                                        }
+                                                                        else {
+
+                                                                            $('input').trigger('reset');
+                                                                            msg.innerHTML = "Primary Category Updated Successfully";
+                                                                            msg.style.color = " #339900";
+                                                                            setTimeout(function () { element.focus(); }, 0);
+                                                                            window.scrollTo(0, 200);
+                                                                            //var url1 = window.location.href;
+                                                                            //var id = url1.substring(url1.lastIndexOf('=') + 1);
+                                                                            //var url = "/BBL/PrimaryCategories?activityId=" + id;
+                                                                            //window.location.href = url;
+                                                                        }
+
+                                                                        return false;
+                                                                    }
+                                                                    function editFailure(data) {
+                                                                        alert("error");
+                                                                        return false;
+                                                                    }
+                                                                </script>
+
+                                                                <script type="text/javascript">
+
+                                                                    $(document).ready(function () {
+                                                                        // This line below is to disable select one option in select element
+                                                                        $("select option[value='']").prop('disabled', true);
+
+                                                                        var selopt = $("#feecode-dropdown option:selected").text();
+                                                                        if (selopt == 'S') {
+                                                                            $('#unitone').prop('disabled', "disabled");
+                                                                            $('#tier').prop('disabled', 'disabled');
+                                                                            $('#question1-div').css('display', 'none');
+
+                                                                        } else {
+                                                                            $('#unitone').prop('disabled', false);
+                                                                            $('#tier').prop('disabled', false);
+                                                                        }
+                                                                        if (selopt == 'C' || selopt == 'T') {
+                                                                            $('#question1-div').css('display', 'block');
+                                                                        }
+
+                                                                        var businessTypeValue = $("#BusinessType-dropdown option:selected").text();
+                                                                        if (businessTypeValue == 'Individual') {
+                                                                            $('#IsPDFShowNo').prop('disabled', "disabled");
+                                                                            $('#IsPDFShowYes').prop('disabled', "disabled");
+                                                                        } else {
+                                                                            $('#IsPDFShowNo').removeAttr('disabled', "disabled");
+                                                                            $('#IsPDFShowYes').removeAttr('disabled', "disabled");
+
+                                                                        }
+                                                                        //id = "BusinessType-dropdown"
+
+                                                                    });
+
+                                                                    $("#unitone").keyup(function () {
+                                                                        msgunit.innerHTML = "";
+                                                                    });
+                                                                    $("#question1").keyup(function () {
+                                                                        msgunitQustion.innerHTML = "";
+                                                                    });
+                                                                </script>
+                                                                <style>
+                                                                    select::-ms-expand {
+                                                                        display: none;
+                                                                    }
+                                                                </style>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}

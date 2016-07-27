@@ -1,0 +1,564 @@
+﻿
+
+    <!DOCTYPE HTML >
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+@using System.Web.Mvc.Html
+@using System;
+@using System.Reflection.Emit
+ 
+    @model IEnumerable<BusinessCenter.Data.Model.BblDocuments>
+    
+    @{
+        Layout = null;
+    }
+
+
+    <html>
+    <head>
+        <title>title</title>
+
+
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/app.css" />
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap.css" />
+
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/style.css">
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/temp.css">
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/less/bbl.css">
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/flexslider.css" />
+
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/fileinput.css">
+
+        <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/customstyle.css" />
+        <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+
+
+
+    </head>
+    <body>
+    <div class="page_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Application Checklist</h2>
+
+                <span class="font_how_to_use">How To Use This Page <span class="glyphicon glyphicon-chevron-down"></span></span><br/>
+                @*<span class="howtouse_note">Select the "How To Use This Page" button at the top of the page to learn how to use the BBL Online Application system.</span>*@
+                <p>
+                    Based on your responses to the Pre-Application Questions, the following information and documents are required to complete your Basic Business License Application.  Click each Section Heading below, for example, Physical Location and Business Structure to complete that section.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="timeLineWrapper clearfix">
+                <div class="progress_steps">
+                    <div class="timeLine"></div>
+                    <a class="active" href="">
+                        <div class="timeline_list step1">
+                            <span class="inCircle activeCir"></span>
+                            <div class="step_detail">
+                                <p class="step_no active">
+                                    <strong>Step 1</strong>
+                                </p>
+                                <p class="step_no">
+                                    <strong>Pre-Application Questions</strong>
+                                </p>
+                                <p class="step_text active"></p>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="active" tabindex="-1">
+                        <div class="timeline_list step2">
+                            <span class="inCircle activeCir"></span>
+                            <div class="step_detail">
+                                <p class="step_no active">
+                                    <strong>Step 2</strong>
+                                </p>
+                                <p class="step_no">
+                                    <strong>Application Checklist</strong>
+                                </p>
+                                <p class="step_text active"></p>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="" tabindex="-1">
+                        <div class="timeline_list step3">
+                            <span class="inCircle "></span>
+                            <div class="step_detail">
+                                <p class="step_no ">Step 3</p>
+                                <p class="step_no">Information Verification</p>
+                                <p class="step_text "></p>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="" tabindex="-1">
+                        <div class="timeline_list step4">
+                            <span class="inCircle "></span>
+                            <div class="step_detail">
+                                <p class="step_no ">Step 4</p>
+                                <p class="step_no">Payment</p>
+                                <p class="step_text "></p>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="" tabindex="-1">
+                        <div class="timeline_list step5">
+                            <span class="inCircle "></span>
+                            <div class="step_detail">
+                                <p class="step_no ">Step 5</p>
+                                <p class="step_no">Receipt and Next Steps</p>
+                                <p class="step_text "></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login_form preapp-checklist alignchecbox" id="printdiv" style="padding:50px 0 1% !important;" >
+    <div class="container">
+    <div class="panel-group" id="app-checklist">
+    @foreach (var i in Model)
+    {
+        <div>
+            @if (i.CheckedStatus)
+            {
+                <p class="checklist_success_msg"><strong>Your Checklist is complete!  Select the "Continue to Info Verification" button to proceed.</strong></p>
+            }
+        <div class="panel panel-default">
+            <div class="panel-heading text-left">
+                <span style="color:#124f87;"><strong><u>Pre-Application Questions</u></strong></span>
+                (Select the link to view previously entered information. Edits to Pre-Application answers cannot be made. If you need to make changes, a new Basic Business License must be started.)
+            </div>
+        </div>
+     
+        <div class="panel panel-default">
+            <div class="panel-heading   text-left">
+
+                <span style="color:#124f87;">
+                    <strong><u>Physical Location and Business Structure</u></strong></span>
+                (Select link to provide or review required information)
+
+</div>
+            <div class="panel-body panel-collapse checklist-item">
+                <ul class=" list-unstyled text-left">
+
+                    <li>
+                        @if (i.IsCof == true && i.IsDocforCofo == false)
+                        {
+                            if (i.IsSubmissionCofo)
+                            {
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span>Certificate of Occupancy</span>
+                            }
+                            else
+                            {
+                                if (i.IsDocforCofo != true)
+                                {
+                                    <span class="glyphicon glyphicon-unchecked"></span>
+                                    <span>Certificate of Occupancy</span>
+                                }
+
+                            }
+
+                        }
+                        else if (i.IsHop == true && i.IsSubmissioneHop == false && i.IsDocforHop == false)
+                        {
+                            if (i.IsSubmissionHop)
+                            {
+                                <span class="glyphicon glyphicon-ok"></span>
+                            }
+                            else
+                            {
+                                <span class="glyphicon glyphicon-unchecked"></span>
+                            }
+                            <span>Home Occupancy Permit</span>
+                        }
+                      
+
+                    </li>
+
+
+
+
+
+
+
+
+                    <li>
+                        @if (i.IsSubmissioneHop == false &&
+                             i.IsBusinessMustbeinDC == true
+                             && i.IsHomeBased == true
+                             && i.IsHop == false
+                            )
+                        {
+
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                            <span>You may be eligible to acquire an eHOP</span>
+
+
+                        }
+                        else if (i.IsSubmissioneHop == true)
+                        {
+                            <span class="glyphicon glyphicon-ok"></span>
+                            <span>Expedited Home Occupancy Permit</span>
+                        }
+                    </li>
+                    <li>
+                        @if (i.IsBPAddress)
+                        {
+                            <span class="glyphicon glyphicon-ok"></span>
+
+                        }
+                        else
+                        {
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        }
+                        <span>Business Premises Address (No PO Box)</span>
+                    </li>
+                    <li>
+                        @if (i.IsCorporateRegistration)
+                        {
+                            <span class="glyphicon glyphicon-ok"></span>
+                        }
+                        else
+                        {
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        }
+                        <span>Corporate Information</span>
+                    </li>
+                    <li>
+                        @if (i.IsBHAddress)
+                        {
+                            <span class="glyphicon glyphicon-ok"></span>
+                        }
+                        else
+                        {
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        }
+                        <span>Business Headquarters Address</span>
+                    </li>
+                    <li>
+                        @if (i.IsResidentAgent)
+                        {
+                            <span class="glyphicon glyphicon-ok"></span>
+                        }
+                        else
+                        {
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        }
+                        <span>Registered or Resident Agent Information</span>
+                    </li>
+
+                    @if (i.IsCategorySelfCertification == true)
+                    {
+                        <li>
+                            @if (i.IsSelfCertification)
+                            {
+                                <span class="glyphicon glyphicon-ok"></span>
+                            }
+                            else
+                            {
+                                <span class="glyphicon glyphicon-unchecked"></span>
+                            }
+                            <span>One Family Dwelling Self Certification</span>
+                            
+                        </li>
+                    }
+<li>
+                        @if (i.IsMailAddress)
+                        {
+                            <span class="glyphicon glyphicon-ok"></span>
+                        }
+                        else
+                        {
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        }
+                        <span>Mailing Address</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            @if (i.AppType == "I")
+            {
+                <div class="panel panel-default">
+                    
+@if ((i.IsCorporateRegistration == false))
+{
+  
+    <div class="panel-heading text-left">
+        <span style="pointer-events: none;color: #9E9E9E;">
+            <strong><u>Individual License Information</u></strong>
+        </span>
+
+        (Complete the Corporate Information section to enable this link)
+        </div>
+        }
+
+        else
+        {
+
+      
+    <div class="panel-heading text-left">
+        <span style="color: #124f87;">
+            <strong><u>Individual License Information</u></strong>
+        </span>
+        (Select link to provide or review required information)
+        </div>
+        }
+
+        <div class="panel-body panel-collapse checklist-item">
+            <ul class=" list-unstyled text-left">
+                @if ((i.IsCorporateRegistration == false) && (i.BusinessName == "" && i.BusinessName == null))
+                            {
+                    <li><span id="individual" class="glyphicon glyphicon-unchecked"></span> Employee Information</li>
+
+                  
+
+                            }
+
+                            else
+                            {
+                                if (i.IsIndividual == true && (i.IsCorporateRegistration == true) && (i.BusinessName != ""))
+                                {
+                                    <li><span id="individual" class="glyphicon glyphicon-ok"></span> Employee Information</li>
+                                }
+                                else
+                                {
+                                    <li><span id="individual" class="glyphicon glyphicon-unchecked"></span> Employee Information</li>
+                                }
+                            }
+
+
+
+
+            </ul>
+        </div>
+    </div>
+            }
+
+       
+
+        <div class="panel panel-default">
+            <div class="panel-heading   text-left">
+                <span style="color:#124f87;">
+                    <strong><u>Supporting Documents</u></strong></span>
+                (Select link to provide or review required information)
+
+</div>
+            <div class="panel-body panel-collapse checklist-item">
+                @if (i.BblServiceDoc.Count() == 0)
+                {
+                    <section id="noResultsKey"  >
+                        <div class="container">
+                            <div class="innerRow" >
+                                <div class="col-md-12 col-xs-12 col-sm-12 text-center" style="height: 30px">
+                                    <p class="text-danger error_text ">No Supporting Documents Required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }
+                else
+                {
+
+                    foreach (var item in i.BblServiceDoc)
+                    {
+                        <section class="clearfix">
+                            <div class="container1">
+                                <div class="innerRow">
+
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-pad left" style="padding-left: -10% !important;">
+
+                                        @if (i.DocSubType != "" && i.DocSubType == "IN")
+                                        {
+
+
+                                        }
+                                        else
+                                        {
+
+                                            if (item.UploadFileName != "")
+                                            {
+                                                <span class="glyphicon glyphicon-ok" style="padding-top: 20px;"></span>
+                                            }
+                                            else
+                                            {
+
+                                                <span class="glyphicon glyphicon-unchecked" style="padding-top: 20px;"></span>
+                                            }
+
+                                        }
+
+
+
+
+                                    </div>
+
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-pad bbl">
+                                        <p>
+                                            <span>Document Required</span>
+                                        </p>
+                                        <div>
+                                            @item.DocRequired
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-pad ">
+                                        <p>
+                                            <span>Agency : </span>
+                                            @item.Agency
+
+                                        </p>
+                                        <p>
+                                            <span> Division : </span>@item.Division
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad">
+                                        <p>
+                                            <span>License Code : </span>
+                                            @item.CategoryCode
+                                        </p>
+
+                                        <p>
+                                            <span>Endorsement : </span>
+                                            @item.Endorsement
+                                        </p>
+
+                                        <p>
+                                            <span> License : </span>@item.License
+                                        </p>
+                                    </div>
+
+
+
+                                    <div class="col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-11 col-sm-11 col-xs-11 col-lg-11">
+
+                                        <p>
+                                            @if (item.UploadFileName != "")
+                                            {
+                                                <span>File Name :</span>
+
+                                                @item.UploadFileName
+                                            }
+                                        </p>
+
+                                    </div>
+
+
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="grid-row-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    }
+
+
+                }
+
+
+
+            </div>
+
+
+
+        </div>
+
+            <div class="panel panel-default">
+
+                @if (i.physicalLocationValidate && i.ISFEINSSN == false)
+                {
+                    <div class="panel-heading   text-left">
+                        <span style="pointer-events: none;color: #124f87;">
+                            <strong><u>Tax and Revenue</u></strong>
+                        </span>
+                        (Complete all other Checklist Items before completing this section)
+                    </div>
+                }
+                else if (i.physicalLocationValidate == false && i.ISFEINSSN == false)
+                {
+                    <div class="panel-heading   text-left">
+                        <span style="pointer-events: none; color: #9E9E9E;">
+                            <strong><u>Tax and Revenue</u></strong>
+                        </span>
+                        (Complete all other Checklist Items before completing this section)
+
+                    </div>
+                }
+                else
+                {
+                    if (i.ISFEINSSN)
+                    {
+                        <div class="panel-heading   text-left">
+                            <span style="color: #124f87;">
+                                <strong><u>Tax and Revenue</u></strong>
+                            </span>
+                            (Complete all other Checklist Items before completing this section)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="panel-heading   text-left">
+                            <span style="pointer-events: none; color: #9E9E9E;">
+                                <strong><u>Tax and Revenue</u></strong>
+                            </span>
+                            (Complete all other Checklist Items before completing this section)
+                        </div>
+                    }
+                }
+
+
+
+
+
+                <div class="panel-body panel-collapse checklist-item">
+                    <ul class="list-unstyled text-left">
+
+                        <li>
+
+                            @if ((i.IsSubmissionCofo == false || i.IsBPAddress == false || i.IsSubmissionHop == false)
+                             && (i.IsCorporateRegistration == false) && (i.TradeName != "") && ((i.BusinessName == "" && i.BusinessName == null)) && (i.PremisesAddress == "" && i.PremisesAddress == null))
+                            {
+                                <span class="glyphicon glyphicon-unchecked"></span>
+                                <span>Clean Hands Self Certification</span>
+                            }
+                            else
+                            {
+
+
+                                if (i.ISFEINSSN)
+                                {
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span>Clean Hands Self Certification</span>
+                                }
+                                else
+                                {
+                                    <span class="glyphicon glyphicon-unchecked"></span>
+                                    <span>Clean Hands Self Certification</span>
+                                }
+                            }
+
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+    </div>
+    </div>
+    </div>
+
+    </body>
+</html>

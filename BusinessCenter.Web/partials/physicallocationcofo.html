@@ -1,0 +1,672 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" ng-click="vm.navToApply()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to validate the Certificate of Occupancy (CofO) for the business to be licensed</strong>
+                    </p>
+
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                            Enter your Certificate of Occupancy number in the <img src="../images/Cofo_image.png" style="height: 30px; width: 150px;" /> box as it appears on the document, to include letters and numbers (Older CofOs may be all numbers).
+                        </li>
+                        <li>
+                            You may need to acquire a copy of the Certificate of Occupancy from the business owner or from the property owner if your business is a tenant in the location where you will do business.
+                        </li>
+                        <li>
+                            Select the <button type="button" class="btn btn-primary" style="cursor: default; pointer-events: none"><span class="glyphicon glyphicon-search padding-small"></span> Search for CofO </button> button.
+                        </li>
+                        <li>
+                            A screen will unfold that displays the Business Premises address that corresponds to that Certificate of Occupancy number you have entered.
+                        </li>
+                        <li> You must verify whether the information displayed correctly or incorrectly corresponds to the premise address of the business that is to be licensed by selecting the <img src="../images/Correct_Incorrect.png" style="height: 28px; width: 158px;" />  button.</li>
+                    </ul>
+
+                    <p class="terms_text srch_filter">
+                        <strong>If the information is correct,</strong> a message will appear on your screen <img src="../images/ThankQ.png" style="height: 19px; width: 127px;" /> and you will be able to select the <button id="btn_revise1" class="btn btn-default btnnextColor" style="cursor: default; pointer-events: none; text-transform: capitalize;">Next</button> button to continue to the next part of the application.
+                    </p>
+                    <p class="terms_text">
+                        <strong>If you do not have a Certificate of Occupancy:</strong>
+                    </p>
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                            You will be able to select the check box <img src="../images/ChcekBoxSelect.png" style="height: 27px; width: 146px;" />
+                        </li>
+                        <li>
+                            The system will display an error message instructing you to acquire a CofO from the Office of Zoning. <b> You may not proceed beyond this point until you acquire a CofO.</b>
+                        </li>
+                    </ul>
+                    <p class="terms_text" style="border:1px solid #215ecc;color:red;">
+                        Since you do not have a Certificate of Occupancy, you must acquire one from the Office of Zoning prior to submitting your Business License application. Please select "Return to Checklist" and visit the DC Office of Zoning at 1100 4th St., SW or call 202-442-4400.
+                    </p>
+                    <p class="terms_text">
+                        <strong> If the CofO information is incorrect or key information is missing</strong> from the displayed data:
+                    </p>
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li>
+                            You may indicate that some or all of the information is incorrect by selecting the incorrect radio button <img src="../images/Correct_Incorrect_Select.png" style="height: 35px; width: 156px;" />
+                        </li>
+                        <li>
+                            If key information (e.g., street number, street name, quadrant, zip code) is missing, the verification will automatically select the incorrect radio button <img src="../images/Correct_Incorrect_Select.png" style="height: 35px; width: 156px;"/>
+                        </li>
+                        <li>
+                            The missing field(s) will be highlighted in <b style="color: red;">bold red</b>
+                        </li>
+                        <li>
+                            You will be required to select the checkbox <img src="../images/Cofo_UploadDocument.png" style="height: 21px; width: 228px;"/>
+                        </li>
+                        <li>
+                            A data entry screen will unfold for you to enter the full and accurate business premises address information.
+                        </li>
+                        <li>
+                            The Certificate of Occupancy will be added to your list of required Supporting Documents automatically, where you can upload a copy.
+                        </li>
+                        <li>
+                            Your Application Checklist will also be updated to indicate you provided the business premises Address.
+                        </li>
+                    </ul>
+
+                    <p class="terms_text srch_filter">
+                        Once you have entered all of the requested information a message will appear on your screen <img src="../images/ThankQ.png" style="height: 19px; width: 127px;" />
+                        and you will be able to select the <button id="btn_revise2" class="btn btn-default btnnextColor" style="cursor: default; pointer-events: none">Next </button> button to continue to the next part of the application.
+                    </p>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection" style="display:none;">
+
+    <div data-ng-controller="PhysicalLocationCofoController as vm">
+        <div class="physical-loc-form" tabindex="-1">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Business Premises Address</div>
+
+                    <div class="panel-body">
+
+                        <div class="page-desc-content">
+                            <p tabindex="-1">
+                                Please enter your Certificate of Occupancy (CofO) number below as it appears on your permit and select the "Search for CofO" button.
+                            </p>
+                            <br />
+                            <p class="page_title123" tabindex="-1">
+                                <!--Please enter your complete Certificate of Occupancy number below to include all letters and numbers and select the "Search for CofO" button.-->
+                                <!--Please enter your Certificate of Occupancy (CofO) number below as it appears on your permit and select the "Search Zoning" button.-->
+                                If you do not have a CofO, please select the "I do not have a CofO" checkbox below. Read more about CofO requirements on the Zoning website:<a href=" http://dcra.dc.gov/service/zoning-dcra" target="_blank"> http://dcra.dc.gov/service/zoning-dcra </a>
+                            </p>
+                        </div>
+
+                        <!--<p class="page_title123">
+                            Read more about CofOrequirements on the Zoning website:<a href="http://dcra.dc.gov/service/zoning-dcra" target="_blank">http://dcra.dc.gov/service/zoning-dcra</a>
+                        </p>-->
+
+                        <br />
+                        <div ng-show="vm.nocofo" class="col-sm-offset-1 col-md-10 alert error_text" role="alert" tabindex="-1">
+                            <span aria-hidden="true"></span>
+                            If you do not already have a Certificate of Occupancy, you will have to acquire one from the Office of Zoning prior to submitting your Business License Application. Please select Return to Checklist and visit the DC Office of Zoning at 1100 4th St SW or call them at 202-442-4400.
+                        </div>
+                        <div ng-show="vm.cofo.searchDetails.Status=='NODATA'" class="col-sm-offset-1 col-md-10 alert" style="color:red" role="alert" tabindex="-1">
+                            <span aria-hidden="true"></span>
+
+                            The CofO # you entered does not match our records. Please, check your entry and try again.  If you have problems entering your CofO #, please select the "I will upload my CofO with my Supporting Documents" checkbox and type in your Business Premises Address.
+                        </div>
+                        <div ng-show="vm.checkshow" class="col-sm-offset-1 col-md-10 alert" style="color:red" role="alert" tabindex="-1">
+                            If you do not already have a Certificate of Occupancy, you will have to acquire one from the Office of Zoning prior to submitting your Business License Application. Please select Return to Checklist and visit the DC Office of Zoning at 1100 4th St SW or call them at 202-442-4400.
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div id="error_msg" class="text-center" style="color:red" autofocus="focus" tabindex="-1"></div>
+                        <fieldset>
+
+                            <form role="form" method="post" id="vm.contact_us" autocomplete="off" name="vm.contact_us" novalidate ng-submit="vm.reg_form_validate()">
+                                <div class="search_form form_wrapper">
+                                    <div class="clearfix">
+
+                                        <div class="col-sm-12 col-xs-12">
+                                            <label class="input_addon_label">Certificate of Occupancy Number</label>
+                                            <div class="input-group">
+                                                <input type="text" spellcheck="false" class="form-control" data-ng-model="vm.cofo.number" placeholder="Enter all letters and/or numbers as they appear." name="permitnumber" ng-disabled="vm.nocofoSelected"
+                                                       id="permitnumber" required ng-focus="vm.cofoErrorMsg('error_msg')" ng-change="vm.checkSearchZoning()" ng-maxlength="240">
+                                                <span class="input-group-btn">
+                                                    <button type="button" id="submit_cancel" class="btn btn-primary" data-ng-click="vm.searchZoning()" data-ng-disabled="vm.nocofoSelected">
+                                                        <span class="glyphicon glyphicon-search padding-small"></span>
+                                                        <span class="hidden-sm hidden-xs"> Search for CofO</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <div class="error-container" ng-show="vm.contact_us.permitnumber.$dirty && vm.contact_us.permitnumber.$invalid">
+                                                <small class="error-message text-center center_div" ng-show="vm.contact_us.permitnumber.$error.maxlength">
+                                                    Certificate of Occupancy # exceeds maximum length of 240 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="col-md-offset-4 col-md-5 col-sm-5 col-xs-12">
+                                            <div class="form-group" ng-class="{'has-error':vm.contact_us.permitnumber.$invalid && vm.submitted }">
+                                                <label>Certificate of Occupancy Number</label>
+                                                <input type="text" spellcheck="false" class="form-control" data-ng-model="vm.cofo.number" placeholder="" name="permitnumber" ng-disabled="vm.nocofoSelected"
+                                                       id="permitnumber" required ng-focus="vm.cofoErrorMsg('error_msg')" ng-change="vm.checkSearchZoning()" ng-maxlength="240">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.contact_us.permitnumber.$dirty && vm.contact_us.permitnumber.$invalid">
+                                                <small class="error-message" ng-show="vm.contact_us.permitnumber.$error.maxlength">
+                                                    Certificate of Occupancy # exceeds maximum length of 240 characters.
+                                                </small>
+                                            </div>
+                                        </div>-->
+                                        <!--<div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.contact_us.datepicker.$invalid && vm.submitted }">
+
+                                                <label>Date of Issuance</label>
+                                                <div class="dropdown" style="margin-top:-8px">
+                                                    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target=".dropdown-menu" aria-expanded="true" data-ng-disabled="vm.nocofoSelected">
+                                                        <div class="input-group" style="width:100%">
+                                                            <input type="text" spellcheck="false" placeholder="MM/DD/YYYY" class="form-control" name="datepicker" ng-disabled="vm.nocofoSelected"
+                                                                   data-ng-model="vm.cofo.date" ng-pattern="/^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$/m" required ng-maxlength="10" ng-focus="vm.cofoErrorMsg('error_msg')" ng-change="vm.checkSearchZoning('error_msg')">
+                                                            <span class="input-group-addon" ng-disabled="vm.nocofoSelected" data-ng-class="{true:'cursorDefault'}[vm.nocofoSelected==true]"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                        </div>
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                        <datetimepicker data-ng-model="vm.cofo.date" required data-datetimepicker-config="{ startView:'day', minView:'day' }"
+                                                                        ng-click="vm.cofoErrorMsg('error_msg')" ng-change="vm.checkSearchZoning('error_msg')" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" />
+                                                    </ul>
+                                                    <div class="error-container" ng-show="vm.contact_us.datepicker.$dirty && vm.contact_us.datepicker.$invalid">
+                                                        <small class="error-message" ng-show="vm.contact_us.datepicker.$error.required">
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.contact_us.datepicker.$error.pattern">
+                                                            Date is invalid.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.vm.contact_us.datepicker.$error.maxlength">
+                                                            Date is invalid.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                    </div>
+
+                                    <!--<div class="line"></div>-->
+                                </div>
+                                <div class="panel-center_div clearfix">
+                                    <!--<div class="col-md-6  col-sm-12 col-xs-12">
+                                        <button type="button" style="width: 100% !important" id="submit_cancel" class="btn btn-default" data-ng-click="vm.searchZoning(vm.submitted=true)" data-ng-disabled="vm.nocofoSelected">
+                                            <span class="glyphicon glyphicon-search padding-small"></span>
+                                            Search for CofO
+                                        </button>
+                                    </div>-->
+                                    <div class="col-md-12 col-md-offset-2 col-sm-12 col-xs-12 form-type-checkbox clearfix">
+                                        <div class="form-type-checkbox form-item-screening-question-autoparttowing form-item checkbox" style="float: left; margin: 22px 0 10px 0; padding: 5px 0 !important; text-align: center;">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[vm.noCofo]">
+                                                    <input type="checkbox" id="noCofo" name="" ng-click="vm.toggleCheckbox('noCofo')" value="1" class="form-checkbox" style="opacity: 0;">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question" style="margin: 17px 0 10px 2px; padding: 5px 0 !important;">
+                                            <label tabindex="-1">I do not have a CofO.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="dvSubLoadingSection" style="display: none; text-align: center;">
+
+                                <div class="center">
+                                    <p>
+                                        Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="dvSubMainsection" style="margin-top:25px">
+                                <div class="col-md-12" style="color:red;" data-ng-show="vm.noCofoMsg==true">
+                                    Since you do not have a Certificate of Occupancy, you must acquire one from the Office of Zoning prior to submitting your Business License application. Please select &quot;Return to Checklist&quot; and visit the DC Office of Zoning at 1100 4th St., SW or call 202-442-4400.
+                                    <div class="highlight" tabindex="-1"></div>
+                                </div>
+
+                                <div data-ng-show="vm.searchmatch && vm.cofo.searchDetails.Status!='NODATA'" class=" col-md-offset-3 clearfix">
+                                    <div class="col-sm-8 col-xl-8 col-xs-12">
+                                        <div class="panel panel-default collapse_panels">
+                                            <div class="panel-heading" style="padding: 2% 1%; background-color: #E4E2E2;">
+                                                <p style="text-align: center;">Business Premises Address </p>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.AddressNumber=='']">Street # : </span>{{vm.cofo.searchDetails.AddressNumber!=""?vm.cofo.searchDetails.AddressNumber:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span>Street Suffix : </span>{{vm.cofo.searchDetails.AddressNumberSufix=="NA"?'':vm.cofo.searchDetails.AddressNumberSufix}}
+                                                </p>
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.StreetName=='']">Street Name : </span> {{vm.cofo.searchDetails.StreetName!=""?vm.cofo.searchDetails.StreetName:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.StreetType=='']">Street Type : </span> {{vm.cofo.searchDetails.StreetType!=""?vm.cofo.searchDetails.StreetType:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.Quadrant=='']">Quadrant : </span> {{vm.cofo.searchDetails.Quadrant!=""?vm.cofo.searchDetails.Quadrant:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span>UnitType : </span> {{vm.cofo.searchDetails.UnitType}}
+                                                </p>
+                                                <p>
+                                                    <span>Unit : </span> {{vm.cofo.searchDetails.Unit}}
+                                                </p>
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.City=='']">City : </span> {{vm.cofo.searchDetails.City!=""?vm.cofo.searchDetails.City:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.State=='']">State : </span> {{vm.cofo.searchDetails.State!=""?vm.cofo.searchDetails.State:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span ng-class="{true:'search_missing_cofo_hop'}[vm.cofo.searchDetails.Zip=='']">Zip Code : </span> {{vm.cofo.searchDetails.Zip!=""?vm.cofo.searchDetails.Zip:vm.incorrectSearch()}}
+                                                </p>
+                                                <p>
+                                                    <span>Phone: </span> {{vm.cofo.searchDetails.Telephone}}
+                                                </p>
+
+                                                <p>
+                                                    The CofO use code must support the license being applied for. Please confirm this information matches your CofO by selecting "Correct".  If this information does not match your CofO select "Incorrect".
+                                                </p>
+                                            </div>
+
+                                            <div class="panel-footer">
+                                                <div class="form-type-radio  form-item form-group">
+                                                    <div id="edit-questions-23488" class="form-radios ">
+                                                        <div class="form-type-radio pre_appscreenquestion form-item radio corp-radio-error-hightlight"
+                                                             tabindex="0" ng-class="{'has-error': vm.correctSearch==undefined && vm.submitted }">
+                                                            <div class="radiobtn corp-radio-error" id="uniform-edit-questions-23488-22">
+                                                                <span ng-class="{true:'checked'}[vm.correctSearch]">
+                                                                    <input type="radio" id="true" name="true"
+                                                                           checked="checked" class="form-radio"
+                                                                           style="opacity: 0;" ng-click="vm.toggleRadio('true')" data-ng-class="{true:'cursorNotAllowed'}[vm.nocofoSelected==true || vm.disableCorrect==true]" ng-disabled="vm.disableCorrect">
+                                                                </span>
+                                                            </div>
+                                                            <label for="business_address_correct" tabindex="-1">Correct </label>
+                                                        </div>
+                                                        <div class="form-type-radio pre_appscreenquestion form-item radio corp-radio-error-hightlight" tabindex="0" ng-class="{'has-error': vm.correctSearch==undefined && vm.submitted }">
+                                                            <div class="radiobtn corp-radio-error" id="uniform-edit-questions-23488-222">
+                                                                <span ng-class="{false:'checked'}[vm.correctSearch]">
+                                                                    <input type="radio" id="false"
+                                                                           name="" value=""
+                                                                           checked="checked" class="form-radio" data-ng-class="{true:'cursorNotAllowed'}[vm.nocofoSelected==true || vm.disableCorrect==true]"
+                                                                           style="opacity: 0;" ng-click="vm.toggleRadio('false')" ng-disabled="vm.disableCorrect">
+                                                                </span>
+                                                            </div>
+                                                            <label for="business_address_incorrect" tabindex="-1">Incorrect </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="error_text" id="errormsg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix single_checkbox_set" id="divmsg">
+
+                                <div data-ng-show="vm.correctSearch==true" class="col-sm-offset-1 col-md-10 alert text-center color-success-message" role="alert">
+                                    <span aria-hidden="true"></span>{{vm.heelo}}
+                                    Thank you. Please select &quot;Next&quot;.
+                                </div>
+                                <div data-ng-show="vm.correctSearch==false && vm.incorrectCount==0 && !vm.notMapped_Database" class="col-sm-offset-1 col-md-10 alert clearfix error_text" role="alert" tabindex="-1">
+                                    <span aria-hidden="true"></span>
+                                    Please select the "I will upload my CofO with my Supporting Documents" check box below and enter the correct Premises Address information in the fields provided. You will need to upload your CofO with your Supporting Documents on the Checklist page.
+                                </div>
+                                <div data-ng-show="vm.correctSearch==false && vm.incorrectCount>0" class="col-sm-offset-1 col-md-10 alert clearfix error_text" role="alert" tabindex="-1">
+                                    <span aria-hidden="true"></span>
+                                    Your Certificate of Occupancy  information in our records is incomplete.  Please select the "I will upload my CofO with my supporting Documents" checkbox below and provide the information requested.  You will also need to submit a copy of your CofO with your other supporting documents on the Checklist page.
+                                </div>
+                                <div class="col-sm-offset-1 col-md-10 alert clearfix error_text" data-ng-show="vm.notMapped_Database==true">
+                                    The address on your CofO ({{ vm.notMapped_Properties}})
+                                    does not match a valid address in the DCRA database. Please select the "I will upload my CofO with my supporting Documents" checkbox and complete the address fields below.
+                                    <div class="highlight" tabindex="-1"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 form-type-checkbox clearfix col-md-offset-3 single_checkbox_set"
+                                 data-ng-if="vm.correctSearch==false || vm.cofo.searchDetails.Status=='NODATA'">
+
+                                <div class="form-type-checkbox form-item-screening-question-autoparttowing form-item checkbox" ng-class="{'has-error':vm.uploadType!=true && vm.submitted }">
+                                    <div class="checker">
+                                        <span ng-class="{true:'checked'}[vm.uploadType]">
+                                            <input type="checkbox" id="uploadType"
+                                                   name="uploadType"
+                                                   ng-click="vm.toggleCheckbox('uploadType')"
+                                                   class="form-checkbox" style="opacity: 0;">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="checkbox_question highlight" tabindex="-1">
+                                    <label tabindex="-1">I will upload my CofO with my Supporting Documents</label>
+                                </div>
+
+                                <div class="checkbox_question">
+                                    <div id="cofo_msg" class="error_text text-center error_msg"></div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div style="clear: both"></div>
+                        <div class="clearfix">
+                            <div class="col-sm-6 col-xl-6 col-xs-12 col-md-offset-3 no-pad" data-ng-show="vm.uploadType==true">
+                                <div class="panel panel-default collapse_panels ">
+                                    <div class="panel-heading" style="padding: 2% 1%; background-color: #E4E2E2;">
+                                        <p style="text-align: center;">Business Premises Address (Entered by Customer) </p>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form role="form" id="vm.corpnorregadd_form" autocomplete="off" name="vm.corpnorregadd_form" novalidate>
+                                            <div class="form_wrapper" ng-show="vm.uploadType==true">
+                                                <div class="clearfix">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.countrydd.$invalid && vm.submitted }">
+                                                            <label>Country</label>
+                                                            <select name="countrydd" data-ng-model="vm.cofoinfo.Country" disabled required>
+                                                                <option value="" selected disabled>Select One</option>
+                                                                <option ng-repeat="country in vm.Countries" disabled value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                        <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.corpnorregadd_form.Street.$invalid && vm.submitted }">
+                                                            <label>Street Address</label>
+                                                            <div class="inner-addon right-addon">
+                                                                <i class="glyphicon glyphicon-refresh gly-spin" id="streetaddress" style="display: none"></i>
+                                                                <input type="text"
+                                                                       spellcheck="false"
+                                                                       class="form-control"
+                                                                       name="Street"
+                                                                       placeholder="For Example: 123 Main"
+                                                                       autocomplete="off"
+                                                                       typeahead="f.FullAddress for f in vm.Address | filter:$viewValue:vm.startsWith"
+                                                                       typeahead-test="vm.dataavail"
+                                                                       typeahead-on-select="vm.getrelatedAddress($item)"
+                                                                       data-ng-model="vm.cofoinfo.Street"
+                                                                       data-ng-trim="false"
+                                                                       ng-change="vm.getSuggestions(vm.corpnorregadd_form.Street.$viewValue,'streetaddress')"
+                                                                       ng-maxlength="100" id="Street"
+                                                                       ng-focus="vm.setErrorMsg('cofo_msg')" required>
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Street.$dirty && vm.corpnorregadd_form.Street.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Street.$error.maxlength">
+                                                                    Street exceeds maximum length of 100 characters.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div id="noDataErrorMessage" ng-show="vm.not_valid_Address" style="color:red;font-weight:300;font-size:18px; text-align:center;">
+                                                            Entered Address is not a valid DC Address
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.AddressNumber.$invalid && vm.submitted }">
+                                                            <label>Street #</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.AddressNumber" ng-disabled="vm.fieldsDisable"
+                                                                   name="AddressNumber" id="AddressNumber" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[0-9]+$/" ng-maxlength="9" spellcheck="false">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.AddressNumber.$dirty && vm.corpnorregadd_form.AddressNumber.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumber.$error.pattern">
+                                                                Street # must be numeric.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumber.$error.maxlength">
+                                                                Street # Code exceeds maximum length of 9 characters.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Street Suffix</label>
+                                                            <input type="text" class="form-control" placeholder="if applicable" data-ng-model="vm.cofoinfo.AddressNumberSufix" ng-disabled="vm.fieldsDisable"
+                                                                   name="AddressNumberSufix" id="AddressNumberSufix" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false">
+                                                        </div>
+                                                        <!--<div class="error-container" ng-show="vm.corpnorregadd_form.AddressNumberSufix.$dirty && vm.corpnorregadd_form.AddressNumberSufix.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumberSufix.$error.pattern">
+                                                                Street Sufix must be numeric
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumberSufix.$error.maxlength">
+                                                                Street Sufix Code exceeds maximum length of 9 characters.
+                                                            </small>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.StreetName.$invalid && vm.submitted }">
+                                                            <label>Street Name</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.StreetName" ng-disabled="vm.fieldsDisable"
+                                                                   name="StreetName" id="StreetName" ng-focus="vm.setErrorMsg('error_msg')" required ng-maxlength="40" spellcheck="false">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.StreetName.$dirty && vm.corpnorregadd_form.StreetName.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.StreetName.$error.maxlength">
+                                                                Street Name exceeds maximum length of 40 characters.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.StreetType.$invalid && vm.submitted }">
+                                                            <label>Street Type </label>
+                                                            <select name="StreetType" ng-disabled="vm.fieldsDisable"
+                                                                    data-ng-model="vm.cofoinfo.StreetType" required ng-focus="vm.setErrorMsg('cofo_msg')">
+                                                                <option value="" disabled>Select One</option>
+                                                                <option ng-repeat="street in vm.StreetTypes" value="{{street.StreetCode}}">{{street.StreetType}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.StreetType.$dirty && vm.corpnorregadd_form.StreetType.$invalid">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.ehopeligibility.$invalid && vm.submitted }">
+                                                            <label>Quadrant</label>
+                                                            <select name="ehopeligibility" data-ng-model="vm.cofoinfo.Quadrant" required ng-focus="vm.setErrorMsg('cofo_msg')" id="quadrant" ng-disabled="vm.fieldsDisable">
+                                                                <option value="" disabled>Select One</option>
+                                                                <option value="NE">NE</option>
+                                                                <option value="NW">NW</option>
+                                                                <option value="SE">SE</option>
+                                                                <option value="SW">SW</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Unit Type</label>
+                                                            <!--<input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.UnitType" ng-maxlength="5"
+                                                            name="UnitType" id="UnitType" ng-focus="vm.setErrorMsg('cofo_msg')" ng-pattern="/^[a-zA-Z\s]+$/">-->
+                                                            <select name="physicallocationcofo" data-ng-init="vm.cofoinfo.UnitType=0" data-ng-model="vm.cofoinfo.UnitType" ng-disabled="vm.fieldsDisable">
+                                                                <option value="" selected>Select One</option>
+                                                                <option value="APT">APT</option>
+                                                                <option value="BLDG">BLDG</option>
+                                                                <option value="STE">STE</option>
+                                                                <option value="UNIT">UNIT</option>
+                                                                <option value="NONE">NONE</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--<div class="error-container" ng-show="vm.corpnorregadd_form.UnitType.$dirty && vm.corpnorregadd_form.UnitType.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.UnitType.$error.pattern">
+                                                                Unit Type accepts only alphabets.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.UnitType.$error.maxlength">
+                                                                Unit Type exceeds maximum length of 5 characters
+                                                            </small>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Unit</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder="if applicable" data-ng-model="vm.cofoinfo.Unit" ng-maxlength="10"
+                                                                   name="Unit" id="Unit" ng-focus="vm.setErrorMsg('cofo_msg')" ng-disabled="vm.fieldsDisable">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.Unit.$dirty && vm.corpnorregadd_form.Unit.$invalid">
+                                                            <!--<small class="error-message" ng-show="vm.corpnorregadd_form.Unit.$error.pattern">
+                                                                Unit accepts only numerics.
+                                                            </small>-->
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Unit.$error.maxlength">
+                                                                Unit exceeds maximum length of 10 characters.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.city.$invalid && vm.submitted }">
+                                                            <label>City</label>
+                                                            <input type="text" spellcheck="false" class="form-control noselect" placeholder="" data-ng-model="vm.cofoinfo.City"
+                                                                   name="city" id="city" ng-maxlength="30" ng-focus="vm.setErrorMsg('cofo_msg')" required ng-pattern="/^[a-zA-Z\s]+$/" ng-disabled="vm.fieldsDisable">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.city.$dirty && vm.corpnorregadd_form.city.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.city.$error.pattern">
+                                                                City accepts only alphabets.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.city.$error.maxlength">
+                                                                City exceeds maximum length of 30 characters.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.state.$invalid && vm.submitted }">
+                                                            <label>State</label>
+                                                            <input type="text" spellcheck="false" class="form-control noselect" placeholder="" data-ng-model="vm.cofoinfo.State"
+                                                                   name="state" id="state" ng-maxlength="30" ng-focus="vm.setErrorMsg('cofo_msg')" required ng-pattern="/^[a-zA-Z\s]+$/" ng-disabled="vm.fieldsDisable">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.state.$dirty && vm.corpnorregadd_form.state.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.state.$error.pattern">
+                                                                State accepts only alphabets.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.state.$error.maxlength">
+                                                                State exceeds maximum length of 30 characters.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.Zip.$invalid && vm.submitted }">
+                                                            <label>Zip Code</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.Zip" ng-disabled="vm.fieldsDisable"
+                                                                   name="Zip" id="Zip" ng-maxlength="5" ng-focus="vm.setErrorMsg('cofo_msg')" required ng-pattern="/^[0-9]+$/" ng-minlength="5">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.Zip.$dirty && vm.corpnorregadd_form.Zip.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Zip.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Zip.$error.maxlength">
+                                                                Zip Code exceeds maximum length of 5 characters.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Zip.$error.minlength">
+                                                                Zip Code must have 5 digits.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.Phone.$invalid && vm.submitted }">
+                                                            <label>Telephone</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder="optional" data-ng-model="vm.cofoinfo.Telephone"
+                                                                   name="Phone" id="Phone" ng-trim="false" ng-maxlength="10" ng-focus="vm.setErrorMsg('cofo_msg')" ng-pattern="/^[0-9]+$/" ng-minlength="10">
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.corpnorregadd_form.Phone.$dirty && vm.corpnorregadd_form.Phone.$invalid">
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Phone.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Phone.$error.maxlength">
+                                                                Telephone Number exceeds the maximum length of 10 characters.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.corpnorregadd_form.Phone.$error.minlength">
+                                                                Telephone must have 10 digits.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pre-checkquestion pre-checkquestion-question col-md-12 col-sm-12 col-xs-12" style="margin-left: 50px;">
+                        <button id="btn_exit_no_save1" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                        <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')">Exit</button>
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist')">
+                            Return to Checklist
+                        </button>
+                        <!--<button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToNextStepfromcofo()" ng-show="vm.correctSearch=='true' || vm.uploadType">Next</button>-->
+                        <button id="btn_revise" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToNextStepfromcofo('',vm.submitted=true)" data-ng-disabled="vm.nocofoSelected || vm.not_valid_Address" ng-class="{true:'disablecolor'}[vm.nocofoSelected || vm.not_valid_Address]">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="cofoPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-ng-click="vm.dontNavigate()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class='error_message'></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-button" ng-click="vm.navigateAnyway()">Ok</button>
+                            <button type="button" class="close-button" ng-click="vm.dontNavigate()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

@@ -1,0 +1,249 @@
+<div ng-include src="'partials/header.html'"></div>
+
+    <div class="container headerBreadcrumb">
+        <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Register</span>
+        <script src="//www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
+    </div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2>Register</h2>
+            <p>
+                <span tabindex="0" aria-expanded="false" onclick="toggleclick('toggleicon')" id="toggleicon" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center"><strong>This page is used to create an account that will enable you to login and save information.</strong> </p>
+                    <p class="terms_text">
+                        Fill out all fields on the page, including the personal information and security questions.
+                    </p>
+                    <p class="terms_text">
+                        Select three (3) security questions from the provided list.
+                    </p>
+                    <p class="terms_text">Answer the three (3) security questions that you have selected.</p>
+                    <p class="terms_text">Complete the ReCaptcha.</p>
+                    <p class="terms_text">Click the "Create Account" button to complete your <strong>My DC Business Center</strong> account registration. </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span> <a href="../HelpDoc/UserGuide.pdf" target="_blank"> <span class="btn btn-default read_btn">My DC Business Center User Guide</span></a> <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <!--<p><a href="../HelpDoc/Dcbc-Registration.doc" class="helpdoc">How To Use This Page <span class="glyphicon glyphicon-chevron-down"></span></a></p>-->
+            <div id="error_msg" class="error_text"></div>
+        </div>
+    </div>
+</div>
+    <div id="dvLoadingSection">
+        <div class="center">
+            <p> {{loadingdata}}  <img src="../images/camera-loader.gif" alt="not showing" /></p>
+        </div>
+    </div>
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <p>Register for a My DC Business Center account by filling in all fields below.</p>
+                <div class="row">
+                    <div class="form_wrapper">
+                        <form role="form" id="registration_form" name="registration_form" autocomplete="off" novalidate ng-submit="reg_form_validate(register)">
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" spellcheck="false" class="form-control" placeholder="First Name" title="First Name" name="FirstName" id="Fname" ng-model="register.FirstName" ng-focus="setErrorMsg('error_msg')" onblur="this.placeholder = 'First Name'" onfocus="this.placeholder = ''" ng-maxlength="80" ng-pattern="/^[a-zA-Z\s]+$/" required />
+                                        <!--<div style="color:red" id="FirstName"></div>-->
+                                        <div class="error-container" ng-show="registration_form.FirstName.$dirty && registration_form.FirstName.$invalid">
+                                            <small class="error-message" ng-show="registration_form.FirstName.$error.pattern">
+                                                First Name accepts only alphabets.
+                                            </small>
+                                            <small class="error-message" ng-show="registration_form.FirstName.$error.maxlength">
+                                                First Name exceeds maximum length of 80 characters.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <input type="text" spellcheck="false" class="form-control" placeholder="Last Name" title="Last Name" name="lname" id="Lname" ng-model="register.LastName" ng-focus="setErrorMsg('error_msg')" onblur="this.placeholder = 'Last Name'" onfocus="this.placeholder = ''" ng-pattern="/^[a-zA-Z\s]+$/" ng-maxlength="80" required>
+                                        <!--<div style="color:red" id="lname"></div>-->
+                                        <div class="error-container" ng-show="registration_form.lname.$dirty && registration_form.lname.$invalid">
+                                            <small class="error-message" ng-show="registration_form.lname.$error.maxlength">
+                                                Last Name exceeds maximum length of 80 characters.
+                                            </small>
+                                            <small class="error-message" ng-show="registration_form.lname.$error.pattern">
+                                                Last Name accepts only alphabets.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <input type="email" spellcheck="false" class="form-control" placeholder="Email" id="Email" name="Email" ng-focus="setErrorMsg('error_msg')" ng-model="register.Email" ng-uniqueemail required />
+                                        <!--<div style="color:red" id="Email"></div>-->
+                                        <div class="error-container" ng-show="registration_form.Email.$dirty && registration_form.Email.$invalid">
+                                            <small class="error-message" ng-show="registration_form.Email.$error.email">
+                                                Please enter a valid email address.
+                                            </small>
+                                            <small class="error-message" ng-if="registration_form.$pending.unique">
+                                                checking....
+                                            </small>
+                                            <small class="error-message" ng-if="registration_form.$error.unique">
+                                                This email is already in our system. Please select another email address.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <input type="text" spellcheck="false" class="form-control" placeholder="Username" name="username" id="Uname" ng-focus="setErrorMsg('error_msg')" ng-userunique ng-model="register.UserName" ng-model-options="{ updateOn: 'blur' }" ng-pattern="/^[a-zA-Z0-9]+$/" ng-minlength="5" ng-maxlength="80" required>
+                                        <!--<div style="color:red" id="username"></div>-->
+                                        <div class="error-container" ng-show="registration_form.username.$dirty && registration_form.username.$invalid">
+                                            <small class="error-message" ng-show="registration_form.username.$error.pattern">
+                                                Username must be alphanumeric
+                                            </small>
+                                            <small class="error-message" ng-show="registration_form.username.$error.minlength">
+                                                Username must be at least 5 characters
+                                            </small>
+                                            <small class="error-message" ng-show="registration_form.username.$error.maxlength">
+                                                Username exceeds maximum length of 80 characters
+                                            </small>
+                                            <small class="error-message" ng-if="registration_form.$pending.userunique">
+                                                checking....
+                                            </small>
+                                            <small class="error-message" ng-if="registration_form.$error.userunique">
+                                                This username is already registered in our system. Please select a new username.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <input type="password" spellcheck="false" class="form-control" placeholder="Password" id="Pass" name="Password" ng-focus="setErrorMsg('error_msg')" ng-model="register.Password" ng-pattern="/^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?\d)(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?\d)(?=.*?[^a-zA-Z0-9])).{8,}$/" ng-minlength="8" ng-maxlength="80" required />
+                                        <!--<div style="color:red" id="Password"></div>-->
+                                        <div class="error-container" ng-show="registration_form.Password.$dirty && registration_form.Password.$invalid">
+                                            <small class="error-message" ng-show="registration_form.Password.$error.pattern">
+                                                Please make sure that your password contains all of
+                                                the following:
+                                                1. The password is at least eight (8) characters long.
+                                                2. The password contains characters from at least three of the following four
+                                                categories:
+                                                3. English uppercase characters (A- Z)
+                                                4. English lowercase characters (a- z)
+                                                5. Base 10 digits (0- 9)
+                                                6. Special or Punctuation Characters (Example: !, $,#,or%)
+                                            </small>
+                                            <small class="error-message" ng-show="registration_form.Password.$error.minlength">
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <input type="password" spellcheck="false" class="form-control" placeholder="Confirm Password" ng-focus="setErrorMsg('error_msg')" name="conf_password" id="cnpassword" ng-model="register.ConfirmPassword" ng-pattern="/^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?\d)(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?\d)(?=.*?[^a-zA-Z0-9])).{8,}$/" valid-password-c="register.Password" required />
+                                        <!--<div style="color:red" id="conf_password"></div>-->
+                                        <div class="error-container" ng-show="registration_form.conf_password.$dirty && registration_form.conf_password.$invalid">
+                                            <small class="error-message" ng-show="registration_form.conf_password.$error.noMatch">
+                                                Passwords Do Not Match.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12"><p class="forgot">Please select 3 security questions in case you forgot username or password.</p></div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="labeleftalign">
+                                            Question 1 (Choose a question from list below)
+                                        </div>
+                                        <select class="required" ng-model="register.SecurityQuestion1" data-ng-change="ifQuestionSelected('dropdown1')" name="securityquestion1" id="dropdown1"
+                                                 ng-options="question.question as question.question for question in Questions" required ng-focus="setErrorMsg('securityquestion1')">
+                                            <option value="" disabled>Select One</option>
+                                        </select>
+                                        <div class="error_text" id="securityquestion1"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="labeleftalign">
+                                            Answer 1 <span> (Enter your answer) </span>
+                                        </div>
+                                        <input type="text" spellcheck="false" class="form-control text_left" placeholder="Answer" name="subject" id="ans1" ng-model="register.SecurityAnswer1" required ng-focus="setErrorMsg('subject')">
+                                        <div id="subject" class="error_text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group">
+                                        <div class="labeleftalign">
+                                            Question 2 <span> (Choose a question from list below) </span>
+                                        </div>
+                                        <select class="required" data-ng-change="ifQuestionSelected('dropdown2')" id="dropdown2" ng-model="register.SecurityQuestion2" 
+                                                name="securityquestion2" ng-options="question.question as question.question for question in Questions" required ng-focus="setErrorMsg('securityquestion2')">
+                                            <option value="" disabled>Select One</option>
+                                        </select>
+                                        <div class="error_text" id="securityquestion2"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group">
+                                        <div class="labeleftalign">
+                                            Answer 2 <span> (Enter your answer) </span>
+                                        </div>
+                                        <input type="text" spellcheck="false" class="form-control text_left" placeholder="Answer" name="subject2" id="ans2" ng-model="register.SecurityAnswer2" required ng-focus="setErrorMsg('subject2')">
+                                        <div id="subject2" class="error_text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group">
+                                        <div class="labeleftalign">
+                                            Question 3 <span> (Choose a question from list below) </span>
+                                        </div>
+                                        <select data-ng-change="ifQuestionSelected('dropdown3')" id="dropdown3" name="securityquestion3"
+                                                ng-model=" register.SecurityQuestion3" ng-options="question.question as question.question for question in Questions" required ng-focus="setErrorMsg('securityquestion3')">
+                                            <option value="" disabled>Select One</option>
+                                        </select>
+                                        <div class="error_text" id="securityquestion3"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="labeleftalign">
+                                            Answer 3 <span> (Enter your answer) </span>
+                                        </div>
+                                        <input type="text" spellcheck="false" class="form-control text_left" placeholder="Answer" name="subject3" id="ans3" ng-model="register.SecurityAnswer3" required ng-focus="setErrorMsg('subject3')">
+                                        <div id="subject3" class="error_text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="center_div">
+                                    <div vc-recaptcha theme="'light'" key="model.key" on-create="setWidgetId(widgetId)" on-success="setResponse(response)" class="recapt_margin"></div>
+                                    <div id="recaptcha" class="error_text recapt_margin_top"></div>
+                                </div>
+                                <div class="center_div">
+                                    <button id="submit_signup" class="btn btn-default">Create Account</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-xs-12"><p class="terms">By clicking "Create Account" I agree to DC Business Center's <a href="http://dcra.dc.gov/page/terms-and-conditions-use" target="_blank" > Terms of Service.</a></p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div style="clear:both"></div>-->
+    <div ng-include src="'partials/footer.html'"></div>

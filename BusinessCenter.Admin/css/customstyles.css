@@ -1,0 +1,2448 @@
+﻿/* Common Functionality for all Screens */
+/* blue heading is only for dashboard pages */
+.blueheading {
+    font-weight: 200 !important;
+    font-size: 23px !important;
+    color: #00aef3;
+}
+
+.bordered-div {
+    border: 1px solid #ddd;
+}
+
+/* Dialog */
+
+.ui-dialog {
+    width: 600px !important;
+    height: 162px !important;
+    margin: 50px auto;
+}
+
+.ui-dialog-titlebar .ui-widget-header .ui-corner-all .ui-helper-clearfix .ui-draggable-handle {
+    background-color: #fff;
+}
+
+.field-validation-error {
+    color: #f00 !important;
+}
+
+    .field-validation-error:hover {
+        color: #f00 !important;
+    }
+
+/* Dailog*/
+.ui-dialog, .ui-dialog, .ui-widget, .ui-widget-content, .ui-corner-all, .foo, .ui-draggable, .ui-resizable {
+    background: white !important;
+}
+
+.mainNavigation {
+    padding-bottom: 18px;
+}
+
+.filters input[type="submit"] {
+    border: none;
+    border-bottom: 3px solid #114f7f;
+    background-color: #1268ac;
+    width: auto;
+    text-transform: uppercase;
+    font-family: 'Open Sans',sans-serif;
+    color: #fff;
+    font-weight: 600;
+    margin: 0px 1px;
+    padding: 1px 14px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.questions {
+}
+
+.tableloader {
+    position: absolute;
+    top: 500px;
+    right: 0;
+    left: -5px;
+    margin: auto;
+    width: 15px;
+    height: 15px;
+}
+
+.dashboardloader {
+    position: absolute;
+    top: 190px;
+    right: 0;
+    left: -5px;
+    margin: auto;
+    width: 15px;
+    height: 15px;
+}
+
+.dashboardsearchloader {
+    position: absolute;
+    top: 290px;
+    right: 0;
+    left: -5px;
+    margin: auto;
+    width: 15px;
+    height: 15px;
+}
+
+#DashboardSearch {
+    text-align: left;
+}
+
+.key {
+    width: 28px;
+    height: 28px;
+}
+
+#datetimepicker1 .form-control {
+    height: 35px;
+    font-size: 16px;
+}
+
+#datepicker {
+    height: 35px !important;
+    font-size: 16px !important;
+}
+
+/*.searchbutn:hover, .searchbutn:focus,
+.searchbutn.focus, .searchbutn:active, .searchbutn.active {
+    background-color: #114f7f !important;
+}*/
+.clr-btn:hover, .clr-btn:focus,
+.clr-btn.focus, .clr-btn:active, .clr-btn.active {
+    background-color: #114f7f !important;
+}
+
+#datepicker::-webkit-input-placeholder {
+    font-size: 12px !important;
+}
+
+.activeclass {
+    color: #00aef3 !important;
+    border-bottom: 2px solid #00aef3 !important;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.page_title h2 {
+    /*font-weight: 300;
+    font-size: 48px;
+    color: #00aef3;
+    margin: -1% 0 1%;*/
+    /* line-height: 1; */
+}
+
+.register_form {
+    position: relative;
+    padding: 30px 0 200px;
+    background: #eee;
+    border-top: 1px solid #D7D7D7;
+}
+
+#pagingsearchdiv {
+    margin-top: 47px;
+}
+
+.highlightedpage {
+    background: #414141 !important;
+    color: #fff !important;
+}
+
+.selectedpage {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+}
+/*---------------- End of Common Styles for all Screens--------------------------------*/
+
+/*--------------- SmartPhones : Apple Iphone 6 plus, Blackberry, Samsung Note2 & S4 --------------------- */
+
+@media screen and (max-width: 480px) {
+    table.smartgrid,
+    table.smartgrid thead,
+    table.smartgrid tbody,
+    table.smartgrid th,
+    table.smartgrid td,
+    table.smartgrid tr {
+        display: block;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        table.smartgrid thead tr {
+            /*Hide table headers (but not display: none;, for accessibility)*/
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        table.smartgrid tr {
+            border: 1px solid #ccc;
+        }
+
+        table.smartgrid td {
+            /* Behave  like a "row" */
+            /*border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: normal;*/
+        }
+
+    table.dataTable th, table.dataTable td {
+        padding: 26px 10px !important;
+        padding-bottom: 46px !important;
+    }
+
+    table.smartgrid td:before {
+        /* Now like a table header */
+        /*position: absolute;*/
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        /*white-space: nowrap;*/
+        float: left;
+        text-align: left !important;
+    }
+
+    /*------------ Smartphones for Dashboard--------------- */
+
+    /* Dashboard Summary tables */
+    td.summarytables:nth-of-type(1):before {
+        content: "User Type:";
+        font-weight: normal;
+    }
+    /**/
+    td.summarytables:nth-of-type(2):before {
+        content: "Count:";
+        font-weight: normal;
+    }
+
+    /* Dashboard Keyword Search History */
+    td.Keywordsearchtable:nth-of-type(1):before {
+        content: "Keywords:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+    /**/
+    td.Keywordsearchtable:nth-of-type(2):before {
+        content: "Search Field:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.Keywordsearchtable:nth-of-type(3):before {
+        content: "Key Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.Keywordsearchtable:nth-of-type(4):before {
+        content: "Searched Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard 1000 Most Frequently Searched Items */
+    td.mostfrequenttable:nth-of-type(1):before {
+        content: "Keywords:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.mostfrequenttable:nth-of-type(2):before {
+        content: "Search Field:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.mostfrequenttable:nth-of-type(3):before {
+        content: "Key Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard logins per day and respective last login details*/
+    td.lastlogintable:nth-of-type(1):before {
+        content: "Name:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.lastlogintable:nth-of-type(2):before {
+        content: "Last Login Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.lastlogintable:nth-of-type(3):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.lastlogintable:nth-of-type(4):before {
+        content: "Role:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard Keyword Counts */
+    td.regulatorycounts:nth-of-type(1):before {
+        content: "Search Criteria:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.regulatorycounts:nth-of-type(2):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard Number of logins per day by role */
+    td.loginsbyrole:nth-of-type(1):before {
+        content: "Role:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.loginsbyrole:nth-of-type(2):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.loginsbyrole:nth-of-type(3):before {
+        content: "Last Login Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Number of new account creations and account deletions per day  */
+    td.account-cr-del:nth-of-type(1):before {
+        content: "Role:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.account-cr-del:nth-of-type(2):before {
+        content: "Status:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.account-cr-del:nth-of-type(3):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.account-cr-del:nth-of-type(4):before {
+        content: "Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard search grid new code*/
+    td.dashboardsearchgrid:nth-of-type(1):before {
+        content: "Keywords:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.dashboardsearchgrid:nth-of-type(2):before {
+        content: "Search Field:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.dashboardsearchgrid:nth-of-type(3):before {
+        content: "Key Count:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.dashboardsearchgrid:nth-of-type(4):before {
+        content: "Searched Date:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td {
+        overflow: auto;
+    }
+
+        td.Superadmingrid p span {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 52%;
+            word-wrap: break-word;
+            float: right;
+            text-align: left;
+        }
+
+        td.Superadmingrid > p.usernamepara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left !important;
+            float: right;
+            width: 162px !important;
+        }
+
+        td.Superadmingrid > p.emailpara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left;
+            float: right;
+            width: 182px !important;
+        }
+
+        td.Superadmingrid > p.emailpara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left;
+            float: right;
+            width: 182px !important;
+        }
+
+    .register_form h4 {
+        font-size: 16px;
+        text-align: center;
+        margin: 0px;
+        margin-bottom: 12px;
+        font-weight: 400;
+    }
+
+    input.srchdate::-moz-placeholder {
+        /*font-size: 14px !important;
+
+    width: 120px;*/
+        text-align: center;
+    }
+
+    input.srchdate::-ms-input-placeholder {
+        /*font-size: 10px !important;*/
+        text-align: left;
+    }
+
+    input.srchdate:-ms-input-placeholder {
+        /*width: 120px;
+    font-size: 10px !important;*/
+        text-align: left;
+    }
+
+    input.srchdate::-webkit-input-placeholder {
+        /*width: 120px;
+    font-size: 10px !important;*/
+        text-align: left;
+    }
+
+    /* Smartphones for SuperAdmin and Admin Grid */
+    td.Superadmingrid:nth-of-type(1):before {
+        content: "Username:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(2):before {
+        content: "Email:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(3):before {
+        content: "Name:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(4):before {
+        content: "Status:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(5):before {
+        content: "Unlock:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(6):before {
+        content: "Reset Password:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(7):before {
+        content: "Delete:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td {
+        overflow: auto;
+    }
+
+        td.Superadmingrid p span {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 52%;
+            word-wrap: break-word;
+            float: right;
+            text-align: left;
+        }
+
+        td.Superadmingrid > p.usernamepara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left !important;
+            float: right;
+            width: 162px !important;
+        }
+
+        td.Superadmingrid > p.emailpara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left;
+            float: right;
+            width: 182px !important;
+        }
+
+        td.Superadmingrid > p.emailpara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left;
+            float: right;
+            width: 182px !important;
+        }
+
+        /* Smart Phones for User Grid */
+        td.usergrid:nth-of-type(1) > p:before
+        /* td.usergrid:nth-of-type(1):before*/ {
+            content: "Customer Profile :";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(2) > p:before {
+            content: "Customer Name :";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(3) > p:before {
+            content: "Status:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(4) > p:before {
+            content: "Unlock:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(5) > p:before {
+            content: "Quick Search Dashboard:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(6) > p:before {
+            content: "BBL Dashboard:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(7) > p:before {
+            content: "Reset Password:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(8) > p:before {
+            content: "Deactivate:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid p span {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 52%;
+            word-wrap: break-word;
+            float: right;
+            text-align: left;
+        }
+
+    .smartwhitespace {
+        white-space: nowrap;
+    }
+
+    .searchtablemargin {
+        margin-top: 248px !important;
+    }
+
+    .smartbuttons {
+        display: block;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .bblbtn {
+        margin-top: 28px !important;
+        margin-left: -100px !important;
+    }
+
+    .smartbuttonsdiv {
+        margin-left: -28px !important;
+    }
+
+    .sm-datepicker {
+        /*float: right;
+        height: 36px;
+        width: 24%;*/
+        width: 20% !important;
+    }
+
+    .sm-remove-content:before {
+        content: "" !important;
+        color: blue;
+    }
+}
+/*---------------------- End of SmartPhones --------------------------------------------------*/
+
+/*--------------- Smartphones Landscape --------------------- */
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+    table.smartgrid,
+    table.smartgrid thead,
+    table.smartgrid tbody,
+    table.smartgrid th,
+    table.smartgrid td,
+    table.smartgrid tr {
+        display: block;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        table.smartgrid thead tr {
+            /*Hide table headers (but not display: none;, for accessibility)*/
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        table.smartgrid tr {
+            border: 1px solid #ccc;
+        }
+
+        table.smartgrid td {
+            /* Behave  like a "row" */
+            /*border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: normal;*/
+        }
+
+    table.dataTable th, table.dataTable td {
+        padding: 26px 10px !important;
+        padding-bottom: 46px !important;
+    }
+
+    table.smartgrid td:before {
+        /* Now like a table header */
+        /*position: absolute;*/
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        /*white-space: nowrap;*/
+        float: left;
+        text-align: left !important;
+    }
+
+    /*------------ Smartphones for Dashboard--------------- */
+
+    /* Dashboard Summary tables */
+    td.summarytables:nth-of-type(1):before {
+        content: "User Type:";
+        font-weight: normal;
+    }
+    /**/
+    td.summarytables:nth-of-type(2):before {
+        content: "Count:";
+        font-weight: normal;
+    }
+
+    /* Dashboard Keyword Search History */
+    td.Keywordsearchtable:nth-of-type(1):before {
+        content: "Keywords:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+    /**/
+    td.Keywordsearchtable:nth-of-type(2):before {
+        content: "Search Field:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.Keywordsearchtable:nth-of-type(3):before {
+        content: "Key Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.Keywordsearchtable:nth-of-type(4):before {
+        content: "Searched Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard 1000 Most Frequently Searched Items */
+    td.mostfrequenttable:nth-of-type(1):before {
+        content: "Keywords:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.mostfrequenttable:nth-of-type(2):before {
+        content: "Search Type:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.mostfrequenttable:nth-of-type(3):before {
+        content: "Key Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard logins per day and respective last login details*/
+    td.lastlogintable:nth-of-type(1):before {
+        content: "Name:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.lastlogintable:nth-of-type(2):before {
+        content: "Last Login Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.lastlogintable:nth-of-type(3):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.lastlogintable:nth-of-type(4):before {
+        content: "Role:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard Keyword Counts */
+    td.regulatorycounts:nth-of-type(1):before {
+        content: "Regulatory Entity:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.regulatorycounts:nth-of-type(2):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Dashboard Number of logins per day by role */
+    td.loginsbyrole:nth-of-type(1):before {
+        content: "Role:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.loginsbyrole:nth-of-type(2):before {
+        content: "Count:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    td.loginsbyrole:nth-of-type(3):before {
+        content: "Last Login Date:";
+        font-weight: normal;
+        min-width: 45%;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: normal;
+    }
+
+    /* Smartphones for SuperAdmin and Admin Grid */
+    td.Superadmingrid:nth-of-type(1):before {
+        content: "Username:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(2):before {
+        content: "Email:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(3):before {
+        content: "Name:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(4):before {
+        content: "Status:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(5):before {
+        content: "Unlock:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(6):before {
+        content: "Reset Password:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td.Superadmingrid:nth-of-type(7):before {
+        content: "Delete:";
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        text-align: left;
+        float: left;
+        word-wrap: break-word;
+        width: 45%;
+    }
+
+    td {
+        overflow: auto;
+    }
+
+        td.Superadmingrid p span {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 52%;
+            word-wrap: break-word;
+            float: right;
+            text-align: left;
+        }
+
+        td.Superadmingrid > p.usernamepara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left !important;
+            float: right;
+            width: 162px !important;
+        }
+
+        td.Superadmingrid > p.emailpara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left;
+            float: right;
+            width: 182px !important;
+        }
+
+        td.Superadmingrid > p.emailpara {
+            word-wrap: break-word !important;
+            width: 250px;
+            text-align: left;
+            float: right;
+            width: 182px !important;
+        }
+
+        /* Smart Phones for User Grid */
+        td.usergrid:nth-of-type(1) > p:before
+        /* td.usergrid:nth-of-type(1):before*/ {
+            content: "Username :";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(2) > p:before {
+            content: "Email:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(3) > p:before {
+            content: "Name:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(4) > p:before {
+            content: "Status:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(5) > p:before {
+            content: "Unlock:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(6) > p:before {
+            content: "Dash Board:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(7) > p:before {
+            content: "Reset Password:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid:nth-of-type(8) > p:before {
+            content: "Delete:";
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            text-align: left;
+            float: left;
+            word-wrap: break-word;
+            width: 45%;
+        }
+
+        td.usergrid p span {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 52%;
+            word-wrap: break-word;
+            float: right;
+            text-align: left;
+        }
+
+    .smartwhitespace {
+        white-space: nowrap;
+    }
+
+    .searchtablemargin {
+        margin-top: 248px !important;
+    }
+
+    .smartbuttons {
+        display: block;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .bblbtn {
+        margin-top: 28px !important;
+        margin-left: -100px !important;
+    }
+
+    .smartbuttonsdiv {
+        margin-left: -28px !important;
+    }
+
+    .sm-datepicker {
+        /*float: right;
+        height: 36px;
+        width: 24%;*/
+        width: 20% !important;
+    }
+
+    .sm-remove-content:before {
+        content: "" !important;
+        color: blue;
+    }
+}
+/*--------------- End of Smartphones Landscape --------------------- */
+
+/*--------------- Tablets : Apple Ipad, Ipad Mini --------------------- */
+@media screen and (min-width: 721px) and (max-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+    /*.container {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }*/
+    table.dataTable thead th, table.dataTable thead td {
+        padding: 0;
+    }
+
+    .tabrow {
+        margin-right: 15px !important;
+        margin-left: 15px !important;
+    }
+
+    .tablerow {
+        margin-right: 15px !important;
+        margin-left: 15px !important;
+    }
+    /*.row {
+  margin-right: -15px !important;
+  margin-left: -15px !important;
+}*/
+    table.dataTable {
+        width: 100%;
+    }
+
+    .col4-tab {
+        width: 33.33333333%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col3-tab {
+        width: 25%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col2-tab {
+        width: 16.666666666666664%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col1-tab {
+        width: 8.333333333333332%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col6-tab {
+        width: 50%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .tableborder th,
+    .tableborder td {
+        /*border: 1px solid #ddd !important;*/
+        border: 0.9px solid gray !important;
+    }
+
+    .tableborder > thead > tr > th,
+    .tableborder > tbody > tr > th,
+    .tableborder > tfoot > tr > th,
+    .tableborder > thead > tr > td,
+    .tableborder > tbody > tr > td,
+    .tableborder > tfoot > tr > td {
+        border: 1px solid #eee !important;
+    }
+
+    .tableborder > thead > tr > th,
+    .tableborder > thead > tr > td {
+        border-bottom-width: 1px !important;
+    }
+
+    table.dataTable.no-footer {
+        border-bottom: inherit !important;
+    }
+
+    table.dataTable {
+        width: 100%;
+        /*width: initial !important;*/
+        margin: initial !important;
+        clear: initial !important;
+        border-collapse: initial !important;
+        border-spacing: initial !important;
+    }
+
+    .dataTables_wrapper {
+        zoom: initial !important;
+    }
+
+    .paratabcol4 {
+        word-wrap: break-word !important;
+        width: 280px !important;
+    }
+
+    .paratabcol3 {
+        word-wrap: break-word !important;
+        width: 200px !important;
+    }
+
+    .paratabcol2 {
+        word-wrap: break-word !important;
+        width: 140px !important;
+    }
+
+    .paratabcol1 {
+        word-wrap: break-word !important;
+        width: 65px !important;
+    }
+
+    .sm-datepicker {
+        /*float: right;
+        height: 36px;
+        width: 24%;*/
+        width: 20% !important;
+    }
+}
+
+/*--------------- Tablets : Apple Ipad, Ipad Mini --------------------- */
+
+/*--------------- Desktops and Laptops --------------------- */
+@media screen and (min-width: 1201px) {
+    /* For Superadmin, Admin and User Table Borders */
+    table {
+        width: 100%;
+    }
+
+    .tableborder th,
+    .tableborder td {
+        /*border: 0.9px solid gray !important;*/
+    }
+
+    .tableborder > thead > tr > th,
+    .tableborder > tbody > tr > th,
+    .tableborder > tfoot > tr > th,
+    .tableborder > thead > tr > td,
+    .tableborder > tbody > tr > td,
+    .tableborder > tfoot > tr > td {
+        /*border: 1px solid #eee !important;*/
+    }
+
+    .tableborder > thead > tr > th,
+    .tableborder > thead > tr > td {
+        /*border-bottom-width: 1px !important;*/
+    }
+
+    table.dataTable.no-footer {
+        border-bottom: inherit !important;
+    }
+
+    .dataTables_wrapper {
+        zoom: initial !important;
+    }
+    /* End of Table Borders */
+
+    .tablerow {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .col1 {
+        width: 8.333333333333332%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col2 {
+        width: 16.666666666666664%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col3 {
+        width: 25%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col4 {
+        width: 33.33333333%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col6 {
+        width: 50%;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .userpcusernaamecol p span {
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 99%;
+        word-wrap: break-word;
+        float: right;
+        text-align: left;
+    }
+
+    .userparaforuname {
+        word-wrap: break-word !important;
+        width: 150px !important;
+    }
+
+    .userparaforemail {
+        word-wrap: break-word !important;
+        width: 150px !important;
+    }
+
+    .userparaforname {
+        word-wrap: break-word !important;
+        width: 150px !important;
+    }
+
+    .paracol4 {
+        word-wrap: break-word !important;
+        width: 320px !important;
+    }
+
+    .paracol3 {
+        word-wrap: break-word !important;
+        width: 275px !important;
+    }
+
+    .paracol2 {
+        word-wrap: break-word !important;
+        width: 180px !important;
+    }
+
+    .paracol1 {
+        word-wrap: break-word !important;
+        width: 70px !important;
+    }
+
+    .dtpicker {
+        margin-left: -41px;
+        font-size: 14px;
+        width: 150px;
+    }
+}
+/*--------------- End of Desktops and Laptops --------------------- */
+
+/*.search_result section:nth-child(2n) .container {
+    background: #FFF none repeat scroll 0% 0%;
+    margin-top: 0px;
+}
+
+.search_result section:nth-child(2n) > .container .innerRow >div {
+     background: #FFF none repeat scroll 0% 0%;
+    margin-top: 0px;
+}*/
+
+.search_result section .container :nth-child(2n+1) .innerRow {
+    background: #FFF none repeat scroll 0% 0%;
+    margin-top: 0px;
+}
+
+.search_result section:nth-child(n) .container {
+    background: #FFF !important none repeat scroll 0% 0%;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
+.search_result {
+    background: transparent none repeat scroll 0% 0%;
+    padding: 10px 0px 0px;
+}
+
+.loading_image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    display: none;
+    background: rgba(61, 61, 63, 0.4) transparent url("../images/loading-big.gif");
+    margin: auto;
+    -khtml-opacity: .5;
+    -moz-opacity: .5;
+    -ms-filter: "alpha(opacity=5)";
+    filter: alpha(opacity=5);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+    opacity: .50;
+}
+
+small {
+    color: red;
+}
+
+.key {
+    width: 28px;
+    height: 28px;
+}
+
+::-webkit-input-placeholder {
+    text-align: left;
+}
+
+.filters input[type="submit"] {
+    border: none;
+    border-bottom: 3px solid #114f7f;
+    background-color: #1268ac;
+    width: auto;
+    text-transform: uppercase;
+    font-family: 'Open Sans',sans-serif;
+    color: #fff;
+    font-weight: 600;
+    margin: 0px 4px;
+    padding: 1px 14px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 22px;
+    /* font-weight: bold; */
+    /* font-weight: 800; */
+}
+
+.srch_filter input {
+    font-size: 14px;
+    padding: 4px 20px 2px 5px;
+    background: transparent;
+    border: 1px solid #333;
+    /* font-weight: 100 !important; */
+    line-height: 21px;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    margin: 1px 5px;
+}
+
+.error_msg {
+    color: red;
+    margin-top: 13px;
+}
+
+.error_text {
+    margin-top: -10px;
+    color: red !important;
+}
+
+.src_full_name {
+    cursor: default;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+.srch_filter label {
+    font-weight: 400;
+    margin-top: 0px;
+}
+
+.forgot_password .login_wrapper .login {
+    padding: 1% 40% 1% 40%;
+}
+
+.srchdate {
+    text-align: center;
+    font-size: 12px !important;
+    width: 120px;
+}
+
+input.srchdate::-moz-placeholder {
+    font-size: 14px !important;
+    text-align: center;
+    width: 120px;
+}
+
+input.srchdate::-ms-input-placeholder {
+    font-size: 10px !important;
+    text-align: center;
+}
+
+input.srchdate:-ms-input-placeholder {
+    width: 120px;
+    font-size: 10px !important;
+    text-align: center;
+}
+
+.srchdate::-ms-clear {
+    display: none;
+}
+
+input.srchdate::-webkit-input-placeholder {
+    width: 120px;
+    font-size: 10px !important;
+    text-align: center;
+}
+
+.filters input[type="submit"]:disabled, input[type="button"]:disabled {
+    background: #1268ac;
+}
+
+.top-tables-hyp a {
+    font-size: 18px !important;
+    font-weight: 300 !important;
+}
+
+.reg-err-placement .form-group {
+    padding-bottom: 15px;
+}
+
+.reg-err-placement .form-control {
+    margin: 0 auto 5px;
+}
+
+.prof-err-placement .form-group {
+    padding-bottom: 15px;
+}
+
+.prof-err-placement .form-control {
+    margin: 0 auto 5px;
+    margin-bottom: 5px !important;
+}
+
+.register_form h4 {
+    font-size: 16px;
+    text-align: center;
+    margin: 0px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.login_form .login_wrapper .form-control {
+    text-align: left;
+}
+
+input::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.modal-open {
+    overflow: auto;
+}
+
+.profile_style {
+    text-align: center;
+    color: red;
+    font-size: 14px;
+}
+
+.profile_type {
+    color: red !important;
+    font-size: 15px !important;
+}
+
+.headerBreadcrumb span {
+    padding: 0px 0px;
+}
+
+.login_form p {
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+a, button, .open {
+    transition: all 0.0s ease 0s;
+}
+
+/*border-bottom: 2px solid #00AEF3 !important;*/
+label {
+    display: inline;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.user_profile .form_wrapper .change-password label {
+    font-size: 15px;
+    text-transform: none;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.search_categories {
+    font-size: 13px;
+    padding: 10px 8px 10px 14px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+    .search_categories .select {
+        width: 120%;
+        background: url('../images/sarrow.png') no-repeat;
+        background-position: 80% center;
+    }
+
+        .search_categories .select select {
+            background: transparent;
+            line-height: 1;
+            border: 0;
+            padding: 0;
+            border-radius: 0;
+            width: 120%;
+            position: relative;
+            z-index: 10;
+            font-size: 1em;
+        }
+
+select.custom-dropdown {
+    -webkit-appearance: none; /*REMOVES DEFAULT CHROME & SAFARI STYLE*/
+    -moz-appearance: none; /*REMOVES DEFAULT FIREFOX STYLE*/
+    color: #000;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border: 1px solid #ABADB3;
+    -webkit-border-radius: 5px;
+    width: 100%;
+    line-height: 1.42857;
+    cursor: pointer;
+    text-align: left;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    background: #fff url(../images/collapse-down.png) no-repeat right center;
+    background-size: 25px 15px; /*TO ACCOUNT FOR @2X IMAGE FOR RETINA */
+    background-position: 96% 50%;
+}
+
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+    .col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.input-group-addon {
+    border: 0px;
+    font-size: 34px;
+    vertical-align: top;
+}
+
+.input-group-addon, .input-group-btn .width {
+    width: 0%;
+}
+
+.hidden-class {
+    display: none;
+}
+
+.physical-loc-form p span {
+    color: #6e6b6b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.margin-top-panel-footer-address-corp {
+    margin-top: 9.4%;
+}
+
+.div_height {
+    min-height: 115px;
+}
+
+#ehopbtn-div {
+    background: none;
+    text-align: left;
+    border-top: none;
+    margin-left: 30px;
+}
+
+.margin_tp {
+    margin-top: 10px;
+}
+
+.error_msg {
+    margin-top: 0px;
+    color: red !important;
+}
+
+.margin_t {
+    margin-top: 0px;
+}
+
+.text_lf {
+    text-align: left;
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.shown-class {
+    display: block;
+}
+
+.radio label {
+    cursor: default;
+}
+
+.info-verify-para p {
+    width: 96%;
+    word-wrap: break-word;
+}
+
+.note_style {
+    color: #6e6b6b;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.word_wrap {
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.panel_height {
+    height: 375px;
+    overflow: visible;
+}
+
+.collapse_panels .business-activities-wrapper {
+    margin: 1em;
+}
+
+.collapse_panels .panel-body .search_result {
+    margin-top: -3%;
+}
+
+@media (min-width: 992px) {
+    .collapse_panels .search_result section > .container {
+        width: 100%;
+    }
+}
+
+.innerRow .bbl div {
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.bbl-paymnet-wrapper .panel .payment-card-section {
+    padding: 2% 2% 6% 2%;
+}
+
+.single_checkbox_set .checkbox_question {
+    width: 88%;
+    float: left;
+    margin-top: -6px;
+    margin-bottom: 10px;
+}
+
+.alignchecbox .glyphicon {
+    top: 5px;
+}
+
+.payment-grid-content {
+    clear: both;
+    position: inherit;
+    margin-top: 15%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.business-address-panel-wrapper .panel-default {
+    height: 26em !important;
+}
+
+.collapse_panels .panel-title .collapseIcon2 {
+    background: rgba(0, 0, 0, 0) url("../images/dc_collapse_icon2.png") no-repeat scroll 50% 50%;
+    cursor: pointer;
+}
+
+@media print {
+    .hidden-class {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logoutbutton {
+        border: 0px;
+        background: #ffffff;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: 700;
+        line-height: 20px;
+        padding: 0px 14px 0px;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+        .logoutbutton:hover {
+            color: #124F87;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-bottom: 2px solid #124F87 !important;
+        }
+}
+
+::-ms-clear {
+    display: none;
+}
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+    .logoutbutton {
+        border: 0px;
+        background: #ffffff;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: 700;
+        line-height: 20px;
+        padding: 0px 14px 0px;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+        .logoutbutton:hover {
+            color: #124F87;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-bottom: 2px solid #124F87 !important;
+        }
+}
+
+@media (max-width: 767px) {
+    .physical-loc-form .input-group-addon, .physical-loc-form .input-group-btn, .physical-loc-form .input-group .form-control {
+        display: table-cell !important;
+    }
+}
+
+.business-activities-wrapper .row .col-md-15 .panel {
+    border: 1px solid #DAD4D4;
+    margin-bottom: 15px;
+}
+
+.shadow {
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.form-control.noshadow {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #ABADB3;
+}
+
+.file-input-new {
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+}
+
+.form-radios .form-type-radio div.radiobtn {
+    margin-top: 10px;
+    /*vertical-align: initial;*/
+}
+
+.preapp-checklist section > .container1 p, .breakword div, .collapse_panels .panel-body p {
+    word-wrap: break-word;
+}
+
+@media (min-width: 1200px) {
+    div.container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+#infoverify p:first-child {
+    color: #242424;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+@media(max-width:767px) {
+    .quetion_wrapper h2 {
+        padding-bottom: 6%;
+    }
+
+    .bbl-paymnet-wrapper .form-radios label {
+        vertical-align: -10px !important;
+    }
+
+    .form-radios {
+        padding: 0 0 5%;
+    }
+}
+
+.font_size {
+    font-size: 85%;
+}
+
+.headerBreadcrumb a {
+    cursor: pointer;
+}
+
+.checkbox_question label {
+    cursor: default;
+}
+
+.cursorDefault {
+    cursor: default;
+}
+
+.cursorNotAllowed {
+    cursor: not-allowed !important;
+}
+
+.progress_steps .step2 {
+    left: 17%;
+}
+
+.progress_steps .step3 {
+    left: 44%;
+}
+
+.progress_steps .step4 {
+    left: 72%;
+}
+
+.progress_steps .step5 {
+    left: 92%;
+}
+
+@media (max-width: 768px) {
+    .wizard_form {
+        padding: 10% 0;
+    }
+}
+
+span .font_color {
+    color: black;
+    font-size: 18px;
+}
+
+.margin_width {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.input-group-addon {
+    border: 0px;
+    font-size: 26px;
+    vertical-align: top;
+}
+
+.input-group-addon {
+    padding: 2px 4px;
+    /* font-size: 14px; */
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+.forgotpassword {
+    font-size: 20px !important;
+}
+
+.login_form a {
+    font-size: 16px;
+}
+
+/*::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+    text-align: center;
+}
+
+input[placeholder] { text-align: center; }
+::-moz-placeholder ,::-webkit-input-placeholder{ text-align: center; }
+input:-moz-placeholder { text-align: center; }*/
+
+.ui-autocomplete {
+    padding-left: 0;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+    .ui-autocomplete > li {
+        padding-left: 20px;
+    }
+
+        .ui-autocomplete > li:hover {
+            background-color: #114f7f;
+            color: white;
+            cursor: pointer;
+        }
+
+.font_sz {
+    font-size: 24px !important;
+    font-weight: 300 !important;
+    text-transform: none !important;
+}
+
+/* Below block to change the color transparent when drop down selected in IE */
+select::-ms-value {
+    background: none !important; /* remove blue background on ie10/ie11 when selected*/
+    color: #000 !important;
+}
+
+select > option:hover {
+    background-color: rgb(102,175,233) !important;
+    cursor: pointer !important;
+}
+
+#header-nav li {
+    /*padding: 0 12px;*/
+}
+
+.show-menu {
+    display: none;
+}
+
+.businesslicense-pad {
+    /*padding-bottom: 16px;*/
+    padding-top: 16px;
+}
+
+.panel.panel-default {
+    page-break-inside: auto;
+}
+
+#doc-list .businesslicense-pad div {
+    word-wrap: break-word;
+}
+
+#renew-list .businesslicense-pad div {
+    word-wrap: break-word;
+}
+
+#bl-data .businesslicense-pad div {
+    word-wrap: break-word;
+}
+
+#bl-data .businesslicense-pad .form-group {
+    word-wrap: break-word;
+}
+
+.collapse_panels .panel-title .collapseIcon {
+    background: url('../images/arrow-top.png') 50% 50% no-repeat;
+}
+
+.collapse_panels .panel-title .expandIcon {
+    background: url('../images/arrow-bottom.png') 50% 50% no-repeat;
+}
+
+#queue-tab-nav .active a {
+    background-color: #124F87;
+    color: #fff;
+}
+
+/*  Removed and pasted here from _layout.cshtml */
+.form-control:-moz-placeholder {
+    text-align: left;
+}
+
+.form-control::-moz-placeholder { /* Firefox 19+ */
+    text-align: left;
+}
+
+.form-control::-webkit-input-placeholder {
+    text-align: left;
+}
+
+.form-control:-ms-input-placeholder {
+    text-align: left;
+}
+
+#tabs {
+    background: #fff;
+}
+
+.ui-widget-header {
+    background-color: #eee;
+    border: #eee;
+}
+/* End of _layout.cshtml style */
+
+.grand_total .panel-footer span {
+    font-weight: 500;
+}
+
+.has-error .form-control {
+    border: 2px solid rgba(193, 50, 17, 0.72);
+}
+
+    .has-error .form-control:focus {
+        border-color: rgba(193, 50, 17, 0.72);
+    }
+
+.disablecolor {
+    background-color: #d3d3d3 !important;
+    cursor: default;
+    border-bottom-color: #d3d3d3 !important;
+    pointer-events: none !important;
+}
+
+.info-content p {
+    font-size: 16px !important;
+    font-weight: 400;
+}
+
+mark {
+    background-color: yellow;
+    color: black;
+}
+
+.howtotext {
+    margin-left: -100px;
+}
+
+    .srch_filter li, .howtotext li {
+        line-height: 30px;
+    }
+
+    .howtotext li {
+        list-style-type: circle;
+    }
+
+.numbers li {
+    list-style-type: decimal !important;
+    font-size: 22px !important;
+    font-weight: 300 !important;
+}
+
+.numbers_color li {
+    list-style-type: decimal !important;
+    color: rgb(51, 122, 183);
+    font-weight: 400 !important;
+    font-size: 22px !important;
+}
+
+.newbbl-welcome .li-alpha li {
+    list-style-type: lower-alpha !important;
+    font-size: 22px !important;
+    font-weight: 300;
+}
+
+.newbbl-welcome li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+}
+
+.license_list .panel p {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.newbbl-welcome li span {
+    /*font-size: 16px !important;*/
+    /*font-weight: 400 !important;
+    line-height: 26px !important;*/
+}
+
+.newbbl-welcome .btn {
+    padding: 0px 12px;
+}
+
+.newbbl-welcome .glyphicon-plus {
+    font-size: 12px;
+    color: #fff;
+}
+
+.newbbl-welcome .glyphicon-chevron-left {
+    font-size: 16px;
+}
+
+.newbbl-welcome li span strong, .license_list p strong {
+    font-weight: 600;
+}
+/*.panel .col-md-offset-0,.newbbl-welcome p strong {
+   font-weight: 600;
+}*/
+.newbbl-info-steps {
+    padding-left: 45px;
+}
+
+.no-bbls p {
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.largertext-labels .form-radio-label div.radio label {
+    margin-top: 2px;
+}
+
+.supportpanelheading {
+    font-weight: 500 !important;
+    font-size: 24px !important;
+}
+
+.text_ContentDec {
+    font-size: 24px !important;
+    line-height: 34px !important;
+    color: rgb(65, 65, 65);
+}
+
+.applicationCkecklistLink {
+    font-size: 20px !important;
+    font-weight: 400;
+}
+
+    .applicationCkecklistLink a {
+        text-decoration: underline;
+        color: #124f87 !important;
+        font-size: 20px !important;
+        font-weight: 400;
+    }
+
+.cursorDefault {
+    cursor: default;
+}
+
+.cursorNotAllowed {
+    cursor: not-allowed !important;
+}
+
+.collapse_panels .panel-title .see-details, .arrow .see-details {
+    background-image: url('../images/see-details.png') !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff;
+    background-size: 90% !important;
+}
+
+.collapse_panels .panel-title .hide-details, .arrow .hide-details {
+    background-image: url('../images/hide-details.png') !important;
+    background-repeat: no-repeat !important;
+    background-color: #fff;
+    background-size: 90% !important;
+}
+
+.arrow .see-details, .arrow .hide-details {
+    background-color: transparent !important;
+}
+
+.search_result section > .container .arrow .see-details, .search_result section > .container .arrow .hide-details {
+    height: 60px;
+    width: 81px;
+}

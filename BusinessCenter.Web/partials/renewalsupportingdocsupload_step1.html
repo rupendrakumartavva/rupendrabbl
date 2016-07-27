@@ -1,0 +1,139 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div data-ng-controller="RenewalSupportingDocs as vm">
+    <div class="container headerBreadcrumb">
+        <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renew</span>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Supporting Documents</span>
+    </div>
+
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Supporting Documents</h2>
+                <p>Help With This Page (Click Here) </p>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoadingSection">
+
+        <div class="center">
+            <p>
+                Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+            </p>
+        </div>
+    </div>
+
+    <div id="dvMainsection">
+        <div class="login_form register_form preapp-checklist ">
+            <div class="container">
+                <p>
+                    You have the option to scan and upload your supporting documents or to submit them in-person at the
+                    DCRA License Center. Please indicate your preference.
+
+                    <div class="form-section quetion_wrapper">
+                        <div class="clearfix">
+                            <div class="col-md-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                <div class="form-group question_title">
+                                    <h2>I will submit my supporting documents</h2>
+                                    <select name="type" data-ng-model="vm.DocSubmType" ng-change="vm.selectDropOption()">
+                                        <option value="" selected> Select One </option>
+                                        <option value="ON">Online</option>
+                                        <option value="IN">In-Person</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+        </div>
+        <!--<div ng-if="vm.DocSubmType == 'ON'" class="panel-group">
+            <div class="container">
+                <div class="row step_change_buttons ">
+                    <div class="col-md-6 col-lg-6 col-xs-6">
+                        <button class="btn btn-default next_button" data-ng-click="vm.navToPrevious()">
+                            <span class="glyphicon glyphicon-chevron-left"></span><span> Back</span>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xs-6">
+                        <button class="btn btn-default pull-right next_button btn form-submit" id="edit-submit-button"
+                                name="op" value="Next" ng-click="vm.navToUploadDocs_Step2()">
+                            Next<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div ng-if="vm.DocSubmType != ''" class="panel-group">
+
+            <!-- start -->
+            <div class="container">
+                <div class="row step_change_buttons ">
+                    <div class="col-md-4 col-lg-4 col-xs-4">
+                        <button class="btn btn-default next_button" data-ng-click="vm.navToPrevious()">
+                            <span class="glyphicon glyphicon-chevron-left"></span><span> Back</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xs-4">
+                        <button class="btn btn-default next_button" data-ng-click="vm.navToBBL()">
+                            <span> Return to My BBLs</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xs-4">
+                        <button class="btn btn-default pull-right next_button btn form-submit" id="edit-submit-button"
+                                name="op" value="Next" ng-click="vm.navToUploadDocs_Step2()">
+                            <span>Next<span class="glyphicon glyphicon-chevron-right"></span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end -->
+        </div>
+
+
+        <div class="modal fade" id="selectionIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" ng-click="vm.navigateAnyWay()"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class='error_message'>The supporting documents previously uploaded<strong> (if any)</strong> will be deleted if you proceed with 'In Person' option. Please select [OK] to proceed with the selection and return to checklist or [CANCEL] to stay on the page with out any change in the selection.</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="vm.navigateAnyWay()">Ok</button>
+                        <button type="button" class="close-button" ng-click="vm.stayOnThisPage()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="renewPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="vm.cancel_delete()" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="error_message"> You are trying to navigate away from this Renewal application and the data entered/selected so far will not be saved. Please click [OK] to leave the page or click [CANCEL] to stay on the page and complete the Renewal Application.</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="vm.navigateAnyWayrenewal()">OK</button>
+                        <button type="button" class="close-button" ng-click="vm.cancelNavigation()">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

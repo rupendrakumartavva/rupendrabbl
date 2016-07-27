@@ -1,0 +1,304 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.DocumentsModel
+@{
+    ViewBag.Title = "DCRA - Documents";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("BBL", "ApplicationReview", "BBL")*@
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Metadata</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Activity", "BusinessActivities", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = @ViewBag.PatientId }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Document</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Documents</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form">
+        @Html.HiddenFor(model => model.ActivityID)
+       @Html.HiddenFor(model=>model.PrimaryID)
+        @Html.HiddenFor(model => model.SecondaryID)
+        @Html.HiddenFor(model => model.CategoryName)
+        <div class="container">
+            <div class="clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group ">
+                        Primary Category Name:
+                        <strong>
+                            @if (Model.CategoryName != null)
+                            {
+                                @Html.DisplayFor(model => model.CategoryName)
+                            }
+                          else
+                            {
+                            Model.CategoryName = Convert.ToString(Session["Categoryname"]);
+                           @Html.DisplayFor(model => model.CategoryName)
+                            }
+                        </strong>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-9" style="text-align: left;">
+                    <div class="form-group">
+     
+                        @Html.AntiForgeryToken()
+@if ((int) Session["Admincount"] == 3)
+{
+    <input type="submit" value="Add Document" id="btnCreate" class="btn btn-default"/>
+}
+                    </div>
+                </div>
+                
+            </div>
+            <div id="Content" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                <div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+                    <p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="~/images/camera-loader.gif" alt="not showing" /></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                    <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Primary Category</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="modal fade homemodaldiv" id="Homemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="yesbutton">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message' id="modelerror"> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="okbtn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            //$("btnCreate").css("text-transform", "lowercase");
+            //$("#btnCreate").val("Create Document(s)");
+            
+        });
+    </script>
+    <style>
+        #btnCreate {
+            text-transform:inherit;
+        }
+    </style>
+    <style>
+        .resetkeyimglink img {
+            width: 28px;
+            height: 28px;
+        }
+    </style>
+    <script type="text/javascript">
+        
+        $("#btnBack").click(function () {
+            var url1 = window.location.href;
+            var primaryId = url1.substring(url1.lastIndexOf('=') + 1);
+            var url = "/BBL/PrimaryCategories?activityId=" + $("#ActivityID").val();
+            window.location.href = url;
+        });
+    $(document).ready(function () {
+        $("#Content").empty();
+        $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+        $("#activity-add").empty();
+        ShowDocuments();
+
+    });
+ 
+    $("#btnCreate").click(function () {
+        var url = window.location.href;
+        var id = url.substring(url.lastIndexOf('=') + 1);
+        var url1 = "/BBL/CreateDocuments?categoryId=" + $("#PrimaryID").val() + "&" + "type=primary&activityId=" + id;
+        window.location.href = url1;
+
+
+    });
+    //$("#btnCreate").click(function () {
+        
+    //    var url = "/BBL/CreateDocuments";
+    //    window.location.href = url;
+
+
+    //});
+    function ShowDocuments() {
+      
+        var docobject = {
+            ActivityID:$("#ActivityID").val(),
+            PrimaryID: $("#PrimaryID").val()
+            //SecondaryID: $("#SecondaryID").val()
+        }
+        $.ajax({
+            url: '/BBL/DocumentsGridPartial',
+            type: 'Get',
+            cache: false,
+            data: docobject,
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#Content").empty().append(data);
+}
+            },
+            error: function () {
+            }
+        });
+    }
+    //function Documentscreate() {
+    //    alert("a");
+    //    var docobject = {
+    //        CategoryName: $("#CategoryName").val()
+    //    }
+    //    $.ajax({
+    //        url: '/BBL/CreateDocuments',
+    //        type: 'Get',
+    //        cache: false,
+    //        data: docobject,
+    //        success: function (data) {
+    //            window.location.href = '/BBL/CreateDocuments';
+               
+    //        },
+    //        error: function () {
+    //        }
+    //    });
+    //}
+    </script>
+    <script>
+        var Docid;
+        function ShowDialog(id) {
+            $('.homemodal-body h3.error_message').empty().append('Are you sure you want to deactivate this document for this category?');
+            $('.homemodaldiv').modal('show');
+            Docid = id;
+        }
+        $("#okbtn").on("click", function () {
+
+            $('#registermodal-container').modal('hide');
+
+            ShowDocuments();
+        });
+        $("#yesbutton").on("click", function () {
+            $('#Homemodal-container').modal('hide');
+            var id = Docid;
+            DeleteCategoryDocuments(id);
+        });
+        function DeleteCategoryDocuments(id) {
+            var docObject = {
+                MasterCategoryDocId: id
+            }
+                            
+            $.ajax({
+                url: '/BBL/DeletePrimaryDocuments',
+                type: 'Post',
+                cache: false,
+                data: docObject,
+                success: function (data) {
+                    if (data.status == "SessionExipred") {
+                        window.location.href = '/Account/SessionExpiry';
+                    }
+                    else {
+                        ShowDocuments();
+}
+
+                },
+                error: function () {
+                }
+            });
+        }
+
+    function DocumentAddPartial() {
+        $.ajax({
+            url: '/BBL/DocumentAddPartial',
+            type: 'Get',
+            cache: false,
+           // data: { AllData: $('#All').val() },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#activity-add").empty().append(data);
+}
+            },
+            error: function () {
+            }
+        });
+    }
+    </script>
+    
+    <script>
+    function UpdateActivity(Id) {
+        $.ajax({
+            url: '/BBL/UpdateDocumentPartial',
+            type: 'Get',
+            cache: false,
+            data: { activityId: Id },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                $("#activity-add").empty();
+                $("#activity-add").empty().append(data);
+}
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    }
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,381 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.AccountViewModel
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Customer Profile</th>
+                        @*<th class="text-center">Email</th>*@
+                        <th class="text-center">Customer Name</th>
+                        <th class="text-center">Status</th>
+                        @if ((int)Session["Admincount"] != 4)
+                        {
+                            <th class="text-center">Unlock</th>
+                        }
+                        <th class="text-center">Quick<br />Search<br />Dashboard</th>
+                        <th class="text-center">BBL<br />Dashboard</th>
+                        @if ((int)Session["Admincount"] != 4)
+                        {
+                            <th class="text-center">Reset<br />Password</th>
+                            <th class="text-center">Deactivate</th>
+                        }
+                        @*<th class="text-center">View<br />Profile</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.AllEmployees.Count == 0)
+                    {
+                        <tr role="row">
+                            <td colspan="9" id="noRecords"></td>
+                        </tr>
+                    }
+
+                    else
+                    {
+                        foreach (var item in Model.AllEmployees)
+                        {
+                            <tr class="tablerow tabrow ">
+                                <td class="col2-tab col2 usergrid usercol ">
+                                    <p style="" class="paracol  paratabcol ">
+                                        <span>
+
+                                            @Html.ActionLink(item.UserName, "CustomerProfile", "Account", new { UserId = item.UserId.Trim()}, null)
+                                        </span>
+                                    </p>
+                                </td>
+                                @*<td class="col2-tab col2 usergrid userpcusernaamecol">
+                                        <p style="" class="paracol2  paratabcol2">
+                                            <span>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </span>
+                                        </p>
+                                    </td>*@
+                                <td class="col2-tab col2 usergrid usercol">
+                                    <p style="" class="paracol  paratabcol wordwarptext ">
+                                        <span>
+                                            @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 usergrid usercol">
+                                    @if (item.IsDelete == false)
+                                    {
+                                        <p style="color: green; font-size: 14px;" class="">
+                                            <span>
+                                                Active&nbsp;@Html.Image("~/images/active.png", "User Unlock")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="color: Red; font-size: 14px;" class="">
+                                            <span>
+                                                Inactive&nbsp; @Html.Image("~/images/InActive.png", "User Unlock")
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                @if ((int)Session["Admincount"] != 4)
+                                {
+                                    <td class="col1-tab col1 usergrid usercol">
+
+                                        @if (item.LockoutEnabled == false)
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="">
+                                                <span>
+                                                    @Html.Image("~/images/unlockImg.png", "Lock")
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="">
+                                                <span>
+                                                    @*@Html.ImageLink("~/images/Lock.png", "Unlock", "Unlock", "Lock", "Account", new { id = item.UserId, Type = Model.UserType, userRole = "User" })*@
+                                                    <a href="javascript:void(0)" onclick="ShowLockDialog('@item.UserId', '@Model.UserType','SuperAdmin') ">
+                                                        @Html.Image("~/images/Lock.png", "Unlock")
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+
+                                    </td>
+                                }
+                                <td class="col1-tab col1 usergrid usercol">
+                                    <p style="color: Red; font-size: 14px;" class="">
+                                        <span>
+
+                                            @Html.ImageLink("~/images/dashboard.png", "Customer Dashboard", "User Dashboard", "CustomerDashboard", "SuperAdmin", new { UserId = item.UserId })
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 usergrid userpccol1">
+                                   
+                                    <p style="color: Red; font-size: 14px;" class="">
+                                        <span>
+                                        
+                                            @Html.ImageLink("~/images/checkList.png", "BBL Dashboard", "Quick Search Dashboard", "CustomerSubmissions", "BBL", new { UserId = item.UserId })
+                                        </span>
+                                    </p>
+
+                                </td>
+                                @if ((int)Session["Admincount"] != 4)
+                                {
+                                    <td class="col1-tab col1 usergrid userpccol1">
+
+                                        @if (item.IsDelete == false && item.LockoutEnabled == false)
+                                        {
+                                            <p style="color: blue; font-size: 14px;" class="">
+                                                <span>
+                                                    @*@Html.ActionLink("Reset", "UserForgotpasswordstausNew", "Account", new { UserId = item.Gui, len = item.length }, null)
+                                                        @Html.ImageLink("~/images/key.png", "Reset password", "key", "UserForgotpasswordstausNew", "Account", new { UserId = item.Gui, len = item.length })*@
+
+                                                    <a href="javascript:void(0)" onclick="ShowResetDialog('@item.UserId.Trim()','@item.FirstName','@item.LastName')  " class="navReset">Reset</a>
+
+                                                    <a href="javascript:void(0)" onclick="ShowResetDialog('@item.UserId.Trim()','@item.FirstName','@item.LastName') " class="resetkeyimglink">
+                                                        @Html.Image("~/images/key.png", "Reset password")
+
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: blue; font-size: 18px;" class="">
+                                                <span>
+                                                    Reset
+                                                    @*@Html.ImageLink("~/images/key.png", "Reset password", "key", "UserForgotpasswordstausNew", "Account", new { UserName = item.UserName })*@
+                                                    <img src="~/images/key.png" width="28" height="28" />
+
+                                                </span>
+                                            </p>
+                                        }
+
+                                    </td>
+                                }
+                                @if ((int)Session["Admincount"] != 4)
+                                {
+                                    <td class="col1-tab col1 usergrid userpccol1">
+
+                                        @if (item.IsDelete == false)
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="">
+                                                <span>
+
+                                                    <a href="javascript:void(0)" onclick="ShowDialog('@item.UserId','@Model.UserType') ">
+                                                        @Html.Image("~/images/delete.png", "Deleted")
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="">
+                                                <span>
+                                                    @Html.Image("~/images/close_delete.png", "Delete")
+                                                </span>
+                                            </p>
+                                        }
+
+                                    </td>
+                                }
+                                @*<td class="col1-tab col1 usergrid userpccol1">
+                                        <p class="">
+                                            <span>
+                                                @Html.ActionLink("View", "
+                                    ", "Account", new { UserId = item.UserId, Type = Model.UserType }, null)
+                                            </span>
+                                        </p>
+                                    </td>*@
+                            </tr>
+                        }
+                    }
+                <tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade homeresetmodaldiv" id="Homeresetmodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin-top:60px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body homeresetmodal-body">
+                <h3 class='error_message'> </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button  resetyes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .resetkeyimglink img {
+        width: 28px;
+        height: 28px;
+    }
+    .wordwarptext {
+        word-wrap: break-word;
+        width: 190px;
+    }
+  
+</style>
+<script>
+    //   Password reset link has been sent to ‘s mail id
+    var glbresetGui;
+    var glbresetlen;
+    var glbresetfirstname;
+    var glbresetlastnam;
+    function ShowResetDialog(UserId, FirstName, LastName) {
+        // Do not show this confirmation pop up again for the Current session.
+        glbresetGui = UserId;
+        glbresetfirstname = FirstName;
+        glbresetlastname = LastName;
+        ResetPassword(glbresetGui, glbresetfirstname, glbresetlastname);
+    }
+
+    function ResetPassword(Gui, firstname, lastname) {
+        $("#example_wrapper").css({ 'opacity': '0.5' });
+        $.ajax({
+            url: '/Account/UserForgotpasswordstausNew',
+            type: 'Get',
+            data: { UserId: Gui, FirstName: firstname, LastName: lastname },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#example_wrapper").css({ 'opacity': '' });
+                    $('.homeresetmodal-body h3.error_message').empty().append('Password reset link has been sent to ' + firstname + ' ' + lastname + '‘s mail id');
+                    $('.homeresetmodaldiv').modal('show');
+                }
+                // $('#Homeresetmodal-container').modal('hide');
+                // location.reload();
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    }
+</script>
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable {
+        /*border-collapse: collapse !important;*/
+    }
+
+        /*table.dataTable thead th, table.dataTable thead td {
+            border: 1px solid #ddd;
+        }*/
+
+        table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+        }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+
+<script type="text/javascript" class="init">
+    var tableData = '';
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#datasearch').DataTable({
+            "ordering": false,
+            stateSave: true
+        });
+        $("#datasearch_length").hide();
+        $("#datasearch_filter").hide();
+
+        if ($('#datasearch td').attr('colspan') == '9') {
+            $("#datasearch_info").hide();
+            $("#datasearch_paginate").hide();
+            // do this
+        } else {
+            // do that
+        }
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('userGrids') || $(this).hasClass('paginate_button') || $(this).hasClass('navReset')) {
+        } else {
+            console.log("working");
+            //  alert("working");
+            tableData.state.clear();
+            localStorage.removeItem("selectedUserType");
+        }
+    });
+</script>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+                Are you sure, you want to Unlock the account?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+    });
+    function Resetpassword() {
+        $.ajax({
+            url: '/SuperAdmin/DashboardPartial',
+            type: 'Get',
+            cache: false,
+            data: { id: $('#userid').val(), recordtype: 'BBL' },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#search_result").empty().append(data);
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
+
+

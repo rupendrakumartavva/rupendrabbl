@@ -1,0 +1,13 @@
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\BusinessCenter.Service.dll
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\BusinessCenter.Service.pdb
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\BusinessCenter.Common.dll
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\BusinessCenter.Data.dll
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\EntityFramework.dll
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\Omu.ValueInjecter.dll
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\BusinessCenter.Common.pdb
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\BusinessCenter.Data.pdb
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\EntityFramework.xml
+D:\DCBusinessCenter\BusinessCenter.Service\bin\Release\Omu.ValueInjecter.xml
+D:\DCBusinessCenter\BusinessCenter.Service\obj\Release\BusinessCenter.Service.csprojResolveAssemblyReference.cache
+D:\DCBusinessCenter\BusinessCenter.Service\obj\Release\BusinessCenter.Service.dll
+D:\DCBusinessCenter\BusinessCenter.Service\obj\Release\BusinessCenter.Service.pdb

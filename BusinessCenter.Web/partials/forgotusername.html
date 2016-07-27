@@ -1,0 +1,80 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+    <div class="container headerBreadcrumb">
+        <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/login" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Login</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Recover Username</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2>Recover Username</h2>
+                <p><span tabindex="0" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)" id="toggleicon">Help With This Page (Click Here)</span></p>
+                <div class="collapse" id="collapseExample">
+                    <div class="well info-content">
+                        <p class="text-center"><strong>This page is used to recover your username. </strong> </p>
+                        <p class="terms_text">
+                            Enter your registered email.
+                        </p>
+                        <p class="terms_text">Click the <strong>Submit</strong> button. </p>
+                        <p class="terms_text">If your email is not registered, click <strong>Get Started</strong> to create an account. </p>
+
+                        <p class="terms_text">
+                            <div class="login_form my_form">
+                                <span class="terms_text"> If you need additional help, review the</span> <a href="../HelpDoc/UserGuide.pdf" target="_blank"> <span class="btn btn-default read_btn">My DC Business Center User Guide</span></a> <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection" class="display">
+    <div class="login_form forgot_password">
+        <div class="container">
+            <div class="success_msg">You have successfully logged in</div>
+            <div id="success"></div>
+            <div class="login_wrapper" id="login_block">
+                <div class="form_wrapper">
+                    <form role="form" method="post" id="contact_us" name="contact_us" autocomplete="off" novalidate>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" spellcheck="false" class="form-control" placeholder="Enter your Email" onblur="this.placeholder = 'Enter your Email'" onfocus="this.placeholder = ''" name="mail" id="name" ng-focus="setErrorMsg('error_msg')" ng-model="forgotusername.email">
+                            </div>
+                        </div>
+                        <button id="submit_contact" class="btn btn-default login" type="submit" ng-click="CheckUserEmail()">SUBMIT</button>
+                        <div class="error_text error_textmsg" id="error_msg"></div>
+                    </form>
+                </div>
+                <!--ng-click="navToRegister()"-->
+                <p>Don't have an account? <a  href="#/register">Get Started</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" ng-click="navToSubmitLogin()" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div ng-include src="'partials/footer.html'"></div>

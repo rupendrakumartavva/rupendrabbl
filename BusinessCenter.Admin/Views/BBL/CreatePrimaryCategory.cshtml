@@ -1,0 +1,1109 @@
+﻿@model BusinessCenter.Admin.Models.PrimaryCategoryModel
+@{
+    ViewBag.Title = "DCRA - Create Primary Category";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("BBL", "ApplicationReview", "BBL")*@
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Metadata</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Activity", "BusinessActivities", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = Request.QueryString["activityId"] }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Create Primary Category</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Create Primary Category</h2>
+            </div>
+        </div>
+    </div>
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper reg-err-placement">
+
+                        @using (Html.BeginForm("CreatePrimaryCategory", "BBL", new { activityId = Request.QueryString["activityId"] }, FormMethod.Post, new { id = "postform" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+                            <p style="text-align: center; color:red; font-size: 19px; margin-bottom: 10px;"><span id="msg">@ViewBag.Status </span></p>
+                            <p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;height:50px;"><span id="successmsg">@ViewBag.Statusmsg</span></p>
+                            @Html.HiddenFor(model => model.ActivityID)
+                            @Html.HiddenFor(model => model.Id1)
+                            @Html.HiddenFor(model => model.Id2)
+                            @*@Html.LabelFor(model => model.End)*@
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Category Id")
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Application Type")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.CategoryCode, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "categorycode",
+                                name = "categorycode",
+                                //placeholder = "Category Code",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Category Code'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.CategoryCode, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    @Html.DropDownListFor(model => model.App_Type, Enum.GetNames(typeof(BusinessCenter.Admin.Models.ApplicationType)).Select(e => new SelectListItem { Text = e, Value = e }), "Select One", new { @class = "form-control custom-dropdown", id = "BusinessType-dropdown", @onchange = "ChangeBusinessType()", style = "cursor:initial;" })
+
+                                    @Html.ValidationMessageFor(model => model.App_Type, "", new { @class = "error-message error" })
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Primary Category")
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Description, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "description",
+                                name = "description",
+                                //placeholder = "Primary Category",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Primary Category'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Endorsement")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Endorsement, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "endorsement",
+                                name = "endorsement",
+                                //placeholder = "Endorsement",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Endorsement'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.Endorsement, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Fee Code ")
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group reg-err-placement">
+
+                                        @Html.DropDownListFor(model => model.Fee_Code, Enum.GetNames(typeof(BusinessCenter.Admin.Models.FeeCode)).Select(e => new SelectListItem { Text = e, Value = e }), "Select One", new { @class = "form-control  custom-dropdown", id = "feecode-dropdown", name = "feecode-dropdown", style = "cursor:initial;" })
+                                        @Html.ValidationMessageFor(model => model.Fee_Code, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Start Range ")
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("End Range ")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+
+                                        @Html.TextBoxFor(model => model.Start, new
+                    {
+                        @class = "form-control",
+                        id = "start",
+                        name = "Start",
+                        placeholder = "",
+                        onfocus = "this.placeholder = ''",
+                        onblur = "this.placeholder = ''",
+                        disabled = "disabled"
+                    })
+                                        @Html.HiddenFor(model => model.Start, new { id = "hiddenstart" })
+
+                                        @*@Html.ValidationMessageFor(model => model.Start, "", new { @class = "error-message error" })*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.TextBoxFor(model => model.End, new
+                {
+                    @class = "form-control",
+                    placeholder = "",
+                    name = "end",
+                    id = "end",
+                    onfocus = "this.placeholder = ''",
+                    onblur = "this.placeholder = ''"
+                })
+                                        @Html.HiddenFor(model => model.End, new { id = "end" })
+                                        @Html.ValidationMessageFor(model => model.End, "", new { @class = "error-message error" })
+                                        @*<p style="text-align: center; color: red; font-size: 10px; margin-bottom: 10px;"><span id="endmsg"> </span></p>*@
+                                        <span style="font-size: 16px; color: #f00; font-weight:300;" class="error-message error" id="endmsg">@ViewBag.endmsg </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("License Fee ")
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Tier ")<span style="font-size:16px;font-style:italic">(Optional)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.License_Fee, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "licensefee",
+                                       name = "License_Fee",
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''"
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.License_Fee, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.TextBoxFor(model => model.Tier, new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "",
+                                   name = "Tier",
+                                   id = "tier",
+                                   //onfocus = "this.placeholder = ''",
+                                   //onblur = "this.placeholder = ''"
+                               })
+                                        @Html.ValidationMessageFor(model => model.Tier, "", new { @class = "error-message error" })
+                                        <span style="font-size: 16px; color: #f00; font-weight:300;margin-bottom: 50px;" class="error-message error" id="tiermsg">@ViewBag.tiermsg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Primary Units A")
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Primary Units B")
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.UnitOne, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "unitone",
+                                name = "unitone",
+                                disabled = "disabled"
+                                //placeholder = "Primary Units A",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Primary Units A'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.UnitOne, "", new { @class = "error-message error" })
+                                        <span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="msgunit">@ViewBag.Unitmsg</span>
+                                        @*<p style="text-align: center; color:red; font-size: 19px; margin-bottom: 10px;"><span id="msgunit">@ViewBag.Unitmsg </span></p>*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.UnitTwo, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "unittwo",
+                                name = "unittwo",
+                                disabled = "disabled"
+                                //placeholder = "Primary Units B",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Primary Units B'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.UnitTwo, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="question1-div" style="display:none;">
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group " style="text-align: left;">
+                                            @Html.Label("Primary Units A Question")
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group ">
+                                            @*<input type="text" class="form-control" id="question1" name="question1" placeholder="" />*@
+                                            @Html.EditorFor(model => model.UserQuestion1, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "question1",
+                                            name = "question1",
+                                            //placeholder = "Primary Units B",
+                                            //onfocus = "this.placeholder = ''",
+                                            //onblur = "this.placeholder = 'Primary Units B'"
+                                        }
+                                    })
+                                            @Html.ValidationMessageFor(model => model.UserQuestion1, "", new { @class = "error-message error" })
+                                            <span style="font-size: 16px; color: #f00; font-weight:300;" class="error-message error" id="questionmsg">@ViewBag.UnitQuestionmsg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="question2-div" style="display:none;">
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group " style="text-align: left;">
+                                            @Html.Label("Primary Units B Question")
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group ">
+                                            @*<input type="text" class="form-control" id="question2" name="question2" placeholder="" />*@
+                                            @Html.EditorFor(model => model.UserQuestion2, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "question2",
+                                            name = "question2",
+                                            //placeholder = "Primary Units B",
+                                            //onfocus = "this.placeholder = ''",
+                                            //onblur = "this.placeholder = 'Primary Units B'"
+                                        }
+                                    })
+                                            @Html.ValidationMessageFor(model => model.UserQuestion2, "", new { @class = "error-message error" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*if (ViewData.ModelState.IsValid)
+                                {
+                                  <div>There are some errors</div>
+                                }*@
+
+                            <div class="clearfix">
+                                @*<p style="text-align: center; color: red; font-size: 19px; margin-bottom: 10px;"><span id="msgradiobutton">@ViewBag.radiobuttonsmsg </span></p>*@
+                                <span style="font-size: 16px; color: #f00; font-weight:300;margin-bottom: 50px;" class="error-message error" id="msgradiobutton">@ViewBag.radiobuttonsmsg</span>
+                                @Html.ValidationMessageFor(model => model.SecondaryLicenseCategory, "", new { @class = "error-message error" })
+                                @*@if (IsPost)
+                                    {
+                                        @Html.ValidationMessageFor(model => model.SecondaryLicenseCategory, "", new { @class = "error-message error" })
+                                    }*@
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this Primary have a Secondary License Category?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center; ">
+                                        @*@Html.RadioButton("subcategoryRadio", "Yes", false, new { id = "subyes" }) YES*@
+                                        @Html.RadioButtonFor(m => m.SecondaryLicenseCategory, "YES", new { onclick = "ifCofoYels()" }) <span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("subcategoryRadio", "No", false, new { id = "subno" }) NO*@
+
+                                        @Html.RadioButtonFor(m => m.SecondaryLicenseCategory, "NO", new { onclick = "ifCofoYels()" }) <span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                                @*<span id="secondarycategoryid" style="display:none;color:red;">Please Select Secondary License Category Allowed?</span>*@
+                                @*@Html.ValidationMessageFor(model => model.SecondaryLicenseCategory, "", new { @class = "error-message error" })*@
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this Primary have a Sub-Category?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("supersubcategoryRadio", "Yes", false, new { id = "subsubyes" }) YES*@
+                                        @Html.RadioButtonFor(m => m.SubCategory, "YES", new { id = "", onclick = "ifCofoYels()" }) <span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("supersubcategoryRadio", "No", false, new { id = "subsubno" }) NO*@
+                                        @Html.RadioButtonFor(m => m.SubCategory, "NO", new { id = "", onclick = "ifCofoYels()" }) <span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                                @*<span id="subcategoryid" style="display:none;color:red;">Please Select Sub category Allowed?</span>*@
+                                @*@Html.ValidationMessageFor(model => model.SubCategory, "", new { @class = "error-message error" })*@
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Should this business be located only in District of Columbia? ")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("DCorNotRadio", "Yes", false, new { id = "dcyes" }) YES*@
+                                        @Html.RadioButtonFor(m => m.BusinessMustbeinDC, "YES", new { id = "", onclick = "ifCofoYels()" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("DCorNotRadio", "No", false, new { id = "dcno" }) NO*@
+                                        @Html.RadioButtonFor(m => m.BusinessMustbeinDC, "NO", new { id = "", onclick = "ifCofoYels()" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                                @*<span id="dcornot" style="display:none;color:red;">Please Select Business Must be in DC?</span>*@
+                                @*@Html.ValidationMessageFor(model => model.BusinessMustbeinDC, "", new { @class = "error-message error" })*@
+                                @*//  @Html.ValidationMessageFor(model => model.CategoryCode, "", new { @class = "error-message error" })*@
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this business require CofO?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("CofoRadio", "Yes", false, new { id = "cofoyes", onclick = "ifCofoYes()" }) YES*@
+                                        @Html.RadioButtonFor(m => m.CofORequired, "YES", new { id = "cofoyes", onclick = "ifCofoYes()" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("CofoRadio", "No", false, new { id = "cofono", onclick = "ifCofoNo()" }) NO*@
+                                        @Html.RadioButtonFor(m => m.CofORequired, "NO", new { id = "cofono", onclick = "ifCofoNo()" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                                @*<span id="Cofoid" style="display:none;color:red;">Please Select CofO Required?</span>*@
+                                @*@Html.ValidationMessageFor(model => model.CofORequired, "", new { @class = "error-message error" })*@
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Is HOP/eHOP allowed for this business?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center; ">
+                                        @*@Html.RadioButton("HOPRadio", "Yes", false, new { id = "hopyes", onclick = "ifHopYes()" }) YES*@
+                                        @Html.RadioButtonFor(m => m.HOP_EHOPAllowed, "YES", new { id = "hopyes", onclick = "ifHopYes()" })<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("HOPRadio", "No", false, new { id = "hopno", onclick = "ifHopNo()" }) NO*@
+                                        @Html.RadioButtonFor(m => m.HOP_EHOPAllowed, "NO", new { id = "hopno", onclick = "ifHopNo()" })<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                                @*<span id="HOPid" style="display:none;color:red;">Please Select HOP/EHOP Allowed?</span>*@
+                                @*@Html.ValidationMessageFor(model => model.HOP_EHOPAllowed, "", new { @class = "error-message error" })*@
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this License be exempted from fee?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center; ">
+                                        @*@Html.RadioButton("exampRadio", "Yes", false, new { id = "exemptyes" }) YES*@
+                                        @Html.RadioButtonFor(m => m.ExemptfromAllFees, "YES")<span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+                                        @*@Html.RadioButton("exampRadio", "No", false, new { id = "exemptno" }) NO*@
+                                        @Html.RadioButtonFor(m => m.ExemptfromAllFees, "NO")<span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                                @*<span id="exampid" style="display:none;color:red;">Please Select Exempt from All Fees?</span>*@
+                                @*@Html.ValidationMessageFor(model => model.ExemptfromAllFees, "", new { @class = "error-message error" })*@
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Will this License Category require a Background Investigation?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+
+                                        @Html.RadioButtonFor(m => m.IsBackgroundInvestigation, "YES", new { id = "", onclick = "ifCofoYels()" }) <span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+
+                                        @Html.RadioButtonFor(m => m.IsBackgroundInvestigation, "NO", new { id = "", onclick = "ifCofoYels()" }) <span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" style="text-align: left;">
+                                        @Html.Label("Should a PDF copy of Basic Business License be generated?")
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+
+                                        @Html.RadioButtonFor(m => m.IsPDFShow, "YES", new { id = "IsPDFShowYes", onclick = "ifCofoYels()" }) <span class="radiospace">YES</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="form-group" style="text-align: center;">
+
+                                        @Html.RadioButtonFor(m => m.IsPDFShow, "NO", new { id = "IsPDFShowNo", onclick = "ifCofoYels()" }) <span class="radiospace">NO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+
+                                <button type="button" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back</button>
+                                <button type="submit" id="btnCreate" class="btn btn-default">Add  Primary Category</button>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Hidden("HiddenName", null, new { @class = "hiddencss" });
+
+    <style>
+        .custom-dropdown {
+            cursor: inherit !important;
+        }
+
+            .custom-dropdown option:hover {
+                cursor: inherit !important;
+            }
+
+        #feecode-dropdown {
+            cursor: inherit !important;
+        }
+
+            #feecode-dropdown option:hover {
+                cursor: inherit !important;
+            }
+    </style>
+    if (IsPost)
+    {
+        if (ViewBag.IsPrmaryCreate == true)
+        {
+            <script>
+                $(function () {
+                    $('.homemodal-body h3.error_message').empty().append('Primary License Category is added successfully');
+                    $("#registermodal-container").modal('show');
+                });
+                $(".yes-btn").on("click", function () {
+                    $('#registermodal-container').modal('hide');
+                    @*var url = "/BBL/CreatePrimaryCategory?activityId=" + '@ViewBag.ActivityID';
+                                                                                window.location.href = url;*@
+
+                });
+            </script>
+        }
+    }
+
+    <style>
+        .radiospace {
+            padding-left: 7px;
+        }
+    </style>
+    <style>
+        /* Style for radio button angular  */
+        /*.form-type-radio div.radio span{
+                                                                                border:none !important;display:inline-block;text-align:center;width:24px;height:24px;background:url('../images/dc_radio.png') 0 0 no-repeat;
+                                                                                position:absolute;left:0;top:0}
+                                                                            .form-type-radio div.radio span input{background:none;display:inline-block;opacity:0;height:24px;width:24px;margin:0;position:absolute;left:0;top:0;margin:0 !important;float:none !important;cursor:pointer}
+                                                                            .form-type-radio div.radio span.checked{background-position:0 100%}.form-type-radio div.radio label{padding-left:40px}
+
+                                                                    .form-type-radio {
+                                                                      padding: 0;
+                                                                      margin: 0;
+                                                                      text-align: left;
+                                                                    }
+                                                                    .form-type-radio div.radio {
+                                                                      floar: left;
+                                                                      position: relative;
+                                                                      margin-right: 2px;
+                                                                      margin-top: -6px;
+                                                                      height: 24px;
+                                                                      display: inline-block;
+                                                                      vertical-align: middle;
+                                                                      margin-bottom: 20px;
+                                                                    }
+                                                                    .form-type-radio div.radio span {
+                                                                      border: none !important;
+                                                                      display: inline-block;
+                                                                      text-align: center;
+                                                                      width: 24px;
+                                                                      height: 24px;
+                                                                      background: url('../images/dc_radio.png') 0 0 no-repeat;
+                                                                      position: absolute;
+                                                                      left: 0;
+                                                                      top: 0;
+                                                                    }
+                                                                    .form-type-radio div.radio span input {
+                                                                      background: none;
+                                                                      display: inline-block;
+                                                                      opacity: 0;
+                                                                      height: 24px;
+                                                                      width: 24px;
+                                                                      margin: 0;
+                                                                      position: absolute;
+                                                                      left: 0;
+                                                                      top: 0;
+                                                                      margin: 0 !important;
+                                                                      float: none !important;
+                                                                      cursor: pointer;
+                                                                    }
+                                                                    .form-type-radio div.radio span.checked {
+                                                                      background-position: 0 100%;
+                                                                    }
+                                                                    .form-type-radio div.radio label {
+                                                                      padding-left: 40px;
+                                                                    }*/
+
+        /*.form-type-radio{
+                                                                        padding:0;
+                                                                        margin:0;
+                                                                        text-align:left;
+                                                                        div.radio{
+                                                                            floar:left;
+                                                                            position: relative;
+                                                                            margin-right:2px;
+                                                                            margin-top: -6px;
+                                                                            height:24px;
+                                                                            display: inline-block;
+                                                                            vertical-align: middle;
+                                                                            margin-bottom:20px;
+                                                                            span{
+                                                                                border:none !important;
+                                                                                display: inline-block;
+                                                                                text-align: center;
+                                                                                width:24px;
+                                                                                height:24px;
+                                                                                background:url('../images/dc_radio.png') 0 0 no-repeat;
+                                                                                position:absolute;
+                                                                                left:0;
+                                                                                top:0;
+                                                                                input{
+                                                                                    background:none;
+                                                                                    display: inline-block;
+                                                                                    opacity: 0;
+                                                                                    height: 24px;
+                                                                                    width: 24px;
+                                                                                    margin:0;
+                                                                                    position:absolute;
+                                                                                    left:0;
+                                                                                    top:0;
+                                                                                    margin:0 !important;
+                                                                                    float:none !important;
+                                                                                    cursor:pointer;
+                                                                                }
+                                                                            }
+                                                                            span.checked{
+                                                                                background-position:0 100%;
+                                                                            }
+                                                                            label{
+                                                                                padding-left:40px;
+                                                                            }
+                                                                        }
+                                                                    }*/
+    </style>
+    <script>
+        $(function () {
+
+            $("#feecode-dropdown").change(function () {
+                var selopt = $("#feecode-dropdown option:selected").text();
+                if (selopt == 'S' || selopt == 'C') {
+                    $('#end').val("99999");
+                    $('#end').prop('disabled', "disabled");
+                }
+                else if (selopt == 'T') {
+                    console.log("T selected");
+                    $('#end').prop('disabled', false);
+
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("select option[value='']").prop('disabled', true);
+
+            $('#start').val("0");
+            //$('#end').val("99999");
+            $('#unitone').prop('disabled', false);
+            var selopt = $("#feecode-dropdown option:selected").text();
+
+            if (selopt == 'T' || selopt == 'C') {
+                if ($('#unitone').val() != null) {
+                    $("#question1-div").css("display", "block");
+                }
+            }
+            var dropdownElement = $("#feecode-dropdown");
+
+            //dropdownElement.find('option[text=Select One]').remove();
+            dropdownElement.find('option[value=H]').remove();
+            dropdownElement.find('option[value=HT]').remove();
+            dropdownElement.find('option[value=TA]').remove();
+            if (selopt == 'C' && $('#tier').val() == "") {
+                $('#tier').val("1");
+                $('#end').val("99999");
+                $('#end').prop('disabled', 'disabled');
+            }
+            else if (selopt == 'S') {
+                $('#unitone').prop('disabled', "disabled");
+                $('#tier').prop('disabled', 'disabled');
+                $('#end').prop('disabled', 'disabled');
+                $('#tier').val("");
+                //$('#licensefee').val("");
+                $('#unitone').val("");
+                $('#end').val("99999");
+            }
+            else if (selopt == 'T') {
+                $('#tier').val("");
+                // $('#licensefee').val("");
+                $('#tier').prop('disabled', "disabled");
+            }
+            else {
+                $('#tier').prop('disabled', false);
+                $('#end').val("99999");
+            }
+        });
+
+        $(function () {
+            $("#feecode-dropdown").change(function () {
+                $("#question1-div").css("display", "none");
+                endmsg.innerHTML = "";
+                //$('#end').val("99999");
+                //$('#end').val("99999");
+                //  $("#planHours").val($(this).val());
+                //  $("#unitone")
+                //  document.getElementById("unitone").setAttribute("disabled", false);
+                console.log("hit");
+                //var dropdownElement = $("#feecode-dropdown");
+                //var opt = dropdownElement.find('option[value=S]').val();
+                var selopt = $("#feecode-dropdown option:selected").text();
+                if (selopt == 'S') {
+                    $('#unitone').prop('disabled', "disabled");
+                    $('#tier').prop('disabled', 'disabled');
+                }
+                else {
+                    $('#unitone').prop('disabled', false);
+                    $('#tier').prop('disabled', false);
+                }
+
+                if (selopt == 'C') {
+                    $('#tier').val("1");
+                    $('#end').val("99999");
+                    //  $('#licensefee').val("");
+                    //$('#unitone').val("");
+                }
+                else if (selopt == 'S') {
+                    $('#tier').val("");
+                    $('#end').val("99999");
+                    //$('#licensefee').val("");
+                    $('#unitone').val("");
+                }
+                else if (selopt == 'T') {
+                    $('#tier').val("");
+                    // $('#licensefee').val("");
+                    //$('#unitone').val("");
+                    //$('#end').val("");
+                    $('#tier').prop('disabled', "disabled");
+                } else {
+                    $('#tier').prop('disabled', false);
+                    $('#end').val("99999");
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        $("#unitone").change(function () {
+
+            $("#question1").val("");
+            msg.innerHTML = "";
+            msgunit.innerHTML = "";
+            msgradiobutton.innerHTML = "";
+            var value = $("#unitone").val();
+            if (~value.indexOf('NA') || ~value.indexOf('nA') || ~value.indexOf('Na') || ~value.indexOf('na') || ~value.length > 0) {
+                console.log("hit");
+                $("#question1-div").css("display", "none");
+
+            }
+            else {
+                $("#question1-div").css("display", "block");
+            }
+
+        });
+
+        $("#unittwo").change(function () {
+            var value = $("#unittwo").val();
+            if (~value.indexOf('NA') || ~value.indexOf('nA') || ~value.indexOf('Na') || ~value.indexOf('na') || ~value.length > 0) {
+                console.log("hit");
+                $("#question2-div").css("display", "none");
+
+            }
+            else {
+                $("#question2-div").css("display", "block");
+            }
+
+        });
+        $("#end").keyup(function () {
+            //msg.innerHTML = "";
+
+            var selopt = $("#feecode-dropdown option:selected").text();
+            var end = $("#end").val();
+            if (selopt == 'T' && parseInt(end) > '99999') {
+                endmsg.innerHTML = "End Range must not be greater than 99999";
+                endmsg.style.color = "Red";
+
+            } else {
+                endmsg.innerHTML = "";
+            }
+
+        });
+        $("#tier").keyup(function (e) {
+            var tier = $("#tier").val();
+            if (parseInt(tier) > '100') {
+                tiermsg.innerHTML = "Tier must not be greater than 100";
+                tiermsg.style.color = "Red";
+            } else {
+                tiermsg.innerHTML = "";
+            }
+        });
+    </script>
+    <script>
+        $('input:radio[name="subcategoryRadio"]').change(function () {
+            $("#secondarycategoryid").css("display", "none");
+        });
+        $('input:radio[name="supersubcategoryRadio"]').change(function () {
+            $("#subcategoryid").css("display", "none");
+        });
+        $('input:radio[name="DCorNotRadio"]').change(function () {
+            $("#dcornot").css("display", "none");
+        });
+        $('input:radio[name="CofoRadio"]').change(function () {
+            $("#Cofoid").css("display", "none");
+        });
+        $('input:radio[name="HOPRadio"]').change(function () {
+            $("#HOPid").css("display", "none");
+        });
+        $('input:radio[name="exampRadio"]').change(function () {
+            $("#exampid").css("display", "none");
+        });
+        //$("#btnCreate").click(function (e) {
+        //    e.preventDefault();
+
+        //    if (!$("input[name='subcategoryRadio']").is(':checked')) {
+        //        $("#secondarycategoryid").css("display", "block");
+        //        return false;
+        //    }
+        //    else { $("#secondarycategoryid").css("display", "none"); }
+        //    if (!$("input[name='supersubcategoryRadio']").is(':checked')) {
+        //        $("#subcategoryid").css("display", "block");
+        //        return false;
+        //    }
+        //    else { $("#subcategoryid").css("display", "none"); }
+        //    if (!$("input[name='DCorNotRadio']").is(':checked')) {
+        //        $("#dcornot").css("display", "block");
+        //        return false;
+        //    }
+        //    else { $("#dcornot").css("display", "none"); }
+        //    if (!$("input[name='CofoRadio']").is(':checked')) {
+        //        $("#Cofoid").css("display", "block");
+        //        return false;
+        //    }
+        //    else { $("#Cofoid").css("display", "none"); }
+        //    if (!$("input[name='HOPRadio']").is(':checked')) {
+        //        $("#HOPid").css("display", "block");
+        //       return false;
+        //    }
+        //    else { $("#HOPid").css("display", "none"); }
+        //    if (!$("input[name='exampRadio']").is(':checked')) {
+        //        $("#exampid").css("display", "block");
+        //        return false;
+        //    }
+        //    else { $("#exampid").css("display", "none"); }
+        //    var result = $('form').valid();
+        //    if (result == 1) {
+        //        CreatePrimaryCategory();
+        //    }
+        //});
+        $("#btnBack").click(function () {
+
+            var url = "/BBL/PrimaryCategories?activityId=" + '@ViewBag.ActivityID';
+            window.location.href = url;
+        });
+
+        function editSuccess(data) {
+
+            if (data.status == "3") {
+                $('input').trigger('reset');
+                msg.innerHTML = "This Primary License Category name already exist ";
+            }
+            else {
+                $('input').trigger('reset');
+                msg.innerHTML = "Primary Category Created Successfully";
+                msg.style.color = "#339900";
+                var url1 = window.location.href;
+                var id = url1.substring(url1.lastIndexOf('=') + 1);
+                var url = "/BBL/PrimaryCategories?activityId=" + id;
+                window.location.href = url;
+            }
+
+            return false;
+
+        }
+        function editFailure(data) {
+            //  alert("error");
+            return false;
+        }
+    </script>
+    <script type="text/javascript">
+        //function ifCofoYes() {
+        //    $('#hopyes').prop('checked', false);
+        //    $('#hopno').prop('checked', true);
+        //}
+
+        //function ifHopYes() {
+        //    $('#cofoyes').prop('checked', false);
+        //    $('#cofono').prop('checked', true);
+        //}
+
+        function ChangeBusinessType() {
+            var stateId = $("#BusinessType-dropdown option:selected").text();
+            if (stateId == 'Individual') {
+                $('#IsPDFShowNo').prop('disabled', "disabled");
+                $('#IsPDFShowYes').prop('disabled', "disabled");
+                $('#IsPDFShowNo').prop('checked', "checked");
+            } else {
+                $('#IsPDFShowYes').prop('checked', "checked");
+                $('#IsPDFShowNo').removeAttr('disabled', "disabled");
+                $('#IsPDFShowYes').removeAttr('disabled', "disabled");
+
+            }
+        }
+
+        $(window).click(function () {
+            msgunit.innerHTML = "";
+            questionmsg.innerHTML = "";
+            msg.innerHTML = "";
+            successmsg.innerHTML = "";
+            //endmsg.innerHTML = "";
+        });
+
+        $(":input").on("focus", function () {
+            successmsg.innerHTML = "";
+            msg.innerHTML = "";
+        });
+
+        $(":input").on("keyup", function () {
+            successmsg.innerHTML = "";
+            msg.innerHTML = "";
+        });
+
+        $(document).ready(function () {
+            $('#subno').prop('checked', false);
+            $('#subsubno').prop('checked', false);
+            //$("#AllowSubCategory").val("");
+            //$("#AllowSubSubCategory").val(""),
+            $('#lbluname').hide();
+            $('#lblename').hide();
+            $('#primary-status').hide();
+
+            if ($('#cofono').is(':checked')) {
+                // checkHopYes();
+                //  alert("hi");
+                console.log("hi");
+            }
+
+            //if ($('#hopyes').is(':checked')) {
+            //    $('#cofono').attr('checked', true);
+            //}
+            //if ($('#hopno').is(':checked')) {
+            //    $('#cofoyes').attr('checked', true);
+            //}
+
+        });
+        //$(":input").on("blur", function () {
+        //    $(this.form).validate().element(this);
+        //});
+        //$(":input").on("focus", function () {
+        //    $(this.form).validate().element(this);
+        //});
+
+        //if ($('#cofoyes').is(':checked')) {
+        //    alert("hi");
+        //    document.getElementById("hopno").checked = true;
+        // //   $('#hopno').attr('checked', true);
+        //}
+    </script>
+    <script>
+        //if (document.getElementById('cofoyes').checked) {
+        //    document.getElementById("hopno").checked = true;
+        //}
+    </script>
+    <script>
+        $("#btnCreate").click(function () {
+            var selopt = $("#feecode-dropdown option:selected").text();
+
+            if (selopt == 'T' || selopt == 'C') {
+                if ($('#unitone').val() == "") {
+                    msgunit.innerHTML = "Primary Units A is requried";
+                }
+                else if ($("#question1").val() == "") {
+                    questionmsg.innerHTML = "Primary Units A Question is requried";
+                }
+            }
+            var selectd = ($('form input[type=radio]:checked'));
+            if (selectd.length < 8) {
+
+                msgradiobutton.innerHTML = "Please answer all Questions";
+                // return false;
+            } else {
+                msgradiobutton.innerHTML = "";
+            }
+
+        });
+    </script>
+
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+<style>
+    .validation-summary-errors ul {
+        display: none;
+    }
+
+    select::-ms-expand {
+        display: none;
+    }
+
+    /* turn it off completely */
+    /*select:active, select:hover {
+      outline: none !important;
+    }
+    select::-ms-value {outline: none !important;}*/
+</style>

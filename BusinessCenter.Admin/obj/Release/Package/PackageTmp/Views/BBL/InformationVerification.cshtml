@@ -1,0 +1,1125 @@
+﻿@using System.Globalization;
+@model BusinessCenter.Admin.Models.DocumentsModel
+
+@{
+    ViewBag.Title = "SubmissionInformationDetails";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Customer", "UserHome", "Admin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("BBL Dashboard", "CustomerSubmissions", "BBL", new { userId = @Model.UserId }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Information Verification</span>
+    </div>
+
+    <div class="page_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Information Verification</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form user_profile" style="padding-bottom:2px;">
+        <div class="container">
+            <div class="form_wrapper">
+
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center ">
+                    <p >License #:<strong> @Model.BblDocumentsList.LicenseNumber</strong></p>
+
+                </div>
+                <br/>
+             
+                
+                @{int count = 0;}
+                
+
+                @foreach (var item in Model.Servicechecklist.SubQuestion)
+                {
+
+
+                    if (item.Question.Contains("Will this business be located in the District of Columbia?"))
+                    {
+                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                            <p class="text_weight"> Location </p>
+                        </div>
+                        <br />
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <!-- -->
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+                                        @if (item.Answer == "YES")
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="district" checked disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="district" disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="district" disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="district" checked disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (item.Question.Contains("Will this Business be Home based?"))
+                    {
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+                                        @if (item.Answer == "YES")
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="Home" checked disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="Home" disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="Home" disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="Home" checked disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (item.Question.Contains("Do you have a Home Occupancy Permit (HOP) from Office of Zoning?"))
+                    {
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+                                        @if (item.Answer == "YES")
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="Home" checked disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="Home" disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="Home" disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="Home" checked disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (item.Question.Contains("Is this business already registered with DCRA’s Corporations Division?"))
+                    {
+                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                            <p class="text_weight"> Corporation Registration</p>
+                        </div>
+                        <br />
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+                                        @if (item.Answer == "YES")
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="HOP" checked disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="HOP" disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="HOP" disabled /><span class="rd-left">YES</span>
+                                                <input type="radio" value="HOP" checked disabled /><span class="rd-right">NO</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    if (item.Question.Contains("What is your Business Structure ?"))
+                    {
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+                                        <br /><br />
+                                        @Html.TextBox(item.Answer, item.Answer, new { @class = "form-control", disabled = "disabled" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    if (item.Type == "Textbox")
+                    {
+                        if (item.Question.Contains("What is the Trade Name?"))
+                        {
+
+
+                            <div class="form-section">
+                                <div class="clearfix">
+                                    <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                        <div class="form-group question_title">
+                                            <label>@item.Question</label>
+                                            @if (!string.IsNullOrEmpty(item.Answer))
+                                            {
+                                                @Html.TextBox(item.Answer, item.Answer, new { @class = "form-control", disabled = "disabled" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBox("Answer", null, new { @class = "form-control", disabled = "disabled" })
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            if (count == 0)
+                            {
+                                count = 1;
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                    <p class="text_weight"> Quantity </p>
+                                </div>
+                            }
+                            <br />
+                            <div class="form-section">
+                                <div class="clearfix">
+                                    <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                        <div class="form-group question_title">
+                                            <label>@item.Question</label>
+                                            @if (!string.IsNullOrEmpty(item.Answer))
+                                            {
+                                                @Html.TextBox(item.Answer, item.Answer, new { @class = "form-control", disabled = "disabled" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBox("Answer", null, new { @class = "form-control", disabled = "disabled" })
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    if (item.Question.Contains("Would you like a two (2) or four (4) year license?") || item.Question.Contains("Would you lisdfdsfdsfke a two (2) or four (4) year license?"))
+                    {
+                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                            <p class="text_weight"> Duration of License</p>
+                        </div>
+                        <br />
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+
+                                        @if (item.Answer.ToUpper().Trim() == "TWO (2) YEAR")
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="district" checked disabled /><span class="rd-left">2 year</span>
+                                                <input type="radio" value="district" disabled /><span class="rd-right">4 year</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="district" disabled /><span class="rd-left">2 year</span>
+                                                <input type="radio" value="district" checked disabled /><span class="rd-right">4 year</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    if (item.Question.Contains("Which Tax Identification Number is associated with your business: Federal Employer Identification Number (FEIN) or  Social Security Number (SSN)?"))
+                    {
+                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                            <p class="text_weight"> Tax Identification Number</p>
+                        </div>
+                        <br />
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="form-group question_title">
+                                        <label>@item.Question</label>
+                                        @if (item.Answer == "FEIN")
+                                        {
+                                            <div class="radio-div text-center">
+
+                                                <input type="radio" value="HOP" checked disabled /><span class="rd-left">FEIN</span>
+                                                <input type="radio" value="HOP" disabled /><span class="rd-right">SSN</span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio-div text-center">
+                                                <input type="radio" value="HOP" disabled /><span class="rd-left">FEIN</span>
+                                                <input type="radio" value="HOP" checked disabled /><span class="rd-right">SSN</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        //}
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="wizard_form">
+        <div class="container">
+            <div class="row">
+                <div class="result_top_block" tabindex="0">
+                </div>
+            </div>
+            <div id="infoverify">
+                <div class="collapse_panels" id="collapse_panels">
+                    <!-- expand/collapse section-->
+                    <div class="panel-group" id="checkListAccordion" role="tablist" aria-multiselectable="true">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading1">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 bot_border" tabindex="0">
+                                            <h3>Business Activities </h3>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 btn_cont bot_border">
+
+                                        </div>
+                                        @*<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button">
+                                          
+                                            <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon" data-toggle="collapse" data-target="#collapse1"></div>
+
+                                        </div>*@
+
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button">
+                                            <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon collapsed triangle-div1" data-toggle="collapse" data-target="#collapse1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in" aria-labelledby="heading1">
+                                <!-- Checklist Name and Short Description Start.data-ng-click="vm.toggle('collapse1')" -->
+                                <div class="business-activities-wrapper">
+                                    <div class="row">
+                                        @*<div class="col-md-15 col-sm-3 col-xs-12">
+                                            <div class="panel text-center">
+                                                <div class="panel-body">
+                                                    <h1>@string.Format(new CultureInfo("en-US"), "{0:C}", Model.BblDocumentsList.ApplicationFee)</h1>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <span>
+                                                        Total <br />Application Fee
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-15 col-sm-3 col-xs-12">
+                                            <div class="panel text-center">
+                                                <div class="panel-body">
+                                                    <h1>@string.Format(new CultureInfo("en-US"), "{0:C}", Model.BblDocumentsList.CategoryLicenseFee)</h1>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <span>
+                                                        Total <br />Category&nbsp;License&nbsp;Fee
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-15 col-sm-3 col-xs-12">
+                                            <div class="panel text-center">
+                                                <div class="panel-body">
+                                                    <h1>@string.Format(new CultureInfo("en-US"), "{0:C}", Model.BblDocumentsList.EndorsementFee)</h1>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <span>
+                                                        Total <br />Endorsement Fee
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-15 col-sm-3 col-xs-12">
+                                            <div class="panel text-center">
+                                                <div class="panel-body">
+                                                    <h1>@string.Format(new CultureInfo("en-US"), "{0:C}", Model.BblDocumentsList.TechFee)</h1>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <span>
+                                                        Total <br />10% Tech Fee
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        <div class="col-md-15 col-sm-3 col-xl-3 col-xs-12 col-md-offset-5">
+                                            <div class="panel text-center grand_total">
+                                                <div class="panel-body">
+                                                    <h1 id="grandamount">@string.Format(new CultureInfo("en-US"), "{0:C}", Model.BblDocumentsList.TotalFee)</h1>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <span>
+                                                        Grand <br /> Total
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="panel-body">
+                                            <div class="search_result">
+                                                <div>
+                                                    <section class="clearfix">
+                                                        @foreach (var item in Model.BblDocumentsList.ServiceCheckList)
+                                                        {
+                                                            <div class="preappgrid container">
+                                                                <div class="innerRow" style="margin-top: 10px;">
+                                                                    <div class="col-sm-1 arrow no-pad hidden-xs">
+                                                                        <span class="arrow-right"></span>
+                                                                    </div>
+                                                                    <div class="col-sm-3 col-xs-12 no-pad bbl ">
+                                                                        <p>
+                                                                            <span>Endorsement </span>
+                                                                        </p>
+                                                                        <div>
+                                                                            <p style="font-size:15px;">
+                                                                                @item.Endorsement
+                                                                            </p>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4 no-pad">
+                                                                        <p>
+                                                                            <span>Category ID : </span> @item.CategoryCode
+                                                                        </p>
+                                                                        <p>
+                                                                            <span>License Category : </span>
+                                                                            @item.LicenseCategory
+                                                                        </p>
+                                                                        @if (item.SubCategoryName != "")
+                                                                        {
+                                                                            <p><span>Sub-Category : </span> @item.SubCategoryName </p>
+                                                                        }
+                                                                    </div>
+                                                                    <div class="col-sm-3 no-pad">
+                                                                        <p>
+
+                                                                            @if (Model.BblDocumentsList.ServiceCheckList.Count() == 0)
+                                                                            {
+                                                                                <span># Units : </span>
+                                                                                <span>N/A </span>
+                                                                            }
+
+
+                                                                        </p>
+                                                                        <p>
+                                                                            <span># Units : </span>
+                                                                            @item.Units
+                                                                            @*@foreach (var i in Model.BblDocumentsList.ServiceCheckList)
+                                                                            {
+                                                                               
+                                                                            }*@
+                                                                        </p>
+                                                                        <p>
+                                                                            <span>License Duration : </span>
+                                                                            @if (item.LicenseDuration.ToUpper().Trim() == "FOUR (4) YEAR")
+                                                                            {
+
+                                                                                <span>4 year</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span>2 year</span>
+                                                                            }
+                                                                        </p>
+                                                                        <p>
+                                                                            <span>Total Fee : </span>
+                                                                            <strong>
+                                                                                @string.Format(new CultureInfo("en-US"), "{0:C}", item.TotalFee)
+                                                                            </strong>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="details no-pad" style="margin-top: 20px;">
+                                                                    <div class="topBorder col-md-offset-1"></div>
+                                                                    <div class="col-md-offset-2">
+                                                                        <div class="col-sm-10 no-pad text-center">
+                                                                            <p>
+
+                                                                                <span>Application Fee :</span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.ApplicationFee)
+
+                                                                            </p>
+                                                                            <p>
+                                                                                <span>Endorsement Fee :</span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.EndorsementFee)
+                                                                            </p>
+                                                                            <p>
+                                                                                <span>Category License Fee  :</span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.CategoryLicenseFee)
+                                                                            </p>
+
+                                                                        </div>
+                                                                        <div class="col-sm-10 no-pad text-center">
+
+                                                                            <div class="topBorder col-md-offset-2"></div>
+                                                                            <p>
+                                                                                <span>Sub Total :</span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.SubTotal)
+                                                                            </p>
+                                                                            <p class="hidden-sm hidden-xs">
+                                                                                <span>10% Tech Fee  :</span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.TechFee)
+                                                                            </p>
+                                                                            <p class="visible-sm visible-xs">
+                                                                                <span>10% Tech Fee  :</span> @string.Format(new CultureInfo("en-US"), "{0:C}", item.TechFee)
+                                                                            </p>
+                                                                            @if (item.LicenseCategory == "Apartment" || item.LicenseCategory == "One Family Rental")
+                                                                            {
+                                                                                <div class="col-sm-12 text-center no-pad">
+                                                                                    <p style="font-size: 14px;">
+                                                                                        <strong> Category License Fee includes an RAO fee of $43.00/unit.</strong>
+                                                                                    </p>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                 
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </section>
+                                                    @if (Model.BblDocumentsList.IsSubmissioneHop == true)
+                                                    {
+                                                        <div class="col-sm-12 text-center no-pad">
+                                                            <p style="font-size: 14px; font-style: italic; color: #6E6B6B; font-weight: 600; margin-top: 5px;"><strong>** An eHOP fee of $72.60 ($66.00 (eHOP fee)+ 10% Technology Fee) was added to the Grand total displayed above.</strong></p>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Checklist Name and Short Description End. -->
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading2">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 bot_border" tabindex="0">
+                                            <h3>
+                                                Physical Location and Business Structure
+                                            </h3>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 btn_cont bot_border">
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button">
+                                            @*<div toggle-expand-collapse-icon="" tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon collapsed  triangle-div2" data-toggle="collapse" data-target="#collapse2"></div>*@
+                                            <div toggle-expand-collapse-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon collapsed triangle-div2" data-toggle="collapse" data-target="#collapse2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse2" class="panel-collapse open in" aria-labelledby="heading2"
+                                 style="overflow: hidden; display: block;">
+                                <div tabindex="-1">
+                                    <div class="row col-md-offset-1">
+                                        <div class="col-sm-6 col-md-6  col-xs-12 panel-collapse-business-wrapper">
+
+
+                                            @if (@Model.BblDocumentsList.OccupanyNumber != "" && @Model.BblDocumentsList.IsSubmissionHop == true)
+                                            {
+                                                <p>
+                                                    <span>Home Occupancy Permit Number: </span>@Model.BblDocumentsList.OccupanyNumber
+                                                </p>
+                                            }
+
+                                            @if (@Model.BblDocumentsList.OccupanyNumber != "" && @Model.BblDocumentsList.IsSubmissioneHop == true)
+                                            {
+                                                <p>
+                                                    <span>Expedited Home Occupancy Permit Number: </span>@Model.BblDocumentsList.OccupanyNumber
+                                                </p>
+                                            }
+                                            @if (@Model.BblDocumentsList.OccupanyNumber != "" && @Model.BblDocumentsList.IsSubmissionCofo == true)
+                                            {
+                                                <p>
+                                                    <span>Certificate of Occupancy Number: </span> @Model.BblDocumentsList.OccupanyNumber
+                                                </p>
+                                            }
+
+                                            
+                                            <p>
+                                                <span>Corporate Registration File Number : </span>
+                                                @Model.BblDocumentsList.CorpFileNo
+                                            </p>
+                                            <p>
+                                                <span>Organization Type : </span>
+                                                @Model.BblDocumentsList.OrgType
+                                            </p>
+                                            @if (@Model.BblDocumentsList.TradeName != "")
+                                            {
+                                                <p>
+                                                    <span>Trade Name (if applicable):  </span>
+                                                    @Model.BblDocumentsList.TradeName
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p>
+                                                    <span>Trade Name (if applicable):  </span>
+                                                    N/A
+                                                </p>
+                                            }
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-xs-12 panel-collapse-business-wrapper">
+                                            @if (@Model.BblDocumentsList.DateofIssue != "01/01/1900" && @Model.BblDocumentsList.IsSubmissioneHop!=true)
+                                            {
+                                                <p>
+                                                    <span>Date of Issuance: </span>
+                                                    @Model.BblDocumentsList.DateofIssue
+                                                </p>
+                                            }
+                                            
+                                            @if (@Model.BblDocumentsList.IsFEIN == false)
+                                            {
+                                                <p>
+                                                    <span>Social Security Number (SSN): </span>
+                                                    @Model.BblDocumentsList.FienNumber
+                                                </p>
+                                            }
+                                            @if (@Model.BblDocumentsList.IsFEIN == true)
+                                            {
+                                                <p>
+                                                    <span>Federal Employer Identification Number (FEIN): </span>
+                                                    @Model.BblDocumentsList.FienNumber
+                                                </p>
+                                            }
+                                            <p>
+                                                <span>Business Name: </span>
+                                                @Model.BblDocumentsList.BusinessOwner
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin: 2%">
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Business HQ <br /> Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body">
+                                            @if (Model.BblDocumentsList.HeadQBName != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.HeadQBName</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQName != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.HeadQName</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQAddress != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.HeadQAddress</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQCity != "")
+                                            {
+                                             <p>@Model.BblDocumentsList.HeadQCity</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQState != "")
+                                            {
+                                              <p>@Model.BblDocumentsList.HeadQState</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQCountry != "")
+                                            {
+                                               <p>@Model.BblDocumentsList.HeadQCountry</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQZip != "")
+                                            {
+                                               <p>@Model.BblDocumentsList.HeadQZip</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQEmail != "")
+                                            {
+                                               <p>@Model.BblDocumentsList.HeadQEmail</p>
+                                            }
+                                            @if (Model.BblDocumentsList.HeadQTelePhone != "")
+                                            {
+                                               <p>@Model.BblDocumentsList.HeadQTelePhone</p>
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Business Premise<br /> Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body info-verify-para">
+                                            @if (Model.BblDocumentsList.PremiseBName != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseBName</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseName != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseName</p>
+                                            }
+
+                                            @if (Model.BblDocumentsList.PremiseAddressNumber != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.PremiseAddressNumber</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseAddressNumberSufix != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.PremiseAddressNumberSufix</p>
+                                            }
+
+                                            @if (Model.BblDocumentsList.PremiseStreetName != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.PremiseStreetName</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseStreetType != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.PremiseStreetType</p>
+                                            }
+                                          
+                                            @if (Model.BblDocumentsList.PremiseQuadrant != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseQuadrant</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseUnitType != "" && Model.BblDocumentsList.PremiseUnitType!="NONE")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseUnitType</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseUnit != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseUnit</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseCity != "")
+                                          {
+                                            <p>@Model.BblDocumentsList.PremiseCity</p>
+                                          }
+                                            @if (Model.BblDocumentsList.PremiseState != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseState</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseCountry != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseCountry</p>
+                                            }
+
+                                            @if (Model.BblDocumentsList.PremiseZip != "")
+                                           {
+                                            <p>@Model.BblDocumentsList.PremiseZip</p>
+                                           }
+                                            @if (Model.BblDocumentsList.PremiseEmail != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseEmail</p>
+                                            }
+                                            @if (Model.BblDocumentsList.PremiseTelePhone != "")
+                                            {
+                                            <p>@Model.BblDocumentsList.PremiseTelePhone</p>
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Mailing <br />Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body info-verify-para">
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingBName))
+                                            {
+                                                <p> @Model.BblDocumentsList.MailingBName</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingName))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingName</p>
+                                            }
+                                            
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingStreetName))
+                                            {
+                                                <p>
+                                                    @Model.BblDocumentsList.MailingStreetName
+                                                </p>
+                                                    }
+
+                                                    @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingAddressNumberSufix))
+                                                       {
+                                                        <p>
+                                                            @Model.BblDocumentsList.MailingAddressNumberSufix
+                                                        </p>
+                                                     }
+                                                    @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingStreetNumber))
+                                                     {
+                                                        <p>
+                                                            @Model.BblDocumentsList.MailingStreetNumber
+                                                        </p>
+                                                     }
+                                                    @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingStreetType) )
+                                                    {
+                                                        <p>
+                                                            @Model.BblDocumentsList.MailingStreetType
+                                                        </p>
+                                                    }
+                                                    @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingQuadrant))
+                                                    {
+                                                        <p>@Model.BblDocumentsList.MailingQuadrant</p>
+                                                    }
+                                              @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingUnitType))
+                                              {
+                                                <p>@Model.BblDocumentsList.MailingUnitType</p>
+                                              }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingUnit))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingUnit</p>
+                                            }
+                                           @if (!string.IsNullOrEmpty( Model.BblDocumentsList.MailingCity))
+                                           {
+                                            <p>@Model.BblDocumentsList.MailingCity</p>
+                                           }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingState))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingState</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingCountry))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingCountry</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingZip ))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingZip</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingEmail))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingEmail</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.MailingTelePhone))
+                                            {
+                                                <p>@Model.BblDocumentsList.MailingTelePhone</p>
+                                            }
+                                           
+                                            
+                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Registered/Resident Agent Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body info-verify-para">
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentName))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentName</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentBName))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentBName</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentAddress))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentAddress</p>
+                                            }
+                                            
+                                           
+                                            @if (Model.BblDocumentsList.AgentAddressNumber != null && Model.BblDocumentsList.AgentAddressNumber != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentAddressNumber</p>
+                                            }
+                                            @if (Model.BblDocumentsList.AgentStreetName != null && Model.BblDocumentsList.AgentStreetName != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentStreetName</p>
+                                            }
+                                            @if (Model.BblDocumentsList.AgentStreetType != null && Model.BblDocumentsList.AgentStreetType != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentStreetType</p>
+                                            }
+                                            @if (Model.BblDocumentsList.AgentQuadrant != null && Model.BblDocumentsList.AgentQuadrant != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentQuadrant</p>
+                                            }
+                                            @if (Model.BblDocumentsList.AgentUnit != null && Model.BblDocumentsList.AgentUnit != "")
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentUnit</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentCity))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentCity</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentState))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentState</p>
+                                            }  
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentCountry))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentCountry</p>
+                                            }
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentZip))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentZip</p>
+                                            }
+                                           
+                                            @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentEmail))
+                                            {
+                                                <p>@Model.BblDocumentsList.AgentEmail</p>
+                                            }
+                                           @if (!string.IsNullOrEmpty(Model.BblDocumentsList.AgentTelePhone))
+                                           {
+                                            <p>@Model.BblDocumentsList.AgentTelePhone</p>
+                                           }
+                                           
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                       
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading3">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 bot_border" tabindex="0">
+                                            <h3>Supporting Documents </h3>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 btn_cont bot_border">
+
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button">
+                                            @*<div toggle-expand-collapse-icon="" tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon collapsed triangle-div3" data-toggle="collapse" data-target="#collapse3"></div>*@
+                                            <div toggle-expand-collapse-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon collapsed triangle-div3" data-toggle="collapse" data-target="#collapse3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse in" aria-labelledby="heading3"
+                                 style="overflow: hidden; display: block;">
+
+                                <div class="panel-body" tabindex="-1">
+                                    @foreach (var i in Model.BblDocumentsList.DocumentList)
+                                    {
+                                        <section class="clearfix">
+                                            <div class="container1">
+                                                <div class="innerRow">
+                                                    <div class="col-sm-1 no-pad">
+       @if (Model.BblDocumentsList.DocType != "" && Model.BblDocumentsList.DocType == "IN")
+        {
+          
+             <img src="~/images/icon-doc-inperson.jpg" style="height: 30px; width: 35px; margin: 10px;" />
+        }
+        else
+        {
+            <span class="glyphicon glyphicon-ok" style="padding-left: 10px; padding-top: 20px;"></span>
+        }
+                                                      
+                                                    </div>
+                                                    <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                                        <p>
+                                                            <span>Document Required</span>
+                                                        </p>
+                                                        <div>
+                                                            @i.DocRequired
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-1 col-xs-12"></div>
+                                                    <div class="col-sm-4 col-xs-12 no-pad ">
+                                                        <p>
+                                                            <span>Agency : </span>
+                                                            @i.Agency
+                                                        </p>
+                                                        <p>
+                                                            <span> Division : </span>@i.Division
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-3 col-xs-12 no-pad">
+                                                        <p>
+                                                            <span>License Code : </span>
+                                                            @i.CategoryCode
+                                                        </p>
+                                                        <p>
+                                                            <span>Endorsement : </span>
+                                                            @i.Endorsement
+                                                        </p>
+                                                        <p>
+                                                            <span> License : </span>
+                                                            @i.License
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix col-md-12 no-pad">
+                                                        <div class="clearfix col-sm-12 col-md-2 no-pad"></div>
+                                                        <div class="clearfix col-sm-12 col-md-11 no-pad col-lg-offset-1">
+
+                                                            @if (Model.BblDocumentsList.DocType != "" && Model.BblDocumentsList.DocType == "IN")
+                                                            {
+
+                                                            }
+                                                            else
+                                                            {
+                                                                if (@i.UploadFileName != "")
+                                                                {
+                                                                    <p>
+                                                                        <span>File Name :</span>@Html.ActionLink(@i.UploadFileName, "Download", "BBL", new { fileId = @i.UploadFileName }, null)
+                                                                    </p>
+                                                                }
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-sm-12 col-xs-12 col-md-12">
+                                                        <div class="grid-row-line"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    }
+                                    @if (!Model.BblDocumentsList.DocumentList.Any())
+                                    {
+                                        <section id="noResultsKey">
+                                            <div class="container">
+                                                <div class="innerRow">
+                                                    <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                                                        <p class="text-danger error_text ">No Supporting Documents Required</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pre-checkquestion col-md-12 col-xs-12 text-center" id="buttons">
+                            <button id="btn_app_review" class="btn btn-default">Return to BBL Dashboard</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .rd-left {
+            margin-left: 10px;
+            margin-right: 50px;
+        }
+
+        .rd-right {
+            margin-left: 10px;
+        }
+
+        .radio-div {
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        $(".triangle-div1").on('click', function () {
+            if ($(".triangle-div1").hasClass("collapseIcon")) {
+                $(".triangle-div1").removeClass("collapseIcon").addClass("expandIcon");
+            }
+            else {
+                $(".triangle-div1").removeClass("expandIcon").addClass("collapseIcon");
+            }
+        });
+
+        $(".triangle-div2").on('click', function () {
+            if ($(".triangle-div2").hasClass("collapseIcon")) {
+                $(".triangle-div2").removeClass("collapseIcon").addClass("expandIcon");
+            }
+            else {
+                $(".triangle-div2").removeClass("expandIcon").addClass("collapseIcon");
+            }
+        });
+
+        $(".triangle-div3").on('click', function () {
+            if ($(".triangle-div3").hasClass("collapseIcon")) {
+                $(".triangle-div3").removeClass("collapseIcon").addClass("expandIcon");
+            }
+            else {
+                $(".triangle-div3").removeClass("expandIcon").addClass("collapseIcon");
+            }
+        });
+    </script>
+    <script>
+        $("#btn_app_review").click(function () {
+            var url = "/BBL/CustomerSubmissions?userId=" + '@Model.UserId';
+            window.location.href = url;
+        });
+        $(document).ready(function () {
+        });
+        $(".arrow-right").click(function (e) {
+            OpenDetails(e);
+        });
+        function OpenDetails(event) {
+            if ($(event.target).hasClass('arrow-right')) {
+                $(event.target).addClass('arrow-bottom').removeClass('arrow-right');
+                $(event.target).parent().parent().css('border-bottom', '0px solid');
+                $(event.target).parent().parent().parent().find('.details').show();
+            }
+            else {
+                $(event.target).addClass('arrow-right').removeClass('arrow-bottom');
+                $(event.target).parent().parent().parent().find('.details').hide();
+            }
+        }
+    </script>
+    <script>
+    var text = $('#grandamount').text();
+    var charsLength = text.length;
+
+
+    if (charsLength > 9 && charsLength <= 12) {
+        $(".grand_total").css("width", "130%");
+    }
+    else if (charsLength > 12) {
+        $(".grand_total").css("width", "160%");
+    }
+
+
+
+
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}

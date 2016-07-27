@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="211cf48c154a4d2a924e1d38c12aa866" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="BusinessCenterModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.AuditRecord" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.Clients" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.FeeCodeMap" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.FixFee" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.KeywordMaster" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.Lookup_BusinessStructure" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.Lookup_ExistingCategories" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MailTemplate" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterBblApplicationStatus" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterBusinessActivity" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterCategory" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterCategoryDocument" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterCategoryPhysicalLocation" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterCategoryQuestion" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterCountry" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MastereHOPEligibility" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterEhopOptionType" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterPrimaryCategory" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterRegisteredAgent" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterRenewalStatusFee" Width="1.5" PointX="13.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterSecondaryLicenseCategory" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterState" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.MasterSubCategory" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.OSub_Category_Fees" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.PaymentAddressDetails" Width="1.5" PointX="8.75" PointY="14.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.PaymentCardDetails" Width="1.5" PointX="14.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.PaymentDetails" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.PaymentHistoryDetails" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.Portal_Content_Errors" Width="1.5" PointX="16.75" PointY="5.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.RefreshTokens" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.Role" Width="1.5" PointX="10.75" PointY="16.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SecurityQuestion" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.StreetTypes" Width="1.5" PointX="16.75" PointY="15.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionBblAssociationToUsers" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionCategory" Width="1.5" PointX="4.75" PointY="17.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionCofo_Hop_Ehop" Width="1.5" PointX="18.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionCofo_Hop_Ehop_Address" Width="1.5" PointX="18.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionCorporation_Agent" Width="1.5" PointX="16.75" PointY="18.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionCorporation_Agent_Address" Width="1.5" PointX="18.75" PointY="17.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionDocument" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionDocumentToAccela" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionEHOPEligibility" Width="1.5" PointX="10.75" PointY="19.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionGeneratedDocument" Width="1.5" PointX="20.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionIndividual" Width="1.5" PointX="6.75" PointY="20.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionLicenseNumberCounter" Width="1.5" PointX="20.75" PointY="8.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionMaster" Width="1.5" PointX="20.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionMaster_ApplicationCheckList" Width="1.5" PointX="12.75" PointY="20.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionMasterRenewal" Width="1.5" PointX="20.75" PointY="19.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionQuestion" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionSelfCertification" Width="1.5" PointX="2.75" PointY="21.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissionTaxRevenue" Width="1.5" PointX="22.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.SubmissiontoAccela" Width="1.5" PointX="22.75" PointY="8.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.User" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserBBLService" Width="1.5" PointX="22.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserClaim" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserLogin" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserLoginHistory" Width="1.5" PointX="14.75" PointY="22.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserPasswordTracking" Width="1.5" PointX="22.75" PointY="16.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserRole" Width="1.5" PointX="22.75" PointY="19.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.UserService" Width="1.5" PointX="22.75" PointY="22.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_ABRA" Width="1.5" PointX="8.75" PointY="23.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_BBL" Width="1.5" PointX="16.75" PointY="23.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_BBL_Renewal_Invoice" Width="1.5" PointX="18.75" PointY="23.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_CBE" Width="1.5" PointX="24.75" PointY="16.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_Cof_O" Width="1.5" PointX="0.75" PointY="25.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_CORP" Width="1.5" PointX="2.75" PointY="25.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_LOOKUP_INDEX" Width="1.5" PointX="24.75" PointY="25.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_MultiColumn_LOOKUP_INDEX" Width="1.5" PointX="26.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_OPLA" Width="1.5" PointX="26.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_ABRA" Width="1.5" PointX="4.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_BBL" Width="1.5" PointX="10.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_CBE" Width="1.5" PointX="12.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_Corp" Width="1.5" PointX="26.75" PointY="14.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_OPLA" Width="1.5" PointX="26.75" PointY="19.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.OSub_Category_Checklist" Width="1.5" PointX="20.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.TBL_ETL_Address_And_Parcel" Width="1.5" PointX="26.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.BblLicenseView2" Width="1.5" PointX="28.75" PointY="22.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.BblLicenseView4" Width="1.5" PointX="28.75" PointY="27.75" />
+        <AssociationConnector Association="BusinessCenterModel.FK_dbo_UserClaim_dbo_User_UserId" />
+        <AssociationConnector Association="BusinessCenterModel.FK_dbo_UserLogin_dbo_User_UserId" />
+        <EntityTypeShape EntityType="BusinessCenterModel.BblLicenseView3" Width="1.5" PointX="23.375" PointY="28.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.BblLicenseView" Width="1.5" PointX="29.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.KeywordDetails" Width="1.5" PointX="19.375" PointY="29.75" />
+        <EntityTypeShape EntityType="BusinessCenterModel.DCBC_ENTITY_BBL_Renewals" Width="1.5" PointX="31.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

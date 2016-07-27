@@ -1,0 +1,631 @@
+﻿@model  BusinessCenter.Api.Models.EmailReceiptModel
+@using System.Globalization;
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/CSS">
+        body, #body_style {
+            position: relative;
+            font-family: 'Open Sans',sans-serif;
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 300;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .mainNavigation {
+            border-bottom: 2px solid #f2f2f2;
+            padding-top: 35px;
+            box-sizing: border-box;
+        }
+
+        .page_title h2 {
+            font-weight: 300;
+            font-size: 48px;
+            color: #00aef3;
+            margin: 0 0 1%;
+            line-height: 1;
+            font-family: 'Open Sans',sans-serif;
+        }
+
+        p {
+            font-family: 'Open Sans',sans-serif;
+            color: #414141;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 34px;
+            pointer-events: none;
+            cursor: default;
+            display: block;
+        }
+
+        /*p img{
+           pointer-events:none;cursor:default;display:block;
+        }*/
+
+        .wizard_form {
+            background-color: #eee;
+            padding: 3% 0;
+        }
+
+        .container {
+            background: #fafafa;
+            margin-top: -1px;
+            margin-bottom: -1px;
+        }
+
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        div.container {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        table, tr.border_bottom {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body style="font-family: 'Open Sans', sans-serif; color: #000; background-color: #ffffff;line-height: 26px; font-size: 18px; margin: 0px;border:1px solid #f2f2f2;">
+    <div class="mainNavigation" style="background-color: #ffffff;">
+        <div class="container">
+            <nav class="navbar navbar-default no-pad-left" role="navigation">
+                <div class="navbar-header col-lg-3 col-md-3 col-sm-3 col-xs-12 no-pad-left no-pad-right">
+                    <div class="col-sm-12 col-xs-9 no-pad-left">
+                        <h1 class="header_logo" tabindex="-1">
+                            <a ng-click="navToHome()" href="javascript:void(0)" role="link">
+                                <img tabindex="-1" src="http://dcbctest.codeitinc.com/images/dc_logo.png" alt="DCRA Business Center" class="img-responsive" style="margin-left: 2px;padding: 4px;">
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <hr style="border-bottom: 2px solid #f2f2f2;" />
+    <br />
+    <div class="page_title scr_title" style="text-align: center; background-color: #ffffff;">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" style="font-weight: 300; font-size: 40px; color: #00aef3; margin: 0 0 1%; line-height: 1; font-family: 'Open Sans', sans-serif;">Submission Order Confirmation</h2>
+            </div>
+        </div>
+    </div>
+    <div class="wizard_form">
+        <div class="container">
+            <p style="margin-left: 2px; padding: 4px;">
+                Dear <span style="font-weight: bold;font-size:16px;">@Model.FullName,</span>
+            </p>
+            <div class="result_top_block" tabindex="0" style="margin-left: 2px; padding: 4px;font-size:14px;">
+                @if (Model.DocType == "")
+                {
+                    if (@Model.ApplicationSubmit == "RENEWAL")
+                    {
+
+                        <p>
+                            <strong class="text-success">Your Transaction is Complete! </strong>
+
+                        </p>
+
+                    }
+                    else
+                    {
+                        <p>
+                            <strong class="text-success">Your Transaction is Complete </strong>
+                            <strong>
+                                and your License has been
+                                Approved!
+                            </strong> 
+                        </p>                    
+                    }
+                }
+                else
+                {
+
+                    <p>
+                        <strong class="text-success" style="color: green">@Model.InnerHtml </strong>
+
+                    </p>
+                }
+            </div>
+            <div class="collapse_panels" id="collapse_panels" style="background-color: #fff; width: 100%; margin: 2px; font-size: 14px;">
+                <!-- expand/collapse section-->
+                <div class="panel-group" id="checkListAccordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel-heading row" role="tab" id="heading1">
+                        <div class="panel-title">
+                            <div class="checkListTostart section-space">
+                                <table border="0" width="100%">
+                                    <tr>
+                                        <td class="small" style="vertical-align: top; width: 23%; text-align: left; color: #6E6B6B">
+                                            Online Submission Number :
+                                        </td>
+                                        <td style="text-align: left; margin-right: 4px; width: 35%;">
+                                            <strong> @Model.SubNumber</strong>
+                                        </td>
+                                        <td class="small" style="vertical-align: top; width: 20%; text-align: right; color: #6E6B6B">
+                                            Receipt Date :
+                                        </td>
+                                        <td style="text-align: left; width: 22%;">
+                                            <strong> @Model.ReceiptDate</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="small" style="vertical-align: top; text-align: left; width: 15%; color: #6E6B6B">
+                                            Amount Charged :
+                                        </td>
+                                        <td style="text-align: left; margin-right: 4px; width: 35%;">
+                                            <strong> $ @Model.GrandTotals </strong> <span style="font-size: 12px; font-style: italic"> (all fees are nonrefundable) </span>
+                                        </td>
+                                        @if (@Model.CardNumber != null)
+                                        {
+                                            <td class="small" style="vertical-align: top; width: 10%; text-align: right; color: #6E6B6B">
+                                                Credit Card:
+                                            </td>
+                                            <td style="text-align: left; margin-right: 4px; width: 35%;">
+                                                <strong> @Model.CardNumber</strong>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td class="small" style="vertical-align: top; text-align: left; width: 15%; color: #6E6B6B">
+                                            Payment ID:
+                                        </td>
+                                        <td style="text-align: left; margin-right: 4px; width: 35%;">
+                                            <strong> @Model.TransactionId</strong>
+                                        </td>
+                                        <td class="small" style="vertical-align: top; width: 10%; text-align: right; color: #6E6B6B">
+                                            License Duration:
+                                        </td>
+                                        <td style="text-align: left; width: 40%;">
+                                            <strong> @Model.LicenseDuration Year</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="small" style="vertical-align: top; text-align: left; width: 15%; color: #6E6B6B">
+                                            Application Fee:
+                                        </td>
+                                        <td style="text-align: left; margin-right: 4px; width: 35%;">
+                                            <strong> $ @Model.TotalApplicationFee </strong>
+                                        </td>
+                                        <td class="small" style="vertical-align: top; width: 10%; text-align: right; color: #6E6B6B"></td>
+                                        <td style="text-align: left; width: 40%;">
+                                            <strong></strong>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <br />
+
+                                @if (@Model.DocType == "IN")
+                                {
+                                    <div style="height: 50px; width: 100%; font-size: 14px;">
+                                        You elected to submit required supporting documents in person at the DCRA Service Center. You must submit those documents within 30 Calendar Days of this online submission. Failure to submit these documents by <strong style="color: red;">@Model.ExceptedFinalCheckingDate</strong> may result in your application being rejected.
+                                    </div>
+                                    <br />
+                                }
+                                @if (@Model.IsEhopAllowed == true && @Model.ApplicationStatus=="UnderReview")
+                                {
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-body panel-collapse checklist-item">
+
+                                            <p style="height: 50px; width: 100%; font-size: 14px;">
+                                                <strong>Note:</strong> A copy of your Expedited Home Occupancy Permit (EHOP) may be downloaded from your My BBLs page. Please select the link to <a href="https://mybusiness.dc.gov/" style="color: blue">mybusiness.dc.gov</a> and select My BBLs when you arrive on your Dashboard Page. You may need to log into the site if you are not already logged in.
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                }
+                                @if (@Model.IsEhopAllowed == true && (@Model.ApplicationStatus == "Active" || @Model.ApplicationStatus=="ACTIVE"))
+                                {
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-body panel-collapse checklist-item">
+
+                                            <p style="height: 50px; width: 100%; font-size: 14px;">
+                                                <strong>Note:</strong> A copy of your Expedited Home Occupancy Permit (EHOP) and Business License may be downloaded from your My BBLs page. Please select the link to <a href="https://mybusiness.dc.gov/" style="color: blue">mybusiness.dc.gov</a> and select My BBLs when you arrive on your Dashboard Page. You may need to log into the site if you are not already logged in.
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                }
+                                @if (@Model.IsEhopAllowed == false && (@Model.ApplicationStatus == "Active" || @Model.ApplicationStatus == "ACTIVE"))
+                                {
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-body panel-collapse checklist-item">
+
+                                            <p style="height: 50px; width: 100%; font-size: 14px;">
+                                                <strong>Note:</strong> A copy of your Business License may be downloaded from your My BBLs page. Please select the link to <a href="https://mybusiness.dc.gov/" style="color: blue">mybusiness.dc.gov</a> and select My BBLs when you arrive on your Dashboard Page. You may need to log into the site if you are not already logged in.
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                }
+                                @if (@Model.DocType == "ON")
+                                {
+                                    <div style="height: 100px; width: 100%; font-size: 14px;">
+                                        <p>
+                                            The DCRA Business License Administration will review your application and all supporting documents submitted online. <span style="color: red;font-weight: bold"> Please allow one business day for the processing of your application to begin.</span> The
+                                            review will be completed within <strong>five (5) Business Days</strong>.
+                                            @if (@Model.ApplicationSubmit != "RENEWAL")
+                                            {
+                                            <p>Please refer to your My BBLs page to track the status of your application and to access a printable copy of your license once it is approved.</p>
+                                                <p>
+                                                    Individual Licenses will not display a PDF copy on the My BBLs Page.
+                                                </p>
+                                            }
+                                            @if (Model.IsBackgroundInvestigation == true && @Model.ApplicationSubmit != "RENEWAL")
+                                            {
+                                                <p>  One of the license categories you have selected requires review by the Regulatory Investigation Section (RIS) which may add up to 30 days to your license review.</p>
+                                            }
+                                            @if (@Model.ApplicationSubmit == "RENEWAL")
+                                            {
+                                                <p>Please refer to your My BBLs page to track the status of your application and to access a printable copy of your license once it is approved.</p>
+                                                <p>
+                                                    Individual Licenses will not display a PDF copy on the My BBLs Page.
+                                                </p>
+                                                if (Model.IsBackgroundInvestigation == true)
+                                                {
+                                                    <p>  One of the license categories you have selected requires review by the Regulatory Investigation Section (RIS) which may add up to 30 days to your license review.</p>
+                                                }
+                                            }
+                                            <ul style="list-style:none">
+                                                @if (@Model.ApplicationSubmit == "RENEWAL")
+                                                {
+                                                    <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px;">
+
+                                                        <span style="color: #00AEF3">Successful Renewal:</span>
+
+                                                        If all requested information and documents are approved, you will receive your license via US Mail within
+                                                        <strong><span style="color: red">5 to 7</span> Business Days</strong> of the completion of the Review.
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px;">
+
+                                                        <span style="color: #00AEF3">Successful Application:</span>
+
+                                                        If all requested information and documents are approved, you will receive your license via US Mail within
+                                                        <strong><span style="color: red">5 to 7</span> Business Days</strong> of the completion of the Review.
+                                                    </li>
+                                                }
+                                                @if (@Model.ApplicationSubmit == "RENEWAL")
+                                                {
+                                                    <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px; padding-top: 10px;">
+
+                                                        <span style="color: #00AEF3">
+
+                                                            Incomplete Renewal:
+                                                        </span> If any additional information is required, you will receive an email at the email address listed above in this
+                                                        receipt indicating what information needs to be provided. You will have <strong>30 Calendar Days</strong> to provide the additional information.
+                                                        If the additional information is not provided, your application may be rejected at that point.
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px; padding-top: 10px;">
+
+                                                        <span style="color: #00AEF3">
+
+                                                            Incomplete Application:
+                                                        </span> If any additional information is required, you will receive an email at the email address listed above in this
+                                                        receipt indicating what information needs to be provided. You will have <strong>30 Calendar Days</strong> to provide the additional information.
+                                                        If the additional information is not provided, your application may be rejected at that point.
+                                                    </li>
+                                                }
+                                                @if (@Model.ApplicationSubmit == "RENEWAL")
+                                                {
+                                                    <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px; padding-top: 10px;">
+
+                                                        <span style="color: #00AEF3">
+                                                            Rejected Renewal:
+                                                        </span> If your application is rejected, you will receive an email at the email address listed above in this receipt
+                                                        explaining why your application was insufficient and how you may appeal the agency's decision.
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px; padding-top: 10px;">
+
+                                                        <span style="color: #00AEF3">
+                                                            Rejected Application:
+                                                        </span> If your application is rejected, you will receive an email at the email address listed above in this receipt
+                                                        explaining why your application was insufficient and how you may appeal the agency's decision.
+                                                    </li>
+                                                }
+                                                @*<li style="color: red;font-weight: bold">
+                                                        Please allow one business day for the processing of your application to begin.
+                                                    </li>*@
+                                            </ul>
+                                            </p>
+                                        </div>
+
+                                }
+                                else
+                                {
+                                    if (@Model.ApplicationSubmit == "RENEWAL")
+                                    {
+                                        <p> Please refer to your My BBLs page to track the status of your application and to access a printable copy of your license once it is approved.</p>
+                                        <p>
+                                            Individual Licenses will not display a PDF copy on the My BBLs Page.
+                                        </p>
+                                        if (Model.IsBackgroundInvestigation == true)
+                                        {
+                                            <p> One of the license categories you have selected requires review by the Regulatory Investigation Section (RIS) which may add up to 30 days to your license review.</p>
+                                        }
+                                    }
+                                    if (@Model.ApplicationSubmit == "NEWSUBMISSION")
+                                    {
+                                        <p>
+                                            Individual Licenses will not display a PDF copy on the My BBLs Page.
+                                        </p>
+                                        if (Model.IsBackgroundInvestigation == true)
+                                        {
+                                            <p> One of the license categories you have selected requires review by the Regulatory Investigation Section (RIS) which may add up to 30 days to your license review.</p>
+                                        }
+                                    }
+
+                                }
+                                @*<p style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px; padding-top: 10px;">*@
+                                <div style="height: 100px; width: 100%; font-size: 14px;">
+                                    <ul style="list-style:none">
+                                        <li style="color: #414141; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 400; line-height: 25px; padding-top: 10px;">
+                                            <strong>&nbsp;&nbsp;Note :</strong> Reference the Online Submission Number to identify your application.
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                @*</p>*@
+
+                                <div class="row" style="margin-top: 3%;">
+                                    <div class="panel-body" style="margin-top: 3%;">
+                                        <div class="search_result">
+                                            <div class="container">
+                                                <table align="center">
+                                                    <tr>
+
+                                                        <td style="margin: 3px; border: 2px solid lightgray; width: 200px;">
+                                                            <div class="col-sm-4 col-xl-4 col-xs-12 col-md-offset-5">
+                                                                <div class="panel  text-center">
+                                                                    <div class="panel-body">
+                                                                        <h1 style="text-align: center; margin-top: 4px;">$ @Model.GrandTotals</h1>
+                                                                    </div>
+                                                                    <div class="panel-footer text-center" style="text-align: center; background-color: #f5f5f5">
+                                                                        <span class="text-center" style="text-align: center; margin-top: 4px;">
+                                                                            Grand<br /> Total
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+
+
+                                            </div>
+                                            <div class="container">
+                                                <table align="center" style="border:0">
+                                                    @if (@Model.ApplicationSubmit == "RENEWAL")
+                                                    {
+                                                        if (@Model.ExtraAmount == 500)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <p class="text-center">
+                                                                        As your License status is Expired, late fee of $500 is added.
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        if (@Model.ExtraAmount == 250)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <p class="text-center">
+                                                                        As your License status is Lapsed, late fee of $250 is added.
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        }
+
+                                                    }
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr style="border-bottom: 2px solid #f2f2f2;" />
+                                <br />
+                                <table style="border:solid 1px #414141;width:99%;" cellpadding="1" cellspacing="1">
+                                    <tr style="border-bottom:solid 1px black;width:99%;background-color:#D3D1D1; border-collapse:collapse">
+                                        <th style="width:6%;">Cat ID</th>
+                                        <th style="width:18%;">License Category</th>
+                                        <th style="width:9%;">License Category Fee</th>
+                                        <th style="width:18%;">Endorsement</th>
+                                        <th style="width:9%;">Endorsement Fee</th>
+                                        <th style="width:9%;">Sub Total</th>
+                                        <th style="width:9%;">10% Tech Fee</th>
+                                        <th style="width:9%;">Total Fee</th>
+                                        <th style="width:10%;">Units</th>
+                                    </tr>
+                                    @if (Model.ServiceCheckList != null)
+                                    {
+
+                                        foreach (var ServiceCheckList in Model.ServiceCheckList)
+                                        {
+                                            <tr style="background-color: #FAFAFA; border-bottom: solid 1px black; border-collapse: collapse">
+                                                <td style="text-align: center;">@ServiceCheckList.CategoryCode</td>
+                                                <td style="text-align: center;">@ServiceCheckList.LicenseCategory</td>
+                                                <td style="text-align: center;"> $ @ServiceCheckList.CategoryLicenseFee</td>
+                                                <td style="text-align: center;">@ServiceCheckList.Endorsement</td>
+                                                <td style="text-align: center;"> $ @ServiceCheckList.EndorsementFee</td>
+                                                <td style="text-align: center;"> $ @ServiceCheckList.SubTotal</td>
+                                                <td style="text-align: center;"> $ @ServiceCheckList.TechFee</td>
+                                                <td style="text-align: center;"> $ @ServiceCheckList.TotalFee</td>
+                                                <td style="text-align: center;">@ServiceCheckList.Units</td>
+                                            </tr>
+
+                                        }
+
+                                        foreach (var FeeSection in Model.ServiceCheckList)
+                                        {
+                                            if (@FeeSection.LapsedFee != 0 && @FeeSection.ExpiryFee == 0)
+                                            {
+                                                <tr style="background-color: #FAFAFA; border-bottom: solid 1px black; border-collapse: collapse">
+                                                    <td colspan="9" style="font-size: 14px; height: 20px;text-align:center">
+                                                        Late Fee : $250.00
+                                                    </td>
+                                                </tr>
+                                            }
+                                            if (@FeeSection.ExpiryFee != 0 && @FeeSection.LapsedFee != 0)
+                                            {
+                                                <tr style="background-color: #FAFAFA; border-bottom: solid 1px black; border-collapse: collapse">
+                                                    <td colspan="9" style="font-size: 12px; height: 20px;text-align:center">
+                                                        Late Fee : $500.00
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        }
+
+
+                                        foreach (var categoryList in Model.ServiceCheckList)
+                                        {
+                                            if (categoryList.LicenseCategory == "Apartment" || categoryList.LicenseCategory == "One Family Rental")
+                                            {
+                                                <tr style="background-color: #FAFAFA; border-bottom: solid 1px black; border-collapse: collapse">
+                                                    <td colspan="9">
+
+                                                        <p style="font-size: 14px; height: 20px;text-align:center">
+                                                            <strong>&nbsp;&nbsp;Category License Fee includes an RAO fee of $43.00/unit.</strong>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                </table>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            @if (@Model.Isehop == true)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-body panel-collapse checklist-item">
+                        <p style="height: 50px; width: 100%; font-size: 14px;">
+                            <strong>&nbsp;&nbsp;&nbsp;** An eHOP Fee of $72.60 ($66.00 (eHOP Fee)+ 10% Technology Fee) was added to the Grand Total displayed above.</strong>
+                        </p>
+                    </div>
+                </div>
+                <br />
+            }
+            <hr style="border-bottom: 2px solid #f2f2f2;" />
+            <br />
+
+
+            @if (Model.DocType == "IN")
+            {
+                <br />
+                <br />
+                <table width="99%">
+                    <tr style="background-color:#D3D1D1;color:#1268ac;height:50px;"><td> Supporting Documents </td></tr>
+                </table>
+
+                <table style="border:solid 1px #414141;width:99%;" cellpadding="1" cellspacing="1">
+
+                    <tr style="border-bottom: solid 1px black; width: 99%; background-color: #D3D1D1; height: 30px;border-collapse:collapse">
+                        <th style="width:3%;font-size:14px;">SNO</th>
+                        <th style="width: 27%;font-size:14px;">Document Required</th>
+                        <th style="width: 20%;font-size:14px;">Agency</th>
+                        <th style="width: 25%;font-size:14px;">Division</th>
+                        <th style="width: 10%;font-size:14px;">License Code</th>
+                        <th style="width: 40%;font-size:14px;">License</th>
+
+                    </tr>
+
+                    @if (Model.DocumentList != null)
+                    {
+
+                        foreach (var DocumentList in Model.DocumentList)
+                        {
+                            <tr style="background-color: #FAFAFA; border-bottom:solid 1px black;border-collapse:collapse">
+                                <td style="text-align: center;font-size:14px;">@DocumentList.Sno</td>
+                                <td style="text-align: center;font-size:14px;">@DocumentList.DocRequired</td>
+                                <td style="text-align: center;font-size:14px;">@DocumentList.Agency</td>
+                                <td style="text-align: center;font-size:14px;">@DocumentList.Division</td>
+                                <td style="text-align: center;font-size:14px;">@DocumentList.CategoryCode</td>
+                                <td style="text-align: center;font-size:14px;">@DocumentList.License</td>
+
+                            </tr>
+
+                        }
+                    }
+                </table>
+            }
+
+
+
+        </div>
+    </div>
+    <br />
+
+    <div class="container">
+        <p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+            <span>If you should have any questions, please do not hesitate to contact us:</span>
+            <br />
+            <span>DCRA</span>
+            <br />
+            <span>1100 4th Street, SW,</span>
+            <br />
+            <span>Washington, DC 20024</span>
+            <br />
+            <span>Phone: (202) 442-4400</span>
+            <br />
+            <span>E-mail: dcra@dc.gov</span>
+            <br />
+            Click <a href="@Model.SiteUrl" style="color: blue">here</a> to go to My DC Business Center.
+            <br />
+            <br />
+            <span style="color: #00aef3;">Best Wishes,</span>
+            <br />
+            <br />
+            <span style="color: darkred; font-size: 12px;"> My DC Business Center Team.</span>
+        </p>
+
+
+
+        <p style="text-align: center;color: #414141; line-height: 26px; font-size: 14px; font-weight: 300;">Please do not reply to this email</p>
+    </div>
+</body>
+</html>

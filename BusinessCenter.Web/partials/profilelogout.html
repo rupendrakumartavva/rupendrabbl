@@ -1,0 +1,35 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Success</span>
+</div>
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2>Successful</h2>
+        </div>
+    </div>
+</div>
+<div class="register_form">
+    <div class="container">
+        <div class="verify-mail">
+            <p>
+                <div id="message">Password is changed Successfully.<br /><a href="#/login">Click here</a> to Login</div>
+            </p>
+
+        </div>
+        
+        <div class="verify-mail" ng-show="profileMessage">
+            <p>
+                <div id="message">Your Primary Email is changed successfully. Kindly confirm it by clicking both the links sent to your Old and New Primary Email ids to see the change in your profile.<br /> Please </div>   <a href="javascript:void(0)" ng-click="navToLogin()">login</a> to continue
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer Starts -->
+<div ng-include src="'partials/footer.html'"></div>

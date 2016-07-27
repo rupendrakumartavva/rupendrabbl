@@ -1,0 +1,170 @@
+﻿@model BusinessCenter.Admin.Models.SubCategoryModel
+<form>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+    <p>@Html.HiddenFor(model => model.SubCatID)</p>
+    <p>@Html.HiddenFor(model => model.CustomCategoryName)</p>
+    <p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;"><span id="msg"></span></p>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Sub-Category Name")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm- col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.SubCategoryName, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        id = "SubCategoryName",
+                        name = "subcategoryname",
+                        placeholder = "",
+                        onfocus = "this.placeholder = ''",
+                        onblur = "this.placeholder = ''"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.SubCategoryName, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Status")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group text-center">
+
+                @if (Model.Status == true)
+                {
+                    @Html.RadioButtonFor(model => model.Status, "true", new { @checked = true})
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Active")
+
+                    <span style="padding-left:12px"></span>
+                    @Html.RadioButtonFor(model => model.Status, "false")
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Inactive")
+                }
+                else
+                {
+                    @Html.RadioButtonFor(model => model.Status, "true")
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Active")
+                    <span style="padding-left:12px"></span>
+                    @Html.RadioButtonFor(model => model.Status, "false", new { @checked = true})
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Inactive")
+                }
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+        </div>
+    </div>
+    <div class=" pre-checkquestion col-md-12 col-xs-12 " style=" margin-bottom: 20px;">
+        <button type="submit" id="btnUpdate" class="btn btn-default">Update Sub-Category</button>
+        <button type="submit" id="btnClear" class="btn btn-default">Cancel</button>
+    </div>
+</form>
+
+@*<style>
+
+            input[type=radio] {
+        transform: scale(1.5, 1.5);
+                -moz-transform: scale(1.5, 1.5);
+                -ms-transform: scale(1.5, 1.5);
+                -webkit-transform: scale(1.5, 1.5);
+                -o-transform: scale(1.5, 1.5);
+            }
+    </style>*@
+<script>
+    $(":input").on("focus", function () {
+       // errormsg.innerHTML = "";
+        // msg.innerHTML = "";
+    });
+    $(":input").on("keyup", function () {
+        msg.innerHTML = "";
+    });
+    $("#btnClear").click(function (e) {
+        e.preventDefault();
+        $("#SubCategoryName").val("");
+        GetSubCategory();
+      //  GetBusinessActivity();
+    });
+    $("#btnUpdate").click(function (e) {
+
+        e.preventDefault();
+        var result = $('form').valid();
+        if (result == 1) {
+            UpdateSubCategoryData();
+
+        }
+    });
+    function UpdateSubCategoryData() {
+        var status = '';
+        //if ($('#APP_Type').is(':checked')) {
+        //    apptype = "1";
+        //}
+        //else if ($('#APP_Type').is(':checked')) {
+        //    apptype = "0";
+        //}
+        if ($('#Status').is(':checked')) {
+            status = true;
+        }
+        else {
+            status = false;
+        }
+      //  console.log(apptype);
+        var subcategorydata = {
+            SubCatID: $("#SubCatID").val(),
+            SubCategoryName: $("#SubCategoryName").val(),
+            CustomCategoryName: $("#CustomCategoryName").val(),
+            Status: status
+        };
+        $.ajax({
+            url: '/BBL/UpdateSubCategory',
+            type: "Post",
+            data: subcategorydata,
+            success: editSuccess,
+            error: editFailure
+        });
+    }
+    function editSuccess(data) {
+        if (data.status == "SessionExipred") {
+            window.location.href = '/Account/SessionExpiry';
+        }
+       else if (data.status == "success") {
+            GetAll();
+            GetSubCategory();
+            msg.innerHTML = "Subcategory is updated successfully";
+            msg.style.color = "#339900";
+            //var url = "/BBL/SubCategories";
+            //window.location.href = url;
+        }
+        else if (data.status == "exists") {
+            msg.innerHTML = "This Subcategory already exist, please choose another";
+            msg.style.color = "Red";
+        }
+        return false;
+    }
+    function editFailure(data) {
+        console.log("error");
+        return false;
+    }
+</script>
+
+
+
+
+
+
+

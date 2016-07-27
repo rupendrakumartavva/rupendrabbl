@@ -1,0 +1,17 @@
+.headerContainer{width:100%;}
+.subHeaderContainer{width:25%;float:left;}
+.dataContainer{width:100%}
+.subDataContainer{width:25%;float:left}
+.clear{clear:both}
+.signatureImg{width: 176px; height:119px; border:2px solid; border-radius:5px;}
+
+/* === Media Attachment Page CSS === */
+.mainContainer{margin: 5px 0px 5px 0px; width:100%; height:100%; display:block;}
+.mediaContainer{width:100%; height:90%;}
+.mediaAtchmentContainer{width:100%; height:90%; border:1px solid blue;}
+.imgCanvas{display:none;}
+.medias{width:100%; height:60%; border:1px solid green; overflow:auto;}
+.mediaBlock{width:60px; height:60px; margin:5px 5px 0px 5px; float:left;}
+.photos{width:60px; height:60px;}
+.videos{width:60px; height:60px;}
+/* === End of Media Attachment Page CSS === */

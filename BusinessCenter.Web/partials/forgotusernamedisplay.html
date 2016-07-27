@@ -1,0 +1,55 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+    <div class="container headerBreadcrumb">
+        <a href="javascript:void(0)" ng-click="navToHome()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/login"  class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Login</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" ng-click="navToforgotusername()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Forgot Username</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Display Forgot Username</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Username Reset</h2>
+                <p>Help With This Page (Click Here) </p>
+            </div>
+        </div>
+    </div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div class="login_form forgot_password">
+        <div class="container">
+            <div id="success"></div>
+            <div class="login_wrapper" id="login_block">
+                <div class="form_wrapper">
+                    <!--<form role="form" method="post" id="contact_us" name="contact_us" >-->
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+
+                            <p class="margin_left">
+                                Hi <span class="font_weight">{{fullName}} ,</span>
+
+                            </p>
+                            <p class="p_weight">
+                                Your User Name of My DC Business Center is :<span class="span_text">{{UserName1}}</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!--</form>-->
+                </div>
+                <p>Don't have an account? <a ng-click="navToRegister()" href="javascript:void(0)">Get Started</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

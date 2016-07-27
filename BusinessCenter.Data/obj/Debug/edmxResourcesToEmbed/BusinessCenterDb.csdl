@@ -1,0 +1,1874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BusinessCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="BusinessCenterModel.C__MigrationHistory" />
+    <EntitySet Name="AuditRecord" EntityType="BusinessCenterModel.AuditRecord" />
+    <EntitySet Name="Clients" EntityType="BusinessCenterModel.Clients" />
+    <EntitySet Name="FeeCodeMap" EntityType="BusinessCenterModel.FeeCodeMap" />
+    <EntitySet Name="FixFee" EntityType="BusinessCenterModel.FixFee" />
+    <EntitySet Name="KeywordMaster" EntityType="BusinessCenterModel.KeywordMaster" />
+    <EntitySet Name="Lookup_BusinessStructure" EntityType="BusinessCenterModel.Lookup_BusinessStructure" />
+    <EntitySet Name="Lookup_ExistingCategories" EntityType="BusinessCenterModel.Lookup_ExistingCategories" />
+    <EntitySet Name="MailTemplate" EntityType="BusinessCenterModel.MailTemplate" />
+    <EntitySet Name="MasterBblApplicationStatus" EntityType="BusinessCenterModel.MasterBblApplicationStatus" />
+    <EntitySet Name="MasterBusinessActivity" EntityType="BusinessCenterModel.MasterBusinessActivity" />
+    <EntitySet Name="MasterCategory" EntityType="BusinessCenterModel.MasterCategory" />
+    <EntitySet Name="MasterCategoryDocument" EntityType="BusinessCenterModel.MasterCategoryDocument" />
+    <EntitySet Name="MasterCategoryPhysicalLocation" EntityType="BusinessCenterModel.MasterCategoryPhysicalLocation" />
+    <EntitySet Name="MasterCategoryQuestion" EntityType="BusinessCenterModel.MasterCategoryQuestion" />
+    <EntitySet Name="MasterCountry" EntityType="BusinessCenterModel.MasterCountry" />
+    <EntitySet Name="MastereHOPEligibility" EntityType="BusinessCenterModel.MastereHOPEligibility" />
+    <EntitySet Name="MasterEhopOptionType" EntityType="BusinessCenterModel.MasterEhopOptionType" />
+    <EntitySet Name="MasterPrimaryCategory" EntityType="BusinessCenterModel.MasterPrimaryCategory" />
+    <EntitySet Name="MasterRegisteredAgent" EntityType="BusinessCenterModel.MasterRegisteredAgent" />
+    <EntitySet Name="MasterRenewalStatusFee" EntityType="BusinessCenterModel.MasterRenewalStatusFee" />
+    <EntitySet Name="MasterSecondaryLicenseCategory" EntityType="BusinessCenterModel.MasterSecondaryLicenseCategory" />
+    <EntitySet Name="MasterState" EntityType="BusinessCenterModel.MasterState" />
+    <EntitySet Name="MasterSubCategory" EntityType="BusinessCenterModel.MasterSubCategory" />
+    <EntitySet Name="OSub_Category_Fees" EntityType="BusinessCenterModel.OSub_Category_Fees" />
+    <EntitySet Name="PaymentAddressDetails" EntityType="BusinessCenterModel.PaymentAddressDetails" />
+    <EntitySet Name="PaymentCardDetails" EntityType="BusinessCenterModel.PaymentCardDetails" />
+    <EntitySet Name="PaymentDetails" EntityType="BusinessCenterModel.PaymentDetails" />
+    <EntitySet Name="PaymentHistoryDetails" EntityType="BusinessCenterModel.PaymentHistoryDetails" />
+    <EntitySet Name="Portal_Content_Errors" EntityType="BusinessCenterModel.Portal_Content_Errors" />
+    <EntitySet Name="RefreshTokens" EntityType="BusinessCenterModel.RefreshTokens" />
+    <EntitySet Name="Role" EntityType="BusinessCenterModel.Role" />
+    <EntitySet Name="SecurityQuestion" EntityType="BusinessCenterModel.SecurityQuestion" />
+    <EntitySet Name="StreetTypes" EntityType="BusinessCenterModel.StreetTypes" />
+    <EntitySet Name="SubmissionBblAssociationToUsers" EntityType="BusinessCenterModel.SubmissionBblAssociationToUsers" />
+    <EntitySet Name="SubmissionCategory" EntityType="BusinessCenterModel.SubmissionCategory" />
+    <EntitySet Name="SubmissionCofo_Hop_Ehop" EntityType="BusinessCenterModel.SubmissionCofo_Hop_Ehop" />
+    <EntitySet Name="SubmissionCofo_Hop_Ehop_Address" EntityType="BusinessCenterModel.SubmissionCofo_Hop_Ehop_Address" />
+    <EntitySet Name="SubmissionCorporation_Agent" EntityType="BusinessCenterModel.SubmissionCorporation_Agent" />
+    <EntitySet Name="SubmissionCorporation_Agent_Address" EntityType="BusinessCenterModel.SubmissionCorporation_Agent_Address" />
+    <EntitySet Name="SubmissionDocument" EntityType="BusinessCenterModel.SubmissionDocument" />
+    <EntitySet Name="SubmissionDocumentToAccela" EntityType="BusinessCenterModel.SubmissionDocumentToAccela" />
+    <EntitySet Name="SubmissionEHOPEligibility" EntityType="BusinessCenterModel.SubmissionEHOPEligibility" />
+    <EntitySet Name="SubmissionGeneratedDocument" EntityType="BusinessCenterModel.SubmissionGeneratedDocument" />
+    <EntitySet Name="SubmissionIndividual" EntityType="BusinessCenterModel.SubmissionIndividual" />
+    <EntitySet Name="SubmissionLicenseNumberCounter" EntityType="BusinessCenterModel.SubmissionLicenseNumberCounter" />
+    <EntitySet Name="SubmissionMaster" EntityType="BusinessCenterModel.SubmissionMaster" />
+    <EntitySet Name="SubmissionMaster_ApplicationCheckList" EntityType="BusinessCenterModel.SubmissionMaster_ApplicationCheckList" />
+    <EntitySet Name="SubmissionMasterRenewal" EntityType="BusinessCenterModel.SubmissionMasterRenewal" />
+    <EntitySet Name="SubmissionQuestion" EntityType="BusinessCenterModel.SubmissionQuestion" />
+    <EntitySet Name="SubmissionSelfCertification" EntityType="BusinessCenterModel.SubmissionSelfCertification" />
+    <EntitySet Name="SubmissionTaxRevenue" EntityType="BusinessCenterModel.SubmissionTaxRevenue" />
+    <EntitySet Name="SubmissiontoAccela" EntityType="BusinessCenterModel.SubmissiontoAccela" />
+    <EntitySet Name="User" EntityType="BusinessCenterModel.User" />
+    <EntitySet Name="UserBBLService" EntityType="BusinessCenterModel.UserBBLService" />
+    <EntitySet Name="UserClaim" EntityType="BusinessCenterModel.UserClaim" />
+    <EntitySet Name="UserLogin" EntityType="BusinessCenterModel.UserLogin" />
+    <EntitySet Name="UserLoginHistory" EntityType="BusinessCenterModel.UserLoginHistory" />
+    <EntitySet Name="UserPasswordTracking" EntityType="BusinessCenterModel.UserPasswordTracking" />
+    <EntitySet Name="UserRole" EntityType="BusinessCenterModel.UserRole" />
+    <EntitySet Name="UserService" EntityType="BusinessCenterModel.UserService" />
+    <EntitySet Name="DCBC_ENTITY_ABRA" EntityType="BusinessCenterModel.DCBC_ENTITY_ABRA" />
+    <EntitySet Name="DCBC_ENTITY_BBL" EntityType="BusinessCenterModel.DCBC_ENTITY_BBL" />
+    <EntitySet Name="DCBC_ENTITY_BBL_Renewal_Invoice" EntityType="BusinessCenterModel.DCBC_ENTITY_BBL_Renewal_Invoice" />
+    <EntitySet Name="DCBC_ENTITY_CBE" EntityType="BusinessCenterModel.DCBC_ENTITY_CBE" />
+    <EntitySet Name="DCBC_ENTITY_Cof_O" EntityType="BusinessCenterModel.DCBC_ENTITY_Cof_O" />
+    <EntitySet Name="DCBC_ENTITY_CORP" EntityType="BusinessCenterModel.DCBC_ENTITY_CORP" />
+    <EntitySet Name="DCBC_ENTITY_LOOKUP_INDEX" EntityType="BusinessCenterModel.DCBC_ENTITY_LOOKUP_INDEX" />
+    <EntitySet Name="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX" EntityType="BusinessCenterModel.DCBC_ENTITY_MultiColumn_LOOKUP_INDEX" />
+    <EntitySet Name="DCBC_ENTITY_OPLA" EntityType="BusinessCenterModel.DCBC_ENTITY_OPLA" />
+    <EntitySet Name="DCBC_ENTITY_RESULTS_ABRA" EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_ABRA" />
+    <EntitySet Name="DCBC_ENTITY_RESULTS_BBL" EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_BBL" />
+    <EntitySet Name="DCBC_ENTITY_RESULTS_CBE" EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_CBE" />
+    <EntitySet Name="DCBC_ENTITY_RESULTS_Corp" EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_Corp" />
+    <EntitySet Name="DCBC_ENTITY_RESULTS_OPLA" EntityType="BusinessCenterModel.DCBC_ENTITY_RESULTS_OPLA" />
+    <EntitySet Name="OSub_Category_Checklist" EntityType="BusinessCenterModel.OSub_Category_Checklist" />
+    <EntitySet Name="TBL_ETL_Address_And_Parcel" EntityType="BusinessCenterModel.TBL_ETL_Address_And_Parcel" />
+    <EntitySet Name="BblLicenseView2" EntityType="BusinessCenterModel.BblLicenseView2" />
+    <EntitySet Name="BblLicenseView4" EntityType="BusinessCenterModel.BblLicenseView4" />
+    <AssociationSet Name="FK_dbo_UserClaim_dbo_User_UserId" Association="BusinessCenterModel.FK_dbo_UserClaim_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaim" EntitySet="UserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserLogin_dbo_User_UserId" Association="BusinessCenterModel.FK_dbo_UserLogin_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <EntitySet Name="BblLicenseView3" EntityType="BusinessCenterModel.BblLicenseView3" />
+    <EntitySet Name="BblLicenseView" EntityType="BusinessCenterModel.BblLicenseView" />
+    <EntitySet Name="KeywordDetails" EntityType="BusinessCenterModel.KeywordDetails" />
+    <EntitySet Name="DCBC_ENTITY_BBL_Renewals" EntityType="BusinessCenterModel.DCBC_ENTITY_BBL_Renewals" />
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AuditRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuditId" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SessionId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UrlAccessed" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="TimeAccessed" Type="DateTime" Precision="3" />
+    <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Secret" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationType" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="RefreshTokenLifeTime" Type="Int32" Nullable="false" />
+    <Property Name="AllowedOrigin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FeeCodeMap">
+    <Key>
+      <PropertyRef Name="FeeCodeId" />
+    </Key>
+    <Property Name="FeeCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FeeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsTier" Type="Boolean" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="FixFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ApplicationFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EndorsementFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TradeRegFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RAOFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="eHOPFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="KeywordMaster">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Keywords" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SearchCriteria" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Lookup_BusinessStructure">
+    <Key>
+      <PropertyRef Name="LookUpBusinessStructureId" />
+    </Key>
+    <Property Name="LookUpBusinessStructureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessStructure" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="IsManualAddress" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Lookup_ExistingCategories">
+    <Key>
+      <PropertyRef Name="LookUpId" />
+    </Key>
+    <Property Name="LookUpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NewCategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ExistingCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MailTemplate">
+    <Key>
+      <PropertyRef Name="EmailTemplateId" />
+    </Key>
+    <Property Name="EmailTemplateId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MailSentFailCount" Type="Int32" />
+    <Property Name="MailContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsMailSent" Type="Boolean" />
+    <Property Name="MailCreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="MailSentDate" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Custom_Application_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterBblApplicationStatus">
+    <Key>
+      <PropertyRef Name="BblApplicationStatusId" />
+    </Key>
+    <Property Name="BblApplicationStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Application_Cap_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Changed_Cap_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterBusinessActivity">
+    <Key>
+      <PropertyRef Name="ActivityID" />
+    </Key>
+    <Property Name="ActivityID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="APP_Type" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MasterCategory">
+    <Key>
+      <PropertyRef Name="MasterCategoryId" />
+    </Key>
+    <Property Name="MasterCategoryId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterCategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Endorsement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="App_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="UnitOne" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="UnitTwo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MasterCategoryDocument">
+    <Key>
+      <PropertyRef Name="MasterCategoryDocId" />
+    </Key>
+    <Property Name="MasterCategoryDocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InitialLicense" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="PostLicensure" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Renewal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Agency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Agency_FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Div" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SupportingDocuments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDocName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="IsPrimaryCategoryDoc" Type="Boolean" />
+    <Property Name="IsSecondaryLicenseDoc" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MasterCategoryPhysicalLocation">
+    <Key>
+      <PropertyRef Name="RuleId" />
+    </Key>
+    <Property Name="RuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimaryCategory_Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessMustBeInDC" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="COFORequired" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HOP_EHOPAllowed" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ExemptFromAllFees" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MasterCategoryQuestion">
+    <Key>
+      <PropertyRef Name="MasterCategoryQuestionId" />
+    </Key>
+    <Property Name="MasterCategoryQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserQuestion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterCountry">
+    <Key>
+      <PropertyRef Name="CountryCode" />
+    </Key>
+    <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MastereHOPEligibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterEhopOptionType">
+    <Key>
+      <PropertyRef Name="EhopOptionId" />
+    </Key>
+    <Property Name="EhopOptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EhopOptionName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterPrimaryCategory">
+    <Key>
+      <PropertyRef Name="PrimaryID" />
+    </Key>
+    <Property Name="PrimaryID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Endorsement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UnitOne" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="UnitTwo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="App_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="IsSecondaryLicenseCategory" Type="Boolean" />
+    <Property Name="IsSubCategory" Type="Boolean" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="IsBackgroundInvestigation" Type="Boolean" />
+    <Property Name="IsPDFShow" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MasterRegisteredAgent">
+    <Key>
+      <PropertyRef Name="RegisterID" />
+    </Key>
+    <Property Name="RegisterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StreetAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StreetNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StreetType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quadrant" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UnitNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterRenewalStatusFee">
+    <Key>
+      <PropertyRef Name="RenewalStatusFeesId" />
+    </Key>
+    <Property Name="RenewalStatusFeesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FeeAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="StartRange" Type="Int32" />
+    <Property Name="EndRange" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MasterSecondaryLicenseCategory">
+    <Key>
+      <PropertyRef Name="SecondaryID" />
+    </Key>
+    <Property Name="SecondaryID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryLicenseCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UnitOne" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="UnitTwo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Endorsement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsSubCategory" Type="Boolean" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="MasterState">
+    <Key>
+      <PropertyRef Name="StateCode" />
+    </Key>
+    <Property Name="StateCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StateName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MasterSubCategory">
+    <Key>
+      <PropertyRef Name="SubCatID" />
+    </Key>
+    <Property Name="SubCatID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubCategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomCategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OSub_Category_Fees">
+    <Key>
+      <PropertyRef Name="OSub_Category" />
+    </Key>
+    <Property Name="OSub_Category" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OSub_Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Fee_Code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Start" Type="Int32" />
+    <Property Name="End" Type="Int32" />
+    <Property Name="License_Fee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Tier" Type="Int32" />
+    <Property Name="App_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PaymentAddressDetails">
+    <Key>
+      <PropertyRef Name="PaymentAddressId" />
+    </Key>
+    <Property Name="PaymentAddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FullAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StreetNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StreetName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="StreetType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quadrant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UnitNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactFirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ContactMiddleName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ContactLastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PaymentCardDetails">
+    <Key>
+      <PropertyRef Name="PaymentCardId" />
+    </Key>
+    <Property Name="PaymentCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CardType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CardExpDate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CvvNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PaymentDetails">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ordernumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentFrom" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMailAddress" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Signature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAggree" Type="Boolean" />
+    <Property Name="TranscationId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="ApproveBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Application_Transcation_Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PaymentHistoryDetails">
+    <Key>
+      <PropertyRef Name="PaymentHistoryId" />
+    </Key>
+    <Property Name="PaymentHistoryId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CvvNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CardExpDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentTransactionId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Portal_Content_Errors">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MessageType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ShortName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ErrrorMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RefreshTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IssuedUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpiresUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProtectedTicket" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TokenGui" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="StreetTypes">
+    <Key>
+      <PropertyRef Name="StreetTypeId" />
+    </Key>
+    <Property Name="StreetTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StreetType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="StreetCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionBblAssociationToUsers">
+    <Key>
+      <PropertyRef Name="SubmissionBblAssociationOtherUid" />
+    </Key>
+    <Property Name="SubmissionBblAssociationOtherUid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionLicense" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FromUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ToUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfTransfer" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReasonForTransfer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubmissionCategory">
+    <Key>
+      <PropertyRef Name="SubmissionCategoryID" />
+    </Key>
+    <Property Name="SubmissionCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryTypeID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EndorsementFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LicenseCategoryFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CategoryType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ItemQty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Endorsement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionCofo_Hop_Ehop">
+    <Key>
+      <PropertyRef Name="SubCofoHopEhopId" />
+    </Key>
+    <Property Name="SubCofoHopEhopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserSelectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfIssuance" Type="DateTime" Precision="3" />
+    <Property Name="DoNotHaveCofo" Type="Boolean" />
+    <Property Name="IsUploadSupportDoc" Type="Boolean" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="OccupancyAddressValidate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IseHOPEligibility" Type="Boolean" />
+    <Property Name="EHopEligibilityType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmeHOPEligibilityType" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubmissionCofo_Hop_Ehop_Address">
+    <Key>
+      <PropertyRef Name="SubmissionCofo_Hop_Ehop_AddressId" />
+    </Key>
+    <Property Name="SubmissionCofo_Hop_Ehop_AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CustomType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="240" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StreetName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="StreetType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Quadrant" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UnitType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsValid" Type="Boolean" />
+    <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="AddressID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AddressNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AddressNumberSufix" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Xcoord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ycoord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Anc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cluster" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Vote_Prcnct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Smd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Ssl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionCorporation_Agent">
+    <Key>
+      <PropertyRef Name="SubCorporationRegId" />
+    </Key>
+    <Property Name="SubCorporationRegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TradeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessStructure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ChcekedFromCorp" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubmissionCorporation_Agent_Address">
+    <Key>
+      <PropertyRef Name="SCAId" />
+    </Key>
+    <Property Name="SCAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubCorporationRegId" Type="Int32" />
+    <Property Name="AddressType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FileNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddelName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Quadrant" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UnitNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AddressNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionDocument">
+    <Key>
+      <PropertyRef Name="SubmDocId" />
+    </Key>
+    <Property Name="SubmDocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="MasterCategoryDocId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubmittedDocumentType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DocRequired" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FileLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocStatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubmissionDocumentToAccela">
+    <Key>
+      <PropertyRef Name="SubmisionDocToAccelaId" />
+    </Key>
+    <Property Name="SubmisionDocToAccelaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MasterId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterCategoryDocId" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubmissionEHOPEligibility">
+    <Key>
+      <PropertyRef Name="SubEhopId" />
+    </Key>
+    <Property Name="SubEhopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterEhopId" Type="Int32" />
+    <Property Name="TypeId" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionGeneratedDocument">
+    <Key>
+      <PropertyRef Name="SubmissionGeneratedDocumentId" />
+    </Key>
+    <Property Name="SubmissionGeneratedDocumentId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionLicenseNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileByteCode" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FileType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Gen_DocumentFrom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionIndividual">
+    <Key>
+      <PropertyRef Name="SubmindividualId" />
+    </Key>
+    <Property Name="SubmindividualId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyBusinessLicense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="3" />
+    <Property Name="City" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="State_Province" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HairColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EyeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdentificationCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StateofIssuance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubmissionLicenseNumberCounter">
+    <Key>
+      <PropertyRef Name="CounterId" />
+    </Key>
+    <Property Name="CounterId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Counter" Type="Int64" />
+    <Property Name="Sequence" Type="Int32" />
+    <Property Name="FiscalYear" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubmissionMaster">
+    <Key>
+      <PropertyRef Name="MasterId" />
+    </Key>
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionLicense" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RAOFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IseHOP" Type="Boolean" />
+    <Property Name="eHOP" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="App_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DocSubmType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="IsBusinessMustbeinDC" Type="Boolean" />
+    <Property Name="IsHomeBased" Type="Boolean" />
+    <Property Name="IsCofo" Type="Boolean" />
+    <Property Name="IsPhysicalLocationVerify" Type="Boolean" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="isCorporationDivision" Type="Boolean" />
+    <Property Name="BusinessStructure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Updatedate" Type="DateTime" Precision="3" />
+    <Property Name="UserSelectMailAddressType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseDuration" Type="Int32" />
+    <Property Name="UserBblAssociateId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsCategorySelfCertification" Type="Boolean" />
+    <Property Name="BusinessOwnerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PremisesAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRaoFee_Applied" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubmissionMaster_ApplicationCheckList">
+    <Key>
+      <PropertyRef Name="SubMaster_ApplicationCheckListId" />
+    </Key>
+    <Property Name="SubMaster_ApplicationCheckListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FEIN_SSN" Type="Boolean" />
+    <Property Name="IsSubmissionCofo" Type="Boolean" />
+    <Property Name="IsSubmissionHop" Type="Boolean" />
+    <Property Name="IsSubmissioneHop" Type="Boolean" />
+    <Property Name="IsCleanHandsVerify" Type="Boolean" />
+    <Property Name="IsCorporateRegistration" Type="Boolean" />
+    <Property Name="IsBHAddress" Type="Boolean" />
+    <Property Name="IsBPAddress" Type="Boolean" />
+    <Property Name="IsMailAddress" Type="Boolean" />
+    <Property Name="IsResidentAgent" Type="Boolean" />
+    <Property Name="IsDocForCleanHands" Type="Boolean" />
+    <Property Name="IsDocForCofo" Type="Boolean" />
+    <Property Name="IsDocForHop" Type="Boolean" />
+    <Property Name="IsDocForeHop" Type="Boolean" />
+    <Property Name="IsSelfCertification" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubmissionMasterRenewal">
+    <Key>
+      <PropertyRef Name="RenewalSubmId" />
+    </Key>
+    <Property Name="RenewalSubmId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionLicense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CorpNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDcraCorpDivision" Type="Boolean" />
+    <Property Name="LapsedFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Extradays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsCorpDocRegistration" Type="Boolean" />
+    <Property Name="ExpiredFee" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="SubmissionQuestion">
+    <Key>
+      <PropertyRef Name="SubmQuestionsId" />
+    </Key>
+    <Property Name="SubmQuestionsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Question" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OptionType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubmissionSelfCertification">
+    <Key>
+      <PropertyRef Name="SelfCertificationId" />
+    </Key>
+    <Property Name="SelfCertificationId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MasterCategoryId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsPropertyOccupied" Type="Boolean" />
+    <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SelfCertificationOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsAgree" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubmissionTaxRevenue">
+    <Key>
+      <PropertyRef Name="SubmissionTaxRevenueId" />
+    </Key>
+    <Property Name="SubmissionTaxRevenueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TaxRevenueNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaxRevenueType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CreatdedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessOwnerRoles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsIAgree" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SubmissiontoAccela">
+    <Key>
+      <PropertyRef Name="SubmissiontoAccelaId" />
+    </Key>
+    <Property Name="SubmissiontoAccelaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationCompleted" Type="Boolean" />
+    <Property Name="ApplicationCreated" Type="Boolean" />
+    <Property Name="ApplicationFeeMatched" Type="Boolean" />
+    <Property Name="RenewalPaymentUpdated" Type="Boolean" />
+    <Property Name="RenewalFeeMatched" Type="Boolean" />
+    <Property Name="AllDocumentsUpdated" Type="Boolean" />
+    <Property Name="EHOPCreated" Type="Boolean" />
+    <Property Name="AccelaGeneratedID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProcessCompleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginDateandTime" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="ActivationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityQuestion1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityQuestion2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityQuestion3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityAnswer1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityAnswer2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityAnswer3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActivationDate" Type="DateTime" Precision="3" />
+    <Property Name="SecondaryEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ChangeEmailValidate" Type="DateTime" Precision="3" />
+    <Property Name="ChangeEmailConfirmed" Type="Boolean" />
+    <Property Name="PreviousEmailValidate" Type="DateTime" Precision="3" />
+    <Property Name="PreviousEmailConfirmed" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsForgot" Type="Boolean" />
+    <Property Name="DeleteComment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsLoggedIn" Type="Boolean" />
+    <Property Name="LoginSessionId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserClaim" Relationship="BusinessCenterModel.FK_dbo_UserClaim_dbo_User_UserId" FromRole="User" ToRole="UserClaim" />
+    <NavigationProperty Name="UserLogin" Relationship="BusinessCenterModel.FK_dbo_UserLogin_dbo_User_UserId" FromRole="User" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="UserBBLService">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubmissionLicense" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="LicenseExpirationDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="CleanHandsType_SSN_FEIN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DCBC_ENTITY_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="B1_ALT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="BusinessCenterModel.FK_dbo_UserClaim_dbo_User_UserId" FromRole="UserClaim" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="BusinessCenterModel.FK_dbo_UserLogin_dbo_User_UserId" FromRole="UserLogin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLoginHistory">
+    <Key>
+      <PropertyRef Name="LoginHisId" />
+    </Key>
+    <Property Name="LoginHisId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="Count" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserPasswordTracking">
+    <Key>
+      <PropertyRef Name="PasswordTrackId" />
+    </Key>
+    <Property Name="PasswordTrackId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordTrack" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserService">
+    <Key>
+      <PropertyRef Name="UserListId" />
+    </Key>
+    <Property Name="UserListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DATA_SOURCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="updatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_ABRA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="Serv_Prov_Code" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Serv_Prov_Code" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_GROUP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_CATEGORY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="APP_STATUS_GROUP_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SPECIAL_TEXT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="License_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_TRACKING_NBR" Type="Int64" />
+    <Property Name="License_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="DateTime" Precision="3" />
+    <Property Name="B1_CHECKBOX_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="License_Expiration_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Valid_Thru_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Posting_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Class_Type" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Class_Type_AttrValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Establishment_Type" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Applicant_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Applicant_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Applicant_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Applicant_FULL_NAME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Applicant_RELATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Applicant_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_FULL_NAME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_RELATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_ADDR1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_ADDR2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_ADDR3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Solicitor_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_FULL_NAME" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_RELATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_ADDR1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_ADDR2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_ADDR3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PRIMARY_ADDR_FLG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="B1_HSE_NBR_START" Type="Int32" />
+    <Property Name="B1_HSE_NBR_END" Type="Int32" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="B1_HSE_FRAC_NBR_END" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="B1_UNIT_START" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_BBL">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="SERV_PROV_CODE" />
+      <PropertyRef Name="B1_PER_ID1" />
+      <PropertyRef Name="B1_PER_ID2" />
+      <PropertyRef Name="B1_PER_ID3" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_SUB_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+      <PropertyRef Name="REC_FUL_NAM" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SERV_PROV_CODE" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID1" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID2" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID3" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_GROUP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_SUB_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_CATEGORY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS_ORIGINAL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_ALT_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_CAP" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ISSUED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="B1_HSE_NBR_START" Type="Int32" />
+    <Property Name="B1_HSE_NBR_END" Type="Int32" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="B1_HSE_FRAC_NBR_END" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="B1_UNIT_START" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FULL_ADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SSL" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="REC_FUL_NAM" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_Business_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_MiddleName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Attr_TRADE_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Org" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Expiration_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="License_Issued_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Period_Start_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="License_Category" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="License_Category_Full" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="TaxNumber" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="FEIN_SSN" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_CAP_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_CAP_STATUS_DATE" Type="DateTime" Precision="3" />
+    <Property Name="REC_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WARD" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="ANC" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="CofO_Number" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="CofO_IssueDate" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="H_O_P_Number" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="H_O_P_Issue_Date" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="E_HOP_Number" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="E_HOP_Issue_Date" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="ZONE" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Org_Number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_BBL_Renewal_Invoice">
+    <Key>
+      <PropertyRef Name="SERV_PROV_CODE" />
+      <PropertyRef Name="B1_PER_ID1" />
+      <PropertyRef Name="B1_PER_ID2" />
+      <PropertyRef Name="B1_PER_ID3" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_SUB_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="As_of_Date" Type="DateTime" Precision="0" />
+    <Property Name="SERV_PROV_CODE" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID1" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID2" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID3" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_GROUP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_SUB_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_CATEGORY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="b1_Alt_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="GF_DES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GF_FEE" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="GF_UNIT" Type="Decimal" Precision="15" Scale="2" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_CBE">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="BusinessName" />
+      <PropertyRef Name="BusinessDescription" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LsdbeID" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="BusinessName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessAddress" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessAddressShort" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessPhone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessFax" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="GIS_Ward" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CertificationExpiry" Type="DateTime" Precision="3" />
+    <Property Name="NIGPAppID" Type="Int32" />
+    <Property Name="TradeDivAppID" Type="Int32" />
+    <Property Name="BAPAppID" Type="Int32" />
+    <Property Name="BusinessStructure" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IncorporationDate" Type="DateTime" Precision="3" />
+    <Property Name="BusinessDescription" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessContact" Type="String" MaxLength="129" FixedLength="false" Unicode="true" />
+    <Property Name="LSDBE_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RefPoints" Type="Int32" />
+    <Property Name="RefPointsDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessAddress1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessAddress2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessCity" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessZip1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessZip2" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="LSDBEBusinessOptions" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessWebsite" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Lsdbe_PersonAppID" Type="Int32" />
+    <Property Name="MailingAddress" Type="String" MaxLength="361" FixedLength="false" Unicode="false" />
+    <Property Name="PublicContact" Type="String" MaxLength="129" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_Cof_O">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="As_of_Date" />
+      <PropertyRef Name="DCBC_Status" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="As_of_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="b1_Alt_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="DCBC_Status" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="DateTime" Precision="3" />
+    <Property Name="B1_HSE_NBR_START" Type="Int32" />
+    <Property Name="B1_HSE_NBR_END" Type="Int32" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="B1_UNIT_START" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_NBRHD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Zoning_Use" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Medical_Marijuana_Dispensary" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SD_APP_DES" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Status_DATE" Type="DateTime" Precision="3" />
+    <Property Name="REC_DATE" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_CORP">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="REC_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BizEntityId" Type="Int32" />
+    <Property Name="FileNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EntityStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EntityStatusDate" Type="DateTime" Precision="3" />
+    <Property Name="Locale" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Qualifier" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ModelType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Suffix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusniessAddressLine1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusniessAddressLine2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusniessAddressLine3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusniessAddressLine4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessState" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessCountry" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_Address1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_Address2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_Address3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_Address4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_State" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_ZipCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RA_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+    <Property Name="ForeignDateOfOrganization" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NextReportYear" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ModelType_ORIGINAL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_LOOKUP_INDEX">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE" />
+      <PropertyRef Name="LOOKUP_TYPE" />
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="LOOKUP_VALUE" />
+      <PropertyRef Name="SEARCH_STRING" />
+    </Key>
+    <Property Name="DATA_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LOOKUP_TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" />
+    <Property Name="LOOKUP_VALUE" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SEARCH_STRING" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE" />
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="LicenseNumberOrig" />
+      <PropertyRef Name="LicenseNumberLookup" />
+      <PropertyRef Name="CompanyNameOrig" />
+      <PropertyRef Name="CompanyNameLookup" />
+      <PropertyRef Name="FirstNameOrig" />
+      <PropertyRef Name="FirstNameLookup" />
+      <PropertyRef Name="LastNameOrig" />
+      <PropertyRef Name="LastNameLookup" />
+    </Key>
+    <Property Name="DATA_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" />
+    <Property Name="LicenseNumberOrig" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LicenseNumberLookup" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyNameOrig" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyNameLookup" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FirstNameOrig" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FirstNameLookup" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastNameOrig" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastNameLookup" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_OPLA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BOARD_ABBREVIATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LICENSE_PREFIX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LICENSE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LICENSE_ISSUE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="LICENSE_EXPIRATION_DATE" Type="DateTime" Precision="0" />
+    <Property Name="LICENSE_STATUS_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Licensee_Name_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Licensee_Name_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Licensee_Name_3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Licensee_Name_4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESS_ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESS_CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESS_STATE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESS_ZIP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESS_PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOME_ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="HOME_CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOME_STATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOME_ZIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOME_PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Preferred_Address_Ind" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_LICENSE_PREFIX1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_LICENSE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Organization_EMPLOYER_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_LICENSE_ISSUE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EMPLOYER_LICENSE_EXPIRATION_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EMPLOYER_LICENSE_STATUS_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_STATE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_ZIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FULL_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPLA_LICENSE_CATEGORY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPLA_SOURCE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="REC_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="License_Board" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="License_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_RESULTS_ABRA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="Serv_Prov_Code" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Serv_Prov_Code" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_GROUP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_CATEGORY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="APP_STATUS_GROUP_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SPECIAL_TEXT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="License_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_TRACKING_NBR" Type="Int64" />
+    <Property Name="License_Status_Original" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="License_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="DateTime" Precision="3" />
+    <Property Name="B1_CHECKBOX_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="License_Expiration_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Valid_Thru_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Posting_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Class_Type" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Class_Type_AttrValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Establishment_Type" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Middle_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Full_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Relation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PRIMARY_ADDR_FLG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="B1_HSE_NBR_START" Type="Int32" />
+    <Property Name="B1_HSE_NBR_END" Type="Int32" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="B1_HSE_FRAC_NBR_END" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="B1_UNIT_START" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_CITY" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Rec_Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_RESULTS_BBL">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="LAST_UPDATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="License_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="License_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Premise_Address" Type="String" MaxLength="83" FixedLength="false" Unicode="false" />
+    <Property Name="Corporation_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Trade_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="License_Expiration_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="License_Category" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="License_Endorsement_Category" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_RESULTS_CBE">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="Last_Update" />
+      <PropertyRef Name="Company_Name" />
+      <PropertyRef Name="Company_Description" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Last_Update" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Company_Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Business_Address" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Expiration_Date" Type="DateTime" Precision="3" />
+    <Property Name="Organization_Type" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Company_Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Contact" Type="String" MaxLength="129" FixedLength="false" Unicode="true" />
+    <Property Name="CBE_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Preference_Points_Summary" Type="Int32" />
+    <Property Name="Preference_Points_Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_RESULTS_Corp">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessName" Type="String" MaxLength="307" FixedLength="false" Unicode="false" />
+    <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Locale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModelType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EntityStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EntityStatusDate" Type="DateTime" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+    <Property Name="NextReportYear" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_RESULTS_OPLA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="LICENSE_STATUS" />
+      <PropertyRef Name="EMPLOYER_LICENSE_STATUS" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="Int32" Nullable="false" />
+    <Property Name="REC_STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="License_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="License_Board" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LICENSE_NUMBER" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="LICENSE_ISSUE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EXPIRATION_DATE" Type="DateTime" Precision="0" />
+    <Property Name="LICENSE_STATUS" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Licensee_Name" Type="String" MaxLength="1025" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="302" FixedLength="false" Unicode="false" />
+    <Property Name="Employer_City_State_Zip" Type="String" MaxLength="167" FixedLength="false" Unicode="false" />
+    <Property Name="Preferred_Address_Ind" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_LICENSE_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EMPLOYER_LICENSE_NUMBER" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="Organization_EMPLOYER_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYER_LICENSE_ISSUE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EMPLOYER_LICENSE_EXPIRATION_DATE" Type="DateTime" Precision="0" />
+    <Property Name="EMPLOYER_LICENSE_STATUS" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="FULL_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPLA_LICENSE_CATEGORY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OPLA_SOURCE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OSub_Category_Checklist">
+    <Key>
+      <PropertyRef Name="OSub_Category" />
+      <PropertyRef Name="OSub_Description" />
+    </Key>
+    <Property Name="OSub_Category" Type="Int32" Nullable="false" />
+    <Property Name="OSub_Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UnitTwo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBL_ETL_Address_And_Parcel">
+    <Key>
+      <PropertyRef Name="L1_PARCEL_NBR" />
+    </Key>
+    <Property Name="L1_PARCEL_NBR" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="L1_HSE_NBR_START" Type="Int32" />
+    <Property Name="L1_HSE_NBR_END" Type="Int32" />
+    <Property Name="L1_HSE_FRAC_NBR_START" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="L1_HSE_FRAC_NBR_END" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UNIT_START" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UNIT_END" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UNIT_TYPE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="L1_STR_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="L1_STR_PREFIX" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="L1_STR_SUFFIX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_STR_SUFFIX_DIR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="L1_INSP_DISTRICT_PREFIX" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="L1_INSP_DISTRICT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_NBRHD_PREFIX" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_NBRHD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_CITY" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_COUNTY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="L1_SITUS_COUNTRY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_ADDR_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="L1_ADDR_DESC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UDF1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UDF2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UDF3" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_UDF4" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="L1_FULL_ADDRESS" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BblLicenseView2">
+    <Key>
+      <PropertyRef Name="Application" />
+    </Key>
+    <Property Name="Application" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Primary_Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Pri__Units" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pri__Units_Description" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Pri__Units_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pri__Units_Description_2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Secondary_Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sec__Units" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sec__Units_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SubCategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="UpDated_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="BblLicenseView4">
+    <Key>
+      <PropertyRef Name="APPID" />
+      <PropertyRef Name="DocumentSubmissionType" />
+    </Key>
+    <Property Name="APPID" Type="Int32" Nullable="false" />
+    <Property Name="Application_License_No_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SubmissionFileLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentSubmissionType" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MasterCategoryDocId" Type="Int32" />
+    <Property Name="SubmissionType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Agency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Agency_FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Div" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SupportingDocuments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDocName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="UpDated_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_dbo_UserClaim_dbo_User_UserId">
+    <End Type="BusinessCenterModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BusinessCenterModel.UserClaim" Role="UserClaim" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_dbo_UserLogin_dbo_User_UserId">
+    <End Type="BusinessCenterModel.User" Role="User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BusinessCenterModel.UserLogin" Role="UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BblLicenseView3">
+    <Key>
+      <PropertyRef Name="Application_Unique_ID" />
+      <PropertyRef Name="Renewal_License_No_" />
+    </Key>
+    <Property Name="Application_Unique_ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="License_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Full_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Online_App_License_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Renewal_License_No_" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Primary_Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="License_Renewal_Period" Type="Int32" />
+    <Property Name="ApplicationFee" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="Endorsement_Fee" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="LicenseFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RAO_Fee" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="ESFFee" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="Penalty_Fee__Lapse_" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Penalty_Fee__Expired_" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Expiration_Date" Type="Int32" />
+    <Property Name="Payment_Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Transaction_Payment_Date" Type="DateTime" Precision="3" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="UpDated_Date" Type="DateTime" Precision="3" />
+    <Property Name="Org_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BblLicenseView">
+    <Key>
+      <PropertyRef Name="Application_Unique_ID" />
+      <PropertyRef Name="Application_License_No_" />
+    </Key>
+    <Property Name="Application_Unique_ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Full_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Applicant_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Online_App_License_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Application_License_No_" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Application_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="App_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="License_Period" Type="Int32" />
+    <Property Name="ApplicationFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EndorsementFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LicenseFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RAOFee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ESFFee" Type="Decimal" Precision="21" Scale="5" />
+    <Property Name="EHOP_Fees" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Payment_Transaction_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment_Transaction_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CH_Self_Certificate_Signature" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CH_Self_Certificate_Date" Type="DateTime" Precision="3" />
+    <Property Name="CH_Self_Certificate_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Self_Certificate__One_Family_" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Certificate_of_Occupancy_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Home_Occupation_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EHOP_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EHOP_Issue_Date" Type="DateTime" Precision="3" />
+    <Property Name="EHOP_Attested_By" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EHOP_Occupation_Type" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="EHOP_Issuance_Status" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Middle_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Organization_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Full_Address_Line_1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address_Line_2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Zip_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country_Region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Business_Organization___" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Trade_Name__If_applicable_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tax_ID_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FEIN_SSN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Prim_Street_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Prim_Street_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="StreetType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Quadrant" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Unit_Type___" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Suite_Unit_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PState" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country__" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PZip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Premise_Address_Verified" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Parcel_Premise_Suffix" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Parcel_Premise_Ward" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Parcel_Premise_ANC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Parcel_Premise_Zone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Parcel_Premise_SSL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Org_Buss__Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_ContactFirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_ContactMiddleName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_ContactLastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Address_1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Address_2_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Address_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Country___" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Zip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Billing_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Agent_Org_Buss__Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_Middle_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Street_Address" Type="String" MaxLength="783" FixedLength="false" Unicode="true" />
+    <Property Name="Address_Line__2_" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ContactAgent_City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactAgent_State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactAgent_Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactAgent_ZipCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Corp_Telephone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactAgent_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Employee_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Buss__Lic_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date_of_Birth" Type="DateTime" Precision="3" />
+    <Property Name="Place_of_Birth" Type="String" MaxLength="264" FixedLength="false" Unicode="true" />
+    <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hair_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Eyes_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Drivers_License" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State_of_License" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="License_Expiration_Date" Type="DateTime" Precision="3" />
+    <Property Name="Created_Date" Type="DateTime" Precision="3" />
+    <Property Name="UpDated_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="KeywordDetails">
+    <Key>
+      <PropertyRef Name="KeywordDid" />
+    </Key>
+    <Property Name="KeywordDid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KeyId" Type="Int64" />
+    <Property Name="KeyCount" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="DCBC_ENTITY_BBL_Renewals">
+    <Key>
+      <PropertyRef Name="SERV_PROV_CODE" />
+      <PropertyRef Name="B1_PER_ID1" />
+      <PropertyRef Name="B1_PER_ID2" />
+      <PropertyRef Name="B1_PER_ID3" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_SUB_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="As_of_Date" Type="DateTime" Precision="0" />
+    <Property Name="SERV_PROV_CODE" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID1" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID2" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_ID3" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_GROUP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_SUB_TYPE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_PER_CATEGORY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="b1_Alt_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="License_Being_Renewed" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Renewal_Status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="DateTime" Precision="3" />
+    <Property Name="B1_HSE_NBR_START" Type="Int32" />
+    <Property Name="B1_HSE_NBR_END" Type="Int32" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="B1_UNIT_START" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_CITY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_STATE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="B1_SITUS_ZIP" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="License_Period" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="OSR_Pin" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="CofO_Number" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Review_Necessary" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="CofO_IssueDate" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="H_O_P_Number" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="H_O_P_Issue_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="E_HOP_Number" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="E_HOP_Issue_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_Business_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_MiddleName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="OwnrApplicant_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_BUSINESS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_FNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_MNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_LNAME" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_Address2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_Address3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_STATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RegAgent_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Attr_TRADE_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Org" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Billing_Contact_REC_DATE" Type="DateTime" Precision="3" />
+    <Property Name="Reg_Agent_REC_DATE" Type="DateTime" Precision="3" />
+    <Property Name="Bus_Ownr_Applicant_REC_DATE" Type="DateTime" Precision="3" />
+    <Property Name="Attr_TradeName_REC_DATE" Type="DateTime" Precision="3" />
+    <Property Name="Attr_BusOrg_REC_DATE" Type="DateTime" Precision="3" />
+    <Property Name="Org_Number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

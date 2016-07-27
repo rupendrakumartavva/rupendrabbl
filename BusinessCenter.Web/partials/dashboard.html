@@ -1,0 +1,122 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event,'dashboard')" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Dashboard</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <form role="form" method="post" id="contact_us" name="contact_us">
+                <h2 class="space_wrap" ng-bind-html-unsafe data-ng-model="string" id="Title" ng-trim="false">{{userFirstName}}</h2>
+            </form><br />
+            <!--<p>
+                <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well">
+                    <p class="text-left"><strong>This page provides a one-stop location to track and maintain regulatory information you have saved to, or associated with, your personal account. </strong> </p>
+                    <p class="terms_text">
+                        This is the homepage of your My DC Business Center account. This page is referred to as your <strong>"Dashboard."</strong>
+                    </p>
+                    <p class="terms_text">To view all of your saved Quick Search results, click the <strong>View All</strong> link in the "Quick Search Business Info" box. </p>
+                    <p class="terms_text">In order to execute a new Quick Search, click the <strong>New Search</strong> button in the "Quick Search Business Info" box. </p>
+                    <p class="terms_text login_form my_form">If you need additional help, review the<br />
+                        <a href="../HelpDoc/UserGuide.pdf" target="_blank" class=" btn btn-default read_btn"> My DC Business Center User Guide</a><br />
+                        <a href="../HelpDoc/UserGuide.pdf" target="_blank" class=" btn btn-default read_btn"> Quick Search User Guide</a><br />
+                        <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class=" btn btn-default read_btn"> My BBLs User Guide</a><br />
+                        <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                    </p>
+                </div>
+            </div>-->
+            <div class="page-desc-content">
+                <p>This Dashboard is your homepage to access features and receive summaries of your activities. Choose an option from the three choices presented below.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>{{loadingdata}}  <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+    <!--<div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+        <p style="color:dodgerblue; font-weight: 400;"> Please wait...<img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>-->
+</div>
+<div id="dvMainsection">
+    <div class="homeloggedinsection">
+        <div class="block-views-business-links-home-page-block">
+            <div class="container">
+                <div class="row highlights">
+                    <div class="col-md-3 col-sm-3 col-xs-12 column col-md-offset-2 col-sm-offset-2">
+                        <div class="column_inner">
+                            <img alt="" src="../images/dc_lookup_search.png" class="img-responsive" />
+                            <h3>Quick Search</h3>
+                            <p>
+                                SEARCH AND SAVE REGULATORY INFO ON BUSINESSES.<br /> <br />You have <span>{{result.status}}</span> Save Search Results.
+                            </p>
+                            <a href="#/quicksearchsave" style="display: inline-block;" class="no-pad">View All</a>
+
+                            <div class="center_div" style="padding-top:7px;">
+                                <a href="#/quicksearch" tabindex="-1" class="no-pad"><span class="btn btn-default no-pad" tabindex="0" style="display: inline-block;">New Search</span></a>
+                                <!--<button id="submit_signup" ng-click="navToQuickSearch($event)" class="btn btn-default" ng-mousedown="checkrightClick('#/quicksearch',$event)">New Search</button>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 column">
+                        <div class="column_inner">
+                            <img alt="" src="../images/dc_maintain_business_clipboard.png" class="img-responsive" />
+                            <h3>My Basic Business Licenses</h3>
+                            <p>APPLY FOR AND RENEW BUSINESS LICENSES.<br /><br />You have <span> {{list}}</span> business licenses due for renewal </p>
+                            <div class="center_div" style="padding-top:7px;">
+                                <a href="#/mybbl" tabindex="-1" class="no-pad"><span class="btn btn-default no-pad" tabindex="0" style="display: inline-block;">MY BBL<span style="text-transform:lowercase;">S</span></span></a>
+                                <!--<button id="submit_signup" ng-click="navToQuickSearch($event)" class="btn btn-default" ng-mousedown="checkrightClick('#/quicksearch',$event)">New Search</button>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-3 col-sm-3 col-xs-12 column">
+                        <div class="column_inner">
+                            <img alt="" src="../images/dc_maintain_business_clipboard.png" class="img-responsive" />
+                            <h3 class="cbe">Certified Business Enterprises (CBE)</h3>
+                            <p>Apply and Renew certifications and search for CBE companies.</p>
+                            <div class="cover"><p>Coming Soon</p></div>
+                        </div>
+                    </div>-->
+                    <div class="col-md-3 col-sm-3 col-xs-12 column">
+                        <div class="column_inner">
+                            <img alt="" src="../images/dc_maintain_business_clipboard.png" class="img-responsive" />
+                            <h3>My Corporate Registrations</h3>
+                            <p>
+                                ACCESS CORPORATIONS AND TRADE NAME FUNCTIONS.<br /> Apply, renew and manage corporate registrations online.
+                            </p>
+                            <a style="margin-top: 6px;" ng-click="navToCorp()" href="javascript:void(0)" tabindex="-1" class="no-pad"><span class="btn btn-default no-pad" tabindex="0" style="display: inline-block;">Corp Online</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dashboardmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="vm.cancel_delete()" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="error_message">You are navigating to an external site</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button" ng-click="navigateAnyWay()">OK</button>
+                <button type="button" class="close-button" ng-click="cancelNavigation()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

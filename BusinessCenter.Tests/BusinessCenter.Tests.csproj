@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{28DDAFA1-6DB0-47F7-91F9-DDB499EF949E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessCenter.Tests</RootNamespace>
+    <AssemblyName>BusinessCenter.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Effort, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a46696d54971e6d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Effort.EF6.1.1.4\lib\net45\Effort.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Effort.Extra, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Effort.Extra.EF6.1.2.4\lib\Effort.Extra.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.IndexingExtensions, Version=1.0.1.26117, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.IndexingExtensions.1.0.1\lib\net40\EntityFramework.IndexingExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NMemory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a46696d54971e6d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NMemory.1.0.1\lib\net45\NMemory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.web.3.1.0.133\lib\net40\StructureMap.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Json">
+      <HintPath>..\packages\System.Json.4.0.20126.16343\lib\net40\System.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.SelfHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http.Tracing">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Tracing.5.2.2\lib\net45\System.Web.Http.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BusinessCenter.Api\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="BcbcTestContext.cs" />
+    <Compile Include="Common\TestContext.cs" />
+    <Compile Include="Controllers\BblAppAssociationControllerTest.cs" />
+    <Compile Include="Controllers\GenaralConvertionTest.cs" />
+    <Compile Include="Controllers\RefreshTokenControllerTest.cs" />
+    <Compile Include="Controllers\SearchApiControllerTest.cs" />
+    <Compile Include="Controllers\MySavedResultControllerTest.cs" />
+    <Compile Include="Controllers\RenewControllerTest.cs" />
+    <Compile Include="Controllers\BblApplicationApiControllerTest.cs" />
+    <Compile Include="Controllers\BblCategoryControllerTest.cs" />
+    <Compile Include="Controllers\PdfDownloadControllerTest.cs" />
+    <Compile Include="Controllers\AccountControllerTest.cs" />
+    <Compile Include="Controllers\UserAccountsControllerTest.cs" />
+    <Compile Include="DependencyResolution\ControllerConvention.cs" />
+    <Compile Include="DependencyResolution\DefaultRegistry.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AbraRepositoryTest.cs" />
+    <Compile Include="Repository\BblRepositoryTest.cs" />
+    <Compile Include="Repository\BusinessInformationRepositoryTest.cs" />
+    <Compile Include="Repository\CbeRepositoryTest.cs" />
+    <Compile Include="Repository\ClientsRepositoryTest.cs" />
+    <Compile Include="Repository\CorpRepositoryTest.cs" />
+    <Compile Include="Repository\CountryRepositoryTest.cs" />
+    <Compile Include="Repository\DCBC_ENTITY_BBL_RenewalsRepositoryTest.cs" />
+    <Compile Include="Repository\DCBC_ENTITY_BBL_Renewal_Invoice_Repository_Test.cs" />
+    <Compile Include="Repository\DCBC_ENTITY_Cof_ORepositoryTest.cs" />
+    <Compile Include="Repository\DocumentsView4RepositoryTest.cs" />
+    <Compile Include="Repository\EtlAddressAndParcelRepositoryTest.cs" />
+    <Compile Include="Repository\FeeCodeMapRepositoryTest.cs" />
+    <Compile Include="Repository\FixFeeRepositoryTest.cs" />
+    <Compile Include="Repository\KeywordDetailsRepositoryTest.cs" />
+    <Compile Include="Repository\Lookup_BusinessStructureRepositoryTest.cs" />
+    <Compile Include="Repository\Lookup_ExistingCategoriesTest.cs" />
+    <Compile Include="Repository\MailTemplateRepositoryTest.cs" />
+    <Compile Include="Repository\MasterBusinessActivityRepositoryTest.cs" />
+    <Compile Include="Repository\MasterCategoryDocumentRepositoryTest.cs" />
+    <Compile Include="Repository\MasterCategoryPhysicalLocationRepositoryTest.cs" />
+    <Compile Include="Repository\MasterCategoryQuestionRepositoryTest.cs" />
+    <Compile Include="Repository\MasterCountryRepositoryTest.cs" />
+    <Compile Include="Repository\MastereHopEligibilityRepositoryTest.cs" />
+    <Compile Include="Repository\MasterEhopOptionTypeRepositoryTest.cs" />
+    <Compile Include="Repository\MasterPrimaryCategoryRepositoryTest.cs" />
+    <Compile Include="Repository\MasterRegisterAgentRepositoryTest.cs" />
+    <Compile Include="Repository\MasterRenewalStatusFeeRepositoyTest.cs" />
+    <Compile Include="Repository\MasterSecondaryLicenseCategoryRepositoryTest.cs" />
+    <Compile Include="Repository\MasterStateRepositoryTest.cs" />
+    <Compile Include="Repository\MasterSubCategoryRepositoryTest.cs" />
+    <Compile Include="Repository\MultiColumnFiltersTest.cs" />
+    <Compile Include="Repository\OplaRepositoryTest.cs" />
+    <Compile Include="Repository\OSubCategoryFeesRepositoryTest.cs" />
+    <Compile Include="Repository\PaymentAddressDetailsRepositoryTest.cs" />
+    <Compile Include="Repository\PaymentCardDetailsRepositoryTest.cs" />
+    <Compile Include="Repository\PaymentDetailsRepositoryTest.cs" />
+    <Compile Include="Repository\Portal_Content_ErrorsRepositoryTest.cs" />
+    <Compile Include="Repository\RefreshTokensRepositoryTest.cs" />
+    <Compile Include="Repository\RenewalView3RepositoryTest.cs" />
+    <Compile Include="Repository\RenewRepositoryTest.cs" />
+    <Compile Include="Repository\SearchEntityDisplayTest.cs" />
+    <Compile Include="Repository\SearchKeywordRepositoryTest.cs" />
+    <Compile Include="Repository\SearchRepositoryTest.cs" />
+    <Compile Include="Repository\SecurityQuestionRepositoryTest.cs" />
+    <Compile Include="Repository\StreetTypesRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionBblAssociationToUsersRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionCategoryRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionCofoHopeHopAddressRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionCofoHopeHopRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionCorporationAgentAddressRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionCorporationRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionDocumentRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionDocumentToAccelaRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionEHOPEligibilityRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionGeneratedDocumentRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionIndividualRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionLicenseNumberCounterRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionMasterApplicationChcekListRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionMasterRenewalRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionMasterRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionQuestionRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionSelfCertificationRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionTaxRevenueRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionToAccelaRepositoryTest.cs" />
+    <Compile Include="Repository\SubmissionVerficationRepositoryTest.cs" />
+    <Compile Include="Repository\UserBBLServiceRepositoryTest.cs" />
+    <Compile Include="Repository\UserManagerRepositoryTest.cs" />
+    <Compile Include="Repository\UserPasswordTrackingRepositoryTest.cs" />
+    <Compile Include="Repository\UserRepositoryTest.cs" />
+    <Compile Include="Repository\UserRoleRepositoryTest.cs" />
+    <Compile Include="Repository\UserServicesRepositoryTest.cs" />
+    <Compile Include="Service\BBLAssociateServiceTest.cs" />
+    <Compile Include="Service\BusinessInformationServiceTest.cs" />
+    <Compile Include="Service\CofoHopDetailsServiceTest.cs" />
+    <Compile Include="Service\DocumentsView4ServiceTest.cs" />
+    <Compile Include="Service\EtlAddressAndParcelServiceTest.cs" />
+    <Compile Include="Service\FeeCodeMapServiceTest.cs" />
+    <Compile Include="Service\MailTemplateServiceTest.cs" />
+    <Compile Include="Service\MasterBusinessActivityServiceTest.cs" />
+    <Compile Include="Service\MasterCategoryPhysicalLocationServiceTest.cs" />
+    <Compile Include="Service\MasterCountryServiceTest.cs" />
+    <Compile Include="Service\MastereHopEligibilityServiceTest.cs" />
+    <Compile Include="Service\MasterPrimaryCategoryServiceTest.cs" />
+    <Compile Include="Service\MasterSecondaryLicenseCategoryServiceTest.cs" />
+    <Compile Include="Service\MasterStateServiceTest.cs" />
+    <Compile Include="Service\MasterSubCategoryServiceTest.cs" />
+    <Compile Include="Service\MyServiceDetailsTest.cs" />
+    <Compile Include="Service\OSubCategoryFeeServiceTest.cs" />
+    <Compile Include="Service\Portal_Content_ErrorsServiceTest.cs" />
+    <Compile Include="Service\RenewalServiceTest.cs" />
+    <Compile Include="Service\RenewalView3ServiceTest.cs" />
+    <Compile Include="Service\SearchKeywordServiceTest.cs" />
+    <Compile Include="Service\SearchServiceTest.cs" />
+    <Compile Include="Service\SecurityQuestionServiceTest.cs" />
+    <Compile Include="Service\SecurityQuestionsTestService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\SecurityServiceTest.cs" />
+    <Compile Include="Service\SubmissionCategoryServiceTest.cs" />
+    <Compile Include="Service\SubmissionCofoHopeHopAddressServiceTest.cs" />
+    <Compile Include="Service\SubmissionDocumentToAccelaServiceTest.cs" />
+    <Compile Include="Service\SubmissionGeneratedDocumentServiceTest.cs" />
+    <Compile Include="Service\SubmissionIndividualServiceTest.cs" />
+    <Compile Include="Service\SubmissionMasterServiceTest.cs" />
+    <Compile Include="Service\SubmissionQuestionServiceTest.cs" />
+    <Compile Include="Service\SubmissionSelfCertificationServiceTest.cs" />
+    <Compile Include="Service\SubmissionTaxRevenueServiceTest.cs" />
+    <Compile Include="Service\SubmissionToAccelaServiceTest.cs" />
+    <Compile Include="Service\UserManagerServiceTest.cs" />
+    <Compile Include="Service\UserPasswordTrackingserviceTest.cs" />
+    <Compile Include="Setup\AbraRepositoryData.cs" />
+    <Compile Include="Setup\BblRepositoryData.cs" />
+    <Compile Include="Setup\BusinessInformationRepositoryData.cs" />
+    <Compile Include="Setup\CbeRepositoryData.cs" />
+    <Compile Include="Setup\ClientsRepositoryData.cs" />
+    <Compile Include="Setup\CountryRepositoryData.cs" />
+    <Compile Include="Setup\DCBC_ENTITY_BBL_RenewalsData.cs" />
+    <Compile Include="Setup\DCBC_ENTITY_BBL_Renewal_InvoiceData.cs" />
+    <Compile Include="Setup\DCBC_ENTITY_Cof_ORepositoryData.cs" />
+    <Compile Include="Setup\DCBC_ENTITY_MultiColumn_LOOKUP_INDEXData.cs" />
+    <Compile Include="Setup\DocumentsView4RepositoryData.cs" />
+    <Compile Include="Setup\EtlAddressAndParcelRepositoryData.cs" />
+    <Compile Include="Setup\FeeCodeMapRepositoryData.cs" />
+    <Compile Include="Setup\FixFeeRepositoryData.cs" />
+    <Compile Include="Setup\KeywordDetailsRepositoryData.cs" />
+    <Compile Include="Setup\Lookup_BusinessStructureRepositoryData.cs" />
+    <Compile Include="Setup\Lookup_ExistingCategoriesData.cs" />
+    <Compile Include="Setup\MailTemplateRepositoryData.cs" />
+    <Compile Include="Setup\MasterBblApplicationStatusData.cs" />
+    <Compile Include="Setup\MasterBusinessActivityData.cs" />
+    <Compile Include="Setup\CorpRepositoryData.cs" />
+    <Compile Include="Setup\MasterCategoryDocumentRepositoryData.cs" />
+    <Compile Include="Setup\MasterCategoryPhysicalLocationData.cs" />
+    <Compile Include="Setup\MasterCategoryQuestionData.cs" />
+    <Compile Include="Setup\MasterCountryData.cs" />
+    <Compile Include="Setup\MastereHopEligibilityRepositoryData.cs" />
+    <Compile Include="Setup\MasterEhopOptionTypeRepositoryData.cs" />
+    <Compile Include="Setup\MasterPrimaryCategoryRepositoryData.cs" />
+    <Compile Include="Setup\MasterRenewalStatusFeeData.cs" />
+    <Compile Include="Setup\MasterSecondaryLicenseCategoryRepositoryData.cs" />
+    <Compile Include="Setup\MasterStateRepositoryData.cs" />
+    <Compile Include="Setup\MasterSubCategoryRepositoryData.cs" />
+    <Compile Include="Setup\OplaRepositoryData.cs" />
+    <Compile Include="Setup\OSubCategoryFeesData.cs" />
+    <Compile Include="Setup\PaymentAddressDetailsData.cs" />
+    <Compile Include="Setup\PaymentCardDetailsData.cs" />
+    <Compile Include="Setup\PaymentDetailsData.cs" />
+    <Compile Include="Setup\Portal_Content_ErrorsRepositoryData.cs" />
+    <Compile Include="Setup\RefreshTokensRepositoryData.cs" />
+    <Compile Include="Setup\RenewalView3RepositoryData.cs" />
+    <Compile Include="Setup\RoleRepositoryData.cs" />
+    <Compile Include="Setup\SearchKeywordRepositoryData.cs" />
+    <Compile Include="Setup\SearchMultiColumnLookUpIndexData.cs" />
+    <Compile Include="Setup\SecurityRepositoryData.cs" />
+    <Compile Include="Setup\StreetTypesRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionBblAssociationToUsersRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionCategoryRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionCofoHopeHopAddressData.cs" />
+    <Compile Include="Setup\SubmissionCofoHopeHopData.cs" />
+    <Compile Include="Setup\SubmissionCorporationAgentAddressRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionCorporationRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionDocumentRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionDocumentToAccelaData.cs" />
+    <Compile Include="Setup\SubmissionEHOPEligibilityRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionGeneratedDocumentRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionIndividualData.cs" />
+    <Compile Include="Setup\SubmissionLicenseNumberCounterData.cs" />
+    <Compile Include="Setup\SubmissionMasterApplicationChcekListRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionMasterRenewalData.cs" />
+    <Compile Include="Setup\SubmissionMasterRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionQuestionRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionSelfCertificationData.cs" />
+    <Compile Include="Setup\SubmissionTaxRevenueData.cs" />
+    <Compile Include="Setup\UserManagerRepositoryData.cs" />
+    <Compile Include="Setup\UserPasswordTrackingRepositoryData.cs" />
+    <Compile Include="Setup\UserRepositoryData.cs" />
+    <Compile Include="Setup\UserRoleRepositoryData.cs" />
+    <Compile Include="Setup\SubmissionToAccelaRepositoryData.cs" />
+    <Compile Include="Setup\UserBBLServiceRepositoryData.cs" />
+    <Compile Include="Setup\UserServicesRepositoryData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="bin\Debug\PdfTemplates\ApplicationCheckListView.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\EhopAddressDetails.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\InformationVerificationdetailsView.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\OrderDetailsView.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\PageFooter.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\PageHeader.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\PrintReciptView.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\QuickSearchDetailsView.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\QuickSearchSaveView.cshtml" />
+    <None Include="bin\Debug\PdfTemplates\RenewalOrderPdf.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessCenter.Api\BusinessCenter.Api.csproj">
+      <Project>{db5562a5-b1b1-4edf-b550-2459c365e4a2}</Project>
+      <Name>BusinessCenter.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessCenter.Common\BusinessCenter.Common.csproj">
+      <Project>{03a6d00b-a540-45c9-8c27-840f69a1cc4e}</Project>
+      <Name>BusinessCenter.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessCenter.Data\BusinessCenter.Data.csproj">
+      <Project>{a835e717-6294-41ea-9362-48f98026b1fd}</Project>
+      <Name>BusinessCenter.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessCenter.Email\BusinessCenter.Email.csproj">
+      <Project>{188ac40a-9ac0-48e8-b42b-f141cf7c20f3}</Project>
+      <Name>BusinessCenter.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessCenter.Identity\BusinessCenter.Identity.csproj">
+      <Project>{0fe11709-8ed9-40b6-8cbf-fd1e22c4f69f}</Project>
+      <Name>BusinessCenter.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessCenter.Service\BusinessCenter.Service.csproj">
+      <Project>{a5f16e5e-2a08-472e-8713-b9136e25b1e2}</Project>
+      <Name>BusinessCenter.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BussinessCenter.reCaptcha\BusinessCenter.reCaptcha.csproj">
+      <Project>{0b02d643-bae8-4e21-9a0f-a4a977784817}</Project>
+      <Name>BusinessCenter.reCaptcha</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

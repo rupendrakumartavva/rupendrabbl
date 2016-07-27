@@ -1,0 +1,24 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/login" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Login</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Lockout</span>
+</div>
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Lockout</h2>
+        </div>
+    </div>
+</div>
+<div class="login_form">
+    <div class="container">
+        <h4 class="text-muted">Password cannot be retrieved during the lockout. You have exceeded the amount of incorrect login attempts allowed.
+         Please wait 5 minutes before attempting to Login again. If you need additional assistance, please call the DCRA help desk at 202-442-4400</h4>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

@@ -1,0 +1,534 @@
+﻿@model BusinessCenter.Admin.Models.CategoryFeeModel
+
+@*<form name="form" id="form" >
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+    <p style="text-align: center;color:#339900;font-size:19px;margin-bottom:10px;"><span id="msg"></span></p>
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group ">
+               
+                @Html.EditorFor(model => model.OSub_Description, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        id = "category",
+                        name = "Category",
+                        placeholder = "Category",
+                        onfocus = "this.placeholder = ''",
+                        onblur = "this.placeholder = 'Category'"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.OSub_Description, "", new {@class = "error-message error"})
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group reg-err-placement">
+                @Html.DropDownListFor(model => model.Fee_Code, Enum.GetNames(typeof(BusinessCenter.Admin.Models.FeeCode)).Select(e => new SelectListItem { Text = e, Value = e }), "Please select Fee Code", new { @class = "form-control  custom-dropdown" })
+                @Html.ValidationMessageFor(model => model.Fee_Code, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.Start, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "start",
+                                       name = "Start",
+                                       placeholder = "Start",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Start'"
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Start, "", new { @class = "error-message error" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group reg-err-placement">
+                @Html.EditorFor(model => model.End, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "End",
+                                       name = "End",
+                                       id = "end",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'End'"
+
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.End, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.License_Fee, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "licensefee",
+                                       name = "License_Fee",
+                                       placeholder = "License_Fee",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'License_Fee'"
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.License_Fee, "", new { @class = "error-message error" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group reg-err-placement">
+                @Html.EditorFor(model => model.Tier, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Tier",
+                                       name = "Tier",
+                                       id = "tier",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Tier'"
+
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Tier, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group ">
+                @Html.DropDownListFor(model => model.App_Type, Enum.GetNames(typeof(BusinessCenter.Admin.Models.ApplicationType)).Select(e => new SelectListItem { Text = e, Value = e }), "Please select an option", new { @class = "form-control  custom-dropdown" })
+           
+                @Html.ValidationMessageFor(model => model.App_Type, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnBack" class="btn btn-default">Clear</button>
+        <button type="submit" id="btnUpdate" class="btn btn-default">Category Fee</button>
+    </div>
+</form>*@
+<form name="form" id="form">
+@*  @Html.AntiForgeryToken()*@
+@Html.ValidationSummary(true, "", new {@class = "error-message error"})
+@Html.HiddenFor(model => model.OSub_Category, new { id = "hiddencategoryid" })
+@Html.HiddenFor(model => model.OSub_Description, new { id = "hiddendescr" })
+    @Html.HiddenFor(model => model.UnitOne, new { id = "hiddenunitone" })
+<p style="text-align: center; font-size: 24px;" class="error-message error"><span id="errormsg"></span></p>
+<p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;"><span id="msg"></span></p>
+
+
+<div class="clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group " style="text-align: left;">
+            @Html.Label("Start Range")
+
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group " style="text-align: left;">
+            @Html.Label("End Range")
+
+        </div>
+    </div>
+</div>
+
+
+<div class="clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group ">
+            @if (Model.Start != null)
+            {
+                @Html.TextBoxFor(model => model.Start, new
+                {
+                    @class = "form-control",
+                    id = "start",
+                    name = "Start",
+                    placeholder = "",
+                    onfocus = "this.placeholder = ''",
+                    onblur = "this.placeholder = ''",
+                    disabled = "disabled"
+                })
+                @Html.HiddenFor(model => model.Start, new {id = "hiddenstart"})
+            }
+            else
+            {
+                @Html.TextBox("Start", "0", new
+                {
+                    @class = "form-control",
+                    id = "start",
+                    name = "Start",
+                    placeholder = "",
+                    onfocus = "this.placeholder = ''",
+                    onblur = "this.placeholder = ''",
+                    disabled = "disabled"
+
+                })
+                @Html.HiddenFor(model => model.Start, new {id = "hiddenstart"})
+            }
+            @Html.ValidationMessageFor(model => model.Start, "", new {@class = "error-message error"})
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group reg-err-placement">
+            @Html.TextBoxFor(model => model.End, new
+            {
+                @class = "form-control",
+                placeholder = "",
+                name = "End",
+                id = "end",
+                maxlength = "5",
+                onfocus = "this.placeholder = ''",
+                onblur = "this.placeholder = ''"
+            })
+            @Html.ValidationMessageFor(model => model.End, "", new {@class = "error-message error"})
+
+        </div>
+    </div>
+</div>
+
+<div class="clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group " style="text-align: left;">
+            @Html.Label("License Fee")
+
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group " style="text-align: left;">
+            @Html.Label("Tier ")<span style="font-size: small;">(Optional)</span>
+
+        </div>
+    </div>
+</div>
+
+<div class="clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group ">
+            @Html.EditorFor(model => model.License_Fee, new
+            {
+                htmlAttributes = new
+                {
+                    @class = "form-control",
+                    id = "licensefee",
+                    name = "License_Fee",
+                    maxlength = "14",
+                    placeholder = "",
+                    onfocus = "this.placeholder = ''",
+                    onblur = "this.placeholder = ''"
+                }
+            })
+            @Html.ValidationMessageFor(model => model.License_Fee, "", new {@class = "error-message error"})
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group reg-err-placement">
+            @Html.TextBoxFor(model => model.Tier, new
+            {
+                @class = "form-control",
+                placeholder = "",
+                name = "Tier",
+                id = "tier",
+                onfocus = "this.placeholder = ''",
+                onblur = "this.placeholder = ''"
+            })
+            @Html.ValidationMessageFor(model => model.Tier, "", new { @class = "error-message error" })
+            <span style="font-size: 16px; color: #f00; font-weight:300;" class="error-message error" id="tiermsg"> </span>
+        </div>
+    </div>
+</div>
+<div class="clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group " style="text-align: left;">
+            @*@Html.Label("Application Type :")*@
+            @Html.Label("Endorsment Fee")
+
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group " style="text-align: left;">
+            @Html.Label("Fee Code")
+
+        </div>
+    </div>
+</div>
+<div class="clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group ">
+           
+            @Html.TextBox("Endorsmentfee", "$25.00", new
+            {
+                @class = "form-control",
+                id = "Endorsmentfee",
+                name = "Endorsmentfee",
+                placeholder = "Endorsmentfee",
+                onfocus = "this.placeholder = ''",
+                onblur = "this.placeholder = ''",
+                disabled = "disabled"
+            })
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12 ">
+        <div class="form-group reg-err-placement">
+           
+            @Html.DropDownListFor(model => model.Fee_Code, Enum.GetNames(typeof (BusinessCenter.Admin.Models.FeeCode)).Select(e => new SelectListItem {Text = e, Value = e}), "Select One", new {@class = "form-control  custom-dropdown", id = "feecode-dropdown", name = "feecode-dropdown", disabled = "disabled"})
+            @Html.ValidationMessageFor(model => model.Fee_Code, "", new {@class = "error-message error"})
+        </div>
+    </div>
+</div>
+<div class=" pre-checkquestion col-md-12 col-xs-12 ">
+    <button type="submit" id="btnUpdate" class="btn btn-default">Update Category Fee</button>
+    <button type="button" id="btnBack" class="btn btn-default">Cancel</button>
+</div>
+<br/>
+</form>
+
+<script>
+    var endval;
+    $(function () {
+        // This line below is to disable select one option in select element
+        $("select option[value='']").prop('disabled', true);
+
+        //var fee = $("#licensefee").val();
+        //fee.toFixed(2);
+
+        var start = $("#start").val();
+        endval = $("#end").val();
+        var selopt = $("#feecode-dropdown option:selected").text();
+        if (selopt == 'S') {
+            $('#tier').prop('disabled', "disabled");
+        }
+        else {
+            $('#tier').prop('disabled', false);
+        }
+
+        if (selopt == 'S' || selopt == 'C') {
+            $('#end').prop('disabled', "disabled");
+           
+        }
+        else
+        {
+            $('#end').prop('disabled', false);
+            $('#tier').prop('disabled', false);
+        }
+        if (selopt == 'T' && parseInt(start) == '0') {
+            $('#tier').prop('disabled', "disabled");
+        }
+
+
+    });
+
+    // To restrict the decimals to 2 and rounds the number.
+    //$("#licensefee").keyup(function () {
+    //    var number = ($(this).val().split('.'));
+    //    if (number[1].length > 2) {
+    //        var salary = parseFloat($("#licensefee").val());
+    //        $("#licensefee").val(salary.toFixed(2));
+    //    }
+    //});
+
+    // To restrict the decimals to 2, which stops the digit to be entering.
+    //$('#licensefee').keypress(function (e) {
+    //    var character = String.fromCharCode(e.keyCode);
+    //    var newValue = this.value + character;
+    //    if (isNaN(newValue) || hasDecimalPlace(newValue, 3)) {
+    //        e.preventDefault();
+    //        return false;
+    //    }
+    //});
+
+    //function hasDecimalPlace(value, x) {
+    //    var pointIndex = value.indexOf('.');
+    //    return pointIndex >= 0 && pointIndex < value.length - x;
+    //}
+</script>
+
+<script>
+    $("#btnBack").click(function () {
+        //var url1 = window.location.href;
+        //var id = url1.substring(url1.lastIndexOf('=') + 1);
+        //var url = "/BBL/CategoryFees?type=primary&id=" + id ;
+        //window.location.href = url;
+        CategoryFeeAddPartial();
+    });
+    $("#btnUpdate").click(function (e) {
+        msg.innerHTML = "";
+        errormsg.innerHTML = "";
+        e.preventDefault();
+        var selopt = $("#feecode-dropdown option:selected").text();
+        var result = $('form').valid();
+        if ($("#Fee_Code").val() == '' || $("#end").val() == '' || $("#licensefee").val() == '') {
+            errormsg.innerHTML = "Please fill all the required fields";
+            return;
+        } else {
+            //  alert($("#end").val(""));
+            if (parseInt($("#end").val()) > '99999') {
+                msg.innerHTML = "";
+                errormsg.innerHTML = "End range must be less than 99999";
+                return false;
+            }
+            //else if (parseInt($("#end").val()) == '99999' && $("#tier").val() == "") {
+            //    msg.innerHTML = "";
+            //    errormsg.innerHTML = "Please enter Tier value";
+            //    errormsg.style.color = "Red";
+            //    return false;
+            //}
+            else if (selopt == 'T' && $("#tier").val() == "") {
+                //if (parseInt($("#end").val()) > parseInt(endval)) {
+                    
+                //    msg.innerHTML = "";
+                //    errormsg.innerHTML = "Please enter Proper Tier value";
+                //    errormsg.style.color = "Red";
+                //    return false;
+                //}
+               
+            }
+           else if ($("#feecode-dropdown option:selected").text() == "C" && $("#tier").val() == "") {
+               tiermsg.innerHTML = "Tier is required";
+                return false;
+            }
+            if (parseInt(end) < '99999') {
+                $("#tier").val("");
+            }
+            var start = $("#start").val();
+            var end = $("#end").val();
+            if (parseInt(end) <= parseInt(start)) {
+                errormsg.innerHTML = "End Range should be greater than Start Range";
+                errormsg.style.color = "Red";
+                return false;
+            }
+
+            if (result == 1) {
+                UpdateCategoryFee();
+            }
+
+         
+        }
+    });
+    $("#end").blur(function (e) {
+        var start = $("#start").val();
+        var selopt = $("#feecode-dropdown option:selected").text();
+        msg.innerHTML = "";
+        errormsg.innerHTML = "";
+        var end = $("#end").val();
+
+        if (parseInt(end) <= parseInt(start)) {
+
+
+            errormsg.innerHTML = "End cannot be less than or equal to Start";
+
+            //  return false;
+        }
+        else {
+
+            errormsg.innerHTML = "";
+        }
+        if (parseInt(end) > '99999') {
+            msg.innerHTML = "";
+            errormsg.innerHTML = "End range must be less than 99999";
+        }
+        else {
+            errormsg.innerHTML = "";
+            msg.innerHTML = "";
+        }
+        if (selopt == 'T' && parseInt(start) == '0' && parseInt(end) > '99999') {
+            errormsg.innerHTML = "End range must be less than 99999";
+            msg.innerHTML = "";
+        }
+
+        if (parseInt(end) < '99999') {
+            $("#tier").val("");
+            $("#feecode-dropdown").val('T');
+        }
+        if (parseInt(end) == '99999') {
+            $("#tier").val("");
+          //  $("#feecode-dropdown").val('TA');
+}
+    });
+
+    $("#tier").blur(function(e) {
+        var end = $("#end").val();
+        var tier = $('#tier').val();
+
+        if ($("#tier").val() != '' && $("#feecode-dropdown option:selected").text() == "T") {
+            $("#end").val("99999");
+            $("#feecode-dropdown").val('TA');
+        }
+
+        //if (parseInt(end) == '99999' && $("#tier").val() == '' ) {
+        //    tiermsg.innerHTML = "Tier cannot be empty when End range is 99999";
+        //}
+
+      
+
+
+        
+
+    });
+
+
+    function UpdateCategoryFee() {
+        var categoryfeedata = {
+            OSub_Category: '@ViewBag.CategoryId',
+            OSub_Description: $("#hiddendescr").val(),
+            Fee_Code: $("#feecode-dropdown option:selected").text(),
+            Start: $("#start").val(),
+            End: $("#end").val(),
+            License_Fee: $("#licensefee").val(),
+            Tier: $("#tier").val(),
+            App_Type: $("#App_Type").val(),
+            UnitOne: $("#hiddenunitone").val()
+            
+        };
+
+        $.ajax({
+            url: '/BBL/UpdateCategoryFee',
+            type: "Post",
+            data: categoryfeedata,
+            success: editSuccess,
+            error: editFailure
+        });
+    }
+    $(window).click(function () {
+        msg.innerHTML = "";
+        tiermsg.innerHTML = "";
+    });
+    function editSuccess(data) {
+        if (data.status == "SessionExipred") {
+            window.location.href = '/Account/SessionExpiry';
+        }
+       else if (data.status == "success") {
+            
+            $("#Content").empty();
+            $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            $("#categoryfee-add").empty();
+            CategoryFeeAddPartial();
+            GetAll();
+            errormsg.innerHTML = "Category Fee Updated Successfully";
+              errormsg.style.color = "green";
+            msg.innerHTML = "Category Fee Updated Successfully";
+        }
+        return false;
+    }
+    function editFailure(data) {
+        console.log("error");
+        return false;
+    }
+</script>

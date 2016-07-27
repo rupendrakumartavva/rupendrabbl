@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "DCRA - Rest Success";
+}
+<div class="container headerBreadcrumb">
+    <a href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    @Html.ActionLink(" Business Center Admin Portal ", "Welcome", "SuperAdmin")
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Success</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0" class="heading">Successful</h2>
+        </div>
+    </div>
+</div>
+<div class="register_form" style="height:380px">
+    <div class="container">
+        <div class="verify-mail">
+            <br /><br />
+            <div id="message" style="font-size: 22px;">Password is changed Successfully.</div>
+            <br />
+            <div id="loginlink" style="font-size: 22px;">
+                Please Click Here To @Html.ActionLink("Login", "Login", "Account").
+            </div>
+        </div>
+    </div>
+</div>

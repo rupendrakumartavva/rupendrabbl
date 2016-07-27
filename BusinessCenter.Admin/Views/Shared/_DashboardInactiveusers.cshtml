@@ -1,0 +1,100 @@
+﻿@if ((int)Session["Admincount"] == 3)
+{
+    <div class="top-tables-hyp">
+        <h4 class="blueheading" style="margin-bottom: 12px;">Inactive Users</h4>
+        <table class="table table-striped table-bordered smartgrid">
+            <thead>
+                <tr>
+                    <th class="text-center">User Type</th>
+                    <th class="text-center">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="summarytables text-center">Superadmin</td>
+                    @if ((string)ViewBag.SuperAdminInActiveUsers == "0")
+                    {
+                        <td class="summarytables text-center">@ViewBag.SuperAdminInActiveUsers</td>
+                    }
+                    else
+                    {
+                        <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.SuperAdminInActiveUsers, "Home", "SuperAdmin", new { Type = "InActive" }, null)</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Manager</td>
+                    @if ((string)ViewBag.ManagerInActiveUsers == "0")
+                    {
+                        <td class="summarytables text-center">@ViewBag.ManagerInActiveUsers</td>
+                    }
+                    else
+                    {
+                        // <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.AdminInActiveUsers, "Home", "Admin", new { Type = "InActive" }, null)</td>
+                        <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.ManagerInActiveUsers, "ManagerHome", "Admin", new { Type = "InActive" }, null)</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Admin</td>
+                    @if ((string)ViewBag.AdminInActiveUsers == "0")
+                    {
+                        <td class="summarytables text-center">@ViewBag.AdminInActiveUsers</td>
+                    }
+                    else
+                    {
+                        // <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.AdminInActiveUsers, "Home", "Admin", new { Type = "InActive" }, null)</td>
+                        <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.AdminInActiveUsers, "ManagerHome", "Admin", new { Type = "InActive" }, null)</td>
+                    }
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Customer</td>
+                    @if ((string)ViewBag.EmpInActiveUsers == "0")
+                    {
+                        <td class="summarytables text-center">@ViewBag.EmpInActiveUsers</td>
+                    }
+                    else
+                    {
+                        <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.EmpInActiveUsers, "CustomerHome", "Admin", new { Type = "InActive" }, null)</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+else if ((int)Session["Admincount"] == 2  || (int)Session["Admincount"] == 4)
+{
+    <div class="top-tables-hyp">
+        <h4 class="blueheading">Inactive Users</h4>
+        <table class="table table-striped table-bordered smartgrid">
+            <thead>
+                <tr>
+                    <th class="text-center">User Type</th>
+                    <th class="text-center">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*<tr>
+                    <td class="summarytables text-center">Admin</td>
+                    @if ((ViewBag.AdminInActiveUsers == "0"))
+                    {
+                        <td class="summarytables text-center">@ViewBag.AdminInActiveUsers</td>
+                    }
+                    else
+                    {
+                        <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.AdminInActiveUsers, "Home", "Admin", new { Type = "InActive" }, null)</td>
+                    }
+                </tr>*@
+                <tr>
+                    <td class="summarytables text-center">Customer</td>
+                    @if (ViewBag.EmpInActiveUsers == "0")
+                    {
+                        <td class="summarytables text-center">@ViewBag.EmpInActiveUsers</td>
+                    }
+                    else
+                    {
+                        <td class="summarytables text-center">@Html.ActionLink((string)ViewBag.EmpInActiveUsers, "CustomerHome", "Admin", new { Type = "InActive" }, null)</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}

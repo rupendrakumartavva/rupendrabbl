@@ -1,0 +1,155 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.SubCategoryViewModel
+<form>
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+    <p style="text-align: center;color:#339900;font-size:19px;margin-bottom:10px;"><span id="msg"></span></p>
+
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Sub-Category Name")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="form-group ">
+
+
+            @Html.TextBox("searchTerm", null, new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "",
+                                   name = "txtSearch",
+                                   id = "txtSearch",
+                                   onfocus = "this.placeholder = ''",
+                                   onblur = "this.placeholder = ''"
+                               })
+            @Html.ValidationMessageFor(model => model.SubCategory.SubCategoryName, "", new { @class = "error-message error" })
+            <p style="text-align: center;font-size:24px;" class="error-message error"><span id="errormsg"></span></p>
+        </div>
+
+    </div>
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnCreate" class="btn btn-default">Add Sub-Category</button>
+        <button type="button" id="btnClear" class="btn btn-default">Clear</button>
+    </div>
+    <br />
+</form>
+<script>
+    $(window).click(function () {
+        msg.innerHTML = "";
+    });
+    var url = window.location.href;
+    var id = url.substring(url.lastIndexOf('=') + 1);
+    $(":input").on("focus", function () {
+        errormsg.innerHTML = "";
+        // msg.innerHTML = "";
+    });
+    $(":input").on("keyup", function () {
+        errormsg.innerHTML = "";
+        msg.innerHTML = "";
+    });
+
+
+    $("#btnCreate").click(function (e) {
+
+        msg.innerHTML = "";
+       e.preventDefault();
+        //  now trigger the form validation, result is 1 or 0
+        var result = $('form').valid();
+        if (result == 1) {
+            CreateSubCategory();
+        }
+    });
+    $("#btnClear").click(function (e) {
+        e.preventDefault();
+        $("#txtSearch").val("");
+        msg.innerHTML = "";
+    });
+    function CreateSubCategory() {
+
+        if ($("#txtSearch").val() == '') {
+            errormsg.innerHTML = "Sub-Category Name is required";
+            errormsg.style.color = "Red";
+            return false;
+        }
+        if ($("#txtSearch").val().length > 100) {
+            errormsg.innerHTML = "Sub-Category can be no longer than 100 characters";
+            errormsg.style.color = "Red";
+            return false;
+        }
+        else {
+            var subcategorydata = {
+                SubCategoryName: $("#txtSearch").val(),
+                CustomCategoryName: $("#CustomCategoryName").val(),
+                Status: true
+            };
+            $.ajax({
+                url: '/BBL/SubCategories',
+                type: "Post",
+                data: subcategorydata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+    }
+    function editSuccess(data) {
+        if (data.status == "SessionExipred") {
+            window.location.href = '/Account/SessionExpiry';
+        }
+      else  if (data.status == "success") {
+            GetAll();
+            if (data.response == "inserted") {
+                $("#txtSearch").val("");
+                msg.innerHTML = "Sub-Category has been added successfully";
+                msg.style.color = "#339900";
+            }
+            else if (data.response == "exists") {
+                msg.innerHTML = "This Sub-Category already exist, please choose another";
+                msg.style.color = "Red";
+            }
+
+        }
+        return false;
+    }
+    function editFailure(data) {
+       // alert("error");
+        return false;
+    }
+</script>
+
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#txtSearch").autocomplete({
+            source: '@Url.Action("GetPrimaries")',
+            minLength: 1,
+            type: "POST",
+            //  maxRows: 1,
+            select: function (event, ui) {
+                //alert('you have selected ');
+                 $('#txtSearch').val(ui.item.label);
+
+                //  var primarydescr = $("#txtSearch").val();
+                var descr = ui.item.label;
+              //  GetAllSecondaries(descr);
+                return false;
+            }
+        });
+    });
+</script>*@
+<style>
+    /*ui-menu
+        .ui-menu-item {
+        list-style-type: none;
+    }*/
+
+    .ui-autocomplete {
+        list-style-type: none;
+        width: 700px;
+    }
+</style>
+

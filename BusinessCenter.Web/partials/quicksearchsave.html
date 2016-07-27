@@ -1,0 +1,444 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">My Saved Search Results</span>
+</div>
+<div class="page_title scr_title" id="x">
+    <div class="container">
+        <div class="row">
+            <h2>My Saved Search Results</h2>
+            <p>
+                <span aria-expanded="false" onclick="toggleclick('toggleicon')" aria-controls="collapseExample" class="cursor_type" tabindex="0" onkeypress="testKey(event)" id="toggleicon">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to view and manage the individual Quick Search records you have saved.</strong>
+                    </p>
+                    <p class="terms_text">
+                        <strong>*Note* </strong> You must be logged in to access saved search results.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Accessing Saved Search Results: </strong>Once you have saved your search results, you can view them by clicking the "My Saved Search Results" Button.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Saved Search Results: </strong> The heart icon next to each record is solid green<span class="glyphicon glyphicon-heart save_ico"></span> indicating that the record has been saved to this page.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Removing Saved Search Results: </strong>Saved records can be removed from your page one of two ways:
+                    </p>
+                    <!--to be removed so that it is no longer solid <span class="glyphicon glyphicon-heart-empty save_ico"></span>-->
+                    <p class="terms_text leftside">
+                        <ul class="terms_text leftside">
+                            <li>
+                                <span class="num_color"> 1.</span> Click the solid green heart icon <span class="glyphicon glyphicon-heart save_ico"></span> next to the record to remove that record.
+                            </li>
+                            <li>
+                                <span class="num_color"> 2.</span> Click the word <strong>Remove</strong> under the solid heart icon <span class="glyphicon glyphicon-heart save_ico"></span> next to the record to remove that record.
+                            </li>
+                        </ul>
+                    </p>
+                    <p class="terms_text">
+                        <strong>Detailed Search Results: </strong> Click the<span class="glyphicon glyphicon-triangle-right"></span> to the left of the individual search result to see the detailed view. The detailed view displays additional information about each item. To close the detailed view, click <span class="glyphicon glyphicon-triangle-bottom"></span>.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Filtering Search Results: </strong>Filter saved search results by clicking the individual data source tabs. Click a tab to activate a filter. Click "Clear All" button to deactivate a filter.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Keyword Search: </strong>Enter a keyword into the keyword search box to filter search results. This is useful if you have saved many results.
+                    </p>
+                    <p class="terms_text">
+                        <strong>New Search: </strong>To conduct a new search, click the "Search Again" button.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Show More Records: </strong>To see more than the default 10 records on the page, click the box at the bottom of the page and select the number of records you wish to display (Maximum 50).
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span> <a href="../HelpDoc/UserGuide.pdf" target="_blank" class="btn btn-default read_btn">Quick Search User Guide</a> <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                    <!--<p class="terms_text">If you need additional help, review the <a href="../HelpDoc/UserGuide.pdf" target="_blank" class="helpdoc"><strong>My DC Business Center User Guide</strong></a> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection" style="display:none">
+    <div class="search_tag">
+        <div class="container">
+            <div class="col-md-9 col-sm-8 col-xs-12 no-pad custom-alignment">
+                <p ng-show="SavedLisenceTypeCounts[0].RecordCount==1">
+                    <span>{{SavedLisenceTypeCounts[0].RecordCount}}</span> Record displayed
+                </p>
+                <p ng-show="SavedLisenceTypeCounts[0].RecordCount > 1">
+                    <span>{{SavedLisenceTypeCounts[0].RecordCount}}</span> Records displayed
+                </p>
+            </div>
+            <div class="dash-buttn col-md-3 col-sm-8 col-xs-9 no-pad-righ">
+                <div class="col-sm-12 col-xs-12 no-pad-right"><a ng-click="navToQuickSearch()" href="#/quicksearch" class="btn btn-default">Search again</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="search_result">
+        <div class="container srch_filter">
+            <div class="col-md-7 col-sm-11 col-xs-12 center_div color_r" id="KeyWord"></div>
+            <div class="col-xs-12 no-pad">
+                <label class="col-xs-12 col-sm-1 no-pad">Filter:</label>
+                <div class="btn_wrapper">
+                    <button id="BBL" ng-disabled="setDisabled(SavedLisenceTypeCounts[0].BBLCount,'BBL')" ng-click="filterByType('Business License','BBL')">BBL <span>({{SavedLisenceTypeCounts[0].BBLCount}})</span></button>
+                    <button id="OPLA" ng-disabled="setDisabled(SavedLisenceTypeCounts[0].OPLACount,'OPLA')" ng-click="filterByType('Professional License','OPLA')"> OPLA <span>({{SavedLisenceTypeCounts[0].OPLACount}})</span></button>
+                    <button id="ABRA" ng-disabled="setDisabled(SavedLisenceTypeCounts[0].ABRACount,'ABRA')" ng-click="filterByType('Alcoholic Beverage License','ABRA')"> ABRA <span>({{SavedLisenceTypeCounts[0].ABRACount}})</span></button>
+                    <button id="CBE" ng-disabled="setDisabled(SavedLisenceTypeCounts[0].CBECount,'CBE')" ng-click="filterByType('Certified Business Enterprise','CBE')"> CBE <span>({{SavedLisenceTypeCounts[0].CBECount}})</span></button>
+                    <button id="CORP" ng-disabled="setDisabled(SavedLisenceTypeCounts[0].CORPCount,'CORP')" ng-click="filterByType('Corporate Registration','CORP')"> CORP <span>({{SavedLisenceTypeCounts[0].CORPCount}})</span></button>
+                </div>
+                <input type="text" spellcheck="false" placeholder="Enter Keyword" ng-model="filterByTypeKeyword" id="keywordfield" ng-change="ShowMessage()">
+                <span class="checkvalue" ng-show="chcekboxSort">{{chcekboxSort}}</span>
+                <button ng-click="filterByType('')">Clear Filter</button>
+                <span class="pull-right cursor_type" id="top" ng-click="scrollPage('bottom')"><i class="glyphicon glyphicon-arrow-down" data-toggle="tooltip" data-placement="right" title="Bottom"></i></span>
+            </div>
+        </div>
+        <div id="divData">
+            <section dir-paginate="savedItem in savedItems | filter:filterSomeProperties  | itemsPerPage: itemPage" current-page="currentPage" id="{{savedItem.id}}">
+                <div class="container">
+                    <div class="innerRow">
+                        <div class="col-sm-1 arrow no-pad hidden-xs"><span tabindex="0" class="arrow-right" ng-keypress="checkEnter($event,savedItem.Source)" ng-click="expandCollapse($event,savedItem.Source)"></span> </div>
+                        <div class="col-sm-3 no-pad">
+                            <p ng-show="savedItem.Source!='CORP'">
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA"></span>
+                                    <span ng-switch-when="BBL">Corporation Name : </span>
+                                    <span ng-switch-when="CBE">Company Name : </span>
+                                    <span ng-switch-when="OPLA">Licensee Name : </span>
+                                </span>
+                                <!--{{savedItem.LeftNameResultTop | capitalize}}-->
+                                {{savedItem.LeftNameResultTop }}
+                            </p>
+                            <p ng-show="savedItem.Source=='CORP'">
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="CORP">Entity Name : </span>
+                                </span>
+                                {{savedItem.LeftNameResultTop | uppercase}}
+                            </p>
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA">Trade Name : </span>
+                                    <span ng-switch-when="BBL">Trade Name : </span>
+                                    <span ng-switch-when="CBE">CBE Number : </span>
+                                    <span ng-switch-when="CORP">File Number : </span>
+                                    <span ng-switch-when="OPLA">License Number : </span>
+                                </span>
+                                {{savedItem.LeftNameResultMiddle}}
+                            </p>
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA"></span>
+                                    <span ng-switch-when="BBL">License Category : </span>
+                                    <span ng-switch-when="CBE">Preference Points : </span>
+                                    <span ng-switch-when="CORP">Next Report Year : </span>
+                                    <span ng-switch-when="OPLA"></span>
+                                </span>
+                                {{savedItem.LeftNameResultBottom}}
+                            </p>
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA"></span>
+                                    <span ng-switch-when="BBL">Licensee Name : </span>
+                                    <span ng-switch-when="CBE"></span>
+                                    <span ng-switch-when="CORP"></span>
+                                    <span ng-switch-when="OPLA">License Type : </span>
+                                </span>
+                                {{savedItem.LeftNameMiddle1Text}}
+                            </p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA">Business Address : </span>
+                                    <span ng-switch-when="BBL">Premise Address : </span>
+                                    <span ng-switch-when="CBE">Business Address : </span>
+                                    <span ng-switch-when="CORP">Entity Address : </span>
+                                    <span ng-switch-when="OPLA">Address : </span>
+                                </span>
+                            </p>
+                            <div>
+                                <p>{{savedItem.MiddleNameResultTop}}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 no-pad">
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA">License Number : </span>
+                                    <span ng-switch-when="BBL">License Number : </span>
+                                    <span ng-switch-when="CBE"></span>
+                                    <span ng-switch-when="CORP">Model Type : </span>
+                                    <span ng-switch-when="OPLA">Expiration Date : </span>
+                                </span>
+                                {{savedItem.RightNameResultTop}}
+                            </p>
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA">License Class : </span>
+                                    <span ng-switch-when="BBL">License Expiration Date : </span>
+                                    <span ng-switch-when="CBE">Expiration Date : </span>
+                                    <span ng-switch-when="CORP"></span>
+                                    <span ng-switch-when="OPLA"></span>
+                                </span>
+                                {{savedItem.RightNameResultMiddle1}}
+                            </p>
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA">License Status : </span>
+                                    <span ng-switch-when="BBL">License Status : </span>
+                                    <span ng-switch-when="CBE"></span>
+                                    <span ng-switch-when="CORP">Entity Status : </span>
+                                    <span ng-switch-when="OPLA">License Status : </span>
+                                </span>
+                                <span ng-switch="savedItem.RightNameResultMiddle2">
+                                    <span ng-switch-when="REVOKED" class="error_text status-size">
+                                        {{savedItem.RightNameResultMiddle2}}
+                                    </span>
+                                    <span ng-switch-when="EXPIRED" class="error_text status-size">
+                                        {{savedItem.RightNameResultMiddle2}}
+                                    </span>
+                                    <span ng-switch-default class="active">
+                                        {{savedItem.RightNameResultMiddle2}}
+                                    </span>
+                                </span>
+                            </p>
+                            <p>
+                                <span ng-switch="savedItem.Source">
+                                    <span ng-switch-when="ABRA">License Description : </span>
+                                    <span ng-switch-when="BBL"></span>
+                                    <span ng-switch-when="CBE">Organization Type : </span>
+                                    <span ng-switch-when="CORP"></span>
+                                    <span ng-switch-when="OPLA"></span>
+                                </span>
+                                {{savedItem.RightNameResultBottom}}
+                            </p>
+                            <p>
+                                <span>Last Retrieved On : </span> {{savedItem.LastUpdateDate}}
+                            </p>
+                        </div>
+                        <div class="col-sm-1 col-xs-12 center  no-pad">
+                            <button disabled class="bbl src_full_name">{{savedItem.SourceFullName}}</button>
+                        </div>
+                        <div class="col-sm-1 col-xs-12 center">
+                            <span tabindex="0" data-toggle="tooltip" data-placement="top" title="Remove" ng-keypress="checkEnterOperations({EntityId:savedItem.EntityID,DataSource:savedItem.Source,LicenseNumber:savedItem.LicenseNumber,CompanyName:savedItem.CompanyName},$event)" ng-click="navToRemove({EntityId:savedItem.EntityID,DataSource:savedItem.Source,LicenseNumber:savedItem.LicenseNumber,CompanyName:savedItem.CompanyName},$event.target,savedItem.Source,savedItem.id)" class="glyphicon glyphicon-heart save_ico cursor_type">
+                                <p class="heart_text1"> Remove</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="details no-pad">
+                        <div>
+                            <div class="topBorder"></div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4 ng-switch="savedItem.Source">
+                                        <span ng-switch-when="ABRA">APPLICANT NAME : </span>
+                                        <span ng-switch-when="BBL">License Endorsement/Category</span>
+                                        <span ng-switch-when="CBE">COMPANY DESCRIPTION : </span>
+                                        <span ng-switch-when="CORP">Effective Date : </span>
+                                        <span ng-switch-when="OPLA">LICENSE BOARD : </span>
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad">
+                                    <p>{{savedItem.ExpantionResult1}}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4 ng-switch="savedItem.Source">
+                                        <span ng-switch-when="ABRA"></span>
+                                        <span ng-switch-when="BBL"></span>
+                                        <span ng-switch-when="CBE">PREFERENCE POINTS DETAIL : </span>
+                                        <span ng-switch-when="CORP">Locale : </span>
+                                        <span ng-switch-when="OPLA"></span>
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad">
+                                    <p>{{savedItem.ExpantionResult2}}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4 ng-switch="savedItem.Source">
+                                        <span ng-switch-when="ABRA"></span>
+                                        <span ng-switch-when="BBL"></span>
+                                        <span ng-switch-when="CBE">BUSINESS CONTACT : </span>
+                                        <span ng-switch-when="CORP"></span>
+                                        <span ng-switch-when="OPLA"></span>
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad">
+                                    <p>{{savedItem.ExpantionResult3}}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4 ng-switch="savedItem.Source">
+                                        <span ng-switch-when="ABRA"></span>
+                                        <span ng-switch-when="BBL"></span>
+                                        <span ng-switch-when="CBE">BUSINESS PHONE : </span>
+                                        <span ng-switch-when="CORP"></span>
+                                        <span ng-switch-when="OPLA"></span>
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad">
+                                    <p>{{savedItem.ExpantionResult4}}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4 ng-switch="savedItem.Source">
+                                        <span ng-switch-when="ABRA"></span>
+                                        <span ng-switch-when="BBL"></span>
+                                        <span ng-switch-when="CBE">BUSINESS EMAIL : </span>
+                                        <span ng-switch-when="CORP"></span>
+                                        <span ng-switch-when="OPLA"></span>
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad">
+                                    <p>{{savedItem.ExpantionResult5}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </section>
+        </div>
+        <section ng-show="(savedItems | filter:filterSomeProperties).length==0" class="display" id="noResultsKey">
+            <div class="container">
+                <div class="innerRow">
+                    <div class="col-md-4 col-xs-12 col-sm-12">
+                        <p class="text-danger text_align error_text">No Results found</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="display" id="noResultsdata">
+            <div class="container">
+                <div class="innerRow">
+
+                    <div id="email_heading" class="col-md-4 col-xs-12 col-sm-12">
+                        <p class="text-danger text_align error_text"> You do not have any saved records</p>
+                        <p class="resend-email text-center">
+                            If you want to search again ? <a href="#/quicksearch" id="resend_Email_link">Click here</a> .
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--<div class="save_error_msg display" id="noResultsdata">
+            <div class="container">
+                <div class="center_div text_align">
+                    <h3 id="email_heading" class="color_br">You do not have any saved records</h3>
+                    <p class="resend-email">
+                        If you want to search again ? <a href="javascript:void(o)" ng-click="navToQuickSearch()" id="resend_Email_link">Click here</a> .
+                    </p>
+                </div>
+            </div>
+        </div>-->
+        <div class="container">
+            <div class="col-md-12 no-pad">
+                <span class="pull-right cursor_type" id="bottom" ng-click="scrollPage('view-scroll')"><i class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" data-placement="right" title="Top"></i></span>
+            </div>
+        </div>
+        <div class="container" id="myList">
+            <div class="col-md-3 col-sm-12 col-xs-12 search_page no-pad">
+                <label>Show Records per page</label>
+                <select id="myselect" ng-model="confirmed" ng-options="contentNum.num for contentNum in contentSection" ng-change="selectOption()"></select>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12 no-pad">
+                <div class="pre-checkquestion">
+                    <button type="button" class="btn btn-default" ng-click="printItmes()" id="btnPrint">Download a PDF of this Page</button>
+                </div>
+            </div>
+            <nav class="col-md-6 col-sm-12 col-xs-12" style="padding-top:9px;">
+                <dir-pagination-controls boundary-links="true" class="pull-right" on-page-change="pageChangeHandler(newPageNumber)" template-url="partials/dirPagination.tpl.html"></dir-pagination-controls>
+            </nav>
+        </div>
+        <!--<div class="container">
+            <div class="col-sm-6 search_page no-pad">
+                <label>Show Records per page</label>
+                <select id="myselect" ng-init="confirmed = contentSection[0]" ng-model="confirmed" ng-options="contentNum.num for contentNum in contentSection" ng-change="selectOption()"></select>
+            </div>
+            <nav class="pull-right">
+                <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="partials/dirPagination.tpl.html"></dir-pagination-controls>
+            </nav>
+        </div>-->
+    </div>
+    <div class="modal fade" id="checkboxModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class='col-xs-12'>
+                        <input type='radio' placeholder='Answer' name='subject' id='ans3' ng-model='chcekboxSort' ng-click="setChcekboxSort('Expiration Date')" value='Expiration Date'> Expiration Date
+                    </div>
+                    <div class='col-xs-12'>
+                        <input type='radio' placeholder='Answer' name='subject' id='ans3' ng-model='chcekboxSort' ng-click="setChcekboxSort('Status')" value='Status'> Status
+                    </div>
+                    <div class='col-xs-12'>
+                        <input type='radio' placeholder='Answer' name='subject' id='ans3' ng-model='chcekboxSort' ng-click="setChcekboxSort('License')" value='License'> License
+                    </div>
+                    <div class='col-xs-12'>
+                        <input type='radio' placeholder='Answer' name='subject' id='ans3' ng-model='chcekboxSort' ng-click="setChcekboxSort('Default')" value='Default'> Default
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="delete_message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="cancel_delete()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="messagePopup">
+                        <p class="text-danger text-center">Are you sure you want to remove this saved search result?</p>
+                        <span class="font_sz font_cg" id="spanid">
+                            <input type="checkbox" ng-model="checkboxModel" class="font_sz" ng-change="setPopupState()" name="delete_status" id="delete_status" data-backdrop="static"
+                                   data-keyboard="false" /> &nbsp; Do not show this confirmation pop up again for the Current session.
+                        </span>
+                        <!--<div class="col-md-6 col-sm-12 col-xs-12 form-type-checkbox clearfix">
+                            <div class="form-type-checkbox form-item-screening-question-autoparttowing form-item checkbox" style="float: left; margin: 22px 0 10px 0; padding: 5px 0 !important; text-align: center;">
+                                <div class="checker">
+                                    <span ng-class="{true:'checked'}[vm.noCofo]">
+                                        <input type="checkbox" id="noCofo" name="" ng-click="vm.toggleCheckbox('noCofo')" value="1" class="form-checkbox" style="opacity: 0;">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="checkbox_question" style="margin: 17px 0 10px 2px; padding: 5px 0 !important;">
+                                <label tabindex="-1">I do not have a CofO.</label>
+                            </div>
+                        </div>-->
+                    </div>
+                    <h3 class='error_message' id="routeChangeMessage">You have selected {{removeSelectedRecords.items.length}} number of records to remove, they will be removed from your Saved search results page if you exit this page by clicking on Exit or you can change your selection by clicking on Cancel.</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-dismiss="modal" ng-click="delete_record()" id="delete_record">OK</button>
+                    <button type="button" class="close-button" data-dismiss="modal" ng-click="cancel_delete()" id="cancel_delete">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

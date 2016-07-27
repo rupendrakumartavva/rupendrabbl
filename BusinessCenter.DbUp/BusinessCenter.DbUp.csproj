@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2ECA0FDD-D91D-43DB-816E-9A5D0DF2DF15}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessCenter.DbUp</RootNamespace>
+    <AssemblyName>BusinessCenter.DbUp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DbUp">
+      <HintPath>..\packages\dbup.3.2.1\lib\NET35\DbUp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DbScripts\AuditRecord-Create.sql" />
+    <Content Include="DbScripts\BblLicenseView-29-12-2015.sql" />
+    <Content Include="DbScripts\BblLicenseView2-Changed-30-12-2015.sql" />
+    <Content Include="DbScripts\BblLicenseView3-updated-30-12-2015.sql" />
+    <Content Include="DbScripts\BblLicenseView4-Update-30-12-2015.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_ABRA-Create.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_BBL-Create.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_CBE-Create.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_CORP-Create.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_LOOKUP_INDEX-Create.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_MultiColumn_LOOKUP_INDEX-Create.sql" />
+    <Content Include="DbScripts\DCBC_ENTITY_OPLA-Create.sql" />
+    <Content Include="DbScripts\KeywordDetails-Create.sql" />
+    <Content Include="DbScripts\KeywordMaster-Create.sql" />
+    <Content Include="DbScripts\MalingTemplate.sql" />
+    <Content Include="DbScripts\Role-Create.sql" />
+    <Content Include="DbScripts\Role-Data.sql" />
+    <Content Include="DbScripts\SchemaVersions-DropTable.sql" />
+    <Content Include="DbScripts\SecurityQuestion-Create.sql" />
+    <Content Include="DbScripts\SecurityQuestion-Data.sql" />
+    <Content Include="DbScripts\States-Create.sql" />
+    <Content Include="DbScripts\Statetable-Data.sql" />
+    <Content Include="DbScripts\User-Create.sql" />
+    <Content Include="DbScripts\UserClaim-Create.sql" />
+    <Content Include="DbScripts\UserData.sql" />
+    <Content Include="DbScripts\UserLogin-Create.sql" />
+    <Content Include="DbScripts\UserLoginHistory-Create.sql" />
+    <Content Include="DbScripts\UserRole-Create.sql" />
+    <Content Include="DbScripts\UserRole-Data.sql" />
+    <Content Include="DbScripts\UserService-Create.sql" />
+    <Content Include="DbScripts\UserTable-Add-DeleteComment-alter.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

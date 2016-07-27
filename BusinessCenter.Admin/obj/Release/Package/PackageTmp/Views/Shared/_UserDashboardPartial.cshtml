@@ -1,0 +1,285 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.SearchDataMvcViewModel
+<style>
+    .container .arrow .arrow-right {
+        width: 34px;
+        height: 34px;
+        background: url(../../images/arrow-right.png) 0 center no-repeat;
+        display: inline-block;
+    }
+    .search_result section > .container p span {
+        color: #6e6b6b;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .search_result section > .container .arrow .arrow-bottom {
+        width: 34px;
+        height: 34px;
+        background: url(../../images/arrow-bottom.png) 0 center no-repeat;
+        display: inline-block;
+    }
+</style>
+
+
+@if (Model.FinalData.Count == 0)
+{
+    <div class="search_result">
+
+        <section>
+            <div class="container">
+                <div class="innerRow">
+                    <div class="col-md-4 col-xs-12 col-sm-12">
+                        <p class="text-danger error_text text_align" style="text-align: center;">@ViewBag.SearchStatus</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        }
+        else
+        {
+        <div class="search_result" id="datasearch" role="grid" style="margin-bottom:-27px">
+            @foreach (var item in Model.FinalData)
+            {
+                <section class="container searchtable">
+                    <div class="container searchtable">
+
+                        <div class="innerRow">
+                            <div class="col-sm-1 arrow no-pad hidden-xs">
+                                <span class="arrow-right"></span>
+                            </div>
+                            <div class="col-sm-3 no-pad text-left">
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.LeftNameTop)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.LeftNameResultTop)
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.LeftNameMiddle)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.LeftNameResultMiddle)
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.LeftNameBottom)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.LeftNameResultBottom)
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.LeftNameMiddleLabel1)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.LeftNameMiddle1Text)
+                                </p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.MiddleNameTop)
+                                    </span>
+                                </p>
+                                <div>
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.MiddleNameResultTop)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3  no-pad text-left">
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.RightNameTop)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.RightNameResultTop)
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.RightNameMiddle1)
+
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.RightNameResultMiddle1)
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.RightNameMiddle2)
+                                    </span>
+
+                                    @if ((item.RightNameResultMiddle2 == "REVOKED") || (item.RightNameResultMiddle2 == "EXPIRED") || (item.RightNameResultMiddle2 == "Expired"))
+                                    {
+                                        <span class="error_text status-size">
+
+                                            @Html.DisplayFor(modelItem => item.RightNameResultMiddle2)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="active">
+
+                                            @Html.DisplayFor(modelItem => item.RightNameResultMiddle2)
+                                        </span>
+                                    }
+
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.RightNameBottom)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.RightNameResultBottom)
+                                </p>
+                                <p>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.LastUpdateDateName)
+                                    </span>
+                                    @Html.DisplayFor(modelItem => item.LastUpdateDate)
+                                </p>
+                            </div>
+
+                            <div class="col-sm-12 col-xs-12 center no-pad">
+                                @*<span class="col-sm-12 col-xs-12 text-center no-pad" data-toggle="tooltip" data-placement="top">*@
+                                <p class="bbl src_full_name">
+                                    @Html.DisplayFor(modelItem => item.SourceFullName)
+                                </p>
+                                @*</span>*@
+                            </div>
+
+                        </div>
+                        <div class="details no-pad">
+                            <div class="topBorder"></div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Expantion1)
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad" style="text-align: left">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ExpantionResult1)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Expantion2)
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad" style="text-align: left">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ExpantionResult2)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Expantion3)
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad" style="text-align: left">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ExpantionResult3)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Expantion4)
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad" style="text-align: left">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ExpantionResult4)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-5 no-pad">
+                                    <h4>
+                                        @Html.DisplayFor(modelItem => item.Expantion5)
+                                    </h4>
+                                </div>
+                                <div class="col-sm-7 no-pad" style="text-align: left">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.ExpantionResult5)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <br />
+                </section>
+
+            }
+
+
+
+        </div>
+        }
+
+       <div id="pagingsearchdiv">
+
+</div>
+        <script>
+            $(document).ready(function () {
+            });
+
+            $(".arrow-right").click(function (e) {
+                OpenDetails(e);
+            });
+            function OpenDetails(event) {
+                if ($(event.target).hasClass('arrow-right')) {
+                    $(event.target).addClass('arrow-bottom').removeClass('arrow-right');
+                    $(event.target).parent().parent().css('border-bottom', '0px solid');
+                    $(event.target).parent().parent().parent().find('.details').show();
+                }
+                else {
+                    $(event.target).addClass('arrow-right').removeClass('arrow-bottom');
+                    $(event.target).parent().parent().parent().find('.details').hide();
+                }
+            }
+        </script>
+
+       
+
+<script>
+    $(document).ready(function () {
+        //$('#divData').after('<div id="nav"></div>');
+        $('#pagingsearchdiv').append('<ul class="pagination" id="pagingsearchUl" style="text-align: right">');
+
+        var rowsShown =20;
+        var rowsTotal = $('.searchtable').length;
+        // alert(rowsTotal);
+        var numPages = rowsTotal / rowsShown;
+        $('#pagingsearchUl').append('<li class="pagingsearchli"  >');
+        
+        for (i = 0; i < numPages; i++) {
+            var pageNum = i + 1;
+            $('.pagingsearchli').css("display", "inline");
+            $('.pagingsearchli').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+        }
+
+        $('.searchtable').hide();
+        $('.searchtable').slice(0, rowsShown).show();
+        //$('#pagingsearchdiv a:first').addClass('active');
+        $('#pagingsearchdiv  a:first').addClass('highlightedpage');
+
+        $('#pagingsearchdiv a').bind('click', function () {
+
+            //   $('#pagingsearchdiv a').removeClass('active');
+            $('#pagingsearchdiv  a').removeClass('highlightedpage');
+            $('#pagingsearchdiv  a').removeClass('selectedpage');
+            //   $(this).addClass('active');
+            $(this).addClass('selectedpage');
+            var currPage = $(this).attr('rel');
+            var startItem = currPage * rowsShown;
+            var endItem = startItem + rowsShown;
+            $('.searchtable').css('opacity', '0.0').hide().slice(startItem, endItem).
+                    css('display', 'block').animate({ opacity: 1 }, 300);
+            return false;
+        });
+    });
+</script>

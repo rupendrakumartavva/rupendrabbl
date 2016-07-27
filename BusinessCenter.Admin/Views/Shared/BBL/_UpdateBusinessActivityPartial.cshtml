@@ -1,0 +1,195 @@
+﻿@model BusinessCenter.Admin.Models.ActivityModel
+<form>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+    <p>@Html.HiddenFor(model => model.ActivityID)</p>
+    <p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;"><span id="msg"></span></p>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Business Activity")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm- col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.ActivityName, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        id = "activityname",
+                        name = "activityname",
+                        placeholder = "",
+                        onfocus = "this.placeholder = ''",
+                        onblur = "this.placeholder = ''"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.ActivityName, "", new {@class = "error-message error"})
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Status")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group text-center">
+              
+                @if (Model.APP_Type.Trim() == "1")
+                {
+                    @Html.RadioButtonFor(model => model.APP_Type, "true", new { @checked = true })
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Active")
+
+                    <span style="padding-left:12px"></span>
+                    @Html.RadioButtonFor(model => model.APP_Type, "false")
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Inactive")
+                }
+                else
+                {
+                    @Html.RadioButtonFor(model => model.APP_Type, "true")
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Active")
+                    <span style="padding-left:12px"></span>
+                    @Html.RadioButtonFor(model => model.APP_Type, "false", new { @checked = true })
+                    <span style="padding-left:1px"></span>
+                    @Html.Label("Inactive")
+                }
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+        </div>
+    </div>
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnCreate" class="btn btn-default">Update Business Activity</button>
+        <button type="submit" id="btnClear" class="btn btn-default">Cancel</button>
+    </div>
+</form>
+@*<div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin-top:60px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body homemodal-body">
+                <h3 class='error_message' id="modelerror"> </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+@*<style>
+
+            input[type=radio] {
+                transform: scale(1.5, 1.5);
+                -moz-transform: scale(1.5, 1.5);
+                -ms-transform: scale(1.5, 1.5);
+                -webkit-transform: scale(1.5, 1.5);
+                -o-transform: scale(1.5, 1.5);
+            }
+    </style>*@
+<script>
+    $(":input").on("focus", function () {
+        errormsg.innerHTML = "";
+        // msg.innerHTML = "";
+    });
+    $(":input").on("keyup", function () {
+        msg.innerHTML = "";
+    });
+    $("#btnClear").click(function (e) {
+        e.preventDefault();
+        $("#activityname").val("");
+        GetBusinessActivity();
+    });
+    $("#btnCreate").click(function (e) {
+
+        e.preventDefault();
+        var result = $('form').valid();
+        if (result == 1) {
+            UpdateBusinessActivity();
+
+        }
+    });
+    function UpdateBusinessActivity() {
+        var apptype = '';
+        //if ($('#APP_Type').is(':checked')) {
+        //    apptype = "1";
+        //}
+        //else if ($('#APP_Type').is(':checked')) {
+        //    apptype = "0";
+        //}
+        if ($('#APP_Type').is(':checked')) {
+            apptype = "1";
+        }
+        else {
+            apptype = "0";
+        }
+        console.log(apptype);
+        var activitydata = {
+            ActivityID: $("#ActivityID").val(),
+            ActivityName: $("#activityname").val(),
+            APP_Type: apptype
+        };
+        $.ajax({
+            url: '/BBL/UpdateBusinessActivity',
+            type: "Post",
+            data: activitydata,
+            success: editSuccess,
+            error: editFailure
+        });
+    }
+    function editSuccess(data) {
+        if (data.status == "SessionExipred") {
+            window.location.href = '/Account/SessionExpiry';
+        }
+      else if (data.status == "success") {
+            
+            $("#activityname").val("");
+            var url = "/BBL/BusinessActivities";
+            window.location.href = url;
+        }
+        else if (data.status == "exists") {
+            msg.innerHTML = "This Business Activity already exist, please choose another";
+            msg.style.color = "Red";
+        }
+        return false;
+    }
+    function editFailure(data) {
+        console.log("error");
+        return false;
+    }
+    //$(".yes-btn").on("click", function () {
+       
+       
+    //    if (redirect == "Update") {
+    //        $('#registermodal-container').modal('hide');
+    //    } else {
+    //        $('#registermodal-container').modal('hide');
+    //        GetBusinessActivity();
+    //        GetAll();
+    //    }
+       
+    //});
+</script>
+
+
+<style>
+    #registermodal-container {
+        overflow: hidden;
+    }
+</style>
+
+
+
+

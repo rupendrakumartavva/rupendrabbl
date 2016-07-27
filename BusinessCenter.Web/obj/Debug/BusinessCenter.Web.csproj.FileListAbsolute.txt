@@ -1,0 +1,8 @@
+D:\DCBusinessCenter\BusinessCenter.Web\bin\BusinessCenter.Web.dll.config
+D:\DCBusinessCenter\BusinessCenter.Web\bin\BusinessCenter.Web.dll
+D:\DCBusinessCenter\BusinessCenter.Web\bin\BusinessCenter.Web.pdb
+D:\DCBusinessCenter\BusinessCenter.Web\bin\System.Web.Webpages.Deployment.dll
+D:\DCBusinessCenter\BusinessCenter.Web\bin\System.Web.Webpages.Deployment.xml
+D:\DCBusinessCenter\BusinessCenter.Web\obj\Debug\BusinessCenter.Web.dll
+D:\DCBusinessCenter\BusinessCenter.Web\obj\Debug\BusinessCenter.Web.pdb
+D:\DCBusinessCenter\BusinessCenter.Web\obj\Debug\BusinessCenter.Web.csprojResolveAssemblyReference.cache

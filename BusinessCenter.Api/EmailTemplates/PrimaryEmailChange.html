@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/CSS">
+        body, #body_style {
+            position: relative;
+            font-family: 'Open Sans',sans-serif;
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 300;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .mainNavigation {
+            border-bottom: 2px solid #f2f2f2;
+            padding-top: 35px;
+            box-sizing: border-box;
+        }
+
+        .page_title h2 {
+            font-weight: 300;
+            font-size: 48px;
+            color: #00aef3;
+            margin: 0 0 1%;
+            line-height: 1;
+            font-family: 'Open Sans',sans-serif;
+        }
+
+        p {
+            font-family: 'Open Sans',sans-serif;
+            color: #414141;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 34px;
+        }
+    </style>
+
+
+
+</head>
+
+<body style="font-family: 'Open Sans', sans-serif; color: #000; background-color: #fff; line-height: 26px; font-size: 18px; margin: 0px;border:1px solid #f2f2f2;">
+
+
+    <div class="mainNavigation">
+        <div class="container">
+
+            <nav class="navbar navbar-default no-pad-left" role="navigation">
+                <div class="navbar-header col-lg-3 col-md-3 col-sm-3 col-xs-12 no-pad-left no-pad-right">
+                    <div class="col-sm-12 col-xs-9 no-pad-left">
+                        <h1 class="header_logo" tabindex="-1">
+                            <a ng-click="navToHome()" href="javascript:void(0)" role="link">
+                                <img tabindex="-1" src="http://dcbctest.codeitinc.com/images/dc_logo.png" alt="DCRA Business Center" class="img-responsive" style="margin-left: 2px;padding: 4px;">
+                            </a>
+                        </h1>
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+
+    </div>
+    <hr style="border-bottom: 2px solid #f2f2f2;" />
+    <br />
+    <div class="page_title scr_title" style="text-align: center;">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" style="font-weight: 300; font-size: 40px; color: #00aef3; margin: 0 0 1%; line-height: 1; font-family: 'Open Sans', sans-serif;">{Heading}</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="register_form">
+        <div class="container">
+            <div class="verify-mail" style="text-align: left;">
+
+                <p style="margin-left: 2px; padding: 4px;">
+                    Dear <span style="font-weight: bold;"> {UserName},</span>
+                 </p>
+
+                <p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+                    We’ve received a request to change the registered email for your <span style="color: #00aef3;"> My DC Business Center </span> account. 
+                    <!--<a href="{Url}">Link</a>-->
+
+                </p>
+                <p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+                    Click the link below to change the email address associated with your account.
+                </p>
+                <p style="color: #414141; line-height: 14px; font-size: 14px; font-weight: 300; margin-left: 2px;padding: 4px;">
+
+                    <a href="{Url}">{Url}</a>
+                </p>
+
+                <!--<p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+                    {Description} Any user can see the change in their Primary Email only after confirming it through both Old and New Primary Email accounts.
+                </p>
+                <p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+                    The link will be expired after 24 Hours of changing the Primary Email. Please click on the link within 24 Hours to confirm your change to the Primary Email.
+                </p>
+                <p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+                    You received this email, because it was requested by a My DC Business Center user. This is part of the procedure to change Primary Email, when requested on the system. For Further information please contact Administrator.
+                </p>
+
+                <p style="color: #414141; line-height: 14px; font-size: 14px; font-weight: 300; margin-left: 2px;padding: 4px;">
+
+                    If you want to login to My DC Business Centre, please <a href="{mySite}">click here</a>
+                </p>-->
+
+                <p style="color: #414141; line-height: 26px; font-size: 14px; font-weight: 300; margin-left: 2px; padding: 4px;">
+                    <span>If you should have any questions, please do not hesitate to contact us:</span>
+                    <br />
+                    <span>DCRA</span>
+                    <br />
+                    <span>1100 4th Street, SW,</span>
+                    <br />
+                    <span>Washington, DC 20024</span>
+                    <br />
+                    <span>Phone: (202) 442-4400</span>
+                    <br />
+                    <span>E-mail: dcra@dc.gov</span>
+                    <br/>
+                    <br />
+                    <span style="color: #00aef3;">Best Wishes,</span>
+                    <br />
+                    <span style="color: darkred; font-size: 12px;"> My DC Business Center Team.</span>
+                </p>
+                <p style="text-align: center;color: #414141; line-height: 26px; font-size: 14px; font-weight: 300;">Please do not reply to this email</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+﻿@model BusinessCenter.Admin.Models.RegisterJsonModel
+@{
+    ViewBag.Title = "DCRA - Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["UserName"] != null)
+{
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="container headerBreadcrumb">
+            @if ((int)Session["Admincount"] == 2)
+            {
+                @Html.ActionLink("Home", "CustomerHome", "Admin")
+               <span class="easy-breadcrumb_segment-separator">/</span>
+               @Html.ActionLink("Business Center Admin Portal", "CustomerHome", "Admin")
+              <span class="easy-breadcrumb_segment-separator">/</span>
+              <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">My Profile</span>
+            }
+            else if ((int)Session["Admincount"] == 3)
+            {
+                @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+              <span class="easy-breadcrumb_segment-separator">/</span>
+            @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+           <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">My Profile</span>
+            }
+            else if ((int)Session["Admincount"] == 4)
+            {
+                @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator">/</span>
+                @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator">/</span>
+                <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">My Profile</span>
+            }
+        </div>
+        <div class="page_title scr_title">
+            <div class="container">
+                <div class="row">
+                    <h2 tabindex="0" id="userid">@Session["FullName"] Profile</h2>
+                </div>
+            </div>
+        </div>
+    <div class="login_form register_form user_profile">
+        <div class="container">
+            <div class="row">
+                <div class="form_wrapper">
+                    <form id="contact_us" name="contact_us">
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-12">
+                                    <p>@Html.HiddenFor(Model => Model.UserId, new { id = "UserId" })</p>
+                                    <p>@Html.HiddenFor(Model => Model.UserName)</p>
+                                    <p>@Html.HiddenFor(Model => Model.Email)</p>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", id = "firstname" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", id = "lastname" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Primary Email</label>
+                                        @Html.EditorFor(model => model.Email, new
+                                        {
+                                            htmlAttributes = new
+                                            {
+                                                @class = "form-control",
+                                                @readonly = "readonly",
+                                                disabled = "disabled",
+                                                id = "email"
+                                            }
+                                        })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        @Html.EditorFor(model => model.UserName, new
+                                        {
+                                            htmlAttributes = new
+                                            {
+                                                @class = "form-control",
+                                                @readonly = "readonly",
+                                                disabled = "disabled",
+                                                id = "username"
+                                            }
+                                        })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-section change-password">
+                            <p class="forgot">Change Password</p>
+                            <div class="forgot profile_type" id="password_error_msg"></div>
+                            <div class="forgot profile_type" id="password_msg"></div>
+                            <div class="clearfix">
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label class="font_sz">Current Password</label>
+                                        @Html.EditorFor(model => model.Password, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    focus = true,
+                                                    @class = "form-control",
+                                                    id = "Password",
+                                                    name = "Password",
+                                                    placeholder = ""
+                                                }
+                                            })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        <label id="lblCurrentPassword" class="forgot profile_type"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label class="font_sz">New Password</label>
+                                        @Html.EditorFor(model => model.NewPassword, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    focus = true,
+                                                    @class = "form-control",
+                                                    id = "NewPassword",
+                                                    name = "Password",
+                                                    placeholder = ""
+                                                }
+                                            })
+                                        @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label class="font_sz">Confirm New Password</label>
+                                        @Html.EditorFor(model => model.ConfirmPassword, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    focus = true,
+                                                    @class = "form-control",
+                                                    id = "ConfirmPassword",
+                                                    name = "Password",
+                                                    placeholder = ""
+                                                }
+                                            })
+
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger", id = "cpassword" })
+                                        <label id="lblPasswordMacth" class="forgot profile_type"></label>
+                                         @if (IsPost)
+                                        {
+                                            <span style="color: red;" id="confirmpwdmsg"> @ViewBag.confirmpwdmsg </span>
+                                        }
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="center_div">
+                                <button id="btnUpdate" class="btn btn-default" tabindex="69">Save & Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade profilemodaldiv" id="profilemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close" id="btnclose"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body profilemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #profilemodal-container {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            lblCurrentPassword.innerHTML = "";
+            $("#Password").val("");
+        });
+        // Your profile is updated
+        // You have not made any changes to your profile. If needed, please do changes and then click on [SAVE & UPDATE]
+        $("#btnUpdate").click(function (e) {
+            e.preventDefault();
+            lblPasswordMacth.innerHTML = "";
+            password_msg.innerHTML = "";
+            var result = $('form').valid();
+            if (result == 1) {
+                UpdateAccount();
+            }
+        });
+        $("#submit_btn").click(function () {
+            $("#Password").val("");
+            $("#NewPassword").val("");
+            $("#ConfirmPassword").val("");
+            userid.innerHTML = $("#firstname").val() + " " + $("#lastname").val() + " " + "Profile";
+        });
+        $("#btnclose").click(function () {
+            $("#Password").val("");
+            $("#NewPassword").val("");
+            $("#ConfirmPassword").val("");
+            userid.innerHTML = $("#firstname").val() + " " + $("#lastname").val() + " " + "Profile";
+        });
+        function UpdateAccount() {
+            var profiledata = {
+                UserId: $("#UserId").val(),
+                UserName: $("#username").val(),
+                Email: $("#email").val(),
+                FirstName: $("#firstname").val(),
+                LastName: $("#lastname").val(),
+                Password: $("#Password").val(),
+                NewPassword: $("#NewPassword").val(),
+                ConfirmPassword: $("#ConfirmPassword").val()
+
+            };
+            $.ajax({
+                url: '/Account/MyProfile',
+                type: "Post",
+                data: profiledata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+        function editSuccess(data) {
+            var sessionId = $(data).find('#Session_Expired').text();
+            if (sessionId == 'Session Expired') {
+                window.location.href = '/Account/SessionExpiry';
+            } else {
+                if (data.status == "InvalidOldPassword") {
+                    password_error_msg.innerHTML = "";
+                    password_msg.innerHTML = "";
+                    lblCurrentPassword.innerHTML = "Current password is incorrect";
+                    var element = document.getElementById("lblCurrentPassword");
+                    lblCurrentPassword.focus();
+                    setTimeout(function () { element.focus(); }, 0);
+                    window.scrollTo(0, 300);
+                }
+                if (data.status == "Passwordempty") {
+                    password_error_msg.innerHTML = "To change your password, please complete Current Password, New Password and Confirm New Password fields";
+                    var element = document.getElementById("password_error_msg");
+                    password_error_msg.focus();
+                    setTimeout(function () { element.focus(); }, 0);
+                    window.scrollTo(0, 300);
+                }
+                if (data.status == "confirmpwd") {
+                    lblPasswordMacth.innerHTML = "New password doesn't match";
+                    $("#ConfirmPassword").val('');
+                    var element = document.getElementById("lblPasswordMacth");
+                    lblPasswordMacth.focus();
+                    setTimeout(function () { element.focus(); }, 0);
+                    window.scrollTo(0, 300);
+                    var element = document.getElementById("password_error_msg");
+                    password_error_msg.focus();
+                    setTimeout(function () { element.focus(); }, 0);
+                    window.scrollTo(0, 300);
+                }
+                if (data.status == "Newpasswordsame") {
+                    password_msg.innerHTML = "Current password and New password are same. Please enter new one";
+                    $("#NewPassword").val('');
+                }
+                else {
+                    lblCurrentPassword.innerHTML = "";
+                }
+            }
+        }
+        function editFailure(data) {  }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#statusmsg").show();
+            $("#msg").show();
+        });
+        $("#Password").keyup(function () {
+            $("#statusmsg").hide();
+            $("#msg").hide();
+            password_error_msg.innerHTML = "";
+            password_msg.innerHTML = "";
+        });
+
+        $("#NewPassword").keyup(function () {
+            $("#statusmsg").hide();
+            $("#msg").hide();
+            password_msg.innerHTML = "";
+            password_error_msg.innerHTML = "";
+        });
+
+        $("#Password").blur(function () {
+            var passwordLength = $("#Password").val().length;
+            if (passwordLength > 0) {
+                $.ajax({
+                    url: '/Account/CurrentPasswordValidation',
+                    type: "Post",
+                    data: { currentPassword: $("#Password").val(), userId: $("#UserId").val() },
+                    success: function (data) {
+                        var sessionId = $(data).find('#Session_Expired').text();
+                        if (sessionId == 'Session Expired') {
+                            window.location.href = '/Account/SessionExpiry';
+                        } else {
+                            switch (data.status) {
+                                case "True":
+
+                                    $('#lblCurrentPassword').show();
+                                    lblCurrentPassword.style.color = "red";
+                                    lblCurrentPassword.innerHTML = "Current password is incorrect";
+                                    break;
+                                case "False":
+                                    $('#lblCurrentPassword').hide();
+                                    break;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        $("#Password").focus(function () {
+            lblCurrentPassword.innerHTML = "";
+            password_error_msg.innerHTML = "";
+            password_msg.innerHTML = "";
+        });
+
+        $("#Password").keypress(function () {
+            password_error_msg.innerHTML = "";
+        });
+
+        $("#ConfirmPassword").keypress(function () {
+            password_error_msg.innerHTML = "";
+            password_msg.innerHTML = "";
+        });
+
+        $("#NewPassword").focus(function () {
+            lblPasswordMacth.innerHTML = "";
+            password_error_msg.innerHTML = "";
+            password_msg.innerHTML = "";
+        });
+        $("#ConfirmPassword").focus(function () {
+            lblPasswordMacth.innerHTML = "";
+            password_error_msg.innerHTML = "";
+        });
+        $("#NewPassword").blur(function () {
+            lblPasswordMacth.innerHTML = "";
+            var cpassword = $("#Password").val();
+            var newpassword = $("#NewPassword").val();
+            var confirmpassword = $("#ConfirmPassword").val();
+            if (cpassword != '') {
+                password_error_msg.innerHTML = "";
+                //var newpassword = $("#NewPassword").val();
+                var confirmpassword = $("#ConfirmPassword").val();
+                if (newpassword == cpassword) {
+                    lblPasswordMacth.innerHTML = "";
+                    password_msg.innerHTML = "Current password and New password are same. Please enter new one";
+                    $("#NewPassword").val('');
+                } else {
+
+                    if (confirmpassword != '') {
+                        if (newpassword != '') {
+                            lblPasswordMacth.innerHTML = "New password doesn't match";
+                        }
+                    }
+                }
+            } else {
+                password_error_msg.innerHTML = "To change your password, please complete Current Password, New Password and Confirm New Password fields";
+            }
+        });
+
+        $("#ConfirmPassword").blur(function () {
+            password_error_msg.innerHTML = "";
+            var cpassword = $("#NewPassword").val();
+            var newpassword = $("#ConfirmPassword").val();
+            if (newpassword == '') {
+                lblPasswordMacth.innerHTML = "";
+                password_error_msg.innerHTML = "";
+            }
+
+            if (cpassword != '') {
+                if (newpassword != '') {
+                    if (cpassword == newpassword) {
+                        lblPasswordMacth.innerHTML = "";
+                    } else {
+                        lblPasswordMacth.innerHTML = "New password doesn't match";
+                        $("#ConfirmPassword").val('');
+                    }
+                }
+            }
+        });
+
+        $(":input").on("blur", function () {
+            $(this.form).validate().element(this);
+        });
+        $(":input").on("focus", function () {
+            $(this.form).validate().element(this);
+        });
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+
+
+

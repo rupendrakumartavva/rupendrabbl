@@ -1,0 +1,483 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Employer/Employee Information</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Employer/Employee Information </h2>
+            <!--<span class="font_how_to_use">How To Use This Page <span class="glyphicon glyphicon-chevron-down"></span></span>-->
+
+            <p>
+                <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to capture the Basic Business License number of the company that employs the individual and the employee's personal information.</strong>
+                    </p>
+                    <p class="terms_text">
+                        Individual licenses are to be applied for by the company that employs the individual.
+                    </p>
+                    <p class="terms_text">
+                        Each employee will require a separate Individual Business License and therefore a separate Individual license application will be needed for each employee. 
+                    </p>
+                    <p class="terms_text">
+                        Fill in the blanks to continue with the application. 
+                    </p>
+                    <p class="terms_text">
+                        Upon approval, the individual employee must visit DCRA to obtain an Identification Card.  
+                    </p>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 startwizard" tabindex="0">
+                <!--<p>Based on the Business License Category you selected, you are applying for an INDIVIDUAL Business License. Please complete the following information about the Employee.</p>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection" style="display: none">
+    <div data-ng-controller="IndividualBusinessLicenseController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper">
+                        <form role="form" method="post" id="vm.update_form" name="vm.update_form" autocomplete="off" novalidate ng-submit="vm.reg_form_validate(individual)">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading text-left">
+                                    Company Business License
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="clearfix">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 page-desc-content">
+
+                                            <p>The Company that employs the individual must have an active business license at the time of the individual's application.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-section change-password">
+                                        <div ng-show="vm.businessLicenseData!='' " class="col-sm-offset-1 col-md-10 alert error_text" role="alert" id="nolicense">
+                                            <span aria-hidden="true"></span>
+                                            You have entered an invalid or inactive license #. Please check the license {{vm.businessLicenseData}} and try again. If this message comes up a second time, please contact your employer. They will need to contact DCRA's Business License Division at 202-442-4400 to resolve any open issues with their license before you submit your application.
+                                        </div>
+
+                                        <div class="clearfix">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.CompanyBusinessLicense.$invalid && vm.submitted }">
+                                                    <label>Company Business License #:</label>
+                                                    <input type="text" class="form-control" placeholder="" ng-model="vm.individual.CompanyBusinessLicense"
+                                                           name="CompanyBusinessLicense" id="CompanyBusinessLicense" ng-focus="vm.setErrorMsg('error_msg')" ng-change="vm.ChcekingLicenceNumber('error_msg')"
+                                                           ng-maxlength="240" ng-pattern="/^[0-9]+$/" required ng-blur="vm.checklicense()" spellcheck="false">
+                                                    <div class="error-container" ng-show="vm.update_form.CompanyBusinessLicense.$dirty && vm.update_form.CompanyBusinessLicense.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.CompanyBusinessLicense.$error.pattern">
+                                                            Company Business License # accepts only numbers.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.update_form.CompanyBusinessLicense.$error.maxlength">
+                                                            Company Business License # exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.CompanyName.$invalid && vm.submitted }">
+                                                    <label>Company Name:</label>
+                                                    <input type="text" class="form-control noselect" placeholder="" ng-model="vm.individual.CompanyName"
+                                                           name="CompanyName" id="CompanyNameinfo" ng-focus="vm.setErrorMsg('error_msg')"
+                                                           ng-maxlength="240" required ng-disabled="true" spellcheck="false">
+                                                    <div class="error-container" ng-show="vm.update_form.CompanyName.$dirty && vm.update_form.CompanyName.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.CompanyName.$error.maxlength">
+                                                            Company Name exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-heading text-left">
+                                    Employee Information
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="form-section change-password">
+                                        <!--<div class="clearfix">
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.FirstName.$invalid && vm.submitted }">
+                                                    <label>First Name</label>
+                                                    <input type="text" class="form-control" placeholder="" ng-model="vm.individual.FirstName"
+                                                           name="FirstName" id="FirstName" ng-focus="vm.setErrorMsg('error_msg')"
+                                                           ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" required spellcheck="false">
+                                                    <div class="error-container" ng-show="vm.update_form.FirstName.$dirty && vm.update_form.FirstName.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.FirstName.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.update_form.FirstName.$error.maxlength">
+                                                            First Name exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group">
+                                                    <label>Middle Name</label>
+                                                    <input type="text" class="form-control" placeholder="" ng-model="vm.individual.MiddleName"
+                                                           name="MiddleName" id="MiddleName" ng-focus="vm.setErrorMsg('error_msg')"
+                                                           ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" spellcheck="false">
+                                                    <div class="error-container" ng-show="vm.update_form.MiddleName.$dirty && vm.update_form.MiddleName.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.MiddleName.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.update_form.MiddleName.$error.maxlength">
+                                                            Middle Name exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.LastName.$invalid && vm.submitted }">
+                                                    <label>Last Name</label>
+                                                    <input type="text" class="form-control" placeholder="" ng-model="vm.individual.LastName"
+                                                           name="LastName" spellcheck="false" id="LastName" ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required>
+                                                    <div class="error-container" ng-show="vm.update_form.LastName.$dirty && vm.update_form.LastName.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.LastName.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.update_form.LastName.$error.maxlength">
+                                                            Last Name exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div class="clearfix">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" placeholder="" ng-model="vm.businessname"
+                                                           name="Name" spellcheck="false" id="Name" ng-disabled="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix">
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.datepicker.$invalid && vm.submitted }">
+                                                    <label>Date of Birth <i style="font-size:14px">(A minimum age of 21 years is mandatory)</i></label>
+
+                                                    <div class="dropdown">
+                                                        <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target=".dropdown-menu" aria-expanded="true">
+                                                            <div class="input-group">
+                                                                <input type="text" name="datepicker" class="form-control" spellcheck="false" data-ng-model="vm.individual.DateofBirth" placeholder="MM/DD/YYYY"
+                                                                       ng-pattern="/^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$/m"
+                                                                       required ng-maxlength="10" ng-focus="vm.setErrorMsg('error_msg')"><span class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                            <datetimepicker data-ng-model="vm.individual.DateofBirth" data-datetimepicker-config="{ startView:'day', minView:'day' }" ng-click="vm.setErrorMsg('error_msg')" dateofbirth="true" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" />
+                                                        </ul>
+                                                        <div class="error-container" ng-show="vm.update_form.datepicker.$dirty && vm.update_form.datepicker.$invalid">
+                                                            <small class="error-message" ng-show="vm.update_form.datepicker.$error.pattern">
+                                                                Date is invalid.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.update_form.datepicker.$error.invalidDate && !vm.update_form.datepicker.$error.pattern">
+                                                                Date of birth doesn't meet the required criteria mentioned above.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-heading text-left">
+                                    <p class="forgot">Place of Birth</p>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="form-section change-password">
+                                        <div class="clearfix">
+                                            <div class="col-md-8 col-sm-8 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.Country.$invalid && vm.submitted }">
+                                                    <label>Country</label>
+
+                                                    <select name="countrydd" data-ng-model="vm.individual.Country" required ng-change="vm.selectcountryoption()">
+                                                        <option value="">Select One</option>
+                                                        <option ng-repeat="country in vm.Countries" value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix">
+                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.update_form.City.$invalid && vm.submitted }">
+                                                    <label>City</label>
+                                                    <input type="text" class="form-control" placeholder="" name="City" ng-model="vm.individual.City"
+                                                           id="City" ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                    <div class="error-container" ng-show="vm.update_form.City.$dirty && vm.update_form.City.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.City.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.update_form.City.$error.maxlength">
+                                                            City exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+
+                                                <div class="form-group" ng-show="vm.validateCountry" ng-class="{'has-error':vm.update_form.State_Province.$invalid && vm.submitted }">
+                                                    <label>State/Province</label>
+
+                                                    <select name="StatesAdded" id="StatesAdded" data-ng-model="vm.individual.State_Province" ng-required="vm.validateCountry">
+                                                        <option value="" selected>Select One</option>
+                                                        <option ng-repeat="state in vm.StatesList" value="{{state.StateCode}}">{{state.StateCode}}</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group" ng-show="!vm.validateCountry" ng-class="{'has-error':vm.update_form.State_Province.$invalid && vm.submitted }">
+                                                    <label>State/Province</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="optional" name="State_Province"
+                                                           ng-required="vm.validateCountry" ng-model="vm.individual.State_Province"
+                                                           id="State_Province" ng-maxlength="240"
+                                                           ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false">
+                                                    <div class="error-container" ng-show="vm.update_form.State_Province.$dirty && vm.update_form.State_Province.$invalid">
+                                                        <small class="error-message" ng-show="vm.update_form.State_Province.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.update_form.State_Province.$error.maxlength">
+                                                            State / Province exceeds maximum length of 240 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-heading">
+                                    <p class="forgot">Physical Characteristics</p>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="clearfix">
+                                        <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.Height.$invalid && vm.submitted }">
+                                                <label>Height</label>
+                                                <input type="text" class="col-md-8 form-control" placeholder="ft" name="Height" ng-model="vm.individual.Height" id="Height"
+                                                       ng-maxlength="240" ng-pattern="/^[0-9\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                <div class="error-container" ng-show="vm.update_form.Height.$dirty && vm.update_form.Height.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.Height.$error.pattern">
+                                                        Feet accepts only numbers.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.Height.$error.maxlength">
+                                                        Feet exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.HeightIn.$invalid && vm.submitted }">
+                                                <label>&nbsp;</label>
+                                                <input type="text" class="form-control" placeholder="in" name="HeightIn" ng-model="vm.individual.HeightIn"
+                                                       id="HeightIn" ng-maxlength="240" ng-pattern="/^[0-9\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required>
+                                                <div class="error-container" ng-show="vm.update_form.HeightIn.$dirty && vm.update_form.HeightIn.$invalid" spellcheck="false">
+                                                    <small class="error-message" ng-show="vm.update_form.HeightIn.$error.pattern">
+                                                        Please enter numbers only.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.HeightIn.$error.maxlength">
+                                                        Inches exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.Weight.$invalid && vm.submitted }">
+                                                <label>Weight</label>
+                                                <input type="text" class="form-control" name="Weight" ng-model="vm.individual.Weight"
+                                                       id="Weight" ng-maxlength="240" ng-pattern="/^[0-9\s]+$/" placeholder="lbs" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                <div class="error-container" ng-show="vm.update_form.Weight.$dirty && vm.update_form.Weight.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.Weight.$error.pattern">
+                                                        Weight accepts only numbers.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.Weight.$error.maxlength">
+                                                        Weight exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.HairColor.$invalid && vm.submitted }">
+                                                <label>Hair Color</label>
+                                                <input type="text" class="form-control" placeholder="" name="HairColor" ng-model="vm.individual.HairColor"
+                                                       id="HairColor" ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                <div class="error-container" ng-show="vm.update_form.HairColor.$dirty && vm.update_form.HairColor.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.HairColor.$error.pattern">
+                                                        Please enter letters only.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.HairColor.$error.maxlength">
+                                                        Hair Color exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.EyeColor.$invalid && vm.submitted }">
+                                                <label>Eye Color</label>
+                                                <input type="text" class="form-control" placeholder="" name="EyeColor" ng-model="vm.individual.EyeColor"
+                                                       id="EyeColor" ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                <div class="error-container" ng-show="vm.update_form.EyeColor.$dirty && vm.update_form.EyeColor.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.EyeColor.$error.pattern">
+                                                        Please enter letters only.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.EyeColor.$error.maxlength">
+                                                        Eye Color exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-heading">
+                                    <p class="forgot">Driver's License/Non-Driver's Identification Card Info</p>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="clearfix">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.IdentificationCard.$invalid && vm.submitted }">
+                                                <label>License/Identification Card #:</label>
+                                                <input type="text" class="form-control" placeholder="" name="IdentificationCard" ng-model="vm.individual.IdentificationCard"
+                                                       id="IdentificationCard" ng-maxlength="240" ng-pattern="/^[a-zA-Z0-9\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                <div class="error-container" ng-show="vm.update_form.IdentificationCard.$dirty && vm.update_form.IdentificationCard.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.IdentificationCard.$error.pattern">
+                                                        License/Identification Card accepts only alphanumeric characters.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.IdentificationCard.$error.maxlength">
+                                                        License/Identification Card exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.StateofIssuance.$invalid && vm.submitted }">
+                                                <label>State of Issuance:</label>
+                                                <select name="StateofIssuance" id="StateofIssuance" data-ng-model="vm.individual.StateofIssuance" required>
+                                                    <option value="" selected>Select One</option>
+                                                    <option ng-repeat="state in vm.StatesList" value="{{state.StateCode}}">{{state.StateCode}}</option>
+                                                </select>
+                                                <!--<input type="text" class="form-control" placeholder="" name="StateofIssuance" ng-model="vm.individual.StateofIssuance"
+                                                       id="StateofIssuance" ng-maxlength="240" ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" required spellcheck="false">
+                                                <div class="error-container" ng-show="vm.update_form.StateofIssuance.$dirty && vm.update_form.StateofIssuance.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.StateofIssuance.$error.pattern">
+                                                        Please enter letters only.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.update_form.StateofIssuance.$error.maxlength">
+                                                        State of Issuance exceeds maximum length of 240 characters.
+                                                    </small>
+                                                </div>-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.update_form.ExpirationDate.$invalid && vm.submitted }">
+                                                <label>Expiration Date:</label>
+
+                                                <div class="dropdown" style="margin-top: -10px;">
+                                                    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target=".dropdown-menu" aria-expanded="true">
+                                                        <div class="input-group margin_tp">
+                                                            <input type="text" class="form-control"
+                                                                   spellcheck="false"
+                                                                   placeholder="MM/DD/YYYY"
+                                                                   name="ExpirationDate"
+                                                                   data-ng-model="vm.individual.ExpirationDate"
+                                                                   ng-pattern="/^[0,1]?\d{1}\/(([0-2]?\d{1})|([3][0,1]{1}))\/(([1]{1}[9]{1}[9]{1}\d{1})|([2-9]{1}\d{3}))$/"
+                                                                   ng-maxlength="10" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   required>
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                        </div>
+                                                    </a>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                        <datetimepicker data-ng-model="vm.individual.ExpirationDate" data-datetimepicker-config="{ startView:'day', minView:'day' }" ng-click="vm.setErrorMsg('error_msg')" data-before-render="beforeExpirationRender($view, $dates, $leftDate, $upDate, $rightDate)" />
+                                                    </ul>
+                                                </div>
+                                                <div id="warning" ng-show="!vm.update_form.ExpirationDate.$error.pattern" style="color:red"></div>
+                                                <div class="error-container" ng-show="vm.update_form.ExpirationDate.$dirty && vm.update_form.ExpirationDate.$invalid">
+                                                    <small class="error-message" ng-show="vm.update_form.ExpirationDate.$error.pattern">
+                                                        Date is invalid.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="col-md-12 col-xs-12 text-center pre-checkquestion" style="margin-bottom: 5%;">
+                            <button id="btn_back" class="btn btn-default" data-ng-click="vm.navToBack()">Back</button>
+                            <button id="btn_exit" style="text-transform: none;" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')" type="submit">Exit</button>
+                            <button id="btn_create_checklist" class="btn btn-default btnnextColor btn-next" type="button" data-ng-click="vm.checkAndExit('appchecklist')">
+                                Next
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="individualPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class='error_message'></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-button" ng-click="vm.navigateAnyway()">Ok</button>
+                            <button type="button" class="close-button" ng-click="vm.dontNavigate()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

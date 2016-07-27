@@ -1,0 +1,234 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Admin.Models.DocumentsModel>
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Short Document Name</th>
+                        <th class="text-center">Agency</th>
+                        <th class="text-center">Initial License</th>
+                        <th class="text-center">Post Licensure</th>
+                        <th class="text-center">Renewal</th>
+                        <th class="text-center">Division</th>
+                        <th class="text-center">Status</th>
+@if ((int) Session["Admincount"] == 3)
+{
+    <th class="text-center">Edit</th>
+}
+                        <th class="text-center">Deactivate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="9">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow">
+                                @*<td class="col1-tab col2 Superadmingrid usercol">
+                                    <p style=" font-size: 14px;" class="paracol12 paratabcol2">
+                                        <span>*@
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol2 paratabcol2">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.ShortDocName)
+                                        </span>
+                                    </p>
+                                </td>
+
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    <p style=" font-size: 14px;" class="paracol2 paratabcol2">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.Agency)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style=" font-size: 14px;" class="paracol1 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.InitialLicense)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style=" font-size: 14px;" class="paracol1 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.PostLicensure)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style=" font-size: 14px;" class="paracol1 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.Renewal)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style=" font-size: 14px;" class="paracol1 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.Div)
+                                        </span>
+                                    </p>
+                                </td>
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.Status == true)
+                                    {
+                                        <p style="color: green; font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                Active&nbsp;@Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="color: Red; font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                Inactive&nbsp;@Html.Image("~/images/InActive.png", "InActive")
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+@if ((int) Session["Admincount"] == 3)
+{
+    <td class="col1-tab col1 Superadmingrid usercol">
+        <p style="font-size: 14px;" class="">
+            <span>
+                                            @Html.ActionLink("Edit", "UpdateDocuments", "BBL", new {categoryId = item.PrimaryID, type = "primary", activityId = item.ActivityID, documentid = item.MasterCategoryDocId}, null)
+                                        </span>
+        </p>
+    </td>
+}
+                                <td class="col1-tab col1 Superadmingrid usercol">
+@if ((int) Session["Admincount"] == 3)
+{
+
+
+    if (item.Status == true)
+    {
+        <p style="color: Red; font-size: 14px;" class="">
+            <span>
+                    <a href="javascript:void(0)" onclick="ShowDialog('@item.MasterCategoryDocId') ">
+                        @Html.Image("~/images/delete.png", "Deleted")
+                    </a>
+                </span>
+        </p>
+    }
+    else
+    {
+        <p style="color: Red; font-size: 14px;" class="">
+            <span>
+                    @Html.Image("~/images/close_delete.png", "Deleted")
+                </span>
+        </p>
+    }
+}
+else
+{
+    if (item.Status == true)
+    {
+        <p style="color: Red; font-size: 14px;" class="">
+            <span>
+             
+                    @Html.Image("~/images/delete.png", "Deleted")
+              
+            </span>
+        </p>
+    }
+    else
+    {
+        <p style="color: Red; font-size: 14px;" class="">
+            <span>
+                @Html.Image("~/images/close_delete.png", "Deleted")
+            </span>
+        </p>
+    }
+}
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0em 0em !important;
+    }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+
+@if (Model.Count() == 0)
+{
+
+}
+else
+{
+
+    <script type="text/javascript" class="init">
+        $(document).ready(function () {
+            window.alert = function () {  }
+
+            $('#datasearch').DataTable({
+                "ordering": false
+               
+            });
+            $("#datasearch_length").hide();
+            $("#datasearch_filter").hide();
+            if ($('#datasearch td').attr('colspan') == '8') {
+                $("#datasearch_info").hide();
+                $("#datasearch_paginate").hide();
+            } else {
+            }
+        });
+        $("#edit-btn").click(function () {
+            $("#btncreate").text("Update");
+            $("#btncreate").text("Update");
+        });
+    </script>
+}
+
+
+
+
+

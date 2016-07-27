@@ -1,0 +1,602 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Information Verification</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Information Verification</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is for you to confirm that all of the information you have submitted is correct. </strong>
+                    </p><br />
+                    <p class="terms_text">
+                        The Information Verification Page summarizes the data you have entered, and the associated fees with your license application.
+                    </p>
+
+                    <!--<ul class="terms_text" style="padding-left: 80px;">
+            <li>
+                To display information details use the arrow   button.
+            </li>
+            <li>
+                To revise information you must select the   button and navigate to the relevant data entry screen.
+            </li>
+            <li>
+                To verify that the information is accurate and continue to the next steps of the application, select the   button.
+            </li>
+            <li>
+                To exit without verifying the information select the   button.  You will be redirected to your My BBLs page.  You will return to your completed Checklist page when you revisit the site.
+            </li>
+        </ul>-->
+
+                    <p class="terms_text leftside">
+                        To display license and fee details use the <img src="../images/see-details.png" class="welcome_text-see-image" /> link.
+                    </p>
+                    <p class="terms_text leftside srch_filter">
+                        To revise information you must select the <button class="cursorDefault pointer_events_none preapp_modal" style="text-transform:none;"> Return to Checklist</button>  button and navigate to the relevant data entry screen.
+                    </p>
+                    <p class="terms_text leftside srch_filter">
+                        To verify that the information is accurate and continue to the next steps of the application, select the <button class="btn btn-default btnnextColor btn-next cursorDefault pointer_events_none preapp_modal" style="text-transform:none;">Next</button>  button.
+                    </p>
+                    <!--<p class="terms_text leftside srch_filter">
+                        To exit without verifying the information select the <button class="cursorDefault pointer_events_none preapp_modal text_capitalise"> Exit</button> button. You will be redirected to your My BBLs page. You will return to your completed Checklist page when you revisit the site.
+                    </p>-->
+                    <p class="terms_text leftside srch_filter">
+                        If you wish to download a copy of the page as a PDF, you must select the <button class="cursorDefault pointer_events_none" style="text-transform: none;"> Download a PDF of this Page </button> button.
+                    </p>
+
+                    <p class="terms_text srch_filter">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <p style="margin-top:8px">
+                Please review your application. Based on the information you have provided, your Basic Business License will include the following Business License Categories and Fees. Please carefully review the information presented below before selecting the "Next"   If you notice any errors in the license categories, you must select the "Return to Checklist" button to make changes.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="timeLineWrapper clearfix">
+            <div class="progress_steps">
+                <div class="timeLine"></div>
+                <a class="active" href="">
+                    <div class="timeline_list step1">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 1</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Pre-Application Questions</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="active" tabindex="-1">
+                    <div class="timeline_list step2">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 2</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Application Checklist</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step3">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 3</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Information Verification</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step4">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 4</p>
+                            <p class="step_no">Payment</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step5">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 5</p>
+                            <p class="step_no">Receipt and Next Steps</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="InformationVerificationController as vm">
+        <div class="wizard_form">
+            <div class="container">
+                <div class="collapse_panels" id="collapse_panels">
+                    <div class="panel-group" id="checkListAccordion" role="tablist" aria-multiselectable="true">
+                        <!-- panel 1-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading1">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                            <h3>Business Activities </h3>
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                            <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon hide-details" data-toggle="collapse" data-target="#collapse1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in" aria-labelledby="heading1">
+
+                                <!-- Checklist Name and Short Description Start. -->
+                                <div class="search_result">
+                                    <div class="container app-chklist-container">
+                                        <div class="row">
+                                            <section class="panel panel-box" style="margin-bottom: 5%;">
+                                                <div class="col-md-15 col-sm-3 col-xl-3 col-xs-12 col-md-offset-5">
+                                                    <div class="panel text-center grand_total" style="border: 1px solid #ddd;">
+                                                        <div class="panel-body">
+                                                            <h1>{{vm.SubVerfication.TotalFee | currency}}</h1>
+                                                        </div>
+                                                        <div class="panel-footer grand_total">
+                                                            <span>
+                                                                Grand <br />Total
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <!--code -->
+                                            <div style="margin-top: 1%;">
+                                                <section class="clearfix" ng-repeat="DetailedCategory in vm.SubVerfication.ServiceCheckList">
+                                                    <div class="preappgrid container">
+                                                        <div class="innerRow" style="margin-top: 10px;">
+                                                            <div class="col-sm-1 arrow no-pad hidden-xs">
+                                                                <span class="arrow-right see-details" ng-click="vm.expandCollapse($event)"></span>
+                                                            </div>
+                                                            <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                                                <p>
+                                                                    <span>Endorsement </span>
+                                                                </p>
+
+                                                                <div>
+                                                                    <strong class="font_sze">{{DetailedCategory.Endorsement}}</strong>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4 no-pad">
+                                                                <p>
+                                                                    <span>Category ID : </span> {{DetailedCategory.CategoryCode}}
+                                                                </p>
+                                                                <p>
+                                                                    <span>License Category : </span>
+                                                                    {{DetailedCategory.LicenseCategory}}
+                                                                </p>
+                                                                <p ng-show="DetailedCategory.SubCategoryName!=''"><span>Sub-Category : </span> {{DetailedCategory.SubCategoryName}} </p>
+                                                                <div ng-hide="true" id="shownote">
+                                                                    {{vm.showNote=DetailedCategory.LicenseCategory.indexOf('Charitable Exempt') !=-1 ? true : false }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 no-pad">
+                                                                <p>
+                                                                    <span># Units : </span>
+                                                                    {{DetailedCategory.Units}}
+                                                                </p>
+                                                                <p>
+                                                                    <span>License Duration : </span>
+                                                                    {{DetailedCategory.LicenseDuration.indexOf('(2)')!=-1 ? '2 year' :'4 year'}}
+                                                                </p>
+                                                                <p>
+                                                                    <span>Total Fee : </span>
+                                                                    <strong>{{DetailedCategory.TotalFee | currency}}</strong>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="details no-pad" style="margin-top: 20px">
+
+                                                            <div class="topBorder col-md-offset-1"></div>
+                                                            <div class="col-md-offset-2">
+                                                                <div class="col-sm-10 no-pad text-center">
+                                                                    <p>
+                                                                        <span>Application Fee  :</span>{{DetailedCategory.ApplicationFee | currency}}
+                                                                    </p>
+                                                                    <p>
+                                                                        <span>Endorsement Fee :</span>{{DetailedCategory.EndorsementFee | currency}}
+                                                                    </p>
+                                                                    <p>
+                                                                        <span>Category License Fee  :</span>{{DetailedCategory.CategoryLicenseFee | currency}}
+                                                                    </p>
+
+                                                                    <div class="topBorder col-md-offset-2"></div>
+                                                                    <p>
+                                                                        <span>Sub Total :</span>{{DetailedCategory.SubTotal | currency}}
+                                                                    </p>
+                                                                    <p class="hidden-sm hidden-xs">
+                                                                        <span>10% Tech Fee  :</span>{{DetailedCategory.TechFee | currency}}
+                                                                    </p>
+                                                                    <p class="visible-sm visible-xs">
+                                                                        <span>10% Tech Fee  :</span>{{DetailedCategory.TechFee | currency}}
+                                                                    </p>
+                                                                    <div class="col-sm-12 text-center no-pad" ng-show="DetailedCategory.LicenseCategory=='Apartment'||DetailedCategory.LicenseCategory=='One Family Rental'" id="rao{{$index}}">
+                                                                        <p style="font-size: 14px;">
+                                                                            <strong> Category License Fee includes an RAO fee of $43.00/unit.</strong>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                <div class="col-sm-12 text-center no-pad" ng-show="vm.SubVerfication.IsSubmissioneHop==true" id="ehopnotemessage">
+                                                    <p style="font-size: 14px; font-style: italic; color: #6E6B6B; font-weight: 600; margin-top: 5px;">
+                                                        <strong>** An eHOP Fee of $72.60 ($66.00 (eHOP Fee)+ 10% Technology Fee) was added to the Grand Total displayed above.</strong>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Checklist Name and Short Description End. -->
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading2">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                            <h3>
+                                                Business Information
+                                            </h3>
+                                        </div>
+
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                            <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon hide-details" data-toggle="collapse" data-target="#collapse2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse2" class="panel-collapse open in" aria-labelledby="heading2"
+                                 style="overflow: hidden; display: block;">
+
+                                <div tabindex="-1">
+                                    <div class="row col-md-offset-1">
+                                        <div class="col-sm-6 col-md-6  col-xs-12 panel-collapse-business-wrapper">
+
+                                            <p ng-show="vm.SubVerfication.OccupanyNumber!='' &&  vm.SubVerfication.IsSubmissionHop==true " id="hopnum">
+                                                <span>Home Occupancy Permit Number : </span> {{vm.SubVerfication.OccupanyNumber}}
+                                            </p>
+                                            <p ng-show="vm.SubVerfication.OccupanyNumber!='' &&  vm.SubVerfication.IsSubmissioneHop==true " id="ehopn">
+                                                <span>Expedited Home Occupancy Permit Number : </span> {{vm.SubVerfication.OccupanyNumber}}
+                                            </p>
+                                            <p ng-show="vm.SubVerfication.OccupanyNumber!='' && vm.SubVerfication.IsSubmissionCofo==true" id="cofonum">
+                                                <span>Certificate of Occupancy Number : </span> {{vm.SubVerfication.OccupanyNumber}}
+                                            </p>
+                                            <p>
+                                                <span>Corporate Registration File Number : </span>
+                                                {{vm.SubVerfication.CorpFileNo}}
+                                            </p>
+
+                                            <p>
+                                                <span>Organization Type : </span>
+                                                {{vm.SubVerfication.OrgType}}
+                                            </p>
+
+                                            <p ng-show="vm.SubVerfication.TradeName!=''" id="withtradenumber">
+                                                <span>Trade Name (if applicable) :  </span>
+                                                {{vm.SubVerfication.TradeName}}
+                                            </p>
+                                            <p ng-show="vm.SubVerfication.TradeName==''" id="notradenumber">
+                                                <span>Trade Name (if applicable) :  </span>
+                                                N/A
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-xs-12 panel-collapse-business-wrapper">
+
+                                            <p ng-show="vm.SubVerfication.DateofIssue!='01/01/1900' && vm.SubVerfication.IsSubmissioneHop!=true" id="dateofissue">
+                                                <span>Date of Issuance :  </span> {{vm.SubVerfication.DateofIssue}}
+                                            </p>
+
+                                            <p ng-show="vm.SubVerfication.IsFEIN==false" id="ssn">
+                                                <span>Social Security Number (SSN) : </span>
+                                                {{vm.SubVerfication.FienNumber}}
+                                            </p>
+                                            <p ng-show="vm.SubVerfication.IsFEIN==true" id="fein">
+                                                <span>Federal Employer Identification Number (FEIN) : </span>
+                                                {{vm.SubVerfication.FienNumber}}
+                                            </p>
+                                            <p>
+                                                <span>Business Name : </span>
+                                                {{vm.SubVerfication.HeadQBName}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin: 2%">
+                                    <div class="line"></div>
+                                </div>
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Business HQ <br /> Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p id="headqbname" ng-show="vm.SubVerfication.HeadQBName != ' ' ">{{vm.SubVerfication.HeadQBName }}</p>
+                                            <p id="headqname" ng-show="vm.SubVerfication.HeadQName !=''">{{vm.SubVerfication.HeadQName }}</p>
+                                            <p id="headqadd" ng-show="vm.SubVerfication.HeadQAddressNumber !=''">{{vm.SubVerfication.HeadQAddressNumber }}</p>
+                                            <p id="headqadd" ng-show="vm.SubVerfication.HeadQStreetName !=''">{{vm.SubVerfication.HeadQStreetName }}</p>
+                                            <p id="headqadd" ng-show="vm.SubVerfication.HeadQStreetType !=''">{{vm.SubVerfication.HeadQStreetType }}</p>
+                                            <p id="headqadd" ng-show="vm.SubVerfication.HeadQAQuadrant !=''">{{vm.SubVerfication.HeadQAQuadrant }}</p>
+                                            <p id="headqcity" ng-show="vm.SubVerfication.HeadQCity !=''">{{vm.SubVerfication.HeadQCity }}
+                                            <p id="headqstate" ng-show="vm.SubVerfication.HeadQState !=''">{{vm.SubVerfication.HeadQState }} </p>
+                                            <p id="headqcon" ng-show="vm.SubVerfication.HeadQCountry !=''">{{vm.SubVerfication.HeadQCountry }} </p>
+                                            <p id="headqzip" ng-show="vm.SubVerfication.HeadQZip !=''">{{vm.SubVerfication.HeadQZip }} </p>
+                                            <p id="headqemail" ng-show="vm.SubVerfication.HeadQEmail !=''">{{vm.SubVerfication.HeadQEmail }}</p>
+                                            <p id="headqtele" ng-show="vm.SubVerfication.HeadQTelePhone !=''">{{vm.SubVerfication.HeadQTelePhone }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Business Premises<br /> Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body info-verify-para">
+                                            <p ng-class="vm.SubVerfication.PremiseBName !=''">{{vm.SubVerfication.PremiseBName }}</p>
+                                            <p ng-show="vm.SubVerfication.PremiseName !=''">{{vm.SubVerfication.PremiseName }}</p>
+                                            <p>{{vm.SubVerfication.PremiseAddressNumber }} {{vm.SubVerfication.PremiseAddressNumberSufix }} {{vm.SubVerfication.PremiseStreetName }} {{vm.SubVerfication.PremiseStreetType }} {{vm.SubVerfication.PremiseQuadrant }}</p>
+                                            <p ng-show="vm.SubVerfication.PremiseUnitType != '' && vm.SubVerfication.PremiseUnitType !='NONE'">{{vm.SubVerfication.PremiseUnitType }}</p>
+                                            <p ng-show="vm.SubVerfication.PremiseUnit !=''">{{vm.SubVerfication.PremiseUnit }}</p>
+                                            <p ng-show="vm.SubVerfication.PremiseCity !=''">{{vm.SubVerfication.PremiseCity  }}</p>
+                                            <p ng-show="vm.SubVerfication.PremiseState !=''">{{vm.SubVerfication.PremiseState }} </p>
+                                            <p ng-show="vm.SubVerfication.PremiseCountry !=''">{{vm.SubVerfication.PremiseCountry }} </p>
+                                            <p ng-show="vm.SubVerfication.PremiseZip !=''">{{vm.SubVerfication.PremiseZip }} </p>
+                                            <p ng-show="vm.SubVerfication.PremiseEmail !=''">{{vm.SubVerfication.PremiseEmail }}</p>
+                                            <p ng-show="vm.SubVerfication.PremiseTelePhone !=''">{{vm.SubVerfication.PremiseTelePhone}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Mailing <br />Address
+                                            </p>
+                                        </div>
+                                        <div class="panel-body info-verify-para">
+                                            <p ng-show="vm.addressType==false">{{vm.SubVerfication.MailingBName }}</p>
+                                            <p ng-show="vm.addressType==false">{{vm.SubVerfication.MailingName }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingStreetNumber !='' &&  vm.submissionStatusData.SelectedMailType=='Primses Address' ">{{vm.SubVerfication.MailingStreetNumber }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingAddressNumberSufix !=''">{{vm.SubVerfication.MailingAddressNumberSufix }}</p>
+                                            <p ng-show="vm.addressname==false">{{vm.SubVerfication.MailingStreetName }}</p>
+                                            <p ng-show="vm.addressname==true && vm.submissionStatusData.SelectedMailType=='HQ Address'">{{vm.SubVerfication.MailingAddress}}</p>
+                                            <p ng-show="vm.SubVerfication.MailingStreetNumber !='' &&  vm.submissionStatusData.SelectedMailType=='HQ Address' ">{{vm.SubVerfication.MailingStreetNumber }}</p>
+                                            <p ng-show="vm.addressname==true && vm.submissionStatusData.SelectedMailType!='HQ Address'">{{vm.SubVerfication.MailingAddress}}</p>
+                                            <p ng-show="vm.SubVerfication.MailingStreetType !=''&& vm.submissionStatusData.SelectedMailType!='NEWMAIL'">{{vm.SubVerfication.MailingStreetType }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingQuadrant !=''">{{vm.SubVerfication.MailingQuadrant }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingUnitType !=''">{{vm.SubVerfication.MailingUnitType }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingUnit !=''">{{vm.SubVerfication.MailingUnit }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingCity !=''">{{vm.SubVerfication.MailingCity }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingState !=''">{{vm.SubVerfication.MailingState }}</p>
+                                            <p ng-show="vm.SubVerfication.MailingCountry !=''">{{vm.SubVerfication.MailingCountry }} </p>
+                                            <p ng-show="vm.SubVerfication.MailingZip !=''">{{vm.SubVerfication.MailingZip }} </p>
+                                            <p ng-show="vm.SubVerfication.MailingEmail !=''">{{vm.SubVerfication.MailingEmail}}</p>
+                                            <p ng-show="vm.SubVerfication.MailingTelePhone !=''">{{vm.SubVerfication.MailingTelePhone }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-xl-4 col-xs-12 business-address-panel-wrapper">
+                                    <div class="panel panel-default collapse_panels panel_height">
+                                        <div class="panel-heading">
+                                            <p>
+                                                Registered/Resident Agent Address
+                                            </p>
+                                        </div>
+
+                                        <div class="panel-body info-verify-para">
+                                            <p ng-show="vm.SubVerfication.AgentName !=''">{{ vm.SubVerfication.AgentName }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentBName !=''">{{vm.SubVerfication.AgentBName }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentAddress!=''">{{vm.SubVerfication.AgentAddress}}</p>
+                                            <p ng-show="vm.SubVerfication.AgentAddressNumber !=''">{{vm.SubVerfication.AgentAddressNumber}}</p>
+                                            <p ng-show="vm.SubVerfication.AgentStreetName !=''">{{vm.SubVerfication.AgentStreetName }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentStreetType !=''">{{vm.SubVerfication.AgentStreetType }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentQuadrant !=''">{{vm.SubVerfication.AgentQuadrant }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentUnit !=''">{{vm.SubVerfication.AgentUnit }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentCity !=''">{{vm.SubVerfication.AgentCity  }}
+                                            <p ng-show="vm.SubVerfication.AgentState !=''">{{vm.SubVerfication.AgentState }} </p>
+                                            <p ng-show="vm.SubVerfication.AgentCountry !=''">{{vm.SubVerfication.AgentCountry }} </p>
+                                            <p ng-show="vm.SubVerfication.AgentZip !=''">{{vm.SubVerfication.AgentZip }} </p>
+                                            <p ng-show="vm.SubVerfication.AgentEmail !=''">{{vm.SubVerfication.AgentEmail }}</p>
+                                            <p ng-show="vm.SubVerfication.AgentTelePhone !=''">{{vm.SubVerfication.AgentTelePhone | capitalize}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading3">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                            <h3>Supporting Documents </h3>
+                                        </div>
+
+                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                            <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="collapseIcon hide-details" data-toggle="collapse" data-target="#collapse3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse in" aria-labelledby="heading3" style="overflow: hidden; display: block;">
+
+                                <div class="panel-body" tabindex="-1">
+                                    <section class="clearfix" ng-repeat="appChecklistItem in vm.SubVerfication.DocumentList"
+                                             id="{{appChecklistItem.Id}}">
+
+                                        <div class="container1">
+                                            <div class="innerRow">
+                                                <div class="col-sm-1 no-pad">
+                                                    <span id="online{{$index}}" ng-show="vm.SubVerfication.DocType!='In-Person'" ng-class="{true: 'glyphicon glyphicon-ok',false:'glyphicon glyphicon-unchecked'}[appChecklistItem.IsUpload]"></span>
+                                                    <img id="inperson{{$index}}" src="../images/icon-doc-inperson.jpg" ng-show="vm.SubVerfication.DocType=='In-Person'" style="height: 30px; width: 35px; margin: 10px;" />
+                                                </div>
+                                                <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                                    <p>
+                                                        <span>Document Required</span>
+                                                    </p>
+
+                                                    <div>
+                                                        {{appChecklistItem.DocRequired}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-1 col-xs-12"></div>
+                                                <div class="col-sm-4 col-xs-12 no-pad ">
+
+                                                    <p>
+                                                        <span>Agency : </span>
+                                                        {{appChecklistItem.Agency}}
+                                                    </p>
+
+                                                    <p>
+                                                        <span> Division : </span>{{appChecklistItem.Division}}
+                                                    </p>
+                                                </div>
+
+                                                <div class="col-sm-3 col-xs-12 no-pad">
+                                                    <p>
+                                                        <span>License Code : </span>
+                                                        {{appChecklistItem.CategoryCode}}
+                                                    </p>
+                                                    <p>
+                                                        <span>Endorsement : </span>
+                                                        {{appChecklistItem.Endorsement}}
+                                                    </p>
+                                                    <p>
+                                                        <span> License : </span>{{appChecklistItem.License}}
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-offset-1 col-md-11 col-xs-12 col-sm-12 no-pad">
+                                                        <p ng-show="appChecklistItem.UploadFileName !=''" id="file{{$index}}">
+                                                            <span>File Name :</span> {{appChecklistItem.UploadFileName}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-xs-12 col-md-12">
+                                                    <div class="grid-row-line"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section ng-show="vm.SubVerfication.DocumentList.length==0" id="noResultsKey">
+                                        <div class="container">
+                                            <div class="innerRow">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                                                    <p class="text-danger error_text ">No Supporting Documents Required</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- panel 1-->
+                    </div>
+                    <!-- collapse panel -->
+                </div>
+
+                <p class="note-text text_ContentDec">
+                    <strong class="text-danger">Please Note:</strong> You will not be able to revise your application once the information has been verified.  If you need to revise any of your responses, select the "Return to Checklist" button below. To proceed, select the "Next" button.
+                </p>
+
+                <div class="pre-checkquestion col-md-12 col-xs-12 buttons_info" id="infobtns">
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-sm-12 col-xs-12 col-md-4" id="infoverify-btns">
+                        <button id="btn_return_to_checklist" class="btn btn-default return-to-list" data-ng-click="vm.navToChecklist()">Return to Checklist</button>
+                        <!--<button id="btn_save_exit" class="btn btn-default" data-ng-click="vm.navToMyBBL()">Save & Exit</button>-->
+                    </div>
+                    <div class=" col-sm-12 col-xs-12 col-md-4">
+                        <button id="btn_download_pdf" class="btn btn-default" data-ng-click="vm.printcontents()">Download a PDF of this Page</button>
+                    </div>
+                    <div class=" col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                        <button id="btn_verify_continue" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToPayment()">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade preapp_modal" id="infoverificationPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class='error_message'>The data selected/entered so far will be lost. You may have to create checklist to save your data. Do you want to exit without saving?</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="vm.continueToNavigate()">Confirm</button>
+                        <button type="button" class="close-button" ng-click="vm.stayonthePage()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

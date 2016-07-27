@@ -1,0 +1,331 @@
+﻿@{
+    ViewBag.Title = "DCRA - Confirm Transfer";
+}
+@using System.Web.UI.WebControls
+@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.SubmissionTransferViewModel
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Customer", "CustomerHome", "Admin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("BBL Dashboard", "CustomerSubmissions", "BBL", new { userId = @ViewBag.UserId }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Confirm Transfer</span>
+    </div>
+    //using (Html.BeginForm("TransferLicense", "BBL", FormMethod.Post))
+    //{
+
+
+
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Confirm Transfer</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper reg-err-placement">
+                        <h2 id="primary-status"> @ViewBag.Status</h2>
+
+                        @using (Html.BeginForm("ConfirmTransfer", "BBL", FormMethod.Post))
+                        {
+                            @*<div class="clearfix">
+                                    <div class="row" style="background-color:#f5f5f5;border-color:#f5f5f5;">
+                                        <div class="col-md-offset-2 col-md-4">
+                                            <span class="pull-left">License/Application # : </span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span>@Html.DisplayFor(model => model.SubmissionLicense)</span>
+                                        </div>
+
+
+
+                                        <div class="col-md-offset-2 col-md-4">
+                                            <span class="pull-left">Transfer From :</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span>@Html.DisplayFor(model => model.TransferredFromUserName)</span>
+                                        </div>
+
+                                        <div class="col-md-offset-2 col-md-4">
+                                            <span class="pull-left">Transfer To :</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span>@Html.DisplayFor(model => model.TransferToUserName)</span>
+                                        </div>
+
+                                        <div class="col-md-offset-2 col-md-4">
+                                            <span class="pull-left">Reason for Transferring :</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span>@Html.DisplayFor(model => model.ReasonForTransfer)</span>
+                                        </div>
+                                        <div class="col-md-offset-2 col-md-4">
+                                            <span class="pull-left">Account ID : </span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span>@Html.DisplayFor(model => model.LoggedUserName)</span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>*@
+
+
+
+
+
+
+                            <div class="clearfix" style="min-height:200px;background-color:#f5f5f5;border-color:#f5f5f5;padding: 20px 5px;">
+                                <div class="row confirm-pad">
+                                    <div class="col-md-6">
+                                        <span class="pull-right">License/Application # :</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="pull-left">@Html.DisplayFor(model => model.SubmissionLicense)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row confirm-pad" style="">
+                                    <div class="col-md-6">
+                                        <span class="pull-right">Transfer From :</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="pull-left">@Html.DisplayFor(model => model.TransferredFromUserName)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row confirm-pad" style="">
+                                    <div class="col-md-6">
+                                        <span class="pull-right">Transfer To :</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="pull-left">@Html.DisplayFor(model => model.TransferToUserName)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row confirm-pad" style="">
+                                    <div class="col-md-6">
+                                        <span class="pull-right">Reason for Transferring :</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="pull-left">@Html.DisplayFor(model => model.ReasonForTransfer)</span>
+                                    </div>
+                                </div>
+
+                                <div class="row confirm-pad" style="">
+                                    <div class="col-md-6">
+                                        <span class="pull-right">Account ID :</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="pull-left">@Html.DisplayFor(model => model.LoggedUserName)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.HiddenFor(model => model.SubmissionLicense, new { @class = "licensenum" })
+                            @Html.HiddenFor(model => model.LoggedUserName, new { @class = "loggedusername" })
+                            @Html.HiddenFor(model => model.TransferredFromUserName, new { @class = "transferredfromusername" })
+                            @Html.HiddenFor(model => model.TransferToUserName, new { @class = "transfertousername" })
+                            @Html.HiddenFor(model => model.ReasonForTransfer, new { @class = "reasonfortransfer" })
+                            @Html.HiddenFor(model => model.MasterId, new { @class = "masterid" })
+                            @Html.HiddenFor(model => model.FromUserId)
+                            @Html.HiddenFor(model => model.ToUserId, new { @class = "fromuserid" })
+
+                            <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                                <button type="button" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  REVISE</button>
+                                <button type="submit" id="btnCreate" class="btn btn-default">COMPLETE TRANSFER</button>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    if (IsPost)
+    {
+        if (ViewBag.IsLicenseTransfer == true)
+        {
+            <script>
+                $(function () {
+
+
+                    var msg = '@ViewBag.LicenseNumber' + " " + " is successfully transferred from" + " " + '@ViewBag.UserName' + " " + "to" + " " + '@ViewBag.ToUserName';
+
+
+                    $('.homemodal-body h3.error_message').empty().append(msg);
+
+
+                    $("#registermodal-container").modal('show');
+                });
+                $(".yes-btn").on("click", function () {
+                    $('#registermodal-container').modal('hide');
+                    $("#mainbody").css({ 'opacity': '0.5' });
+                    $("#mainbody").css({ 'cursor': 'default' });
+                    $("#mainbody").css({ 'pointer-events': 'none' });
+                    var url = "/BBL/CustomerSubmissions?UserId=" + $(".fromuserid").val();
+                    window.location.href = url;
+
+
+                });
+            </script>
+        }
+    }
+
+
+
+    <style>
+        #Description {
+            text-align: left;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select {
+            cursor: inherit;
+        }
+
+        .confirm-pad {
+            padding-bottom: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+            .confirm-pad span {
+                word-break: break-all;
+                word-wrap: break-word;
+                text-align: left;
+            }
+    </style>
+
+
+
+    <script>
+        $("#btnCreate").click(function () {
+            $('input').trigger('reset');
+            $('select').trigger('reset');
+            $("#mainbody").css({ 'opacity': '0.5' });
+            $("#mainbody").css({ 'cursor': 'default' });
+            $("#mainbody").css({ 'pointer-events': 'none' });
+        });
+        $(window).click(function () {
+            //   msgunit.innerHTML = "";
+        });
+
+        //$("#btnBack").click(function () {
+        //    var url = "/BBL/UserSubmissions?userId=" + $("#UserId").val();
+        //    window.location.href = url;
+
+        //});
+
+        $("#btnBack").click(function () {
+            var url = "/BBL/TransferLicense?masterId=" + $(".masterid").val() + "&" + "TransferToUserName=" + $(".transfertousername").val() + "&" + "reasonForTransfer=" + $(".reasonfortransfer").val();
+            window.location.href = url;
+
+            //$.ajax({
+            //    url: '/BBL/TransferLicense',
+            //    type: "Get",
+            //    data: { masterId: $(".masterid").val(), TransferToUserName: $(".transfertousername").val(), reasonForTransfer: $(".reasonfortransfer").val() },
+            //    success: editSuccess,
+            //    error: editFailure
+            //});
+
+            //function GetAll() {
+            //    $.ajax({
+            //        url: '/SuperAdmin/All',
+            //        type: 'Get',
+            //        cache: false,
+            //        data: { AllData: $('#All').val() },
+            //        success: function (data) {
+            //            $("#Content").empty().append(data);
+            //            $("#noRecords").empty().text("No active or inactive Superadmins found");
+            //        },
+            //        error: function () {
+            //        }
+            //    });
+            //}
+
+        });
+
+        //function editSuccess(data) {
+        //    //console.log(data);
+
+
+        //}
+
+        //function editFailure(data) {
+        //    alert("error");
+        //    return false;
+        //}
+
+    </script>
+    //}
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtSearch").autocomplete({
+                source: '@Url.Action("GetUsersforTransfer")',
+                minLength: 1,
+                type: "POST",
+                //  maxRows: 1,
+                select: function (event, ui) {
+                    //alert('you have selected ');
+                    $('#txtSearch').val(ui.item.label);
+
+                    //  var primarydescr = $("#txtSearch").val();
+                    var descr = ui.item.label;
+                    //  GetAllSecondaries(descr);
+                    return false;
+                }
+            });
+        });
+
+
+    </script>*@
+
+
+
+
+
+
+
+
+
+
+

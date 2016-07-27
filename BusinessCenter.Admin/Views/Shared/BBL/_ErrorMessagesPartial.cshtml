@@ -1,0 +1,163 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Data.Model.PortaContentErrorsModel>
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Message Type</th>
+                        <th class="text-center">Short Name</th>
+                        <th class="text-center">Error Message</th>
+                        <th class="text-center">Activate/Deactivate</th>
+                        @*<th class="text-center">Deactivate</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="8">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow text-center">
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                        <span style="text-align: center">
+
+
+                                            @item.MessageType
+
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col3-tab col3 Superadmingrid usercol">
+
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                        <span style="text-align: center">
+
+
+                                            @item.ShortName
+
+                                        </span>
+                                    </p>
+
+
+                                </td>
+                                <td class="col4-tab col4 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                        <span style="text-align: center">
+                                          
+                                            @Html.ActionLink(item.ErrrorMessage, "UpdateError", "BBL", new { messageId = item.MessageId }, null)
+                                        </span>
+                                    </p>
+                                </td>
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.IsActive==true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                <a href="javascript:void(0)" onclick="InactivateError('@item.MessageId') " title="Deactivate" class="activestatus">
+                                                    @Html.Image("~/images/delete.png", "Deleted")
+                                                </a>
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                <a href="javascript:void(0)" onclick="ActivateError('@item.MessageId') " title="Activate" class="activestatus">
+                                                    @Html.Image("~/images/active.png", "Active")
+                                                </a>
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+<script type="text/javascript" class="init">
+    var tableData = '';
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#datasearch').DataTable({
+            "ordering": false,
+            stateSave: true
+        });
+        $("#datasearch_length").hide();
+        $("#datasearch_filter").hide();
+        if ($('#datasearch td').attr('colspan') == '8') {
+            $("#datasearch_info").hide();
+            $("#datasearch_paginate").hide();
+        } else {
+        }
+    });
+
+    $(" #btnCreate").on('click', function (e) {
+        tableData.state.clear();
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('businessActivities') || $(this).hasClass('paginate_button') || $(this).hasClass('updatebusinessactivity') || $(this).hasClass('activestatus')) {
+        } else {
+            //console.log("working");
+            //alert("working");
+            tableData.state.clear();
+        }
+    });
+
+    function clearTableState() {
+        tableData.state.clear();
+    }
+
+    $("#edit-btn").click(function () {
+        $("#btncreate").text("Update");
+        $("#btncreate").text("Update");
+    });
+</script>
+

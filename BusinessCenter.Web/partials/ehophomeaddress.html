@@ -1,0 +1,297 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" ng-click="vm.navToMyBBL()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" ng-click="vm.navToApply()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is to capture the home address/business premise address to apply for an Expedited Home Occupancy Permit.</strong>
+                    </p>
+                    <p class="terms_text srch_filter">
+                        Type in the full Street Address of the Business or Property.
+                    </p>
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li>
+                            Select the correct address from the list that drops down from the data entry field.
+                        </li>
+                        <li>
+                            The selected address will automatically populate the fields below.
+                        </li>
+                    </ul>
+                    <p class="terms_text">Provide a telephone number for the business or Property (optional).</p>
+                    <p class="terms_text srch_filter">Select the <button id="btn_revise2" class="btn btn-default btnnextColor" style="cursor: default; pointer-events: none; text-transform: capitalize;">Next</button>  button to continue with your application.</p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="eHOPHomeAddressController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">eHOP Home Address <small style="color:black;">(Business Premises Address)</small></div>
+                <div class="panel-body">
+                    <div class="page-desc-content">
+                    <p class="panel-body-text">
+                        Please provide your Home Address and Email for inclusion on your Expedited Home Occupancy Permit (eHOP).
+                    </p>
+                        </div>
+                        <p class="panel-body-text" style="margin-top: 8px;">
+                            <strong>Note : </strong><span style="font-style: italic;">An eHOP fee of $66.00 + 10% Technology Fee for a total of <strong style="color: black;"><b>$72.60</b></strong> will be added to your Total Fee and the Grand Total is displayed accordingly when you make payment. Please select <strong style="color: black;"><b> Next </b></strong> after entering all the required data.</span>
+                        </p>
+                        <!-- start controls -->
+                        <div class="line"></div>
+                        <div id="error_msg" class="error_text text-center error_msg" tabindex="-1"></div>
+                        <div class="row">
+                            <div class="col-md-offset-2">
+                                <form role="form" id="vm.ehophomeadd_form" name="vm.ehophomeadd_form" autocomplete="off" novalidate ng-submit="vm.ehophomeadd_form_validate(ehopaddress)">
+                                    <div class="form_wrapper">
+
+                                        <div class="clearfix">
+                                            <div class="col-md-10 col-sm-10 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.countrydd.$invalid && vm.submitted }">
+                                                    <label>Country</label>
+                                                    <select name="countrydd" data-ng-model="vm.ehopaddress.Country" ng-disabled="vm.fieldsDisable">
+                                                        <option ng-repeat="country in vm.Countries" disabled value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix">
+                                            <div class="col-md-10 col-sm-10 col-xs-12 ">
+                                                <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.ehophomeadd_form.street.$invalid && vm.submitted }">
+                                                    <label>Street Address</label>
+                                                    <div class="inner-addon right-addon">
+                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="streetaddress" style="display: none"></i>
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               spellcheck="false"
+                                                               placeholder="For Example: 123 Main"
+                                                               autocomplete="off"
+                                                               data-ng-model="vm.ehopaddress.Street"
+                                                               name="street" id="street"
+                                                               typeahead="f.FullAddress for f in vm.Address | filter:$viewValue:vm.startsWith"
+                                                               typeahead-test="vm.dataavail"
+                                                               typeahead-on-select="vm.getrelatedAddress($item)"
+                                                               ng-change="vm.getSuggestions(vm.ehophomeadd_form.street.$viewValue,'streetaddress')"
+                                                               ng-blur="vm.checktabpress('streetaddress')"
+                                                               ng-focus="vm.setErrorMsg('error_msg')" required
+                                                               ng-maxlength="100"
+                                                               data-ng-trim="false">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.ehophomeadd_form.street.$dirty && vm.ehophomeadd_form.street.$invalid">
+                                                        <small class="error-message" ng-show="vm.ehophomeadd_form.street.$error.maxlength">
+                                                            Street exceeds the maximum length of 100 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div id="noDataErrorMessage" ng-show="vm.not_valid_Address" style="color: red; font-weight: 300; font-size: 18px; text-align: center;">
+                                                    Entered Address is not a valid DC Address
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.AddressNumber.$invalid && vm.submitted }">
+                                                <label>Street #</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.ehopaddress.AddressNumber" ng-disabled="vm.fieldsDisable"
+                                                       name="AddressNumber" id="AddressNumber" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[0-9]+$/" ng-maxlength="9" spellcheck="false">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.ehophomeadd_form.AddressNumber.$dirty && vm.ehophomeadd_form.AddressNumber.$invalid">
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.AddressNumber.$error.pattern">
+                                                    Street # must be numeric.
+                                                </small>
+
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.AddressNumber.$error.maxlength">
+                                                    Street # Code exceeds maximum length of 9 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>Street Suffix</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.ehopaddress.AddressNumberSufix" ng-disabled="vm.fieldsDisable"
+                                                       name="AddressNumberSufix" id="AddressNumberSufix" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.StreetName.$invalid && vm.submitted }">
+                                                <label>Street Name</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.ehopaddress.StreetName" ng-disabled="vm.fieldsDisable"
+                                                       name="StreetName" id="StreetName" ng-focus="vm.setErrorMsg('error_msg')" required ng-maxlength="40" spellcheck="false">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.ehophomeadd_form.StreetName.$dirty && vm.ehophomeadd_form.StreetName.$invalid">
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.StreetName.$error.maxlength">
+                                                    Street exceeds the maximum length of 40 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5 col-xs-12">
+                                            <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.streettypes.$invalid && vm.submitted }">
+                                                <label>Street Type </label>
+                                                <select required name="streettypes" ng-disabled="vm.fieldsDisable" data-ng-model="vm.ehopaddress.StreetType" ng-focus="vm.setErrorMsg('error_msg')">
+                                                    <option value="">Select One</option>
+                                                    <option ng-repeat="street in vm.StreetTypes" value="{{street.StreetCode}}">{{street.StreetType}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-md-5 col-sm-5 col-xs-12">
+                                            <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.quadrant.$invalid && vm.submitted }">
+                                                <label>Quadrant</label>
+                                                <select name="quadrant" required data-ng-model="vm.ehopaddress.Quadrant" ng-disabled="vm.fieldsDisable">
+                                                    <option value="">Select One</option>
+                                                    <option value="NE">NE</option>
+                                                    <option value="NW">NW</option>
+                                                    <option value="SE">SE</option>
+                                                    <option value="SW">SW</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>Unit Type</label>
+                                                <select name="ehopeligibility" data-ng-init="vm.ehopaddress.unittype=0" data-ng-model="vm.ehopaddress.UnitType" ng-disabled="vm.fieldsDisable">
+                                                    <option value="">Select One</option>
+                                                    <option value="APT">APT</option>
+                                                    <option value="BLDG">BLDG</option>
+                                                    <option value="STE">STE</option>
+                                                    <option value="UNIT">UNIT</option>
+                                                    <option value="NONE">NONE</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>Unit</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.ehopaddress.Unit"
+                                                       name="Unit" id="Unit" ng-focus="vm.setErrorMsg('error_msg')" ng-maxlength="10" spellcheck="false" ng-disabled="vm.fieldsDisable">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.ehophomeadd_form.Unit.$dirty && vm.ehophomeadd_form.Unit.$invalid">
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Unit.$error.maxlength">
+                                                    Unit exceeds maximum length of 10 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" class="form-control noselect" placeholder="" data-ng-model="vm.ehopaddress.City"
+                                                       name="city" id="city" ng-focus="vm.setErrorMsg('error_msg')" ng-pattern="/^[a-zA-Z\s]+$/"
+                                                       ng-maxlength="30" ng-disabled="vm.fieldsDisable" spellcheck="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <input type="text" class="form-control noselect" placeholder="" data-ng-model="vm.ehopaddress.State"
+                                                       name="State" id="State" ng-focus="vm.setErrorMsg('error_msg')"
+                                                       ng-pattern="/^[a-zA-Z\s]+$/" ng-maxlength="30" ng-disabled="vm.fieldsDisable" spellcheck="false">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.Zip.$invalid && vm.submitted }">
+                                                <label>Zip Code</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.ehopaddress.Zip" ng-disabled="vm.fieldsDisable"
+                                                       name="Zip" id="Zip" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[0-9]+$/" ng-maxlength="5" spellcheck="false" ng-minlength="5">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.ehophomeadd_form.Zip.$dirty && vm.ehophomeadd_form.Zip.$invalid">
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Zip.$error.pattern">
+                                                    Please enter numbers only.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Zip.$error.maxlength">
+                                                    Zip Code exceeds maximum length of 5 characters.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Zip.$error.minlength">
+                                                    Zip Code must be 5 digits.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix">
+                                        <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.ehophomeadd_form.Telephone.$invalid && vm.submitted }">
+                                                <label>Telephone</label>
+                                                <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.ehopaddress.Telephone"
+                                                       name="Telephone" id="Telephone" ng-trim="false" ng-focus="vm.setErrorMsg('error_msg')" ng-pattern="/^[0-9]+$/" ng-maxlength="10" spellcheck="false" ng-minlength="10">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.ehophomeadd_form.Telephone.$dirty && vm.ehophomeadd_form.Telephone.$invalid">
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Telephone.$error.pattern">
+                                                    Please enter numbers only.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Telephone.$error.maxlength">
+                                                    Telephone Number exceeds the maximum length of 10 characters.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.ehophomeadd_form.Telephone.$error.minlength">
+                                                    Telephone Number must be 10 digits.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end controls -->
+                </div>
+                <div class="pre-checkquestion form_button_footer pre-checkquestion-question col-md-12 col-xs-12">
+                    <button id="btn_exit_no_save1" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                    <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')">Exit</button>
+                    <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist')">
+                        Return to Checklist
+                    </button>
+                    <button id="btn_revise" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToCorpRegistrationFromEhop(vm.submitted=true)" ng-disabled="vm.not_valid_Address" ng-class="{true:'disablecolor'}[vm.not_valid_Address]">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

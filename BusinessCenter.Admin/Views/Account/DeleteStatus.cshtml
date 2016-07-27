@@ -1,0 +1,26 @@
+﻿@model BusinessCenter.Admin.Models.ForgotPassword
+@{
+    ViewBag.Title = "DCRA - Delete Status";
+}
+<div class="container headerBreadcrumb">
+    @if (Session["UserName"] != null)
+    {
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        @Html.ActionLink(" Business Center Admin Portal ", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Deleted</span>
+    }
+</div>
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Account was Deleted</h2>
+        </div>
+    </div>
+</div>
+<div class="login_form">
+    <div class="container">
+    </div>
+</div>
+

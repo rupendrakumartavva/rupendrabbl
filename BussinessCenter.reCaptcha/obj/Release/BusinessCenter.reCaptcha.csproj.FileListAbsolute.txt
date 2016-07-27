@@ -1,0 +1,6 @@
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Release\BusinessCenter.reCaptcha.dll
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Release\BusinessCenter.reCaptcha.pdb
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Release\Newtonsoft.Json.dll
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Release\Newtonsoft.Json.xml
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\obj\Release\BusinessCenter.reCaptcha.dll
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\obj\Release\BusinessCenter.reCaptcha.pdb

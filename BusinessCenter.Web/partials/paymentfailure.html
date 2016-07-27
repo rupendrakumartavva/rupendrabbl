@@ -1,0 +1,89 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div data-ng-controller="PaymentFailureController as vm">
+    <div class="container headerBreadcrumb">
+        <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0" ng-click="vm.navToMyBBL">BBL</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/bblrenewalconfirm" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0" ng-show="vm.renewalBreadcrum==true">Renew</a>
+        <span class="easy-breadcrumb_segment-separator" ng-show="vm.renewalBreadcrum==true"> / </span>
+        <a ng-href="#/payment/{{vm.guid}}" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0" ng-show="vm.renewalBreadcrum!=true">Payment</a>
+        <a href="#/renewalpayment" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0" ng-show="vm.renewalBreadcrum==true">Payment</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Payment Failure</span>
+    </div>
+
+    <div class="page_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Payment Failure</h2>                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="physical-loc-form">
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body" ng-show="vm.corpFailure == 'true'">
+                    <div class="row">
+                        <center tabindex="0" style="font-weight: 600; font-size: 26px;">Payment Validation – Corporate Status </center>
+                    </div>
+                    <div class="page-desc-content">
+                        <p>
+                            According to DCRA’s Corporations Division, your Corporate Registration status has changed since you initiated your application. Please, select <b style="color: black;">Return to Checklist</b>, and contact DCRA’s Corporations Division at <b style="color: black;">202-442-4400</b> to resolve any open issues.
+                        </p>
+                        </div>
+                    </div>
+                <!--<div class="panel-body" ng-show="vm.taxRevenueFailure == 'true' && vm.renewalBreadcrum == false">
+                    <div class="row">
+                        <center tabindex="0" style="font-weight:600;font-size:26px;">Payment Validation – Clean Hands </center>
+                    </div>
+                    <p>
+                        According to the Office of Tax and Revenue (OTR), your Clean Hands status has changed since you initiated your application. Please, select <b style="color:black;">Return to Checklist</b>, and contact the Office of Tax and Revenue at <b style="color:black;">202-727-4829</b> to resolve any open issues.
+                    </p>
+                </div>-->
+          
+                <div class="panel-body" ng-show="vm.paymentFailure =='true'">
+                    <div class="row">
+                        <center tabindex="0" style="font-weight:600;font-size:26px;">Payment Validation – Invalid Payment Method</center>
+                    </div>
+                    <p class="panel-body-text div_height">
+                        Your payment did not go through.  Please select the <b style="color:black;"> Return to Payment Page</b>  button below
+                        and re-enter your credit card information<span ng-show="vm.renewalBreadcrum!=true" style="font-size:18px;font-weight:500; color:#444;"> on the <b style="color:black;">Payment Page</b></span>.  If your payment does not
+                        go through a second time, please select <span ng-show="vm.renewalBreadcrum!=true"> <b class="font_color"> Return to Checklist </b> </span> <span ng-show="vm.renewalBreadcrum==true"> <b class="font_color"> Return to My BBLs </b> </span> below and try again later.
+                    </p>
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="pre-checkquestion col-md-11 col-xs-12 col-md-offset-2 ">
+                    <button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToPayment()">Return to Payment Page</button>
+                    <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToChecklist()" ng-show="vm.renewalBreadcrum!=true">Return to Checklist</button>
+                    <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToMyBBL()" ng-show="vm.renewalBreadcrum==true">Return to My BBLs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="paymentFailure" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="vm.cancel_delete()" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="error_message"> You are trying to navigate away from this Renewal application and the data entered/selected so far will not be saved. Please click [OK] to leave the page or click [CANCEL] to stay on the page and complete the Renewal Application.</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" ng-click="vm.navigateAnyway()">OK</button>
+                    <button type="button" class="close-button" ng-click="vm.dontNavigate()">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

@@ -1,0 +1,233 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en" data-ng-app="DCRA">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title ng-bind="'DCRA &dash; ' + title">DCRA</title>
+    <script type="text/javascript">
+        //  <![CDATA[Sitename - dcbctest.codeitinc.com, Version : 3.9.121 and Launch Date = 02-14-2016. // ]]>
+
+    </script>
+
+    <!--[if gte IE 9]><!-->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/temp.css">
+    <link rel="stylesheet" href="less/bbl.css">
+    <link rel="stylesheet" type="text/css" href="css/flexslider.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css">
+
+    <link rel="stylesheet" type="text/css" href="css/customstyle.css" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="css/datetimepicker.css" rel="stylesheet" />
+
+    <!-- Load application JavaScript library files -->
+
+    <script type="text/javascript" src="libs/jquery/jquery_1.x.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular-resource.js"></script>
+    <script type="text/javascript" src="libs/angularjs/angular-route.js"></script>
+
+
+    <!-- Load application JavaScript plugins files -->
+
+    <script type="text/javascript" src="js/plugins/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/plugins/smart-table.debug.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="js/plugins/angular-flexslider.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.uniform.js"></script>
+    <script type="text/javascript" src="js/plugins/main.js"></script>
+    <script type="text/javascript" src="js/plugins/dirPagination.js"></script>
+    <script type="text/javascript" src="js/plugins/fileinput.js"></script>
+    <script type="text/javascript" src="js/plugins/fileinput_locale_es.js"></script>
+    <script type="text/javascript" src="js/plugins/equal.js"></script>
+    <script type="text/javascript" src="js/plugins/angular-jquery-maskedinput.js"></script>
+    <script type="text/javascript" src="js/plugins/aes.js"></script>
+    <script type="text/javascript" src="js/plugins/uibootstrap.js"></script>
+    <script type="text/javascript" src="js/plugins/moment.js"></script>
+    <script type="text/javascript" src="js/plugins/datetimepicker.js"></script>
+    <script type="text/javascript" src="js/plugins/FileSaver.js"></script>
+
+
+    <!-- Load Angular JS main JavaScript file -->
+    <!--<script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>-->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!-- Load Angular JS controller JavaScript files -->
+    <script type="text/javascript" src="js/controllers/HomeController.js"></script>
+    <script type="text/javascript" src="js/controllers/AboutUsController.js"></script>
+    <script type="text/javascript" src="js/controllers/LoginController.js"></script>
+    <script type="text/javascript" src="js/controllers/RegisterController.js"></script>
+    <script type="text/javascript" src="js/controllers/TermsServicesController.js"></script>
+    <script type="text/javascript" src="js/controllers/HeaderController.js"></script>
+    <script type="text/javascript" src="js/controllers/QuickSearchController.js"></script>
+    <script type="text/javascript" src="js/controllers/ForgotPasswordController.js"></script>
+    <script type="text/javascript" src="js/controllers/ForgotUsernameController.js"></script>
+    <script type="text/javascript" src="js/controllers/ProfileController.js"></script>
+    <script type="text/javascript" src="js/controllers/QuickSearchResultController.js"></script>
+    <script type="text/javascript" src="js/controllers/QuickSearchSaveController.js"></script>
+    <script type="text/javascript" src="js/controllers/VerifyEmailController.js"></script>
+    <script type="text/javascript" src="js/controllers/HelpController.js"></script>
+    <script type="text/javascript" src="js/controllers/DashboardController.js"></script>
+    <script type="text/javascript" src="js/controllers/LookupController.js"></script>
+    <script type="text/javascript" src="js/controllers/SecurityQuestionController.js"></script>
+    <script type="text/javascript" src="js/controllers/AccountRecoveryController.js"></script>
+    <script type="text/javascript" src="js/controllers/SearchResultController.js"></script>
+    <script type="text/javascript" src="js/controllers/AssociateBBLController.js"></script>
+    <script type="text/javascript" src="js/controllers/VerifyBusinessBeforeAssociationController.js"></script>
+    <script type="text/javascript" src="js/controllers/MyBBLController.js"></script>
+    <script type="text/javascript" src="js/controllers/NewBBLWelcomeController.js"></script>
+    <script type="text/javascript" src="js/controllers/PreAppQuestionsController.js"></script>
+    <script type="text/javascript" src="js/controllers/ApplicationChecklistController.js"></script>
+    <script type="text/javascript" src="js/controllers/SupportingDocsUploadController.js"></script>
+    <script type="text/javascript" src="js/controllers/PhysicalLocationCorpBussAgentConroller.js"></script>
+    <script type="text/javascript" src="js/controllers/TaxRevenueController.js"></script>
+    <script type="text/javascript" src="js/controllers/InformationVerificationController.js"></script>
+    <script type="text/javascript" src="js/controllers/PaymentController.js"></script>
+    <script type="text/javascript" src="js/controllers/ReceiptController.js"></script>
+    <script type="text/javascript" src="js/controllers/BBLRenewalInfoConfirmController.js"></script>
+    <script type="text/javascript" src="js/controllers/IndividualBusinessLicenseController.js"></script>
+    <script type="text/javascript" src="js/controllers/eHOPEligibilityController.js"></script>
+    <script type="text/javascript" src="js/controllers/eHOPHomeAddressController.js"></script>
+    <script type="text/javascript" src="js/controllers/ReviewCheckListController.js"></script>
+    <script type="text/javascript" src="js/controllers/CorpNotRegisteredAddressController.js"></script>
+    <script type="text/javascript" src="js/controllers/CorpReqRegisterController.js"></script>
+    <script type="text/javascript" src="js/controllers/CorpReqRegwithTradeController.js"></script>
+    <script type="text/javascript" src="js/controllers/CorpNotRegisteredAgentController.js"></script>
+    <script type="text/javascript" src="js/controllers/NoPoBoxController.js"></script>
+    <script type="text/javascript" src="js/controllers/PageNotfoundController.js"></script>
+    <script type="text/javascript" src="js/controllers/DeleteAccountController.js"></script>
+    <script type="text/javascript" src="js/controllers/EmailVerification.js"></script>
+    <script type="text/javascript" src="js/controllers/NewPasswordController.js"></script>
+    <script type="text/javascript" src="js/controllers/ProfileLogoutController.js"></script>
+    <script type="text/javascript" src="js/controllers/EmailConfirmationController.js"></script>
+    <script type="text/javascript" src="js/controllers/RenewalReceiptController.js"></script>
+    <script type="text/javascript" src="js/controllers/PhysicalLocationCofoController.js"></script>
+    <script type="text/javascript" src="js/controllers/PhysicalLocationHopController.js"></script>
+    <script type="text/javascript" src="js/controllers/physicallocMailingAddressController.js"></script>
+    <script type="text/javascript" src="js/controllers/RenewalPaymentController.js"></script>
+    <script type="text/javascript" src="js/controllers/ApplicationChecklistController.js"></script>
+    <script type="text/javascript" src="js/controllers/UserPreviousEmailConfirmationController.js"></script>
+    <script type="text/javascript" src="js/controllers/PaymentFailureController.js"></script>
+    <script type="text/javascript" src="js/controllers/RenewalSupportingDocsController.js"></script>
+    <script type="text/javascript" src="js/controllers/RenewalCleanHandsController.js"></script>
+    <script type="text/javascript" src="js/controllers/OnefamilyRentalSelfCetificationController.js"></script>
+
+    <!-- Load Angular JS Services JavaScript files -->
+    <script type="text/javascript" src="js/services/localstorageService.js"></script>
+    <script type="text/javascript" src="js/services/requestService.js"></script>
+    <script type="text/javascript" src="js/services/authService.js"></script>
+    <script type="text/javascript" src="js/services/authInterceptorService.js"></script>
+    <script type="text/javascript" src="js/services/recaptchaservice.js"></script>
+    <script type="text/javascript" src="js/services/sessionFactory.js"></script>
+    <script type="text/javascript" src="js/services/UtilityFactory.js"></script>
+    <script type="text/javascript" src="js/services/timerFactory.js"></script>
+    <script type="text/javascript" src="js/services/renewalUtility.js"></script>
+    <script type="text/javascript" src="js/services/MAR_validation_Service.js"></script>
+    <script type="text/javascript" src="js/services/validations_errorsfactory.js"></script>
+    <script type="text/javascript" src="js/services/BBLSubmissionService.js"></script>
+    <script type="text/javascript" src="js/services/popupFactory.js"></script>
+    
+    <!-- Load Angular JS Directives JavaScript files -->
+
+
+    <script type="text/javascript" src="js/directives/capitalisefilter.js"></script>
+    <script type="text/javascript" src="js/directives/currentpasswodcheck.js"></script>
+    <script type="text/javascript" src="js/directives/emailavailability.js"></script>
+    <script type="text/javascript" src="js/directives/emailavailableprofile.js"></script>
+    <script type="text/javascript" src="js/directives/inputvalidationdirective.js"></script>
+    <script type="text/javascript" src="js/directives/loadingspinner.js"></script>
+    <script type="text/javascript" src="js/directives/matchpassword.js"></script>
+    <script type="text/javascript" src="js/directives/recaptchadirective.js"></script>
+    <script type="text/javascript" src="js/directives/useravailability.js"></script>
+    <script type="text/javascript" src="js/directives/usernamevalidation.js"></script>
+    <script type="text/javascript" src="js/directives/formAutofillFix.js"></script>
+    <script type="text/javascript" src="js/directives/toggleExpandCollapse.js"></script>
+    <script type="text/javascript" src="js/directives/fileUploadControl.js"></script>
+    <!--<![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/temp.css">
+    <link rel="stylesheet" href="less/bbl.css">
+    <link rel="stylesheet" type="text/css" href="css/flexslider.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/fileinput.css">
+
+    <link rel="stylesheet" type="text/css" href="css/customstyle.css" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="css/datetimepicker.css" rel="stylesheet" />
+
+      <script type="text/javascript" src="libs/jquery/jquery_1.x.min.js"></script>
+    <script type="text/javascript" src="libs/jquery/jquery-1.10.2.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript" src="libs/jquery/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+
+    <script type="text/javascript" src="js/equal.js"></script>
+       <script>
+      $(function(){
+        $("#IEContent").load("partials/iecontent.html");
+      });
+       </script>
+
+    <![endif]-->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+         <div class="container  text-center">
+         <div id="browser-msg" style="background-color:#b94a48;color:#fff;padding:10px 40px" >You are using Microsoft Internet Explorer Browser Version  8 (MSIE8).
+        That browser version is not supported by this site.
+    <div style="padding-top:10px">Please check here if you wish to update your browser.</div>
+        <div style="padding-top:10px">
+     <a style="color:#000;" href="http://windows.microsoft.com/en-IN/internet-explorer/download-ie">http://windows.microsoft.com/en-IN/internet-explorer/download-ie</a>
+         </div>
+    </div>
+         </div>
+        <div id="IEContent">
+        </div>
+
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <div ng-view autoscroll="true" id="view-scroll">
+
+    </div>
+    <div class="modal fade" id="logoutidalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" id="logoff">Log Off</button>
+                    <button type="button" data-dismiss="modal" class="btn" id="continue">Continue Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--<![endif]-->
+</body>
+</html>
+

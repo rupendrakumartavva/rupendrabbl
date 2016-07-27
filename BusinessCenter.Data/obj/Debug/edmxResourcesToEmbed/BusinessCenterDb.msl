@@ -1,0 +1,1757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BusinessCenterModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditRecord">
+      <EntityTypeMapping TypeName="BusinessCenterModel.AuditRecord">
+        <MappingFragment StoreEntitySet="AuditRecord">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="TimeAccessed" ColumnName="TimeAccessed" />
+          <ScalarProperty Name="UrlAccessed" ColumnName="UrlAccessed" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="AuditId" ColumnName="AuditId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="BusinessCenterModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="AllowedOrigin" ColumnName="AllowedOrigin" />
+          <ScalarProperty Name="RefreshTokenLifeTime" ColumnName="RefreshTokenLifeTime" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Secret" ColumnName="Secret" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeeCodeMap">
+      <EntityTypeMapping TypeName="BusinessCenterModel.FeeCodeMap">
+        <MappingFragment StoreEntitySet="FeeCodeMap">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsTier" ColumnName="IsTier" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FeeCode" ColumnName="FeeCode" />
+          <ScalarProperty Name="FeeCodeId" ColumnName="FeeCodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FixFee">
+      <EntityTypeMapping TypeName="BusinessCenterModel.FixFee">
+        <MappingFragment StoreEntitySet="FixFee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="eHOPFee" ColumnName="eHOPFee" />
+          <ScalarProperty Name="RAOFee" ColumnName="RAOFee" />
+          <ScalarProperty Name="TradeRegFee" ColumnName="TradeRegFee" />
+          <ScalarProperty Name="EndorsementFee" ColumnName="EndorsementFee" />
+          <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KeywordMaster">
+      <EntityTypeMapping TypeName="BusinessCenterModel.KeywordMaster">
+        <MappingFragment StoreEntitySet="KeywordMaster">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SearchCriteria" ColumnName="SearchCriteria" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookup_BusinessStructure">
+      <EntityTypeMapping TypeName="BusinessCenterModel.Lookup_BusinessStructure">
+        <MappingFragment StoreEntitySet="Lookup_BusinessStructure">
+          <ScalarProperty Name="IsManualAddress" ColumnName="IsManualAddress" />
+          <ScalarProperty Name="BusinessStructure" ColumnName="BusinessStructure" />
+          <ScalarProperty Name="LookUpBusinessStructureId" ColumnName="LookUpBusinessStructureId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookup_ExistingCategories">
+      <EntityTypeMapping TypeName="BusinessCenterModel.Lookup_ExistingCategories">
+        <MappingFragment StoreEntitySet="Lookup_ExistingCategories">
+          <ScalarProperty Name="ExistingCategory" ColumnName="ExistingCategory" />
+          <ScalarProperty Name="NewCategoryName" ColumnName="NewCategoryName" />
+          <ScalarProperty Name="LookUpId" ColumnName="LookUpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailTemplate">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MailTemplate">
+        <MappingFragment StoreEntitySet="MailTemplate">
+          <ScalarProperty Name="Custom_Application_Id" ColumnName="Custom_Application_Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MailSentDate" ColumnName="MailSentDate" />
+          <ScalarProperty Name="MailCreatedDate" ColumnName="MailCreatedDate" />
+          <ScalarProperty Name="IsMailSent" ColumnName="IsMailSent" />
+          <ScalarProperty Name="MailContent" ColumnName="MailContent" />
+          <ScalarProperty Name="MailSentFailCount" ColumnName="MailSentFailCount" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterBblApplicationStatus">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterBblApplicationStatus">
+        <MappingFragment StoreEntitySet="MasterBblApplicationStatus">
+          <ScalarProperty Name="Changed_Cap_Status" ColumnName="Changed_Cap_Status" />
+          <ScalarProperty Name="Application_Cap_Status" ColumnName="Application_Cap_Status" />
+          <ScalarProperty Name="BblApplicationStatusId" ColumnName="BblApplicationStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterBusinessActivity">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterBusinessActivity">
+        <MappingFragment StoreEntitySet="MasterBusinessActivity">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="APP_Type" ColumnName="APP_Type" />
+          <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterCategory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterCategory">
+        <MappingFragment StoreEntitySet="MasterCategory">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UnitTwo" ColumnName="UnitTwo" />
+          <ScalarProperty Name="UnitOne" ColumnName="UnitOne" />
+          <ScalarProperty Name="App_Type" ColumnName="App_Type" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="Endorsement" ColumnName="Endorsement" />
+          <ScalarProperty Name="MasterCategoryName" ColumnName="MasterCategoryName" />
+          <ScalarProperty Name="MasterCategoryId" ColumnName="MasterCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterCategoryDocument">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterCategoryDocument">
+        <MappingFragment StoreEntitySet="MasterCategoryDocument">
+          <ScalarProperty Name="IsSecondaryLicenseDoc" ColumnName="IsSecondaryLicenseDoc" />
+          <ScalarProperty Name="IsPrimaryCategoryDoc" ColumnName="IsPrimaryCategoryDoc" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShortDocName" ColumnName="ShortDocName" />
+          <ScalarProperty Name="SupportingDocuments" ColumnName="SupportingDocuments" />
+          <ScalarProperty Name="DivisionFullName" ColumnName="DivisionFullName" />
+          <ScalarProperty Name="Div" ColumnName="Div" />
+          <ScalarProperty Name="Agency_FullName" ColumnName="Agency_FullName" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="Renewal" ColumnName="Renewal" />
+          <ScalarProperty Name="PostLicensure" ColumnName="PostLicensure" />
+          <ScalarProperty Name="InitialLicense" ColumnName="InitialLicense" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="MasterCategoryDocId" ColumnName="MasterCategoryDocId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterCategoryPhysicalLocation">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterCategoryPhysicalLocation">
+        <MappingFragment StoreEntitySet="MasterCategoryPhysicalLocation">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+          <ScalarProperty Name="ExemptFromAllFees" ColumnName="ExemptFromAllFees" />
+          <ScalarProperty Name="HOP_EHOPAllowed" ColumnName="HOP-EHOPAllowed" />
+          <ScalarProperty Name="COFORequired" ColumnName="COFORequired" />
+          <ScalarProperty Name="BusinessMustBeInDC" ColumnName="BusinessMustBeInDC" />
+          <ScalarProperty Name="PrimaryCategory_Id" ColumnName="PrimaryCategory_Id" />
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterCategoryQuestion">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterCategoryQuestion">
+        <MappingFragment StoreEntitySet="MasterCategoryQuestion">
+          <ScalarProperty Name="UserQuestion" ColumnName="UserQuestion" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="MasterCategoryQuestionId" ColumnName="MasterCategoryQuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterCountry">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterCountry">
+        <MappingFragment StoreEntitySet="MasterCountry">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MastereHOPEligibility">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MastereHOPEligibility">
+        <MappingFragment StoreEntitySet="MastereHOPEligibility">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterEhopOptionType">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterEhopOptionType">
+        <MappingFragment StoreEntitySet="MasterEhopOptionType">
+          <ScalarProperty Name="EhopOptionName" ColumnName="EhopOptionName" />
+          <ScalarProperty Name="EhopOptionId" ColumnName="EhopOptionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterPrimaryCategory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterPrimaryCategory">
+        <MappingFragment StoreEntitySet="MasterPrimaryCategory">
+          <ScalarProperty Name="IsPDFShow" ColumnName="IsPDFShow" />
+          <ScalarProperty Name="IsBackgroundInvestigation" ColumnName="IsBackgroundInvestigation" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsSubCategory" ColumnName="IsSubCategory" />
+          <ScalarProperty Name="IsSecondaryLicenseCategory" ColumnName="IsSecondaryLicenseCategory" />
+          <ScalarProperty Name="App_Type" ColumnName="App_Type" />
+          <ScalarProperty Name="UnitTwo" ColumnName="UnitTwo" />
+          <ScalarProperty Name="UnitOne" ColumnName="UnitOne" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="Endorsement" ColumnName="Endorsement" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="PrimaryID" ColumnName="PrimaryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterRegisteredAgent">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterRegisteredAgent">
+        <MappingFragment StoreEntitySet="MasterRegisteredAgent">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+          <ScalarProperty Name="Quadrant" ColumnName="Quadrant" />
+          <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
+          <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegisterID" ColumnName="RegisterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterRenewalStatusFee">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterRenewalStatusFee">
+        <MappingFragment StoreEntitySet="MasterRenewalStatusFee">
+          <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+          <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+          <ScalarProperty Name="FeeAmount" ColumnName="FeeAmount" />
+          <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+          <ScalarProperty Name="RenewalStatusFeesId" ColumnName="RenewalStatusFeesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterSecondaryLicenseCategory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterSecondaryLicenseCategory">
+        <MappingFragment StoreEntitySet="MasterSecondaryLicenseCategory">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsSubCategory" ColumnName="IsSubCategory" />
+          <ScalarProperty Name="Endorsement" ColumnName="Endorsement" />
+          <ScalarProperty Name="UnitTwo" ColumnName="UnitTwo" />
+          <ScalarProperty Name="UnitOne" ColumnName="UnitOne" />
+          <ScalarProperty Name="SecondaryLicenseCategory" ColumnName="SecondaryLicenseCategory" />
+          <ScalarProperty Name="PrimaryID" ColumnName="PrimaryID" />
+          <ScalarProperty Name="SecondaryID" ColumnName="SecondaryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterState">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterState">
+        <MappingFragment StoreEntitySet="MasterState">
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterSubCategory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.MasterSubCategory">
+        <MappingFragment StoreEntitySet="MasterSubCategory">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CustomCategoryName" ColumnName="CustomCategoryName" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+          <ScalarProperty Name="SubCatID" ColumnName="SubCatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OSub_Category_Fees">
+      <EntityTypeMapping TypeName="BusinessCenterModel.OSub_Category_Fees">
+        <MappingFragment StoreEntitySet="OSub_Category_Fees">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="App_Type" ColumnName="App_Type" />
+          <ScalarProperty Name="Tier" ColumnName="Tier" />
+          <ScalarProperty Name="License_Fee" ColumnName="License_Fee" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Fee_Code" ColumnName="Fee_Code" />
+          <ScalarProperty Name="OSub_Description" ColumnName="OSub_Description" />
+          <ScalarProperty Name="OSub_Category" ColumnName="OSub_Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentAddressDetails">
+      <EntityTypeMapping TypeName="BusinessCenterModel.PaymentAddressDetails">
+        <MappingFragment StoreEntitySet="PaymentAddressDetails">
+          <ScalarProperty Name="ContactLastName" ColumnName="ContactLastName" />
+          <ScalarProperty Name="ContactMiddleName" ColumnName="ContactMiddleName" />
+          <ScalarProperty Name="ContactFirstName" ColumnName="ContactFirstName" />
+          <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+          <ScalarProperty Name="Quadrant" ColumnName="Quadrant" />
+          <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ContactNumber2" ColumnName="ContactNumber2" />
+          <ScalarProperty Name="ContactNumber1" ColumnName="ContactNumber1" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentAddressId" ColumnName="PaymentAddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentCardDetails">
+      <EntityTypeMapping TypeName="BusinessCenterModel.PaymentCardDetails">
+        <MappingFragment StoreEntitySet="PaymentCardDetails">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="CvvNumber" ColumnName="CvvNumber" />
+          <ScalarProperty Name="CardExpDate" ColumnName="CardExpDate" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentCardId" ColumnName="PaymentCardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentDetails">
+      <EntityTypeMapping TypeName="BusinessCenterModel.PaymentDetails">
+        <MappingFragment StoreEntitySet="PaymentDetails">
+          <ScalarProperty Name="Application_Transcation_Status" ColumnName="Application_Transcation_Status" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="TranscationId" ColumnName="TranscationId" />
+          <ScalarProperty Name="IsAggree" ColumnName="IsAggree" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="PaymentMailAddress" ColumnName="PaymentMailAddress" />
+          <ScalarProperty Name="PaymentFrom" ColumnName="PaymentFrom" />
+          <ScalarProperty Name="Ordernumber" ColumnName="Ordernumber" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentHistoryDetails">
+      <EntityTypeMapping TypeName="BusinessCenterModel.PaymentHistoryDetails">
+        <MappingFragment StoreEntitySet="PaymentHistoryDetails">
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentTransactionId" ColumnName="PaymentTransactionId" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CardExpDate" ColumnName="CardExpDate" />
+          <ScalarProperty Name="CvvNumber" ColumnName="CvvNumber" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+          <ScalarProperty Name="PaymentHistoryId" ColumnName="PaymentHistoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Portal_Content_Errors">
+      <EntityTypeMapping TypeName="BusinessCenterModel.Portal_Content_Errors">
+        <MappingFragment StoreEntitySet="Portal_Content_Errors">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ErrrorMessage" ColumnName="ErrrorMessage" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefreshTokens">
+      <EntityTypeMapping TypeName="BusinessCenterModel.RefreshTokens">
+        <MappingFragment StoreEntitySet="RefreshTokens">
+          <ScalarProperty Name="TokenGui" ColumnName="TokenGui" />
+          <ScalarProperty Name="ProtectedTicket" ColumnName="ProtectedTicket" />
+          <ScalarProperty Name="ExpiresUtc" ColumnName="ExpiresUtc" />
+          <ScalarProperty Name="IssuedUtc" ColumnName="IssuedUtc" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="BusinessCenterModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityQuestion">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SecurityQuestion">
+        <MappingFragment StoreEntitySet="SecurityQuestion">
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StreetTypes">
+      <EntityTypeMapping TypeName="BusinessCenterModel.StreetTypes">
+        <MappingFragment StoreEntitySet="StreetTypes">
+          <ScalarProperty Name="StreetCode" ColumnName="StreetCode" />
+          <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+          <ScalarProperty Name="StreetTypeId" ColumnName="StreetTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionBblAssociationToUsers">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionBblAssociationToUsers">
+        <MappingFragment StoreEntitySet="SubmissionBblAssociationToUsers">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ReasonForTransfer" ColumnName="ReasonForTransfer" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DateOfTransfer" ColumnName="DateOfTransfer" />
+          <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+          <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+          <ScalarProperty Name="SubmissionLicense" ColumnName="SubmissionLicense" />
+          <ScalarProperty Name="SubmissionBblAssociationOtherUid" ColumnName="SubmissionBblAssociationOtherUid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionCategory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionCategory">
+        <MappingFragment StoreEntitySet="SubmissionCategory">
+          <ScalarProperty Name="Endorsement" ColumnName="Endorsement" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="LicenseCategoryFee" ColumnName="LicenseCategoryFee" />
+          <ScalarProperty Name="EndorsementFee" ColumnName="EndorsementFee" />
+          <ScalarProperty Name="CategoryTypeID" ColumnName="CategoryTypeID" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubmissionCategoryID" ColumnName="SubmissionCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionCofo_Hop_Ehop">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionCofo_Hop_Ehop">
+        <MappingFragment StoreEntitySet="SubmissionCofo_Hop_Ehop">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ConfirmeHOPEligibilityType" ColumnName="ConfirmeHOPEligibilityType" />
+          <ScalarProperty Name="EHopEligibilityType" ColumnName="EHopEligibilityType" />
+          <ScalarProperty Name="IseHOPEligibility" ColumnName="IseHOPEligibility" />
+          <ScalarProperty Name="OccupancyAddressValidate" ColumnName="OccupancyAddressValidate" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+          <ScalarProperty Name="IsUploadSupportDoc" ColumnName="IsUploadSupportDoc" />
+          <ScalarProperty Name="DoNotHaveCofo" ColumnName="DoNotHaveCofo" />
+          <ScalarProperty Name="DateOfIssuance" ColumnName="DateOfIssuance" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="UserSelectType" ColumnName="UserSelectType" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubCofoHopEhopId" ColumnName="SubCofoHopEhopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionCofo_Hop_Ehop_Address">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionCofo_Hop_Ehop_Address">
+        <MappingFragment StoreEntitySet="SubmissionCofo_Hop_Ehop_Address">
+          <ScalarProperty Name="Ssl" ColumnName="Ssl" />
+          <ScalarProperty Name="Smd" ColumnName="Smd" />
+          <ScalarProperty Name="Zone" ColumnName="Zone" />
+          <ScalarProperty Name="Vote_Prcnct" ColumnName="Vote_Prcnct" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Cluster" ColumnName="Cluster" />
+          <ScalarProperty Name="Ward" ColumnName="Ward" />
+          <ScalarProperty Name="Anc" ColumnName="Anc" />
+          <ScalarProperty Name="Ycoord" ColumnName="Ycoord" />
+          <ScalarProperty Name="Xcoord" ColumnName="Xcoord" />
+          <ScalarProperty Name="AddressNumberSufix" ColumnName="AddressNumberSufix" />
+          <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitType" ColumnName="UnitType" />
+          <ScalarProperty Name="Quadrant" ColumnName="Quadrant" />
+          <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomType" ColumnName="CustomType" />
+          <ScalarProperty Name="CustomTypeId" ColumnName="CustomTypeId" />
+          <ScalarProperty Name="SubmissionCofo_Hop_Ehop_AddressId" ColumnName="SubmissionCofo_Hop_Ehop_AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionCorporation_Agent">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionCorporation_Agent">
+        <MappingFragment StoreEntitySet="SubmissionCorporation_Agent">
+          <ScalarProperty Name="ChcekedFromCorp" ColumnName="ChcekedFromCorp" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BusinessStructure" ColumnName="BusinessStructure" />
+          <ScalarProperty Name="TradeName" ColumnName="TradeName" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubCorporationRegId" ColumnName="SubCorporationRegId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionCorporation_Agent_Address">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionCorporation_Agent_Address">
+        <MappingFragment StoreEntitySet="SubmissionCorporation_Agent_Address">
+          <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+          <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+          <ScalarProperty Name="Quadrant" ColumnName="Quadrant" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddelName" ColumnName="MiddelName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="SubCorporationRegId" ColumnName="SubCorporationRegId" />
+          <ScalarProperty Name="SCAId" ColumnName="SCAId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionDocument">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionDocument">
+        <MappingFragment StoreEntitySet="SubmissionDocument">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="DocRequired" ColumnName="DocRequired" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="SubmittedDocumentType" ColumnName="SubmittedDocumentType" />
+          <ScalarProperty Name="MasterCategoryDocId" ColumnName="MasterCategoryDocId" />
+          <ScalarProperty Name="SubmissionCategoryID" ColumnName="SubmissionCategoryID" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubmDocId" ColumnName="SubmDocId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionDocumentToAccela">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionDocumentToAccela">
+        <MappingFragment StoreEntitySet="SubmissionDocumentToAccela">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="MasterCategoryDocId" ColumnName="MasterCategoryDocId" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="SubmisionDocToAccelaId" ColumnName="SubmisionDocToAccelaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionEHOPEligibility">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionEHOPEligibility">
+        <MappingFragment StoreEntitySet="SubmissionEHOPEligibility">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="MasterEhopId" ColumnName="MasterEhopId" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubEhopId" ColumnName="SubEhopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionGeneratedDocument">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionGeneratedDocument">
+        <MappingFragment StoreEntitySet="SubmissionGeneratedDocument">
+          <ScalarProperty Name="Gen_DocumentFrom" ColumnName="Gen_DocumentFrom" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="FileByteCode" ColumnName="FileByteCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SubmissionLicenseNumber" ColumnName="SubmissionLicenseNumber" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubmissionGeneratedDocumentId" ColumnName="SubmissionGeneratedDocumentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionIndividual">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionIndividual">
+        <MappingFragment StoreEntitySet="SubmissionIndividual">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="StateofIssuance" ColumnName="StateofIssuance" />
+          <ScalarProperty Name="IdentificationCard" ColumnName="IdentificationCard" />
+          <ScalarProperty Name="EyeColor" ColumnName="EyeColor" />
+          <ScalarProperty Name="HairColor" ColumnName="HairColor" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State_Province" ColumnName="State/Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="CompanyBusinessLicense" ColumnName="CompanyBusinessLicense" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubmindividualId" ColumnName="SubmindividualId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionLicenseNumberCounter">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionLicenseNumberCounter">
+        <MappingFragment StoreEntitySet="SubmissionLicenseNumberCounter">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="FiscalYear" ColumnName="FiscalYear" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+          <ScalarProperty Name="CounterId" ColumnName="CounterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionMaster">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionMaster">
+        <MappingFragment StoreEntitySet="SubmissionMaster">
+          <ScalarProperty Name="IsRaoFee_Applied" ColumnName="IsRaoFee_Applied" />
+          <ScalarProperty Name="PremisesAddress" ColumnName="PremisesAddress" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="BusinessOwnerName" ColumnName="BusinessOwnerName" />
+          <ScalarProperty Name="IsCategorySelfCertification" ColumnName="IsCategorySelfCertification" />
+          <ScalarProperty Name="UserBblAssociateId" ColumnName="UserBblAssociateId" />
+          <ScalarProperty Name="LicenseDuration" ColumnName="LicenseDuration" />
+          <ScalarProperty Name="UserSelectMailAddressType" ColumnName="UserSelectMailAddressType" />
+          <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="TradeName" ColumnName="TradeName" />
+          <ScalarProperty Name="BusinessStructure" ColumnName="BusinessStructure" />
+          <ScalarProperty Name="isCorporationDivision" ColumnName="isCorporationDivision" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="IsPhysicalLocationVerify" ColumnName="IsPhysicalLocationVerify" />
+          <ScalarProperty Name="IsCofo" ColumnName="IsCofo" />
+          <ScalarProperty Name="IsHomeBased" ColumnName="IsHomeBased" />
+          <ScalarProperty Name="IsBusinessMustbeinDC" ColumnName="IsBusinessMustbeinDC" />
+          <ScalarProperty Name="DocSubmType" ColumnName="DocSubmType" />
+          <ScalarProperty Name="App_Type" ColumnName="App_Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="eHOP" ColumnName="eHOP" />
+          <ScalarProperty Name="IseHOP" ColumnName="IseHOP" />
+          <ScalarProperty Name="RAOFee" ColumnName="RAOFee" />
+          <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SubmissionLicense" ColumnName="SubmissionLicense" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionMaster_ApplicationCheckList">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionMaster_ApplicationCheckList">
+        <MappingFragment StoreEntitySet="SubmissionMaster_ApplicationCheckList">
+          <ScalarProperty Name="IsSelfCertification" ColumnName="IsSelfCertification" />
+          <ScalarProperty Name="IsDocForeHop" ColumnName="IsDocForeHop" />
+          <ScalarProperty Name="IsDocForHop" ColumnName="IsDocForHop" />
+          <ScalarProperty Name="IsDocForCofo" ColumnName="IsDocForCofo" />
+          <ScalarProperty Name="IsDocForCleanHands" ColumnName="IsDocForCleanHands" />
+          <ScalarProperty Name="IsResidentAgent" ColumnName="IsResidentAgent" />
+          <ScalarProperty Name="IsMailAddress" ColumnName="IsMailAddress" />
+          <ScalarProperty Name="IsBPAddress" ColumnName="IsBPAddress" />
+          <ScalarProperty Name="IsBHAddress" ColumnName="IsBHAddress" />
+          <ScalarProperty Name="IsCorporateRegistration" ColumnName="IsCorporateRegistration" />
+          <ScalarProperty Name="IsCleanHandsVerify" ColumnName="IsCleanHandsVerify" />
+          <ScalarProperty Name="IsSubmissioneHop" ColumnName="IsSubmissioneHop" />
+          <ScalarProperty Name="IsSubmissionHop" ColumnName="IsSubmissionHop" />
+          <ScalarProperty Name="IsSubmissionCofo" ColumnName="IsSubmissionCofo" />
+          <ScalarProperty Name="FEIN_SSN" ColumnName="FEIN-SSN" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubMaster_ApplicationCheckListId" ColumnName="SubMaster_ApplicationCheckListId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionMasterRenewal">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionMasterRenewal">
+        <MappingFragment StoreEntitySet="SubmissionMasterRenewal">
+          <ScalarProperty Name="ExpiredFee" ColumnName="ExpiredFee" />
+          <ScalarProperty Name="IsCorpDocRegistration" ColumnName="IsCorpDocRegistration" />
+          <ScalarProperty Name="Extradays" ColumnName="Extradays" />
+          <ScalarProperty Name="LapsedFee" ColumnName="LapsedFee" />
+          <ScalarProperty Name="IsDcraCorpDivision" ColumnName="IsDcraCorpDivision" />
+          <ScalarProperty Name="CorpNumber" ColumnName="CorpNumber" />
+          <ScalarProperty Name="SubmissionLicense" ColumnName="SubmissionLicense" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="RenewalSubmId" ColumnName="RenewalSubmId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionQuestion">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionQuestion">
+        <MappingFragment StoreEntitySet="SubmissionQuestion">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubmQuestionsId" ColumnName="SubmQuestionsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionSelfCertification">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionSelfCertification">
+        <MappingFragment StoreEntitySet="SubmissionSelfCertification">
+          <ScalarProperty Name="IsAgree" ColumnName="IsAgree" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SelfCertificationOn" ColumnName="SelfCertificationOn" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="IsPropertyOccupied" ColumnName="IsPropertyOccupied" />
+          <ScalarProperty Name="MasterCategoryId" ColumnName="MasterCategoryId" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SelfCertificationId" ColumnName="SelfCertificationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissionTaxRevenue">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissionTaxRevenue">
+        <MappingFragment StoreEntitySet="SubmissionTaxRevenue">
+          <ScalarProperty Name="IsIAgree" ColumnName="IsIAgree" />
+          <ScalarProperty Name="BusinessOwnerRoles" ColumnName="BusinessOwnerRoles" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatdedDate" ColumnName="CreatdedDate" />
+          <ScalarProperty Name="TaxRevenueType" ColumnName="TaxRevenueType" />
+          <ScalarProperty Name="TaxRevenueNumber" ColumnName="TaxRevenueNumber" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SubmissionTaxRevenueId" ColumnName="SubmissionTaxRevenueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubmissiontoAccela">
+      <EntityTypeMapping TypeName="BusinessCenterModel.SubmissiontoAccela">
+        <MappingFragment StoreEntitySet="SubmissiontoAccela">
+          <ScalarProperty Name="ProcessCompleted" ColumnName="ProcessCompleted" />
+          <ScalarProperty Name="AccelaGeneratedID" ColumnName="AccelaGeneratedID" />
+          <ScalarProperty Name="EHOPCreated" ColumnName="EHOPCreated" />
+          <ScalarProperty Name="AllDocumentsUpdated" ColumnName="AllDocumentsUpdated" />
+          <ScalarProperty Name="RenewalFeeMatched" ColumnName="RenewalFeeMatched" />
+          <ScalarProperty Name="RenewalPaymentUpdated" ColumnName="RenewalPaymentUpdated" />
+          <ScalarProperty Name="ApplicationFeeMatched" ColumnName="ApplicationFeeMatched" />
+          <ScalarProperty Name="ApplicationCreated" ColumnName="ApplicationCreated" />
+          <ScalarProperty Name="ApplicationCompleted" ColumnName="ApplicationCompleted" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="SubmissiontoAccelaId" ColumnName="SubmissiontoAccelaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="BusinessCenterModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="LoginSessionId" ColumnName="LoginSessionId" />
+          <ScalarProperty Name="IsLoggedIn" ColumnName="IsLoggedIn" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="DeleteComment" ColumnName="DeleteComment" />
+          <ScalarProperty Name="IsForgot" ColumnName="IsForgot" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="PreviousEmailConfirmed" ColumnName="PreviousEmailConfirmed" />
+          <ScalarProperty Name="PreviousEmailValidate" ColumnName="PreviousEmailValidate" />
+          <ScalarProperty Name="ChangeEmailConfirmed" ColumnName="ChangeEmailConfirmed" />
+          <ScalarProperty Name="ChangeEmailValidate" ColumnName="ChangeEmailValidate" />
+          <ScalarProperty Name="SecondaryEmail" ColumnName="SecondaryEmail" />
+          <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SecurityAnswer3" ColumnName="SecurityAnswer3" />
+          <ScalarProperty Name="SecurityAnswer2" ColumnName="SecurityAnswer2" />
+          <ScalarProperty Name="SecurityAnswer1" ColumnName="SecurityAnswer1" />
+          <ScalarProperty Name="SecurityQuestion3" ColumnName="SecurityQuestion3" />
+          <ScalarProperty Name="SecurityQuestion2" ColumnName="SecurityQuestion2" />
+          <ScalarProperty Name="SecurityQuestion1" ColumnName="SecurityQuestion1" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastLoginDateandTime" ColumnName="LastLoginDateandTime" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBBLService">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserBBLService">
+        <MappingFragment StoreEntitySet="UserBBLService">
+          <ScalarProperty Name="B1_ALT_ID" ColumnName="B1_ALT_ID" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+          <ScalarProperty Name="CleanHandsType_SSN_FEIN" ColumnName="CleanHandsType_SSN_FEIN" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LicenseExpirationDate" ColumnName="LicenseExpirationDate" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SubmissionLicense" ColumnName="SubmissionLicense" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClaim">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserClaim">
+        <MappingFragment StoreEntitySet="UserClaim">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogin">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLoginHistory">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserLoginHistory">
+        <MappingFragment StoreEntitySet="UserLoginHistory">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginHisId" ColumnName="LoginHisId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPasswordTracking">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserPasswordTracking">
+        <MappingFragment StoreEntitySet="UserPasswordTracking">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="PasswordTrack" ColumnName="PasswordTrack" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PasswordTrackId" ColumnName="PasswordTrackId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserService">
+      <EntityTypeMapping TypeName="BusinessCenterModel.UserService">
+        <MappingFragment StoreEntitySet="UserService">
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+          <ScalarProperty Name="DATA_SOURCE" ColumnName="DATA_SOURCE" />
+          <ScalarProperty Name="UserListId" ColumnName="UserListId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_ABRA">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_ABRA">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_ABRA">
+          <ScalarProperty Name="B1_SITUS_ZIP" ColumnName="B1_SITUS_ZIP" />
+          <ScalarProperty Name="B1_SITUS_STATE" ColumnName="B1_SITUS_STATE" />
+          <ScalarProperty Name="B1_SITUS_CITY" ColumnName="B1_SITUS_CITY" />
+          <ScalarProperty Name="B1_STR_SUFFIX_DIR" ColumnName="B1_STR_SUFFIX_DIR" />
+          <ScalarProperty Name="B1_STR_SUFFIX" ColumnName="B1_STR_SUFFIX" />
+          <ScalarProperty Name="B1_STR_NAME" ColumnName="B1_STR_NAME" />
+          <ScalarProperty Name="B1_UNIT_START" ColumnName="B1_UNIT_START" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_END" ColumnName="B1_HSE_FRAC_NBR_END" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_START" ColumnName="B1_HSE_FRAC_NBR_START" />
+          <ScalarProperty Name="B1_HSE_NBR_END" ColumnName="B1_HSE_NBR_END" />
+          <ScalarProperty Name="B1_HSE_NBR_START" ColumnName="B1_HSE_NBR_START" />
+          <ScalarProperty Name="B1_PRIMARY_ADDR_FLG" ColumnName="B1_PRIMARY_ADDR_FLG" />
+          <ScalarProperty Name="Manager_ZIP" ColumnName="Manager_ZIP" />
+          <ScalarProperty Name="Manager_STATE" ColumnName="Manager_STATE" />
+          <ScalarProperty Name="Manager_CITY" ColumnName="Manager_CITY" />
+          <ScalarProperty Name="Manager_ADDR3" ColumnName="Manager_ADDR3" />
+          <ScalarProperty Name="Manager_ADDR2" ColumnName="Manager_ADDR2" />
+          <ScalarProperty Name="Manager_ADDR1" ColumnName="Manager_ADDR1" />
+          <ScalarProperty Name="Manager_BUSINESS_NAME" ColumnName="Manager_BUSINESS_NAME" />
+          <ScalarProperty Name="Manager_RELATION" ColumnName="Manager_RELATION" />
+          <ScalarProperty Name="Manager_FULL_NAME" ColumnName="Manager_FULL_NAME" />
+          <ScalarProperty Name="Manager_LNAME" ColumnName="Manager_LNAME" />
+          <ScalarProperty Name="Manager_MNAME" ColumnName="Manager_MNAME" />
+          <ScalarProperty Name="Manager_FNAME" ColumnName="Manager_FNAME" />
+          <ScalarProperty Name="Solicitor_ZIP" ColumnName="Solicitor_ZIP" />
+          <ScalarProperty Name="Solicitor_STATE" ColumnName="Solicitor_STATE" />
+          <ScalarProperty Name="Solicitor_CITY" ColumnName="Solicitor_CITY" />
+          <ScalarProperty Name="Solicitor_ADDR3" ColumnName="Solicitor_ADDR3" />
+          <ScalarProperty Name="Solicitor_ADDR2" ColumnName="Solicitor_ADDR2" />
+          <ScalarProperty Name="Solicitor_ADDR1" ColumnName="Solicitor_ADDR1" />
+          <ScalarProperty Name="Solicitor_BUSINESS_NAME" ColumnName="Solicitor_BUSINESS_NAME" />
+          <ScalarProperty Name="Solicitor_RELATION" ColumnName="Solicitor_RELATION" />
+          <ScalarProperty Name="Solicitor_FULL_NAME" ColumnName="Solicitor_FULL_NAME" />
+          <ScalarProperty Name="Solicitor_LNAME" ColumnName="Solicitor_LNAME" />
+          <ScalarProperty Name="Solicitor_MNAME" ColumnName="Solicitor_MNAME" />
+          <ScalarProperty Name="Solicitor_FNAME" ColumnName="Solicitor_FNAME" />
+          <ScalarProperty Name="Applicant_BUSINESS_NAME" ColumnName="Applicant_BUSINESS_NAME" />
+          <ScalarProperty Name="Applicant_RELATION" ColumnName="Applicant_RELATION" />
+          <ScalarProperty Name="Applicant_FULL_NAME" ColumnName="Applicant_FULL_NAME" />
+          <ScalarProperty Name="Applicant_LNAME" ColumnName="Applicant_LNAME" />
+          <ScalarProperty Name="Applicant_MNAME" ColumnName="Applicant_MNAME" />
+          <ScalarProperty Name="Applicant_FNAME" ColumnName="Applicant_FNAME" />
+          <ScalarProperty Name="Establishment_Type" ColumnName="Establishment_Type" />
+          <ScalarProperty Name="Class_Type_AttrValue" ColumnName="Class_Type_AttrValue" />
+          <ScalarProperty Name="Class_Type" ColumnName="Class_Type" />
+          <ScalarProperty Name="Posting_Date" ColumnName="Posting_Date" />
+          <ScalarProperty Name="Valid_Thru_Date" ColumnName="Valid_Thru_Date" />
+          <ScalarProperty Name="License_Expiration_Date" ColumnName="License_Expiration_Date" />
+          <ScalarProperty Name="B1_CHECKBOX_TYPE" ColumnName="B1_CHECKBOX_TYPE" />
+          <ScalarProperty Name="B1_APPL_STATUS_DATE" ColumnName="B1_APPL_STATUS_DATE" />
+          <ScalarProperty Name="License_Status" ColumnName="License_Status" />
+          <ScalarProperty Name="B1_TRACKING_NBR" ColumnName="B1_TRACKING_NBR" />
+          <ScalarProperty Name="License_Number" ColumnName="License_Number" />
+          <ScalarProperty Name="B1_SPECIAL_TEXT" ColumnName="B1_SPECIAL_TEXT" />
+          <ScalarProperty Name="APP_STATUS_GROUP_CODE" ColumnName="APP_STATUS_GROUP_CODE" />
+          <ScalarProperty Name="B1_APP_TYPE_ALIAS" ColumnName="B1_APP_TYPE_ALIAS" />
+          <ScalarProperty Name="B1_PER_CATEGORY" ColumnName="B1_PER_CATEGORY" />
+          <ScalarProperty Name="B1_PER_TYPE" ColumnName="B1_PER_TYPE" />
+          <ScalarProperty Name="B1_PER_GROUP" ColumnName="B1_PER_GROUP" />
+          <ScalarProperty Name="Serv_Prov_Code" ColumnName="Serv_Prov_Code" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_BBL">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_BBL">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_BBL">
+          <ScalarProperty Name="Org_Number" ColumnName="Org_Number" />
+          <ScalarProperty Name="WARD" ColumnName="WARD" />
+          <ScalarProperty Name="ANC" ColumnName="ANC" />
+          <ScalarProperty Name="CofO_Number" ColumnName="CofO_Number" />
+          <ScalarProperty Name="CofO_IssueDate" ColumnName="CofO_IssueDate" />
+          <ScalarProperty Name="H_O_P_Number" ColumnName="H_O_P_Number" />
+          <ScalarProperty Name="H_O_P_Issue_Date" ColumnName="H_O_P_Issue_Date" />
+          <ScalarProperty Name="E_HOP_Number" ColumnName="E_HOP_Number" />
+          <ScalarProperty Name="E_HOP_Issue_Date" ColumnName="E_HOP_Issue_Date" />
+          <ScalarProperty Name="ZONE" ColumnName="ZONE" />
+          <ScalarProperty Name="REC_DATE" ColumnName="REC_DATE" />
+          <ScalarProperty Name="APPLICATION_CAP_STATUS_DATE" ColumnName="APPLICATION_CAP_STATUS_DATE" />
+          <ScalarProperty Name="APPLICATION_CAP_STATUS" ColumnName="APPLICATION_CAP_STATUS" />
+          <ScalarProperty Name="FEIN_SSN" ColumnName="FEIN_SSN" />
+          <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+          <ScalarProperty Name="License_Category_Full" ColumnName="License_Category_Full" />
+          <ScalarProperty Name="License_Category" ColumnName="License_Category" />
+          <ScalarProperty Name="Period_Start_Date" ColumnName="Period_Start_Date" />
+          <ScalarProperty Name="License_Issued_Date" ColumnName="License_Issued_Date" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+          <ScalarProperty Name="Business_Org" ColumnName="Business_Org" />
+          <ScalarProperty Name="Attr_TRADE_NAME" ColumnName="Attr_TRADE_NAME" />
+          <ScalarProperty Name="RegAgent_ZIP" ColumnName="RegAgent_ZIP" />
+          <ScalarProperty Name="RegAgent_STATE" ColumnName="RegAgent_STATE" />
+          <ScalarProperty Name="RegAgent_CITY" ColumnName="RegAgent_CITY" />
+          <ScalarProperty Name="RegAgent_Address3" ColumnName="RegAgent_Address3" />
+          <ScalarProperty Name="RegAgent_Address2" ColumnName="RegAgent_Address2" />
+          <ScalarProperty Name="RegAgent_Address1" ColumnName="RegAgent_Address1" />
+          <ScalarProperty Name="RegAgent_LNAME" ColumnName="RegAgent_LNAME" />
+          <ScalarProperty Name="RegAgent_MNAME" ColumnName="RegAgent_MNAME" />
+          <ScalarProperty Name="RegAgent_FNAME" ColumnName="RegAgent_FNAME" />
+          <ScalarProperty Name="RegAgent_BUSINESS_NAME" ColumnName="RegAgent_BUSINESS_NAME" />
+          <ScalarProperty Name="OwnrApplicant_ZIP" ColumnName="OwnrApplicant_ZIP" />
+          <ScalarProperty Name="OwnrApplicant_STATE" ColumnName="OwnrApplicant_STATE" />
+          <ScalarProperty Name="OwnrApplicant_CITY" ColumnName="OwnrApplicant_CITY" />
+          <ScalarProperty Name="OwnrApplicant_Address3" ColumnName="OwnrApplicant_Address3" />
+          <ScalarProperty Name="OwnrApplicant_Address2" ColumnName="OwnrApplicant_Address2" />
+          <ScalarProperty Name="OwnrApplicant_Address1" ColumnName="OwnrApplicant_Address1" />
+          <ScalarProperty Name="OwnrApplicant_LNAME" ColumnName="OwnrApplicant_LNAME" />
+          <ScalarProperty Name="OwnrApplicant_MNAME" ColumnName="OwnrApplicant_MNAME" />
+          <ScalarProperty Name="OwnrApplicant_FNAME" ColumnName="OwnrApplicant_FNAME" />
+          <ScalarProperty Name="OwnrApplicant_BUSINESS_NAME" ColumnName="OwnrApplicant_BUSINESS_NAME" />
+          <ScalarProperty Name="Billing_ZIP" ColumnName="Billing_ZIP" />
+          <ScalarProperty Name="Billing_STATE" ColumnName="Billing_STATE" />
+          <ScalarProperty Name="Billing_CITY" ColumnName="Billing_CITY" />
+          <ScalarProperty Name="Billing_Address3" ColumnName="Billing_Address3" />
+          <ScalarProperty Name="Billing_Address2" ColumnName="Billing_Address2" />
+          <ScalarProperty Name="Billing_Address1" ColumnName="Billing_Address1" />
+          <ScalarProperty Name="Contact_LastName" ColumnName="Contact_LastName" />
+          <ScalarProperty Name="Contact_MiddleName" ColumnName="Contact_MiddleName" />
+          <ScalarProperty Name="Contact_FirstName" ColumnName="Contact_FirstName" />
+          <ScalarProperty Name="Contact_Business_Name" ColumnName="Contact_Business_Name" />
+          <ScalarProperty Name="REC_FUL_NAM" ColumnName="REC_FUL_NAM" />
+          <ScalarProperty Name="SSL" ColumnName="SSL" />
+          <ScalarProperty Name="B1_APP_TYPE_ALIAS" ColumnName="B1_APP_TYPE_ALIAS" />
+          <ScalarProperty Name="FULL_ADDRESS" ColumnName="FULL_ADDRESS" />
+          <ScalarProperty Name="B1_SITUS_ZIP" ColumnName="B1_SITUS_ZIP" />
+          <ScalarProperty Name="B1_SITUS_STATE" ColumnName="B1_SITUS_STATE" />
+          <ScalarProperty Name="B1_SITUS_CITY" ColumnName="B1_SITUS_CITY" />
+          <ScalarProperty Name="B1_STR_SUFFIX_DIR" ColumnName="B1_STR_SUFFIX_DIR" />
+          <ScalarProperty Name="B1_STR_SUFFIX" ColumnName="B1_STR_SUFFIX" />
+          <ScalarProperty Name="B1_STR_NAME" ColumnName="B1_STR_NAME" />
+          <ScalarProperty Name="B1_UNIT_START" ColumnName="B1_UNIT_START" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_END" ColumnName="B1_HSE_FRAC_NBR_END" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_START" ColumnName="B1_HSE_FRAC_NBR_START" />
+          <ScalarProperty Name="B1_HSE_NBR_END" ColumnName="B1_HSE_NBR_END" />
+          <ScalarProperty Name="B1_HSE_NBR_START" ColumnName="B1_HSE_NBR_START" />
+          <ScalarProperty Name="ISSUED_DATE" ColumnName="ISSUED_DATE" />
+          <ScalarProperty Name="B1_APPL_STATUS_DATE" ColumnName="B1_APPL_STATUS_DATE" />
+          <ScalarProperty Name="APPLICATION_CAP" ColumnName="APPLICATION_CAP" />
+          <ScalarProperty Name="B1_ALT_ID" ColumnName="B1_ALT_ID" />
+          <ScalarProperty Name="B1_APPL_STATUS" ColumnName="B1_APPL_STATUS" />
+          <ScalarProperty Name="B1_APPL_STATUS_ORIGINAL" ColumnName="B1_APPL_STATUS_ORIGINAL" />
+          <ScalarProperty Name="B1_PER_CATEGORY" ColumnName="B1_PER_CATEGORY" />
+          <ScalarProperty Name="B1_PER_SUB_TYPE" ColumnName="B1_PER_SUB_TYPE" />
+          <ScalarProperty Name="B1_PER_TYPE" ColumnName="B1_PER_TYPE" />
+          <ScalarProperty Name="B1_PER_GROUP" ColumnName="B1_PER_GROUP" />
+          <ScalarProperty Name="B1_PER_ID3" ColumnName="B1_PER_ID3" />
+          <ScalarProperty Name="B1_PER_ID2" ColumnName="B1_PER_ID2" />
+          <ScalarProperty Name="B1_PER_ID1" ColumnName="B1_PER_ID1" />
+          <ScalarProperty Name="SERV_PROV_CODE" ColumnName="SERV_PROV_CODE" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_BBL_Renewal_Invoice">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_BBL_Renewal_Invoice">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_BBL_Renewal_Invoice">
+          <ScalarProperty Name="GF_UNIT" ColumnName="GF_UNIT" />
+          <ScalarProperty Name="GF_FEE" ColumnName="GF_FEE" />
+          <ScalarProperty Name="GF_DES" ColumnName="GF_DES" />
+          <ScalarProperty Name="b1_Alt_ID" ColumnName="b1_Alt_ID" />
+          <ScalarProperty Name="B1_APP_TYPE_ALIAS" ColumnName="B1_APP_TYPE_ALIAS" />
+          <ScalarProperty Name="B1_PER_CATEGORY" ColumnName="B1_PER_CATEGORY" />
+          <ScalarProperty Name="B1_PER_SUB_TYPE" ColumnName="B1_PER_SUB_TYPE" />
+          <ScalarProperty Name="B1_PER_TYPE" ColumnName="B1_PER_TYPE" />
+          <ScalarProperty Name="B1_PER_GROUP" ColumnName="B1_PER_GROUP" />
+          <ScalarProperty Name="B1_PER_ID3" ColumnName="B1_PER_ID3" />
+          <ScalarProperty Name="B1_PER_ID2" ColumnName="B1_PER_ID2" />
+          <ScalarProperty Name="B1_PER_ID1" ColumnName="B1_PER_ID1" />
+          <ScalarProperty Name="SERV_PROV_CODE" ColumnName="SERV_PROV_CODE" />
+          <ScalarProperty Name="As_of_Date" ColumnName="As_of_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_CBE">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_CBE">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_CBE">
+          <ScalarProperty Name="PublicContact" ColumnName="PublicContact" />
+          <ScalarProperty Name="MailingAddress" ColumnName="MailingAddress" />
+          <ScalarProperty Name="Lsdbe_PersonAppID" ColumnName="Lsdbe_PersonAppID" />
+          <ScalarProperty Name="BusinessWebsite" ColumnName="BusinessWebsite" />
+          <ScalarProperty Name="LSDBEBusinessOptions" ColumnName="LSDBEBusinessOptions" />
+          <ScalarProperty Name="BusinessZip2" ColumnName="BusinessZip2" />
+          <ScalarProperty Name="BusinessZip1" ColumnName="BusinessZip1" />
+          <ScalarProperty Name="BusinessState" ColumnName="BusinessState" />
+          <ScalarProperty Name="BusinessCity" ColumnName="BusinessCity" />
+          <ScalarProperty Name="BusinessAddress2" ColumnName="BusinessAddress2" />
+          <ScalarProperty Name="BusinessAddress1" ColumnName="BusinessAddress1" />
+          <ScalarProperty Name="RefPointsDesc" ColumnName="RefPointsDesc" />
+          <ScalarProperty Name="RefPoints" ColumnName="RefPoints" />
+          <ScalarProperty Name="LSDBE_Number" ColumnName="LSDBE_Number" />
+          <ScalarProperty Name="BusinessContact" ColumnName="BusinessContact" />
+          <ScalarProperty Name="BusinessDescription" ColumnName="BusinessDescription" />
+          <ScalarProperty Name="IncorporationDate" ColumnName="IncorporationDate" />
+          <ScalarProperty Name="BusinessStructure" ColumnName="BusinessStructure" />
+          <ScalarProperty Name="BAPAppID" ColumnName="BAPAppID" />
+          <ScalarProperty Name="TradeDivAppID" ColumnName="TradeDivAppID" />
+          <ScalarProperty Name="NIGPAppID" ColumnName="NIGPAppID" />
+          <ScalarProperty Name="CertificationExpiry" ColumnName="CertificationExpiry" />
+          <ScalarProperty Name="GIS_Ward" ColumnName="GIS_Ward" />
+          <ScalarProperty Name="BusinessEmail" ColumnName="BusinessEmail" />
+          <ScalarProperty Name="BusinessFax" ColumnName="BusinessFax" />
+          <ScalarProperty Name="BusinessPhone" ColumnName="BusinessPhone" />
+          <ScalarProperty Name="BusinessAddressShort" ColumnName="BusinessAddressShort" />
+          <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="LsdbeID" ColumnName="LsdbeID" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_Cof_O">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_Cof_O">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_Cof_O">
+          <ScalarProperty Name="REC_DATE" ColumnName="REC_DATE" />
+          <ScalarProperty Name="Status_DATE" ColumnName="Status_DATE" />
+          <ScalarProperty Name="SD_APP_DES" ColumnName="SD_APP_DES" />
+          <ScalarProperty Name="Medical_Marijuana_Dispensary" ColumnName="Medical_Marijuana_Dispensary" />
+          <ScalarProperty Name="Zoning_Use" ColumnName="Zoning_Use" />
+          <ScalarProperty Name="B1_SITUS_NBRHD" ColumnName="B1_SITUS_NBRHD" />
+          <ScalarProperty Name="B1_SITUS_ZIP" ColumnName="B1_SITUS_ZIP" />
+          <ScalarProperty Name="B1_SITUS_STATE" ColumnName="B1_SITUS_STATE" />
+          <ScalarProperty Name="B1_SITUS_CITY" ColumnName="B1_SITUS_CITY" />
+          <ScalarProperty Name="B1_STR_SUFFIX_DIR" ColumnName="B1_STR_SUFFIX_DIR" />
+          <ScalarProperty Name="B1_STR_SUFFIX" ColumnName="B1_STR_SUFFIX" />
+          <ScalarProperty Name="B1_STR_NAME" ColumnName="B1_STR_NAME" />
+          <ScalarProperty Name="B1_UNIT_START" ColumnName="B1_UNIT_START" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_START" ColumnName="B1_HSE_FRAC_NBR_START" />
+          <ScalarProperty Name="B1_HSE_NBR_END" ColumnName="B1_HSE_NBR_END" />
+          <ScalarProperty Name="B1_HSE_NBR_START" ColumnName="B1_HSE_NBR_START" />
+          <ScalarProperty Name="B1_APPL_STATUS_DATE" ColumnName="B1_APPL_STATUS_DATE" />
+          <ScalarProperty Name="DCBC_Status" ColumnName="DCBC_Status" />
+          <ScalarProperty Name="B1_APPL_STATUS" ColumnName="B1_APPL_STATUS" />
+          <ScalarProperty Name="b1_Alt_ID" ColumnName="b1_Alt_ID" />
+          <ScalarProperty Name="B1_APP_TYPE_ALIAS" ColumnName="B1_APP_TYPE_ALIAS" />
+          <ScalarProperty Name="As_of_Date" ColumnName="As_of_Date" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_CORP">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_CORP">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_CORP">
+          <ScalarProperty Name="ModelType_ORIGINAL" ColumnName="ModelType_ORIGINAL" />
+          <ScalarProperty Name="NextReportYear" ColumnName="NextReportYear" />
+          <ScalarProperty Name="ForeignDateOfOrganization" ColumnName="ForeignDateOfOrganization" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="RA_Email" ColumnName="RA_Email" />
+          <ScalarProperty Name="RA_ZipCode" ColumnName="RA_ZipCode" />
+          <ScalarProperty Name="RA_State" ColumnName="RA_State" />
+          <ScalarProperty Name="RA_City" ColumnName="RA_City" />
+          <ScalarProperty Name="RA_Address4" ColumnName="RA_Address4" />
+          <ScalarProperty Name="RA_Address3" ColumnName="RA_Address3" />
+          <ScalarProperty Name="RA_Address2" ColumnName="RA_Address2" />
+          <ScalarProperty Name="RA_Address1" ColumnName="RA_Address1" />
+          <ScalarProperty Name="RA_Name" ColumnName="RA_Name" />
+          <ScalarProperty Name="BusinessCountry" ColumnName="BusinessCountry" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="BusinessState" ColumnName="BusinessState" />
+          <ScalarProperty Name="BusinessCity" ColumnName="BusinessCity" />
+          <ScalarProperty Name="BusniessAddressLine4" ColumnName="BusniessAddressLine4" />
+          <ScalarProperty Name="BusniessAddressLine3" ColumnName="BusniessAddressLine3" />
+          <ScalarProperty Name="BusniessAddressLine2" ColumnName="BusniessAddressLine2" />
+          <ScalarProperty Name="BusniessAddressLine1" ColumnName="BusniessAddressLine1" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+          <ScalarProperty Name="Qualifier" ColumnName="Qualifier" />
+          <ScalarProperty Name="Locale" ColumnName="Locale" />
+          <ScalarProperty Name="EntityStatusDate" ColumnName="EntityStatusDate" />
+          <ScalarProperty Name="EntityStatus" ColumnName="EntityStatus" />
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
+          <ScalarProperty Name="BizEntityId" ColumnName="BizEntityId" />
+          <ScalarProperty Name="REC_DATE" ColumnName="REC_DATE" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_LOOKUP_INDEX">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_LOOKUP_INDEX">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_LOOKUP_INDEX">
+          <ScalarProperty Name="SEARCH_STRING" ColumnName="SEARCH_STRING" />
+          <ScalarProperty Name="LOOKUP_VALUE" ColumnName="LOOKUP_VALUE" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+          <ScalarProperty Name="LOOKUP_TYPE" ColumnName="LOOKUP_TYPE" />
+          <ScalarProperty Name="DATA_SOURCE" ColumnName="DATA_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_MultiColumn_LOOKUP_INDEX">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX">
+          <ScalarProperty Name="LastNameLookup" ColumnName="LastNameLookup" />
+          <ScalarProperty Name="LastNameOrig" ColumnName="LastNameOrig" />
+          <ScalarProperty Name="FirstNameLookup" ColumnName="FirstNameLookup" />
+          <ScalarProperty Name="FirstNameOrig" ColumnName="FirstNameOrig" />
+          <ScalarProperty Name="CompanyNameLookup" ColumnName="CompanyNameLookup" />
+          <ScalarProperty Name="CompanyNameOrig" ColumnName="CompanyNameOrig" />
+          <ScalarProperty Name="LicenseNumberLookup" ColumnName="LicenseNumberLookup" />
+          <ScalarProperty Name="LicenseNumberOrig" ColumnName="LicenseNumberOrig" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+          <ScalarProperty Name="DATA_SOURCE" ColumnName="DATA_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_OPLA">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_OPLA">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_OPLA">
+          <ScalarProperty Name="License_Type" ColumnName="License_Type" />
+          <ScalarProperty Name="License_Board" ColumnName="License_Board" />
+          <ScalarProperty Name="REC_DATE" ColumnName="REC_DATE" />
+          <ScalarProperty Name="OPLA_SOURCE" ColumnName="OPLA_SOURCE" />
+          <ScalarProperty Name="OPLA_LICENSE_CATEGORY" ColumnName="OPLA_LICENSE_CATEGORY" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="EMPLOYER_PHONE" ColumnName="EMPLOYER_PHONE" />
+          <ScalarProperty Name="EMPLOYER_ZIP" ColumnName="EMPLOYER_ZIP" />
+          <ScalarProperty Name="EMPLOYER_STATE" ColumnName="EMPLOYER_STATE" />
+          <ScalarProperty Name="EMPLOYER_CITY" ColumnName="EMPLOYER_CITY" />
+          <ScalarProperty Name="EMPLOYER_ADDRESS" ColumnName="EMPLOYER_ADDRESS" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_STATUS_CODE" ColumnName="EMPLOYER_LICENSE_STATUS_CODE" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_EXPIRATION_DATE" ColumnName="EMPLOYER_LICENSE_EXPIRATION_DATE" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_ISSUE_DATE" ColumnName="EMPLOYER_LICENSE_ISSUE_DATE" />
+          <ScalarProperty Name="Organization_EMPLOYER_NAME" ColumnName="Organization_EMPLOYER_NAME" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_NUMBER" ColumnName="EMPLOYER_LICENSE_NUMBER" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_PREFIX1" ColumnName="EMPLOYER_LICENSE_PREFIX1" />
+          <ScalarProperty Name="Preferred_Address_Ind" ColumnName="Preferred_Address_Ind" />
+          <ScalarProperty Name="HOME_PHONE" ColumnName="HOME_PHONE" />
+          <ScalarProperty Name="HOME_ZIP" ColumnName="HOME_ZIP" />
+          <ScalarProperty Name="HOME_STATE" ColumnName="HOME_STATE" />
+          <ScalarProperty Name="HOME_CITY" ColumnName="HOME_CITY" />
+          <ScalarProperty Name="HOME_ADDRESS" ColumnName="HOME_ADDRESS" />
+          <ScalarProperty Name="BUSINESS_PHONE" ColumnName="BUSINESS_PHONE" />
+          <ScalarProperty Name="BUSINESS_ZIP" ColumnName="BUSINESS_ZIP" />
+          <ScalarProperty Name="BUSINESS_STATE" ColumnName="BUSINESS_STATE" />
+          <ScalarProperty Name="BUSINESS_CITY" ColumnName="BUSINESS_CITY" />
+          <ScalarProperty Name="BUSINESS_ADDRESS" ColumnName="BUSINESS_ADDRESS" />
+          <ScalarProperty Name="Licensee_Name_4" ColumnName="Licensee_Name_4" />
+          <ScalarProperty Name="Licensee_Name_3" ColumnName="Licensee_Name_3" />
+          <ScalarProperty Name="Licensee_Name_2" ColumnName="Licensee_Name_2" />
+          <ScalarProperty Name="Licensee_Name_1" ColumnName="Licensee_Name_1" />
+          <ScalarProperty Name="LICENSE_STATUS_CODE" ColumnName="LICENSE_STATUS_CODE" />
+          <ScalarProperty Name="LICENSE_EXPIRATION_DATE" ColumnName="LICENSE_EXPIRATION_DATE" />
+          <ScalarProperty Name="LICENSE_ISSUE_DATE" ColumnName="LICENSE_ISSUE_DATE" />
+          <ScalarProperty Name="LICENSE_NUMBER" ColumnName="LICENSE_NUMBER" />
+          <ScalarProperty Name="LICENSE_PREFIX" ColumnName="LICENSE_PREFIX" />
+          <ScalarProperty Name="BOARD_ABBREVIATION" ColumnName="BOARD_ABBREVIATION" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_RESULTS_ABRA">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_RESULTS_ABRA">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_RESULTS_ABRA">
+          <ScalarProperty Name="Rec_Type" ColumnName="Rec_Type" />
+          <ScalarProperty Name="B1_SITUS_ZIP" ColumnName="B1_SITUS_ZIP" />
+          <ScalarProperty Name="B1_SITUS_STATE" ColumnName="B1_SITUS_STATE" />
+          <ScalarProperty Name="B1_SITUS_CITY" ColumnName="B1_SITUS_CITY" />
+          <ScalarProperty Name="B1_STR_SUFFIX_DIR" ColumnName="B1_STR_SUFFIX_DIR" />
+          <ScalarProperty Name="B1_STR_SUFFIX" ColumnName="B1_STR_SUFFIX" />
+          <ScalarProperty Name="B1_STR_NAME" ColumnName="B1_STR_NAME" />
+          <ScalarProperty Name="B1_UNIT_START" ColumnName="B1_UNIT_START" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_END" ColumnName="B1_HSE_FRAC_NBR_END" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_START" ColumnName="B1_HSE_FRAC_NBR_START" />
+          <ScalarProperty Name="B1_HSE_NBR_END" ColumnName="B1_HSE_NBR_END" />
+          <ScalarProperty Name="B1_HSE_NBR_START" ColumnName="B1_HSE_NBR_START" />
+          <ScalarProperty Name="B1_PRIMARY_ADDR_FLG" ColumnName="B1_PRIMARY_ADDR_FLG" />
+          <ScalarProperty Name="Business_Name" ColumnName="Business_Name" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+          <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Establishment_Type" ColumnName="Establishment_Type" />
+          <ScalarProperty Name="Class_Type_AttrValue" ColumnName="Class_Type_AttrValue" />
+          <ScalarProperty Name="Class_Type" ColumnName="Class_Type" />
+          <ScalarProperty Name="Posting_Date" ColumnName="Posting_Date" />
+          <ScalarProperty Name="Valid_Thru_Date" ColumnName="Valid_Thru_Date" />
+          <ScalarProperty Name="License_Expiration_Date" ColumnName="License_Expiration_Date" />
+          <ScalarProperty Name="B1_CHECKBOX_TYPE" ColumnName="B1_CHECKBOX_TYPE" />
+          <ScalarProperty Name="B1_APPL_STATUS_DATE" ColumnName="B1_APPL_STATUS_DATE" />
+          <ScalarProperty Name="License_Status" ColumnName="License_Status" />
+          <ScalarProperty Name="License_Status_Original" ColumnName="License_Status_Original" />
+          <ScalarProperty Name="B1_TRACKING_NBR" ColumnName="B1_TRACKING_NBR" />
+          <ScalarProperty Name="License_Number" ColumnName="License_Number" />
+          <ScalarProperty Name="B1_SPECIAL_TEXT" ColumnName="B1_SPECIAL_TEXT" />
+          <ScalarProperty Name="APP_STATUS_GROUP_CODE" ColumnName="APP_STATUS_GROUP_CODE" />
+          <ScalarProperty Name="B1_APP_TYPE_ALIAS" ColumnName="B1_APP_TYPE_ALIAS" />
+          <ScalarProperty Name="B1_PER_CATEGORY" ColumnName="B1_PER_CATEGORY" />
+          <ScalarProperty Name="B1_PER_TYPE" ColumnName="B1_PER_TYPE" />
+          <ScalarProperty Name="B1_PER_GROUP" ColumnName="B1_PER_GROUP" />
+          <ScalarProperty Name="Serv_Prov_Code" ColumnName="Serv_Prov_Code" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_RESULTS_BBL">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_RESULTS_BBL">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_RESULTS_BBL">
+          <ScalarProperty Name="License_Endorsement_Category" ColumnName="License_Endorsement_Category" />
+          <ScalarProperty Name="License_Category" ColumnName="License_Category" />
+          <ScalarProperty Name="License_Expiration_Date" ColumnName="License_Expiration_Date" />
+          <ScalarProperty Name="Trade_Name" ColumnName="Trade_Name" />
+          <ScalarProperty Name="Corporation_Name" ColumnName="Corporation_Name" />
+          <ScalarProperty Name="Premise_Address" ColumnName="Premise_Address" />
+          <ScalarProperty Name="License_Number" ColumnName="License_Number" />
+          <ScalarProperty Name="License_Status" ColumnName="License_Status" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_RESULTS_CBE">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_RESULTS_CBE">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_RESULTS_CBE">
+          <ScalarProperty Name="Preference_Points_Detail" ColumnName="Preference_Points_Detail" />
+          <ScalarProperty Name="Preference_Points_Summary" ColumnName="Preference_Points_Summary" />
+          <ScalarProperty Name="CBE_Number" ColumnName="CBE_Number" />
+          <ScalarProperty Name="Business_Contact" ColumnName="Business_Contact" />
+          <ScalarProperty Name="Company_Description" ColumnName="Company_Description" />
+          <ScalarProperty Name="Organization_Type" ColumnName="Organization_Type" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+          <ScalarProperty Name="Business_Email" ColumnName="Business_Email" />
+          <ScalarProperty Name="Business_Phone" ColumnName="Business_Phone" />
+          <ScalarProperty Name="Business_Address" ColumnName="Business_Address" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+          <ScalarProperty Name="Last_Update" ColumnName="Last_Update" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_RESULTS_Corp">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_RESULTS_Corp">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_RESULTS_Corp">
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
+          <ScalarProperty Name="NextReportYear" ColumnName="NextReportYear" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EntityStatusDate" ColumnName="EntityStatusDate" />
+          <ScalarProperty Name="EntityStatus" ColumnName="EntityStatus" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+          <ScalarProperty Name="Locale" ColumnName="Locale" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_RESULTS_OPLA">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_RESULTS_OPLA">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_RESULTS_OPLA">
+          <ScalarProperty Name="OPLA_SOURCE" ColumnName="OPLA_SOURCE" />
+          <ScalarProperty Name="OPLA_LICENSE_CATEGORY" ColumnName="OPLA_LICENSE_CATEGORY" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_STATUS" ColumnName="EMPLOYER_LICENSE_STATUS" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_EXPIRATION_DATE" ColumnName="EMPLOYER_LICENSE_EXPIRATION_DATE" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_ISSUE_DATE" ColumnName="EMPLOYER_LICENSE_ISSUE_DATE" />
+          <ScalarProperty Name="Organization_EMPLOYER_NAME" ColumnName="Organization_EMPLOYER_NAME" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_NUMBER" ColumnName="EMPLOYER_LICENSE_NUMBER" />
+          <ScalarProperty Name="EMPLOYER_LICENSE_DESCRIPTION" ColumnName="EMPLOYER_LICENSE_DESCRIPTION" />
+          <ScalarProperty Name="Preferred_Address_Ind" ColumnName="Preferred_Address_Ind" />
+          <ScalarProperty Name="Employer_City_State_Zip" ColumnName="Employer_City_State_Zip" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="Licensee_Name" ColumnName="Licensee_Name" />
+          <ScalarProperty Name="LICENSE_STATUS" ColumnName="LICENSE_STATUS" />
+          <ScalarProperty Name="EXPIRATION_DATE" ColumnName="EXPIRATION_DATE" />
+          <ScalarProperty Name="LICENSE_ISSUE_DATE" ColumnName="LICENSE_ISSUE_DATE" />
+          <ScalarProperty Name="LICENSE_NUMBER" ColumnName="LICENSE_NUMBER" />
+          <ScalarProperty Name="License_Board" ColumnName="License_Board" />
+          <ScalarProperty Name="License_Type" ColumnName="License_Type" />
+          <ScalarProperty Name="DCBC_ENTITY_SOURCE" ColumnName="DCBC_ENTITY_SOURCE" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+          <ScalarProperty Name="REC_STATUS" ColumnName="REC_STATUS" />
+          <ScalarProperty Name="DCBC_ENTITY_ID" ColumnName="DCBC_ENTITY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OSub_Category_Checklist">
+      <EntityTypeMapping TypeName="BusinessCenterModel.OSub_Category_Checklist">
+        <MappingFragment StoreEntitySet="OSub_Category_Checklist">
+          <ScalarProperty Name="UnitTwo" ColumnName="UnitTwo" />
+          <ScalarProperty Name="OSub_Description" ColumnName="OSub_Description" />
+          <ScalarProperty Name="OSub_Category" ColumnName="OSub_Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_ETL_Address_And_Parcel">
+      <EntityTypeMapping TypeName="BusinessCenterModel.TBL_ETL_Address_And_Parcel">
+        <MappingFragment StoreEntitySet="TBL_ETL_Address_And_Parcel">
+          <ScalarProperty Name="L1_FULL_ADDRESS" ColumnName="L1_FULL_ADDRESS" />
+          <ScalarProperty Name="L1_UDF4" ColumnName="L1_UDF4" />
+          <ScalarProperty Name="L1_UDF3" ColumnName="L1_UDF3" />
+          <ScalarProperty Name="L1_UDF2" ColumnName="L1_UDF2" />
+          <ScalarProperty Name="L1_UDF1" ColumnName="L1_UDF1" />
+          <ScalarProperty Name="L1_ADDR_DESC" ColumnName="L1_ADDR_DESC" />
+          <ScalarProperty Name="L1_ADDR_STATUS" ColumnName="L1_ADDR_STATUS" />
+          <ScalarProperty Name="L1_SITUS_COUNTRY" ColumnName="L1_SITUS_COUNTRY" />
+          <ScalarProperty Name="L1_SITUS_ZIP" ColumnName="L1_SITUS_ZIP" />
+          <ScalarProperty Name="L1_SITUS_STATE" ColumnName="L1_SITUS_STATE" />
+          <ScalarProperty Name="L1_SITUS_COUNTY" ColumnName="L1_SITUS_COUNTY" />
+          <ScalarProperty Name="L1_SITUS_CITY" ColumnName="L1_SITUS_CITY" />
+          <ScalarProperty Name="L1_SITUS_NBRHD" ColumnName="L1_SITUS_NBRHD" />
+          <ScalarProperty Name="L1_SITUS_NBRHD_PREFIX" ColumnName="L1_SITUS_NBRHD_PREFIX" />
+          <ScalarProperty Name="L1_INSP_DISTRICT" ColumnName="L1_INSP_DISTRICT" />
+          <ScalarProperty Name="L1_INSP_DISTRICT_PREFIX" ColumnName="L1_INSP_DISTRICT_PREFIX" />
+          <ScalarProperty Name="L1_STR_SUFFIX_DIR" ColumnName="L1_STR_SUFFIX_DIR" />
+          <ScalarProperty Name="L1_STR_SUFFIX" ColumnName="L1_STR_SUFFIX" />
+          <ScalarProperty Name="L1_STR_PREFIX" ColumnName="L1_STR_PREFIX" />
+          <ScalarProperty Name="L1_STR_NAME" ColumnName="L1_STR_NAME" />
+          <ScalarProperty Name="L1_UNIT_TYPE" ColumnName="L1_UNIT_TYPE" />
+          <ScalarProperty Name="L1_UNIT_END" ColumnName="L1_UNIT_END" />
+          <ScalarProperty Name="L1_UNIT_START" ColumnName="L1_UNIT_START" />
+          <ScalarProperty Name="L1_HSE_FRAC_NBR_END" ColumnName="L1_HSE_FRAC_NBR_END" />
+          <ScalarProperty Name="L1_HSE_FRAC_NBR_START" ColumnName="L1_HSE_FRAC_NBR_START" />
+          <ScalarProperty Name="L1_HSE_NBR_END" ColumnName="L1_HSE_NBR_END" />
+          <ScalarProperty Name="L1_HSE_NBR_START" ColumnName="L1_HSE_NBR_START" />
+          <ScalarProperty Name="L1_PARCEL_NBR" ColumnName="L1_PARCEL_NBR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BblLicenseView2">
+      <EntityTypeMapping TypeName="BusinessCenterModel.BblLicenseView2">
+        <MappingFragment StoreEntitySet="BblLicenseView2">
+          <ScalarProperty Name="UpDated_Date" ColumnName="UpDated Date" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created Date" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+          <ScalarProperty Name="Sec__Units_Description" ColumnName="Sec. Units Description" />
+          <ScalarProperty Name="Sec__Units" ColumnName="Sec. Units" />
+          <ScalarProperty Name="Secondary_Category" ColumnName="Secondary Category" />
+          <ScalarProperty Name="Pri__Units_Description_2" ColumnName="Pri. Units Description 2" />
+          <ScalarProperty Name="Pri__Units_2" ColumnName="Pri. Units 2" />
+          <ScalarProperty Name="Pri__Units_Description" ColumnName="Pri. Units Description" />
+          <ScalarProperty Name="Pri__Units" ColumnName="Pri. Units" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Primary_Category" ColumnName="Primary Category" />
+          <ScalarProperty Name="Application" ColumnName="Application" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BblLicenseView4">
+      <EntityTypeMapping TypeName="BusinessCenterModel.BblLicenseView4">
+        <MappingFragment StoreEntitySet="BblLicenseView4">
+          <ScalarProperty Name="UpDated_Date" ColumnName="UpDated Date" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShortDocName" ColumnName="ShortDocName" />
+          <ScalarProperty Name="SupportingDocuments" ColumnName="SupportingDocuments" />
+          <ScalarProperty Name="DivisionFullName" ColumnName="DivisionFullName" />
+          <ScalarProperty Name="Div" ColumnName="Div" />
+          <ScalarProperty Name="Agency_FullName" ColumnName="Agency_FullName" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="SubmissionType" ColumnName="SubmissionType" />
+          <ScalarProperty Name="MasterCategoryDocId" ColumnName="MasterCategoryDocId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="DocumentSubmissionType" ColumnName="DocumentSubmissionType" />
+          <ScalarProperty Name="SubmissionFileLocation" ColumnName="SubmissionFileLocation" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Application_License_No_" ColumnName="Application/License No." />
+          <ScalarProperty Name="APPID" ColumnName="APPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_dbo_UserClaim_dbo_User_UserId" TypeName="BusinessCenterModel.FK_dbo_UserClaim_dbo_User_UserId" StoreEntitySet="UserClaim">
+      <EndProperty Name="UserClaim">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="BblLicenseView3">
+      <EntityTypeMapping TypeName="BusinessCenterModel.BblLicenseView3">
+        <MappingFragment StoreEntitySet="BblLicenseView3">
+          <ScalarProperty Name="Org_Number" ColumnName="Org_Number" />
+          <ScalarProperty Name="UpDated_Date" ColumnName="UpDated Date" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created Date" />
+          <ScalarProperty Name="Transaction_Payment_Date" ColumnName="Transaction Payment Date" />
+          <ScalarProperty Name="Payment_Transaction_ID" ColumnName="Payment Transaction ID" />
+          <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Penalty_Fee__Expired_" ColumnName="Penalty Fee (Expired)" />
+          <ScalarProperty Name="Penalty_Fee__Lapse_" ColumnName="Penalty Fee (Lapse)" />
+          <ScalarProperty Name="ESFFee" ColumnName="ESFFee" />
+          <ScalarProperty Name="RAO_Fee" ColumnName="RAO Fee" />
+          <ScalarProperty Name="LicenseFee" ColumnName="LicenseFee" />
+          <ScalarProperty Name="Endorsement_Fee" ColumnName="Endorsement Fee" />
+          <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+          <ScalarProperty Name="License_Renewal_Period" ColumnName="License Renewal Period" />
+          <ScalarProperty Name="Primary_Category" ColumnName="Primary Category" />
+          <ScalarProperty Name="Renewal_License_No_" ColumnName="Renewal License No." />
+          <ScalarProperty Name="Online_App_License_Status" ColumnName="Online App License Status" />
+          <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+          <ScalarProperty Name="License_Number" ColumnName="License Number" />
+          <ScalarProperty Name="Application_Unique_ID" ColumnName="Application Unique ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BblLicenseView">
+      <EntityTypeMapping TypeName="BusinessCenterModel.BblLicenseView">
+        <MappingFragment StoreEntitySet="BblLicenseView">
+          <ScalarProperty Name="UpDated_Date" ColumnName="UpDated Date" />
+          <ScalarProperty Name="Created_Date" ColumnName="Created Date" />
+          <ScalarProperty Name="License_Expiration_Date" ColumnName="License Expiration Date" />
+          <ScalarProperty Name="State_of_License" ColumnName="State of License" />
+          <ScalarProperty Name="Drivers_License" ColumnName="Drivers License" />
+          <ScalarProperty Name="Eyes_Color" ColumnName="Eyes Color" />
+          <ScalarProperty Name="Hair_Color" ColumnName="Hair Color" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Place_of_Birth" ColumnName="Place of Birth" />
+          <ScalarProperty Name="Date_of_Birth" ColumnName="Date of Birth" />
+          <ScalarProperty Name="Company_Buss__Lic_Number" ColumnName="Company Buss. Lic Number" />
+          <ScalarProperty Name="Employee_Name" ColumnName="Employee Name" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company Name" />
+          <ScalarProperty Name="FileNumber" ColumnName="FileNumber" />
+          <ScalarProperty Name="ContactAgent_Email" ColumnName="ContactAgent_Email" />
+          <ScalarProperty Name="Corp_Telephone" ColumnName="Corp.Telephone" />
+          <ScalarProperty Name="ContactAgent_ZipCode" ColumnName="ContactAgent_ZipCode" />
+          <ScalarProperty Name="ContactAgent_Country" ColumnName="ContactAgent_Country" />
+          <ScalarProperty Name="ContactAgent_State" ColumnName="ContactAgent_State" />
+          <ScalarProperty Name="ContactAgent_City" ColumnName="ContactAgent_City" />
+          <ScalarProperty Name="Address_Line__2_" ColumnName="Address Line  2 " />
+          <ScalarProperty Name="Street_Address" ColumnName="Street Address" />
+          <ScalarProperty Name="Contact_Last_Name" ColumnName="Contact Last Name" />
+          <ScalarProperty Name="Contact_Middle_Name" ColumnName="Contact Middle Name" />
+          <ScalarProperty Name="Contact_First_Name" ColumnName="Contact First Name" />
+          <ScalarProperty Name="Agent_Org_Buss__Name" ColumnName="Agent.Org/Buss. Name" />
+          <ScalarProperty Name="Billing_Email" ColumnName="Billing.Email" />
+          <ScalarProperty Name="Billing_Phone" ColumnName="Billing.Phone" />
+          <ScalarProperty Name="Billing_Zip" ColumnName="Billing.Zip" />
+          <ScalarProperty Name="Billing_Country___" ColumnName="Billing.Country***" />
+          <ScalarProperty Name="Billing_State" ColumnName="Billing.State" />
+          <ScalarProperty Name="Billing_City" ColumnName="Billing.City" />
+          <ScalarProperty Name="Billing_Address_3" ColumnName="Billing.Address 3" />
+          <ScalarProperty Name="Billing_Address_2_" ColumnName="Billing.Address 2 " />
+          <ScalarProperty Name="Billing_Address_1" ColumnName="Billing.Address 1" />
+          <ScalarProperty Name="Billing_ContactLastName" ColumnName="Billing.ContactLastName" />
+          <ScalarProperty Name="Billing_ContactMiddleName" ColumnName="Billing.ContactMiddleName" />
+          <ScalarProperty Name="Billing_ContactFirstName" ColumnName="Billing.ContactFirstName" />
+          <ScalarProperty Name="Billing_Org_Buss__Name" ColumnName="Billing.Org/Buss. Name" />
+          <ScalarProperty Name="Parcel_Premise_SSL" ColumnName="Parcel.Premise SSL" />
+          <ScalarProperty Name="Parcel_Premise_Zone" ColumnName="Parcel.Premise Zone" />
+          <ScalarProperty Name="Parcel_Premise_ANC" ColumnName="Parcel.Premise ANC" />
+          <ScalarProperty Name="Parcel_Premise_Ward" ColumnName="Parcel.Premise Ward" />
+          <ScalarProperty Name="Parcel_Premise_Suffix" ColumnName="Parcel.Premise Suffix" />
+          <ScalarProperty Name="Premise_Address_Verified" ColumnName="Premise Address Verified" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PZip" ColumnName="PZip" />
+          <ScalarProperty Name="Country__" ColumnName="Country**" />
+          <ScalarProperty Name="PState" ColumnName="PState" />
+          <ScalarProperty Name="PCity" ColumnName="PCity" />
+          <ScalarProperty Name="Suite_Unit_Number" ColumnName="Suite/Unit Number" />
+          <ScalarProperty Name="Unit_Type___" ColumnName="Unit Type***" />
+          <ScalarProperty Name="Quadrant" ColumnName="Quadrant" />
+          <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+          <ScalarProperty Name="Prim_Street_Name" ColumnName="Prim.Street Name" />
+          <ScalarProperty Name="Prim_Street_Number" ColumnName="Prim.Street Number" />
+          <ScalarProperty Name="FEIN_SSN" ColumnName="FEIN/SSN" />
+          <ScalarProperty Name="Tax_ID_Number" ColumnName="Tax ID Number" />
+          <ScalarProperty Name="Trade_Name__If_applicable_" ColumnName="Trade Name (If applicable)" />
+          <ScalarProperty Name="Business_Organization___" ColumnName="Business Organization***" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Country_Region" ColumnName="Country/Region" />
+          <ScalarProperty Name="Zip_Code" ColumnName="Zip Code" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address_Line_2" ColumnName="Address Line 2" />
+          <ScalarProperty Name="Full_Address_Line_1" ColumnName="Full Address Line 1" />
+          <ScalarProperty Name="Organization_Name" ColumnName="Organization Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+          <ScalarProperty Name="Middle_Name" ColumnName="Middle Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="EHOP_Issuance_Status" ColumnName="EHOP Issuance Status" />
+          <ScalarProperty Name="EHOP_Occupation_Type" ColumnName="EHOP Occupation Type" />
+          <ScalarProperty Name="EHOP_Attested_By" ColumnName="EHOP Attested By" />
+          <ScalarProperty Name="EHOP_Issue_Date" ColumnName="EHOP Issue Date" />
+          <ScalarProperty Name="EHOP_Number" ColumnName="EHOP Number" />
+          <ScalarProperty Name="Home_Occupation_Number" ColumnName="Home Occupation Number" />
+          <ScalarProperty Name="Certificate_of_Occupancy_Number" ColumnName="Certificate of Occupancy Number" />
+          <ScalarProperty Name="Self_Certificate__One_Family_" ColumnName="Self Certificate (One-Family)" />
+          <ScalarProperty Name="CH_Self_Certificate_Type" ColumnName="CH Self Certificate Type" />
+          <ScalarProperty Name="CH_Self_Certificate_Date" ColumnName="CH Self Certificate Date" />
+          <ScalarProperty Name="CH_Self_Certificate_Signature" ColumnName="CH Self Certificate Signature" />
+          <ScalarProperty Name="Payment_Transaction_Date" ColumnName="Payment Transaction Date" />
+          <ScalarProperty Name="Payment_Transaction_ID" ColumnName="Payment Transaction ID" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="EHOP_Fees" ColumnName="EHOP Fees" />
+          <ScalarProperty Name="ESFFee" ColumnName="ESFFee" />
+          <ScalarProperty Name="RAOFee" ColumnName="RAOFee" />
+          <ScalarProperty Name="LicenseFee" ColumnName="LicenseFee" />
+          <ScalarProperty Name="EndorsementFee" ColumnName="EndorsementFee" />
+          <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+          <ScalarProperty Name="License_Period" ColumnName="License Period" />
+          <ScalarProperty Name="App_Type" ColumnName="App_Type" />
+          <ScalarProperty Name="Application_Type" ColumnName="Application Type" />
+          <ScalarProperty Name="Application_License_No_" ColumnName="Application/License No." />
+          <ScalarProperty Name="Online_App_License_Status" ColumnName="Online App License Status" />
+          <ScalarProperty Name="Applicant_Name" ColumnName="Applicant Name" />
+          <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+          <ScalarProperty Name="Application_Unique_ID" ColumnName="Application Unique ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KeywordDetails">
+      <EntityTypeMapping TypeName="BusinessCenterModel.KeywordDetails">
+        <MappingFragment StoreEntitySet="KeywordDetails">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="KeyCount" ColumnName="KeyCount" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="KeywordDid" ColumnName="KeywordDid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DCBC_ENTITY_BBL_Renewals">
+      <EntityTypeMapping TypeName="BusinessCenterModel.DCBC_ENTITY_BBL_Renewals">
+        <MappingFragment StoreEntitySet="DCBC_ENTITY_BBL_Renewals">
+          <ScalarProperty Name="Org_Number" ColumnName="Org_Number" />
+          <ScalarProperty Name="Attr_BusOrg_REC_DATE" ColumnName="Attr_BusOrg_REC_DATE" />
+          <ScalarProperty Name="Attr_TradeName_REC_DATE" ColumnName="Attr_TradeName_REC_DATE" />
+          <ScalarProperty Name="Bus_Ownr_Applicant_REC_DATE" ColumnName="Bus_Ownr_Applicant_REC_DATE" />
+          <ScalarProperty Name="Reg_Agent_REC_DATE" ColumnName="Reg_Agent_REC_DATE" />
+          <ScalarProperty Name="Billing_Contact_REC_DATE" ColumnName="Billing_Contact_REC_DATE" />
+          <ScalarProperty Name="Business_Org" ColumnName="Business_Org" />
+          <ScalarProperty Name="Attr_TRADE_NAME" ColumnName="Attr_TRADE_NAME" />
+          <ScalarProperty Name="RegAgent_ZIP" ColumnName="RegAgent_ZIP" />
+          <ScalarProperty Name="RegAgent_STATE" ColumnName="RegAgent_STATE" />
+          <ScalarProperty Name="RegAgent_CITY" ColumnName="RegAgent_CITY" />
+          <ScalarProperty Name="RegAgent_Address3" ColumnName="RegAgent_Address3" />
+          <ScalarProperty Name="RegAgent_Address2" ColumnName="RegAgent_Address2" />
+          <ScalarProperty Name="RegAgent_Address1" ColumnName="RegAgent_Address1" />
+          <ScalarProperty Name="RegAgent_LNAME" ColumnName="RegAgent_LNAME" />
+          <ScalarProperty Name="RegAgent_MNAME" ColumnName="RegAgent_MNAME" />
+          <ScalarProperty Name="RegAgent_FNAME" ColumnName="RegAgent_FNAME" />
+          <ScalarProperty Name="RegAgent_BUSINESS_NAME" ColumnName="RegAgent_BUSINESS_NAME" />
+          <ScalarProperty Name="OwnrApplicant_ZIP" ColumnName="OwnrApplicant_ZIP" />
+          <ScalarProperty Name="OwnrApplicant_STATE" ColumnName="OwnrApplicant_STATE" />
+          <ScalarProperty Name="OwnrApplicant_CITY" ColumnName="OwnrApplicant_CITY" />
+          <ScalarProperty Name="OwnrApplicant_Address3" ColumnName="OwnrApplicant_Address3" />
+          <ScalarProperty Name="OwnrApplicant_Address2" ColumnName="OwnrApplicant_Address2" />
+          <ScalarProperty Name="OwnrApplicant_Address1" ColumnName="OwnrApplicant_Address1" />
+          <ScalarProperty Name="OwnrApplicant_LNAME" ColumnName="OwnrApplicant_LNAME" />
+          <ScalarProperty Name="OwnrApplicant_MNAME" ColumnName="OwnrApplicant_MNAME" />
+          <ScalarProperty Name="OwnrApplicant_FNAME" ColumnName="OwnrApplicant_FNAME" />
+          <ScalarProperty Name="OwnrApplicant_BUSINESS_NAME" ColumnName="OwnrApplicant_BUSINESS_NAME" />
+          <ScalarProperty Name="Billing_ZIP" ColumnName="Billing_ZIP" />
+          <ScalarProperty Name="Billing_STATE" ColumnName="Billing_STATE" />
+          <ScalarProperty Name="Billing_CITY" ColumnName="Billing_CITY" />
+          <ScalarProperty Name="Billing_Address3" ColumnName="Billing_Address3" />
+          <ScalarProperty Name="Billing_Address2" ColumnName="Billing_Address2" />
+          <ScalarProperty Name="Billing_Address1" ColumnName="Billing_Address1" />
+          <ScalarProperty Name="Contact_LastName" ColumnName="Contact_LastName" />
+          <ScalarProperty Name="Contact_MiddleName" ColumnName="Contact_MiddleName" />
+          <ScalarProperty Name="Contact_FirstName" ColumnName="Contact_FirstName" />
+          <ScalarProperty Name="Contact_Business_Name" ColumnName="Contact_Business_Name" />
+          <ScalarProperty Name="E_HOP_Issue_Date" ColumnName="E_HOP_Issue_Date" />
+          <ScalarProperty Name="E_HOP_Number" ColumnName="E_HOP_Number" />
+          <ScalarProperty Name="H_O_P_Issue_Date" ColumnName="H_O_P_Issue_Date" />
+          <ScalarProperty Name="H_O_P_Number" ColumnName="H_O_P_Number" />
+          <ScalarProperty Name="CofO_IssueDate" ColumnName="CofO_IssueDate" />
+          <ScalarProperty Name="Review_Necessary" ColumnName="Review_Necessary" />
+          <ScalarProperty Name="CofO_Number" ColumnName="CofO_Number" />
+          <ScalarProperty Name="OSR_Pin" ColumnName="OSR_Pin" />
+          <ScalarProperty Name="License_Period" ColumnName="License_Period" />
+          <ScalarProperty Name="B1_SITUS_ZIP" ColumnName="B1_SITUS_ZIP" />
+          <ScalarProperty Name="B1_SITUS_STATE" ColumnName="B1_SITUS_STATE" />
+          <ScalarProperty Name="B1_SITUS_CITY" ColumnName="B1_SITUS_CITY" />
+          <ScalarProperty Name="B1_STR_SUFFIX_DIR" ColumnName="B1_STR_SUFFIX_DIR" />
+          <ScalarProperty Name="B1_STR_SUFFIX" ColumnName="B1_STR_SUFFIX" />
+          <ScalarProperty Name="B1_STR_NAME" ColumnName="B1_STR_NAME" />
+          <ScalarProperty Name="B1_UNIT_START" ColumnName="B1_UNIT_START" />
+          <ScalarProperty Name="B1_HSE_FRAC_NBR_START" ColumnName="B1_HSE_FRAC_NBR_START" />
+          <ScalarProperty Name="B1_HSE_NBR_END" ColumnName="B1_HSE_NBR_END" />
+          <ScalarProperty Name="B1_HSE_NBR_START" ColumnName="B1_HSE_NBR_START" />
+          <ScalarProperty Name="B1_APPL_STATUS_DATE" ColumnName="B1_APPL_STATUS_DATE" />
+          <ScalarProperty Name="Renewal_Status" ColumnName="Renewal_Status" />
+          <ScalarProperty Name="B1_APPL_STATUS" ColumnName="B1_APPL_STATUS" />
+          <ScalarProperty Name="License_Being_Renewed" ColumnName="License_Being_Renewed" />
+          <ScalarProperty Name="b1_Alt_ID" ColumnName="b1_Alt_ID" />
+          <ScalarProperty Name="B1_APP_TYPE_ALIAS" ColumnName="B1_APP_TYPE_ALIAS" />
+          <ScalarProperty Name="B1_PER_CATEGORY" ColumnName="B1_PER_CATEGORY" />
+          <ScalarProperty Name="B1_PER_SUB_TYPE" ColumnName="B1_PER_SUB_TYPE" />
+          <ScalarProperty Name="B1_PER_TYPE" ColumnName="B1_PER_TYPE" />
+          <ScalarProperty Name="B1_PER_GROUP" ColumnName="B1_PER_GROUP" />
+          <ScalarProperty Name="B1_PER_ID3" ColumnName="B1_PER_ID3" />
+          <ScalarProperty Name="B1_PER_ID2" ColumnName="B1_PER_ID2" />
+          <ScalarProperty Name="B1_PER_ID1" ColumnName="B1_PER_ID1" />
+          <ScalarProperty Name="SERV_PROV_CODE" ColumnName="SERV_PROV_CODE" />
+          <ScalarProperty Name="As_of_Date" ColumnName="As_of_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

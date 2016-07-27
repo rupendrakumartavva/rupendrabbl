@@ -1,0 +1,216 @@
+﻿@using System.Data.Entity.Migrations.Infrastructure
+@model BusinessCenter.Admin.Models.SecondaryModel
+
+
+<form>
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+    <p style="text-align: center;color:#339900;font-size:19px;margin-bottom:10px;"><span id="msg"></span></p>
+    @*<p>@Html.HiddenFor(model => model.PrimaryID)</p>*@
+    <p>@Html.HiddenFor(model => model.PrimaryId)</p>
+    <p>@Html.HiddenFor(model => model.SecondaryId)</p>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Secondary Category Name ")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm- col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.SecondaryLicenseCategory, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "secondarylicense",
+                                       name = "secondarylicense",
+                                      
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''",
+                                       disabled = "disabled"
+                                   }
+                               })
+             
+                @Html.ValidationMessageFor(model => model.SecondaryLicenseCategory, "", new { @class = "error-message error" })
+                @Html.HiddenFor(model => model.SecondaryLicenseCategory, new { id = "secondarylicense" })
+            </div>
+        </div>
+    </div>
+    @*//@Html.HiddenFor(model => model.SecondaryID )*@
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Status")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group text-center">
+                @Html.RadioButtonFor(model => model.Status, "true", new { id = "active" }) <span style="padding-left:1px">Active</span> 
+                @Html.RadioButtonFor(model => model.Status, "false", new { id = "inactive" }) <span style="padding-left:1px">Inactive</span> 
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+        </div>
+    </div>
+    <div class=" pre-checkquestion col-md-12 col-xs-12 " style=" margin-bottom: 20px;">
+        <button type="submit" id="btnUpdate" class="btn btn-default">Update Secondary Category</button>
+
+        <button type="button" id="btnCancel" class="btn btn-default">Cancel</button>
+
+    </div>
+</form>
+<script>
+    $(":input").on("keyup", function () {
+        msg.innerHTML = "";
+    });
+
+    $("#btnUpdate").click(function (e) {
+
+        e.preventDefault();
+        var result = $('form').valid();
+        if (result == 1) {
+            SecondaryCategoryUpdate();
+
+        }
+    });
+    function SecondaryCategoryUpdate(id) {
+        var status = '';
+        if ($('#active').is(':checked')) {
+            status = true;
+        }
+        else if ($('#inactive').is(':checked')) {
+            status = false;
+        }
+       
+
+
+        var secondarydata = {
+            SecondaryLicenseCategory: $("#secondarylicense").val(),
+            PrimaryId: $("#PrimaryId").val(),
+            SecondaryId: $("#SecondaryId").val(),
+            Status: status
+        };
+        $.ajax({
+            url: '/BBL/UpdateSecondaryCategories',
+            type: "Post",
+            data: secondarydata,
+            success: editSuccess,
+            error: editFailure
+        });
+    }
+    function editSuccess(data) {
+        if (data.status == "success") {
+            GetSecondaryCategory();
+            GetAll();
+            //msg.innerHTML = "Secondary Category is updated successfully";
+            //msg.style.color = "#339900";
+            //$("#secondarylicense").val("");
+            //$("msg").html('Business Activity added Successfully');
+            //var url = "/BBL/SecondaryCategories?primaryId=" + data.id;
+            //window.location.href = url;
+        }
+        else if (data.status == "exists") {
+            msg.innerHTML = "Secondary Category already exist, please choose another";
+        }
+        else if (data.status == "notexists") {
+            msg.innerHTML = "Please update the Secondary Category from the auto suggest only";
+            msg.style.color = "Red";
+        }
+        else {
+            msg.innerHTML = "invalid Categoryname";
+            msg.style.color = "Red";
+        }
+
+        return false;
+    }
+    function editFailure(data) {
+        console.log("error");
+        return false;
+    }
+    $("#btnCancel").click(function () {
+
+        //var url = window.location.href;
+        //var id = url.substring(url.lastIndexOf('=') + 1);
+
+
+        //var path = "/BBL/SecondaryCategories?primaryId=" + id;
+
+
+        //window.location.href = path;
+      
+        $("#secondarylicense").val("");
+        GetSecondaryCategory();
+
+
+
+    });
+    //$(document).ready(function () {
+    $("#secondarylicense").autocomplete(
+        {
+
+            minLength: 1,
+            source: function (request, response) {
+                var url = "/BBL/GetPrimaries";
+
+                $.getJSON(url, { term: request.term }, function (data) {
+                    var isexpired = false;
+
+
+                    data.forEach(function (data) {
+                        //   console.log(data);
+                        if (data == 'Session Expired') {
+                            window.location.href = '/Account/SessionExpiry';
+                            isexpired = true;
+                            return true;
+                        }
+
+                    });
+                    if (isexpired == false) {
+                        response(data);
+                    }
+                })
+            }
+        });
+   // });
+</script>
+<style>
+    /*ui-menu
+        .ui-menu-item {
+        list-style-type: none;
+    }*/
+
+    .ui-autocomplete {
+        list-style-type: none;
+        width: 600px;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

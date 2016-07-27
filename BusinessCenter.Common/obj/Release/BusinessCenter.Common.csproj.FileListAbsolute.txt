@@ -1,0 +1,4 @@
+D:\DCBusinessCenter\BusinessCenter.Common\bin\Release\BusinessCenter.Common.dll
+D:\DCBusinessCenter\BusinessCenter.Common\bin\Release\BusinessCenter.Common.pdb
+D:\DCBusinessCenter\BusinessCenter.Common\obj\Release\BusinessCenter.Common.dll
+D:\DCBusinessCenter\BusinessCenter.Common\obj\Release\BusinessCenter.Common.pdb

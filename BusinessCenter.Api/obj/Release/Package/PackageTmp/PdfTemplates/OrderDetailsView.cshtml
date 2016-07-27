@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+@using System.Web.Mvc.Html
+@using System;
+
+@model BusinessCenter.Data.Model.BasicBusinessLicense
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>title</title>
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/style.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/temp.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/less/bbl.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/flexslider.css" />
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/fileinput.css">
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/customstyle.css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div class="container" style="margin-left: 15px;margin-right: 15px; margin-bottom: 30px;">
+        <div class="row" style="height: 20px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad text-center">
+                <p style="line-height: 19px !important; font-size: 19px; font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">Department of Consumer and Regulatory Affairs</p>
+            </div>
+        </div>
+        <div class="row" style="height: 85px;">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-pad  text-center" style="margin-top:-10px;">
+                <img src="@Model.ReceiptLogo" alt="Image" style="vertical-align:top;" />
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-pad  text-center">
+                <p style="line-height: 15px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">GOVERNMENT</p>
+                <p style="line-height: 15px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">OF THE</p>
+                <p style="line-height: 15px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">DISTRICT OF COLUMBIA</p>
+                <p style="line-height: 15px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">Muriel Bowser, Mayor</p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad text-center">
+                <p style="line-height: 16px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">Business Licensing Division</p>
+                <p style="line-height: 16px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">1100 4th Street S.W.</p>
+                <p style="line-height: 16px !important; font-size: 14px;font-weight: bold;color:#7E747D;margin:0 !important;padding:0 !important;">Washington DC 20024</p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad   left">
+                <p style="line-height: 15px !important; font-size: 14px;margin:0 !important;padding:0 !important;margin-bottom:5px !important">Date Issued : @Model.DateIssued</p>
+                <p style="line-height: 15px !important; font-size: 14px;margin:0 !important;padding:0 !important;margin-bottom:5px !important">Category : @Model.Category</p>
+                <p style="line-height: 15px !important; font-size: 14px;margin:0 !important;padding:0 !important;margin-bottom:5px !important">License# : @Model.License</p>
+                <p style="line-height: 15px !important; font-size: 14px;margin:0 !important;padding:0 !important;margin-bottom:5px !important">License Period : @Model.LicensePeriod</p>
+            </div>
+        </div>
+
+        <div class="row" style="height: 40px; padding-top: 11px; border: 1px solid black; background-color: #000; color: #fff;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad text-center">
+                <p style="line-height: 16px !important; font-size: 14px; font-weight: bold;color:#7E747D">
+                    BASIC BUSINESS LICENSE
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="height: 200px; padding-top: 8px;">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad left">
+                <p style="line-height: 16px !important; font-size: 14px; font-weight: bold; color: #7E747D">Billing Name and Address : </p>
+                @if (!string.IsNullOrEmpty(Model.BillingName))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.BillingName</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.BillingCompanyName))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.BillingCompanyName</p>
+                }
+
+                <p style="height:7px"></p>
+
+                @if (!string.IsNullOrEmpty(Model.BillingAddress1))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.BillingAddress1</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.BillingAddress2))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.BillingAddress2</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.BillingAddress3))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.BillingAddress3</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.BillingAddress))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.BillingAddress</p>
+                }
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad text-center">
+                <p style="line-height: 16px !important; font-size: 14px; font-weight: bold; color: #7E747D">Premise/Application's&nbsp;Name&nbsp;and&nbsp;Address&nbsp;: </p>
+                @if (!string.IsNullOrEmpty(Model.PremisesName))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.PremisesName</p>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.OwnerName))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">
+                        @Model.OwnerName
+                    </p>
+                }
+                @*@if (!string.IsNullOrEmpty(Model.PremisesBusinessName))
+                    {
+                        <p style="line-height: 15px !important; font-size: 14px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">
+
+                    @Model.PremisesBusinessName</p>
+                    }*@
+                <p style="height:7px"></p>
+                @if (!string.IsNullOrEmpty(Model.PremisesAddress1))
+                {
+
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.PremisesAddress1</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.PremisesAddress))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.PremisesAddress</p>
+                }
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad center">
+                <p style="line-height: 16px !important; font-size: 14px; font-weight: bold; color: #7E747D">Registered Agent's Name and Address : </p>
+                @if (!string.IsNullOrEmpty(Model.AgentName))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.AgentName</p>
+                }
+                @if (string.IsNullOrEmpty(Model.AgentName))
+                {
+                    <p style="height:7px"></p>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.AgentBusinessName))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.AgentBusinessName</p>
+                }
+                <p style="height:7px"></p>
+                @if (!string.IsNullOrEmpty(Model.AgentAddress1))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.AgentAddress1</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.AgentAddress2))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.AgentAddress2</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.AgentAddress3))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.AgentAddress3</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.AgentAddress))
+                {
+                    <p style="line-height: 15px !important; font-size: 13px;margin:0 !important;padding:0 !important;margin-bottom:5px !important;">@Model.AgentAddress</p>
+                }
+            </div>
+        </div>
+
+        <div class="row" style="height: 120px; border-top: 1px solid #000; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad ">
+                <p style="line-height: 16px !important; font-size: 14px;">
+                    Owner's Name :
+                    @if (!string.IsNullOrEmpty(Model.OwnerName))
+                    {
+                        @Model.OwnerName
+                    }
+                </p>
+                <p style="line-height: 16px !important; font-size: 14px;">
+                    Corp. Name :
+                    @if (!string.IsNullOrEmpty(Model.CorpName))
+                    {
+                        @Model.CorpName
+                    }
+                </p>
+                <p style="line-height: 16px !important; font-size: 14px;">
+                    Trade Name :
+                    @if (!string.IsNullOrEmpty(Model.TradeName))
+                    {
+                        @Model.TradeName
+                    }
+                </p>
+            </div>
+        </div>
+
+        @*<div class="row" style="height: 130px;">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad">
+                    <p style ="line-height: 16px !important; font-size: 14px;">Description Details -</p>
+                    <p style="line-height: 16px !important; font-size: 14px;">General Business Licenses</p>
+                </div>
+            </div>*@
+        <div class="row" style="border: 1px solid #786c71">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad" style="border-bottom: 2px solid #726C72">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-pad left" style="border-right: 1px solid #726C72">
+                    @if (@Model.CofoHopNumber != null && @Model.CofoHopNumber != "NOPO" && @Model.CofoHopNumber != "")
+                    {
+                        <p>
+                            <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> CofO/HOP# : @Model.CofoHopNumber</label>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> CofO/HOP# : </label>
+                        </p>
+                    }
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad text-center" style="border-right: 1px solid #726C72">
+                    <p>
+                        <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> SSL : @Model.Ssl</label>
+                    </p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad text-center" style="border-right: 1px solid #726C72">
+                    <p>
+                        <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> Zone : @Model.Zone</label>
+                    </p>
+                </div>
+
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad left" style="border-right: 1px solid #726C72">
+                    <p>
+                        <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;">Ward : @Model.Ward</label>
+                    </p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad text-center" style="border-right: 1px solid #726C72">
+                    <p>
+                        <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> ANC : @Model.Anc</label>
+                    </p>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-pad text-center">
+                    <p>
+                        <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;">PERM NO. : @Model.PermNo</label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad" style="border-bottom: 2px solid #726C72">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad left" style="border-right: 1px solid #726C72">
+                    <label style="line-height: 18px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> &nbsp; &nbsp;</label>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad text-center" style="border-right: 1px solid #726C72">
+                    <label style="line-height: 18px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> &nbsp; &nbsp;</label>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-pad text-center">
+                    <p>
+                        <label style="line-height: 16px !important; font-size: 14px; font-weight: normal; color: #7E747D;">UNITS : @Model.Units</label>
+                    </p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad left" style="border-right: 1px solid #726C72">
+                    <label style="line-height: 18px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> &nbsp; &nbsp;</label>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-pad text-center">
+                    <label style="line-height: 18px !important; font-size: 14px; font-weight: normal; color: #7E747D;"> &nbsp; &nbsp;</label>
+                </div>
+            </div>
+        </div>
+        @*<div class="row" style="height: 60px; padding-top: 25px;">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad text-left">
+                    <p style="line-height: 16px !important; font-size: 14px;">Description Details -</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad text-left">
+                    <p style="line-height: 16px !important; font-size: 14px;">@Model.PrimaryCategoryName</p>
+                </div>
+            </div>*@
+
+        <div class="row" style="height: 80px; padding-top: 25px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad text-center">
+                @foreach (var item in Model.CategoryDetailsList)
+                {
+                    <p style="line-height: 16px !important; font-size: 14px;">@item.Endoresment - @item.CategoryName</p>
+                }
+            </div>
+        </div>
+
+        <div class="row" style="height: 80px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad text-center">
+                <p style="line-height: 16px !important; font-size: 14px; font-weight: bold;color:#7E747D">
+                    --THE LAW REQUIRES THIS LICENSE TO BE POSTED IN A CONSPICUOUS PLACE ON THE PREMISES--
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="height: 50px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 no-pad left">
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-pad right">
+                <p style="padding-right: 20px;  ">
+                    <img src="@Model.Signature" alt="Image" />
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="height: 130px; ">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 no-pad left">
+                <p style="line-height: 16px !important; font-size: 14px; ">*License Effective from the later of Issued or Start of License-Period Date</p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-pad right" style="border-top: 1px solid #000;">
+                <p style="line-height: 16px !important; font-size: 14px; ">Director : </p>
+                <p style="line-height: 16px !important; font-size: 14px; ">Melinda Bolling </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

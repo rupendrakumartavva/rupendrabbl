@@ -1,0 +1,345 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Pre-Application Questions</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Pre-Application Questions</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page provides a read-only review the Pre-Application questions and answers provided to create the Checklist for a Basic Business License application.</strong>
+                    </p>
+                    <p class="terms_text">
+                        Review the previously entered information. Edits to Pre-Application answers cannot be made to this application.
+                    </p>
+                    <p class="terms_text leftside">
+                        If you notice an error in an answer to a Pre-Application Question, a new Basic Business License must be started:
+                    </p>
+                    <p class="terms_text leftside">
+                        <strong> 1.&nbsp;&nbsp;&nbsp; Remove the erroneous Checklist:</strong>
+                    </p>
+                    <ul class="terms_text srch_filter" style="padding-left: 150px;">
+
+                        <li>
+                            Select the <button class="cursorDefault pointer_events_none" style="text-transform: none;">
+                                Return
+                                to Checklist
+                            </button> button to return to your My BBLs page.
+                        </li>
+                        <li>
+                            Select the <img src="../images/removemyview.png" style="height: 40px; width: 40px;" />button on the erroneous record.
+                        </li>
+                    </ul>
+                    <p class="terms_text leftside">
+                        <strong> 2.&nbsp;&nbsp;&nbsp; Initiate a new BBL application:</strong>
+                    </p>
+                    <ul class="terms_text srch_filter" style="padding-left: 150px;">
+                        <li class="srch_filter">
+                            Select the <button class="cursorDefault pointer_events_none">
+                                <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                            </button>  to begin a new application, where corrections can be made.
+                        </li>
+                    </ul>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12 startwizard" tabindex="0">
+                <p>
+                    You may not revise any of the information you entered in the Pre-Application Questions section of your application.
+                    If any of the information below is incorrect, you will have to discard the DRAFT Application and begin a new Application.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection" style="display: none">
+    <div data-ng-controller="ReviewCheckListController as vm">
+
+        <div class="login_form quetion_wrapper register_form user_profile adjust_font">
+            <div class="container">
+                <div class="form_wrapper">
+                    <fieldset ng-disabled="true">
+                        <div ng-repeat="question in vm.reviewcheckList.SubQuestion">
+                            <div ng-switch="vm.reviewcheckList.SubQuestion[$index].Type">
+
+                                <div ng-switch-when="Dropdown">
+                                    <div class="form-section">
+                                        <div class="clearfix">
+                                            <!--  -->
+                                            <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                                <div class="form-group question_title">
+                                                    <label>{{vm.reviewcheckList.SubQuestion[$index].Question}}</label>
+                                                    <select id="{{$index}}">
+                                                        <option>{{vm.reviewcheckList.SubQuestion[$index].Answer}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-switch-when="RadioButton">
+                                    <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="question.Question.indexOf('located in')!=-1 && question.keyIdentifying!='YES'">
+                                        <p class="text_weight">Location</p>
+                                    </div>
+                                    <div class="form-section-radiogroup">
+                                        <div class="clearfix">
+                                            <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                                <div ng-if="question.Question.indexOf('Corporations Division')!=-1">
+                                                    <p class="text_weight">Corporation Registration</p>
+                                                </div>
+                                                <div ng-if="question.Question.indexOf('FEIN')!=-1">
+                                                    <p class="text_weight">Tax Identification Number</p>
+                                                </div>
+                                                <div ng-if="question.Question.indexOf('(4)')!=-1">
+                                                    <p class="text_weight"> Duration of License</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>{{vm.reviewcheckList.SubQuestion[$index].Question}}</label>
+                                                    <div class="col-md-6 col-md-offset-3">
+                                                        <div class="form-type-radio  form-item form-group">
+                                                            <div id="edit-questions-23488" class="form-radios ">
+                                                                <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+                                                                    <div class="radiobtn" id="uniform-edit-questions-23488-22">
+                                                                        <span ng-class="{'checked':vm.reviewcheckList.SubQuestion[$index].Answer=='YES' || vm.reviewcheckList.SubQuestion[$index].Answer=='FEIN' || vm.reviewcheckList.SubQuestion[$index].Answer.indexOf('(2)')!=-1 }">
+                                                                            <input type="radio" id="r{{$index}}1" disabled="disabled"
+                                                                                   name="questions[23488]" value="yes"
+                                                                                   class="form-radio"
+                                                                                   style="opacity: 0;" ng-model="vm.reviewcheckList.SubQuestion[$index].Answer">
+                                                                        </span>
+                                                                    </div>
+                                                                    <label for="r{{$index}}0" tabindex="-1">{{vm.reviewcheckList.SubQuestion[$index].leftlabel}}</label>
+                                                                </div>
+                                                                <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+
+                                                                    <div class="radiobtn" id="uniform-edit-questions-23488-222">
+                                                                        <span ng-class="{'checked':vm.reviewcheckList.SubQuestion[$index].Answer=='NO' || vm.reviewcheckList.SubQuestion[$index].Answer=='SSN' || vm.reviewcheckList.SubQuestion[$index].Answer.indexOf('(4)')!=-1}">
+                                                                            <input type="radio" id="r{{$index}}0" disabled="disabled"
+                                                                                   name="questions[23488]" value="No"
+                                                                                   class="form-radio"
+                                                                                   style="opacity: 0;" ng-model="vm.reviewcheckList.SubQuestion[$index].Answer">
+                                                                        </span>
+                                                                    </div>
+                                                                    <label for="r{{$index}}0" tabindex="-1">{{vm.reviewcheckList.SubQuestion[$index].rightlabel}}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-section" ng-switch-when="Textbox">
+                                    <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="question.Question.indexOf('How many')!=-1 && $index <1">
+                                        <p class="text_weight">Quantity</p>
+                                    </div>
+                                    <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="(question.Question.indexOf('business owner')!=-1)||question.Question.indexOf('employee name')!=-1">
+                                        <p class="text_weight">Business Owner</p>
+                                    </div>
+
+                                    <div class="clearfix">
+                                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                            <div class="form-group question_title">
+                                                <label>{{vm.reviewcheckList.SubQuestion[$index].Question}}</label>
+                                                <input type="text" class="form-control" placeholder="" disabled
+                                                       name="totalseats" id="totalseats" ng-model="vm.reviewcheckList.SubQuestion[$index].Answer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="search_result">
+                <div class="container">
+                    <!--<div class="row">
+                        <div class="col-md-15 col-sm-3 col-xs-12">
+                            <div class="panel text-center">
+                                <div class="panel-body">
+                                    <h1>{{vm.reviewcheckList.ApplicationFee | currency}}</h1>
+                                </div>
+                                <div class="panel-footer">
+                                    <span>
+                                        Total <br />Application Fee
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-15 col-sm-3 col-xs-12">
+                            <div class="panel text-center">
+                                <div class="panel-body">
+                                    <h1>{{vm.reviewcheckList.CategoryLicenseFee | currency}}</h1>
+                                </div>
+                                <div class="panel-footer">
+                                    <span>
+                                        Total <br /> Category License Fee
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-15 col-sm-3 col-xs-12">
+                            <div class="panel text-center">
+                                <div class="panel-body">
+                                    <h1>{{vm.reviewcheckList.EndorsementFee | currency}}</h1>
+                                </div>
+                                <div class="panel-footer">
+                                    <span>
+                                        Total <br />Endorsement Fee
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-15 col-sm-3 col-xs-12">
+                            <div class="panel  text-center">
+                                <div class="panel-body">
+                                    <h1>{{vm.reviewcheckList.TechFee | currency}}</h1>
+                                </div>
+                                <div class="panel-footer">
+                                    <span>
+                                        Total <br />10% Tech Fee
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-15 col-sm-3 col-xs-12">
+                            <div class="panel  text-center">
+                                <div class="panel-body">
+                                    <h1>{{vm.reviewcheckList.TotalFee| currency}}</h1>
+                                </div>
+                                <div class="panel-footer">
+                                    <span>
+                                        Grand <br /> Total
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="row">
+                        <div class="col-md-15 col-sm-3 col-xl-3 col-xs-12 col-md-offset-5 center">
+                            <div class="panel text-center">
+                                <div class="panel-body">
+                                    <h1>{{vm.reviewcheckList.TotalFee | currency}}</h1>
+                                </div>
+                                <div class="panel-footer">
+                                    <span>
+                                        Grand <br />Total
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <section ng-repeat="details in vm.reviewcheckList.DetailedCategoryList">
+                        <div class="preappgrid container">
+                            <div class="innerRow">
+                                <div class="col-sm-1 arrow no-pad hidden-xs">
+                                    <span class="arrow-right see-details" ng-click="vm.expandCollapse($event)"></span>
+                                </div>
+                                <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                    <label>Endorsement </label>
+                                    <div class="font_wgt">{{details.Endorsement}}</div>
+                                </div>
+                                <div class="col-sm-4 no-pad">
+                                    <p ng-show="hidden"><span>Category ID : </span> {{details.CategoryCode}} </p>
+                                    <p><span>Category ID : </span> {{details.CategoryCode}} </p>
+                                    <p>
+                                        <span>License Category : </span>
+                                        {{details.LicenseCategory}}
+                                    </p>
+                                    <p ng-show="details.SubCategoryName!=''"><span>Sub-Category : </span> {{details.SubCategoryName}} </p>
+                                </div>
+                                <div class="col-sm-2 no-pad">
+                                    <p ng-show="vm.categories.ItemQty==0">
+                                        <span># Units : </span>
+                                        NA
+                                    </p>
+                                    <p ng-show="vm.categories.ItemQty!=0">
+                                        <span># Units : </span>
+                                        {{details.Units}}
+                                    </p>
+                                    <p>
+                                        <span>License Duration : </span>
+                                        {{details.LicenseDuration.indexOf('(2)')!=-1 ? '2 year' :'4 year'}}
+                                    </p>
+                                    <p>
+                                        <span>Total Fee : </span>
+                                        <strong>{{details.TotalFee | currency}}</strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="details no-pad">
+
+                                <div class="topBorder col-md-offset-1"></div>
+                                <div class="col-md-offset-2">
+                                    <div class="col-sm-10 no-pad text-center">
+                                        <p>
+                                            <span>Application Fee  :</span>{{details.ApplicationFee | currency}}
+                                        </p>
+                                        <p><span>Endorsement Fee :</span>{{details.EndorsementFee | currency}}</p>
+                                        <p><span>Category License Fee  :</span>{{details.CategoryLicenseFee | currency}}</p>
+
+                                        <div class="topBorder col-md-offset-2"></div>
+                                        <p>
+                                            <span>Sub Total :</span>{{details.SubTotal | currency}}
+                                        </p>
+                                        <p class="hidden-sm hidden-xs"><span>10% Tech Fee  :</span>{{details.TechFee | currency}}</p>
+                                        <p class="visible-sm visible-xs"><span>10% Tech Fee  :</span>{{details.TechFee | currency}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 text-center no-pad" ng-show="details.IsRaoFeeApplied==true">
+                                    <p style="font-size: 14px;"><strong> Category License Fee includes an RAO fee of $43.00/unit.</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="col-sm-12 text-center no-pad" ng-show="vm.reviewcheckList.Isehop==true">
+                        <p style="font-size: 14px;"><strong>** An eHOP fee of $72.60 ($66.00 (eHOP fee)+ 10% Technology Fee) was added to the Grand total displayed above.</strong></p>
+                    </div>
+                    <div class="col-xs-12 line"></div>
+                    <div class="col-xs-12 pre-checkquestion text-center">
+                        <button id="btn_create_checklist" class="btn btn-default " data-ng-click="vm.navToChecklist()">
+                            Return
+                            to Checklist
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

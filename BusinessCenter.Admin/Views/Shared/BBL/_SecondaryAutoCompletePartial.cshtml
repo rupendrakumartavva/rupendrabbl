@@ -1,0 +1,99 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+
+<form name="form" id="form">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+
+    @*<p>@Html.HiddenFor(Model => Model.ActivityID, new { id = "activityid" })</p>*@
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group ">
+                @*@Html.EditorFor(model => model.Activity.ActivityName, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           id = "activityname",
+                                           name = "activityname",
+                                           placeholder = "Business Activity Name",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'Business Activity Name'"
+                                       }
+                                   })
+                    @Html.ValidationMessageFor(model => model.Activity.ActivityName, "", new { @class = "error-message error", id = "errormsg" })*@
+                @Html.TextBox("searchTerm", null, new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "Primary Category",
+                                   name = "txtSearch",
+                                   id = "txtSearch",
+                                   onfocus = "this.placeholder = 'Primary Category'",
+                                   onblur = "this.placeholder = 'Primary Category'"
+                               })
+
+                @*@Html.TextBox("searchField", "", new { id = "txtProductName",
+                                                       placeholder = "Primary Category",
+                                                       @style = "width:100% "*@
+          @* })*@
+                <p style="text-align: center;font-size:24px;" class="error-message error"><span id="errormsg"></span></p>
+            </div>
+        </div>
+    </div>
+
+    @*<div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnCreate" class="btn btn-default">Secondary Category</button>
+        <button type="submit" id="btnClear" class="btn btn-default">Clear</button>
+    </div>*@
+</form>
+
+<script type="text/javascript">
+   // $(document).ready(function () {
+       // console.log("hi");
+    $("#txtSearch").autocomplete(
+         {
+
+             minLength: 1,
+             source: function (request, response) {
+                 var url = "/BBL/GetPrimaries";
+   
+                 $.getJSON(url, { term: request.term }, function (data) {
+                     var isexpired = false;
+
+               
+                     data.forEach(function (data) {
+                         //   console.log(data);
+                         if (data == 'Session Expired')
+                         {
+                             window.location.href = '/Account/SessionExpiry';
+                             isexpired = true;
+                             return true;
+                         }
+                   
+                     });
+                     if (isexpired == false) {
+                         response(data);
+                     }
+                 })
+             }
+         });
+
+       
+   // });
+
+    //$("#txtSearch").blur(function (e) {
+    //    console.log("hi");
+    //    var primarydescr = $("#txtSearch").val();
+    //    GetAll(primarydescr);
+    //});
+</script>
+<style>
+    /*ui-menu
+    .ui-menu-item {
+    list-style-type: none;
+}*/
+
+    .ui-autocomplete {
+        list-style-type: none;
+    }
+</style>

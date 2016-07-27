@@ -1,0 +1,83 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Login</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2>My DC Business Center Login</h2>
+            <p>
+                <!--  -->
+                <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center"><strong>This page is used to login to your My DC Business Center account.</strong> </p>
+                    <p class="terms_text">
+                        Enter your username and password and click <strong>Login</strong>
+                    </p>
+                    <p class="terms_text">
+                        <strong> *Note*</strong> Your account will be locked after five (5) login attempts with an incorrect username and
+                        password combination. The account will remain locked for five (5) minutes.
+                    </p>
+                    <p class="terms_text">
+                        If you cannot remember your username or password, use the<strong> Forgot Username</strong> or the <strong>Forgot Password </strong> link.
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span> <a href="../HelpDoc/UserGuide.pdf" target="_blank"> <span class="btn btn-default read_btn">My DC Business Center User Guide</span></a> <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+    
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection" class="display">
+    <div class="login_form">
+        <div class="container">
+            <!--<p>Welcome to the My DC Business Center. Login to save Quick Search records and to view your saved information. </p>-->
+            <p>Welcome to the My DC Business Center. Login to access your Dashboard and to view and save information. If you aren't already registered, you can register by clicking the "Get Started" link below. If ever you need help, use the How To Use This Page feature at the top of each page.</p>
+            <div class="login_wrapper" id="login_block">
+                <div class="form_wrapper">
+                    <form role="form" method="post" id="login_form" name="login_form" autocomplete="off" ng-submit="form_validate(userCredentials)" novalidate>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" spellcheck="false" class="form-control" placeholder="Username" pattern="[1-4]{5}-[1-4]{5}" name="name" autocomplete="off" id="name1" ng-focus="setErrorMsg('error_msg')" ng-model="userCredentials.UserName"
+                                       required>
+                                <div class="error_text" id="name"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="password" spellcheck="false" class="form-control" placeholder="Password" autocomplete="off" name="Password" id="password1" ng-focus="setErrorMsg('error_msg')" autocomplete="off" ng-model="userCredentials.Password"
+                                       required>
+                                <div class="error_text" id="Password"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <button id="submit_contact" class="btn btn-default login" type="submit">LOGIN</button>
+                        <div class="error_text error_textmsg" id="error_msg"></div>
+                    </form>
+                </div>
+                <!--ng-click="navToForgotUsername()"  ng-click="navToForgotPassword()"ng-click="navToRegister()"-->
+                <a href="#/forgotusername"> Forgot Username</a> or <a href="#/forgotpassword">Password?</a>
+                <p>Don't have an account?&nbsp;<a href="#/register">Get&nbsp;Started</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

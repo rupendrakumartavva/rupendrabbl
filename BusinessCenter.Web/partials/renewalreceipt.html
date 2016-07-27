@@ -1,0 +1,392 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renew</span>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renewal Receipt</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Basic Business License Renewal Receipt</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is your payment receipt that displays a summary of your payment transaction, your renewal information, and provides a list of next steps.</strong>
+                    </p>
+                    <p class="terms_text">
+                        The transaction details are listed at the top of the page:
+                    </p>
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                            Refer to the<strong>
+                                Online Submission Number
+                            </strong> when discussing your renewal application for a Basic Business License.
+                        </li>
+                        <li>
+                            Refer to the <strong>Transaction ID </strong> when discussing the payment for your Basic Business License renewal application.
+                        </li>
+                    </ul>
+                    <p class="terms_text">
+                        The timelines and business process next step information are listed for each potential outcome:
+                    </p>
+                    <p class="terms_text leftside">
+                        1. Successful Renewal
+                    </p>
+                    <p class="terms_text leftside">
+                        2. Incomplete Renewal
+                    </p>
+                    <p class="terms_text leftside">
+                        3. Rejected Renewal
+                    </p>
+                    <p class="terms_text">
+                        To display license and fee details use the <img src="../images/see-details.png" class="welcome_text-see-image" />  link.
+                    </p>
+                    <p class="terms_text">
+                        A copy of the receipt will also be emailed to the address you provided in your renewal application.
+                    </p>
+
+                    <p class="terms_text srch_filter">
+                        You can also download a .pdf of the receipt by selecting <button class="cursorDefault pointer_events_none" style="text-transform: none">
+                            Download a PDF of this Page
+                        </button>.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        To review the status of your renewal application and to exit select <button class="cursorDefault pointer_events_none" style="text-transform:none">
+                            Return to My BBLs
+                        </button>.
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="RenewalReceiptController as vm">
+
+        <div class="wizard_form" id="printdiv">
+            <div class="container">
+                <div class="row">
+                    <div class="result_top_block" tabindex="0">
+                        <div class="page-desc-content">
+                            <p ng-show="vm.documenttype==''" id="documenttypenone">
+                                <strong class="text-success">Your Transaction is Complete! </strong> An email confirming this
+                                transaction has been sent to <a ng-href="mailto:{{vm.emailconfirm}}" style="text-decoration: underline; color: green"> {{vm.emailconfirm}} </a>.
+                            </p>
+                            <p ng-show="vm.documenttype=='IN' || vm.documenttype=='ON'" id="documenttype">
+                                <strong class="text-success">Your Transaction is Complete! </strong> An email confirming this
+                                transaction has been sent to <a ng-href="mailto:{{vm.emailconfirm}}" style="text-decoration: underline; color: green"> {{vm.emailconfirm}} </a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse_panels" id="collapse_panels">
+
+                    <div class="panel-group" id="checkListAccordion" role="tablist" aria-multiselectable="true">
+                        <!-- panel 1-->
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading row" role="tab" id="heading1">
+                                <div class="panel-title">
+                                    <div class="checkListTostart section-space">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bot_border gradient-header" tabindex="0">
+                                            <div class="col-md-offset-2 col-sm-6 bot-space">
+                                                <p>
+                                                    <span>Online Submission Number : </span>
+                                                    {{vm.feeandDetails.SubNumber}}
+                                                <p>
+
+                                                <p>
+                                                    <span>Amount Charged : </span>
+                                                    {{vm.feeandDetails.AmountCharged | currency}} <span class="small "><em>(all fees are nonrefundable)</em> </span>
+                                                </p>
+                                                <p>
+                                                    <span>Payment ID : </span>
+                                                    {{vm.feeandDetails.TransactionId}}
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-4 no-pad">
+                                                <p ng-show="vm.feeandDetails.CardNumber!=''">
+                                                    <span>Receipt Date : </span>
+                                                    {{vm.feeandDetails.ReceiptDate}}
+                                                </p>
+
+                                                <p ng-show="vm.feeandDetails.CardNumber!=null">
+                                                    <span>Credit Card : </span>
+                                                    {{vm.feeandDetails.CardNumber}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default" id="online">
+                                <div class="panel-body panel-collapse checklist-item reciept_documents_status">
+                                    <div style="border-bottom: 2px solid #124f87;">
+
+                                        <p ng-show="vm.documenttype =='ON'">
+                                            The DCRA Business License Administration will review your application and all supporting documents submitted online. <span class="allow_business_note">
+                                                Please allow one business day for the processing of your application to begin.
+                                            </span> The
+                                            review will be completed within <strong>five (5) Business Days.</strong>
+                                        </p>
+
+                                        <p>
+                                            Please refer to your My BBLs page to track the status of your application and to access a printable copy of your license once it is approved.
+                                        </p>
+                                        <p>
+                                            Individual Licenses will not display a PDF copy on the My BBLs Page.
+                                        </p>
+                                        <p ng-show="vm.IsBackgroundInvestigation">
+                                            One of the license categories you have selected requires review by the Regulatory Investigation Section (RIS) which may add up to 30 days to your license review.
+                                            <img src="../images/help_question_icon.png" style="height:25px;width:25px" class="cursor_type" ng-click="vm.showdescription()" />
+                                        </p>
+
+                                        <ul ng-show="vm.documenttype =='ON'">
+                                            <li>
+                                                <span style="color: #00AEF3">
+                                                    Successful Renewal:
+                                                </span> If all requested information and documents are approved, you will receive your license via US Mail within <strong><span style="color:red;"> 5 to 7 </span>Business Days </strong> of the completion of the Review.
+                                            </li>
+                                            <li>
+                                                <span style="color: #00AEF3">
+                                                    Incomplete Renewal:
+                                                </span> If any additional information is required, you will receive an email at the email address listed above in this receipt indicating what information needs to be provided. You will have <strong> 30 Calendar Days </strong> to provide the additional information. If the additional information is not provided, your application may be rejected at that point.
+                                            </li>
+                                            <li>
+                                                <span style="color: #00AEF3">
+                                                    Rejected Renewal:
+                                                </span> If your application is rejected, you will receive an email at the email address listed above in this receipt explaining why your application was insufficient and how you may appeal the agency’s decision.
+                                            </li>
+                                            <!--<li>
+                                                <span class="allow_business_note">
+                                                    Please allow one business day for the processing of your application to begin.
+                                                </span>
+                                            </li>-->
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <strong>Note: </strong>Reference the Online Submission Number to identify your application.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!--</div>-->
+                                <div id="collapse1" class="panel-collapse open in" aria-labelledby="heading1"
+                                     style="overflow: hidden; display: block;">
+
+                                    <!-- Checklist Name and Short Description Start. -->
+                                    <div class="business-activities-wrapper">
+                                        <div class="row">
+                                            <div class="col-md-15 col-sm-3 col-xl-3 col-xs-12 col-md-offset-5">
+                                                <div class="panel text-center">
+                                                    <div class="panel-body">
+                                                        <h1>{{vm.feeandDetails.AmountCharged | currency}}</h1>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        <span>
+                                                            Grand <br />Total
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="center_div text-center topBorder" style="margin-bottom: 10px;">
+                                            <span id="expired" ng-show="vm.feeandDetails.ExtraAmount=='500'">
+                                                <i>
+                                                    As your License Status is Expired, late Fee of $500 is added.
+                                                </i>
+                                            </span>
+                                            <span ng-show="vm.feeandDetails.ExtraAmount=='250'" id="lapsed">
+                                                <i>
+                                                    As your License Status is Lapsed, late Fee of $250 is added.
+                                                </i>
+                                            </span>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="panel-body">
+                                                <div class="search_result adjust_font">
+                                                    <div>
+                                                        <section dir-paginate="feeDetailsItem in vm.ServiceCheckList | filter:{ type : filterByStatusKeyword} | itemsPerPage: vm.itemPage"
+                                                                 current-page="vm.currentPage" id="{{feeDetailsItem.catId}}">
+                                                            <div class="preappgrid container">
+                                                                <div class="innerRow">
+                                                                    <div class="col-sm-1 arrow no-pad hidden-xs">
+                                                                        <span class="arrow-right see-details"
+                                                                              ng-click="vm.expandCollapse($event,feeDetailsItem.catId)"></span>
+                                                                    </div>
+                                                                    <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                                                        <label>Endorsement</label>
+
+                                                                        <div class="font_wgt">
+                                                                            {{feeDetailsItem.Endorsement}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4 no-pad">
+                                                                        <p>
+                                                                            <span>Category ID : </span>
+                                                                            {{feeDetailsItem.CategoryCode}}
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <span>License Category : </span>
+                                                                            {{feeDetailsItem.LicenseCategory}}
+                                                                        </p>
+
+                                                                        <!--<p><span> {{feeDetailsItem.endorsementTitle}} : </span> {{feeDetailsItem.endorsement}}</p>-->
+                                                                    </div>
+                                                                    <div class="col-sm-2 no-pad">
+                                                                        <p>
+                                                                            <span>Units : </span>
+                                                                            {{feeDetailsItem.Units}}
+
+                                                                        <p>
+                                                                        <p>
+                                                                            <span>License Duration : </span>
+                                                                            {{feeDetailsItem.LicenseDuration.indexOf('4')!=-1 ? '4 year' :'2 year'}}
+                                                                        </p>
+                                                                        <p>
+                                                                            <span>Total Fee : </span>
+                                                                            <strong>{{feeDetailsItem.TotalFee | currency }}</strong>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="details no-pad">
+
+                                                                    <div class="topBorder col-md-offset-1"></div>
+                                                                    <div class="col-md-offset-2">
+                                                                        <div class="col-sm-10 no-pad text-center">
+                                                                            <p>
+                                                                                <span>Application Fee : </span>{{feeDetailsItem.ApplicationFee | currency}}
+                                                                            </p>
+                                                                            <p>
+                                                                                <span>Endorsement Fee : </span> {{feeDetailsItem.EndorsementFee | currency}}
+                                                                            </p>
+                                                                            <p>
+                                                                                <span>Category License Fee : </span>{{feeDetailsItem.CategoryLicenseFee | currency}}
+                                                                            </p>
+                                                                            <div class="topBorder col-md-offset-2"></div>
+                                                                            <p>
+                                                                                <span>Sub Total : </span>{{feeDetailsItem.SubTotal | currency}}
+                                                                            </p>
+
+                                                                            <p class="hidden-sm hidden-xs">
+                                                                                <span>10% Tech Fee  :</span>{{feeDetailsItem.TechFee | currency}}
+                                                                            </p>
+                                                                            <p class="visible-sm visible-xs">
+                                                                                <span>10% Tech Fee  :</span>{{feeDetailsItem.TechFee | currency}}
+                                                                            </p>
+                                                                            <p ng-show="feeDetailsItem.LapsedFee!=0 && feeDetailsItem.ExpiryFee==0">
+                                                                                <span>Late Fee : </span>{{feeDetailsItem.LapsedFee | currency}}
+                                                                            </p>
+                                                                            <p ng-show="feeDetailsItem.ExpiryFee!=0 && feeDetailsItem.LapsedFee!=0">
+                                                                                <span>Late Fee : </span>{{feeDetailsItem.ExpiryFee+feeDetailsItem.LapsedFee  | currency}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-sm-12 text-center no-pad" ng-show="feeDetailsItem.LicenseCategory=='Apartment'||feeDetailsItem.LicenseCategory=='One Family Rental'" id="rao{{$index}}">
+                                                                        <p style="font-size: 14px;">
+                                                                            <strong> Category License Fee includes an RAO fee of $43.00/unit.</strong>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Checklist Name and Short Description End. -->
+                            </div>
+                        </div>
+
+                        <div class="pre-checkquestion col-md-12 col-xs-12 text-center" id="buttons">
+                            <button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToMyBBLsList()">Return to My BBLs</button>
+                            <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.printreceiptcontents()">
+                                Download a PDF of this Page
+                            </button>
+                            <!--<button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.navTodashboard()">Exit</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="description" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" style="font-weight:600" id="myModalLabel">License Categories Requiring RIS Review</h4>
+                </div>
+                <div class="modal-body" style="max-height: 500px;overflow-y:auto">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <h4>Auction Sale</h4>
+                            <h4>Auctioneer</h4>
+                            <h4>Automobile Repossessor</h4>
+                            <h4> Automobile Repossessor - Business</h4>
+                            <h4>Consumer Goods (Auto Repair)</h4>
+                            <h4>Consumer Goods (Electronic Repair)</h4>
+                            <h4>Gen Contr/Construction Mngr</h4>
+                            <h4>Home Improvement Contractor</h4>
+                            <h4>Home Improvement Salesman</h4>
+                            <h4> Massage Establishment</h4>
+                            <h4>Motor Vehicle Dealer</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <h4> Motor Vehicle Salesman</h4>
+                            <h4>Pawnbrokers</h4>
+                            <h4>Public Hall</h4>
+                            <h4>Secondhand Dealers (A)</h4>
+                            <h4>Secondhand Dealers (B)</h4>
+                            <h4>Secondhand Dealers (C)</h4>
+                            <h4>Tow Truck</h4>
+                            <h4> Tow Truck Business</h4>
+                            <h4>Tow Truck Storage Lot</h4>
+                            <h4>Used Car Lot</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

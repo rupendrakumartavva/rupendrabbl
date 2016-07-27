@@ -1,0 +1,357 @@
+﻿@using System.Globalization
+@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Data.BblLicenseView3
+@{
+    ViewBag.Title = "DCRA - Business License Details";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("BBL", "ApplicationReview", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Queue", "Queue", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renewal License Details</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Renewal License No. @Html.DisplayFor(model => model.Renewal_License_No_) </h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form">
+        <div class="container">
+            <div id="dvMainsection">
+                <div class="search_form">
+                    <div class="login_form register_form" style="background-color: #fff;">
+                        <div class="container">
+                            <div class="row" style="margin-left: 20px;" id="renew-list">
+                                @*<div class="clearfix businesslicense-pad">
+                                        <div class="col-md-3 col-sm-3 col-xs-12 text-right">
+                                            <div class="form-group ">
+                                                <strong>Application Unique ID</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                            @Html.DisplayFor(model => model.Application_Unique_ID)
+                                        </div>
+
+
+
+                                    </div>*@
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>License Number :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.License_Number.ToString()))
+                                        {
+                                            @Html.DisplayFor(model => model.License_Number)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Renewal License Number :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.Renewal_License_No_.ToString()))
+                                        {
+                                            @Html.DisplayFor(model => model.Renewal_License_No_)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Category Name :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.Primary_Category.ToString()))
+                                        {
+                                            @Html.DisplayFor(model => model.Primary_Category)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>License Renewal Period :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.License_Renewal_Period.ToString()))
+                                        {
+                                            @Html.DisplayFor(model => model.License_Renewal_Period)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Application Fee :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@if (!string.IsNullOrEmpty(Model.ApplicationFee.ToString()))
+                                        {
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.ApplicationFee)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.ApplicationFee.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.ApplicationFee))
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Endorsement Fee :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@if (!string.IsNullOrEmpty(Model.Endorsement_Fee.ToString()))
+                                        {
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.Endorsement_Fee)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.Endorsement_Fee.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.Endorsement_Fee))
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>License Fee :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@if (!string.IsNullOrEmpty(Model.LicenseFee.ToString()))
+                                        {
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.LicenseFee)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.LicenseFee.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.LicenseFee))
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>RAO Fee :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+
+                                        @*@if (!string.IsNullOrEmpty(Model.RAO_Fee.ToString()))
+                                        {
+
+                                            @String.Format(new CultureInfo("en-US"), "{0:C}", Model.RAO_Fee)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.RAO_Fee.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.RAO_Fee))
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>ESF Fee :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@Html.DisplayFor(model => model.ESFFee)*@
+                                        @*@if (!string.IsNullOrEmpty(Model.ESFFee.ToString()))
+                                        {
+
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.ESFFee)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.ESFFee.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.ESFFee))
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Penalty Fee (Lapsed) :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@if (!string.IsNullOrEmpty(Model.Penalty_Fee__Lapse_.ToString()))
+                                        {
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.Penalty_Fee__Lapse_)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.Penalty_Fee__Lapse_.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.Penalty_Fee__Lapse_))
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Penalty Fee (Expired) :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@if (!string.IsNullOrEmpty(Model.Penalty_Fee__Expired_.ToString()))
+                                        {
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.Penalty_Fee__Expired_)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.Penalty_Fee__Expired_.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.Penalty_Fee__Expired_))
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>TotalAmount :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @*@Html.DisplayFor(model => model.TotalAmount)*@
+                                        @*@if (!string.IsNullOrEmpty(Model.TotalAmount.ToString()))
+                                        {
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", Model.TotalAmount)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }*@
+                                        @(String.IsNullOrEmpty(Model.TotalAmount.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}", Model.TotalAmount))
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Expiration_Date :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.Expiration_Date.ToString()))
+                                        {
+                                            @Html.ValueFor(model => model.Expiration_Date, "{0:MM/dd/yyyy}").ToString().Replace('-', '/')
+                                           
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Payment Transaction ID :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.Payment_Transaction_ID.ToString()))
+                                        {
+
+                                            @Html.DisplayFor(model => model.Payment_Transaction_ID)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Transaction Payment Date :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.Transaction_Payment_Date.ToString()))
+                                        {
+                                            @Html.ValueFor(model => model.Transaction_Payment_Date, "{0:MM/dd/yyyy}").ToString().Replace('-', '/')
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Corp. File Number :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (!string.IsNullOrEmpty(Model.Org_Number.ToString()))
+                                        {
+                                            @Html.DisplayFor(model => model.Org_Number)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                                        <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Submission Queue Details</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+    $("#btnBack").click(function () {
+        window.location.href = "/BBL/Queue";
+    });
+</script>

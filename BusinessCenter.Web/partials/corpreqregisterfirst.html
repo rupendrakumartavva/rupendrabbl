@@ -1,0 +1,59 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>Help With This Page (Click Here)</p>
+        </div>
+    </div>
+</div>
+
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+
+<div id="dvMainsection" ng-show="vm.corpregisterfirst != ''">
+
+    <div data-ng-controller="CorpReqRegisterController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Corporation Registration</div>
+                    <div class="panel-body">
+                        <div class="page-desc-content">
+                            <p class="panel-body-text div_height">
+                                Because your business is a<span style="color: red; font-size: 16px;"> {{vm.corpregisterfirst}}</span>, you must register with DCRA’s Corporations Division prior to submitting your Business License Application. Please select [Return to Checklist] and visit the DCRA Corporations Division at 1100 4th St., SW or call at 202-442-4400.
+                            </p>
+                            </div>
+                        </div>
+                    <div class="pre-checkquestion col-md-11 col-xs-12 col-md-offset-1 ">
+                        <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.navToNewBblWelcome()">Save & Exit</button>
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToChecklist()">
+                            Save and Return to Checklist
+                        </button>
+                        <button id="btn_revise" class="btn btn-default disablecolor" ng-disabled="true">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

@@ -1,0 +1,7 @@
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Debug\BusinessCenter.reCaptcha.dll
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Debug\BusinessCenter.reCaptcha.pdb
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Debug\Newtonsoft.Json.dll
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\bin\Debug\Newtonsoft.Json.xml
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\obj\Debug\BusinessCenter.reCaptcha.dll
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\obj\Debug\BusinessCenter.reCaptcha.pdb
+D:\DCBusinessCenter\BussinessCenter.reCaptcha\obj\Debug\BusinessCenter.reCaptcha.csprojResolveAssemblyReference.cache

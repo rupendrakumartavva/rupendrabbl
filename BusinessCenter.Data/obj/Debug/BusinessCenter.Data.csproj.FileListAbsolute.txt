@@ -1,0 +1,16 @@
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\BusinessCenter.Data.dll.config
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\BusinessCenter.Data.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\BusinessCenter.Data.pdb
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\BusinessCenter.Common.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\EntityFramework.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\EntityFramework.IndexingExtensions.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\InteractivePreGeneratedViews.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\Omu.ValueInjecter.dll
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\BusinessCenter.Common.pdb
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\EntityFramework.xml
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\DCBusinessCenter\BusinessCenter.Data\bin\Debug\Omu.ValueInjecter.xml
+D:\DCBusinessCenter\BusinessCenter.Data\obj\Debug\BusinessCenter.Data.csprojResolveAssemblyReference.cache
+D:\DCBusinessCenter\BusinessCenter.Data\obj\Debug\BusinessCenter.Data.dll
+D:\DCBusinessCenter\BusinessCenter.Data\obj\Debug\BusinessCenter.Data.pdb

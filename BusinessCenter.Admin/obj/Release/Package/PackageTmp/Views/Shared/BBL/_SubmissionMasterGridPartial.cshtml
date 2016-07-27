@@ -1,0 +1,303 @@
+﻿@using System.Globalization
+@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Common.SubmissionMasterDetails>
+@*@model BusinessCenter.Common.SubmissionMasterDetailsViewModel*@
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">License/Application#</th>
+                        @*<th class="text-center">Category Name</th>*@
+                        @*<th class="text-center">User Name</th>*@
+                        <th class="text-center">License Categories</th>
+                        <th class="text-center">License Type</th>
+                        <th class="text-center">Grand Total Fee</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Checklist</th>
+                        <th class="text-center">Information Verification </th>
+                      
+                        <th class="text-center">Receipt</th>
+                       
+                        @if ((int)Session["Admincount"] == 3 || (int)Session["Admincount"] == 4)
+                        {
+                            if (TempData["Redirection"] != "ApplicationReview")
+                            {
+
+                                <th class="text-center">Transfer License </th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="9">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow text-center">
+
+                                <td class="col1-tab col2 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol2">
+                                        <span>
+
+
+                                            @if (item.ApplicationSubmitType == "S" && item.Status == "UnderReview" || item.ApplicationSubmitType == "S" && item.Status == "Active")
+                                            {
+                                                //TempData["SubmissionLicense"] = item.SubmissionLicense;
+                                                ViewData["LicNumber"] = item.SubmissionLicense;
+                                                @*@Html.ActionLink(item.SubmissionLicense, "InformationVerification", "BBL", new { masterId = item.MasterId }, null)*@
+                                            <a href="" style="cursor: default;pointer-events: none"> @Html.DisplayFor(modelitem => item.SubmissionLicense)</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="" style="cursor: default;pointer-events: none"> @Html.DisplayFor(modelitem => item.SubmissionLicense)</a>
+                                            }
+                                        </span>
+                                    </p>
+                                </td>
+
+                                @*<td class="col1-tab col2 Superadmingrid usercol">
+                                        <p style=" font-size: 14px;" class="paracol12 paratabcol2">
+                                            <span>
+                                                @Html.DisplayFor(modelitem => item.UserName)
+                                            </span>
+                                        </p>
+                                    </td>*@
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol2">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.ActivityName)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+
+
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                        <span>
+                                            @item.App_Type
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                       
+                                        @if (item.GrandTotal == 0)
+                                        {
+                                           <span>-</span>
+                                        }
+                                        else
+                                        {
+                                            <span>
+                                                @string.Format(new CultureInfo("en-US"), "{0:C}", item.GrandTotal)
+                                            </span>
+                                        }
+
+                                           
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                        <span>
+                                            @if (item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "UNDERREVIEW")
+                                            {
+                                                <span>Under Review</span>
+                                            }
+                                            else if (item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "DRAFT")
+                                            {
+                                                <span>Draft</span>
+                                            }
+                                            else if (item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "ACTIVE")
+                                            {
+                                                <span>Active</span>
+                                            }
+                                            else
+                                            { <span>@item.Status</span>}
+                                        </span>
+                                    </p>
+                                </td>
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+
+                                        @if (item.ApplicationSubmitType == "S")
+                                        {
+                                            <span>
+                                              @Html.Hidden("UserId")
+                                                @Html.ImageLink("~/images/checkList.png", "View Checklist", "", "ViewCheckList", "BBL", new { masterId = item.MasterId })
+
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>NA</span>
+                                        }
+
+                                    </p>
+                                </td>
+                                <td class="col1-tab col2 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol2">
+                                        <span>
+
+
+                                            @if (item.ApplicationSubmitType == "S" && item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "UNDER REVIEW" || item.ApplicationSubmitType == "S" && item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "ACTIVE")
+                                            {
+                                                //TempData["SubmissionLicense"] = item.SubmissionLicense;
+                                                ViewData["LicNumber"] = item.SubmissionLicense;
+                                                @Html.ImageLink("~/images/info.png", "View Submission", "", "InformationVerification", "BBL", new { masterId = item.MasterId })
+                                            }
+                                            else
+                                            {
+                                                <span>NA</span>
+                                                @*<a href="" style="cursor: default;pointer-events: none"> @Html.DisplayFor(modelitem => item.SubmissionLicense)</a>*@
+                                            }
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col2-tab col1 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                        <span>
+                                            @if (item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "UNDER REVIEW" || item.Status.Replace(System.Environment.NewLine, "").ToString().Trim().ToUpper() == "ACTIVE")
+                                            {
+                                                @Html.ImageLink("~/images/Receipt.png", "View Receipt", "", "ViewReceipt", "BBL", new { masterId = item.MasterId })
+                                            }
+                                            else
+                                            {
+                                                <span>NA</span>
+                                            }
+                                        </span>
+                                    </p>
+                                </td>
+
+                                
+                              
+                              @if (Session["Admincount"].ToString() == "3" || Session["Admincount"].ToString() == "4")
+                              {
+
+                                  if (TempData["Redirection"] != "ApplicationReview")
+                                  {
+                                  
+                                        <td class="col2-tab col1 Superadmingrid usercol">
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                    @if (TempData["Redirection"] != "ApplicationReview")
+                                                    {
+                                                        TempData["UserName"] = item.UserName;
+                                                        //TempData["license"] = item.SubmissionLicense;
+                                                        @Html.ImageLink("~/images/transfer.png", "Transfer", "Transfer", "TransferLicense", "BBL", new { masterId = item.MasterId })
+                                                    }
+                                                </span>
+                                            </p>
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+@if (Model.Count() == 0)
+{
+
+}
+else
+{
+    <style>
+        .dataTables_wrapper .dataTables_paginate {
+            padding-top: 0.55em !important;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                padding: 0em 0em !important;
+            }
+
+        .paginate_button .previous {
+            font-size: 19px !important;
+        }
+
+        .paginate_button .next {
+            font-size: 19px !important;
+        }
+
+        .dataTables_paginate .paging_simple_numbers {
+            font-size: 19px !important;
+        }
+
+        .login_form a {
+            font-size: 19px !important;
+        }
+
+        table.dataTable {
+            /*border-collapse: collapse !important;*/
+        }
+
+            /*table.dataTable thead th, table.dataTable thead td {
+            border: 1px solid #ddd;
+        }*/
+
+            table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+            }
+
+        .login_form p {
+            margin-bottom: 0;
+        }
+    </style>
+    <script type="text/javascript" class="init">
+
+        $(document).ready(function () {
+            window.alert = function () { /* do nothing here */ }
+            appReview = $('#datasearch').DataTable({
+                "ordering": false,
+                stateSave: true
+            });
+            $("#datasearch_length").hide();
+            $("#datasearch_filter").hide();
+            if ($('#datasearch td').attr('colspan') == '8') {
+                $("#datasearch_info").hide();
+                $("#datasearch_paginate").hide();
+                // do this
+            }
+        });
+
+        $("#draft").click(function () {
+            appReview.state.clear();
+        });
+
+        $("#underreview").click(function () {
+            appReview.state.clear();
+        });
+
+        $("#btnClear").click(function () {
+            appReview.state.clear();
+        });
+
+        $("a").on('click', function (e) {
+            if ($(this).hasClass('paginate_button') || $(this).hasClass('activemenuquick')) {
+            } else {
+
+                appReview.state.clear();
+                //localStorage.removeItem("selectedSearchType");
+            }
+        });
+    </script>
+}
+
+<style>
+    .mouseAuto {
+        cursor: auto !important;
+    }
+</style>

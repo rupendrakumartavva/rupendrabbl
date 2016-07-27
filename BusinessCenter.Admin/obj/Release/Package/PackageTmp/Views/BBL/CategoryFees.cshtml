@@ -1,0 +1,198 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.CategoryFeeModel
+@{
+    ViewBag.Title = "DCRA - Category Fees";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("BBL", "ApplicationReview", "BBL")*@
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Metadata</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Activity", "BusinessActivities", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = @ViewBag.activityid }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Category Fees</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Category Fees</h2>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <div class="form-group ">
+                Primary Category Name:
+                <strong>
+                    @ViewBag.PrimaryName
+                </strong>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="login_form register_form">
+        <div class="container">
+            <div class="row">
+                @if ((int) Session["Admincount"] == 3)
+                {
+                    <div class="form_wrapper reg-err-placement" id="categoryfee-add">
+
+                    </div>
+                }
+            </div>
+            <div id="Content" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                <div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+                    <p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="~/images/camera-loader.gif" alt="not showing" /></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                    <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Primary Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message' id="modelerror"> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="okbtn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+            select::-ms-expand {
+    display: none;
+}
+    </style>
+
+    <!-- Javascript and Jquery Section -->
+    <script>
+        // This Event is executed when Page is loaded
+        $(document).ready(function () {
+            $("#Content").empty();
+            $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            $("#categoryfee-add").empty();
+            CategoryFeeAddPartial();
+            GetAll();
+        });
+
+        // This Event is executed when Back Button is clicked
+        $("#btnBack").click(function () {
+            var url = window.location.href;
+            var hash = url.substring(url.indexOf('=') + 1);
+            var strarr = hash.split('&');
+            var url1 = "/BBL/PrimaryCategories?activityId=" + strarr[0];
+            window.location.href = url1;
+        });
+
+
+
+        // This function is used to load _CategoryFeesGridPartial partial, which contains all the category fees for that particular primary category
+        function GetAll() {
+            $.ajax({
+                url: '/BBL/CategoryFeesGridPartial',
+                type: 'Get',
+                cache: false,
+                data: { type: '@ViewBag.CategoryType', id: '@ViewBag.CategoryId' },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Content").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        // This function is used to load CategoryFeeAddPartial partial, which is used to add a Category fee
+        function CategoryFeeAddPartial() {
+            $.ajax({
+                url: '/BBL/CategoryFeeAddPartial',
+                type: 'Get',
+                cache: false,
+                data: { type: '@ViewBag.CategoryType', id: '@ViewBag.CategoryId' },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#categoryfee-add").empty().append(data);
+                    $("form").removeData("validator");
+                    $("form").removeData("unobtrusiveValidation");
+                    $.validator.unobtrusive.parse("form");
+                    GetAll();
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function UpdateCategoryFeePartial(Id) {
+            $.ajax({
+                url: '/BBL/UpdateCategoryFeePartial',
+                type: 'Get',
+                cache: false,
+                data: { categoryfeeid: Id, id: '@ViewBag.CategoryId' },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#categoryfee-add").empty();
+                    $("#categoryfee-add").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                    $("form").validate({ ignore: "*" });
+                    $("#categoryfee-add").empty().append(data);
+                    $("form").removeData("validator");
+                    $("form").removeData("unobtrusiveValidation");
+                    $.validator.unobtrusive.parse("form");
+}
+                },
+                error: function (data) {
+                    console.log(JSON.stringify(data));
+                }
+            });
+        }
+        $("#okbtn").on("click", function () {
+            $('#registermodal-container').modal('hide');
+            CategoryFeeAddPartial();
+            GetAll();
+
+
+        });
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+
+
+
+
+

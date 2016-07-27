@@ -1,0 +1,111 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" ng-click="navToHome()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+<span class="easy-breadcrumb_segment-separator"> / </span>
+<span  class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Search Result</span></div>
+<div class="page_title scr_title">
+	<div class="container">
+		<div class="row">
+			<h2 tabindex="0">Search Result</h2>
+			<p>Help With This Page (Click Here)</p>
+		</div>
+	</div>
+</div>
+<div class="login_form search-result">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-sm-3 left-panel">
+				<h3 class="hidden-xs">Current Search
+					<span>Search found 10 items</span>
+				</h3>
+				<div class="current-search-item hidden-xs">
+					Enter terms <input type="text" ng-model="test1" class="form-control" placeholder="Text input"> <button>Search</button>
+				</div>
+				<div class="search-accordian">
+					<h3 class="hidden-xs">Filter</h3>
+					<div class="accordian-header hidden-lg hidden-md hidden-sm clearfix">
+						<div class="col-xs-6"></div>
+						<div class="col-xs-6 buttons"><a class="reset" href="#">reset</a><a class="read_btn" href="#">apply</a></div>
+					</div>
+					<div class="accordian-body">
+						<h3 class="hidden-lg hidden-md hidden-sm clearfix">
+                        <div ng-click="Expandcollapse($event)">Filter</div> <span class="glyphicon glyphicon-menu-down" ng-click="expandCollapse($event)"></span></h3>
+						<div class="accordian-components hidden-lg hidden-md hidden-sm">
+							<div class="checkbox">
+							  <label>
+                    <input type="checkbox" ng-model="test2" value="">
+									BBL (5)
+							  </label>
+							</div>
+							<div class="checkbox">
+							  <label>
+                    <input type="checkbox" ng-model="test3" value="">
+									OPLA  (10)
+							  </label>
+							</div>
+							<div class="checkbox">
+							  <label>
+                    <input type="checkbox" ng-model="test4" value="">
+									ABRA (5)
+							  </label>
+							</div>
+							<div class="checkbox">
+							  <label>
+                    <input type="checkbox" ng-model="test5" value="" >
+									CBE (1)
+							  </label>
+							</div>
+							<div class="checkbox">
+							  <label>
+                    <input type="checkbox" ng-model="test6" value="">
+									Corp (5)
+							  </label>
+							</div>
+						</div>
+						<div class="checkbox hidden-xs">
+						  <label>
+							<input type="checkbox" value="">
+								BBL (5)
+						  </label>
+						</div>
+						<div class="checkbox hidden-xs">
+						  <label>
+							<input type="checkbox" value="">
+								OPLA  (10)
+						  </label>
+						</div>
+						<div class="checkbox hidden-xs">
+						  <label>
+							<input type="checkbox" value="">
+								ABRA (5)
+						  </label>
+						</div>
+						<div class="checkbox hidden-xs">
+						  <label>
+							<input type="checkbox" value="">
+								CBE (1)
+						  </label>
+						</div>
+						<div class="checkbox hidden-xs">
+						  <label>
+							<input type="checkbox" value="">
+								Corp (5)
+						  </label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9 right-panel" ng-repeat="list in lists">
+				<ol>
+					<li dir-paginate="item in list.collection | itemsPerPage: 5" pagination-id="list.id" class="clearfix">
+						<div class="searchno"><p>{{ item }}.</p></div>
+						<div class="searchlist"><p class="title"><a href="#">Securing Sensitive Data<a></p>
+						<p class="search-snippet">During our most recent Information Systems.</p></div>
+					</li>					
+				</ol>
+				<dir-pagination-controls pagination-id="list.id" template-url="partials/dirPagination.tpl.html"></dir-pagination-controls>
+			</div>
+		</div>		
+	</div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

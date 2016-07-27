@@ -1,0 +1,209 @@
+<div class="mainNavigation" ng-controller="HeaderController">
+    <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default no-pad-left" role="navigation">
+            <div class="navbar-header col-lg-3 col-md-3 col-sm-3 col-xs-12 no-pad-left no-pad-right">
+                <div class="col-sm-12 col-xs-9 no-pad-left">
+                    <h1 class="header_logo" tabindex="-1">
+                        <a href="https://business.dc.gov/" role="link">
+                            <img tabindex="-1" src="../images/dc_logo.png" alt="DCRA Business Center" class="img-responsive">
+                        </a>
+                    </h1>
+                </div>
+                <div class="col-xs-3 hidden-lg hidden-md hidden-sm pull-right">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 toggleMenu">
+                <div class="row">
+                    <form id="search-block-form" class="form-search content-search" accept-charset="UTF-8" method="post" action="">
+                        <div class="input-group hidden-lg hidden-md hidden-sm">
+                            <input type="text" maxlength="128" size="15" value="" name="search_block_form" id="edit-search-block-form--2" placeholder="Search" class="form-control form-text" title="Enter the terms you wish to search for." autocomplete="off">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default button_search_icon_mobile" type="submit" ng-click="navToSearchPage()">
+                                    <i aria-hidden="true" class="icon glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <div class="row">
+                            <ul class="nav navbar-nav smallMenu">
+                                <li>
+                                    <a href="https://business.dc.gov/">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#/login" class="hidden-xs">My DC Business Center</a>
+                                    <a ng-click="showMenu()" class="hidden-lg hidden-md hidden-sm activemenu small-Menu">My DC Business Center<span class="glyphicon glyphicon-chevron-down"></span></a>
+                                    <ul class="hidden-lg hidden-md hidden-sm mobile-menu show-menu">
+                                        <li class="quicksearch" ng-hide="islogin">
+                                            <a href="#/quicksearch">quick search</a>
+                                        </li>
+                                        <li class="dashboard" ng-show="islogin">
+                                            <a href="#/dashboard">Dashboard</a>
+                                        </li>
+                                        <li class="login-menu" ng-hide="islogin">
+                                            <a href="#/login">Login</a>
+                                        </li>
+                                        <li class="reg-menu register" id="" ng-hide="islogin">
+                                            <a href="#/register">register</a>
+                                        </li>
+                                        <li class="quicksearch" ng-show="islogin">
+                                            <a href="javascript:void(0)" data-toggle="dropdown" ng-click="showQuickMenu()" class="activemenuquick">
+                                                quick search
+                                                <span class="glyphicon glyphicon-chevron-down hidden-lg hidden-md hidden-sm"></span>
+                                            </a>
+                                        </li>
+                                        <li ng-show="islogin" class="save-search show-menu"><a href="#/quicksearch">Search</a></li>
+                                        <li ng-show="islogin" class="save-search show-menu"><a href="#/quicksearchsave">My Saved Results</a></li>
+                                        <li class="help" ng-show="islogin">
+                                            <a href='#/mybbl'>BBL</a>
+                                        </li>
+                                        <li class="help" ng-show="islogin">
+                                            <a href="javascript:void(0)" ng-click="navToHelp()">HELP</a>
+                                        </li>
+                                        <li ng-show="islogin">
+                                            <button ng-click="menuClick()" href="javascript:void(0)" class="logoutbutton">Logout</button>
+                                        </li>
+                                        <li class="user_name" ng-show="islogin">
+                                            <a href="javascript:void(0)" ng-click="navToProfile()">Profile</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="https://business.dc.gov/about-us">About Us</a>
+                                </li>
+                                <!--<li>
+                                    <a href="https://business.dc.gov/news">News</a>
+                                </li>
+                                <li>
+                                    <a href="https://business.dc.gov/allevents">Events</a>
+                                </li>-->
+                                <li>
+                                    <a href="https://business.dc.gov/success_story">Stories</a>
+                                </li>
+                                <li>
+                                    <a href="https://business.dc.gov/resources">Help</a>
+                                </li>
+                                <li>
+                                    <a href="https://business.dc.gov/contactus">Contact Us</a>
+                                </li>
+                                <li class="pull-right hidden-xs search">
+                                    <div aria-labelledby="search_desc" id="search_icon" class="search_box" ng-click="navToSearch()">
+                                        <form accept-charset="UTF-8" id="search-block-form--2" method="post" action="" class="form-search content-search">
+                                            <div class="input-group">
+                                                <input ng-model="asdf" type="text" maxlength="128" size="15" value="" name="search_block_form" id="edit-search-block-form--4" placeholder="Search" class="apachesolr-autocomplete unprocessed form-control form-text form-autocomplete" title="Enter the terms you wish to search for." autocomplete="off">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="submit" ng-click="navToSearchPage()">
+                                                        <i aria-hidden="true" class="icon glyphicon glyphicon-search"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="global-menu nav navbar-nav navbar-right clearfix" ng-show="mainmenu1">
+                                <li>
+
+                                    <a href="https://business.dc.gov/startbusiness">start</a>
+                                </li>
+                                <li>
+                                    <a href="https://business.dc.gov/maintainbusiness">maintain</a>
+                                </li>
+                                <li>
+
+                                    <a href="https://business.dc.gov/startwizard">start wizard</a>
+                                </li>
+                                <li id="lookup">
+                                    <a href="https://business.dc.gov/research_business_info">lookup</a>
+                                </li>
+                            </ul>
+                            <ul class="global-menu nav navbar-nav navbar-right clearfix hidden-xs" ng-show="mainmenu2">
+                                <li class="quicksearch">
+                                    <a href="#/quicksearch">quick search</a>
+                                    <!--<a ng-click="navToQuickSearch()" href="javascript:void(0)">QUICK SEARCH</a>-->
+                                </li>
+
+                                <li class="login-menu">
+                                    <a href="#/login">Login</a>
+                                    <!--<a ng-click="navToLogin()" href="javascript:void(0)">Login</a>-->
+                                </li>
+                                <li class="reg-menu register">
+                                    <a href="#/register">register</a>
+                                </li>
+                            </ul>
+                            <ul class="global-menu nav navbar-nav navbar-right clearfix loginmenu hidden-xs" ng-show="mainmenu3">
+                                <li class="dashboard">
+                                    <a href='#/dashboard'>Dashboard</a>
+                                    <!--<a ng-click="navToDashboard()" href="javascript:void(0)">Dashboard</a>-->
+                                </li>
+                                <li class="quicksearch dropdown">
+                                    <a href="#/quicksearch">quick search</a>
+                                    <!--<a ng-click="navToQuickSearch()" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">QUICK SEARCH</a>-->
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#/quicksearchsave">My Saved Results</a></li>
+                                        <!--<li><a ng-click="navToQuickSearchSave()" href="javascript:void(0)">My Saved Results</a></li>-->
+                                    </ul>
+                                </li>
+                                <li class="mybbl">
+                                    <a href='#/mybbl'>BBL</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" ng-click="navToCorp($event)" class="">CORP</a>
+                                </li>
+                                <li>
+                                    <button ng-click="menuClick()" class="logoutbutton">Logout</button>
+                                </li>
+                                <li class="profile-menu">
+                                    <a href="#/profile">Profile</a>
+                                </li>
+                                <!--<li class="user_name">
+                                    <a href="#/profile">{{userFirstName.charAt(0)+userLastName.charAt(0)}}</a>-->
+                                <!--<a href="javascript:void(0)" ng-click="navToProfile()">{{userFirstName.charAt(0)+userLastName.charAt(0)}}</a>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div> <!-- /container -->
+    <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class='error_message'>{{logoutMsg}}</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" ng-click="logoutRedirect()">YES</button>
+                    <button type="button" class="close-button" ng-click="CancellogoutRedirect()">NO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="corpmodel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="error_message">You are navigating to an external site</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" ng-click="navigateAnyWay()">OK</button>
+                    <button type="button" class="close-button" ng-click="cancelNavigation()">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

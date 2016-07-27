@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "DCBC - Lockout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container headerBreadcrumb">
+    @Html.ActionLink("Home", "Login", "Account")
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    @Html.ActionLink("Business Center Admin Portal", "Login", "Account")
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Lockout</span>
+</div>
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Lockout</h2>
+        </div>
+    </div>
+</div>
+<div class="login_form forgot_password" style="height: 350px;">
+    @using (Html.BeginForm("Lockout", "Account", FormMethod.Post, new { @class = "row", role = "form" }))
+    {
+        <div class="container">
+            <h4 class="text-muted">
+                Either Username or Password are incorrect. You have exceeded the amount of
+                incorrect login attempts allowed. Please wait 5 minutes before attempting to Login again.
+                If you need additional assistance, please call the DCRA help desk at 202-442-4400
+            </h4>
+        </div>
+    }
+</div>
+

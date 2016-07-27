@@ -1,0 +1,152 @@
+
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0" data-ng-mousedown="navtoHome($event)">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Verify & Add Existing License</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0"> Add An Existing Business License to My DC Business Center Account</h2>
+            <p>
+                <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page displays for verification the BBL information that corresponds to the information you entered before adding the license to your My BBLs Page.</strong>
+                    </p>
+                    <p class="terms_text">
+                        The details of the Basic Business License that corresponds to the information entered is displayed for review.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        Take time to ensure that all components of the license information is correct and appropriately corresponds to the BBL you wish to renew.
+                    </p>
+                    <!--<p class="terms_text srch_filter">
+                        <strong>*Note* </strong>  The "Status" field will display the number of days the license is within or past the license expiration date.
+                    </p>
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li class="leftside">
+                            To see the list of statuses and any associated fees, hover your cursor over the <span class="help_text_modal_invoke">&nbsp;<span class="help_howtouse_verify" style="border: 1px solid #337ab7 !important;"></span></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.
+                        </li>
+
+                        <li class="leftside">
+                            Any fees associated with your license will be added to your required payment automatically, as a part of the renewal process.
+                        </li>
+                    </ul>-->
+
+
+                    <p class="terms_text srch_filter">
+                        <span class="num_color">If the BBL information is incorrect, </span> select the <button class="cursorDefault pointer_events_none"> CANCEL </button>  button and contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        <span class="num_color">If the BBL information is correct, </span> select the <button class="cursorDefault pointer_events_none" style="border-bottom: 3px solid #69911b !important; background-color: #7dbc00 !important;"> ADD BUSINESS </button>  button to add a record of this BBL to your My BBL's page.
+                    </p>
+
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li class="leftside">
+                           You will be navigated to your My BBLs page where a record of the BBL has been successfully added.
+                        </li>
+                        <li>
+                            If you have multiple licenses eligible for renewal, the license soonest to expire will be at the top of the page.
+                        </li>
+
+                        <li class="leftside">
+                            To initiate the renewal process for the BBL, select the <img src="../images/Howto_Renewal.png" style="height: 21px; width: 53px;" />  link adjacent to the License you wish to renew.
+                        </li>
+                    </ul>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="VerifyBusinessBeforeAssociationController as vm">
+
+        <div class="search_form">
+            <div class="login_form register_form">
+                <div class="container">
+                    <p>
+                        Please verify this is the business you wish to associate with your My DC Business Center Account by selecting the <br />&quot;<strong>Add Business</strong>&quot; button.
+                    </p>
+                    <div class="row">
+                        <div class="form_wrapper">
+
+                            <form role="form" method="post" id="contact_us">
+                                <div class="well well-lg">
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">License #:</span> {{vm.business.licenseNumber}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">First Name:</span> {{vm.business.fName}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">Last Name:</span> {{vm.business.lName}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">Business Name:</span> {{vm.business.businessName}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p ng-show="business.tradeName !=''" class="text_clr">
+                                            <span class="text_color">Trade Name:</span> {{vm.business.tradeName}}
+                                        </p>
+                                        <p ng-show="business.tradeName ==''" class="text_clr">
+                                            <span class="text_color">Trade Name:</span> NA
+                                        </p>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">Business Structure:</span> {{vm.business.businessNameStructure}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">Expiration Date:</span> {{vm.business.expDate}} </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="text_clr"><span class="text_color">Status:</span> {{vm.business.status}} </p>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <p>
+                        If this is <strong><u>not</u></strong> the business you wish to associate with your My DC Business Center Account, please select the &quot;<strong>Cancel</strong>&quot; button and contact DCRA at <strong>202-442-4400</strong>.
+                    </p>
+                    <div class="col-xs-12 line"></div>
+                    <div class="center_div">
+                        <button id="submit_cancel" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+                        <button id="submit_associate" class="btn btn-default btnnextColor btn-next" ng-click="vm.navToConfirmAssociation()">Add Business</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

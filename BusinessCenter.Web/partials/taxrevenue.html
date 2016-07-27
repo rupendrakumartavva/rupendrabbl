@@ -1,0 +1,321 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Tax and Revenue</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Tax and Revenue</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is to verify that the business and/or business owner meets the District of Columbia financial standards for obtaining a Basic Business License.</strong>
+                    </p>
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li>
+                            Type your full name in the first field  <img src="../images/firstfield.png" style="height: 30px; width: 119px;" />.
+                        </li>
+                        <li>
+                            Select the owner status that applies to you from the drop down menu  <img src="../images/dropdown_block.png" style="height: 35px; width: 220px;" /> .
+                        </li>
+                        <li>
+                            Enter the FEIN or SSN number that corresponds to your business, as indicated on your Pre-Application questions.
+                        </li>
+                        <li>
+                            Check the box to indicate you understand your legal responsibility for the information provided.
+                            <br />
+                            <img src="../images/HOw_ToTax_Revenue.png" style="height: 45px; width: 500px;" />
+                        </li>
+                        <li>
+                            Attest to the accuracy and veracity of the financial information provided by typing your legally binding signature in the field at the bottom of the page.
+                            <img src="../images/signature_box.png" style="height: 51px; width: 300px;" /> .
+                            The content of the name you type in the field at the bottom of the page must match the content of your name you typed at the top of the page.
+                        </li>
+                        <li>
+                            Complete the Clean Hands Attestation on the day you pay for and submit your Application. If you save and return to your Draft Application on another day, you will need to check and sign the Attestation form again.
+                        </li>
+                    </ul>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection" style="display: none;">
+    <div data-ng-controller="TaxRevenueController as vm">
+        <div class="physical-loc-form" tabindex="-1">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Clean Hands Self Certification and Legal Attestation</div>
+                    <div class="panel-body">
+                        <div class="page-desc-content">
+                            <p>
+                                You must have a Federal Tax ID number associated with your business. If you need a Tax ID number, please visit the IRS website:
+                                <a href="https://www.irs.gov/Businesses/Small-Businesses-&-Self-Employed/Apply-for-an-Employer-Identification-Number-(EIN)-Online" target="_blank">
+                                    https://www.irs.gov/Businesses/Small-Businesses-&-Self-Employed/Apply-for-an-Employer-Identification-Number-(EIN)-Online.
+                                </a>
+                            </p><br />
+                            <p>
+                                You must register your business Tax ID number with the District of Columbia’s Office of Tax and Revenue. Register your business at:
+                                <a href="http://otr.cfo.dc.gov/node/1035102" target="_blank">http://otr.cfo.dc.gov/node/1035102</a> or visit the Business Tax Service
+                                Center at 1101 4th St SW, Suite 270, Washington, DC 20024  or call (202) 727-4829.
+                            </p>
+                            <br /><br />
+                        </div>
+                        <div id="error_msg" class="error_text text-center" tabindex="-1"></div>
+                        <form role="form" method="post" id="vm.taxrevenueform" autocomplete="off" name="vm.taxrevenueform" novalidate>
+                            <div class="tax-revenue-inner-form">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <span> I, </span>
+                                    <div style="display: inline;" ng-class="{'has-error':vm.taxrevenueform.fullname.$invalid && vm.submitted }">
+                                        <input type="text" style="display: inline; width: 431px;" spellcheck="false" class="form-control renew-fullname-txtbx"
+                                               ng-model="vm.taxrevenue.FullName"
+                                               ng-change="vm.checkSignWithFullName()"
+                                               name="fullname" id="fullname" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                        <span class="renew-top-wrap">
+                                            (full name) understand that the District goverment is prohibited from issuing
+                                            or reissuing a license or permit to an applicant who owes the District more than $100 in debt to it.
+                                        </span>
+                                        <div class="error-container" ng-show="vm.taxrevenueform.fullname.$dirty && vm.taxrevenueform.fullname.$invalid">
+                                            <small class="error-message" ng-show="vm.taxrevenueform.fullname.$error.pattern">
+                                                Please enter letters or the following special characters only (- . ' `).
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix " id="cleanhands-div">
+                                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:9px;">
+                                        <p>
+                                            I,Certify as
+                                            <span ng-class="{'has-error':vm.taxrevenueform.select.$invalid && vm.submitted }">
+                                                <select data-ng-model="vm.taxrevenue.BusinessOwnerRoles" id="select" required ng-show="vm.applicationType=='B'">
+                                                    <option value="" selected disabled>Select One</option>
+                                                    <option value="Owner">Owner</option>
+                                                    <option value="Partner">Partner</option>
+                                                    <option value="Corporate Officer">Corporate Officer</option>
+                                                </select>
+                                                <select name="select" data-ng-model="vm.taxrevenue.BusinessOwnerRoles" id="select" required ng-show="vm.applicationType!='B'">
+                                                    <option value="" selected disabled>Select One</option>
+                                                    <option value="Individual/Employee">Individual/Employee</option>
+                                                </select>
+                                            </span>
+                                            certify that <label ng-show="vm.bOwnerName!=''">{{ vm.bOwnerName}}</label>,
+                                            <label ng-show="vm.bOwnerName==''">___________,</label>
+                                            trading as <label ng-show="vm.tradeName!='NA' "> {{ vm.tradeName}} </label>
+                                            <label ng-show="vm.tradeName=='' || vm.tradeName=='NA'|| vm.tradeName==null"> NA </label> at
+                                            <label ng-show="vm.PremisesAddress!=null"> {{vm.PremisesAddress }}</label>,
+                                            <label ng-show="vm.PremisesAddress==null">______________,</label>
+                                            <span>
+                                                using
+                                                business tax number <strong> {{vm.isfein?"FEIN":"SSN"}}</strong>
+                                            </span>
+                                            <span>
+                                                <span ng-class="{'has-error':vm.taxrevenueform.taxnumber.$invalid && vm.submitted }">
+                                                    <input type="text" spellcheck="false"
+                                                           class="form-control cleanhands-txtbx"
+                                                           data-ng-model="vm.taxrevenue.number"
+                                                           data-ng-keypress="vm.applyMask($event,'f')"
+                                                           name="taxnumber" id="feinnumber"
+                                                           ng-show="vm.isfein"
+                                                           maxlength="10"
+                                                           ng-focus="vm.setErrorMsg('error_msg')"
+                                                           required>
+                                                    <input type="text"
+                                                           spellcheck="false"
+                                                           maxlength="11"
+                                                           class="form-control cleanhands-txtbx"
+                                                           data-ng-model="vm.taxrevenue.number"
+                                                           data-ng-keypress="vm.applyMask($event,'s')"
+                                                           name="taxnumber" id="ssnnumber"
+                                                           ng-show="!vm.isfein"
+                                                           ng-focus="vm.setErrorMsg('error_msg')" required>
+                                                </span>
+                                                <span class="hidden-md hidden-lg feinssn-err">
+                                                    <small class="error-message" style="clear: both" ng-show="vm.taxrevenueform.taxnumber.$invalid && vm.taxrevenue.number!=undefined">
+                                                        Enter numbers only. Do not include dashes (-).
+                                                    </small>
+                                                    <!--<small class="error-message" style="clear:both" ng-show="vm.taxrevenueform.taxnumber.$error.minlength && vm.taxrevenue.number!=undefined && vm.isfein==true">
+                        FEIN should be 9 digits and must follow proper format (##-#######).
+                    </small>-->
+                                                    <!--<small class="error-message" style="clear:both" ng-show="vm.taxrevenueform.taxnumber.$error.minlength && vm.taxrevenue.number!=undefined && !vm.isfein">
+                        SSN should be 9 digits and must follow proper format (###-##-####).
+                    </small>-->
+                                                </span>
+                                            </span>
+                                            <span>
+                                                does not, as of the date below, owe  the District more than $100 in:
+                                            </span>
+                                            <span class="hidden-xs hidden-sm feinssn-err">
+                                                <small class="error-message" style="clear: both" ng-show="vm.taxrevenueform.taxnumber.$invalid && vm.taxrevenue.number!=undefined">
+                                                    Enter numbers only. Do not include dashes (-).
+                                                </small>
+                                                <!--<small class="error-message" style="clear:both" ng-show="vm.taxrevenueform.taxnumber.$error.minlength && vm.taxrevenue.number!=undefined && vm.isfein">
+                    FEIN should be 9 digits and must follow proper format (##-#######).
+                </small>
+                <small class="error-message" style="clear:both" ng-show="vm.taxrevenueform.taxnumber.$error.minlength && vm.taxrevenue.number!=undefined && !vm.isfein">
+                    SSN should be 9 digits and must follow proper format (###-##-####).
+                </small>-->
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <ul class="ulwordwrap" id="ulfontstyle">
+                                            <li style="list-style-type: inherit; line-height: 38px;">
+                                                Outstanding fines, penalties or interest assessed under these acts or regulations, issued under their authority:
+                                                <ul class="alpha ulwordwrap">
+                                                    <li>Litter Control Administrative Act of 1985, effective March 25, 1986 (DC Law 6­100; DCOC § 8­801 et seq.); or</li>
+                                                    <li>Illegal Dumping Enforcement Act of 1994, effective May 20, 1994 (DC Law 10­117; DCOC § 8­901 et seq.); or </li>
+                                                    <li>DC Traffic Adjudication Act of 1978, effective September 12, 1978 (DC Law 2­104; DCOC § 50­2301.01 et seq.); or </li>
+                                                    <li>DCRA Civil Infractions Act of 1985, effective October 5, 1985 (DC Law 6­42; DCOC § 2­1801.01 et seq.); or </li>
+                                                    <li>DC Taxicab Commission Establishment Act of 1985, effective March 25, 1986 (DC Law 6­97; DCOC § 50­301 et seq.); or</li>
+                                                    <li>DC Taxicab Commission Establishment Act of 1985, effective March 25, 1986 (DC Law 6­97; DCOC § 50­301 et seq.); or</li>
+                                                </ul>
+                                            </li>
+                                            <li style="list-style-type: inherit;">Past due taxes owed under Title 47 of the DCOC; or</li>
+                                            <li style="list-style-type: inherit;">Past due DC Water and Sewer Authority service charges or fees; or </li>
+                                            <li style="list-style-type: inherit;">
+                                                Fines assessed to car dealers under § 2(i) of the DC Revenue Act of 1937, approved August 17,1937 (50 Stat. 680;
+                                                DCOC § 50­1501.02(i)); or
+                                            </li>
+                                            <li style="list-style-type: inherit;">Parking fines or penalties assessed by a jurisdiction which has a reciprocity agreement with the District. </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <p>
+                                            <strong>I understand that:</strong>
+                                        </p>
+                                        <ul class="ulwordwrap" id="ulfontstyle">
+                                            <li style="list-style-type: inherit;"> Completing and submitting this form does not guarantee that my application will be approved.</li>
+                                            <li style="list-style-type: inherit;">DCRA may conduct an investigation to verify the information in this Form.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="single_checkbox_set" style="float: none;">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix" style="margin-top:15px;">
+                                            <div class="form-type-checkbox form-item-screening-question-seondary-cigarette form-item checkbox">
+                                                <div class="form-type-checkbox form-item-screening-question-seondary-cigarette form-item checkbox" ng-class="{'has-error':vm.taxrevenueform.agreedall.$invalid && vm.submitted }">
+                                                    <div class="checker" id="uniform-edit-screening-question-candy" style="margin-top: 5px;">
+                                                        <span ng-class="{true:'checked'}[vm.taxrevenue.declaration]">
+                                                            <input type="checkbox" id="cagreedall"
+                                                                   name="agreedall"
+                                                                   class="form-checkbox"
+                                                                   style="opacity: 0;"
+                                                                   data-ng-model="vm.taxrevenue.declaration"
+                                                                   ng-focus="setErrorMsg('error_msg')" required>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox_question col-md-10 col-sm-10 col-xs-12">
+                                                <label tabindex="-1">
+                                                    I/We understand that, anyone who makes a false statement on this form can be criminally prosecuted:
+                                                    and, if convicted, fined up to $1000, imprisoned up to 180 days, or both, under D.C. Official Code §22­2405.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <p>
+                                            <label> DC INSPECTOR GENERAL HOTLINE:</label> If you are aware of corruption, fraud, waste, abuse or mismanagement involving any DC government agency, official or
+                                            program, Contact the Office of the Inspector General (OIG) at (202) 7270267
+                                            or (800) 5211639
+                                            (toll free). All reports are confidential and you may remain
+                                            anonymous by law. Government employees are protected from reprisals or retaliation by their employers for reporting to the OIG. The information you provide may
+                                            result in an investigation leading to administrative action, civil penalties or criminal prosecution in appropriate cases.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px">
+                                        <p>
+                                            <label>NOTICE OF NON­DISCRIMINATION:</label> In accordance with DC Human Rights Act of 1977, as amended, DC Code Section 2.1401.01 et seq.,
+                                            ("the Act") the District of Columbia does not discriminate on the basis of race, color, national origin, sex, age, marital status,
+                                            sexual orientation, family responsibilities, matriculation, political affiliation, disabilities, source of income, or place of residence
+                                            or business. Discrimination in violation of this act will not be tolerated. Violators will be subject to disciplinary action.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="clearfix " id="para-fontstyle" ng-class="{'has-error':vm.taxrevenueform.signature.$invalid && vm.submitted }">
+                                    <div class="col-md-1 col-sm-1 col-xs-1" style="margin-top: 10px;">
+                                        <label> <strong>I</strong></label>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12" id="lastinput-neg-margin">
+                                        <input type="text"
+                                               spellcheck="false"
+                                               class="form-control"
+                                               name="signature" id="signature"
+                                               required
+                                               ng-model="vm.taxrevenue.signature"
+                                               ng-focus="vm.setErrorMsg('error_msg')"
+                                               ng-change="vm.checkSignWithFullName()" />
+                                        <div class="error_text" ng-show="vm.signatureMismatch">Full Name and Signature do not match</div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 no-pad" style="margin-top: 10px;">
+                                        <label><strong>attest that the above is true and accurate on {{vm.SelfCertificationDate}}</strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:19px;">
+                                    <p>
+                                        <strong>
+                                            (Complete the Clean Hands Attestation on the day you pay for and submit your Application. If you save and return to your Draft Application on another day, you will need to check and sign the Attestation form again.)
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="pre-checkquestion col-md-12 col-xs-12 buttons_info" id="infobtns" style="margin-bottom: 20px;">
+                            <div class="clearfix"></div>
+                            <div class="col-sm-12 col-xs-12 col-md-4">
+                                <button id="btn_create_checklist123" class="btn btn-default-chcek" data-ng-click="vm.navToBack()">
+                                    Back
+                                </button>
+                            </div>
+                            <div class=" col-sm-12 col-xs-12 col-md-4">
+                                <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl',vm.submitted=true)">Exit</button>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12" id="infoverify-btns">
+                                <button id="btn_create_checklist" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.checkAndExit('appchecklist',vm.submitted=true)">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                        <!--<div class="pre-checkquestion col-md-9 col-xs-12 col-md-offset-2 " style="margin-bottom:40px">
+                            <button id="btn_exit_no_save" class="btn btn-default" data-ng-click=" vm.checkAndExit('mybbl',vm.submitted=true)">Save and Exit to My BBLs</button>
+                            <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist',vm.submitted=true)">
+                                Save and Return to Checklist
+                            </button>
+                        </div>-->
+                        <!--</section>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

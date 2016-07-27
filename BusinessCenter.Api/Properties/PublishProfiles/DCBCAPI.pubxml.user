@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\WebAPIPublish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/logtimeout.txt">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="bin/Audits.dll">
+      <publishTime>06/23/2016 09:57:34</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.Api.dll">
+      <publishTime>06/23/2016 09:57:37</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.Common.dll">
+      <publishTime>06/23/2016 09:57:30</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.Data.dll">
+      <publishTime>06/23/2016 09:57:33</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.Email.dll">
+      <publishTime>06/23/2016 09:57:35</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.Identity.dll">
+      <publishTime>06/23/2016 09:57:35</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.reCaptcha.dll">
+      <publishTime>06/23/2016 09:57:30</publishTime>
+    </File>
+    <File Include="bin/BusinessCenter.Service.dll">
+      <publishTime>06/23/2016 09:57:34</publishTime>
+    </File>
+    <File Include="bin/CacheCow.Common.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/CacheCow.Server.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/HibernatingRhinos.Profiler.Appender.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="bin/InteractivePreGeneratedViews.dll">
+      <publishTime>05/27/2016 12:12:08</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zlib.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Cors.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Jwt.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>05/27/2016 12:12:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/09/2013 04:45:08</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/27/2016 12:12:25</publishTime>
+    </File>
+    <File Include="bin/NReco.PdfGenerator.dll">
+      <publishTime>05/27/2016 12:12:17</publishTime>
+    </File>
+    <File Include="bin/Omu.ValueInjecter.dll">
+      <publishTime>05/27/2016 12:12:11</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/Payflow_dotNET.dll">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="bin/PayPalCoreSDK.dll">
+      <publishTime>05/27/2016 12:12:18</publishTime>
+    </File>
+    <File Include="bin/protobuf-net.dll">
+      <publishTime>05/27/2016 12:12:19</publishTime>
+    </File>
+    <File Include="bin/RazorEngine.dll">
+      <publishTime>05/27/2016 12:12:19</publishTime>
+    </File>
+    <File Include="bin/StructureMap.dll">
+      <publishTime>05/27/2016 12:12:19</publishTime>
+    </File>
+    <File Include="bin/StructureMap.Net4.dll">
+      <publishTime>05/27/2016 12:12:19</publishTime>
+    </File>
+    <File Include="bin/StructureMap.Web.dll">
+      <publishTime>05/27/2016 12:12:19</publishTime>
+    </File>
+    <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>05/27/2016 12:12:20</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Owin.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/27/2016 12:12:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/27/2016 12:12:16</publishTime>
+    </File>
+    <File Include="bin/Thinktecture.IdentityModel.Core.dll">
+      <publishTime>05/27/2016 12:12:20</publishTime>
+    </File>
+    <File Include="bin/WebActivatorEx.dll">
+      <publishTime>05/27/2016 12:12:20</publishTime>
+    </File>
+    <File Include="bin/WebApiContrib.Formatting.ProtoBuf.dll">
+      <publishTime>05/27/2016 12:12:20</publishTime>
+    </File>
+    <File Include="EmailTemplates/DailyMailService.cshtml">
+      <publishTime>05/27/2016 14:48:47</publishTime>
+    </File>
+    <File Include="EmailTemplates/ForgotPassword.cshtml">
+      <publishTime>05/27/2016 14:48:47</publishTime>
+    </File>
+    <File Include="EmailTemplates/ForgotPassword.html">
+      <publishTime>05/27/2016 14:48:47</publishTime>
+    </File>
+    <File Include="EmailTemplates/ForgotUserName.html">
+      <publishTime>05/27/2016 14:48:47</publishTime>
+    </File>
+    <File Include="EmailTemplates/PrimaryEmailChange.html">
+      <publishTime>05/27/2016 14:48:47</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/app.css">
+      <publishTime>05/27/2016 14:56:25</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/bbl.css">
+      <publishTime>05/27/2016 14:56:25</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/bootstrap.css">
+      <publishTime>05/27/2016 14:56:25</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/customstyle.css">
+      <publishTime>05/27/2016 14:56:25</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/normalize.css">
+      <publishTime>05/27/2016 14:56:26</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/style.css">
+      <publishTime>05/27/2016 14:56:26</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/css/temp.css">
+      <publishTime>05/27/2016 14:56:26</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/emailtemplate.html">
+      <publishTime>05/27/2016 14:56:26</publishTime>
+    </File>
+    <File Include="EmailTemplates/Receipts/OrderConfirmation.cshtml">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="EmailTemplates/UserRegistration.html">
+      <publishTime>05/27/2016 14:48:47</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="Payflow_dotNET.dll">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="PdfTemplates/ApplicationCheckListView.cshtml">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="PdfTemplates/EhopAddressDetails.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/InformationVerificationdetailsView.cshtml">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="PdfTemplates/OrderDetailsView.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/PageFooter.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/PageHeader.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/PrintReciptView.cshtml">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="PdfTemplates/QuickSearchDetailsView.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/QuickSearchSaveView.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/RenewalOrderPdf.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="PdfTemplates/sample.cshtml">
+      <publishTime>05/27/2016 14:50:18</publishTime>
+    </File>
+    <File Include="Properties/DataSources/System.Data.DataSet.datasource">
+      <publishTime>05/27/2016 14:44:01</publishTime>
+    </File>
+    <File Include="Reference/HibernatingRhinos.Profiler.Appender.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="Reference/Ionic.Zlib.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="Reference/msvcp120.dll">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="Reference/msvcr120.dll">
+      <publishTime>05/27/2016 11:50:46</publishTime>
+    </File>
+    <File Include="Reference/System.Web.Http.Owin.dll">
+      <publishTime>05/27/2016 11:50:01</publishTime>
+    </File>
+    <File Include="Reference/wkhtmltopdf.exe">
+      <publishTime>05/27/2016 11:50:47</publishTime>
+    </File>
+    <File Include="Service References/BusinessLocation/BusinessCenter.Api.BusinessLocation.ReturnObject.datasource">
+      <publishTime>05/27/2016 14:44:32</publishTime>
+    </File>
+    <File Include="Service References/BusinessLocation/BusinessCenter.Api.BusinessLocation.submitReturnObj.datasource">
+      <publishTime>05/27/2016 14:44:32</publishTime>
+    </File>
+    <File Include="Templates/EHOP_Permit[2].pdf">
+      <publishTime>05/27/2016 11:50:48</publishTime>
+    </File>
+    <File Include="Templates/Template of BBL, License Renewal Template, License Renewal Instructions 091515.pdf">
+      <publishTime>05/27/2016 11:50:48</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/23/2016 09:57:37</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

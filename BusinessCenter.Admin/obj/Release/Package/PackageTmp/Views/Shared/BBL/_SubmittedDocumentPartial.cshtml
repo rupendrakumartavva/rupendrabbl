@@ -1,0 +1,213 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Data.BblLicenseView4>
+<div id="example_wrapper" class="dataTables_wrapper">
+    <div class="table table-responsive" style="overflow: hidden;">
+        <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="documentstable" role="grid">
+            <thead>
+                <tr>
+                    <th class="text-center">License/Application#</th>
+                    <th class="text-center">File</th>
+                    <th class="text-center">License Categories</th>
+                    @*<th class="text-center">Division Full Name</th>*@
+                    <th class="text-center">Short Document Name</th>
+                    <th class="text-center">Supporting Documents</th>
+                    <th class="text-center">Created Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="8">No record(s) found</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="tablerow tabrow text-center">
+                            <td class="col2-tab col2 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="paracol2 paratabcol2">
+                                    <span>
+
+                                       @Html.ActionLink(item.Application_License_No_, "DocumentDetails", "BBL", new { appId = item.APPID }, new { @class = "bus-details" })
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col2-tab col2 Superadmingrid usercol">
+                                <p style="font-size: 12px;" class="paracol2 paratabcol2" >
+                                    <span>
+                                      
+                                       @*@Html.ActionLink(@item.FileName, "Download", "BBL", new { fileId = @item.FileName }, new { target = "_blank" })*@
+                                        <a href="javascript:void(0)" onclick="DownloadPdf( '@item.FileName') " title="View" >
+                                            @Html.Image("~/images/pdf.png", "pdf")
+                                        </a>
+                                    </span>
+                                </p>
+                            </td>
+
+                            <td class="col2-tab col2 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="paracol2 paratabcol2">
+                                    <span>
+                                        @item.CategoryName
+
+                                    </span>
+                                </p>
+                            </td>
+
+                            @*<td class="col2-tab col2 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="paracol2 paratabcol2">
+                                    <span>
+                                     
+                                        @(String.IsNullOrEmpty(item.DivisionFullName) ? "NA" : item.DivisionFullName)
+                                    </span>
+                                </p>
+                            </td>*@
+
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="">
+                                    <span>
+                                        @item.ShortDocName
+
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col2-tab col2 Superadmingrid usercol">
+                                <p style="font-size: 14px;" class="paracol2 paratabcol2">
+                                    <span>
+                                        @item.SupportingDocuments
+
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col2-tab col2 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="paracol2 paratabcol2">
+                                    <span>
+                                        @Convert.ToDateTime(item.UpDated_Date).ToString("MM/dd/yyyy")
+                                       
+                                       
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+@if (Model.Count() == 0)
+{
+
+}
+else
+{
+    
+    <script type="text/javascript" class="init">
+    var tableData = '';
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#documentstable').DataTable({
+            "ordering": false,
+            "pageLength": 15,
+            stateSave: true
+        });
+        $("#documentstable_length").hide();
+        $("#documentstable_filter").hide();
+        if ($('#documentstable td').attr('colspan') == '8') {
+            $("#documentstable_info").hide();
+            $("#documentstable_paginate").hide();
+        } else {
+        }
+    });
+
+    $(" #btnCreate").on('click', function (e) {
+        tableData.state.clear();
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('businessActivities') || $(this).hasClass('paginate_button') || $(this).hasClass('updatebusinessactivity') || $(this).hasClass('activestatus')) {
+        } else {
+            //console.log("working");
+            //alert("working");
+            tableData.state.clear();
+        }
+    });
+
+    function clearTableState() {
+        tableData.state.clear();
+    }
+
+    $("#edit-btn").click(function () {
+        $("#btncreate").text("Update");
+        $("#btncreate").text("Update");
+    });
+    </script>
+    
+    
+    
+    <script>
+        function DownloadPdf(param1)
+        {
+            $.ajax({
+                url: '/Account/ValidateConcurrentLogin',
+                type: 'Get',
+                cache: false,
+                //data: { AllData: $('#InActive').val() },
+                success: function (data) {
+                    if (data == 'TRUE') {
+                      window.open('/BBL/Download?fileId=' + param1, '_blank');
+                    }
+                    else {
+                       window.location.href = '/Account/SessionExpiry';
+                    }
+                },
+                error: function () {
+                }
+            });
+
+
+
+
+           
+        }
+
+      
+
+    </script>
+}
+
+
+
+
+

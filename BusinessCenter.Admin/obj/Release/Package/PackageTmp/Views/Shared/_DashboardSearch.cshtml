@@ -1,0 +1,453 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.DashBoardViewModel
+
+<div class="clearfix">
+    <div class="form-group clearfix">
+        <div class="col-md-7">
+
+            <label class="col-md-4 col-sm-4 col-lg-3" style="font-size:14px; font-style:normal">Filter By Date : </label>
+
+            <div class="col-md-6">
+
+                <div class='input-group date dtpicker sm-datepicker' id='datetimepicker1'>
+                    <input type='text' class="srchdate" name="searchdate" id="datepicker" style="font-weight:bold;" placeholder="MM/DD/YYYY" />
+                    <span class="input-group-addon sm-datepicker">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group clearfix">
+        <div class="col-xs-12 col-md-12 no-pad filters" style="margin-bottom: 20px;">
+            <div class="col-md-12">
+                <div class="col-md-1" style="font-size: 14px; width: 114px; text-align: center; margin-left: 35px">
+                    <label style="font-size: 14px; font-style: normal; padding-top: 4px">Filter : </label>
+                </div>
+                <div class="col-md-10" style="text-align: left; margin-left: -35px">
+                    @foreach (var item in Model.KeywordCount)
+                {
+                    var lince = false;
+                    if (@item.Businesscount == "0")
+                    {
+                <input type="submit" value="Business Name  (@Html.DisplayFor(modelItem => item.Businesscount, new {@readonly = true}))" id="btnBusinessName1" name="BusinessName" disabled class="mouseAuto" style="margin-left: -2px" />
+                    }
+                    else
+                    {
+                <input type="submit" value="Business Name  (@Html.DisplayFor(modelItem => item.Businesscount))" id="btnBusinessName" name="BusinessName" class="searchbutn" style="margin-left: -2px" />
+                    }
+
+                    if (@item.Licensecount == "0")
+                    {
+                <input type="submit" disabled value="License Number  (@Html.DisplayFor(modelItem => item.Licensecount, new {@readonly = true}))" id="BBL1" name="LicenseNumber" class="mouseAuto" />
+                    }
+                    else
+                    {
+                <input type="submit" value="License Number  (@Html.DisplayFor(modelItem => item.Licensecount))" id="BBL" name="LicenseNumber" class="searchbutn" />
+                    }
+
+                    if (@item.Firstnamecount == "0")
+                    {
+                <input type="submit" value="First Name  (@Html.DisplayFor(modelItem => item.Firstnamecount))" id="btnFirstName1" disabled name="FirstName" class="mouseAuto" />
+                    }
+                    else
+                    {
+                <input type="submit" value="First Name  (@Html.DisplayFor(modelItem => item.Firstnamecount))" id="btnFirstName" name="FirstName" class="searchbutn" />
+                    }
+
+                    if (@item.Lastnamecount == "0")
+                    {
+                <input type="submit" value="Last Name  (@Html.DisplayFor(modelItem => item.Lastnamecount))" id="btnLastName1" disabled name="LastName" class="mouseAuto" />
+                    }
+                    else
+                    {
+                <input type="submit" value="Last Name  (@Html.DisplayFor(modelItem => item.Lastnamecount))" id="btnLastName" name="LastName" class="searchbutn" />
+                    }
+
+
+
+                }
+                    <input type="submit" value="CLEAR FILTER" id="btnClear" name="Clear All" disabled="disabled" class="mouseAuto" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+       
+            <div id="BusinessName">
+                <div class="center" style="text-align: center; width: 100%; height: 200px; vert-align: middle; margin-top: 125px;">
+                    <p style="color: dodgerblue; font-weight: 400;">
+                        Please wait... <img src="../images/camera-loader.gif" alt="not showing"/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+  
+    <style>
+        .active {
+            background-color: #114f7f !important;
+        }
+    </style>
+<script>
+    var searchButtonClicked = '';
+    $(document).ready(function () {
+      
+        if (localStorage.getItem("selectedSearchType") !== null) {
+            searchButtonClicked = JSON.parse(localStorage.getItem('selectedSearchType'));
+            console.log("ready event " + searchButtonClicked);
+            if (searchButtonClicked === 'btnBusinessName') {
+                BusinessName();
+            }
+            else if (searchButtonClicked === 'BBL') {
+                LicenseNumber();
+            }
+            else if (searchButtonClicked === 'btnFirstName') {
+                FirstName();
+            }
+            else if (searchButtonClicked === 'btnLastName') {
+                LastName();
+            }
+            else if (searchButtonClicked === 'btnClear') {
+                Displayall();
+            }
+
+        } else {
+            Displayall();
+        }
+    });
+
+    function Displayall() {
+        $("#datepicker").val("");
+        $.ajax({
+            url: '/Account/DashboardSearchitem',
+            type: 'Get',
+            cache: false,
+            data: { type: 'ALL' },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#BusinessName").empty().append(data);
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function BusinessName() {
+        $("#datepicker").val("");
+        $.ajax({
+            url: '/Account/DashboardSearchitem',
+            type: 'Get',
+            cache: false,
+            data: { type: 'BusinessName' },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#BusinessName").empty().append(data);
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+
+    $("#btnBusinessName").click(function () {
+        RemoveActivefrmbtns();
+        $("#btnBusinessName").toggleClass('active');
+        $("#btnClear").removeClass('mouseAuto');
+        $("#btnClear").addClass('searchbutn  clr-btn');
+        $("#btnClear").removeAttr("disabled", "disabled");
+    });
+
+    $("#BBL").click(function () {
+        RemoveActivefrmbtns();
+        $("#btnClear").removeClass('mouseAuto');
+        $("#btnClear").addClass('searchbutn  clr-btn');
+        $("#BBL").toggleClass('active');
+        $("#btnClear").removeAttr("disabled", "disabled");
+    });
+    $("#btnFirstName").click(function () {
+        RemoveActivefrmbtns();
+        $("#btnClear").removeClass('mouseAuto');
+        $("#btnClear").addClass('searchbutn  clr-btn');
+        $("#btnFirstName").toggleClass('active');
+        $("#btnClear").removeAttr("disabled", "disabled");
+    });
+    $("#btnLastName").click(function () {
+        RemoveActivefrmbtns();
+        $("#btnLastName").toggleClass('active');
+        $("#btnClear").removeAttr("disabled", "disabled");
+    });
+    $("#btnClear").click(function () {
+        Removeall();
+        $("#btnClear").removeClass('searchbutn  clr-btn');
+        $("#btnClear").addClass('mouseAuto');
+        $("#btnClear").attr("disabled", "disabled");
+        //$("#btnClear").toggleClass('active');
+    });
+    function Removeall() {
+        $("#btnBusinessName").removeClass('active');
+        $("#BBL").removeClass('active');
+        $("#btnFirstName").removeClass('active');
+        $("#btnLastName").removeClass('active');
+    }
+    function RemoveActivefrmbtns() {
+        $("#btnBusinessName").removeClass('active');
+        $("#BBL").removeClass('active');
+        $("#btnFirstName").removeClass('active');
+        $("#btnLastName").removeClass('active');
+        $("#btnClear").removeClass('active');
+    }
+
+        $(function () {
+            $('#datetimepicker1').val();
+            $('#datetimepicker1').datetimepicker({
+
+                useCurrent: false,
+                format: 'MM/DD/YYYY',
+
+                //up: 'glyphicon glyphicon-chevron-up',
+                //down: 'glyphicon glyphicon-chevron-down',
+                //left: 'glyphicon glyphicon-chevron-left',
+                //right: 'glyphicon glyphicon-chevron-right'
+            });
+            $('#datetimepicker1').on("dp.change", function (e) {
+                $("#BusinessName").empty();
+                $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                SelectDate();
+                RemoveActivefrmbtns();
+                $("#btnClear").removeClass('mouseAuto');
+                $("#btnClear").addClass('searchbutn  clr-btn');
+
+                $("#btnClear").removeAttr("disabled", "disabled");
+            });
+        });
+
+
+
+
+        //$(document).ready(function() {
+        //    $('#dateRangePicker')
+        //        .datepicker({
+        //            format: 'mm/dd/yyyy',
+        //            startDate: '01/01/2010',
+        //            endDate: '12/30/2020'
+        //        })
+        //        .on('changeDate', function(e) {
+        //            // Revalidate the date field
+        //            $('#dateRangeForm').formValidation('revalidateField', 'date');
+        //        });
+
+        //    $('#dateRangeForm').formValidation({
+        //        framework: 'bootstrap',
+        //        icon: {
+        //            valid: 'glyphicon glyphicon-ok',
+        //            invalid: 'glyphicon glyphicon-remove',
+        //            validating: 'glyphicon glyphicon-refresh'
+        //        },
+        //        fields: {
+        //            date: {
+        //                validators: {
+        //                    notEmpty: {
+        //                        message: 'The date is required'
+        //                    },
+        //                    date: {
+        //                        format: 'MM/DD/YYYY',
+        //                        min: '01/01/2010',
+        //                        max: '12/30/2020',
+        //                        message: 'The date is not a valid'
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    });
+        //});
+
+
+        function SelectDate() {
+
+            $.ajax({
+                url: '/Account/DashboardSearchdate',
+                type: 'Get',
+                cache: false,
+                data: { searchdate: $("input[name=searchdate]").val() },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#BusinessName").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        $("#datepicker").keyup(function () {
+
+            // var pattern = /^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;
+            var dtRegex = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
+            if ($("#datepicker").val().length == 10) {
+                checkDate();
+
+                if (dtRegex.test($("#datepicker").val())) {
+                    $("#BusinessName").empty();
+                    $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                    SelectDate();
+
+                }
+                else {
+                    alert("invalid date");
+                }
+
+            }
+            if ($("#datepicker").val() == "") {
+                $("#BusinessName").empty();
+                $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                Displayall();
+            }
+
+        });
+
+        function checkDate() {
+            var EnteredDate = $("#datepicker").val(); // For JQuery
+            var date = EnteredDate.substring(0, 2);
+            var month = EnteredDate.substring(3, 5);
+            var year = EnteredDate.substring(6, 10);
+            var myDate = new Date(year, month - 1, date);
+            var today = new Date();
+            if (myDate > today) {
+                //  alert("Entered date is greater than today's date ");
+                return false;
+            }
+            else {
+                // alert("Entered date is less than today's date ");
+            }
+        }
+        $("#btnBusinessName").click(function () {
+            $("#BusinessName").empty();
+            $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            BusinessName();
+        });
+        $("#BBL").click(function () {
+            $("#BusinessName").empty();
+            $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            LicenseNumber();
+        });
+        $("#btnFirstName").click(function () {
+            $("#BusinessName").empty();
+            $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            FirstName();
+        });
+        $("#btnLastName").click(function () {
+            $("#BusinessName").empty();
+            $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            LastName();
+        });
+        $("#btnClear").click(function () {
+            $("#BusinessName").empty();
+            $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            Displayall();
+        });
+      
+        $("#datepicker").change(function () {
+            if ($("#datepicker").val() == "") {
+                $("#BusinessName").empty();
+                $("#BusinessName").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                Displayall();
+            }
+            //else {
+            //    Searchdate();
+            //}
+        });
+     
+        function LicenseNumber() {
+            $("#datepicker").val("");
+            $.ajax({
+                url: '/Account/DashboardSearchitem',
+                type: 'Get',
+                cache: false,
+                data: { type: 'LicenseNumber' },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#BusinessName").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        function FirstName() {
+            $("#datepicker").val("");
+            $.ajax({
+                url: '/Account/DashboardSearchitem',
+                type: 'Get',
+                cache: false,
+                data: { type: 'FirstName' },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#BusinessName").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        function LastName() {
+            $("#datepicker").val("");
+            $.ajax({
+                url: '/Account/DashboardSearchitem',
+                type: 'Get',
+                cache: false,
+                data: { type: 'LastName' },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#BusinessName").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        
+        function Searchdate() {
+
+            $.ajax({
+                url: '/Account/DashboardSearchdate',
+                type: 'Get',
+                cache: false,
+                data: { searchdate: $("#datepicker").val() },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#BusinessName").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+    <style>
+        .mouseAuto {
+            cursor: auto !important;
+        }
+    </style>

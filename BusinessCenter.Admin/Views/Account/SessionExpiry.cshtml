@@ -1,0 +1,32 @@
+﻿@model BusinessCenter.Admin.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "DCRA - Session Expired";
+}
+<script type="text/javascript">
+    localStorage.Lgoggein = false;
+    localStorage.ApplicationStart = false;
+    localStorage.UserRole = '';
+    localStorage.setItem("superAdminRadio", null);
+    localStorage.setItem("managerRadio", null);
+    localStorage.setItem("adminRadio", null);
+    localStorage.setItem("userRadio", null);
+</script>
+
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row" style="margin-bottom: 10px;">
+            <br />
+            <h2 tabindex="0" id="Session_Expired">Session Expired</h2>
+
+        </div>
+    </div>
+</div>
+<div class="login_form register_form" style="min-height: 374px;">
+    <div class="container">
+        <span>Someone else has logged in to this portal using the same credentials. Please check and try logging in again.</span>
+        <br />
+        <span>Please @Html.ActionLink("Click here", "Login", "Account") to Login</span>
+    </div>
+</div>

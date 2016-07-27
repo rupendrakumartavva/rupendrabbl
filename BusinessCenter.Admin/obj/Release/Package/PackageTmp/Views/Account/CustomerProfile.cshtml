@@ -1,0 +1,349 @@
+﻿@model BusinessCenter.Admin.Models.RegisterJsonModel
+@{
+    ViewBag.Title = "DCRA - Customer Profile";
+}
+@if (Session["UserName"] != null)
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container headerBreadcrumb">
+        @if ((int)Session["Admincount"] == 2)
+        {
+            @Html.ActionLink("Home", "CustomerHome", "Admin")
+        }
+        else if ((int)Session["Admincount"] == 3)
+        {
+            @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        }
+        else if ((int)Session["Admincount"] == 4)
+        {
+
+            @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        }
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @if ((int)Session["Admincount"] == 2)
+        {
+            @Html.ActionLink("Business Center Admin Portal", "CustomerHome", "Admin")
+        }
+        else if ((int)Session["Admincount"] == 3)
+        {
+            @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        }
+        else if ((int)Session["Admincount"] == 4)
+        {
+            @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        }
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Customer", "CustomerHome", "Admin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Profile</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" id="userid">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) Profile</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form user_profile">
+        <div class="container">
+            <div class="row">
+                <div class="form_wrapper  prof-err-placement">
+                    <form id="contact_us" name="contact_us">
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 text-center ">
+                                    <p>@Html.HiddenFor(Model => Model.UserId)</p>
+                                    <p>@Html.HiddenFor(Model => Model.UserName)</p>
+                                    <p>@Html.HiddenFor(Model => Model.Email)</p>
+                                    @Html.Hidden("hiddenuserid", (object)Session["ProfileUserId"], new { id = "UserId" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        @Html.EditorFor(model => model.UserName, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled",
+                                               id = "username"
+                                           }
+                                       })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Primary Email</label>
+                                        @Html.EditorFor(model => model.Email, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled",
+                                               id = "email"
+                                           }
+                                       })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        @Html.EditorFor(model => model.FirstName, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           @readonly = "readonly",
+                                           disabled = "disabled",
+                                           id = "firstname"
+                                       }
+                                   })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        @Html.EditorFor(model => model.LastName, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           @readonly = "readonly",
+                                           disabled = "disabled",
+                                           id = "lastname"
+                                       }
+                                   })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section change-password">
+                            <p class="forgot">Security Questions</p>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label style="margin-bottom: 17px">Question 1</label>
+                                        <br />
+                                        <span class="questions">
+                                            <strong>
+                                                @Html.DisplayFor(model => model.SecurityQuestion1, new SelectList(ViewBag.Questions, "Question",
+                                                    "Question", ViewBag.Sq1, new { htmlAttributes = new { } }))
+                                            </strong>
+                                        </span>
+                                        @Html.HiddenFor(model => model.SecurityQuestion1)
+                                        @Html.ValidationMessageFor(model => model.SecurityQuestion1, "", new { @class = "text-danger" })
+                                        @Html.Hidden("hiddensq1", (object)ViewBag.Sq1, new { id = "sq1" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Answer 1 </label>
+                                        @Html.EditorFor(model => model.SecurityAnswer1, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            @readonly = "readonly",
+                                            disabled = "disabled",
+                                            id = "sa1"
+                                        }
+                                    })
+                                        @Html.HiddenFor(model => model.SecurityAnswer1)
+                                        @Html.ValidationMessageFor(model => model.SecurityAnswer1, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label style="margin-bottom: 17px">Question 2 </label>
+                                        <br />
+                                        <strong>
+                                            @Html.DisplayFor(model => model.SecurityQuestion2, new SelectList(ViewBag.Questions, "Question",
+                                            "Question", ViewBag.Sq2, new { htmlAttributes = new { } }))
+                                        </strong>
+                                        @Html.HiddenFor(model => model.SecurityQuestion2)
+                                        @Html.Hidden("hiddensq2", (object)ViewBag.Sq2, new { id = "sq2" })
+                                        @Html.ValidationMessageFor(model => model.SecurityQuestion2, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Answer 2 </label>
+                                        @Html.EditorFor(model => model.SecurityAnswer2, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            @readonly = "readonly",
+                                            disabled = "disabled",
+                                            id = "sa2"
+                                        }
+                                    })
+                                        @Html.HiddenFor(model => model.SecurityAnswer2)
+                                        @Html.ValidationMessageFor(model => model.SecurityAnswer2, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label style="margin-bottom: 17px">Question 3 </label>
+                                        <br />
+                                        <strong>
+                                            @Html.DisplayFor(model => model.SecurityQuestion3, new SelectList(ViewBag.Questions, "Question",
+                                            "Question", ViewBag.Sq3, new { htmlAttributes = new { } }))
+                                        </strong>
+                                        @Html.HiddenFor(model => model.SecurityQuestion3)
+                                        @Html.Hidden("hiddensq3", (object)ViewBag.Sq3, new { id = "sq3" })
+                                        @Html.ValidationMessageFor(model => model.SecurityQuestion3, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Answer 3</label>
+                                        @Html.EditorFor(model => model.SecurityAnswer3, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            @readonly = "readonly",
+                                            disabled = "disabled",
+                                            id = "sa3"
+                                        }
+                                    })
+                                        @Html.HiddenFor(model => model.SecurityAnswer3)
+                                        @Html.ValidationMessageFor(model => model.SecurityAnswer3, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        @Html.RadioButtonFor(model => model.IsDelete, "false", new { id = "active" }) Active
+                                        @Html.RadioButtonFor(model => model.IsDelete, "true", new { id = "inactive" }) Inactive
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if ((int)Session["Admincount"] == 3 || (int)Session["Admincount"] == 2)
+                        {
+                            <div class="col-xs-12">
+                                <div class="center_div">
+                                    <button id="btnUpdate" class="btn btn-default" tabindex="69">Save & Update</button>
+                                </div>
+                            </div>
+                        }
+                        @if ((int)Session["Admincount"] == 4)
+                        {
+                            <div class="col-xs-12">
+                                <div class="center_div">
+                                    <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Customers </button>
+                                </div>
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade profilemodaldiv" id="profilemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body profilemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your profile is updated
+        // You have not made any changes to your profile. If needed, please do changes and then click on [SAVE & UPDATE]
+        $("#btnUpdate").click(function (e) {
+            e.preventDefault();
+            console.log("hi console");
+            //  now trigger the form validation, result is 1 or 0
+            var result = $('form').valid();
+            if (result == 1) {
+                UpdateAccount();
+            }
+        });
+        function UpdateAccount() {
+            var gblstatus;
+            if ($('#active').is(':checked')) {
+                gblstatus = false;
+            }
+            else if ($('#inactive').is(':checked')) {
+                gblstatus = true;
+            }
+
+            var profiledata = {
+                UserId: $("#UserId").val(),
+                UserName: $("#username").val(),
+                Email: $("#email").val(),
+                FirstName: $("#firstname").val(),
+                LastName: $("#lastname").val(),
+                SecurityQuestion1: $("#sq1").val(),
+                SecurityQuestion2: $("#sq2").val(),
+                SecurityQuestion3: $("#sq3").val(),
+                SecurityAnswer1: $("#sa1").val(),
+                SecurityAnswer2: $("#sa2").val(),
+                SecurityAnswer3: $("#sa3").val(),
+                IsDelete: gblstatus
+            };
+            $.ajax({
+                url: '/Account/CustomerProfile',
+                type: "Post",
+                data: profiledata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+        function editSuccess(data) {
+            var sessionId = $(data).find('#Session_Expired').text();
+            if (sessionId == 'Session Expired') {
+                window.location.href = '/Account/SessionExpiry';
+            } else {
+                userid.innerHTML = $("#firstname").val() + " " + $("#lastname").val() + " " + "Profile";
+            }
+        }
+        function editFailure(data) {
+        }
+
+        $("#btnBack").click(function (e) {
+            e.preventDefault();
+            window.location.href = "/Admin/CustomerHome";
+        });
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}

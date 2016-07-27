@@ -1,0 +1,355 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.SecondaryViewModel
+@{
+    ViewBag.Title = "DCRA - Secondary Categories";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("BBL", "ApplicationReview", "BBL")*@
+         <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Metadata</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Activity", "BusinessActivities", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = @ViewBag.activityId }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Secondary Category</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Secondary License Category</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form">
+        <div class="container">
+            <div class="clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group ">
+                        Primary Category Name:
+                        <strong>
+                            @ViewBag.PrimaryName
+                        </strong>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                @if ((int) Session["Admincount"] == 3)
+                {
+                    <div class="form_wrapper reg-err-placement" id="secondary-add">
+
+                    </div>
+                }
+            </div>
+          
+            <div id="Content" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                <div class="center" style="text-align: center; width: 100%; height: 200px; vert-align: middle; margin-top: 125px;">
+                    <p style="color: dodgerblue; font-weight: 400;">
+                        Please wait... <img src="~/images/camera-loader.gif" alt="not showing" />
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                    <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Primary Category</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade homemodaldiv" id="Homemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="yesbutton">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message' id="modelerror"> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="okbtn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .resetkeyimglink img {
+            width: 28px;
+            height: 28px;
+        }
+    </style>
+
+
+    <script>
+        //$(".yes-btn").on("click", function () {
+        //    $("#txtSearch").val("");
+        //    $('#registermodal-container').modal('hide');
+        //    GetAll();
+        //});
+        $("#btnBack").click(function () {
+            var url1 = window.location.href;
+            //var activityId = url1.substring(url1.firstIndexOf('=') + 1);
+            var primaryId = url1.substring(url1.lastIndexOf('=') + 1);
+            //var url = "/BBL/PrimaryCategories?activityId=" + primaryId + "&" + "type=" + "primary";
+            var url = "/BBL/PrimaryCategories?activityId=" + '@ViewBag.activityId';
+            window.location.href = url;
+        });
+    </script>
+    <script type="text/javascript">
+        $(":input").on("focus", function () {
+            msg.innerHTML = "";
+        });
+        $(document).ready(function () {
+            $("#Content").empty();
+            $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAll();
+            GetSecondaryCategory();
+
+        });
+        function ShowDocuments(id) {
+            //  var url = "/BBL/CategoryFees?id=" + primaryid + "&" + "type=" + "primary";
+            var url = "/BBL/Documents?categoryId=" + id + "&" + "type=" + "secondary";
+            window.location.href = url;
+        }
+        function GetAll() {
+
+            var url = window.location.href;
+            var id = url.substring(url.lastIndexOf('=') + 1);
+            $.ajax({
+                url: '/BBL/SecondaryCategoriesGridPartial',
+                type: 'Get',
+                cache: false,
+                data: { primaryId: id },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Content").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetSecondaryCategory() {
+            $.ajax({
+                url: '/BBL/SecondaryCategoryAddPartial',
+                type: 'Get',
+                cache: false,
+                //data: {primaryId: $('#').val() },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#secondary-add").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+        function UpdateSecondaryCategory(id) {
+            $.ajax({
+                url: '/BBL/UpdateSecondaryCategoryPartial',
+                type: 'Get',
+                cache: false,
+                data: { secondaryId: id },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#secondary-add").empty().append(data);
+                    setTimeout(function () { element.focus(); }, 0);
+                    window.scrollTo(0, 200);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        $("#btnClear").click(function (e) {
+            e.preventDefault();
+            $("#secondarylicense").val("");
+        });
+
+        var secondaryid;
+        var status;
+
+        function ShowDialog(id) {
+            $('.homemodal-body h3.error_message').empty().append('Are you sure you want to deactivate this Secondary Category?');
+            // Do not show this confirmation pop up again for the Current session.
+            $('.homemodaldiv').modal('show');
+            secondaryid = id;
+            status = false;
+        }
+        function ShowUpdate(id) {
+            $('.homemodal-body h3.error_message').empty().append('Are you sure you want to activate this Secondary Category?');
+            // Do not show this confirmation pop up again for the Current session.
+            $('.homemodaldiv').modal('show');
+            secondaryid = id;
+            status = true;
+
+        }
+        $("#okbtn").on("click", function () {
+            $("#txtSearch").val("");
+            $('#registermodal-container').modal('hide');
+            GetSecondaryCategory();
+            GetAll();
+        });
+        $("#yesbutton").on("click", function () {
+
+            $('#Homemodal-container').modal('hide');
+
+            var id = secondaryid;
+            var type = status;
+            DeleteActivity(id, type);
+
+
+
+        });
+        function DeleteActivity(id, type) {
+            var SecondaryCategories = {
+                SecondaryID: id,
+                Status: type
+            };
+
+            $.ajax({
+                url: '/BBL/DeleteSecondaryCategory',
+                type: "Post",
+                cache: false,
+                //data: { activityId: id },
+                data: SecondaryCategories,
+                success: function (data) {
+                    if (data.status == "SessionExipred") {
+                        window.location.href = '/Account/SessionExpiry';
+                    }
+                   else {
+                        GetAll();
+}
+                },
+                error: function (data) {
+                    console.log(JSON.stringify(data));
+                }
+            });
+        }
+    </script>
+    <script>
+        function GetAllSecondaries(primarydescr) {
+
+            $.ajax({
+                url: '/BBL/SecondaryCategoriesGridPartial',
+                type: 'Get',
+                cache: false,
+                data: { primaryName: primarydescr },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#Content").empty().append(data);
+                    $("form").removeData("validator");
+                    $("form").removeData("unobtrusiveValidation");
+                    $.validator.unobtrusive.parse("form");
+}
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+    <script>
+        function ShowFees(secondaryid) {
+
+            var url = "/BBL/CategoryFees?id=" + secondaryid + "&" + "type=" + "secondary";
+            window.location.href = url;
+        }
+    </script>
+    <style>
+        .dataTables_wrapper .dataTables_paginate {
+            padding-top: 0.55em !important;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                padding: 0em 0em !important;
+            }
+
+        .paginate_button .previous {
+            font-size: 19px !important;
+        }
+
+        .paginate_button .next {
+            font-size: 19px !important;
+        }
+
+        .dataTables_paginate .paging_simple_numbers {
+            font-size: 19px !important;
+        }
+
+        .login_form a {
+            font-size: 19px !important;
+        }
+
+        table.dataTable {
+            /*border-collapse: collapse !important;*/
+        }
+
+            /*table.dataTable thead th, table.dataTable thead td {
+                                        border: 1px solid #ddd;
+                                    }*/
+
+            table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+            }
+
+        .login_form p {
+            margin-bottom: 0;
+        }
+    </style>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

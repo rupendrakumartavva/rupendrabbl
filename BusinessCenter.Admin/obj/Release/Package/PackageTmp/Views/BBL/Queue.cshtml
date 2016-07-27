@@ -1,0 +1,265 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Data.SubmissiontoAccela>
+@{
+    ViewBag.Title = "DCRA - Application Details";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">BBL</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Queue</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Application Details</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form">
+        <div class="container">
+            <div class="clearfix ">
+                <div class="row ">
+                    <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-group ">
+                            @*@Html.EditorFor(model => model.registerUserModel.UserName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "username",
+                                       name = "username",
+                                       placeholder = "Keyword",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Keyword'"
+                                   }
+                               })*@
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="" style="background-color:#fff;">
+                <ul class="nav nav-tabs" id="queue-tab-nav">
+                    <li class="active" ><a data-toggle="tab" href="#home">All Submissions</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Licenses/Applications</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Renewals</a></li>
+                    <li><a data-toggle="tab" href="#menu3">Documents</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        @*<h3>Applications Content</h3>
+            <p>Some content.</p>*@
+                        <div class="row ">
+                            <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-6">
+                                <input type="text" id="keywordAllSubmissions" name="keywordsearch" class="form-control" placeholder="Enter Keyword" />
+                                </div>
+                            </div>
+
+                                <div id="Applications" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                                    <div class="center" style="text-align: center; width: 100%; height: 200px; vert-align: middle; margin-top: 125px;">
+                                        <p style="color: dodgerblue; font-weight: 400;">
+                                            Please wait... <img src="~/images/camera-loader.gif" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <div class="row ">
+                                    <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-6">
+                                        <input type="text" id="keywordBusinessLicense" name="keywordsearch" class="form-control" placeholder="Enter Keyword" />
+                                    </div>
+                                </div>
+
+
+                                <div id="BusinessLicense" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                                    <div class="center" style="text-align: center; width: 100%; height: 200px; vert-align: middle; margin-top: 125px;">
+                                        <p style="color: dodgerblue; font-weight: 400;">
+                                            Please wait... <img src="~/images/camera-loader.gif" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <div class="row ">
+                                    <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-6">
+                                        <input type="text" id="keywordRenewals" name="keywordsearch" class="form-control" placeholder="Enter Keyword" />
+                                    </div>
+                                </div>
+                                <div id="Renewals" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                                    <div class="center" style="text-align: center; width: 100%; height: 200px; vert-align: middle; margin-top: 125px;">
+                                        <p style="color: dodgerblue; font-weight: 400;">
+                                            Please wait... <img src="~/images/camera-loader.gif" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="menu3" class="tab-pane fade">
+                                <div class="row ">
+                                    <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-6">
+                                        <input type="text" id="keywordDocuments" name="keywordsearch" class="form-control" placeholder="Enter Keyword" />
+                                    </div>
+                                </div>
+                                <div id="Documents" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                                    <div class="center" style="text-align: center; width: 100%; height: 200px; vert-align: middle; margin-top: 125px;">
+                                        <p style="color: dodgerblue; font-weight: 400;">
+                                            Please wait... <img src="~/images/camera-loader.gif" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Applications").empty();
+            $("#Applications").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllApplications();
+
+            $("#BusinessLicense").empty();
+            $("#BusinessLicense").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllBusinessLicenses();
+
+            $("#Renewals").empty();
+            $("#Renewals").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllRenewals();
+
+            $("#Documents").empty();
+            $("#Documents").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllDocuments();
+        });
+
+        $("#keywordAllSubmissions").keyup(function () {
+            $("#Applications").empty();
+            $("#Applications").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllApplications();
+        });
+
+        $("#keywordBusinessLicense").keyup(function () {
+            $("#BusinessLicense").empty();
+            $("#BusinessLicense").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllBusinessLicenses();
+        });
+
+        $("#keywordRenewals").keyup(function () {
+            $("#Renewals").empty();
+            $("#Renewals").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllRenewals();
+        });
+
+        $("#keywordDocuments").keyup(function () {
+            $("#Documents").empty();
+            $("#Documents").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+            GetAllDocuments();
+        });
+
+        function GetAllApplications() {
+            $.ajax({
+                url: '/BBL/SubmissionAccelaApplicationsPartial',
+                type: 'Get',
+                cache: false,
+                data: { searchText: $('#keywordAllSubmissions').val() },
+                success: function (data) {
+
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Applications").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetAllBusinessLicenses() {
+            $.ajax({
+                url: '/BBL/BusinessLicensePartial',
+                type: 'Get',
+                cache: false,
+                data: { searchText: $('#keywordBusinessLicense').val() },
+                success: function (data) {
+
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#BusinessLicense").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetAllRenewals() {
+            $.ajax({
+                url: '/BBL/RenewalsLicensePartial',
+                type: 'Get',
+                cache: false,
+                data: { searchText: $('#keywordRenewals').val() },
+                success: function (data) {
+
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Renewals").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetAllDocuments() {
+            $.ajax({
+                url: '/BBL/SubmittedDocumentPartial',
+                type: 'Get',
+                cache: false,
+                data: { searchText: $('#keywordDocuments').val() },
+                success: function (data) {
+
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Documents").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+
+    </script>
+
+
+
+
+
+
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+

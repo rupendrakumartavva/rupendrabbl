@@ -1,0 +1,178 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="home_welcome scr_title">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-7 col-xs-12">
+				<h2 tabindex="0">				
+					Get your DC business off the ground the right way. Use this site for comprehensive government information about business incorporation, business licensing, and everything in between. <a ng-click="navToAbout()" href="javascript:void(0)">Learn more &raquo;</a>
+				</h2>				 
+			</div>
+			<div class="col-md-4 col-sm-5 hidden-xs">
+				<img src="images/dc_home_welcome_img.png" alt="DC Open For Business" class="img-responsive">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="block-views-business-links-home-page-block">
+	<div class="container">
+		<div class="row highlights">
+			<div class="col-md-3 col-sm-3 col-xs-12 column">	
+				<div class="column_inner">
+					<a href="#">
+						<img alt="" src="images/dc_start_business_flag.png" class="img-responsive" />
+						<h3>Start a Business</h3>
+						<p>DC is open for business!&nbsp;Start or expand your business in the Nation's Capital.</p>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12 column">	
+				<div class="column_inner">
+					<a href="#">
+						<img alt="" src="images/dc_maintain_business_clipboard.png" class="img-responsive" />
+						<h3>Maintain Your Business </h3>
+						<p>How can we help you maintain and grow up your DC Business.</p>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12 column">	
+				<div class="column_inner">
+					<a ng-click="navToLookup()" href="javascript:void(0)">
+						<img alt="" src="images/dc_lookup_search.png" class="img-responsive" />
+						<h3>Lookup Business Info </h3>
+						<p>Looking for regulatory information on a DC Business? Find it here.</p>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12 column">	
+				<div class="column_inner">
+					<a ng-click="navToLogin()" href="javascript:void(0)">
+						<img alt="" src="images/portfolio.png" class="img-responsive" />
+						<h3>my dc business center</h3>
+						<p>Create a personalized space to apply for, renew and track business licenses, registrations and certificates.</p>
+					</a>
+				</div>
+			</div>
+		 </div>
+	</div>
+</div>
+<div class="video_section hidden-lg hidden-md" tabindex="0" aria-labelledby="video_desc">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 hidden-xs no-pad-left mayor"><img src="images/mayor.png" class="img-responsive"></div>
+			<div class="col-sm-4">
+				<h2>We've made it easy to do business in the Nation's Capitol.</h2>							
+				<button class="btn btn-default read_btn">Read More</button>
+			</div>
+			<div class="col-sm-4 hidden-xs no-pad-right malinda"><img src="images/melinda.png" class="img-responsive"></div>
+		</div>
+	</div> 
+</div>
+<div class="container-fluid video_section hidden-sm hidden-xs">
+	<img src="images/melinda3.jpg" class="img-responsive"/>
+	<div class="row malinda_lgtext">	
+		<div class="col-md-4"> &nbsp; </div>
+		<div class="col-md-4">
+			<h2>We've made it easy to do business in the Nation's Capitol.</h2>							
+			<button class="btn btn-default read_btn">Read More</button>
+		</div>
+		<div class="col-md-4"> &nbsp; </div>
+	</div>
+</div>
+<div class="use_wizard">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-12 icon">
+				<img src="images/dc_use_wizard_clipboard.png" alt="Clipboard image" class="img-responsive">
+			</div>
+			<div class="col-md-10 col-sm-10 col-xs-12 text">
+				<h3 tabIndex="0">Use our wizard to receive a personalized checklist of what is needed to get your business started in DC.</h3>
+				<p tabIndex="0">The wizard will take approximately 30 minutes and can be saved and restarted at any time.</p>
+			</div>
+		</div>
+		<div class="row buttons">
+			<div class="col-md-6 col-sm-6 col-xs-12 start_button">
+				<button class="btn btn-default">START WIZARD</button>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 continue_button">
+				<button class="btn btn-default last">CONTINUE WIZARD</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="success_carousel_block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 tabindex="0">Success Stories</h2>
+				<div tabindex="0">
+					<p>See what these business owners needed to start and maintain their business in DC.</p>
+				</div>
+				<div class="customCarousel jcarousel-wrapper">
+						<flex-slider class="carousel" slide="s in slides track by s.id" animation="slide" animation-loop="false" item-width="270" item-margin="2">
+							<li>
+								<div class="success_carousel_inner">
+									<a href="#">
+										<div class="img_cont">
+											<img ng-src="{{s.url}}">
+										</div>
+										<div class="carousel_hover"><i class="glyphicon glyphicon-eye-open"></i></div>
+										
+											<h3> {{ s.name }} </h3>
+											<p> {{ s.designation }} </p>
+									</a>
+									<span class="bottom_line"></span>
+								</div>
+							</li>
+						</flex-slider>
+				</div>	            
+			</div>
+		</div>
+	</div>
+</div>
+<div class="home_news">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 col-xs-12 events_box">
+				<div class="events_box_inner">
+					<h2><a href="news">NEWS</a></h2>
+					<h3>Sample Test News</h3>
+					<p class="news_date">Sunday, March 8, 2015</p>
+					<p class="news_highlight">Sample Test data...</p>					
+				</div>
+			</div>			
+			<div class="col-md-4 col-sm-4 col-xs-12 events_box">
+				<div class="events_box_inner">
+					<h2><a href="#">EVENTS</a></h2>
+					<h3>Test 1</h3>
+					<p class="event_date">Monday, March 9, 2015 to Friday, March 13, 2015 | 10:00am - 11:00am </p>
+					<p class="event_address">1651 Old Meadow Rd, Ste. 205	, McLean	VA	22102</p>
+				</div>
+			</div> 
+			<div class="col-md-4 col-sm-4 col-xs-12 events_box faq">
+				<div class="events-box events_box_inner">
+					<h2><a href="#">FAQs</a></h2>	
+					<h3><a href="#">What is the use of FAQ?</a></h3>
+					<h3><a href="#">Test FAQ 2 Question</a></h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="business_resource">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-lg-6 col-md-6 col-sm-6 img_block hidden-xs">
+				<img src="images/jackie.jpg" alt="Meet Jackie image" class="img-responsive">
+			</div>
+			<div class="col-sm-6 col-xs-12 text_block">
+				<h2 tabindex="0">Small Business Resource Center	</h2>
+				<div tabindex="0" class="business_resource_content">
+					<span>Welcome to the Small Business Resource Center (SBRC)</span>
+					The District of Columbia SBRC is your one-stop-shop where help is provided to assist in starting, growing and strengthening businesses. By partnering with District government agencies, non-profits and federal government agencies, the SBRC is your gateway to business development trainings, workshops, forums and one-on-one technical assistance.
+				</div>
+				<p><a href="#">Learn more</a></p>
+			</div>			
+		</div>
+	</div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

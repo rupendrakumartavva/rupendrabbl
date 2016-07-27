@@ -1,0 +1,57 @@
+﻿@if ((int)Session["Admincount"] == 3)
+{
+    <div class="top-tables-hyp">
+        <h4 class="blueheading" style="margin-top: -8px;margin-bottom: 12px;">Today's Inactive  Users</h4>
+        <table class="table table-striped table-bordered smartgrid">
+            <thead>
+                <tr>
+                    <th class="text-center">User Type</th>
+                    <th class="text-center">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="summarytables text-center">Superadmin</td>
+                    <td class="summarytables text-center">@ViewBag.SuperAdminTodayDeleted</td>
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Manager</td>
+                    <td class="summarytables text-center">@ViewBag.ManagerTodayDeleted</td>
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Admin</td>
+                    <td class="summarytables text-center">@ViewBag.AdminTodayDeleted</td>
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Customer</td>
+                    <td class="summarytables text-center">@ViewBag.EmpTodayDeleted</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+else if ((int)Session["Admincount"] == 2 || (int)Session["Admincount"] == 4)
+{
+    <div class="top-tables-hyp">
+        <h4 class="blueheading">Today's Inactive  Users</h4>
+        <table class="table table-striped table-bordered smartgrid">
+            <thead>
+                <tr>
+                    <th class="text-center">User Type</th>
+                    <th class="text-center">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*<tr>
+                    <td class="summarytables text-center">Admin</td>
+                    <td class="summarytables text-center">@ViewBag.AdminTodayDeleted</td>
+                </tr>*@
+                <tr>
+                    <td class="summarytables text-center">Customer</td>
+                    <td class="summarytables text-center">@ViewBag.EmpTodayDeleted</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+

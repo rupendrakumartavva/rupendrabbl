@@ -1,0 +1,193 @@
+﻿@using System.Globalization
+@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Data.Model.BusinessLicense>
+@*<div class="row">*@
+<div id="example_wrapper" class="dataTables_wrapper">
+    <div class="table table-responsive" style="overflow: hidden;">
+        <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="businesstable" role="grid">
+            <thead>
+                <tr>
+                    <th class="text-center">License/Application #</th>
+                    <th class="text-center">Licesnse Categories</th>
+                    <th class="text-center">Customer Name</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Grand Total Fee</th>
+
+                    @*<th class="text-center">Created Date</th>*@
+                    <th class="text-center">Transaction ID</th>
+                    <th class="text-center">Payment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="8">No record(s) found</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="tablerow tabrow text-center">
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style="color: green; font-size: 14px; " class="" >
+                                        <span>
+                                           
+                                            @Html.ActionLink(item.LicenseNumber, "BusinessComapreData", "BBL", new { appId = item.MasterId.Trim() }, new { @class = "bus-details" })
+                                        </span>
+                                </p>
+                            </td>
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style="font-size: 14px;" class="">
+                                    <span>
+                                        @item.LicesnseType
+
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style="font-size: 14px;" class="">
+                                    <span>
+                                        @item.FullName
+
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="">
+                                    <span>
+                                        @item.Status
+
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style="font-size: 14px;" class="">
+                                    <span>
+                                    @(String.IsNullOrEmpty(item.GrandTotal.ToString()) ? "-" : String.Format(new CultureInfo("en-US"), "{0:C}",Convert.ToDecimal(item.GrandTotal)))
+                                    </span>
+                                </p>
+                            </td>
+                            @*<td class="col1-tab col1 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="">
+                                    <span>
+                                        @item.CreatedDate.Replace('-', '/')
+
+                                    </span>
+                                </p>
+                            </td>*@
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style="font-size: 14px;" class="">
+                                    <span>
+                                        @item.PaymentTransaction
+
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="col1-tab col1 Superadmingrid usercol">
+                                <p style=" font-size: 14px;" class="">
+                                    <span>
+                                        @item.PaymentDate.Replace('-', '/')
+
+                                    </span>
+                                </p>
+                            </td>
+                            
+                            
+                            
+                            
+                            
+                          
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*</div>*@
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+
+@if (Model.Count() == 0)
+{
+
+}
+else
+{
+
+<script type="text/javascript" class="init">
+    var tableData = '';
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#businesstable').DataTable({
+            "ordering": false,
+            "pageLength": 15,
+            stateSave: true
+        });
+        $("#businesstable_length").hide();
+        $("#businesstable_filter").hide();
+        if ($('#businesstable td').attr('colspan') == '8') {
+            $("#businesstable_info").hide();
+            $("#businesstable_paginate").hide();
+        } else {
+        }
+    });
+
+    $(" #btnCreate").on('click', function (e) {
+        tableData.state.clear();
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('businessActivities') || $(this).hasClass('paginate_button') || $(this).hasClass('updatebusinessactivity') || $(this).hasClass('activestatus')) {
+        } else {
+            //console.log("working");
+            //alert("working");
+            tableData.state.clear();
+        }
+    });
+
+    function clearTableState() {
+        tableData.state.clear();
+    }
+
+    $("#edit-btn").click(function () {
+        $("#btncreate").text("Update");
+        $("#btncreate").text("Update");
+    });
+</script>
+}
+
+

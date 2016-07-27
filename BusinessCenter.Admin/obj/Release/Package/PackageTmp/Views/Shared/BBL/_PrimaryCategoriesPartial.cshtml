@@ -1,0 +1,327 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Admin.Models.PrimaryCategoryModel>
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Primary Category Name</th>
+                        <th class="text-center">Category<br />Id</th>
+                        @*<th class="text-center">Endorsement</th>*@
+                        @*<th class="text-center">Unit One</th>
+                            <th class="text-center">Unit Two</th>*@
+                        <th class="text-center">Documents</th>
+                        <th class="text-center">Fee</th>
+                        <th class="text-center">Secondary<br/>Categories</th>
+                        <th class="text-center">Sub-Categories</th>
+                        <th class="text-center">Status</th>
+                        @*<th class="text-center">Edit</th>*@
+                        <th class="text-center">Deactivate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="8">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow">
+                                <td class="col3-tab col3 Superadmingrid usercol">
+                                    <p style="" class="paracol3 paratabcol3">
+                                        <span>
+                                            @Html.HiddenFor(modelitem => item.PrimaryID)
+                                            @Html.HiddenFor(modelitem => item.ActivityID)
+@if ((int) Session["Admincount"] == 3)
+{
+    @Html.ActionLink(item.Description, "UpdatePrimaryCategory", "BBL", new {primaryId = item.PrimaryID, activityId = item.ActivityID.ToString().Trim()}, new {onclick = "clearTableState();"})
+}
+else
+{
+    <a href="" style="cursor: default;pointer-events: none" class="updatebusinessactivity">
+        @item.Description
+    </a>
+    @*@Html.ActionLink(item.Description, "UpdatePrimaryCategory", "BBL", new { primaryId = item.PrimaryID, activityId = item.ActivityID.ToString().Trim() })*@
+}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol2 paratabcol2">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.CategoryCode)
+                                        </span>
+                                    </p>
+                                </td>
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+
+                                    @if (item.Status == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                Documents&nbsp;<a href="javascript:void(0)" onclick="showdocuments('@item.PrimaryID') ">
+                                                    @Html.Image("~/images/doc.png", "documents")
+                                                </a>
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                Documents&nbsp; @Html.Image("~/images/doc-gray.png", "documents")
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.Status == true)
+                                    {
+                                     
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+
+                                               
+                                                Fee&nbsp;<a href="javascript:void(0)" onclick="ShowFees('@item.ActivityID', '@item.PrimaryID') ">
+                                                    @Html.Image("~/images/price.png", "Price")
+                                                </a>
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                Fee&nbsp;@Html.Image("~/images/price-grayout.png", "Price")
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    @if (item.IsSecondaryLicenseCategory == true)
+                                    {
+                                        if (item.Status == true)
+                                        {
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol2">
+                                                <span>
+                                                    @Html.ActionLink("Secondary Categories", "SecondaryCategories", "BBL", new { activityId = item.ActivityID, primaryId = item.PrimaryID }, new { onclick = "clearTableState();" })
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="font-size: 16px;" class="paracol12 paratabcol2">
+                                                <span style="text-align: center">
+                                                    Secondary Categories
+                                                </span>
+                                            </p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 16px;" class="paracol12 paratabcol2">
+                                            <span style="text-align: center">
+                                                Secondary Categories
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.IsSubCategory == true)
+                                    {
+                                        if (item.Status == true)
+                                        {
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                    @Html.ActionLink("Sub-Categories", "SubCategories", "BBL", new { activityId = item.ActivityID, primaryId = item.PrimaryID }, new { onclick = "clearTableState();" })
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="font-size: 16px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                    Sub-Categories
+                                                </span>
+                                            </p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 16px;" class="paracol12 paratabcol2">
+                                            <span>
+                                                Sub-Categories
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.Status == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+                                                Active&nbsp;@Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+
+                                        
+                                            <span>
+                                                Inactive&nbsp;@Html.Image("~/images/InActive.png", "InActive")
+                                            </span>
+                                       
+                                    }
+                                </td>
+
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if ((int) Session["Admincount"] == 3)
+                                    {
+                                        if (item.Status == true)
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                <a href="javascript:void(0)" onclick="ShowDialog('@item.PrimaryID', '@item.ActivityID') " title="Deactivate">
+                                                    @Html.Image("~/images/delete.png", "Deleted")
+                                                </a>
+                                            </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                @Html.Image("~/images/close_delete.png", "Deleted")
+                                            </span>
+                                            </p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (item.Status == true)
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                  
+                                                        @Html.Image("~/images/delete.png", "Deleted")
+                                                    
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                    @Html.Image("~/images/close_delete.png", "Deleted")
+                                                </span>
+                                            </p>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Business Activity</button>
+    </div>
+</div>
+<style>
+
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+@if (Model.Count() == 0)
+{
+
+}
+else
+{
+    <script type="text/javascript" class="init">
+        var tableData = '';
+        $(document).ready(function () {
+            window.alert = function () { /* do nothing here */ }
+            tableData = $('#datasearch').DataTable({
+                "ordering": false,
+                stateSave: true
+            });
+            $("#datasearch_length").hide();
+            $("#datasearch_filter").hide();
+            if ($('#datasearch td').attr('colspan') == '8') {
+                $("#datasearch_info").hide();
+                $("#datasearch_paginate").hide();
+            } else {
+            }
+        });
+
+        $("input, button").on('click', function (e) {
+            tableData.state.clear();
+        });
+
+        $("a").on('click', function (e) {
+            if ($(this).hasClass('paginate_button')) {
+            } else {
+                //console.log("working");
+                //alert("working");
+                tableData.state.clear();
+}
+        });
+
+        function clearTableState() {
+            tableData.state.clear();
+        }
+
+        $("#edit-btn").click(function () {
+            $("#btncreate").text("Update");
+            $("#btncreate").text("Update");
+        });
+    </script>
+}
+<script>
+    $("#btnBack").click(function () {
+        window.location.href = "/BBL/BusinessActivities?type=" + '@ViewBag.CategoryType';
+    });
+</script>

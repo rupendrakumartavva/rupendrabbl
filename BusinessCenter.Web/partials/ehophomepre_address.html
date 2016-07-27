@@ -1,0 +1,145 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" ng-click="vm.navToBBL()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" ng-click="vm.navToApply()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Physical Location and Business Structure</span>
+</div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">EHOP Premise Address</h2>
+        </div>
+    </div>
+</div>
+
+<div data-ng-controller="eHOPEligibilityController as vm">
+    <div class="physical-loc-form">
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading text-left">Ehop Agent</div>
+                <div class="panel-body">
+
+                    <div id="error_msg" class="error_text text-center"></div>
+
+                    <div class="col-md-offset-3">
+                        <div class="form_wrapper">
+                            <div class="clearfix">
+                                <div class="col-md-8 col-sm-8 col-xs-12 ">
+                                    <div class="form-group restrictDropdownMenu">
+                                        <label>Street</label>
+                                        <div class="inner-addon right-addon">
+                                            <i class="glyphicon glyphicon-refresh gly-spin" id="streetaddress" style="display:none"></i>
+                                            <input type="text" data-ng-model="vm.cofoinfo.Street" typeahead="f.FullAddress for f in vm.Address | filter:$viewValue" class="form-control" ng-change="vm.getSuggestions(vm.cofoinfo.Street,'streetaddress')" typeahead-test="vm.dataavail" ng-blur="vm.checktabpress('streetaddress')">
+                                        </div>
+                                        <!--<div class="error_text margin_px" id="firstName" autofocus="focus" tabindex="-1"></div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-8 col-sm-8 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Street Name</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.StreetName"
+                                               name="email" id="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Street Type </label>
+                                        <select required name="ehopeligibility" ng-init="vm.cofoinfo.streetype='ALLEY'" data-ng-model="vm.cofoinfo.StreetType" data-ng-options="street.StreetType for street in vm.StreetTypes track by street.StreetType | uppercase" ng-change="vm.testvalue()"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Quadrant</label>
+                                        <select name="ehopeligibility" data-ng-model="vm.cofoinfo.Quadrant" required>
+                                            <option value="0" selected>Select One</option>
+                                            <option value="NE">NE</option>
+                                            <option value="NW">NW</option>
+                                            <option value="SE">SE</option>
+                                            <option value="SW">SW</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Unit Type</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.UnitType"
+                                               name="email" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Unit</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.Unit"
+                                               name="email" id="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.City"
+                                               name="city" id="city">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>State</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.State"
+                                               name="state" id="state">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Zip</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.Zip"
+                                               name="phone" id="phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Telephone</label>
+                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.cofoinfo.Telephone"
+                                               name="email" id="email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pre-checkquestion col-md-6 col-xs-6 col-md-offset-3 " ng-show="!(vm.addresscorrect==true || vm.cofoaddress==true)">
+                    <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.saveAndExit()">Save & Exit</button>
+                    <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToChecklist()">
+                        Save and Return to Checklist
+                    </button>
+                    <!--<button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToRegisteredAgent()" ng-show="vm.addresscorrect==true || vm.cofoaddress==true">Next</button>-->
+                </div>
+                <div class="pre-checkquestion col-md-11 col-xs-12 col-md-offset-1" ng-show="vm.addresscorrect==true || vm.cofoaddress==true">
+                    <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.saveAndExit()">Save & Exit</button>
+                    <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToChecklist()">
+                        Save and Return to Checklist
+                    </button>
+                    <button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToNextStep()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

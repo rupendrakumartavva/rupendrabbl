@@ -1,0 +1,232 @@
+﻿@model BusinessCenter.Admin.Models.RegisterJsonModel
+@{
+    if (Model.UserType=="A")
+    {
+        ViewBag.Title = "DCRA - Admin Profile";
+    }
+    else if (Model.UserType == "S")
+    {
+        ViewBag.Title = "DCRA - Superadmin Profile";
+    }
+    else if (Model.UserType == "M")
+    {
+        ViewBag.Title = "DCRA - Manager Profile";
+    }
+    else
+    {
+        ViewBag.Title = "DCRA - Customer Profile";
+    }
+}
+
+@if (Session["UserName"] != null)
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container headerBreadcrumb">
+        @if ((int)Session["Admincount"] == 2)
+        {
+            @Html.ActionLink("Home", "Dashboard", "Admin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            @Html.ActionLink("Business Center Admin Portal", "Dashboard", "Admin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            @Html.ActionLink("Admin", "Home", "Admin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Profile</span>
+        }
+        else if ((int)Session["Admincount"] == 3)
+        {
+            @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            if (Model.UserType == "A")
+            {
+                @Html.ActionLink("Admin", "Home", "Admin")
+            }
+            else if (Model.UserType == "S")
+            {
+                @Html.ActionLink("Superadmin", "Home", "SuperAdmin")
+            }
+            else if (Model.UserType == "M")
+            {
+                @Html.ActionLink("Manager", "ManagerHome", "Admin")
+            }
+            else
+            {
+                @Html.ActionLink("Customer", "CustomerHome", "Admin")
+            }
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Profile</span>
+        }
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" id="userid">@Session["AdminName"] Profile</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form user_profile">
+        <div class="container">
+            <div class="row">
+                <div class="form_wrapper prof-err-placement">
+                    <form id="myForm">
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-12">
+                                    <p>@Html.HiddenFor(model => model.UserId)</p>
+                                    <p>@Html.HiddenFor(model => model.UserName)</p>
+                                    <p>@Html.HiddenFor(model => model.Email)</p>
+                                    @Html.Hidden("hiddenuserid", (object)Session["ProfileUserId"], new { id = "UserId" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        @Html.EditorFor(model => model.UserName, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           @readonly = "readonly",
+                                           disabled = "disabled",
+                                           id = "username"
+                                       }
+                                   })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Primary Email</label>
+                                        @Html.EditorFor(model => model.Email, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           @readonly = "readonly",
+                                           disabled = "disabled",
+                                           id = "email"
+                                       }
+                                   })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", id = "firstname" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", id = "lastname" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        @Html.RadioButtonFor(model => model.IsDelete, "false", new { id = "active", name = "AccountStatus1" }) Active
+                                        @Html.RadioButtonFor(model => model.IsDelete, "true", new { id = "inactive", name = "AccountStatus2" }) Inactive
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="center_div">
+                                <button id="btnUpdate" class="btn btn-default" tabindex="69">Save & Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade profilemodaldiv" id="profilemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body profilemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        #profilemodal-container {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        // Your profile is updated
+        // You have not made any changes to your profile. If needed, please do changes and then click on [SAVE & UPDATE]
+        var username;
+        $("#btnUpdate").click(function (e) {
+            e.preventDefault();
+            console.log("hi console");
+            //  now trigger the form validation, result is 1 or 0
+            var result = $('form').valid();
+            if (result == 1) {
+                UpdateAccount();
+            }
+        });
+      
+        function UpdateAccount() {
+            var gblstatus;
+            if ($('#active').is(':checked')) {
+                gblstatus = false;
+            }
+            else if ($('#inactive').is(':checked')) {
+                gblstatus = true;
+            }
+            var profiledata = {
+                UserId: $("#UserId").val(),
+                UserName: $("#username").val(), Email: $("#email").val(), FirstName: $("#firstname").val(), LastName: $("#lastname").val(), Address: $("#address").val(),
+                City: $("#city").val(), State: $("#state").val(), MobileNumber: $("#mobile").val(), PostalCode: $("#postal").val(),
+                IsDelete: gblstatus
+            };
+
+            $.ajax({
+                url: '/Account/Profile',
+                type: "Post",
+                data: profiledata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+        function editSuccess(data) {
+            var sessionId = $(data).find('#Session_Expired').text();
+            if (sessionId == 'Session Expired') {
+                window.location.href = '/Account/SessionExpiry';
+            } else {
+                userid.innerHTML = $("#firstname").val() + " " + $("#lastname").val() + " " + "Profile";
+            }
+        }
+        function editFailure(data) {
+        }
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}

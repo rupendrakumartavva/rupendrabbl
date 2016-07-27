@@ -1,0 +1,5 @@
+D:\DCBusinessCenter\BusinessCenter.Common\bin\Debug\BusinessCenter.Common.dll
+D:\DCBusinessCenter\BusinessCenter.Common\bin\Debug\BusinessCenter.Common.pdb
+D:\DCBusinessCenter\BusinessCenter.Common\obj\Debug\BusinessCenter.Common.dll
+D:\DCBusinessCenter\BusinessCenter.Common\obj\Debug\BusinessCenter.Common.pdb
+D:\DCBusinessCenter\BusinessCenter.Common\obj\Debug\BusinessCenter.Common.csprojResolveAssemblyReference.cache

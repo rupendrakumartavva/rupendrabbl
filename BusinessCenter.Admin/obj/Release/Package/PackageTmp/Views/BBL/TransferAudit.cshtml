@@ -1,0 +1,275 @@
+﻿
+@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.BusinessActivityViewModel
+@{
+    ViewBag.Title = "DCRA - Transfer Audit";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+          @Html.ActionLink("Errors", "Errors", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+       
+            <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Transfer Audit</span>
+       
+    </div>
+    <div class="page_title scr_title">
+         <div class="container">
+                <div class="row">
+                    <h2 tabindex="0" class="heading">Transfer Audit</h2>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="login_form register_form">
+        <div class="container">
+           <div class="row" style="margin-bottom:20px">
+                    <div class="form_wrapper reg-err-placement" id="activity-add">
+
+                    </div>
+                </div>
+           
+
+            <div id="Content" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                <div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+                    <p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="~/images/camera-loader.gif" alt="not showing" /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade homemodaldiv" id="Homemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="yesbutton">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message' id="modelerror"> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="okbtn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .resetkeyimglink img {
+            width: 28px;
+            height: 28px;
+        }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#Content").empty();
+        $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+        $("#activity-add").empty();
+        //GetBusinessActivity();
+        GetAll();
+
+    });
+    function GetAll() {
+
+        $.ajax({
+            url: '/BBL/TransferHistoryPartial',
+            type: 'Get',
+            cache: false,
+           data: { AllData: $('#All').val() },
+            success: function (data) {
+
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#Content").empty().append(data);
+}
+            },
+            error: function () {
+            }
+        });
+    }
+
+
+    </script>
+
+  
+
+    <script>
+
+        function GetBusinessActivity() {
+            $.ajax({
+                url: '/BBL/BusinessActivityAddPartial',
+                type: 'Get',
+                cache: false,
+                // data: { AllData: $('#All').val() },
+                success: function(data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#activity-add").empty().append(data);
+}
+                },
+                error: function() {
+                }
+            });
+        }
+
+    </script>
+
+
+    if ((int)Session["Admincount"] == 3)
+    {
+
+        <script>
+            $("#btnClear").click(function(e) {
+                e.preventDefault();
+                $("#activityname").val("");
+            });
+            var activityid;
+            var activityname;
+            var status;
+
+
+            function ShowDialog(id, name) {
+                $('.homemodal-body h3.error_message').empty().append('Are you sure you want to deactivate this Business Activity?');
+                // Do not show this confirmation pop up again for the Current session.
+                $('.homemodaldiv').modal('show');
+                activityid = id;
+                activityname = name;
+                status = "0";
+
+
+            }
+
+            function ShowUpdate(id, name) {
+                $('.homemodal-body h3.error_message').empty().append('Are you sure you want to activate this Business Activity?');
+                // Do not show this confirmation pop up again for the Current session.
+                $('.homemodaldiv').modal('show');
+                activityid = id;
+                activityname = name;
+                status = "1";
+
+
+            }
+
+            $("#okbtn").on("click", function() {
+
+                $('#registermodal-container').modal('hide');
+                //if (redirect == "Update") {
+                //    $('#registermodal-container').modal('hide');
+                //    GetAll();
+                //}
+                //else
+                //{
+                //    $("#activityname").val("");
+                //    GetBusinessActivity();
+                //    GetAll();
+                //}
+                $("#activityname").val("");
+                GetBusinessActivity();
+                GetAll();
+            });
+            $("#yesbutton").on("click", function() {
+                $('#Homemodal-container').modal('hide');
+                var id = activityid;
+                var name = activityname;
+                var type = status;
+                DeleteActivity(id, name, type);
+
+            });
+
+
+            function DeleteActivity(id, name, type) {
+                var activities = {
+                    ActivityName: name,
+                    ActivityID: id,
+                    APP_Type: type
+
+                };
+                $.ajax({
+                    url: '/BBL/DeleteBusinessActivity',
+                    type: "Post",
+                    data: activities,
+                    success: function (data) {
+                        var sessionId = $(data).find('#Session_Expired').text();
+                        if (sessionId == 'Session Expired') {
+                            window.location.href = '/Account/SessionExpiry';
+                        } else {
+                            GetAll();
+}
+                    },
+                    error: function(data) {
+                        console.log(JSON.stringify(data));
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            function UpdateActivity(Id) {
+                $("#activity-add").empty();
+                $.ajax({
+                    url: '/BBL/UpdateBusinessActivityPartial',
+                    type: 'Get',
+                    cache: false,
+                    data: { activityId: Id },
+                    success: function(data) {
+                        var sessionId = $(data).find('#Session_Expired').text();
+                        if (sessionId == 'Session Expired') {
+                            window.location.href = '/Account/SessionExpiry';
+                        } else {
+                        $("#activity-add").empty().append(data);
+                        setTimeout(function() { element.focus(); }, 0);
+                        window.scrollTo(0, 200);
+}
+                    },
+                    error: function(data) {
+                        console.log(JSON.stringify(data));
+                    }
+                });
+            }
+
+
+        </script>
+    }
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+
+
+
+
+
+
+
+
+

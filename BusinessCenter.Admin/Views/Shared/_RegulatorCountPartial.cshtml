@@ -1,0 +1,25 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.DashBoardViewModel
+<div>
+    <table class="table table-striped table-bordered  dataTable  smartgrid" id="datasearch" role="grid">
+        <thead>
+            <tr>
+                <th class="text-center"><strong>Search Criteria</strong> </th>
+                <th class="text-center"><strong>Count</strong> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.RegulatorCountList)
+            {
+                <tr>
+                    <td class="regulatorycounts text-center">
+                        @Html.DisplayFor(modelItem => item.Regulator)
+                    </td>
+                    <td class="regulatorycounts text-center">
+                        @Html.DisplayFor(modelItem => item.RegularCount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

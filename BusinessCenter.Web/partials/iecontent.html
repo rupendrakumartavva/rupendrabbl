@@ -1,0 +1,468 @@
+﻿<script>
+    $(function () {
+   
+        $("#dvLoadingSection").css("display", "none");
+        $("#dvMainsection").css("display", "block");
+
+        $("#iewrapper").children().bind('click', function () { return false; });
+        //alert(location.pathname);
+        //alert(window.location.href);
+        
+    //    if(window.location.href.indexOf('home') > -1) {
+    //    //if (location.pathname.indexOf("home") > -1) {
+    //        $(".smallMenu li:first-child > a").addClass("active");
+    //    }
+    //    else if (window.location.href.indexOf("aboutus") > -1) {
+    //        $(".smallMenu li > a").removeClass("active");
+    //        $(".smallMenu li:nth-child(3) > a").addClass("active");
+    //    }
+    //else if (window.location.href.indexOf("lookup") > -1) {
+    //        $("#lookup").addClass("active");
+    //    }
+    //else if ((window.location.href.indexOf("/login") > -1) || (location.pathname == 'accountrecovery') || (location.pathname == 'securityquestion') || (location.pathname == '/forgotpassword') || (location.pathname == '/forgotusername')) {
+    //        $(".mainNavigation .global-menu li.login-menu").addClass("active");
+    //        $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //    }
+    //    else if ((location.pathname == '/register') || (location.pathname == '/verifyemail') || (location.pathname == '/termsofservices')) {
+    //        $(".register").addClass("active");
+    //        $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //    }
+    //    else if ((location.pathname == '/quicksearch') || (location.pathname == '/quicksearchsave') || (location.pathname == '/quicksearchresult')) {
+    //        $(".quicksearch").addClass("active");
+    //        $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //    }
+    //    else if ((location.pathname == '/mybbl') || (location.pathname == '/associatebbl') || (location.pathname == '/verifybusinessbeforeassociation') || (location.pathname == '/mybbl') || (location.pathname == '/newbblwelcome')
+    //        || (location.pathname == '/preappquestions/step1') || (location.pathname == '/preappquestions/step2') || (location.pathname == '/preappquestions/step3') || (location.pathname == '/preappquestions/step4')
+    //        || (location.pathname == '/preappquestions/step5') || (location.pathname.indexOf('/appchecklist') != -1) || (location.pathname == '/supportingdocs/step1') || (location.pathname == '/preappquestions/step5')
+    //        || (location.pathname.indexOf('/reviewchecklist') != -1) || (location.pathname == '/preappquestions/step6')
+    //        || (location.pathname.indexOf('/individualbusinesslic') != -1) || (location.pathname.indexOf('/taxrevenue') != -1) || (location.pathname.indexOf('/corpreqregwithtradesecond') != -1) || (location.pathname.indexOf('/corpreqregisterfirst') != -1)
+    //        || (location.pathname.indexOf('/corpnotregisteredagent') != -1) || (location.pathname.indexOf('ehopehomeaddress') != -1) || (location.pathname.indexOf('/ehopeligibility') != -1) || (location.pathname.indexOf('/physicallocation/corpreg') != -1)
+    //        || (location.pathname.indexOf('/physicallocation/address') != -1) || (location.pathname.indexOf('/physicallocation/agent') != -1) || (location.pathname.indexOf('/physicallocation/hop') != -1) || (location.pathname.indexOf('/physicallocation/cofo') != -1) || (location.pathname.indexOf('/corpnotregisteredaddress') != -1) || (location.pathname.indexOf('/nopobox') != -1)
+    //       || (location.pathname.indexOf('/bblrenewalconfirm') != -1) || (location.pathname.indexOf('receipt') != -1) || (location.pathname.indexOf('payment') != -1) || (location.pathname.indexOf('/infoverification') != -1) || (location.pathname.indexOf('/renewalreceipt') != -1)
+    //       || (location.pathname.indexOf('/physicallocation/corpbussagent') != -1) || (location.pathname.indexOf('/supportingdocs/step2/') != -1) || (location.pathname.indexOf('/supportingdocs/') != -1) || (location.pathname == '/renewalpayment') || (location.pathname == '/paymentfailure') || (location.pathname.indexOf('/emailconfirmation') != -1)
+    //       || (location.pathname.indexOf('/bblrenewalpayment') != -1) || (location.pathname.indexOf('/bblrenewalpayment/b') != -1) || (location.pathname == '/bblrenewalpayment/t') || (location.pathname == '/paymentfailure/apply')) {
+    //        $(".mybbl").addClass("active");
+    //        $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //    }
+    //    else if (window.location.href.indexOf("help") > -1) {
+    //        $(".help").addClass("active");
+    //        $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //    }
+    //    else {
+    //        if ((location.pathname == '/dashboard')) {
+    //            $(".dashboard").addClass("active");
+    //            $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //        }
+    //        if ((location.pathname == '/profile')) {
+    //            $(".profile-menu").addClass("active");
+    //            $(".smallMenu li:nth-child(2) > a").addClass("active");
+    //        }
+ 
+    //    }
+      
+                $(".mainNavigation .global-menu li.login-menu").addClass("active");
+                $(".smallMenu li:nth-child(2) > a").addClass("active");
+    });
+</script>
+  
+<div id="iewrapper">
+
+    <div class="mainNavigation" ng-controller="HeaderController">
+        <div class="container">
+
+            <nav class="navbar navbar-default no-pad-left" role="navigation">
+                <div class="navbar-header col-lg-3 col-md-3 col-sm-3 col-xs-12 no-pad-left no-pad-right">
+                    <div class="col-sm-12 col-xs-9 no-pad-left">
+                        <h1 class="header_logo" tabindex="-1">
+                            <a href="" role="link">
+                                <img tabindex="-1" src="../images/dc_logo.png" alt="DCRA Business Center" class="img-responsive">
+                            </a>
+
+
+                        </h1>
+                    </div>
+                    <div class="col-xs-3 hidden-lg hidden-md hidden-sm pull-right">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 toggleMenu">
+                    <div class="row">
+                        <form id="search-block-form" class="form-search content-search" accept-charset="UTF-8" method="post" action="">
+                            <div class="input-group hidden-lg hidden-md hidden-sm">
+                                <input type="text" maxlength="128" size="15" value="" name="search_block_form" id="edit-search-block-form--2" placeholder="Search" class="form-control form-text" title="Enter the terms you wish to search for." autocomplete="off">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" ng-click="navToSearchPage()">
+                                        <i aria-hidden="true" class="icon glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <div class="row">
+                                <ul class="nav navbar-nav smallMenu">
+                                    <li>
+                                        <a href="{{home_navigateUrl}}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="#/login" class="hidden-xs hidden-sm">My DC Business Center</a>
+                                        <span ng-click="showMenu()" class="hidden-lg hidden-md activemenu small-Menu">My DC Business Center<span class="glyphicon glyphicon-chevron-down"></span></span>
+                                        <ul class="hidden-lg hidden-md hidden-sm mobile-menu show-menu">
+                                            <li class="quicksearch" ng-hide="islogin">
+                                                <a href="#/quicksearch">QUICK SEARCH</a>
+                                            </li>
+                                            <li class="dashboard" ng-show="islogin">
+                                                <a href="#/dashboard">Dashboard</a>
+                                            </li>
+                                            <li class="login-menu" ng-hide="islogin">
+                                                <a href="#/login">Login</a>
+                                            </li>
+                                            <li class="reg-menu register" id="" ng-hide="islogin">
+                                                <a href="#/register">REGISTER</a>
+                                            </li>
+                                            <li class="quicksearch" ng-show="islogin">
+                                                <a href="javascript:void(0)" data-toggle="dropdown" ng-click="showQuickMenu()" class="activemenuquick">
+                                                    QUICK SEARCH
+                                                    <span class="glyphicon glyphicon-chevron-down hidden-lg hidden-md hidden-sm"></span>
+                                                </a>
+                                            </li>
+                                            <li ng-show="islogin" class="save-search show-menu"><a href="#/quicksearch">Search</a></li>
+                                            <li ng-show="islogin" class="save-search show-menu"><a href="#/quicksearchsave">My Saved Results</a></li>
+                                            <li class="help" ng-show="islogin">
+                                                <a href='#/mybbl'>BBL</a>
+                                            </li>
+                                            <li class="help" ng-show="islogin">
+                                                <a href="javascript:void(0)" ng-click="navToHelp()">HELP</a>
+                                            </li>
+                                            <li ng-show="islogin">
+                                                <button ng-click="menuClick()" href="javascript:void(0)" class="logoutbutton">Logout</button>
+                                            </li>
+                                            <li class="user_name" ng-show="islogin">
+                                                <a href="javascript:void(0)" ng-click="navToProfile()">Profile</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/about-us">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/news">News</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/allevents">Events</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/success_story">Stories</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/resources">Resources</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/contactus">Contact Us</a>
+
+                                    </li>
+                                    <li class="pull-right hidden-xs search">
+                                        <div aria-labelledby="search_desc" id="search_icon" class="search_box" ng-click="navToSearch()">
+                                            <form accept-charset="UTF-8" id="search-block-form--2" method="post" action="" class="form-search content-search">
+                                                <div class="input-group">
+                                                    <input ng-model="asdf" type="text" maxlength="128" size="15" value="" name="search_block_form" id="edit-search-block-form--4" placeholder="Search" class="apachesolr-autocomplete unprocessed form-control form-text form-autocomplete" title="Enter the terms you wish to search for." autocomplete="off">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="submit" ng-click="navToSearchPage()">
+                                                            <i aria-hidden="true" class="icon glyphicon glyphicon-search"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <ul class="global-menu nav navbar-nav navbar-right clearfix" style="display:none;" ng-show="mainmenu1">
+                                    <li>
+
+                                        <a href="https://business.dc.gov/startbusiness">START</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="https://business.dc.gov/maintainbusiness">MAINTAIN</a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://business.dc.gov/startwizard">START WIZARD</a>
+
+                                    </li>
+                                    <li id="lookup">
+                                        <a href="https://business.dc.gov/research_business_info">LOOKUP</a>
+
+                                    </li>
+                                </ul>
+                                <ul class="global-menu nav navbar-nav navbar-right clearfix hidden-xs"  ng-show="mainmenu2">
+                                    <li class="quicksearch">
+                                        <a href="#/quicksearch">QUICK SEARCH</a>
+
+                                    </li>
+
+                                    <li class="login-menu">
+                                        <a href="#/login">Login</a>
+
+                                    </li>
+                                    <li class="reg-menu register">
+                                        <a href="#/register">REGISTER</a>
+                                    </li>
+                                </ul>
+                                <ul class="global-menu nav navbar-nav navbar-right clearfix loginmenu hidden-xs" style="display:none;" ng-show="mainmenu3">
+                                    <li class="dashboard">
+                                        <a href='#/dashboard'>Dashboard</a>
+
+                                    </li>
+                                    <li class="quicksearch dropdown">
+                                        <a href="#/quicksearch">QUICK SEARCH</a>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#/quicksearchsave">My Saved Results</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="mybbl">
+                                        <a href='#/mybbl'>BBL</a>
+                                    </li>
+                                    <li>
+                                        <button ng-click="menuClick()" href="javascript:void(0)" class="logoutbutton">Logout</button>
+                                    </li>
+                                    <li class="profile-menu">
+                                        <a href="#/profile">Profile</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="modal fade" id="homeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class='error_message'>{{logoutMsg}}</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="logoutRedirect()">YES</button>
+                        <button type="button" class="close-button" ng-click="CancellogoutRedirect()">NO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container headerBreadcrumb">
+        <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Login</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2>My DC Business Center Login</h2>
+                <p>
+
+                    <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        Help With This Page (Click Here)
+                    </span>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="well">
+                        <p class="text-center"><strong>This page is used to login to your My DC Business Center account.</strong> </p>
+                        <p class="terms_text">
+                            Enter your username and password and click <strong>Login</strong>
+                        </p>
+                        <p class="terms_text">
+                            <strong> *Note*</strong> Your account will be locked after five (5) login attempts with an incorrect username and
+                            password combination. The account will remain locked for five (5) minutes.
+                        </p>
+                        <p class="terms_text">
+                            If you cannot remember your username or password, use the<strong> Forgot Username</strong> or the <strong>Forgot Password </strong> link.
+                        </p>
+                        <p class="terms_text">
+                            <div class="login_form my_form">
+                                <span class="terms_text"> If you need additional help, review the</span> <a href="../HelpDoc/UserGuide.pdf" target="_blank"> <span class="btn btn-default read_btn">My DC Business Center User Guide</span></a> <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoadingSection">
+        <div class="center">
+
+            <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+        </div>
+    </div>
+    <div id="dvMainsection" class="display">
+        <div class="login_form">
+            <div class="container">
+                <p>Welcome to the My DC Business Center. Login to save Quick Search records and to view your saved information. If you aren't already registered, you can register by clicking the "Get Started" link below.</p>
+                <div class="login_wrapper" id="login_block">
+                    <div class="form_wrapper">
+                        <form role="form" method="post" id="login_form" name="login_form" ng-submit="form_validate(userCredentials)" novalidate>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input type="text" spellcheck="false" class="form-control" placeholder="Username" pattern="[1-4]{5}-[1-4]{5}" name="name" autocomplete="off" id="name1" ng-focus="setErrorMsg('error_msg')" onblur="this.placeholder = 'Username'" onfocus="this.placeholder = ''" ng-model="userCredentials.UserName"
+                                           required>
+                                    <div class="error_text" id="name"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input type="password" spellcheck="false" class="form-control" placeholder="Password" autocomplete="off" name="Password" id="password1" ng-focus="setErrorMsg('error_msg')" onblur="this.placeholder = 'Password'" onfocus="    this.placeholder = ''" autocomplete="off" ng-model="userCredentials.Password"
+                                           required>
+                                    <div class="error_text" id="Password"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <button id="submit_contact" class="btn btn-default login" type="submit">LOGIN</button>
+                            <div class="error_text error_textmsg" id="error_msg"></div>
+                        </form>
+                    </div>
+
+                    <a href="#/forgotusername"> Forgot Username</a> or <a href="#/forgotpassword">Password?</a>
+                    <p>Don't have an account?&nbsp;<a href="#/register">Get&nbsp;Started</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer ng-controller="HeaderController">
+        <!-- Footer Starts -->
+        <div class="footer-top off-360">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-12 col-xs-12 pop-links clearfix ">
+                        <ul>
+                            <li><a href="http://dcra.dc.gov/page/nationals-stadium-vending-lottery-results" target="_blank"> Get Nationals Baseball Lottery Results</a></li>
+                            <li><a href="http://dcra.dc.gov/node/551802" target="_blank"> Basic Business Licensing Forms</a></li>
+                            <li><a href="http://pivs.dcra.dc.gov/PIVS/Search.aspx" target="_blank"> Verify Property Information (PIVS)</a></li>
+                            <li><a href="http://dcra.dc.gov/node/546012" target="_blank"> Get a Building Permit </a></li>
+                            <li><a href="http://dcra.dc.gov/node/539762" target="_blank"> Register Your Corporation </a></li>
+                            <li><a href="http://dcra.dc.gov/node/685682" target="_blank"> Get a Vending License </a></li>
+                            <li><a href="http://dcra.dc.gov/node/559572" target="_blank"> Fees for Corporate Registration </a></li>
+                        </ul>
+                        <ul class="second-row">
+                            <li><a href="http://cpms.dcra.dc.gov/OCPI/PermitMenu.aspx" target="_blank"> File Your Permit Application Online </a></li>
+                            <li><a href="http://dcra.dc.gov/node/514472" target="_blank"> File Your Corporate Reports On Time </a></li>
+                            <li><a href="http://dcra.dc.gov/service/dcra-schedule-housing-code-inspection" target="_blank"> Schedule a Housing Code Inspection </a></li>
+                            <li><a href="http://dcra.dc.gov/node/539512" target="_blank"> License Your Business </a></li>
+                            <li><a href="http://dcra.dc.gov/service/schedule-construction-inspection" target="_blank"> Schedule Construction (Permit) Inspections </a></li>
+                            <li><a href="https://pivs.dcra.dc.gov/VendingLottery/" target="_blank"> Vending Lottery Website </a></li>
+                            <li><a href="https://business.dc.gov/quick/1457" target="_blank"> Certificates of Occupancy &amp; Zoning </a></li>
+
+                            <!--<li><a ng-click="navToFileypapplicationOnline()" href="javascript:void(0)"> File Your Permit Application Online </a></li>
+                            <li><a ng-click="navToFYCROT()" href="javascript:void(0)"> File Your Corporate Reports On Time </a></li>
+                            <li><a ng-click="navToSHCI()" href="javascript:void(0)"> Schedule a Housing Code Inspection </a></li>
+                            <li><a ng-click="navToLYB()" href="javascript:void(0)"> License Your Business </a></li>
+                            <li><a ng-click="navToSCPI()" href="javascript:void(0)"> Schedule Construction (Permit) Inspections </a></li>
+                            <li><a ng-click="navToVLW()" href="javascript:void(0)"> Vending Lottery Website </a></li>
+                            <li><a ng-click="navToCOfOZ()" href="javascript:void(0)"> Certificates of Occupancy &amp; Zoning </a></li>-->
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-5 col-xs-12 contact">
+                        <h3>Contact</h3>
+                        <p class="phone" tabindex="0">
+                            <span>Phone:</span>
+                            <a href="tel:(202) 442-4400" tabindex="-1">(202) 442-4400</a>
+                        </p>
+                        <p class="fax" tabindex="0"><span>Fax:</span>(202) 442-9445 </p>
+                        <p class="tty" tabindex="0">
+                            <span>TTY:</span>
+                            <a href="sms:(202) 123-4567" tabindex="-1">(202) 123-4567</a>
+                        </p>
+                        <p tabindex="0">
+                            <span>Email:</span>
+                            <a href="mailto:dcra@dc.gov" tabindex="-1">dcra@dc.gov</a>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-sm-7 col-xs-6  off-360">
+                        <div class="location">
+                            <h3>Location</h3>
+                            <p tabindex="0"> 1100 4th Street, SW, Washington DC 20024     </p>
+                            <p tabindex="0"><span>Office hours:</span> Monday, Tuesday, Wednesday, Friday 8:30 am to 4:30 pm and Thursday 9:30 am to 4:30 pm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 ">
+                        <p class="off-360">Copyright © 2015 DC Department of Consumer and Regulatory Affairs</p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <ul class="on-360">
+                            <li>
+                                <a href="">Home</a>
+
+                            </li>
+                            <li>
+                                <a href="https://business.dc.gov/startbusiness" title="Start">Start</a>
+
+                            </li>
+                            <li>
+                                <a href="https://business.dc.gov/maintainbusiness">Maintain</a>
+
+                            </li>
+                            <li>
+                                <a href="https://business.dc.gov/startwizard">Start Wizard</a>
+
+                            </li>
+                            <li>
+                                <a href="https://business.dc.gov/research_business_info">Lookup</a>
+
+                            </li>
+                        </ul>
+                        <div class="off-360">
+                            <ul>
+                                <li><a href="">Home</a></li>
+                                <li><a href="https://business.dc.gov/startbusiness">Start</a></li>
+                                <li><a href="https://business.dc.gov/maintainbusiness">Maintain</a></li>
+                                <li><a href="https://business.dc.gov/startwizard">Start Wizard</a></li>
+                                <li><a href="https://business.dc.gov/research_business_info">Lookup</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Ends -->
+    </footer>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

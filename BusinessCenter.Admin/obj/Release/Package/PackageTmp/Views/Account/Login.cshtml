@@ -1,0 +1,143 @@
+﻿@model BusinessCenter.Admin.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "DCRA - Login";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        localStorage.setItem("superAdminRadio", null);
+        localStorage.setItem("managerRadio", null);
+        localStorage.setItem("adminRadio", null);
+        localStorage.setItem("userRadio", null);
+
+        localStorage.ApplicationStart = "false";
+        if ((localStorage.ApplicationLoggedout == "logoutclicked")||(localStorage.ApplicationLoggedout == "AuthenticatedOut")) {
+
+        } else {
+            localStorage.ApplicationLoggedout = "appstart";
+        }
+       
+        var clearTime = setInterval(function () {
+            if (localStorage.Lgoggein == 'true') {
+                console.log(localStorage.Lgoggein);
+                if (localStorage.UserRole == 'SuperAdmin' ) {
+                    window.location.href = '/SuperAdmin/Dashboard';
+                }
+                else if(localStorage.UserRole=='Manager')
+                {
+                    window.location.href = '/Admin/Dashboard';
+                }
+                else if (localStorage.UserRole == 'Admin') {
+                    window.location.href = '/Admin/CustomerHome';
+                }
+
+                clearInterval(clearTime);
+            }
+            else
+            {
+                localStorage.UserRole = '';
+            }
+        }, 500);
+    });
+</script>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row" style="margin-bottom: 10px;">
+            <br />
+            <h2 tabindex="0" id="page_heading">DC Business Center Admin Login</h2>
+
+        </div>
+    </div>
+</div>
+
+    <div class="login_form">
+            <div class="login_wrapper">
+                <div class="form_wrapper">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { role = "form" }))
+                    {
+                        <div class="login_wrapper" id="login_block">
+                            <div class="form_wrapper">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.UserName, new
+                       {
+                           htmlAttributes = new
+                           {
+                               focus = true,
+                               @class = "form-control",
+                               id = "name",
+                               name = "name",
+                               placeholder = "Username",
+                               onfocus="this.placeholder = ''" ,
+                               onblur = "this.placeholder = 'Username'",
+                               autocomplete="false" ,
+                               style="text-align:left;"
+                           }
+                       })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Password, new
+                       {
+                           htmlAttributes = new
+                           {
+                               focus = true,
+                               @class = "form-control",
+                               id = "password",
+                               name = "Password",
+                               autocomplete="false" ,
+                               placeholder = "Password",
+                                onfocus="this.placeholder = ''" ,
+                               onblur = "this.placeholder = 'Password'",
+                               style = "text-align:left;"
+                           }
+                       })
+                                       
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        @if (IsPost)
+                                        {
+                                            if (@ViewBag.StatusMsg != "")
+                                            {
+                                                <span style="color:red" id="msg">@ViewBag.StatusMsg</span>
+                                            }
+                                        }
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <input type="submit" value="LOGIN" id="btnLoginr" class="btn btn-default login" />
+                                        </div>
+                                    </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group">                                                
+                                                @Html.ActionLink("Forgot  Password?", "ForgotPassword", "", new { @class = "forgotpassword" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+            </div>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        $(".navbar-toggle").hide();
+        $('#btnLoginr').click(function () {
+            if ($('#name').val() == '' || $('#password').val() == '') {
+                $("#msg").hide();
+            }
+        });
+    });
+    $("#name").keyup(function () {
+        $("#msg").hide();
+    });
+    $("#password").keyup(function () {
+        $("#msg").hide();
+    });
+</script>
+

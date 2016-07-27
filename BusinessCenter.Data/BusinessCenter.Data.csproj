@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A835E717-6294-41EA-9362-48F98026B1FD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessCenter.Data</RootNamespace>
+    <AssemblyName>BusinessCenter.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BusinessCenter.Common">
+      <HintPath>..\BusinessCenter.Common\bin\Debug\BusinessCenter.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.IndexingExtensions">
+      <HintPath>..\packages\EntityFramework.IndexingExtensions.1.0.0\lib\net40\EntityFramework.IndexingExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="InteractivePreGeneratedViews">
+      <HintPath>..\packages\EFInteractiveViews.1.0.1\lib\net45\InteractivePreGeneratedViews.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuditRecord.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="BblLicenseView.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BblLicenseView2.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BblLicenseView3.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BblLicenseView4.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessCenterDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessCenterDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessCenterDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessCenterDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessCenterDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Clients.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GenericEnums.cs" />
+    <Compile Include="Common\GenericRepository.cs" />
+    <Compile Include="Common\IGenericRepository.cs" />
+    <Compile Include="Common\MultiColumnFilters.cs" />
+    <Compile Include="Common\IUnitOfWork.cs" />
+    <Compile Include="Common\MultiColumnLookUpFilters.cs" />
+    <Compile Include="Common\MySaveSearchFilter.cs" />
+    <Compile Include="Common\SearchEntityDisplay.cs" />
+    <Compile Include="Common\SearchFilters.cs" />
+    <Compile Include="Common\Singleton.cs" />
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_ABRA.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_BBL.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_BBL_Renewals.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_BBL_Renewal_Invoice.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_CBE.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_Cof_O.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_CORP.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_LOOKUP_INDEX.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_OPLA.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_RESULTS_ABRA.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_RESULTS_BBL.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_RESULTS_CBE.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_RESULTS_Corp.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DCBC_ENTITY_RESULTS_OPLA.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeeCodeMap.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FixFee.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Implementation\AbraRepository.cs" />
+    <Compile Include="Implementation\BblRepository.cs" />
+    <Compile Include="Implementation\DocumentsView4Repository.cs" />
+    <Compile Include="Implementation\MailTemplateRepository.cs" />
+    <Compile Include="Implementation\MasterBblApplicationStatusRepository.cs" />
+    <Compile Include="Implementation\MasterRenewalStatusFeeRepositoy.cs" />
+    <Compile Include="Implementation\PaymentHistoryDetailsRepository.cs" />
+    <Compile Include="Implementation\Portal_Content_ErrorsRepository.cs" />
+    <Compile Include="Implementation\RenewalView3Repository.cs" />
+    <Compile Include="Implementation\SubmissionGeneratedDocumentRepository.cs" />
+    <Compile Include="Implementation\ClientsRepository.cs" />
+    <Compile Include="Implementation\CountryRepository.cs" />
+    <Compile Include="Implementation\EtlAddressAndParcelRepository.cs" />
+    <Compile Include="Implementation\Lookup_BusinessStructureRepository.cs" />
+    <Compile Include="Implementation\Lookup_ExistingCategoriesRepository.cs" />
+    <Compile Include="Implementation\MasterBusinessActivityRepository.cs" />
+    <Compile Include="Implementation\MasterCategoryDocumentRepository.cs" />
+    <Compile Include="Implementation\MasterCategoryPhysicalLocationRepository.cs" />
+    <Compile Include="Implementation\MasterCategoryQuestionRepository.cs" />
+    <Compile Include="Implementation\CbeRepository.cs" />
+    <Compile Include="Implementation\CorpRespository.cs" />
+    <Compile Include="Implementation\DCBC_ENTITY_BBL_RenewalsRepository.cs" />
+    <Compile Include="Implementation\DCBC_ENTITY_BBL_Renewal_InvoiceRepository.cs" />
+    <Compile Include="Implementation\DCBC_ENTITY_Cof_ORepository.cs" />
+    <Compile Include="Implementation\FeeCodeMapRepository.cs" />
+    <Compile Include="Implementation\FixFeeRepository.cs" />
+    <Compile Include="Implementation\KeywordDetailsRepository.cs" />
+    <Compile Include="Implementation\MasterCountryRepository.cs" />
+    <Compile Include="Implementation\MastereHOPEligibilityRepository.cs" />
+    <Compile Include="Implementation\MasterEhopOptionTypeRepository.cs" />
+    <Compile Include="Implementation\MasterRegisterAgentRepository.cs" />
+    <Compile Include="Implementation\MasterStateRepository.cs" />
+    <Compile Include="Implementation\OplaRepository.cs" />
+    <Compile Include="Implementation\OSubCategoryFeesRepository.cs" />
+    <Compile Include="Implementation\PaymentAddressDetailsRepository.cs" />
+    <Compile Include="Implementation\PaymentCardDetailsRepository.cs" />
+    <Compile Include="Implementation\PaymentDetailsRepository.cs" />
+    <Compile Include="Implementation\MasterPrimaryCategoryRepository.cs" />
+    <Compile Include="Implementation\RefreshTokensRepository.cs" />
+    <Compile Include="Implementation\RenewRepository.cs" />
+    <Compile Include="Implementation\RoleRepository.cs" />
+    <Compile Include="Implementation\SearchKeywordRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementation\SearchRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementation\MasterSecondaryLicenseCategoryRepository.cs" />
+    <Compile Include="Implementation\StreetTypesRepository.cs" />
+    <Compile Include="Implementation\SubmissionBblAssociationToUsersRepository.cs" />
+    <Compile Include="Implementation\SubmissionCofoHopeHopAddressRepository.cs" />
+    <Compile Include="Implementation\SubmissionCategoryRepository.cs" />
+    <Compile Include="Implementation\SubmissionDocumentToAccelaRepository.cs" />
+    <Compile Include="Implementation\SubmissionLicenseNumberCounterRepository.cs" />
+    <Compile Include="Implementation\SubmissionMasterApplicationChcekListRepository.cs" />
+    <Compile Include="Implementation\SubmissionCorporationAgentAddressRepository.cs" />
+    <Compile Include="Implementation\SubmissionCorporationRepository.cs" />
+    <Compile Include="Implementation\SubmissionDocumentRepository.cs" />
+    <Compile Include="Implementation\SubmissionEHOPEligibilityRepository.cs" />
+    <Compile Include="Implementation\SubmissionIndividualRepository.cs" />
+    <Compile Include="Implementation\SubmissionCofoHopeHopRepository.cs" />
+    <Compile Include="Implementation\SubmissionMasterRenewalRepository.cs" />
+    <Compile Include="Implementation\SubmissionMasterRepository.cs" />
+    <Compile Include="Implementation\SubmissionQuestionRepository.cs" />
+    <Compile Include="Implementation\SubmissionSelfCertificationRepository.cs" />
+    <Compile Include="Implementation\SubmissionTaxRevenueRepository.cs" />
+    <Compile Include="Implementation\SubmissionToAccelaRepository.cs" />
+    <Compile Include="Implementation\SubmissionVerficationRepository.cs" />
+    <Compile Include="Implementation\MasterSubCategoryRepository.cs" />
+    <Compile Include="Implementation\UserBBLServiceRepository.cs" />
+    <Compile Include="Implementation\UserManagerRepository.cs" />
+    <Compile Include="Implementation\UserPasswordTrackingRepository.cs" />
+    <Compile Include="Implementation\UserRepository.cs" />
+    <Compile Include="Implementation\UserRoleRepository.cs" />
+    <Compile Include="Implementation\UserServicesRepository.cs" />
+    <Compile Include="Implementation\BusinessInformationRepository.cs" />
+    <Compile Include="Interface\IAbraRepository.cs" />
+    <Compile Include="Interface\IBblRepository.cs" />
+    <Compile Include="Interface\IBusinessInformationRepository.cs" />
+    <Compile Include="Interface\IDocumentsView4Repository.cs" />
+    <Compile Include="Interface\IMailTemplateRepository.cs" />
+    <Compile Include="Interface\IMasterBblApplicationStatusRepository.cs" />
+    <Compile Include="Interface\IMasterRenewalStatusFeeRepositoy.cs" />
+    <Compile Include="Interface\IPaymentHistoryDetailsRepository.cs" />
+    <Compile Include="Interface\IPortal_Content_ErrorsRepository.cs" />
+    <Compile Include="Interface\IRenewalView3Repository.cs" />
+    <Compile Include="Interface\ISubmissionGeneratedDocumentRepository.cs" />
+    <Compile Include="Interface\IClientsRepository.cs" />
+    <Compile Include="Interface\ICountryRepository.cs" />
+    <Compile Include="Interface\IEtlAddressAndParcelRepository.cs" />
+    <Compile Include="Interface\ILookup_BusinessStructureRepository.cs" />
+    <Compile Include="Interface\ILookup_ExistingCategoriesRepository.cs" />
+    <Compile Include="Interface\IMasterBusinessActivityRepository.cs" />
+    <Compile Include="Interface\IMasterCategoryPhysicalLocationRepository.cs" />
+    <Compile Include="Interface\IMasterCategoryQuestionRepository.cs" />
+    <Compile Include="Interface\ICbeRepository.cs" />
+    <Compile Include="Interface\ICorpRespository.cs" />
+    <Compile Include="Interface\IDCBC_ENTITY_BBL_RenewalsRepository.cs" />
+    <Compile Include="Interface\IDCBC_ENTITY_BBL_Renewal_InvoiceRepository.cs" />
+    <Compile Include="Interface\IDCBC_ENTITY_Cof_ORepository.cs" />
+    <Compile Include="Interface\IFeeCodeMapRepository.cs" />
+    <Compile Include="Interface\IFixFeeRepository.cs" />
+    <Compile Include="Interface\IMasterCategoryDocumentRepository.cs" />
+    <Compile Include="Interface\IMasterCountryRepository.cs" />
+    <Compile Include="Interface\IMastereHopEligibilityRepository.cs" />
+    <Compile Include="Interface\IMasterEhopOptionType.cs" />
+    <Compile Include="Interface\IMasterRegisterAgentRepository.cs" />
+    <Compile Include="Interface\IMasterStateRepository.cs" />
+    <Compile Include="Interface\IOplaRepository.cs" />
+    <Compile Include="Interface\IOSubCategoryFeesRepository.cs" />
+    <Compile Include="Interface\IPaymentAddressDetailsRepository.cs" />
+    <Compile Include="Interface\IPaymentCardDetailsRepository.cs" />
+    <Compile Include="Interface\IPaymentDetailsRepository.cs" />
+    <Compile Include="Interface\IMasterPrimaryCategoryRepository.cs" />
+    <Compile Include="Interface\IRefreshTokensRepository.cs" />
+    <Compile Include="Interface\IRenewRepository.cs" />
+    <Compile Include="Interface\IRoleRepository.cs" />
+    <Compile Include="Interface\ISearchKeywordRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interface\ISearchRepository.cs" />
+    <Compile Include="Interface\IMasterSecondaryLicenseCategoryRepository.cs" />
+    <Compile Include="Interface\IStreetTypesRepository.cs" />
+    <Compile Include="Interface\ISubmissionBblAssociationToUsersRepository.cs" />
+    <Compile Include="Interface\ISubmissionCofoHopeHopAddressRepository.cs" />
+    <Compile Include="Interface\ISubmissionCategoryRepository.cs" />
+    <Compile Include="Interface\ISubmissionDocumentToAccelaRepository.cs" />
+    <Compile Include="Interface\ISubmissionLicenseNumberCounterRepository.cs" />
+    <Compile Include="Interface\ISubmissionMasterApplicationChcekListRepository.cs" />
+    <Compile Include="Interface\ISubmissionCorporationAgentAddressRepository.cs" />
+    <Compile Include="Interface\ISubmissionCorporationRepository.cs" />
+    <Compile Include="Interface\ISubmissionDocumentRepository.cs" />
+    <Compile Include="Interface\ISubmissionEHOPEligibilityRepository.cs" />
+    <Compile Include="Interface\ISubmissionIndividualRepository.cs" />
+    <Compile Include="Interface\ISubmissionCofoHopeHopRepository.cs" />
+    <Compile Include="Interface\ISubmissionMasterRenewalRepository.cs" />
+    <Compile Include="Interface\ISubmissionMasterRepository.cs" />
+    <Compile Include="Interface\ISubmissionQuestionRepository.cs" />
+    <Compile Include="Interface\ISubmissionSelfCertificationRepository.cs" />
+    <Compile Include="Interface\ISubmissionTaxRevenueRepository.cs" />
+    <Compile Include="Interface\ISubmissionToAccelaRepository.cs" />
+    <Compile Include="Interface\ISubmissionVerficationRepository.cs" />
+    <Compile Include="Interface\IMasterSubCategoryRepository.cs" />
+    <Compile Include="Interface\IUserBBLServiceRepository.cs" />
+    <Compile Include="Interface\IUserManagerRepository.cs" />
+    <Compile Include="Interface\IUserPasswordTrackingRepository.cs" />
+    <Compile Include="Interface\IUserRepository.cs" />
+    <Compile Include="Interface\IUserRoleRepository.cs" />
+    <Compile Include="Interface\IUserServicesRepository.cs" />
+    <Compile Include="Interface\IKeywordDetailsRepository.cs" />
+    <Compile Include="KeywordDetails.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KeywordMaster.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lookup_BusinessStructure.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lookup_ExistingCategories.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MailTemplate.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterBblApplicationStatus.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterBusinessActivity.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCategory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCategoryDocument.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCategoryPhysicalLocation.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCategoryQuestion.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCountry.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MastereHOPEligibility.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterEhopOptionType.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPrimaryCategory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterRegisteredAgent.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterRenewalStatusFee.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterSecondaryLicenseCategory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterState.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterSubCategory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BBLService.cs" />
+    <Compile Include="Models\SearchDataViewModel.cs" />
+    <Compile Include="Common\UnitOfWork.cs" />
+    <Compile Include="Implementation\SecurityRepository.cs" />
+    <Compile Include="Interface\ISecurityRepository.cs" />
+    <Compile Include="Models\SearchKeywordModel.cs" />
+    <Compile Include="Models\UserServiceModel.cs" />
+    <Compile Include="OSub_Category_Checklist.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OSub_Category_Fees.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentAddressDetails.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentCardDetails.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentDetails.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentHistoryDetails.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Portal_Content_Errors.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefreshTokens.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityQuestion.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StreetTypes.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionBblAssociationToUsers.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionCategory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionCofo_Hop_Ehop.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionCofo_Hop_Ehop_Address.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionCorporation_Agent.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionCorporation_Agent_Address.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionDocument.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionDocumentToAccela.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionEHOPEligibility.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionGeneratedDocument.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionIndividual.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionLicenseNumberCounter.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionMaster.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionMasterRenewal.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionMaster_ApplicationCheckList.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionQuestion.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionSelfCertification.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissionTaxRevenue.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubmissiontoAccela.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_ETL_Address_And_Parcel.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserBBLService.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserClaim.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLoginHistory.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPasswordTracking.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserService.cs">
+      <DependentUpon>BusinessCenterDb.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="BusinessCenterDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BusinessCenterDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BusinessCenterDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BusinessCenterDb.edmx</DependentUpon>
+      <LastGenOutput>BusinessCenterDb.Context.cs</LastGenOutput>
+    </None>
+    <None Include="BusinessCenterDb.edmx.diagram">
+      <DependentUpon>BusinessCenterDb.edmx</DependentUpon>
+    </None>
+    <None Include="BusinessCenterDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BusinessCenterDb.edmx</DependentUpon>
+      <LastGenOutput>BusinessCenterDb.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

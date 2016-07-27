@@ -1,0 +1,13 @@
+<div class="topcoat-overlay-bg" ng-show="showMediaOverlay">
+    <button type="button" ng-click="closeOverlay()">Close</button>
+
+    <div id="imageOverlay" ng-show="showImageOverlay" class="topcoat-overlay">
+        <img src="{{ imageSrcUrl }}" />
+        <br/>
+        <div>Capture Notes: {{ imageSrcNotes }}</div>
+    </div>
+
+    <div id="videoOverlay" ng-show="showVideoOverlay" class="topcoat-overlay">
+        <video class="video" src="{{ videoSrcUrl }}" controls></video>
+    </div>
+</div>

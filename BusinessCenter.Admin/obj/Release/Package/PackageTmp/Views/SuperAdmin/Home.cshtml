@@ -1,0 +1,381 @@
+﻿@model BusinessCenter.Admin.Models.AccountViewModel
+@using BusinessCenter.Admin.Helpers
+
+@if (Session["UserName"] != null)
+{
+    ViewBag.Title = "DCRA - Superadmin Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Superadmin</span>
+    </div>
+    
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Superadmin Details</h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="login_form register_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9" style="text-align: left;">
+                    <div class="form-group">
+                        <input type="submit" value="Create Superadmin" id="btnCreate" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class=".col-md-3 pull-right" style="margin-top: 30px; margin-left: 3px;margin-right:1px;">
+                    <div class="form-group">
+                        @using (Html.BeginForm("Home", "SuperAdmin", FormMethod.Get))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.RadioButton("SuperadminRadio", "All", false, new { id = "All" })<strong> All</strong>
+                            @Html.RadioButton("SuperadminRadio", "Active", false, new { id = "Active" })<strong> Active</strong>
+                            @Html.RadioButton("SuperadminRadio", "InActive", false, new { id = "InActive" })<strong> Inactive</strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.UserType, new { id = "UserType" })
+            <div id="Content" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                <div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+                    <p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="~/images/camera-loader.gif" alt="not showing" /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade homelockmodaldiv" id="Homelockmodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homelockmodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  lockyes-btn" id="submit_btn">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade homemodaldiv" id="Homemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        .login_form p {
+            font-size: 16px;
+            margin-bottom: 0;
+            line-height: 20px;
+        }
+    </style>
+    
+    <script type="text/javascript">
+        // When page loaded below method will be executed
+        $(document).ready(function () {
+            var UserType = $("#UserType").val();
+            console.log(localStorage.getItem("superAdminRadio"));
+            if (localStorage.getItem("superAdminRadio") != 'null') {
+                
+                UserType = JSON.parse(localStorage.getItem('superAdminRadio'));
+            }
+
+            if (UserType === 'All') {
+                GetAll();
+                $("#All").prop('checked', true);
+                $("#Active").prop('checked', false);
+                $("#InActive").prop('checked', false);
+                return true;
+            } else if (UserType === 'Active') {
+                GetActive();
+                $("#All").prop('checked', false);
+                $("#Active").prop('checked', true);
+                $("#InActive").prop('checked', false);
+                return true;
+            }
+            else if (UserType === 'InActive') {
+                GetInActive();
+                $("#All").prop('checked', false);
+                $("#Active").prop('checked', false);
+                $("#InActive").prop('checked', true);
+                return true;
+            }
+        });
+
+        // When Radio Button Selection changed, then below Change event will be executed.
+        $('input:radio[name="SuperadminRadio"]').change(function () {
+            if ($(this).val() == 'All') {
+                $("#Content").empty();
+                $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                GetAll();
+               
+            } else if ($(this).val() == 'Active') {
+                $("#Content").empty();
+                $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                GetActive();
+              
+            }
+            else if ($(this).val() == 'InActive') {
+                $("#Content").empty();
+                $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                GetInActive();
+              
+            }else {}
+
+            // Clearing the page number and restoring to Page 1, when radiobutton is checked.
+            tableData.state.clear();
+
+            // Gets the value of the selected radio button and storing it into local storage.
+            var selectedRadio = $(this).val();
+            localStorage.setItem("superAdminRadio", JSON.stringify(selectedRadio));
+        });
+
+        // This Event is executed when Create Button is clicked.
+        $("#btnCreate").click(function () {
+            window.location.href = "/Account/Register?utype=S";
+        });
+
+        // This Event navigates to Register page when Create Button is clicked.
+        $(document).keydown(function (e) {
+            if (e.which == 13) {
+                $("#btnCreate").click();
+            }
+        });
+
+        function GetAll() {
+            $.ajax({
+                url: '/SuperAdmin/All',
+                type: 'Get',
+                cache: false,
+                data: { AllData: $('#All').val() },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#Content").empty().append(data);
+                    $("#noRecords").empty().text("No active or inactive Superadmins found");
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetActive() {
+            $.ajax({
+                url: '/SuperAdmin/Active',
+                type: 'Get',
+                cache: false,
+                data: { AllData: $('#Active').val() },
+                success: function (data) {
+
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Content").empty().append(data);
+                        $("#noRecords").empty().text("No active Superadmins found");
+                    }
+
+                 
+                },
+                error: function () {
+                }
+            });
+        };
+
+        function GetInActive() {
+            $.ajax({
+                url: '/SuperAdmin/InActive',
+                type: 'Get',
+                cache: false,
+                data: { AllData: $('#InActive').val() },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#Content").empty().append(data);
+                    $("#noRecords").empty().text("No inactive Superadmins found");
+}
+                },
+                error: function () {
+                }
+            });
+        };
+    </script>
+    
+    <script>
+    var gblLockId;
+    var gblLockType;
+    var gblLockuserRole;
+
+    function ShowLockDialog(UserId, UserType, Role) {
+        $('.homelockmodal-body h3.error_message').empty().append('Are you sure you want to unlock this account?');
+        // Do not show this confirmation pop up again for the Current session.
+        $('.homelockmodaldiv').modal('show');
+        gblLockGui = UserId;
+        gblLocklen = UserType;
+        gblLockutype = Role;
+    }
+
+    $(".lockyes-btn").on("click", function () {
+        var Gui2 = gblLockGui;
+        var len2 = gblLocklen;
+        var utype2 = gblLockutype;
+        ActivateAccount(Gui2, len2, utype2);
+    });
+
+    function ActivateAccount(Gui, len, utype) {
+        $.ajax({
+            url: '/Account/Lock',
+            type: 'Get',
+            data: { id: Gui, Type: len, userRole: utype },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                $('#Homelockmodal-container').modal('hide');
+                if (len == 'All') {
+                    GetAll();
+                }
+                else if (len == 'Active') {
+                    GetActive();
+                }
+                else if ($("#Active").val() == 'InActive') {
+                    GetInActive();
+                }
+}
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    }
+   
+    var gblGui;
+    var gblutype;
+
+    function ShowDialog(UserId, utype) {
+        $('.homemodal-body h3.error_message').empty().append('Are you sure you want to deactivate this account?');
+        // Do not show this confirmation pop up again for the Current session.
+        $('.homemodaldiv').modal('show');
+        gblGui = UserId;
+        gblutype = utype;
+    }
+
+    $(".yes-btn").on("click", function () {
+        var Gui2 = gblGui;
+        var utype2 = gblutype;
+        DeleteAccount(Gui2, utype2);
+    });
+
+    function DeleteAccount(Gui, utype) {
+
+        $.ajax({
+            url: '/Account/Delete',
+            type: 'Post',
+            data: { UserId: Gui, Type: utype, userRole: 'SuperAdmin' },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                $('#Homemodal-container').modal('hide');
+                if (utype == 'All') {
+                    GetAll();
+                }
+                else if (utype == 'Active') {
+                    GetActive();
+                }
+                else if (utype == 'InActive') {
+                    GetInActive();
+                }
+}
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    }
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,171 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.DocumentsViewModel
+
+<form>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.Document.Agency, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "Agency",
+                                       name = "Agency",
+                                       placeholder = "Agency",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Agency'"
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.Agency, "", new { @class = "error-message error" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group reg-err-placement">
+                @Html.EditorFor(model => model.Document.Agency_FullName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Agency_FullName",
+                                       name = "Agency_FullName",
+                                       id = "Agency_FullName",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Agency_FullName'"
+
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.Agency_FullName, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.Document.Div, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "Division",
+                                       name = "Division",
+                                       placeholder = "Division",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Division'"
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.Div, "", new { @class = "error-message error" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group reg-err-placement">
+                @Html.EditorFor(model => model.Document.DivisionFullName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Division FullName",
+                                       name = "DivisionFullName",
+                                       id = "DivisionFullName",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'DivisionFullName'"
+
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.DivisionFullName, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.Document.SupportingDocuments, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "SupportingDocuments",
+                                       name = "SupportingDocuments",
+                                       placeholder = "SupportingDocuments",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'SupportingDocuments'"
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.SupportingDocuments, "", new { @class = "error-message error" })
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="form-group reg-err-placement">
+                @Html.EditorFor(model => model.Document.ShortDocName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Short Document Name",
+                                       name = "ShortDocName",
+                                       id = "ShortDocName",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'ShortDocName'"
+
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.ShortDocName, "", new { @class = "error-message error" })
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.Document.Description, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "Description",
+                                       name = "Description",
+                                       placeholder = "Description",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Description'"
+                                   }
+                               })
+                @Html.ValidationMessageFor(model => model.Document.Description, "", new { @class = "error-message error" })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12">
+        <div class="center_div">
+            <input type="submit" value="Create Account" id="btnRegister" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div id="radio-div">
+        <input type="radio" value="active" />Active
+        <input type="radio" value="active" />InActive
+    </div>
+    <div id="radio-div">
+        <input type="radio" value="InitialLicense" />YES
+        <input type="radio" value="InitialLicense" />NO
+    </div>
+    <div id="radio-div">
+        <input type="radio" value="PostLicense" />YES
+        <input type="radio" value="PostLicense" />NO
+    </div>
+    <div id="radio-div">
+        <input type="radio" value="Renewel" />YES
+        <input type="radio" value="Renewel" />NO
+    </div>
+
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnCreate" class="btn btn-default">Business Activity</button>
+        <button type="submit" id="btnClear" class="btn btn-default">Clear</button>
+    </div>
+</form>

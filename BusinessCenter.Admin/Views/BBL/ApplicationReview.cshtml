@@ -1,0 +1,361 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Common.SubmissionMasterDetailsViewModel
+@{
+    ViewBag.Title = "DCRA - Application Review";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("BBL", "ApplicationReview", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front"> Application Review</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Application Review</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form">
+        <div class="container">
+            <div class="row">
+                <div class="form_wrapper reg-err-placement" id="secondary-add">
+                    @* Here loading the SecondaryAddPartial*@
+                </div>
+            </div>
+            <div class="clearfix" id="appreview-btns" style="display:none;">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 sidebar-outer">
+                        <div class="search_result">
+                            <div class="container srch_filter">
+                                <div class="col-xs-9 no-pad filters">
+                                    <label class="col-xs-12 col-sm-1 no-pad">Filter:</label>
+                                    <div class="btn_wrapper">
+                                        @if(Model.DraftlistCount == 0)
+                                    {
+                                            <input type="submit" value="Draft (0)" name="draft" disabled class="mouseAuto" id="draft-disabled" style="display:none;" />
+                                    }
+                                        else
+                                        {
+                                            <input type="submit" value="Draft (@Model.DraftlistCount)" id="draft" name="draft" class="searchbutn" style="display:none;" />
+                                        }
+                                        @if (Model.UnderReviewlistCount == 0)
+                                    {
+                                            <input type="submit" value="Under Review (0)" name="underreview" disabled class="mouseAuto" />
+                                    }
+                                    else
+                                    {
+                                            <input type="submit" value="Under Review (@Model.UnderReviewlistCount)" id="underreview" name="underreview" class="searchbutn" />
+                                    }
+                                    </div>
+                                    <input type="text" placeholder="Enter Keyword" id="keywordfield" style="font-weight:bold;" />&nbsp;
+                                    <input type="submit" value="CLEAR FILTER" id="btnClear" name="Clear All" class="searchbutn clr-btn" style=" margin-top: 2px;" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class=".col-md-3 pull-right" style="margin-top: 30px; ">
+                    <div class="form-group">
+                        @using (Html.BeginForm("Home", "SuperAdmin", FormMethod.Get))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.RadioButton("licenseRadio", "All", false, new { id = "All" })<strong> All</strong>
+                            @Html.RadioButton("licenseRadio", "Submission", false, new { id = "Submission" })<strong> Submission</strong>
+                            @Html.RadioButton("licenseRadio", "Renewal", false, new { id = "Renewal" })<strong> Renewal</strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="Content" style="width: 100%; height: auto; margin: 0 auto; position: relative;">
+                <div class="center" style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; ">
+                    <p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="~/images/camera-loader.gif" alt="not showing" /></p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal fade homemodaldiv" id="Homemodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .btn_wrapper {
+            margin-top: 2px;
+        }
+        
+    </style>
+    
+    <script>
+        $(document).ready(function () {
+            $("#All").prop('checked', true);
+
+            $("#draft-disabled").css("display", "block");
+            $("#draft").css("display", "block");
+            GetAllLicenses();
+            $("#appreview-btns").css("display", "block");
+        });
+
+
+        $('input:radio[name="licenseRadio"]').change(function () {
+            if ($(this).val() == 'All') {
+                $("#Content").empty();
+                $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                $("#draft-disabled").css("display", "block");
+                $("#draft").css("display", "block");
+                GetAllLicenses();
+
+
+            } else if ($(this).val() == 'Submission') {
+                $("#Content").empty();
+                $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                $("#draft-disabled").css("display", "block");
+                $("#draft").css("display", "block");
+                GetAllSubmissions();
+
+            }
+            else if ($(this).val() == 'Renewal') {
+                $("#Content").empty();
+                $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+                GetAllRenewals();
+
+            }
+
+         
+        });
+
+
+
+        function GetAllLicenses() {
+            $.ajax({
+                url: '/BBL/SubmissionMasterGridPartial',
+                type: 'Get',
+                cache: false,
+                data: { status: "", userId: "", licenseType: "All" },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#Content").empty().append(data);
+                    $("#noRecords").empty().text("No licenses found");
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetAllSubmissions() {
+            $.ajax({
+                url: '/BBL/SubmissionMasterGridPartial',
+                type: 'Get',
+                cache: false,
+                data: { status: "", userId: "", licenseType: "S" },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#Content").empty().append(data);
+                    $("#noRecords").empty().text("No submission licenses");
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function GetAllRenewals() {
+            $.ajax({
+                url: '/BBL/SubmissionMasterGridPartial',
+                type: 'Get',
+                cache: false,
+                data: { status: "", userId: "", licenseType: "A" },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                    $("#Content").empty().append(data);
+                    $("#noRecords").empty().text("No renewal licenses");
+                    $("#draft-disabled").css("display", "none");
+                    $("#draft").css("display", "none");
+}
+                },
+                error: function () {
+                }
+            });
+        }
+
+     
+
+
+    </script>
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+        var appReview = '';
+        var appButtonClicked = '';
+        $(document).ready(function () {
+            $("#Content").empty();
+            $("#Content").html('<div class="center"  style="text-align: center;width: 100%; height: 200px; vert-align: middle; margin-top: 125px; "><p style="color:dodgerblue; font-weight: 400;"> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p></div>');
+         //   GetAll();
+
+
+            //if (localStorage.getItem("appSearchType") !== null) {
+            //    appButtonClicked = JSON.parse(localStorage.getItem('appSearchType'));
+            //    console.log("ready event " + appButtonClicked);
+            //    if (appButtonClicked === 'draft') {
+            //        GetDrafts();
+            //    }
+            //    else if (appButtonClicked === 'underreview') {
+            //        GetUnderReview();
+            //    }
+            //    else if (appButtonClicked === 'btnClear') {
+            //        GetAll();
+            //    }
+
+            //} else {
+              
+            //}
+        });
+        //function GetAll() {
+
+        //    $.ajax({
+        //        url: '/BBL/SubmissionMasterGridPartial',
+        //        type: 'Get',
+        //        cache: false,
+        //        data: { status: "", userId: "" },
+        //        success: function (data) {
+        //            console.log(data);
+        //            $("#appreview-btns").css("display", "block");
+
+        //            $("#Content").empty().append(data);
+        //        },
+        //        error: function () {
+        //        }
+        //    });
+        //}
+
+
+    </script>
+
+    <script>
+        function GetDrafts() {
+            SearchByStatus("Draft");
+          //  appReview.state.clear();
+        }
+
+        function GetUnderReview() {
+            SearchByStatus("UnderReview");
+            //  appReview.state.clear();
+        }
+
+        $("#draft").click(function () {
+            $("#keywordfield").val("Draft");
+            SearchByStatus("Draft");
+            RemoveActivefrmbtns();
+            $("#draft").toggleClass('active');
+
+            localStorage.removeItem('appSearchType');
+            var selectedSearchType = $("#draft").attr('id');
+            localStorage.setItem("appSearchType", JSON.stringify(selectedSearchType));
+            console.log("change event " + selectedSearchType);
+        });
+
+        $("#underreview").click(function () {
+
+            $("#keywordfield").val("Under Review");
+            SearchByStatus("UnderReview");
+            RemoveActivefrmbtns();
+            $("#underreview").toggleClass('active');
+
+            localStorage.removeItem('appSearchType');
+            var selectedSearchType = $("#underreview").attr('id');
+            localStorage.setItem("appSearchType", JSON.stringify(selectedSearchType));
+            console.log("change event " + selectedSearchType);
+        });
+       
+        $("#btnClear").click(function () {
+            $("#keywordfield").val('');
+            var kwditem = "";
+            SearchByStatus(kwditem);
+            Removeall();
+
+            localStorage.removeItem('appSearchType');
+            var selectedSearchType = $("#btnClear").attr('id');
+            localStorage.setItem("appSearchType", JSON.stringify(selectedSearchType));
+            console.log("change event " + selectedSearchType);
+        });
+
+        $("#keywordfield").keyup(function () {
+            var kwditem = $("#keywordfield").val();
+            SearchByStatus(kwditem);
+
+        });
+        function Removeall() {
+            $("#draft").removeClass('active');
+            $("#underreview").removeClass('active');
+           
+        }
+        function RemoveActivefrmbtns() {
+            $("#draft").removeClass('active');
+            $("#underreview").removeClass('active');
+            $("#btnClear").removeClass('active');
+        }
+
+        function SearchByStatus(Status) {
+            $.ajax({
+                url: "/BBL/SubmissionMasterGridPartial",
+                type: 'Get',
+                cache: false,
+                data: { status: Status, userId: "" },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Content").empty().append(data);
+}
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+

@@ -1,0 +1,60 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/login" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center </a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/register" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Register</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Verify Email</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Verify Your Email Address</h2>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait...<img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div class="register_form">
+        <div class="container">
+            <div class="verify-mail">
+                <h3>You are almost done. A verification message has been sent to  your registered email address. Verifying your email address is an added security measure.  To finish the account setup process, you need to click the verification link that was emailed to you. If you cannot find the email in your inbox, please check your Junk Mail or Spam folder.
+                 </h3>
+                <p>Please check your email and follow the link to finish creating your My DC Business Center account. Once you verify your email address your account will be activated. The validation link in your email will expire after 24 hours, after which you will be required to create a new account.</p>
+                <p class="resend-email">Can't find the email? <a href="javascript:void(0)" ng-click="navToverifyModal()">Resend verification mail</a>.
+            </div>
+        </div>
+    </div>
+    <!--<div class="register_form">
+        <div class="container">
+            <div class="verify-mail">
+                <h3 id="email_heading">You are almost done. A verification message has been sent to registered Email account</h3>
+                <p id="email_message">Please check your email and follow the link to finish creating your DC Business Center account. Once you verify your email address, you will be able to create your profile and save records to your account. The validation link in your email will expire after 24 hours.   </p>
+                <p class="resend-email"><div id="resend_email"> Can't find the email?</div> <a href="javascript:void(0)" ng-click="resendEmail()" id="resend_Email_link">Resend verification email</a> <div id="hide_or"> or</div> <a href="javascript:void(0)">visit the help page</a>.</div>
+            </div>
+        </div>-->
+</div>
+<div class="modal fade" id="verificationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class='error_message'>Your verification e-mail has been resent. Please check your inbox.</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button" ng-click="navToSubmitLogin()" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Starts -->
+<div ng-include src="'partials/footer.html'"></div>
+

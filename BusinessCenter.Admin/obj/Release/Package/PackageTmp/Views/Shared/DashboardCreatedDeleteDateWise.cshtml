@@ -1,0 +1,77 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.DashBoardViewModel
+<div>
+    <table class="table table-striped table-bordered  table-responsive dataTable smartgrid" id="createSearchData" role="grid">
+        <thead>
+        <tr>
+            <th class="text-center">Role</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Count</th>
+            <th class="text-center">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            @if (Model.UserCreateDelete.Count == 0)
+            {
+                <tr>
+                    <td colspan="3">No record(s) found</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model.UserCreateDelete)
+                {
+                    <tr>
+                        <td class="account-cr-del text-center">
+                            @if(item.roleId == "Super Admin")
+                            {
+                                <span>Superadmin</span>
+                            }
+                            else if(item.roleId == "User")
+                            {
+                                <span>Customer</span>
+                            }
+                            else{
+                                @Html.DisplayFor(modelItem => item.roleId)
+                            }
+                        </td>
+                        <td class="account-cr-del text-center">
+                            @if (item.status == "False")
+                            {
+                                <span>Added</span>
+                            }
+                            else
+                            {
+                                <span>Deleted</span>
+                            }
+                        </td>
+                        <td class="account-cr-del text-center">
+                            @Html.DisplayFor(modelItem => item.cnt)
+                        </td>
+                        <td class="account-cr-del text-center">
+                            <span>@Html.DisplayFor(modelItem => item.CreatedDate)</span>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" class="init">
+    var deletedUsersDateWise = '';
+    $(document).ready(function () {
+        //  window.alert = function () {  }
+        deletedUsersDateWise =  $('#createSearchData').DataTable({
+            "ordering": false,
+            "pageLength": 5,
+            stateSave: true
+        });
+        $("#createSearchData_length").hide();
+        $("#createSearchData_filter").hide();
+        if ($('#createSearchData td').attr('colspan') == '3') {
+            $("#createSearchData_info").hide();
+            $("#createSearchData_paginate").hide();
+        } else {
+        }
+    });
+</script>

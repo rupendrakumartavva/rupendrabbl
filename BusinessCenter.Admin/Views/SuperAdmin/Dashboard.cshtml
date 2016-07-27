@@ -1,0 +1,435 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.DashBoardViewModel
+@{
+    ViewBag.Title = "DCRA - Superadmin Dashboard Details";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+
+@if (Session["UserName"] != null)
+{
+    <script type="text/javascript">
+        localStorage.Lgoggein = true;
+        localStorage.ApplicationStart = true;
+        localStorage.UserRole = 'SuperAdmin';
+        localStorage.ApplicationLoggedout = "Authenticated";
+    </script>
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        <div class="container headerBreadcrumb">
+            @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+            <span class="easy-breadcrumb_segment-separator">/</span>
+            <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Dashboard</span>
+        </div>
+        <div class="page_title scr_title">
+            <div class="container">
+                <div class="row">
+                    <h2 tabindex="0" class="heading">Welcome  @Session["FullName"]</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="login_form register_form">
+            <div class="container" style="background-color:#fff;">
+                <div class="row" style="margin-bottom: -25px">
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center">
+                        <h3 class="blueheading"><strong>Summary</strong>
+                        </h3>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="row state-overview" style="margin-right:4px;margin-left:4px;">
+                        <section class="col-lg-3 col-sm-6 sidebar-outer" style="height: auto">
+                            <div class="symbol green-color">
+                                <i class="fa fa-bullseye"></i>
+                            </div>
+                            <div class="" style="padding-top: 30px; padding-bottom: 20px">
+                                <div id="ActiveUsers">
+                                    <p style="color: #114f7f;">
+                                        <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing" />
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-lg-3 col-sm-6 sidebar-outer" style="height: auto">
+                            <div class="symbol green-color">
+                                <i class="fa fa-bullseye"></i>
+                            </div>
+                            <div class="value gray" style="padding-top: 30px; padding-bottom: 20px">
+                                <div id="Inactiveusers">
+                                    <p style="color: #114f7f;">
+                                        <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing" />
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-lg-3 col-sm-6 sidebar-outer" style="height: auto">
+                            <div class="symbol green-color">
+                                <i class="fa fa-bullseye"></i>
+                            </div>
+                            <div class="value gray" style="padding-top: 46px; padding-bottom: 20px">
+                                <div id="Registerusers">
+                                    <p style="color: #114f7f;">
+                                        @* <span>Please wait...</span>*@
+                                        <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing" />
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="col-lg-3 col-sm-6 sidebar-outer" style="height: auto">
+                            <div class="symbol green-color">
+                                <i class="fa fa-bullseye"></i>
+                            </div>
+                            <div class="value gray" style="padding-top: 38px; padding-bottom: 20px">
+                                <div id="Deleteusers">
+                                    <p style="color: #114f7f;">
+                                        <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing" />
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-lg-12 col-sm-12 sidebar-outer" style="border: 0;">
+                                <section>
+
+                                    <h4 class="blueheading" style="margin-bottom: -12px;"> Keyword Search History</h4>
+                                    <div id="DashboardSearch" class="panel-body" style="margin-right:20px;margin-left:20px;">
+                                        <p style="color: #114f7f;">
+                                            <img src="~/images/indicator.white.gif" class="dashboardsearchloader" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+
+
+                        <div class="row ">
+                            <div class="col-lg-12 col-sm-12 sidebar-outer" style="width:100%">
+                                <section class="">
+
+                                    <h4 class="blueheading" style="margin-top: -6px; margin-bottom: 0px;"> 1000 Most Frequently Searched Items</h4>
+                                    <div id="DashboardKeywords" class="panel-body" style="margin-right:20px;margin-left:20px;">
+                                        <p style="color:#114f7f;">
+                                            <img src="~/images/indicator.white.gif" class="dashboardsearchloader" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix" style="margin-top: 5px;margin-bottom:10px">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 sidebar-outer" style="">
+                                <section class="">
+
+                                    <h4 class="blueheading" style="margin-top: -6px; margin-bottom: 10px;"> Number of logins per day and respective last login details</h4>
+                                    <div id="Loginusers" style="margin-right:20px;margin-left:20px;">
+                                        <p style="color: #114f7f;">
+                                            <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing" />
+                                        </p>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                <div class="clearfix">
+                    <div class="row">
+                        <div class="col-lg-8 col-sm-8 sidebar-outer" style="margin-bottom: 0; margin-top: 27px;">
+                            <section class="" style="height: auto; margin-bottom: 0">
+
+                                <h4 class="blueheading" style="margin-top: -6px; margin-bottom: 0px;"> Number of logins per day by role</h4>
+                                <div id="LoginUsersbyRole" class="panel-body" style="margin-left: 8px;">
+                                    <p style="color: #114f7f;">
+                                        <img src="~/images/indicator.white.gif" class="dashboardsearchloader" alt="not showing"/>
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg- col-sm-4 sidebar-outer" style="margin-bottom: 0">
+                            <section class="" style="height: auto; margin-bottom: 0">
+                                <h4 class="blueheading" style="margin-top: -5px; margin-bottom: 0px;"> Number of regulatory objects linked by object type</h4>
+                                <div id="RegulatorCount" class="panel-body" style="margin-right: 8px;">
+                                    <p style="color: #114f7f;">
+                                        <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing"/>
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 col-sm-8 sidebar-outer" style="margin-bottom: 0; margin-top: 27px;">
+                        <section class="" style="height: auto; margin-bottom: 0">
+                            <header class="panel-heading blueheading">
+                                Number of new account creations and account deletions per day
+                            </header>
+                            <div id="createAccountsPerday" class="panel-body">
+                                <p style="color: #114f7f;">
+                                    <img src="~/images/indicator.white.gif" class="dashboardloader" alt="not showing" />
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        }
+        else
+        {
+            Response.Redirect("/Account/Login");
+        }
+
+        <script>
+            $(document).ready(function () {
+                Activeusers();
+                Inactiveusers();
+                Registerusers();
+                Deleteusers();
+                Loginusers();
+                LoginbyRole();
+                DashboardSearch();
+                RegulatorCount();
+                DashboardKeywords();
+                CreatedDeleteDateWise();
+            });
+
+        function Activeusers() {
+            $.ajax({
+                url: '/SuperAdmin/DashboardActive',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#ActiveUsers").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function Inactiveusers() {
+            $.ajax({
+                url: '/SuperAdmin/DashboardInactive',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Inactiveusers").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function Registerusers() {
+            $.ajax({
+                url: '/SuperAdmin/DashboardRegister',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Registerusers").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        function Deleteusers() {
+            $.ajax({
+                url: '/SuperAdmin/DashboardDelete',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Deleteusers").empty().append(data);
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        function Loginusers() {
+            $.ajax({
+                url: '/SuperAdmin/Dashboardloginhistory',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#Loginusers").empty().append(data);
+                    }
+                },
+                error: function () {
+                    $('#Loginusers').hide();
+                }
+            });
+        }
+        function LoginbyRole() {
+            $.ajax({
+                url: '/SuperAdmin/DashboardLoginByRole',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#LoginUsersbyRole").empty().append(data);
+                    }
+                },
+                error: function() {
+                    $("#LoginUsersbyRole").hide();
+                }
+            });
+        }
+        function DashboardSearch() {
+            $.ajax({
+                url: '/Account/DashboardSearch',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#DashboardSearch").empty().append(data);
+                    }
+                },
+                error: function () {
+                    $('#DashboardSearch').hide();
+                }
+            });
+        }
+        function RegulatorCount() {
+            $.ajax({
+                url: '/Account/RegulatorCount',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#RegulatorCount").empty().append(data);
+                    }
+                },
+                error: function () {
+                    $('#RegulatorCount').hide();
+                }
+            });
+        }
+
+        function DashboardKeywords() {
+            $.ajax({
+                url: '/Account/DashboardKeywords',
+                type: 'Get',
+                cache: false,
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#DashboardKeywords").empty().append(data);
+                    }
+                },
+                error: function () {
+                    $('#DashboardKeywords').hide();
+                }
+            });
+        }
+        function CreatedDeleteDateWise() {
+            $.ajax({
+                url: '/Admin/DashboardCreatedDeleteDateWise',
+                type: 'Get',
+                cache: false,
+                data: { roleId: "1" },
+                success: function (data) {
+                    var sessionId = $(data).find('#Session_Expired').text();
+                    if (sessionId == 'Session Expired') {
+                        window.location.href = '/Account/SessionExpiry';
+                    } else {
+                        $("#createAccountsPerday").empty().append(data);
+                    }
+                },
+                error: function () {
+                    $("#createAccountsPerday").hide();
+                }
+            });
+        }
+
+        $("a").on('click', function (e) {
+            if ($(this).hasClass('paginate_button')) {
+            } else {
+                //console.log("working");
+                // alert("working");
+                dashboardSearch.state.clear();
+                keywordCountTable.state.clear();
+                LoginUsersTable.state.clear();
+                loginUsersRoleCount.state.clear();
+                deletedUsersDateWise.state.clear();
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

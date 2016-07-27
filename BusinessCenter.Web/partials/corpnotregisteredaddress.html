@@ -1,0 +1,327 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to manually enter the Business Headquarters address for a company this is not required to register with the Corporations Division.</strong>
+                    </p>
+
+                    <p class="terms_text srch_filter">
+                        Enter all required information into the appropriate fields and select <button id="btn_revise2" class="btn btn-default btnnextColor" style="cursor: default; pointer-events: none; text-transform: capitalize;">Next</button> .
+                    </p>
+
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li>
+                            <b>If your business is a Sole Proprietorship</b>, please enter your full name (or the full name of the Business Owner) in the Business Name field AND in the First, Middle and Last Name Fields.
+                        </li>
+                        <li>
+                            <b>If your business is a General Partnership or a Joint Venture</b>, please enter your business name in the Business Name field and complete the First, Middle and Last Name fields with your name (or the name of the Business Owner).
+                        </li>
+                    </ul>
+
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+
+<div id="dvMainsection">
+    <div data-ng-controller="CorpNotRegisteredAddressController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Corporate Information</div>
+                <div class="panel-body">
+                    <div class="page-desc-content">
+                  
+                        <ol type="a" >
+                            <li class="corp_font_color" style="font-size: 24px !important;">
+                                <p> Sole Proprietors and Individual employees, please enter the full name of the Sole Proprietor or of the Individual employee in the License Applicant field.</p>
+                            </li>
+                            <li class="corp_font_color" style="font-size: 24px !important;">
+                                <p> Joint Ventures and General Partnerships should enter the business name in the License Applicant field.</p>
+                            </li>
+                        </ol>
+                   
+                        </div>
+                        <!-- start controls -->
+                        <div class="line"></div>
+                        <div class="row">
+                            <form role="form" id="vm.corpnorregadd_form" name="vm.corpnorregadd_form" autocomplete="off" novalidate ng-submit="vm.corpnorregadd_form_validate(ehopaddress)">
+                                <div class="form_wrapper">
+                                    <h3 class="text-center">
+                                        <b>Business Name and Headquarters Address</b>
+                                    </h3>
+                                    <div id="error_msg" class="error_text text-center" tabindex="-1"></div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.countrydd.$invalid && vm.submitted }">
+                                                <label>Country</label>
+                                                <select name="countrydd" data-ng-model="vm.ehopaddress.BusinessCountry" required ng-change="vm.countryChanged()">
+                                                    <option value="" selected disabled>Select One</option>
+                                                    <option ng-repeat="country in vm.Countries" value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Country.$dirty && vm.corpnorregadd_form.Country.$invalid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.BusinessName.$invalid && vm.submitted }">
+                                                <label>License Applicant</label>
+                                                <input type="text" class="form-control" placeholder="" ng-maxlength="65" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.BusinessName" name="BusinessName" id="BusinessName" ng-focus="vm.setErrorMsg('error_msg')" required>
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.BusinessName.$dirty && vm.corpnorregadd_form.BusinessName.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.BusinessName.$error.maxlength">
+                                                    License Applicant exceeds maximum length of 65 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class=" col-sm-offset-2 col-md-4 col-sm-4 col-xs-12  ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.FirstName.$invalid && vm.submitted }">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" placeholder="" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.FirstName" name="FirstName" id="FirstName" ng-maxlength="15" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.FirstName.$dirty && vm.corpnorregadd_form.FirstName.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.FirstName.$error.pattern">
+                                                    Please enter letters or the following special characters only (- . ' `).
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.FirstName.$error.maxlength">
+                                                    First Name exceeds maximum length of 15 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-offset-0 col-md-4 col-sm-4 col-xs-12  ">
+                                            <div class="form-group">
+                                                <label>Middle Name</label>
+                                                <input type="text" class="form-control" placeholder="optional" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.MiddleName" name="MiddleName" id="MiddleName" ng-maxlength="15" ng-focus="vm.setErrorMsg('error_msg')" ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.MiddleName.$dirty && vm.corpnorregadd_form.MiddleName.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.MiddleName.$error.pattern">
+                                                    Please enter letters or the following special characters only (- . ' `).
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.MiddleName.$error.maxlength">
+                                                    Middle Name exceeds maximum length of 15 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class=" col-sm-offset-2 col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.LastName.$invalid && vm.submitted }">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" placeholder="" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.LastName" name="LastName" id="LastName" ng-maxlength="15" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.LastName.$dirty && vm.corpnorregadd_form.LastName.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.LastName.$error.pattern">
+                                                    Please enter letters or the following special characters only (- . ' `).
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.LastName.$error.maxlength">
+                                                    Last Name exceeds maximum length of 15 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-offset-0 col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.Email.$invalid && vm.submitted }">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" placeholder="" ng-maxlength="65" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.Email" name="Email" id="Email" ng-focus="vm.setErrorMsg('error_msg')" required
+                                                       ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-zA-Z]{2,6}(?:\.[a-zA-Z]{2})?)$/">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Email.$dirty && vm.corpnorregadd_form.Email.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Email.$error.pattern">
+                                                    Please enter a valid Email address.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Email.$error.maxlength">
+                                                    Email exceeds maximum length of 65 characters
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class=" col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.AddressLine1.$invalid && vm.submitted }">
+                                                <label>Business Headquarters Address 1</label>
+                                                <input type="text" class="form-control" placeholder="" ng-maxlength="65" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.BusinessAddressLine1" name="AddressLine1" id="AddressLine1" ng-focus="vm.setErrorMsg('error_msg')" required>
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.AddressLine1.$dirty && vm.corpnorregadd_form.AddressLine1.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressLine1.$error.maxlength">
+                                                    Address exceeds maximum length of 65 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class=" col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>Business Headquarters Address 2</label>
+                                                <input type="text" class="form-control" placeholder="optional" ng-maxlength="65" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.BusinessAddressLine2" name="AddressLine2" id="AddressLine2" ng-focus="vm.setErrorMsg('error_msg')">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.AddressLine2.$dirty && vm.corpnorregadd_form.AddressLine2.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressLine2.$error.maxlength">
+                                                    Address exceeds maximum length of 65 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class=" col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>Business Headquarters Address 3</label>
+                                                <input type="text" class="form-control" placeholder="optional" ng-maxlength="65" spellcheck="false"
+                                                       data-ng-model="vm.ehopaddress.BusinessAddressLine3" name="AddressLine3" id="AddressLine3" ng-focus="vm.setErrorMsg('error_msg')">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.AddressLine3.$dirty && vm.corpnorregadd_form.AddressLine3.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressLine3.$error.maxlength">
+                                                    Address exceeds maximum length of 65 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-sm-offset-2 col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.City.$invalid && vm.submitted }">
+                                                <label>City</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.ehopaddress.BusinessCity" spellcheck="false"
+                                                       name="City" id="City" ng-maxlength="30" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[a-zA-Z\s]+$/">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.City.$dirty && vm.corpnorregadd_form.City.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.City.$error.pattern">
+                                                    Please enter letters only.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.City.$error.maxlength">
+                                                    City exceeds maximum length of 30 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-offset-0 col-md-4 col-sm-4 col-xs-12" ng-show="vm.showStateAsDropdown">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.State.$invalid && vm.submitted }">
+                                                <label>State</label>
+                                                <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.ehopaddress.BusinessState" spellcheck="false"
+                                                       name="State" id="State" ng-maxlength="30" ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.showStateAsDropdown" ng-pattern="/^[a-zA-Z\s]+$/"
+                                                       ng-change="vm.stateCityFieldvalidation()">
+                                            </div>
+
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.State.$dirty && vm.corpnorregadd_form.State.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.State.$error.pattern">
+                                                    Please enter letters only.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.State.$error.maxlength">
+                                                    State exceeds maximum length of 30 characters.
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-offset-0 col-md-4 col-sm-4 col-xs-12" ng-show="!vm.showStateAsDropdown">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.StateOptions.$invalid && vm.submitted }">
+                                                <label>State</label>
+                                                <select name="StateOptions" id="StateOptions" data-ng-model="vm.ehopaddress.BusinessState" ng-required="!vm.showStateAsDropdown">
+                                                    <option value="" selected>Select One</option>
+                                                    <option ng-repeat="state in vm.StatesList" value="{{state.StateCode}}">{{state.StateCode}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix">
+                                        <div class="col-sm-offset-2 col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.ZipCode.$invalid && vm.submitted }">
+                                                <label>Zip Code</label>
+                                                <input type="text" class="form-control" placeholder="" data-ng-change="vm.checkZipMaxLength()" data-ng-model="vm.ehopaddress.ZipCode" spellcheck="false"
+                                                       name="ZipCode" id="ZipCode" ng-trim="false" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="vm.validations_wrt_contry.zip.pattern">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.ZipCode.$dirty && vm.corpnorregadd_form.ZipCode.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.ZipCode.$error.pattern">
+                                                    {{vm.validations_wrt_contry.zip.maxlength==100?"Please enter valid Zip Code using Numbers, alphabets, space or hyphen.":"Please enter numbers only."}}
+                                                </small>
+                                                <small class="error-message" ng-show="vm.ehopaddress.ZipCode!=undefined && vm.corpnorregadd_form.ZipCode.$error.customminlength && !vm.corpnorregadd_form.ZipCode.$error.pattern">
+                                                    Zip must have {{vm.validations_wrt_contry.zip.minlength}} digits.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.ZipCode.$error.customlength && !vm.corpnorregadd_form.ZipCode.$error.pattern">
+                                                    Zip Code exceeds the maximum length of {{vm.validations_wrt_contry.zip.maxlength}} characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class=" col-sm-offset-0 col-md-4 col-sm-4 col-xs-12 ">
+                                            <div class="form-group">
+                                                <label>Telephone</label>
+                                                <input type="text" class="form-control" placeholder="optional" spellcheck="false" data-ng-change="vm.checkTelephoneMaxLength()" ng-pattern="vm.validations_wrt_contry.telephone.pattern"
+                                                       data-ng-model="vm.ehopaddress.Telphone" ng-trim="false" name="Telephone" id="Telephone" ng-focus="vm.setErrorMsg('error_msg')">
+                                            </div>
+                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Telephone.$dirty && vm.corpnorregadd_form.Telephone.$invalid">
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Telephone.$error.pattern">
+                                                    {{vm.validations_wrt_contry.telephone.maxlength==100?"Please enter valid Telephone using Numbers, space, plus or hyphen.":"Please enter numbers only."}}
+                                                </small>
+                                                <small class="error-message" ng-show="vm.ehopaddress.Telphone!=undefined && vm.ehopaddress.Telphone!='' && vm.corpnorregadd_form.Telephone.$error.customminlength && !vm.corpnorregadd_form.Telephone.$error.pattern">
+                                                    Telephone must have {{vm.validations_wrt_contry.telephone.minlength}} digits.
+                                                </small>
+                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Telephone.$error.customlength && !vm.corpnorregadd_form.Telephone.$error.pattern">
+                                                    Telephone exceeds the maximum length of {{vm.validations_wrt_contry.telephone.maxlength}} characters.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- end controls -->
+                    </div>
+                    <div class="pre-checkquestion form_button_footer pre-checkquestion-question col-md-12 col-xs-12" style="margin-left: 50px;">
+                        <button id="btn_exit_no_save1" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                        <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')">Exit</button>
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist')">
+                            Return to Checklist
+                        </button>
+                        <button id="btn_revise1111" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToAgent(vm.submitted=true)">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

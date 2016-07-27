@@ -1,0 +1,296 @@
+<div ng-include src="'partials/header.html'"></div>
+
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">License and Fee Confirmation</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">License Category and Fee Confirmation</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page summarizes your answers to the Pre-Application Questions and displays the fees associated with your BBL application.</strong>
+                    </p><br />
+                    <p class="terms_text">
+                        Based on your responses to the Pre-Application Questions, your Basic Business License will include the Business License Categories and Fees listed on this page.  
+                    </p>
+
+                    <p class="terms_text">
+                        Your answers to the Pre-Application Questions enable the system to generate a "Checklist" of the information and documents you will need to complete your application for a Basic Business License.
+                    </p>
+
+                    <p class="terms_text">
+                        Carefully review the information presented.
+                    </p>
+                    <ul class="terms_text srch_filter" style="padding-left: 80px;">
+                        <li>
+                            To Display Details of Licenses and Fees use the <img src="../images/see-details.png" class="welcome_text-see-image" /> link.
+                        </li>
+                        <li>
+                            To make a change, select the
+                            <button class="cursorDefault pointer_events_none">
+                                Back
+                            </button> button.
+                        </li>
+                        <li>
+                            To proceed to the next step of the application and generate a "Checklist" of the information and documents you will need to complete
+                            your application for a Basic Business License select the <button class="cursorDefault btnnextColor pointer_events_none">
+                                Next
+                            </button> button.
+
+
+                            <p>
+                                <strong>*Note*</strong> Once you leave this page and select the
+                                <button class="cursorDefault btnnextColor pointer_events_none">
+                                    Next
+                                </button>
+                                button to generate your "Checklist," you will no longer be able to make any changes to the Pre-Application information provided.
+                            </p>
+                            <p>
+                                <strong>If you notice an error in an answer to a Pre-Application Question AFTER you have generated your Checklist:</strong>
+                            </p>
+                            <ul >
+                                <li>
+                                   <strong>1.</strong>&nbsp;&nbsp;&nbsp;Return to the My Basic Business License Page
+                                </li>
+                                <li>
+                                    <strong>2.</strong>&nbsp;&nbsp;&nbsp;Select the <img src="../images/removemyview.png" style="height: 40px; width: 40px;" /> button on the erroneous record
+                                </li>
+                                <li> <strong>3.</strong>&nbsp;&nbsp;&nbsp;Start a new application with the <button class="cursorDefault pointer_events_none">
+    <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+</button>  button.</li>
+                            </ul>
+                        </li>
+                        <li>To exit the application and NOT save, select the
+                            <button class="cursorDefault pointer_events_none">
+                                Exit
+                            </button>
+                            button.</li>
+                    </ul>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+</div>
+            </div>
+            <div class="clearfix"></div>
+            <!--<span style="float:none">If you want to view additional details on the items shown below, click the <span class="glyphicon glyphicon-chevron-down"></span></span>-->
+            <p style="margin-top:8px">
+                Based on your responses to the Pre-Application Questions, your Basic Business License will include the Business License Categories and Fees listed on this page. This information will be used to create a Checklist of requirements to complete your application for a Basic Business License. Carefully review the information presented. To make a change, select the "Back" button. To proceed and generate a Checklist of your application requirements select the "Next" button.
+            </p>
+            <!--<p style="margin-top:8px">If you want to view additional details on the items shown below, click the <span class="info-glyphicon glyphicon glyphicon-triangle-right"></span></p>-->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="timeLineWrapper clearfix">
+            <div class="progress_steps">
+                <div class="timeLine"></div>
+                <a class="active" href="">
+                    <div class="timeline_list step1">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 1</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Pre-Application Questions</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step2">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 2</p>
+                            <p class="step_no">Application Checklist</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step3">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 3</p>
+                            <p class="step_no">Information Verification</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step4">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 4</p>
+                            <p class="step_no">Payment</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step5">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 5</p>
+                            <p class="step_no">Receipt and Next Steps</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait...  <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="PreAppQuestionsController as vm">
+        <div class="search_result adjust_font">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-15 col-sm-3 col-xl-3 col-xs-12 col-md-offset-5">
+                        <div class="panel text-center grand_total">
+                            <div class="panel-body">
+                                <h1>{{vm.categories.TotalFee | currency}}</h1>
+                            </div>
+                            <div class="panel-footer">
+                                <span>
+                                    Grand <br />Total
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <section ng-repeat="DetailedCategory in vm.categories.DetailedCategoryList">
+                    <div class="preappgrid container">
+                        <div class="innerRow">
+                            <div class="col-sm-1 arrow no-pad hidden-xs">
+                                <span class="arrow-right see-details" ng-click="vm.expandCollapse($event,feeDetailsItem.catId)"></span>
+                            </div>
+                            <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                <label>Endorsement </label>
+                                <div class="font_wgt">{{DetailedCategory.Endorsement}}</div>
+                            </div>
+                            <div class="col-sm-4 no-pad">
+                                <p ng-show="hidden"><span>Category ID : </span> {{DetailedCategory.CategoryCode}} </p>
+                                <p><span>Category ID : </span> {{DetailedCategory.CategoryCode}} </p>
+                                <p>
+                                    <span>License Category : </span>
+                                    {{DetailedCategory.LicenseCategory}}
+                                </p>
+
+                                <p ng-show="DetailedCategory.SubCategoryName.length>0"><span>Sub-Category : </span> {{DetailedCategory.SubCategoryName}} </p>
+                            </div>
+                            <div class="col-sm-2 no-pad">
+                                <p ng-show="vm.categories.ItemQty==0">
+                                    <span># Units : </span>
+                                    NA
+
+                                </p>
+                                <p ng-show="vm.categories.ItemQty!=0">
+                                    <span># Units : </span>
+                                    {{DetailedCategory.Units}}
+
+                                </p>
+                                <p>
+                                    <span>License Duration : </span>
+                                    {{DetailedCategory.LicenseDuration.indexOf('(2)')!=-1 ? '2 year' :'4 year'}}
+                                </p>
+                                <p>
+                                    <span>Total Fee : </span>
+                                    <strong>{{DetailedCategory.TotalFee | currency}}</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="details no-pad">
+
+                            <div class="topBorder col-md-offset-1"></div>
+                            <div class="col-md-offset-2">
+                                <div class="col-sm-10 no-pad text-center">
+                                    <p>
+                                        <span>Application Fee  :</span>{{DetailedCategory.ApplicationFee | currency}}
+                                    </p>
+                                    <p><span>Endorsement Fee :</span>{{DetailedCategory.EndorsementFee | currency}}</p>
+                                    <p><span>Category License Fee  :</span>{{DetailedCategory.CategoryLicenseFee | currency}}</p>
+
+
+                                    <div class="topBorder col-md-offset-2"></div>
+                                    <p>
+                                        <span>Sub Total :</span>{{DetailedCategory.SubTotal | currency}}
+                                    </p>
+                                    <p class="hidden-sm hidden-xs"><span>10% Tech Fee  :</span>{{DetailedCategory.TechFee | currency}}</p>
+                                    <p class="visible-sm visible-xs"><span>10% Tech Fee  :</span>{{DetailedCategory.TechFee | currency}}</p>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 text-center no-pad" ng-show="DetailedCategory.IsRaoFeeApplied">
+                                <!--"vm.categories.IsRaoFeeApplied==true">-->
+                                <p style="font-size: 14px;"><strong> Category License Fee includes an RAO fee of $43.00/unit.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--<p class="note-text">
+                    <strong class="text-danger">Please Note:</strong> Carefully review below your responses to the Pre-Application questions as this information will be used to create a Checklist of requirements to complete your application for a Basic Business License. Making changes after your Checklist is created will require you to discard your Application and start a new Application from the beginning.  If you need to revise any of these responses, select the &quot;Revise&quot; button.
+                </p>-->
+                <div class="col-xs-12 line"></div>
+                <div class="row step_change_buttons">
+                    <div class=" pre-checkquestion col-md-12 col-xs-12 text-center">
+                        <!--<button id="btn_revise" class="btn btn-default" ng-click="vm.navToStep5()"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>-->
+                        <button id="btn_revise" class="btn btn-default" ng-click="vm.revisePreAppQue()"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
+                        <button id="btn_exit_no_save" class="btn btn-default" ng-click="vm.exitWithOutSaving()">Exit</button>
+                        <button id="btn_create_checklist" class="btn btn-default btnnextColor btn-next" ng-click="vm.navigateToAppChecklist()">Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="modal fade preapp_modal" id="preappque" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-button confirm" ng-click="vm.continueToNavigate()">Yes</button>
+                            <button type="button" class="close-button cancel_button" ng-click="vm.continueToApply()">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>
+

@@ -1,0 +1,95 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.DashBoardViewModel
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div>
+            <table class="table table-striped table-bordered  dataTable smartgrid" id="datakeycount" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Keywords</th>
+                        <th class="text-center">Search Field</th>
+                        <th class="text-center">Key Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.SearchedKeywords.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="4" class="col-md-12 text-center"><span>No record(s) found</span></td>
+                        </tr>
+                    }
+                    else
+                    {
+
+                        foreach (var item in Model.SearchedKeywords)
+                        {
+                            <tr>
+                                <td class="mostfrequenttable text-center">
+                                    @Html.DisplayFor(modelItem => item.Keywords)
+                                </td>
+                                <td class="mostfrequenttable text-center">
+                                    @Html.DisplayFor(modelItem => item.TypeID)
+                                </td>
+                                <td class="mostfrequenttable text-center">
+                                    @Html.DisplayFor(modelItem => item.fullKeyCount)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+</style>
+
+<script type="text/javascript" class="init">
+    var keywordCountTable = '';
+    $(document).ready(function () {
+         window.alert = function () { /* do nothing here */ }
+        keywordCountTable = $('#datakeycount').DataTable({
+            "ordering": false,
+            "pageLength": 5,
+            stateSave: true
+        });
+        $("#datakeycount_length").hide();
+        $("#datakeycount_filter").hide();
+
+        if ($('#datakeycount td').attr('colspan') == '4') {
+            $("#datakeycount_info").hide();
+            $("#datakeycount_paginate").hide();
+        } else {
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+

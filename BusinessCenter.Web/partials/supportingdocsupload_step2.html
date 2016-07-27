@@ -1,0 +1,191 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div data-ng-controller="SupportingDocsUploadController as vm">
+    <div class="container headerBreadcrumb">
+        <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0" id="HeadingText">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Supporting Documents</span>
+    </div>
+
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Supporting Documents</h2>
+                <p>
+                    <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        Help With This Page (Click Here)
+                    </span>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="well info-content">
+                        <p class="text-center">
+                            <strong>This page is where you upload the required documents to obtain a Business License.</strong>
+                        </p>
+
+                        <p class="terms_text">
+                            Select <button id="btn_revise1" class="btn btn-primary" style="cursor: default; pointer-events: none; text-transform: none;"> <i class="glyphicon glyphicon-folder-open"></i>&nbsp; Browse ...</button>   to find and "choose" the document you want to upload.   The name of your document will appear in the field and a button to "upload" will appear:
+                        </p>
+                        <p class="terms_text">
+                            <img src="../images/Supporting_Document_Howto.png" class="col-md-12 col-sm-12 col-xs-12 img-responsive" /> <br />
+                        </p>
+                        <p class="terms_text ">
+                            Select the <button id="btn_revise21" class="btn btn-primary" style="cursor: default; pointer-events: none; text-transform: none !important; padding: 10px !important;"> <i class="glyphicon glyphicon-trash"></i>&nbsp; Clear</button> button if you believe you have selected the wrong document to upload.
+                        </p>
+
+                        <p class="terms_text">
+                            Select the <button id="btn_revise212" class="btn btn-primary" style="cursor: default; pointer-events: none; text-transform: none !important; padding: 10px !important;"> <i class="glyphicon glyphicon-folder-open"></i>&nbsp; Browse ...</button> to select a different file after you have cleared the first file.
+                        </p>
+
+                        <p class="terms_text clearfix">
+                            Select the <button id="btn_revise2" class="btn btn-default read_btn" style="cursor: default; pointer-events: none; text-transform: none !important; padding: 10px !important;"> <i class="glyphicon glyphicon-upload"></i>&nbsp; Upload</button> button to upload your document to your BBL application.
+                        </p>
+
+                        <p class="terms_text clearfix">
+                            When your document is successfully uploaded, you will see three (3) things:
+                        </p>
+                        <p class="terms_text clearfix" style="padding-left: 40px;">
+                            1. A <img src="../images/ChcekBox_HowtoUse.png" /> in the upper left corner of the record indicates your document has uploaded successfully.
+                        </p>
+
+                        <p class="terms_text clearfix" style="padding-left: 40px;">
+                            2. The field "File Name" will display that has been <b> renamed</b> document for filing purposes. For example <img src="../images/Supporting_Document_FileName.png" />
+                        </p>
+
+                        <p class="terms_text clearfix" style="padding-left: 40px;">
+                            3. The red <b style="color: red; font-size: 16px;"><i> X</i></b> can be used to remove the document, if necessary.
+                        </p>
+                        <p class="terms_text clearfix">
+                            On your Checklist, your uploaded documents will be indicated with a  <img src="../images/ChcekBox_HowtoUse.png" /> next to the title of each uploaded document.
+                        </p>
+
+                        <p class="terms_text">
+                            <div class="login_form my_form">
+                                <span class="terms_text"> If you need additional help, review the</span>
+                                <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                                <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoadingSection">
+        <div class="center">
+            <p>Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+        </div>
+    </div>
+
+    <div id="dvMainsection">
+        <div class="login_form preapp-checklist supporting-docs">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left supportpanelheading">
+                        Upload each document listed below
+                        <!--<i class="note_style">(Note: </i><i class="note_style" style="font-size: 16px;">File size cannot exceed 5 MB and uploaded documents must be in a PDF format.</i><i class="note_style">)</i>-->
+                    </div>
+                    <div class="page-desc-content" style="padding-top: 7px;  text-align: left; padding-left: 20px;padding-right: 6px;">
+                        <p tabindex="-1">
+                            Select "Browse" to choose your file and then select "Upload." Use the "Clear" button to remove documents that have been selected but not uploaded. Use the red <b style="color: red; font-style: italic;"> X </b>to remove documents that have already been uploaded.<br />
+                            (Note: File size cannot exceed 5 MB and uploaded documents must be in a PDF format.)
+                        </p>
+                    </div>
+                    <div class="panel-body panel-collapse checklist-item">
+                        <section ng-repeat="appChecklistItem in vm.supportingDocsData">
+
+                            <div class="container1">
+                                <div class="innerRow">
+                                    <div class="col-sm-1  no-pad ">
+                                        <span id="icon{{$index}}" ng-class="{true: 'glyphicon glyphicon-ok',false:'glyphicon glyphicon-unchecked'}[appChecklistItem.IsUpload]"></span>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-12 no-pad bbl clearfix">
+                                        <p>
+                                            <span>Document Required </span>
+
+                                            <div>
+                                                {{appChecklistItem.DocRequired}}
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-1 col-xs-12">
+                                    </div>
+                                    <div class="col-sm-3 col-xs-12 no-pad clearfix">
+                                        <p>
+                                            <span>Agency : </span>
+                                            {{appChecklistItem.Agency}}
+                                        </p>
+
+                                        <p>
+                                            <span> Division : </span>{{appChecklistItem.Division}}
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12 no-pad">
+                                        <p ng-show="false">
+                                            <span>License Code : </span>
+                                            {{appChecklistItem.CategoryID}}
+                                        </p>
+                                        <p>
+                                            <span>License Code : </span>
+                                            {{appChecklistItem.CategoryCode}}
+                                        </p>
+                                        <p>
+                                            <span> License : </span>{{appChecklistItem.License}}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix">
+                                    <div class="col-md-offset-1 col-md-11 no-pad">
+                                        <p id="r{{$index}}">
+                                            <span ng-show="appChecklistItem.UploadFileName!=''">File Name :</span>  {{appChecklistItem.UploadFileName}}
+                                            <a href="javascript:void(0)" ng-click="vm.removeUploadedFile($index)" ng-class="cursor_type"> <img src="../images/remove_doc.png" ng-class="cursor_type" ng-show="appChecklistItem.UploadFileName!=''" class="cursor_type" /></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12" id="f{{$index}}" ng-class="{true:'hidden-class'}[appChecklistItem.UploadFileName!='']">
+                                        <input fileuploadctl type="file" class="file color-green" id="{{$index}}" data-preview-file-type="any" inputdata="{{appChecklistItem}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-xs-12 row-separator ">
+                                    <div class="top-border"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <p class="note-text text_ContentDec">
+                    <strong class="text-danger">Please Note:</strong> You may upload all of your documents in one session or
+                    you may return to this page from your Application Checklist if you acquire different documents at
+                    different times. Please select &quot;Return to Checklist&quot; if you have uploaded all documents or you need to
+                    acquire additional documents to upload later.
+                </p>
+                <!--<p class="note-text text_ContentDec">
+
+                    <br />
+                </p>-->
+                <div class="line"></div>
+
+                <div>
+                    <div class="pre-checkquestion col-md-12 col-xs-12 ">
+                        <button id="btn_exit_no_save1" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                        <button id="btn_create_SaveandExit" style="text-transform: none;" class="btn btn-default" data-ng-click="vm.navToSaveandExitfromDoc()">
+                            Exit
+                        </button>
+                        <button id="btn_revise" class="btn btn-default btnnextColor btn-next" style="text-transform: none;" data-ng-click="vm.navToCheckList()">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

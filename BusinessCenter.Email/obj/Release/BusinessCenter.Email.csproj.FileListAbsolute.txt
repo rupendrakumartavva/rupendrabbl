@@ -1,0 +1,6 @@
+D:\DCBusinessCenter\BusinessCenter.Email\bin\Release\BusinessCenter.Email.dll
+D:\DCBusinessCenter\BusinessCenter.Email\bin\Release\BusinessCenter.Email.pdb
+D:\DCBusinessCenter\BusinessCenter.Email\bin\Release\System.Web.Cors.dll
+D:\DCBusinessCenter\BusinessCenter.Email\obj\Release\BusinessCenter.Email.csprojResolveAssemblyReference.cache
+D:\DCBusinessCenter\BusinessCenter.Email\obj\Release\BusinessCenter.Email.dll
+D:\DCBusinessCenter\BusinessCenter.Email\obj\Release\BusinessCenter.Email.pdb

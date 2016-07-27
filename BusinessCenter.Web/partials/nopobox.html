@@ -1,0 +1,408 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+
+<div data-ng-controller="NoPoBoxController as vm">
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Business Information</h2>
+                <p ng-show="!vm.submissionStatusData.IsBusinessMustbeinDc">
+                    <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        Help With This Page (Click Here)
+                    </span>
+                </p>
+                <div class="collapse" id="collapseExample" ng-show="!vm.submissionStatusData.IsBusinessMustbeinDc">
+                    <div class="well info-content">
+                        <p> <strong>DC Addresses:</strong></p>
+                        <p class="terms_text">Type in the full Street Address of the Business or Property.</p>
+                        <ul class="terms_text" style="padding-left: 100px;">
+                            <li>
+                                Select the correct address from the list that drops down from the data entry field.
+                            </li>
+                            <li>
+                                The selected address will automatically populate the fields below.
+                            </li>
+                        </ul>
+                        <p>
+                            <strong>Non-DC Addresses :</strong>
+                        </p>
+                        <p class="terms_text">Type in Street Address of the Business or Property in the relevant fields:</p>
+                        <ul class="terms_text" style="padding-left: 100px;">
+                            <li>
+                                Street #
+                            </li>
+                            <li>
+                                Street Suffix (optional)
+                            </li>
+                            <li>Street Name</li>
+                            <li>Street Type (optional)</li>
+                            <li>Quadrant (optional)</li>
+                            <li>Unit Type (optional)</li>
+                            <li>Unit (optional)</li>
+                            <li>City</li>
+                            <li>State</li>
+                            <li>Zip Code</li>
+                        </ul>
+
+                        <p class="terms_text">Provide a telephone number for the business or Property (optional).</p>
+                        <p class="terms_text srch_filter">Select the <button id="btn_revise21" class="btn btn-default btnnextColor btn-next" style="cursor: default; pointer-events: none; color: #ffffff; text-transform: capitalize;">Next</button>  button to continue with your application.</p>
+                        <p class="terms_text">
+                            <div class="login_form my_form">
+                                <span class="terms_text"> If you need additional help, review the</span>
+                                <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                                <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+                <p ng-show="vm.submissionStatusData.IsBusinessMustbeinDc">
+                    <span tabindex="0" onclick="toggleclick('toggleicon_nolicenses')" id="toggleicon_nolicenses" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        Help With This Page (Click Here)
+                    </span>
+                </p>
+                <div class="collapse" id="collapseExample_nolicenses" ng-show="vm.submissionStatusData.IsBusinessMustbeinDc">
+                    <div class="well info-content">
+                        <p> <strong>DC Addresses:</strong></p>
+                        <p class="terms_text">Type in the full Street Address of the Business or Property.</p>
+                        <ul class="terms_text" style="padding-left: 100px;">
+                            <li>
+                                Select the correct address from the list that drops down from the data entry field.
+                            </li>
+                            <li>
+                                The selected address will automatically populate the fields below.
+                            </li>
+                        </ul>
+                        <p>
+                            <strong>Non-DC Addresses :</strong>
+                        </p>
+                        <p class="terms_text">Type in Street Address of the Business or Property in the relevant fields:</p>
+                        <ul class="terms_text" style="padding-left: 100px;">
+                            <li>
+                                Street #
+                            </li>
+                            <li>
+                                Street Suffix (optional)
+                            </li>
+                            <li>Street Name</li>
+                            <li>Street Type (optional)</li>
+                            <li>Quadrant (optional)</li>
+                            <li>Unit Type (optional)</li>
+                            <li>Unit (optional)</li>
+                            <li>City</li>
+                            <li>State</li>
+                            <li>Zip Code</li>
+                        </ul>
+
+                        <p class="terms_text">Provide a telephone number for the business or Property (optional).</p>
+                        <p class="terms_text srch_filter">Select the <button id="btn_revise21" class="btn btn-default btnnextColor btn-next" style="cursor: default; pointer-events: none; color: #ffffff; text-transform: capitalize;">Next</button>  button to continue with your application.</p>
+                        <p class="terms_text">
+                            <div class="login_form my_form">
+                                <span class="terms_text"> If you need additional help, review the</span>
+                                <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                                <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoadingSection">
+        <div class="center">
+            <p>
+                Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+            </p>
+        </div>
+    </div>
+    <div id="dvMainsection" style="display: none">
+
+        <div class="physical-loc-form">
+            <div class="container">
+                <form role="form" method="post" id="vm.nopoboxForm" autocomplete="off" name="vm.nopoboxForm" novalidate>
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-left" ng-show="vm.submissionStatusData.AppType=='B'">
+                            Business Premises Address <span>
+                                (No PO Box) – Physical Street Address Only
+                            </span>
+                        </div>
+                        <div class="panel-heading text-left" ng-show="vm.submissionStatusData.AppType=='I'">
+                            Business Premises Address <span>
+                                (No PO Box)
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="page-desc-content">
+                                <p class="panel-body-text" ng-show="vm.submissionStatusData.AppType=='I'">
+                                    Please provide the Business Premises Address for your employer (the location where you will work).
+                                </p>
+                                <p class="panel-body-text" ng-show="vm.submissionStatusData.AppType=='B' && vm.submissionStatusData.IsBusinessMustbeinDc == true">
+                                    Please enter the Premise Address where you will operate the Business.
+                                </p>
+                                <p class="panel-body-text" ng-show="vm.submissionStatusData.AppType=='B' && vm.submissionStatusData.IsBusinessMustbeinDc == false">
+                                    Given your previous responses, your business will be located outside of the District of Columbia. Please enter your Business Premises Address below
+                                </p>
+                            </div>
+                            <!-- start controls -->
+                            <div class="line"></div>
+                            <div id="error_msg" class="error_text text-center" style="margin-top: 5px;" name="error_msg" tabindex="-1"></div>
+                            <div class="row">
+                                <div class="col-md-offset-2">
+                                    <div class="form_wrapper">
+                                        <div class="clearfix">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.countrydd.$invalid && vm.submitted }">
+                                                    <label>Country</label>
+                                                    <select name="countrydd" id="countrydd" data-ng-model="vm.nopobox.Country" ng-disabled="vm.submissionStatusData.IsBusinessMustbeinDc == true" required ng-change="vm.countryChanged()">
+                                                        <option value="" selected disabled>Select One</option>
+                                                        <option ng-repeat="country in vm.Countries" value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 " ng-show="vm.submissionStatusData.IsBusinessMustbeinDc">
+                                                <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.nopoboxForm.street.$invalid && vm.submitted }">
+                                                    <label>Street Address</label>
+                                                    <div class="inner-addon right-addon">
+                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="streetaddress" style="display: none"></i>
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               placeholder="For Example: 123 Main"
+                                                               spellcheck="false"
+                                                               name="street"
+                                                               id="street"
+                                                               autocomplete="off"
+                                                               data-ng-model="vm.nopobox.Street"
+                                                               typeahead="f.FullAddress for f in vm.Address | filter:$viewValue:vm.startsWith"
+                                                               typeahead-test="vm.dataavail"
+                                                               typeahead-on-select="vm.getrelatedAddress($item)"
+                                                               ng-change="vm.getSuggestions(vm.nopoboxForm.street.$viewValue,'streetaddress')"
+                                                               ng-blur="vm.checktabpress('streetaddress')"
+                                                               ng-maxlength="100"
+                                                               data-ng-trim="false"
+                                                               ng-required="vm.submissionStatusData.IsBusinessMustbeinDc"
+                                                               ng-focus="vm.setErrorMsg('error_msg')">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.nopoboxForm.street.$dirty && vm.nopoboxForm.street.$invalid">
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.street.$error.maxlength">
+                                                            Street exceeds the maximum length of 100 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div id="noDataErrorMessage" ng-show="vm.not_valid_Address" style="color: red; font-weight: 300; font-size: 18px; text-align: center;">
+                                                    Entered Address is not a valid DC Address
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix">
+                                            <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.AddressNumber.$invalid && vm.submitted }">
+                                                    <label>Street #</label>
+                                                    <input type="text" class="form-control" placeholder="" data-ng-model="vm.nopobox.AddressNumber" ng-disabled="vm.fieldsDisable"
+                                                           name="AddressNumber" id="AddressNumber" ng-focus="vm.setErrorMsg('error_msg')" required ng-maxlength="9" spellcheck="false">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.nopoboxForm.AddressNumber.$dirty && vm.nopoboxForm.AddressNumber.$invalid">
+                                                    <small class="error-message" ng-show="vm.nopoboxForm.AddressNumber.$error.pattern">
+                                                        Street # must be numeric
+                                                    </small>
+
+                                                    <small class="error-message" ng-show="vm.nopoboxForm.AddressNumber.$error.maxlength">
+                                                        Street # Code exceeds maximum length of 9 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group">
+                                                    <label>Street Suffix</label>
+                                                    <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.nopobox.AddressNumberSufix" ng-maxlength="8"
+                                                           name="AddressNumberSufix" id="AddressNumberSufix" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false" ng-disabled="vm.fieldsDisable">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.nopoboxForm.AddressNumberSufix.$dirty && vm.nopoboxForm.AddressNumberSufix.$invalid">
+                                                    <small class="error-message" ng-show="vm.nopoboxForm.AddressNumberSufix.$error.maxlength">
+                                                        Street Suffix exceeds maximum length of 8 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.StreetName.$invalid && vm.submitted }">
+                                                    <label>Street Name</label>
+                                                    <input type="text" class="form-control" placeholder="" data-ng-model="vm.nopobox.StreetName" ng-disabled="vm.fieldsDisable"
+                                                           name="StreetName" id="StreetName" ng-focus="vm.setErrorMsg('error_msg')" required ng-maxlength="40" spellcheck="false">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.nopoboxForm.StreetName.$dirty && vm.nopoboxForm.StreetName.$invalid">
+                                                    <small class="error-message" ng-show="vm.nopoboxForm.StreetName.$error.maxlength">
+                                                        Street Name exceeds maximum length of 40 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.streettype.$invalid && vm.submitted }">
+                                                    <label>Street Type </label>
+                                                    <select name="streettype" id="streettype"
+                                                            data-ng-model="vm.nopobox.StreetType" ng-required="vm.submissionStatusData.IsBusinessMustbeinDc"
+                                                            ng-disabled="vm.fieldsDisable">
+                                                        <option value="" selected ng-disabled="vm.submissionStatusData.IsBusinessMustbeinDc">Select One</option>
+                                                        <option ng-repeat="street in vm.StreetTypes" value="{{street.StreetCode}}">{{street.StreetType}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.quadrant.$invalid && vm.submitted }">
+                                                    <label>Quadrant</label>
+                                                    <select name="quadrant" id="quadrant" data-ng-model="vm.nopobox.Quadrant" ng-required="vm.submissionStatusData.IsBusinessMustbeinDc" ng-disabled="vm.fieldsDisable">
+                                                        <option value="" selected ng-disabled="vm.submissionStatusData.IsBusinessMustbeinDc == true">Select One</option>
+                                                        <option value="NE">NE</option>
+                                                        <option value="NW">NW</option>
+                                                        <option value="SE">SE</option>
+                                                        <option value="SW">SW</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group">
+                                                    <label>Unit Type</label>
+                                                    <select name="unittypes" id="unittypes" data-ng-model="vm.nopobox.UnitType" ng-disabled="vm.fieldsDisable">
+                                                        <option value="" selected>Select One</option>
+                                                        <option value="APT">APT</option>
+                                                        <option value="BLDG">BLDG</option>
+                                                        <option value="STE">STE</option>
+                                                        <option value="UNIT">UNIT</option>
+                                                        <option value="NONE">NONE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                                <div class="col-md-5 col-sm-5 col-xs-12 ">
+                                                    <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.unit.$invalid && vm.submitted }">
+                                                        <label>Unit</label>
+                                                        <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.nopobox.Unit"
+                                                               name="unit" id="unit" ng-maxlength="10" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false" ng-disabled="vm.fieldsDisable">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.nopoboxForm.unit.$dirty && vm.nopoboxForm.unit.$invalid">
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.unit.$error.maxlength">
+                                                            Unit exceeds the maximum length of 10 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                    <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.city.$invalid && vm.submitted }">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.nopobox.City" ng-disabled="vm.submissionStatusData.IsBusinessMustbeinDc == true"
+                                                               name="city" id="city" ng-maxlength="30" required ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.nopoboxForm.city.$dirty && vm.nopoboxForm.city.$invalid">
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.city.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.city.$error.maxlength">
+                                                            City exceeds the maximum length of 30 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                                <div class="col-md-5 col-sm-5 col-xs-12 " ng-show="vm.showStateAsDropdown || vm.submissionStatusData.IsBusinessMustbeinDc">
+                                                    <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.State.$invalid && vm.submitted }">
+                                                        <label>State</label>
+                                                        <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.nopobox.State"
+                                                               name="State" id="State" ng-maxlength="30"
+                                                               ng-pattern="/^[a-zA-Z\s]+$/" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false"
+                                                               ng-change="vm.stateFieldvalidation()" ng-disabled="vm.submissionStatusData.IsBusinessMustbeinDc">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.nopoboxForm.State.$dirty && vm.nopoboxForm.State.$invalid">
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.State.$error.pattern">
+                                                            Please enter letters only.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.State.$error.maxlength">
+                                                            State exceeds the maximum length of 30 characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-12 " ng-show="!vm.showStateAsDropdown && !vm.submissionStatusData.IsBusinessMustbeinDc">
+                                                    <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.StateOptions.$invalid && vm.submitted }">
+                                                        <label>State</label>
+                                                        <select name="StateOptions" id="StateOptions" data-ng-model="vm.nopobox.State" ng-required="!vm.showStateAsDropdown && !vm.submissionStatusData.IsBusinessMustbeinDc" ng-change="vm.stateFieldvalidation()">
+                                                            <option value="" selected>Select One</option>
+                                                            <option ng-repeat="state in vm.StatesList" value="{{state.StateCode}}">{{state.StateCode}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                    <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.zip.$invalid && vm.submitted }">
+                                                        <label>Zip Code</label>
+
+                                                        <input type="text" class="form-control" placeholder="" data-ng-model="vm.nopobox.Zip" data-ng-change="vm.checkZipMaxLength()" ng-disabled="vm.fieldsDisable"
+                                                               name="zip" id="zip" required ng-pattern="vm.validations_wrt_contry.zip.pattern" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false" ng-trim="false">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.nopoboxForm.zip.$dirty && vm.nopoboxForm.zip.$invalid">
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.zip.$error.pattern">
+                                                            {{vm.validations_wrt_contry.zip.maxlength==100?"Please enter valid Zip Code using Numbers, alphabets, space or hyphen.":"Please enter numbers only."}}
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.nopobox.Zip!=undefined && vm.nopoboxForm.zip.$error.customminlength && !vm.nopoboxForm.zip.$error.pattern">
+                                                            Zip Code must have {{vm.validations_wrt_contry.zip.minlength}} digits.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.zip.$error.customlength && !vm.nopoboxForm.zip.$error.pattern">
+                                                            Zip Code exceeds the maximum length of {{vm.validations_wrt_contry.zip.maxlength}} characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                                    <div class="form-group" ng-class="{'has-error':vm.nopoboxForm.telephone.$invalid && vm.submitted }">
+                                                        <label>Telephone</label>
+                                                        <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.nopobox.Telephone"
+                                                               name="telephone" id="telephone" data-ng-change="vm.checkTelephoneMaxLength()" ng-pattern="vm.validations_wrt_contry.telephone.pattern" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false" ng-trim="false">
+                                                    </div>
+                                                    <div class="error-container" ng-show="vm.nopoboxForm.telephone.$dirty && vm.nopoboxForm.telephone.$invalid">
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.telephone.$error.pattern">
+                                                            {{vm.validations_wrt_contry.telephone.maxlength==100?"Please enter valid Telephone using Numbers, space, plus or hyphen.":"Please enter numbers only."}}
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.nopobox.Telephone!=undefined && vm.nopobox.Telephone!='' && vm.nopoboxForm.telephone.$error.customminlength && !vm.nopoboxForm.telephone.$error.pattern">
+                                                            Telephone must have {{vm.validations_wrt_contry.telephone.minlength}} digits.
+                                                        </small>
+                                                        <small class="error-message" ng-show="vm.nopoboxForm.telephone.$error.customlength && !vm.nopoboxForm.telephone.$error.pattern">
+                                                            Telephone exceeds the maximum length of {{vm.validations_wrt_contry.telephone.maxlength}} characters.
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end controls -->
+                                </div>
+                                <div class="pre-checkquestion form_button_footer pre-checkquestion-question col-md-12 col-xs-12">
+                                    <button id="btn_create_back" class="btn btn-default" data-ng-click="vm.navToBack()">
+                                        Back
+                                    </button>
+                                    <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.CheckAndExit('mybbl')">Exit</button>
+                                    <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.CheckAndExit('appchecklist')">
+                                        Return to Checklist
+                                    </button>
+                                    <button id="btn_revise" class="btn btn-default  btnnextColor btn-next" data-ng-click="vm.navToCorpRegistrationFromPO()" ng-class="{true:'disablecolor'}[vm.not_valid_Address]" ng-disabled="vm.stateValidation || vm.not_valid_Address">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

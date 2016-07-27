@@ -1,0 +1,327 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to collect the address for mailings regarding your business, including your initial Basic Business License and any renewal notices. </strong>
+                    </p>
+                    <p class="srch_filter terms_text">
+                        Enter all required information into the appropriate fields and select <button class="btn btn-default btnnextColor btn-next cursorDefault pointer_events_none" style="color:#ffffff">
+                            Next
+                        </button>.
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="PhysicallocMailingController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Mailing Address</div>
+                <div class="panel-body">
+                    <div class="page-desc-content">
+                    <p class="panel-body-text">
+                        Please provide mailing address that should be used for DCRA mailings regarding your business including your original license and any renewal notices.
+                    </p>
+                        </div>
+                        <div style="clear: both;"> </div>
+                        <div id="err_msg" class="error_text text-center error_msg" tabindex="-1"></div>
+                        <!--<div class="row">
+            <div class="clearfix">
+                <div class="col-md-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                    <div class="form-group question_title">
+                        <select name="mailingaddresstype" data-ng-model="vm.address.type" ng-change="vm.selectOption()" style="line-height: 30px;">
+                            <option value="" selected disabled>Select One</option>
+                            <option value="1">
+                                My Business HQ Address is my Mailing Address
+                            </option>
+                            <option value="2">
+                                My Business Premises Address is my Mailing
+                                Address
+                            </option>
+                            <option value="3">I prefer a different Mailing Address</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+                        <!-- start controls -->
+                        <!--ng-if="vm.address.type== 3"-->
+                        <div>
+                            <div class="line"></div>
+                            <div class="row">
+                                <form role="form" method="post" id="vm.prefer_mail" name="vm.prefer_mail" autocomplete="off" novalidate>
+                                    <div class="form_wrapper" ng-show="vm.address.type==3">
+                                        <div class="checkbox_question">
+                                            <div id="mail_msg" class="error_text text-center error_msg"></div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.countrydd.$invalid && vm.submitted }">
+                                                    <label>Country</label>
+                                                    <select name="countrydd" data-ng-model="vm.diffmail.BusinessCountry" required ng-change="vm.countryChanged()">
+                                                        <option value="" selected disabled>Select One</option>
+                                                        <option ng-repeat="country in vm.Countries" value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.BusinessName.$invalid && vm.submitted }">
+                                                    <label>Business Name</label>
+                                                    <input type="text" class="form-control" placeholder="" ng-maxlength="65" spellcheck="false"
+                                                           data-ng-model="vm.diffmail.BusinessName" name="BusinessName" id="BusinessName" ng-focus="vm.setErrorMsg('mail_msg')" required>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.BusinessName.$dirty && vm.prefer_mail.BusinessName.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.BusinessName.$error.maxlength">
+                                                        Business Name exceeds maximum length of 65 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class=" col-sm-offset-2 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.FirstName.$invalid && vm.submitted }">
+                                                    <label>First Name</label>
+                                                    <input type="text" class="form-control" placeholder="" spellcheck="false"
+                                                           data-ng-model="vm.diffmail.FirstName" name="FirstName" id="FirstName" ng-maxlength="15" ng-focus="vm.setErrorMsg('mail_msg')" ng-pattern="/^[a-zA-Z-.'`\s]+$/" required>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.FirstName.$dirty && vm.prefer_mail.FirstName.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.FirstName.$error.maxlength">
+                                                        First Name exceeds maximum length of 15 characters.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.FirstName.$error.pattern">
+                                                        Please enter letters or the following special characters only (- . ' `).
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-offset-0 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label>Middle Name</label>
+                                                    <input type="text" class="form-control" placeholder="optional" spellcheck="false"
+                                                           data-ng-model="vm.diffmail.MiddleName" name="MiddleName" id="MiddleName" ng-maxlength="15" ng-focus="vm.setErrorMsg('mail_msg')" ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.MiddleName.$dirty && vm.prefer_mail.MiddleName.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.MiddleName.$error.maxlength">
+                                                        Middle Name exceeds maximum length of 15 characters.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.MiddleName.$error.pattern">
+                                                        Please enter letters or the following special characters only (- . ' `).
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class=" col-sm-offset-2 col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.LastName.$invalid && vm.submitted }">
+                                                    <label>Last Name</label>
+                                                    <input type="text" class="form-control" placeholder="" spellcheck="false"
+                                                           data-ng-model="vm.diffmail.LastName" name="LastName" id="LastName" ng-maxlength="15" ng-focus="vm.setErrorMsg('mail_msg')" ng-pattern="/^[a-zA-Z-.'`\s]+$/" required>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.LastName.$dirty && vm.prefer_mail.LastName.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.LastName.$error.maxlength">
+                                                        Last Name exceeds maximum length of 15 characters.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.LastName.$error.pattern">
+                                                        Please enter letters or the following special characters only (- . ' `).
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-offset-0 col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.Email.$invalid && vm.submitted }">
+                                                    <label>Email</label>
+                                                    <input type="email" class="form-control" placeholder="" ng-maxlength="65" spellcheck="false"
+                                                           data-ng-model="vm.diffmail.Email" name="Email" id="Email" ng-focus="vm.setErrorMsg('mail_msg')"
+                                                           ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-zA-Z]{2,6}(?:\.[a-zA-Z]{2})?)$/" required>
+                                                </div>
+                                                <div class="error_text" id="emailerror"></div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.Email.$dirty && vm.prefer_mail.Email.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.Email.$error.pattern">
+                                                        Please enter a valid email address.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.Email.$error.maxlength">
+                                                        Email exceeds maximum length of 65 characters
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class=" col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.AddressLine1.$invalid && vm.submitted }">
+                                                    <label>Address 1</label>
+                                                    <input type="text" class="form-control" spellcheck="false" placeholder="" ng-maxlength="65" ng-focus="vm.setErrorMsg('mail_msg')"
+                                                           data-ng-model="vm.diffmail.BusinessAddressLine1" ng-keypress="vm.streetaddress()" name="AddressLine1" id="AddressLine1" required>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.AddressLine1.$dirty && vm.prefer_mail.AddressLine1.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.AddressLine1.$error.maxlength">
+                                                        Address exceeds maximum length of 65 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                                <div class="form-group">
+                                                    <label>Address 2</label>
+                                                    <input type="text" spellcheck="false" class="form-control" placeholder="optional" ng-maxlength="65" ng-focus="vm.setErrorMsg('mail_msg')"
+                                                           data-ng-model="vm.diffmail.BusinessAddressLine2" ng-keypress="vm.streetaddress()" name="AddressLine2" id="AddressLine2">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.AddressLine2.$dirty && vm.prefer_mail.AddressLine2.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.AddressLine2.$error.maxlength">
+                                                        Address exceeds maximum length of 65 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class=" col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 ">
+                                                <div class="form-group">
+                                                    <label>Address 3</label>
+                                                    <input type="text" spellcheck="false" class="form-control" placeholder="optional" ng-maxlength="65" ng-focus="vm.setErrorMsg('mail_msg')"
+                                                           data-ng-model="vm.diffmail.BusinessAddressLine3" ng-keypress="vm.streetaddress()" name="AddressLine3" id="AddressLine3">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.AddressLine3.$dirty && vm.prefer_mail.AddressLine3.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.AddressLine3.$error.maxlength">
+                                                        Address exceeds maximum length of 65 characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-sm-offset-2 col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.City.$invalid && vm.submitted }">
+                                                    <label>City</label>
+                                                    <input type="text" spellcheck="false" class="form-control" placeholder="" data-ng-model="vm.diffmail.BusinessCity"
+                                                           ng-focus="vm.setErrorMsg('mail_msg')" name="City" id="City" ng-maxlength="30" ng-pattern="/^[a-zA-Z\s]+$/" required>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.City.$dirty && vm.prefer_mail.City.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.City.$error.maxlength">
+                                                        City exceeds maximum length of 30 characters.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.City.$error.pattern">
+                                                        Please enter letters only.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-offset-0 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="form-group" ng-show="vm.validateCountry" ng-class="{'has-error':vm.prefer_mail.StatesAdded.$invalid && vm.submitted }">
+                                                    <label>State</label>
+
+                                                    <select name="StatesAdded" id="StatesAdded" data-ng-model="vm.diffmail.BusinessState" ng-required="vm.validateCountry">
+                                                        <option value="" selected>Select One</option>
+                                                        <option ng-repeat="state in vm.StatesList" value="{{state.StateCode}}">{{state.StateCode}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group" ng-show="!vm.validateCountry" ng-class="{'has-error':vm.prefer_mail.State.$invalid && vm.submitted }">
+                                                    <label>State</label>
+                                                    <input type="text" spellcheck="false" class="form-control" placeholder="optional" data-ng-model="vm.diffmail.BusinessState"
+                                                           ng-focus="vm.setErrorMsg('mail_msg')" name="State" id="State" ng-maxlength="30" ng-pattern="/^[a-zA-Z\s]+$/">
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.State.$dirty && vm.prefer_mail.State.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.State.$error.maxlength">
+                                                        State exceeds maximum length of 30 characters.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.State.$error.pattern">
+                                                        Please enter letters only.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-sm-offset-2 col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.Zipcode.$invalid && vm.submitted }">
+                                                    <label>Zip Code</label>
+                                                    <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                           data-ng-change="vm.checkZipMaxLength()" data-ng-model="vm.diffmail.ZipCode"
+                                                           name="Zipcode" id="Zipcode" ng-focus="setErrorMsg('error_msg')" required
+                                                           ng-pattern="vm.validations_wrt_contry.zip.pattern" ng-trim="false">
+                                                </div>
+
+                                                <div class="error-container" ng-show="vm.prefer_mail.Zipcode.$dirty && vm.prefer_mail.Zipcode.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.Zipcode.$error.pattern">
+                                                        {{vm.validations_wrt_contry.zip.maxlength==100?"Please enter valid Zip Code using Numbers, alphabets, space or hyphen.":"Please enter numbers only."}}
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.diffmail.ZipCode!=undefined && vm.prefer_mail.Zipcode.$error.customminlength && !vm.prefer_mail.Zipcode.$error.pattern">
+                                                        Zip must have {{vm.validations_wrt_contry.zip.minlength}} digits.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.Zipcode.$error.customlength && !vm.prefer_mail.Zipcode.$error.pattern">
+                                                        Zip Code exceeds the maximum length of {{vm.validations_wrt_contry.zip.maxlength}} characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            <div class=" col-sm-offset-0 col-md-4 col-sm-4 col-xs-12 ">
+                                                <div class="form-group" ng-class="{'has-error':vm.prefer_mail.telephone.$invalid && vm.submitted }">
+                                                    <label>Telephone</label>
+                                                    <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                           data-ng-model="vm.diffmail.Telphone"
+                                                           ng-focus="vm.setErrorMsg('mail_msg')" name="telephone" id="telephone"
+                                                           data-ng-change="vm.checkTelephoneMaxLength()"
+                                                           ng-pattern="vm.validations_wrt_contry.telephone.pattern" ng-trim="false" required>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.prefer_mail.telephone.$dirty && vm.prefer_mail.telephone.$invalid">
+                                                    <small class="error-message" ng-show="vm.prefer_mail.telephone.$error.pattern">
+                                                        {{vm.validations_wrt_contry.telephone.maxlength==100?"Please enter valid Telephone using Numbers, space, plus or hyphen.":"Please enter numbers only."}}
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.diffmail.Telphone!=undefined && vm.prefer_mail.telephone.$error.customminlength && !vm.prefer_mail.telephone.$error.pattern">
+                                                        Telephone must have {{vm.validations_wrt_contry.telephone.minlength}} digits.
+                                                    </small>
+                                                    <small class="error-message" ng-show="vm.prefer_mail.telephone.$error.customlength && !vm.prefer_mail.telephone.$error.pattern">
+                                                        Telephone exceeds the maximum length of {{vm.validations_wrt_contry.telephone.maxlength}} characters.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end controls -->
+                    </div>
+                <div class="pre-checkquestion col-md-9 col-xs-12 col-md-offset-3">
+                    <button id="btn_exit_no_back" class="btn btn-default" data-ng-click="vm.navToBack()">Back</button>
+                    <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')">Exit</button>
+                    <button id="btn_create_checklist" class="btn btn-default  btnnextColor btn-next" data-ng-click="vm.checkAndExit('appchecklist')">Next</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

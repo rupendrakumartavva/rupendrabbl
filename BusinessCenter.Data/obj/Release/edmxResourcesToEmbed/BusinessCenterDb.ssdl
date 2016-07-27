@@ -1,0 +1,2699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BusinessCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuditId" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SessionId" Type="nvarchar" MaxLength="500" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="UrlAccessed" Type="nvarchar" MaxLength="1000" />
+    <Property Name="TimeAccessed" Type="datetime" />
+    <Property Name="Data" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Secret" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ApplicationType" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="RefreshTokenLifeTime" Type="int" Nullable="false" />
+    <Property Name="AllowedOrigin" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_ABRA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_ABRA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="Serv_Prov_Code" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Serv_Prov_Code" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="B1_PER_GROUP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_CATEGORY" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="varchar" MaxLength="255" />
+    <Property Name="APP_STATUS_GROUP_CODE" Type="varchar" MaxLength="30" />
+    <Property Name="B1_SPECIAL_TEXT" Type="varchar" MaxLength="255" />
+    <Property Name="License_Number" Type="varchar" MaxLength="30" />
+    <Property Name="B1_TRACKING_NBR" Type="bigint" />
+    <Property Name="License_Status" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="datetime" />
+    <Property Name="B1_CHECKBOX_TYPE" Type="varchar" MaxLength="30" />
+    <Property Name="License_Expiration_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Valid_Thru_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Posting_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Class_Type" Type="varchar" MaxLength="4000" />
+    <Property Name="Class_Type_AttrValue" Type="varchar" MaxLength="200" />
+    <Property Name="Establishment_Type" Type="varchar" MaxLength="4000" />
+    <Property Name="Applicant_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="Applicant_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="Applicant_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="Applicant_FULL_NAME" Type="varchar" MaxLength="80" />
+    <Property Name="Applicant_RELATION" Type="varchar" MaxLength="30" />
+    <Property Name="Applicant_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="Solicitor_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="Solicitor_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="Solicitor_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="Solicitor_FULL_NAME" Type="varchar" MaxLength="80" />
+    <Property Name="Solicitor_RELATION" Type="varchar" MaxLength="30" />
+    <Property Name="Solicitor_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="Solicitor_ADDR1" Type="varchar" MaxLength="200" />
+    <Property Name="Solicitor_ADDR2" Type="varchar" MaxLength="200" />
+    <Property Name="Solicitor_ADDR3" Type="varchar" MaxLength="200" />
+    <Property Name="Solicitor_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="Solicitor_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="Solicitor_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="Manager_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="Manager_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="Manager_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="Manager_FULL_NAME" Type="varchar" MaxLength="80" />
+    <Property Name="Manager_RELATION" Type="varchar" MaxLength="30" />
+    <Property Name="Manager_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="Manager_ADDR1" Type="varchar" MaxLength="200" />
+    <Property Name="Manager_ADDR2" Type="varchar" MaxLength="200" />
+    <Property Name="Manager_ADDR3" Type="varchar" MaxLength="200" />
+    <Property Name="Manager_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="Manager_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="Manager_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="B1_PRIMARY_ADDR_FLG" Type="varchar" MaxLength="1" />
+    <Property Name="B1_HSE_NBR_START" Type="int" />
+    <Property Name="B1_HSE_NBR_END" Type="int" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="varchar" MaxLength="4" />
+    <Property Name="B1_HSE_FRAC_NBR_END" Type="varchar" MaxLength="3" />
+    <Property Name="B1_UNIT_START" Type="varchar" MaxLength="10" />
+    <Property Name="B1_STR_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="B1_STR_SUFFIX" Type="varchar" MaxLength="30" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="varchar" MaxLength="5" />
+    <Property Name="B1_SITUS_CITY" Type="varchar" MaxLength="40" />
+    <Property Name="B1_SITUS_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="B1_SITUS_ZIP" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_BBL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_BBL">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="SERV_PROV_CODE" />
+      <PropertyRef Name="B1_PER_ID1" />
+      <PropertyRef Name="B1_PER_ID2" />
+      <PropertyRef Name="B1_PER_ID3" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_SUB_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+      <PropertyRef Name="REC_FUL_NAM" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SERV_PROV_CODE" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="B1_PER_ID1" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_ID2" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_ID3" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_GROUP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_SUB_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_CATEGORY" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_APPL_STATUS_ORIGINAL" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS" Type="varchar" MaxLength="30" />
+    <Property Name="B1_ALT_ID" Type="varchar" MaxLength="30" />
+    <Property Name="APPLICATION_CAP" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="char" MaxLength="10" />
+    <Property Name="ISSUED_DATE" Type="datetime" />
+    <Property Name="B1_HSE_NBR_START" Type="int" />
+    <Property Name="B1_HSE_NBR_END" Type="int" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="varchar" MaxLength="4" />
+    <Property Name="B1_HSE_FRAC_NBR_END" Type="varchar" MaxLength="3" />
+    <Property Name="B1_UNIT_START" Type="varchar" MaxLength="10" />
+    <Property Name="B1_STR_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="B1_STR_SUFFIX" Type="varchar" MaxLength="30" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="varchar" MaxLength="5" />
+    <Property Name="B1_SITUS_CITY" Type="varchar" MaxLength="40" />
+    <Property Name="B1_SITUS_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="B1_SITUS_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="FULL_ADDRESS" Type="varchar" MaxLength="300" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="varchar" MaxLength="255" />
+    <Property Name="SSL" Type="varchar" MaxLength="24" />
+    <Property Name="REC_FUL_NAM" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Contact_Business_Name" Type="varchar" MaxLength="255" />
+    <Property Name="Contact_FirstName" Type="varchar" MaxLength="15" />
+    <Property Name="Contact_MiddleName" Type="varchar" MaxLength="15" />
+    <Property Name="Contact_LastName" Type="varchar" MaxLength="35" />
+    <Property Name="Billing_Address1" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_Address2" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_Address3" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="Billing_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="Billing_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="OwnrApplicant_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="OwnrApplicant_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="OwnrApplicant_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="OwnrApplicant_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="OwnrApplicant_Address1" Type="varchar" MaxLength="200" />
+    <Property Name="OwnrApplicant_Address2" Type="varchar" MaxLength="200" />
+    <Property Name="OwnrApplicant_Address3" Type="varchar" MaxLength="200" />
+    <Property Name="OwnrApplicant_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="OwnrApplicant_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="OwnrApplicant_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="RegAgent_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="RegAgent_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="RegAgent_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="RegAgent_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="RegAgent_Address1" Type="varchar" MaxLength="200" />
+    <Property Name="RegAgent_Address2" Type="varchar" MaxLength="200" />
+    <Property Name="RegAgent_Address3" Type="varchar" MaxLength="200" />
+    <Property Name="RegAgent_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="RegAgent_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="RegAgent_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="Attr_TRADE_NAME" Type="varchar" MaxLength="200" />
+    <Property Name="Business_Org" Type="varchar" MaxLength="200" />
+    <Property Name="Expiration_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="License_Issued_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Period_Start_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="License_Category" Type="nvarchar" MaxLength="1024" />
+    <Property Name="License_Category_Full" Type="nvarchar" MaxLength="1024" />
+    <Property Name="TaxNumber" Type="varchar" MaxLength="7" />
+    <Property Name="FEIN_SSN" Type="varchar" MaxLength="200" />
+    <Property Name="APPLICATION_CAP_STATUS" Type="varchar" MaxLength="30" />
+    <Property Name="APPLICATION_CAP_STATUS_DATE" Type="datetime" />
+    <Property Name="REC_DATE" Type="datetime" Nullable="false" />
+    <Property Name="WARD" Type="varchar" MaxLength="35" />
+    <Property Name="ANC" Type="varchar" MaxLength="35" />
+    <Property Name="CofO_Number" Type="varchar" MaxLength="35" />
+    <Property Name="CofO_IssueDate" Type="varchar" MaxLength="35" />
+    <Property Name="H_O_P_Number" Type="varchar" MaxLength="35" />
+    <Property Name="H_O_P_Issue_Date" Type="varchar" MaxLength="35" />
+    <Property Name="E_HOP_Number" Type="varchar" MaxLength="35" />
+    <Property Name="E_HOP_Issue_Date" Type="varchar" MaxLength="35" />
+    <Property Name="ZONE" Type="varchar" MaxLength="35" />
+    <Property Name="Org_Number" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_BBL_Renewal_Invoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_BBL_Renewal_Invoice">
+    <Key>
+      <PropertyRef Name="SERV_PROV_CODE" />
+      <PropertyRef Name="B1_PER_ID1" />
+      <PropertyRef Name="B1_PER_ID2" />
+      <PropertyRef Name="B1_PER_ID3" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_SUB_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="As_of_Date" Type="date" />
+    <Property Name="SERV_PROV_CODE" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="B1_PER_ID1" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_ID2" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_ID3" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_GROUP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_SUB_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_CATEGORY" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="varchar" MaxLength="255" />
+    <Property Name="b1_Alt_ID" Type="varchar" MaxLength="30" />
+    <Property Name="GF_DES" Type="varchar" MaxLength="100" />
+    <Property Name="GF_FEE" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="GF_UNIT" Type="numeric" Precision="15" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_BBL_Renewals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_BBL_Renewals">
+    <Key>
+      <PropertyRef Name="SERV_PROV_CODE" />
+      <PropertyRef Name="B1_PER_ID1" />
+      <PropertyRef Name="B1_PER_ID2" />
+      <PropertyRef Name="B1_PER_ID3" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_SUB_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="As_of_Date" Type="date" />
+    <Property Name="SERV_PROV_CODE" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="B1_PER_ID1" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_ID2" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_ID3" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="B1_PER_GROUP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_SUB_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_CATEGORY" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="varchar" MaxLength="255" />
+    <Property Name="b1_Alt_ID" Type="varchar" MaxLength="30" />
+    <Property Name="License_Being_Renewed" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS" Type="varchar" MaxLength="30" />
+    <Property Name="Renewal_Status" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="datetime" />
+    <Property Name="B1_HSE_NBR_START" Type="int" />
+    <Property Name="B1_HSE_NBR_END" Type="int" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="varchar" MaxLength="500" />
+    <Property Name="B1_UNIT_START" Type="varchar" MaxLength="500" />
+    <Property Name="B1_STR_NAME" Type="varchar" MaxLength="500" />
+    <Property Name="B1_STR_SUFFIX" Type="varchar" MaxLength="500" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="varchar" MaxLength="2" />
+    <Property Name="B1_SITUS_CITY" Type="varchar" MaxLength="500" />
+    <Property Name="B1_SITUS_STATE" Type="varchar" MaxLength="500" />
+    <Property Name="B1_SITUS_ZIP" Type="varchar" MaxLength="500" />
+    <Property Name="License_Period" Type="varchar" MaxLength="4000" />
+    <Property Name="OSR_Pin" Type="varchar" MaxLength="4000" />
+    <Property Name="CofO_Number" Type="varchar" MaxLength="4000" />
+    <Property Name="Review_Necessary" Type="varchar" MaxLength="4000" />
+    <Property Name="CofO_IssueDate" Type="varchar" MaxLength="4000" />
+    <Property Name="H_O_P_Number" Type="varchar" MaxLength="4000" />
+    <Property Name="H_O_P_Issue_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="E_HOP_Number" Type="varchar" MaxLength="4000" />
+    <Property Name="E_HOP_Issue_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Contact_Business_Name" Type="varchar" MaxLength="255" />
+    <Property Name="Contact_FirstName" Type="varchar" MaxLength="15" />
+    <Property Name="Contact_MiddleName" Type="varchar" MaxLength="15" />
+    <Property Name="Contact_LastName" Type="varchar" MaxLength="35" />
+    <Property Name="Billing_Address1" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_Address2" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_Address3" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="Billing_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="Billing_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="OwnrApplicant_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="OwnrApplicant_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="OwnrApplicant_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="OwnrApplicant_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="OwnrApplicant_Address1" Type="varchar" MaxLength="200" />
+    <Property Name="OwnrApplicant_Address2" Type="varchar" MaxLength="200" />
+    <Property Name="OwnrApplicant_Address3" Type="varchar" MaxLength="200" />
+    <Property Name="OwnrApplicant_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="OwnrApplicant_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="OwnrApplicant_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="RegAgent_BUSINESS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="RegAgent_FNAME" Type="varchar" MaxLength="15" />
+    <Property Name="RegAgent_MNAME" Type="varchar" MaxLength="15" />
+    <Property Name="RegAgent_LNAME" Type="varchar" MaxLength="35" />
+    <Property Name="RegAgent_Address1" Type="varchar" MaxLength="200" />
+    <Property Name="RegAgent_Address2" Type="varchar" MaxLength="200" />
+    <Property Name="RegAgent_Address3" Type="varchar" MaxLength="200" />
+    <Property Name="RegAgent_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="RegAgent_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="RegAgent_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="Attr_TRADE_NAME" Type="varchar" MaxLength="200" />
+    <Property Name="Business_Org" Type="varchar" MaxLength="200" />
+    <Property Name="Billing_Contact_REC_DATE" Type="datetime" />
+    <Property Name="Reg_Agent_REC_DATE" Type="datetime" />
+    <Property Name="Bus_Ownr_Applicant_REC_DATE" Type="datetime" />
+    <Property Name="Attr_TradeName_REC_DATE" Type="datetime" />
+    <Property Name="Attr_BusOrg_REC_DATE" Type="datetime" />
+    <Property Name="Org_Number" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_CBE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_CBE">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="BusinessName" />
+      <PropertyRef Name="BusinessDescription" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LsdbeID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="BusinessAddress" Type="varchar" MaxLength="4000" />
+    <Property Name="BusinessAddressShort" Type="varchar" MaxLength="4000" />
+    <Property Name="BusinessPhone" Type="varchar" MaxLength="16" />
+    <Property Name="BusinessFax" Type="varchar" MaxLength="16" />
+    <Property Name="BusinessEmail" Type="varchar" MaxLength="256" />
+    <Property Name="GIS_Ward" Type="varchar" MaxLength="128" />
+    <Property Name="CertificationExpiry" Type="datetime" />
+    <Property Name="NIGPAppID" Type="int" />
+    <Property Name="TradeDivAppID" Type="int" />
+    <Property Name="BAPAppID" Type="int" />
+    <Property Name="BusinessStructure" Type="varchar" MaxLength="128" />
+    <Property Name="IncorporationDate" Type="datetime" />
+    <Property Name="BusinessDescription" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="BusinessContact" Type="nvarchar" MaxLength="129" />
+    <Property Name="LSDBE_Number" Type="varchar" MaxLength="50" />
+    <Property Name="RefPoints" Type="int" />
+    <Property Name="RefPointsDesc" Type="varchar" MaxLength="255" />
+    <Property Name="BusinessAddress1" Type="varchar" MaxLength="256" />
+    <Property Name="BusinessAddress2" Type="varchar" MaxLength="256" />
+    <Property Name="BusinessCity" Type="varchar" MaxLength="256" />
+    <Property Name="BusinessState" Type="varchar" MaxLength="2" />
+    <Property Name="BusinessZip1" Type="varchar" MaxLength="5" />
+    <Property Name="BusinessZip2" Type="varchar" MaxLength="4" />
+    <Property Name="LSDBEBusinessOptions" Type="varchar" MaxLength="512" />
+    <Property Name="BusinessWebsite" Type="varchar" MaxLength="256" />
+    <Property Name="Lsdbe_PersonAppID" Type="int" />
+    <Property Name="MailingAddress" Type="varchar" MaxLength="361" />
+    <Property Name="PublicContact" Type="nvarchar" MaxLength="129" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_Cof_O' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_Cof_O">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="As_of_Date" />
+      <PropertyRef Name="DCBC_Status" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="As_of_Date" Type="datetime" Nullable="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="varchar" MaxLength="255" />
+    <Property Name="b1_Alt_ID" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS" Type="varchar" MaxLength="30" />
+    <Property Name="DCBC_Status" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="datetime" />
+    <Property Name="B1_HSE_NBR_START" Type="int" />
+    <Property Name="B1_HSE_NBR_END" Type="int" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="varchar" MaxLength="4" />
+    <Property Name="B1_UNIT_START" Type="varchar" MaxLength="10" />
+    <Property Name="B1_STR_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="B1_STR_SUFFIX" Type="varchar" MaxLength="30" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="varchar" MaxLength="5" />
+    <Property Name="B1_SITUS_CITY" Type="varchar" MaxLength="40" />
+    <Property Name="B1_SITUS_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="B1_SITUS_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="B1_SITUS_NBRHD" Type="varchar" MaxLength="30" />
+    <Property Name="Zoning_Use" Type="varchar" MaxLength="4000" />
+    <Property Name="Medical_Marijuana_Dispensary" Type="varchar" MaxLength="4000" />
+    <Property Name="SD_APP_DES" Type="varchar" MaxLength="30" />
+    <Property Name="Status_DATE" Type="datetime" />
+    <Property Name="REC_DATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_CORP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_CORP">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="REC_DATE" Type="datetime" Nullable="false" />
+    <Property Name="BizEntityId" Type="int" />
+    <Property Name="FileNumber" Type="varchar" MaxLength="255" />
+    <Property Name="EntityStatus" Type="varchar" MaxLength="255" />
+    <Property Name="EntityStatusDate" Type="datetime" />
+    <Property Name="Locale" Type="varchar" MaxLength="255" />
+    <Property Name="Qualifier" Type="varchar" MaxLength="255" />
+    <Property Name="ModelType" Type="varchar" MaxLength="255" />
+    <Property Name="BusinessName" Type="varchar" MaxLength="255" />
+    <Property Name="Suffix" Type="varchar" MaxLength="255" />
+    <Property Name="BusniessAddressLine1" Type="varchar" MaxLength="255" />
+    <Property Name="BusniessAddressLine2" Type="varchar" MaxLength="255" />
+    <Property Name="BusniessAddressLine3" Type="varchar" MaxLength="255" />
+    <Property Name="BusniessAddressLine4" Type="varchar" MaxLength="255" />
+    <Property Name="BusinessCity" Type="varchar" MaxLength="255" />
+    <Property Name="BusinessState" Type="varchar" MaxLength="255" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="255" />
+    <Property Name="BusinessCountry" Type="varchar" MaxLength="255" />
+    <Property Name="RA_Name" Type="varchar" MaxLength="255" />
+    <Property Name="RA_Address1" Type="varchar" MaxLength="255" />
+    <Property Name="RA_Address2" Type="varchar" MaxLength="255" />
+    <Property Name="RA_Address3" Type="varchar" MaxLength="255" />
+    <Property Name="RA_Address4" Type="varchar" MaxLength="255" />
+    <Property Name="RA_City" Type="varchar" MaxLength="255" />
+    <Property Name="RA_State" Type="varchar" MaxLength="255" />
+    <Property Name="RA_ZipCode" Type="varchar" MaxLength="255" />
+    <Property Name="RA_Email" Type="varchar" MaxLength="255" />
+    <Property Name="EffectiveDate" Type="datetime" />
+    <Property Name="ForeignDateOfOrganization" Type="varchar" MaxLength="255" />
+    <Property Name="NextReportYear" Type="varchar" MaxLength="255" />
+    <Property Name="ModelType_ORIGINAL" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_LOOKUP_INDEX' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_LOOKUP_INDEX">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE" />
+      <PropertyRef Name="LOOKUP_TYPE" />
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="LOOKUP_VALUE" />
+      <PropertyRef Name="SEARCH_STRING" />
+    </Key>
+    <Property Name="DATA_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOOKUP_TYPE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DCBC_ENTITY_ID" Type="int" Nullable="false" />
+    <Property Name="LOOKUP_VALUE" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="SEARCH_STRING" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_MultiColumn_LOOKUP_INDEX' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE" />
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="LicenseNumberOrig" />
+      <PropertyRef Name="LicenseNumberLookup" />
+      <PropertyRef Name="CompanyNameOrig" />
+      <PropertyRef Name="CompanyNameLookup" />
+      <PropertyRef Name="FirstNameOrig" />
+      <PropertyRef Name="FirstNameLookup" />
+      <PropertyRef Name="LastNameOrig" />
+      <PropertyRef Name="LastNameLookup" />
+    </Key>
+    <Property Name="DATA_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DCBC_ENTITY_ID" Type="int" Nullable="false" />
+    <Property Name="LicenseNumberOrig" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LicenseNumberLookup" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CompanyNameOrig" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CompanyNameLookup" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="FirstNameOrig" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="FirstNameLookup" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LastNameOrig" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LastNameLookup" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_OPLA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_OPLA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="REC_DATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BOARD_ABBREVIATION" Type="varchar" MaxLength="50" />
+    <Property Name="LICENSE_PREFIX" Type="varchar" MaxLength="50" />
+    <Property Name="LICENSE_NUMBER" Type="varchar" MaxLength="50" />
+    <Property Name="LICENSE_ISSUE_DATE" Type="date" />
+    <Property Name="LICENSE_EXPIRATION_DATE" Type="date" />
+    <Property Name="LICENSE_STATUS_CODE" Type="varchar" MaxLength="15" />
+    <Property Name="Licensee_Name_1" Type="varchar" MaxLength="255" />
+    <Property Name="Licensee_Name_2" Type="varchar" MaxLength="255" />
+    <Property Name="Licensee_Name_3" Type="varchar" MaxLength="255" />
+    <Property Name="Licensee_Name_4" Type="varchar" MaxLength="255" />
+    <Property Name="BUSINESS_ADDRESS" Type="varchar" MaxLength="200" />
+    <Property Name="BUSINESS_CITY" Type="varchar" MaxLength="100" />
+    <Property Name="BUSINESS_STATE" Type="varchar" MaxLength="100" />
+    <Property Name="BUSINESS_ZIP" Type="varchar" MaxLength="100" />
+    <Property Name="BUSINESS_PHONE" Type="varchar" MaxLength="100" />
+    <Property Name="HOME_ADDRESS" Type="varchar" MaxLength="200" />
+    <Property Name="HOME_CITY" Type="varchar" MaxLength="100" />
+    <Property Name="HOME_STATE" Type="varchar" MaxLength="50" />
+    <Property Name="HOME_ZIP" Type="varchar" MaxLength="50" />
+    <Property Name="HOME_PHONE" Type="varchar" MaxLength="100" />
+    <Property Name="Preferred_Address_Ind" Type="varchar" MaxLength="15" />
+    <Property Name="EMPLOYER_LICENSE_PREFIX1" Type="varchar" MaxLength="25" />
+    <Property Name="EMPLOYER_LICENSE_NUMBER" Type="varchar" MaxLength="50" />
+    <Property Name="Organization_EMPLOYER_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="EMPLOYER_LICENSE_ISSUE_DATE" Type="date" />
+    <Property Name="EMPLOYER_LICENSE_EXPIRATION_DATE" Type="date" />
+    <Property Name="EMPLOYER_LICENSE_STATUS_CODE" Type="varchar" MaxLength="15" />
+    <Property Name="EMPLOYER_ADDRESS" Type="varchar" MaxLength="200" />
+    <Property Name="EMPLOYER_CITY" Type="varchar" MaxLength="100" />
+    <Property Name="EMPLOYER_STATE" Type="varchar" MaxLength="15" />
+    <Property Name="EMPLOYER_ZIP" Type="varchar" MaxLength="50" />
+    <Property Name="EMPLOYER_PHONE" Type="varchar" MaxLength="100" />
+    <Property Name="FULL_NAME" Type="varchar" MaxLength="200" />
+    <Property Name="OPLA_LICENSE_CATEGORY" Type="varchar" MaxLength="200" />
+    <Property Name="OPLA_SOURCE" Type="varchar" MaxLength="200" />
+    <Property Name="REC_DATE" Type="datetime" Nullable="false" />
+    <Property Name="License_Board" Type="varchar" MaxLength="100" />
+    <Property Name="License_Type" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_RESULTS_ABRA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_RESULTS_ABRA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="Serv_Prov_Code" />
+      <PropertyRef Name="B1_PER_GROUP" />
+      <PropertyRef Name="B1_PER_TYPE" />
+      <PropertyRef Name="B1_PER_CATEGORY" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Serv_Prov_Code" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="B1_PER_GROUP" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_TYPE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_PER_CATEGORY" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="B1_APP_TYPE_ALIAS" Type="varchar" MaxLength="255" />
+    <Property Name="APP_STATUS_GROUP_CODE" Type="varchar" MaxLength="30" />
+    <Property Name="B1_SPECIAL_TEXT" Type="varchar" MaxLength="255" />
+    <Property Name="License_Number" Type="varchar" MaxLength="30" />
+    <Property Name="B1_TRACKING_NBR" Type="bigint" />
+    <Property Name="License_Status_Original" Type="varchar" MaxLength="30" />
+    <Property Name="License_Status" Type="varchar" MaxLength="30" />
+    <Property Name="B1_APPL_STATUS_DATE" Type="datetime" />
+    <Property Name="B1_CHECKBOX_TYPE" Type="varchar" MaxLength="30" />
+    <Property Name="License_Expiration_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Valid_Thru_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Posting_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="Class_Type" Type="varchar" MaxLength="4000" />
+    <Property Name="Class_Type_AttrValue" Type="varchar" MaxLength="200" />
+    <Property Name="Establishment_Type" Type="varchar" MaxLength="4000" />
+    <Property Name="First_Name" Type="varchar" MaxLength="15" />
+    <Property Name="Middle_Name" Type="varchar" MaxLength="15" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="35" />
+    <Property Name="Full_Name" Type="varchar" MaxLength="80" />
+    <Property Name="Relation" Type="varchar" MaxLength="30" />
+    <Property Name="Business_Name" Type="varchar" MaxLength="255" />
+    <Property Name="B1_PRIMARY_ADDR_FLG" Type="varchar" MaxLength="1" />
+    <Property Name="B1_HSE_NBR_START" Type="int" />
+    <Property Name="B1_HSE_NBR_END" Type="int" />
+    <Property Name="B1_HSE_FRAC_NBR_START" Type="varchar" MaxLength="4" />
+    <Property Name="B1_HSE_FRAC_NBR_END" Type="varchar" MaxLength="3" />
+    <Property Name="B1_UNIT_START" Type="varchar" MaxLength="10" />
+    <Property Name="B1_STR_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="B1_STR_SUFFIX" Type="varchar" MaxLength="30" />
+    <Property Name="B1_STR_SUFFIX_DIR" Type="varchar" MaxLength="5" />
+    <Property Name="B1_SITUS_CITY" Type="varchar" MaxLength="40" />
+    <Property Name="B1_SITUS_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="B1_SITUS_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="Rec_Type" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_RESULTS_BBL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_RESULTS_BBL">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="LAST_UPDATE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="License_Status" Type="varchar" MaxLength="30" />
+    <Property Name="License_Number" Type="varchar" MaxLength="30" />
+    <Property Name="Premise_Address" Type="varchar" MaxLength="83" />
+    <Property Name="Corporation_Name" Type="varchar" MaxLength="255" />
+    <Property Name="Trade_Name" Type="varchar" MaxLength="200" />
+    <Property Name="License_Expiration_Date" Type="varchar" MaxLength="4000" />
+    <Property Name="License_Category" Type="nvarchar" MaxLength="1024" />
+    <Property Name="License_Endorsement_Category" Type="nvarchar" MaxLength="1024" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_RESULTS_CBE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_RESULTS_CBE">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="Last_Update" />
+      <PropertyRef Name="Company_Name" />
+      <PropertyRef Name="Company_Description" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Last_Update" Type="datetime" Nullable="false" />
+    <Property Name="Company_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Business_Address" Type="varchar" MaxLength="4000" />
+    <Property Name="Business_Phone" Type="varchar" MaxLength="16" />
+    <Property Name="Business_Email" Type="varchar" MaxLength="256" />
+    <Property Name="Expiration_Date" Type="datetime" />
+    <Property Name="Organization_Type" Type="varchar" MaxLength="128" />
+    <Property Name="Company_Description" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="Business_Contact" Type="nvarchar" MaxLength="129" />
+    <Property Name="CBE_Number" Type="varchar" MaxLength="50" />
+    <Property Name="Preference_Points_Summary" Type="int" />
+    <Property Name="Preference_Points_Detail" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_RESULTS_Corp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_RESULTS_Corp">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BusinessName" Type="varchar" MaxLength="307" />
+    <Property Name="Suffix" Type="varchar" MaxLength="50" />
+    <Property Name="Locale" Type="varchar" MaxLength="50" />
+    <Property Name="ModelType" Type="varchar" MaxLength="255" />
+    <Property Name="EntityStatus" Type="varchar" MaxLength="50" />
+    <Property Name="EntityStatusDate" Type="datetime" />
+    <Property Name="Address" Type="varchar" MaxLength="8000" />
+    <Property Name="EffectiveDate" Type="datetime" />
+    <Property Name="NextReportYear" Type="varchar" MaxLength="10" />
+    <Property Name="FileNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.DCBC_ENTITY_RESULTS_OPLA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DCBC_ENTITY_RESULTS_OPLA">
+    <Key>
+      <PropertyRef Name="DCBC_ENTITY_ID" />
+      <PropertyRef Name="REC_STATUS" />
+      <PropertyRef Name="LAST_UPDATE" />
+      <PropertyRef Name="DCBC_ENTITY_SOURCE" />
+      <PropertyRef Name="LICENSE_STATUS" />
+      <PropertyRef Name="EMPLOYER_LICENSE_STATUS" />
+    </Key>
+    <Property Name="DCBC_ENTITY_ID" Type="int" Nullable="false" />
+    <Property Name="REC_STATUS" Type="bit" Nullable="false" />
+    <Property Name="LAST_UPDATE" Type="datetime" Nullable="false" />
+    <Property Name="DCBC_ENTITY_SOURCE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="License_Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="License_Board" Type="nvarchar" MaxLength="255" />
+    <Property Name="LICENSE_NUMBER" Type="varchar" MaxLength="60" />
+    <Property Name="LICENSE_ISSUE_DATE" Type="date" />
+    <Property Name="EXPIRATION_DATE" Type="date" />
+    <Property Name="LICENSE_STATUS" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="Licensee_Name" Type="varchar" MaxLength="1025" />
+    <Property Name="ADDRESS" Type="varchar" MaxLength="302" />
+    <Property Name="Employer_City_State_Zip" Type="varchar" MaxLength="167" />
+    <Property Name="Preferred_Address_Ind" Type="varchar" MaxLength="15" />
+    <Property Name="EMPLOYER_LICENSE_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+    <Property Name="EMPLOYER_LICENSE_NUMBER" Type="varchar" MaxLength="36" />
+    <Property Name="Organization_EMPLOYER_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="EMPLOYER_LICENSE_ISSUE_DATE" Type="date" />
+    <Property Name="EMPLOYER_LICENSE_EXPIRATION_DATE" Type="date" />
+    <Property Name="EMPLOYER_LICENSE_STATUS" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="FULL_NAME" Type="varchar" MaxLength="200" />
+    <Property Name="OPLA_LICENSE_CATEGORY" Type="varchar" MaxLength="200" />
+    <Property Name="OPLA_SOURCE" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="FeeCodeMap">
+    <Key>
+      <PropertyRef Name="FeeCodeId" />
+    </Key>
+    <Property Name="FeeCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeeCode" Type="nvarchar" MaxLength="5" />
+    <Property Name="Quantity" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsTier" Type="bit" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="FixFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ApplicationFee" Type="money" />
+    <Property Name="EndorsementFee" Type="money" />
+    <Property Name="TradeRegFee" Type="money" />
+    <Property Name="RAOFee" Type="money" />
+    <Property Name="eHOPFee" Type="money" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KeywordDetails">
+    <Key>
+      <PropertyRef Name="KeywordDid" />
+    </Key>
+    <Property Name="KeywordDid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyId" Type="bigint" />
+    <Property Name="KeyCount" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KeywordMaster">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Keywords" Type="nvarchar" MaxLength="500" />
+    <Property Name="TypeID" Type="nvarchar" MaxLength="50" />
+    <Property Name="SearchCriteria" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Lookup_BusinessStructure">
+    <Key>
+      <PropertyRef Name="LookUpBusinessStructureId" />
+    </Key>
+    <Property Name="LookUpBusinessStructureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessStructure" Type="nvarchar" MaxLength="80" />
+    <Property Name="IsManualAddress" Type="bit" />
+  </EntityType>
+  <EntityType Name="Lookup_ExistingCategories">
+    <Key>
+      <PropertyRef Name="LookUpId" />
+    </Key>
+    <Property Name="LookUpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewCategoryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExistingCategory" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MailTemplate">
+    <Key>
+      <PropertyRef Name="EmailTemplateId" />
+    </Key>
+    <Property Name="EmailTemplateId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Custom_Application_Id" Type="nvarchar" MaxLength="50" />
+    <Property Name="MailSentFailCount" Type="int" />
+    <Property Name="MailContent" Type="text" />
+    <Property Name="IsMailSent" Type="bit" />
+    <Property Name="MailCreatedDate" Type="datetime" />
+    <Property Name="MailSentDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MasterBblApplicationStatus">
+    <Key>
+      <PropertyRef Name="BblApplicationStatusId" />
+    </Key>
+    <Property Name="BblApplicationStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Application_Cap_Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Changed_Cap_Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MasterBusinessActivity">
+    <Key>
+      <PropertyRef Name="ActivityID" />
+    </Key>
+    <Property Name="ActivityID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ActivityName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="APP_Type" Type="char" MaxLength="5" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MasterCategory">
+    <Key>
+      <PropertyRef Name="MasterCategoryId" />
+    </Key>
+    <Property Name="MasterCategoryId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MasterCategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Endorsement" Type="nvarchar" MaxLength="255" />
+    <Property Name="CategoryCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="App_Type" Type="nvarchar" MaxLength="3" />
+    <Property Name="UnitOne" Type="nvarchar" MaxLength="25" />
+    <Property Name="UnitTwo" Type="nvarchar" MaxLength="25" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="MasterCategoryDocument">
+    <Key>
+      <PropertyRef Name="MasterCategoryDocId" />
+    </Key>
+    <Property Name="MasterCategoryDocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="InitialLicense" Type="nvarchar" MaxLength="5" />
+    <Property Name="PostLicensure" Type="nvarchar" MaxLength="5" />
+    <Property Name="Renewal" Type="nvarchar" MaxLength="5" />
+    <Property Name="Agency" Type="nvarchar" MaxLength="50" />
+    <Property Name="Agency_FullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Div" Type="nvarchar" MaxLength="50" />
+    <Property Name="DivisionFullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="SupportingDocuments" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShortDocName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="IsPrimaryCategoryDoc" Type="bit" />
+    <Property Name="IsSecondaryLicenseDoc" Type="bit" />
+  </EntityType>
+  <EntityType Name="MasterCategoryPhysicalLocation">
+    <Key>
+      <PropertyRef Name="RuleId" />
+    </Key>
+    <Property Name="RuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimaryCategory_Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="BusinessMustBeInDC" Type="nchar" MaxLength="10" />
+    <Property Name="COFORequired" Type="nvarchar" MaxLength="30" />
+    <Property Name="HOP-EHOPAllowed" Type="nvarchar" MaxLength="10" />
+    <Property Name="ExemptFromAllFees" Type="nvarchar" MaxLength="10" />
+    <Property Name="LicenseType" Type="nchar" MaxLength="10" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="MasterCategoryQuestion">
+    <Key>
+      <PropertyRef Name="MasterCategoryQuestionId" />
+    </Key>
+    <Property Name="MasterCategoryQuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Quantity" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserQuestion" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="MasterCountry">
+    <Key>
+      <PropertyRef Name="CountryCode" />
+    </Key>
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="MastereHOPEligibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MasterEhopOptionType">
+    <Key>
+      <PropertyRef Name="EhopOptionId" />
+    </Key>
+    <Property Name="EhopOptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EhopOptionName" Type="nvarchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="MasterPrimaryCategory">
+    <Key>
+      <PropertyRef Name="PrimaryID" />
+    </Key>
+    <Property Name="PrimaryID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ActivityID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Endorsement" Type="nvarchar" MaxLength="255" />
+    <Property Name="CategoryCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="UnitOne" Type="varchar" MaxLength="25" />
+    <Property Name="UnitTwo" Type="varchar" MaxLength="25" />
+    <Property Name="App_Type" Type="nvarchar" MaxLength="3" />
+    <Property Name="IsSecondaryLicenseCategory" Type="bit" />
+    <Property Name="IsSubCategory" Type="bit" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="IsBackgroundInvestigation" Type="bit" />
+    <Property Name="IsPDFShow" Type="bit" />
+  </EntityType>
+  <EntityType Name="MasterRegisteredAgent">
+    <Key>
+      <PropertyRef Name="RegisterID" />
+    </Key>
+    <Property Name="RegisterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="StreetAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="StreetNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="StreetName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StreetType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quadrant" Type="nvarchar" MaxLength="30" />
+    <Property Name="UnitNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+    <Property Name="FileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Country" Type="nvarchar" MaxLength="150" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MasterRenewalStatusFee">
+    <Key>
+      <PropertyRef Name="RenewalStatusFeesId" />
+    </Key>
+    <Property Name="RenewalStatusFeesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusType" Type="nvarchar" MaxLength="50" />
+    <Property Name="FeeAmount" Type="money" />
+    <Property Name="StartRange" Type="int" />
+    <Property Name="EndRange" Type="int" />
+  </EntityType>
+  <EntityType Name="MasterSecondaryLicenseCategory">
+    <Key>
+      <PropertyRef Name="SecondaryID" />
+    </Key>
+    <Property Name="SecondaryID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PrimaryID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecondaryLicenseCategory" Type="nvarchar" MaxLength="500" />
+    <Property Name="UnitOne" Type="nvarchar" MaxLength="25" />
+    <Property Name="UnitTwo" Type="nvarchar" MaxLength="25" />
+    <Property Name="Endorsement" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsSubCategory" Type="bit" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="MasterState">
+    <Key>
+      <PropertyRef Name="StateCode" />
+    </Key>
+    <Property Name="StateCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="255" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MasterSubCategory">
+    <Key>
+      <PropertyRef Name="SubCatID" />
+    </Key>
+    <Property Name="SubCatID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubCategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomCategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.OSub_Category_Checklist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OSub_Category_Checklist">
+    <Key>
+      <PropertyRef Name="OSub_Category" />
+      <PropertyRef Name="OSub_Description" />
+    </Key>
+    <Property Name="OSub_Category" Type="int" Nullable="false" />
+    <Property Name="OSub_Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UnitTwo" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="OSub_Category_Fees">
+    <Key>
+      <PropertyRef Name="OSub_Category" />
+    </Key>
+    <Property Name="OSub_Category" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OSub_Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Fee_Code" Type="nvarchar" MaxLength="255" />
+    <Property Name="Start" Type="int" />
+    <Property Name="End" Type="int" />
+    <Property Name="License_Fee" Type="money" />
+    <Property Name="Tier" Type="int" />
+    <Property Name="App_Type" Type="nvarchar" MaxLength="1" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="PaymentAddressDetails">
+    <Key>
+      <PropertyRef Name="PaymentAddressId" />
+    </Key>
+    <Property Name="PaymentAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FullAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="80" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactNumber1" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactNumber2" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="100" />
+    <Property Name="StreetNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="StreetName" Type="nvarchar" MaxLength="60" />
+    <Property Name="StreetType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quadrant" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactFirstName" Type="nvarchar" MaxLength="80" />
+    <Property Name="ContactMiddleName" Type="nvarchar" MaxLength="80" />
+    <Property Name="ContactLastName" Type="nvarchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="PaymentCardDetails">
+    <Key>
+      <PropertyRef Name="PaymentCardId" />
+    </Key>
+    <Property Name="PaymentCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CardType" Type="nvarchar" MaxLength="30" />
+    <Property Name="CardNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CardExpDate" Type="nvarchar" MaxLength="30" />
+    <Property Name="CvvNumber" Type="nvarchar" MaxLength="10" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PaymentDetails">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ordernumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="PaymentFrom" Type="nvarchar" MaxLength="10" />
+    <Property Name="PaymentMailAddress" Type="nvarchar" MaxLength="80" />
+    <Property Name="Signature" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsAggree" Type="bit" />
+    <Property Name="TranscationId" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentStatus" Type="nvarchar" MaxLength="30" />
+    <Property Name="PaymentDate" Type="datetime" />
+    <Property Name="ApproveBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Application_Transcation_Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="PaymentHistoryDetails">
+    <Key>
+      <PropertyRef Name="PaymentHistoryId" />
+    </Key>
+    <Property Name="PaymentHistoryId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PaymentId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CardNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="PaymentAmount" Type="money" />
+    <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CvvNumber" Type="nvarchar" MaxLength="10" />
+    <Property Name="CardExpDate" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="PaymentDate" Type="datetime" />
+    <Property Name="PaymentTransactionId" Type="nvarchar" MaxLength="250" />
+    <Property Name="PaymentStatus" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Portal_Content_Errors">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MessageType" Type="nvarchar" MaxLength="30" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ErrrorMessage" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RefreshTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClientId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IssuedUtc" Type="datetime" Nullable="false" />
+    <Property Name="ExpiresUtc" Type="datetime" Nullable="false" />
+    <Property Name="ProtectedTicket" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TokenGui" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="StreetTypes">
+    <Key>
+      <PropertyRef Name="StreetTypeId" />
+    </Key>
+    <Property Name="StreetTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StreetType" Type="nvarchar" MaxLength="30" />
+    <Property Name="StreetCode" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SubmissionBblAssociationToUsers">
+    <Key>
+      <PropertyRef Name="SubmissionBblAssociationOtherUid" />
+    </Key>
+    <Property Name="SubmissionBblAssociationOtherUid" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubmissionLicense" Type="nvarchar" MaxLength="100" />
+    <Property Name="FromUserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="ToUserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateOfTransfer" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReasonForTransfer" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SubmissionCategory">
+    <Key>
+      <PropertyRef Name="SubmissionCategoryID" />
+    </Key>
+    <Property Name="SubmissionCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CategoryTypeID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EndorsementFee" Type="money" />
+    <Property Name="LicenseCategoryFee" Type="money" />
+    <Property Name="CategoryType" Type="nvarchar" MaxLength="30" />
+    <Property Name="ItemQty" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Endorsement" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SubmissionCofo_Hop_Ehop">
+    <Key>
+      <PropertyRef Name="SubCofoHopEhopId" />
+    </Key>
+    <Property Name="SubCofoHopEhopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserSelectType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Number" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateOfIssuance" Type="datetime" />
+    <Property Name="DoNotHaveCofo" Type="bit" />
+    <Property Name="IsUploadSupportDoc" Type="bit" />
+    <Property Name="IsValid" Type="bit" />
+    <Property Name="OccupancyAddressValidate" Type="nvarchar" MaxLength="10" />
+    <Property Name="IseHOPEligibility" Type="bit" />
+    <Property Name="EHopEligibilityType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmeHOPEligibilityType" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SubmissionCofo_Hop_Ehop_Address">
+    <Key>
+      <PropertyRef Name="SubmissionCofo_Hop_Ehop_AddressId" />
+    </Key>
+    <Property Name="SubmissionCofo_Hop_Ehop_AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomTypeId" Type="int" Nullable="false" />
+    <Property Name="CustomType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="240" />
+    <Property Name="Street" Type="nvarchar" MaxLength="100" />
+    <Property Name="StreetName" Type="nvarchar" MaxLength="80" />
+    <Property Name="StreetType" Type="nvarchar" MaxLength="20" />
+    <Property Name="Quadrant" Type="nvarchar" MaxLength="20" />
+    <Property Name="UnitType" Type="nvarchar" MaxLength="10" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="10" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" />
+    <Property Name="State" Type="nvarchar" MaxLength="30" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="100" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsValid" Type="bit" />
+    <Property Name="Country" Type="nvarchar" MaxLength="30" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="AddressID" Type="nvarchar" MaxLength="20" />
+    <Property Name="AddressNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="AddressNumberSufix" Type="nvarchar" MaxLength="15" />
+    <Property Name="Xcoord" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ycoord" Type="nvarchar" MaxLength="50" />
+    <Property Name="Anc" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ward" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cluster" Type="nvarchar" MaxLength="50" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Vote_Prcnct" Type="nvarchar" MaxLength="50" />
+    <Property Name="Zone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Smd" Type="nvarchar" MaxLength="30" />
+    <Property Name="Ssl" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="SubmissionCorporation_Agent">
+    <Key>
+      <PropertyRef Name="SubCorporationRegId" />
+    </Key>
+    <Property Name="SubCorporationRegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FileNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TradeName" Type="nvarchar" MaxLength="30" />
+    <Property Name="BusinessStructure" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="ChcekedFromCorp" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubmissionCorporation_Agent_Address">
+    <Key>
+      <PropertyRef Name="SCAId" />
+    </Key>
+    <Property Name="SCAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubCorporationRegId" Type="int" />
+    <Property Name="AddressType" Type="nvarchar" MaxLength="15" />
+    <Property Name="FileNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MiddelName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="250" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" />
+    <Property Name="Quadrant" Type="nvarchar" MaxLength="30" />
+    <Property Name="UnitNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="AddressNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SubmissionDocument">
+    <Key>
+      <PropertyRef Name="SubmDocId" />
+    </Key>
+    <Property Name="SubmDocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubmissionCategoryID" Type="int" Nullable="false" />
+    <Property Name="MasterCategoryDocId" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubmittedDocumentType" Type="nvarchar" MaxLength="20" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="DocRequired" Type="nvarchar" MaxLength="255" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="FileLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocStatus" Type="nvarchar" MaxLength="30" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SubmissionDocumentToAccela">
+    <Key>
+      <PropertyRef Name="SubmisionDocToAccelaId" />
+    </Key>
+    <Property Name="SubmisionDocToAccelaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" />
+    <Property Name="MasterCategoryDocId" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubmissionEHOPEligibility">
+    <Key>
+      <PropertyRef Name="SubEhopId" />
+    </Key>
+    <Property Name="SubEhopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" />
+    <Property Name="MasterEhopId" Type="int" />
+    <Property Name="TypeId" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SubmissionGeneratedDocument">
+    <Key>
+      <PropertyRef Name="SubmissionGeneratedDocumentId" />
+    </Key>
+    <Property Name="SubmissionGeneratedDocumentId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubmissionLicenseNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileByteCode" Type="varbinary(max)" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Gen_DocumentFrom" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SubmissionIndividual">
+    <Key>
+      <PropertyRef Name="SubmindividualId" />
+    </Key>
+    <Property Name="SubmindividualId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyBusinessLicense" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="80" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="80" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="80" />
+    <Property Name="DateofBirth" Type="datetime" />
+    <Property Name="City" Type="nvarchar" MaxLength="80" />
+    <Property Name="State/Province" Type="nvarchar" MaxLength="80" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="Height" Type="nvarchar" MaxLength="50" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="50" />
+    <Property Name="HairColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="EyeColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdentificationCard" Type="nvarchar" MaxLength="50" />
+    <Property Name="StateofIssuance" Type="nvarchar" MaxLength="50" />
+    <Property Name="ExpirationDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SubmissionLicenseNumberCounter">
+    <Key>
+      <PropertyRef Name="CounterId" />
+    </Key>
+    <Property Name="CounterId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Counter" Type="bigint" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="FiscalYear" Type="int" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SubmissionMaster">
+    <Key>
+      <PropertyRef Name="MasterId" />
+    </Key>
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubmissionLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ActivityID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ApplicationFee" Type="money" />
+    <Property Name="RAOFee" Type="money" />
+    <Property Name="IseHOP" Type="bit" />
+    <Property Name="eHOP" Type="money" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="ExpirationDate" Type="datetime" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="App_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="DocSubmType" Type="nvarchar" MaxLength="5" />
+    <Property Name="IsBusinessMustbeinDC" Type="bit" />
+    <Property Name="IsHomeBased" Type="bit" />
+    <Property Name="IsCofo" Type="bit" />
+    <Property Name="IsPhysicalLocationVerify" Type="bit" />
+    <Property Name="GrandTotal" Type="money" />
+    <Property Name="isCorporationDivision" Type="bit" />
+    <Property Name="BusinessStructure" Type="nvarchar" MaxLength="50" />
+    <Property Name="TradeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Updatedate" Type="datetime" />
+    <Property Name="UserSelectMailAddressType" Type="nvarchar" MaxLength="20" />
+    <Property Name="LicenseDuration" Type="int" />
+    <Property Name="UserBblAssociateId" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsCategorySelfCertification" Type="bit" />
+    <Property Name="BusinessOwnerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="BusinessName" Type="nvarchar" MaxLength="255" />
+    <Property Name="PremisesAddress" Type="nvarchar(max)" />
+    <Property Name="IsRaoFee_Applied" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubmissionMaster_ApplicationCheckList">
+    <Key>
+      <PropertyRef Name="SubMaster_ApplicationCheckListId" />
+    </Key>
+    <Property Name="SubMaster_ApplicationCheckListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FEIN-SSN" Type="bit" />
+    <Property Name="IsSubmissionCofo" Type="bit" />
+    <Property Name="IsSubmissionHop" Type="bit" />
+    <Property Name="IsSubmissioneHop" Type="bit" />
+    <Property Name="IsCleanHandsVerify" Type="bit" />
+    <Property Name="IsCorporateRegistration" Type="bit" />
+    <Property Name="IsBHAddress" Type="bit" />
+    <Property Name="IsBPAddress" Type="bit" />
+    <Property Name="IsMailAddress" Type="bit" />
+    <Property Name="IsResidentAgent" Type="bit" />
+    <Property Name="IsDocForCleanHands" Type="bit" />
+    <Property Name="IsDocForCofo" Type="bit" />
+    <Property Name="IsDocForHop" Type="bit" />
+    <Property Name="IsDocForeHop" Type="bit" />
+    <Property Name="IsSelfCertification" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubmissionMasterRenewal">
+    <Key>
+      <PropertyRef Name="RenewalSubmId" />
+    </Key>
+    <Property Name="RenewalSubmId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubmissionLicense" Type="nvarchar" MaxLength="50" />
+    <Property Name="CorpNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDcraCorpDivision" Type="bit" />
+    <Property Name="LapsedFee" Type="money" />
+    <Property Name="Extradays" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsCorpDocRegistration" Type="bit" />
+    <Property Name="ExpiredFee" Type="money" />
+  </EntityType>
+  <EntityType Name="SubmissionQuestion">
+    <Key>
+      <PropertyRef Name="SubmQuestionsId" />
+    </Key>
+    <Property Name="SubmQuestionsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Question" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OptionType" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SubmissionSelfCertification">
+    <Key>
+      <PropertyRef Name="SelfCertificationId" />
+    </Key>
+    <Property Name="SelfCertificationId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" />
+    <Property Name="MasterCategoryId" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsPropertyOccupied" Type="bit" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+    <Property Name="SelfCertificationOn" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsAgree" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubmissionTaxRevenue">
+    <Key>
+      <PropertyRef Name="SubmissionTaxRevenueId" />
+    </Key>
+    <Property Name="SubmissionTaxRevenueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MasterId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TaxRevenueNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="TaxRevenueType" Type="nvarchar" MaxLength="15" />
+    <Property Name="CreatdedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="BusinessOwnerRoles" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsIAgree" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubmissiontoAccela">
+    <Key>
+      <PropertyRef Name="SubmissiontoAccelaId" />
+    </Key>
+    <Property Name="SubmissiontoAccelaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplicationCompleted" Type="bit" />
+    <Property Name="ApplicationCreated" Type="bit" />
+    <Property Name="ApplicationFeeMatched" Type="bit" />
+    <Property Name="RenewalPaymentUpdated" Type="bit" />
+    <Property Name="RenewalFeeMatched" Type="bit" />
+    <Property Name="AllDocumentsUpdated" Type="bit" />
+    <Property Name="EHOPCreated" Type="bit" />
+    <Property Name="AccelaGeneratedID" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProcessCompleted" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.TBL_ETL_Address_And_Parcel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_ETL_Address_And_Parcel">
+    <Key>
+      <PropertyRef Name="L1_PARCEL_NBR" />
+    </Key>
+    <Property Name="L1_PARCEL_NBR" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="L1_HSE_NBR_START" Type="int" />
+    <Property Name="L1_HSE_NBR_END" Type="int" />
+    <Property Name="L1_HSE_FRAC_NBR_START" Type="varchar" MaxLength="3" />
+    <Property Name="L1_HSE_FRAC_NBR_END" Type="varchar" MaxLength="3" />
+    <Property Name="L1_UNIT_START" Type="varchar" MaxLength="10" />
+    <Property Name="L1_UNIT_END" Type="varchar" MaxLength="10" />
+    <Property Name="L1_UNIT_TYPE" Type="varchar" MaxLength="6" />
+    <Property Name="L1_STR_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="L1_STR_PREFIX" Type="varchar" MaxLength="6" />
+    <Property Name="L1_STR_SUFFIX" Type="varchar" MaxLength="30" />
+    <Property Name="L1_STR_SUFFIX_DIR" Type="varchar" MaxLength="5" />
+    <Property Name="L1_INSP_DISTRICT_PREFIX" Type="varchar" MaxLength="10" />
+    <Property Name="L1_INSP_DISTRICT" Type="varchar" MaxLength="30" />
+    <Property Name="L1_SITUS_NBRHD_PREFIX" Type="varchar" MaxLength="6" />
+    <Property Name="L1_SITUS_NBRHD" Type="varchar" MaxLength="30" />
+    <Property Name="L1_SITUS_CITY" Type="varchar" MaxLength="32" />
+    <Property Name="L1_SITUS_COUNTY" Type="varchar" MaxLength="30" />
+    <Property Name="L1_SITUS_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="L1_SITUS_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="L1_SITUS_COUNTRY" Type="varchar" MaxLength="30" />
+    <Property Name="L1_ADDR_STATUS" Type="varchar" MaxLength="1" />
+    <Property Name="L1_ADDR_DESC" Type="varchar" MaxLength="255" />
+    <Property Name="L1_UDF1" Type="varchar" MaxLength="30" />
+    <Property Name="L1_UDF2" Type="varchar" MaxLength="30" />
+    <Property Name="L1_UDF3" Type="varchar" MaxLength="30" />
+    <Property Name="L1_UDF4" Type="varchar" MaxLength="30" />
+    <Property Name="L1_FULL_ADDRESS" Type="varchar" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="MobileNumber" Type="nvarchar(max)" />
+    <Property Name="PostalCode" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="LastLoginDateandTime" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="ActivationCode" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="SecurityQuestion1" Type="nvarchar" MaxLength="200" />
+    <Property Name="SecurityQuestion2" Type="nvarchar" MaxLength="200" />
+    <Property Name="SecurityQuestion3" Type="nvarchar" MaxLength="200" />
+    <Property Name="SecurityAnswer1" Type="nvarchar" MaxLength="500" />
+    <Property Name="SecurityAnswer2" Type="nvarchar" MaxLength="500" />
+    <Property Name="SecurityAnswer3" Type="nvarchar" MaxLength="500" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActivationDate" Type="datetime" />
+    <Property Name="SecondaryEmail" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChangeEmailValidate" Type="datetime" />
+    <Property Name="ChangeEmailConfirmed" Type="bit" />
+    <Property Name="PreviousEmailValidate" Type="datetime" />
+    <Property Name="PreviousEmailConfirmed" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsForgot" Type="bit" />
+    <Property Name="DeleteComment" Type="nvarchar" MaxLength="100" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="IsLoggedIn" Type="bit" />
+    <Property Name="LoginSessionId" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="UserBBLService">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubmissionLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="char" MaxLength="5" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="LicenseExpirationDate" Type="datetime" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CleanHandsType_SSN_FEIN" Type="nvarchar" MaxLength="20" />
+    <Property Name="DCBC_ENTITY_ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="B1_ALT_ID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLoginHistory">
+    <Key>
+      <PropertyRef Name="LoginHisId" />
+    </Key>
+    <Property Name="LoginHisId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="Count" Type="int" />
+  </EntityType>
+  <EntityType Name="UserPasswordTracking">
+    <Key>
+      <PropertyRef Name="PasswordTrackId" />
+    </Key>
+    <Property Name="PasswordTrackId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="PasswordTrack" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserService">
+    <Key>
+      <PropertyRef Name="UserListId" />
+    </Key>
+    <Property Name="UserListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DATA_SOURCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="DCBC_ENTITY_ID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="updatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.BblLicenseView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BblLicenseView">
+    <Key>
+      <PropertyRef Name="Application Unique ID" />
+      <PropertyRef Name="Application/License No." />
+    </Key>
+    <Property Name="Application Unique ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Full Name" Type="nvarchar(max)" />
+    <Property Name="Applicant Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Online App License Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="Application/License No." Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Application Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="App_Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="License Period" Type="int" />
+    <Property Name="ApplicationFee" Type="money" />
+    <Property Name="EndorsementFee" Type="money" />
+    <Property Name="LicenseFee" Type="money" />
+    <Property Name="RAOFee" Type="money" />
+    <Property Name="ESFFee" Type="numeric" Precision="21" Scale="5" />
+    <Property Name="EHOP Fees" Type="varchar" MaxLength="6" />
+    <Property Name="TotalAmount" Type="money" />
+    <Property Name="Payment Transaction ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Payment Transaction Date" Type="varchar" MaxLength="10" />
+    <Property Name="CH Self Certificate Signature" Type="nvarchar" MaxLength="100" />
+    <Property Name="CH Self Certificate Date" Type="datetime" />
+    <Property Name="CH Self Certificate Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Self Certificate (One-Family)" Type="nvarchar" MaxLength="150" />
+    <Property Name="Certificate of Occupancy Number" Type="nvarchar" MaxLength="100" />
+    <Property Name="Home Occupation Number" Type="nvarchar" MaxLength="100" />
+    <Property Name="EHOP Number" Type="nvarchar" MaxLength="100" />
+    <Property Name="EHOP Issue Date" Type="datetime" />
+    <Property Name="EHOP Attested By" Type="nvarchar" MaxLength="255" />
+    <Property Name="EHOP Occupation Type" Type="nvarchar" MaxLength="60" />
+    <Property Name="EHOP Issuance Status" Type="varchar" MaxLength="6" />
+    <Property Name="First Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Middle Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Last Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Organization Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Full Address Line 1" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address Line 2" Type="nvarchar" MaxLength="250" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="State" Type="nvarchar" MaxLength="100" />
+    <Property Name="Zip Code" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country/Region" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Business Organization***" Type="nvarchar" MaxLength="50" />
+    <Property Name="Trade Name (If applicable)" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tax ID Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="FEIN/SSN" Type="nvarchar" MaxLength="20" />
+    <Property Name="Prim.Street Number" Type="nvarchar" MaxLength="20" />
+    <Property Name="Prim.Street Name" Type="nvarchar" MaxLength="80" />
+    <Property Name="StreetType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quadrant" Type="nvarchar" MaxLength="20" />
+    <Property Name="Unit Type***" Type="nvarchar" MaxLength="10" />
+    <Property Name="Suite/Unit Number" Type="nvarchar" MaxLength="10" />
+    <Property Name="PCity" Type="nvarchar" MaxLength="30" />
+    <Property Name="PState" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country**" Type="nvarchar" MaxLength="100" />
+    <Property Name="PZip" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="Premise Address Verified" Type="varchar" MaxLength="5" />
+    <Property Name="Parcel.Premise Suffix" Type="nvarchar" MaxLength="15" />
+    <Property Name="Parcel.Premise Ward" Type="nvarchar" MaxLength="50" />
+    <Property Name="Parcel.Premise ANC" Type="nvarchar" MaxLength="50" />
+    <Property Name="Parcel.Premise Zone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Parcel.Premise SSL" Type="nvarchar" MaxLength="500" />
+    <Property Name="Billing.Org/Buss. Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Billing.ContactFirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Billing.ContactMiddleName" Type="nvarchar" MaxLength="80" />
+    <Property Name="Billing.ContactLastName" Type="nvarchar" MaxLength="80" />
+    <Property Name="Billing.Address 1" Type="nvarchar" MaxLength="60" />
+    <Property Name="Billing.Address 2 " Type="nvarchar" MaxLength="50" />
+    <Property Name="Billing.Address 3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Billing.City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Billing.State" Type="nvarchar" MaxLength="100" />
+    <Property Name="Billing.Country***" Type="nvarchar" MaxLength="100" />
+    <Property Name="Billing.Zip" Type="nvarchar" MaxLength="100" />
+    <Property Name="Billing.Phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="Billing.Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Agent.Org/Buss. Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Contact First Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Contact Middle Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Contact Last Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Street Address" Type="nvarchar" MaxLength="783" />
+    <Property Name="Address Line  2 " Type="nvarchar" MaxLength="250" />
+    <Property Name="ContactAgent_City" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactAgent_State" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactAgent_Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactAgent_ZipCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="Corp.Telephone" Type="nvarchar" MaxLength="100" />
+    <Property Name="ContactAgent_Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileNumber" Type="nvarchar" MaxLength="30" />
+    <Property Name="Company Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Employee Name" Type="nvarchar" MaxLength="80" />
+    <Property Name="Company Buss. Lic Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date of Birth" Type="datetime" />
+    <Property Name="Place of Birth" Type="nvarchar" MaxLength="264" />
+    <Property Name="Height" Type="nvarchar" MaxLength="50" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hair Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="Eyes Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="Drivers License" Type="nvarchar" MaxLength="50" />
+    <Property Name="State of License" Type="nvarchar" MaxLength="50" />
+    <Property Name="License Expiration Date" Type="datetime" />
+    <Property Name="Created Date" Type="datetime" />
+    <Property Name="UpDated Date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.BblLicenseView2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BblLicenseView2">
+    <Key>
+      <PropertyRef Name="Application" />
+    </Key>
+    <Property Name="Application" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Primary Category" Type="nvarchar(max)" />
+    <Property Name="Class" Type="varchar" MaxLength="1" />
+    <Property Name="Pri. Units" Type="nvarchar(max)" />
+    <Property Name="Pri. Units Description" Type="varchar" MaxLength="25" />
+    <Property Name="Pri. Units 2" Type="nvarchar(max)" />
+    <Property Name="Pri. Units Description 2" Type="varchar" MaxLength="25" />
+    <Property Name="Secondary Category" Type="nvarchar(max)" />
+    <Property Name="Sec. Units" Type="nvarchar(max)" />
+    <Property Name="Sec. Units Description" Type="nvarchar(max)" />
+    <Property Name="SubCategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Created Date" Type="datetime" />
+    <Property Name="UpDated Date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.BblLicenseView3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BblLicenseView3">
+    <Key>
+      <PropertyRef Name="Application Unique ID" />
+      <PropertyRef Name="Renewal License No." />
+    </Key>
+    <Property Name="Application Unique ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="License Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="Full Name" Type="nvarchar(max)" />
+    <Property Name="Online App License Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="Renewal License No." Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Primary Category" Type="nvarchar" MaxLength="255" />
+    <Property Name="License Renewal Period" Type="int" />
+    <Property Name="ApplicationFee" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="Endorsement Fee" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="LicenseFee" Type="money" />
+    <Property Name="RAO Fee" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="ESFFee" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="Penalty Fee (Lapse)" Type="money" />
+    <Property Name="Penalty Fee (Expired)" Type="money" />
+    <Property Name="TotalAmount" Type="money" />
+    <Property Name="Expiration_Date" Type="int" />
+    <Property Name="Payment Transaction ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Transaction Payment Date" Type="datetime" />
+    <Property Name="Created Date" Type="datetime" />
+    <Property Name="UpDated Date" Type="datetime" />
+    <Property Name="Org_Number" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BusinessCenter.dbo.BblLicenseView4' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BblLicenseView4">
+    <Key>
+      <PropertyRef Name="APPID" />
+      <PropertyRef Name="DocumentSubmissionType" />
+    </Key>
+    <Property Name="APPID" Type="int" Nullable="false" />
+    <Property Name="Application/License No." Type="nvarchar" MaxLength="50" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="SubmissionFileLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="DocumentSubmissionType" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MasterCategoryDocId" Type="int" />
+    <Property Name="SubmissionType" Type="varchar" MaxLength="10" />
+    <Property Name="Agency" Type="nvarchar" MaxLength="50" />
+    <Property Name="Agency_FullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Div" Type="nvarchar" MaxLength="50" />
+    <Property Name="DivisionFullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="SupportingDocuments" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShortDocName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="Created Date" Type="datetime" />
+    <Property Name="UpDated Date" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_dbo_UserClaim_dbo_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserLogin_dbo_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BusinessCenterModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuditRecord" EntityType="Self.AuditRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeCodeMap" EntityType="Self.FeeCodeMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FixFee" EntityType="Self.FixFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KeywordDetails" EntityType="Self.KeywordDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KeywordMaster" EntityType="Self.KeywordMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lookup_BusinessStructure" EntityType="Self.Lookup_BusinessStructure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lookup_ExistingCategories" EntityType="Self.Lookup_ExistingCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MailTemplate" EntityType="Self.MailTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterBblApplicationStatus" EntityType="Self.MasterBblApplicationStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterBusinessActivity" EntityType="Self.MasterBusinessActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterCategory" EntityType="Self.MasterCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterCategoryDocument" EntityType="Self.MasterCategoryDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterCategoryPhysicalLocation" EntityType="Self.MasterCategoryPhysicalLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterCategoryQuestion" EntityType="Self.MasterCategoryQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterCountry" EntityType="Self.MasterCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MastereHOPEligibility" EntityType="Self.MastereHOPEligibility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterEhopOptionType" EntityType="Self.MasterEhopOptionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterPrimaryCategory" EntityType="Self.MasterPrimaryCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterRegisteredAgent" EntityType="Self.MasterRegisteredAgent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterRenewalStatusFee" EntityType="Self.MasterRenewalStatusFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterSecondaryLicenseCategory" EntityType="Self.MasterSecondaryLicenseCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterState" EntityType="Self.MasterState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MasterSubCategory" EntityType="Self.MasterSubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OSub_Category_Fees" EntityType="Self.OSub_Category_Fees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentAddressDetails" EntityType="Self.PaymentAddressDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentCardDetails" EntityType="Self.PaymentCardDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentHistoryDetails" EntityType="Self.PaymentHistoryDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Portal_Content_Errors" EntityType="Self.Portal_Content_Errors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefreshTokens" EntityType="Self.RefreshTokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SecurityQuestion" EntityType="Self.SecurityQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StreetTypes" EntityType="Self.StreetTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionBblAssociationToUsers" EntityType="Self.SubmissionBblAssociationToUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionCategory" EntityType="Self.SubmissionCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionCofo_Hop_Ehop" EntityType="Self.SubmissionCofo_Hop_Ehop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionCofo_Hop_Ehop_Address" EntityType="Self.SubmissionCofo_Hop_Ehop_Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionCorporation_Agent" EntityType="Self.SubmissionCorporation_Agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionCorporation_Agent_Address" EntityType="Self.SubmissionCorporation_Agent_Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionDocument" EntityType="Self.SubmissionDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionDocumentToAccela" EntityType="Self.SubmissionDocumentToAccela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionEHOPEligibility" EntityType="Self.SubmissionEHOPEligibility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionGeneratedDocument" EntityType="Self.SubmissionGeneratedDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionIndividual" EntityType="Self.SubmissionIndividual" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionLicenseNumberCounter" EntityType="Self.SubmissionLicenseNumberCounter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionMaster" EntityType="Self.SubmissionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionMaster_ApplicationCheckList" EntityType="Self.SubmissionMaster_ApplicationCheckList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionMasterRenewal" EntityType="Self.SubmissionMasterRenewal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionQuestion" EntityType="Self.SubmissionQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionSelfCertification" EntityType="Self.SubmissionSelfCertification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissionTaxRevenue" EntityType="Self.SubmissionTaxRevenue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubmissiontoAccela" EntityType="Self.SubmissiontoAccela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserBBLService" EntityType="Self.UserBBLService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserClaim" EntityType="Self.UserClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLoginHistory" EntityType="Self.UserLoginHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPasswordTracking" EntityType="Self.UserPasswordTracking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserService" EntityType="Self.UserService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DCBC_ENTITY_ABRA" EntityType="Self.DCBC_ENTITY_ABRA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_ABRA].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_ABRA].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_ABRA].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_ABRA].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_ABRA].[Serv_Prov_Code] AS [Serv_Prov_Code],
+              [DCBC_ENTITY_ABRA].[B1_PER_GROUP] AS [B1_PER_GROUP],
+              [DCBC_ENTITY_ABRA].[B1_PER_TYPE] AS [B1_PER_TYPE],
+              [DCBC_ENTITY_ABRA].[B1_PER_CATEGORY] AS [B1_PER_CATEGORY],
+              [DCBC_ENTITY_ABRA].[B1_APP_TYPE_ALIAS] AS [B1_APP_TYPE_ALIAS],
+              [DCBC_ENTITY_ABRA].[APP_STATUS_GROUP_CODE] AS [APP_STATUS_GROUP_CODE],
+              [DCBC_ENTITY_ABRA].[B1_SPECIAL_TEXT] AS [B1_SPECIAL_TEXT],
+              [DCBC_ENTITY_ABRA].[License_Number] AS [License_Number],
+              [DCBC_ENTITY_ABRA].[B1_TRACKING_NBR] AS [B1_TRACKING_NBR],
+              [DCBC_ENTITY_ABRA].[License_Status] AS [License_Status],
+              [DCBC_ENTITY_ABRA].[B1_APPL_STATUS_DATE] AS [B1_APPL_STATUS_DATE],
+              [DCBC_ENTITY_ABRA].[B1_CHECKBOX_TYPE] AS [B1_CHECKBOX_TYPE],
+              [DCBC_ENTITY_ABRA].[License_Expiration_Date] AS [License_Expiration_Date],
+              [DCBC_ENTITY_ABRA].[Valid_Thru_Date] AS [Valid_Thru_Date],
+              [DCBC_ENTITY_ABRA].[Posting_Date] AS [Posting_Date],
+              [DCBC_ENTITY_ABRA].[Class_Type] AS [Class_Type],
+              [DCBC_ENTITY_ABRA].[Class_Type_AttrValue] AS [Class_Type_AttrValue],
+              [DCBC_ENTITY_ABRA].[Establishment_Type] AS [Establishment_Type],
+              [DCBC_ENTITY_ABRA].[Applicant_FNAME] AS [Applicant_FNAME],
+              [DCBC_ENTITY_ABRA].[Applicant_MNAME] AS [Applicant_MNAME],
+              [DCBC_ENTITY_ABRA].[Applicant_LNAME] AS [Applicant_LNAME],
+              [DCBC_ENTITY_ABRA].[Applicant_FULL_NAME] AS [Applicant_FULL_NAME],
+              [DCBC_ENTITY_ABRA].[Applicant_RELATION] AS [Applicant_RELATION],
+              [DCBC_ENTITY_ABRA].[Applicant_BUSINESS_NAME] AS [Applicant_BUSINESS_NAME],
+              [DCBC_ENTITY_ABRA].[Solicitor_FNAME] AS [Solicitor_FNAME],
+              [DCBC_ENTITY_ABRA].[Solicitor_MNAME] AS [Solicitor_MNAME],
+              [DCBC_ENTITY_ABRA].[Solicitor_LNAME] AS [Solicitor_LNAME],
+              [DCBC_ENTITY_ABRA].[Solicitor_FULL_NAME] AS [Solicitor_FULL_NAME],
+              [DCBC_ENTITY_ABRA].[Solicitor_RELATION] AS [Solicitor_RELATION],
+              [DCBC_ENTITY_ABRA].[Solicitor_BUSINESS_NAME] AS [Solicitor_BUSINESS_NAME],
+              [DCBC_ENTITY_ABRA].[Solicitor_ADDR1] AS [Solicitor_ADDR1],
+              [DCBC_ENTITY_ABRA].[Solicitor_ADDR2] AS [Solicitor_ADDR2],
+              [DCBC_ENTITY_ABRA].[Solicitor_ADDR3] AS [Solicitor_ADDR3],
+              [DCBC_ENTITY_ABRA].[Solicitor_CITY] AS [Solicitor_CITY],
+              [DCBC_ENTITY_ABRA].[Solicitor_STATE] AS [Solicitor_STATE],
+              [DCBC_ENTITY_ABRA].[Solicitor_ZIP] AS [Solicitor_ZIP],
+              [DCBC_ENTITY_ABRA].[Manager_FNAME] AS [Manager_FNAME],
+              [DCBC_ENTITY_ABRA].[Manager_MNAME] AS [Manager_MNAME],
+              [DCBC_ENTITY_ABRA].[Manager_LNAME] AS [Manager_LNAME],
+              [DCBC_ENTITY_ABRA].[Manager_FULL_NAME] AS [Manager_FULL_NAME],
+              [DCBC_ENTITY_ABRA].[Manager_RELATION] AS [Manager_RELATION],
+              [DCBC_ENTITY_ABRA].[Manager_BUSINESS_NAME] AS [Manager_BUSINESS_NAME],
+              [DCBC_ENTITY_ABRA].[Manager_ADDR1] AS [Manager_ADDR1],
+              [DCBC_ENTITY_ABRA].[Manager_ADDR2] AS [Manager_ADDR2],
+              [DCBC_ENTITY_ABRA].[Manager_ADDR3] AS [Manager_ADDR3],
+              [DCBC_ENTITY_ABRA].[Manager_CITY] AS [Manager_CITY],
+              [DCBC_ENTITY_ABRA].[Manager_STATE] AS [Manager_STATE],
+              [DCBC_ENTITY_ABRA].[Manager_ZIP] AS [Manager_ZIP],
+              [DCBC_ENTITY_ABRA].[B1_PRIMARY_ADDR_FLG] AS [B1_PRIMARY_ADDR_FLG],
+              [DCBC_ENTITY_ABRA].[B1_HSE_NBR_START] AS [B1_HSE_NBR_START],
+              [DCBC_ENTITY_ABRA].[B1_HSE_NBR_END] AS [B1_HSE_NBR_END],
+              [DCBC_ENTITY_ABRA].[B1_HSE_FRAC_NBR_START] AS [B1_HSE_FRAC_NBR_START],
+              [DCBC_ENTITY_ABRA].[B1_HSE_FRAC_NBR_END] AS [B1_HSE_FRAC_NBR_END],
+              [DCBC_ENTITY_ABRA].[B1_UNIT_START] AS [B1_UNIT_START],
+              [DCBC_ENTITY_ABRA].[B1_STR_NAME] AS [B1_STR_NAME],
+              [DCBC_ENTITY_ABRA].[B1_STR_SUFFIX] AS [B1_STR_SUFFIX],
+              [DCBC_ENTITY_ABRA].[B1_STR_SUFFIX_DIR] AS [B1_STR_SUFFIX_DIR],
+              [DCBC_ENTITY_ABRA].[B1_SITUS_CITY] AS [B1_SITUS_CITY],
+              [DCBC_ENTITY_ABRA].[B1_SITUS_STATE] AS [B1_SITUS_STATE],
+              [DCBC_ENTITY_ABRA].[B1_SITUS_ZIP] AS [B1_SITUS_ZIP]
+              FROM [dbo].[DCBC_ENTITY_ABRA] AS [DCBC_ENTITY_ABRA]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_BBL" EntityType="Self.DCBC_ENTITY_BBL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_BBL].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_BBL].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_BBL].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_BBL].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_BBL].[SERV_PROV_CODE] AS [SERV_PROV_CODE],
+              [DCBC_ENTITY_BBL].[B1_PER_ID1] AS [B1_PER_ID1],
+              [DCBC_ENTITY_BBL].[B1_PER_ID2] AS [B1_PER_ID2],
+              [DCBC_ENTITY_BBL].[B1_PER_ID3] AS [B1_PER_ID3],
+              [DCBC_ENTITY_BBL].[B1_PER_GROUP] AS [B1_PER_GROUP],
+              [DCBC_ENTITY_BBL].[B1_PER_TYPE] AS [B1_PER_TYPE],
+              [DCBC_ENTITY_BBL].[B1_PER_SUB_TYPE] AS [B1_PER_SUB_TYPE],
+              [DCBC_ENTITY_BBL].[B1_PER_CATEGORY] AS [B1_PER_CATEGORY],
+              [DCBC_ENTITY_BBL].[B1_APPL_STATUS_ORIGINAL] AS [B1_APPL_STATUS_ORIGINAL],
+              [DCBC_ENTITY_BBL].[B1_APPL_STATUS] AS [B1_APPL_STATUS],
+              [DCBC_ENTITY_BBL].[B1_ALT_ID] AS [B1_ALT_ID],
+              [DCBC_ENTITY_BBL].[APPLICATION_CAP] AS [APPLICATION_CAP],
+              [DCBC_ENTITY_BBL].[B1_APPL_STATUS_DATE] AS [B1_APPL_STATUS_DATE],
+              [DCBC_ENTITY_BBL].[ISSUED_DATE] AS [ISSUED_DATE],
+              [DCBC_ENTITY_BBL].[B1_HSE_NBR_START] AS [B1_HSE_NBR_START],
+              [DCBC_ENTITY_BBL].[B1_HSE_NBR_END] AS [B1_HSE_NBR_END],
+              [DCBC_ENTITY_BBL].[B1_HSE_FRAC_NBR_START] AS [B1_HSE_FRAC_NBR_START],
+              [DCBC_ENTITY_BBL].[B1_HSE_FRAC_NBR_END] AS [B1_HSE_FRAC_NBR_END],
+              [DCBC_ENTITY_BBL].[B1_UNIT_START] AS [B1_UNIT_START],
+              [DCBC_ENTITY_BBL].[B1_STR_NAME] AS [B1_STR_NAME],
+              [DCBC_ENTITY_BBL].[B1_STR_SUFFIX] AS [B1_STR_SUFFIX],
+              [DCBC_ENTITY_BBL].[B1_STR_SUFFIX_DIR] AS [B1_STR_SUFFIX_DIR],
+              [DCBC_ENTITY_BBL].[B1_SITUS_CITY] AS [B1_SITUS_CITY],
+              [DCBC_ENTITY_BBL].[B1_SITUS_STATE] AS [B1_SITUS_STATE],
+              [DCBC_ENTITY_BBL].[B1_SITUS_ZIP] AS [B1_SITUS_ZIP],
+              [DCBC_ENTITY_BBL].[FULL_ADDRESS] AS [FULL_ADDRESS],
+              [DCBC_ENTITY_BBL].[B1_APP_TYPE_ALIAS] AS [B1_APP_TYPE_ALIAS],
+              [DCBC_ENTITY_BBL].[SSL] AS [SSL],
+              [DCBC_ENTITY_BBL].[REC_FUL_NAM] AS [REC_FUL_NAM],
+              [DCBC_ENTITY_BBL].[Contact_Business_Name] AS [Contact_Business_Name],
+              [DCBC_ENTITY_BBL].[Contact_FirstName] AS [Contact_FirstName],
+              [DCBC_ENTITY_BBL].[Contact_MiddleName] AS [Contact_MiddleName],
+              [DCBC_ENTITY_BBL].[Contact_LastName] AS [Contact_LastName],
+              [DCBC_ENTITY_BBL].[Billing_Address1] AS [Billing_Address1],
+              [DCBC_ENTITY_BBL].[Billing_Address2] AS [Billing_Address2],
+              [DCBC_ENTITY_BBL].[Billing_Address3] AS [Billing_Address3],
+              [DCBC_ENTITY_BBL].[Billing_CITY] AS [Billing_CITY],
+              [DCBC_ENTITY_BBL].[Billing_STATE] AS [Billing_STATE],
+              [DCBC_ENTITY_BBL].[Billing_ZIP] AS [Billing_ZIP],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_BUSINESS_NAME] AS [OwnrApplicant_BUSINESS_NAME],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_FNAME] AS [OwnrApplicant_FNAME],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_MNAME] AS [OwnrApplicant_MNAME],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_LNAME] AS [OwnrApplicant_LNAME],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_Address1] AS [OwnrApplicant_Address1],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_Address2] AS [OwnrApplicant_Address2],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_Address3] AS [OwnrApplicant_Address3],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_CITY] AS [OwnrApplicant_CITY],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_STATE] AS [OwnrApplicant_STATE],
+              [DCBC_ENTITY_BBL].[OwnrApplicant_ZIP] AS [OwnrApplicant_ZIP],
+              [DCBC_ENTITY_BBL].[RegAgent_BUSINESS_NAME] AS [RegAgent_BUSINESS_NAME],
+              [DCBC_ENTITY_BBL].[RegAgent_FNAME] AS [RegAgent_FNAME],
+              [DCBC_ENTITY_BBL].[RegAgent_MNAME] AS [RegAgent_MNAME],
+              [DCBC_ENTITY_BBL].[RegAgent_LNAME] AS [RegAgent_LNAME],
+              [DCBC_ENTITY_BBL].[RegAgent_Address1] AS [RegAgent_Address1],
+              [DCBC_ENTITY_BBL].[RegAgent_Address2] AS [RegAgent_Address2],
+              [DCBC_ENTITY_BBL].[RegAgent_Address3] AS [RegAgent_Address3],
+              [DCBC_ENTITY_BBL].[RegAgent_CITY] AS [RegAgent_CITY],
+              [DCBC_ENTITY_BBL].[RegAgent_STATE] AS [RegAgent_STATE],
+              [DCBC_ENTITY_BBL].[RegAgent_ZIP] AS [RegAgent_ZIP],
+              [DCBC_ENTITY_BBL].[Attr_TRADE_NAME] AS [Attr_TRADE_NAME],
+              [DCBC_ENTITY_BBL].[Business_Org] AS [Business_Org],
+              [DCBC_ENTITY_BBL].[Expiration_Date] AS [Expiration_Date],
+              [DCBC_ENTITY_BBL].[License_Issued_Date] AS [License_Issued_Date],
+              [DCBC_ENTITY_BBL].[Period_Start_Date] AS [Period_Start_Date],
+              [DCBC_ENTITY_BBL].[License_Category] AS [License_Category],
+              [DCBC_ENTITY_BBL].[License_Category_Full] AS [License_Category_Full],
+              [DCBC_ENTITY_BBL].[TaxNumber] AS [TaxNumber],
+              [DCBC_ENTITY_BBL].[FEIN_SSN] AS [FEIN_SSN],
+              [DCBC_ENTITY_BBL].[APPLICATION_CAP_STATUS] AS [APPLICATION_CAP_STATUS],
+              [DCBC_ENTITY_BBL].[APPLICATION_CAP_STATUS_DATE] AS [APPLICATION_CAP_STATUS_DATE],
+              [DCBC_ENTITY_BBL].[REC_DATE] AS [REC_DATE],
+              [DCBC_ENTITY_BBL].[WARD] AS [WARD],
+              [DCBC_ENTITY_BBL].[ANC] AS [ANC],
+              [DCBC_ENTITY_BBL].[CofO_Number] AS [CofO_Number],
+              [DCBC_ENTITY_BBL].[CofO_IssueDate] AS [CofO_IssueDate],
+              [DCBC_ENTITY_BBL].[H_O_P_Number] AS [H_O_P_Number],
+              [DCBC_ENTITY_BBL].[H_O_P_Issue_Date] AS [H_O_P_Issue_Date],
+              [DCBC_ENTITY_BBL].[E_HOP_Number] AS [E_HOP_Number],
+              [DCBC_ENTITY_BBL].[E_HOP_Issue_Date] AS [E_HOP_Issue_Date],
+              [DCBC_ENTITY_BBL].[ZONE] AS [ZONE],
+              [DCBC_ENTITY_BBL].[Org_Number] AS [Org_Number]
+              FROM [dbo].[DCBC_ENTITY_BBL] AS [DCBC_ENTITY_BBL]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_BBL_Renewal_Invoice" EntityType="Self.DCBC_ENTITY_BBL_Renewal_Invoice" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[As_of_Date] AS [As_of_Date],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[SERV_PROV_CODE] AS [SERV_PROV_CODE],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_ID1] AS [B1_PER_ID1],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_ID2] AS [B1_PER_ID2],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_ID3] AS [B1_PER_ID3],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_GROUP] AS [B1_PER_GROUP],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_TYPE] AS [B1_PER_TYPE],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_SUB_TYPE] AS [B1_PER_SUB_TYPE],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_PER_CATEGORY] AS [B1_PER_CATEGORY],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[B1_APP_TYPE_ALIAS] AS [B1_APP_TYPE_ALIAS],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[b1_Alt_ID] AS [b1_Alt_ID],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[GF_DES] AS [GF_DES],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[GF_FEE] AS [GF_FEE],
+              [DCBC_ENTITY_BBL_Renewal_Invoice].[GF_UNIT] AS [GF_UNIT]
+              FROM [dbo].[DCBC_ENTITY_BBL_Renewal_Invoice] AS [DCBC_ENTITY_BBL_Renewal_Invoice]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_BBL_Renewals" EntityType="Self.DCBC_ENTITY_BBL_Renewals" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_BBL_Renewals].[As_of_Date] AS [As_of_Date],
+              [DCBC_ENTITY_BBL_Renewals].[SERV_PROV_CODE] AS [SERV_PROV_CODE],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_ID1] AS [B1_PER_ID1],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_ID2] AS [B1_PER_ID2],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_ID3] AS [B1_PER_ID3],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_GROUP] AS [B1_PER_GROUP],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_TYPE] AS [B1_PER_TYPE],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_SUB_TYPE] AS [B1_PER_SUB_TYPE],
+              [DCBC_ENTITY_BBL_Renewals].[B1_PER_CATEGORY] AS [B1_PER_CATEGORY],
+              [DCBC_ENTITY_BBL_Renewals].[B1_APP_TYPE_ALIAS] AS [B1_APP_TYPE_ALIAS],
+              [DCBC_ENTITY_BBL_Renewals].[b1_Alt_ID] AS [b1_Alt_ID],
+              [DCBC_ENTITY_BBL_Renewals].[License_Being_Renewed] AS [License_Being_Renewed],
+              [DCBC_ENTITY_BBL_Renewals].[B1_APPL_STATUS] AS [B1_APPL_STATUS],
+              [DCBC_ENTITY_BBL_Renewals].[Renewal_Status] AS [Renewal_Status],
+              [DCBC_ENTITY_BBL_Renewals].[B1_APPL_STATUS_DATE] AS [B1_APPL_STATUS_DATE],
+              [DCBC_ENTITY_BBL_Renewals].[B1_HSE_NBR_START] AS [B1_HSE_NBR_START],
+              [DCBC_ENTITY_BBL_Renewals].[B1_HSE_NBR_END] AS [B1_HSE_NBR_END],
+              [DCBC_ENTITY_BBL_Renewals].[B1_HSE_FRAC_NBR_START] AS [B1_HSE_FRAC_NBR_START],
+              [DCBC_ENTITY_BBL_Renewals].[B1_UNIT_START] AS [B1_UNIT_START],
+              [DCBC_ENTITY_BBL_Renewals].[B1_STR_NAME] AS [B1_STR_NAME],
+              [DCBC_ENTITY_BBL_Renewals].[B1_STR_SUFFIX] AS [B1_STR_SUFFIX],
+              [DCBC_ENTITY_BBL_Renewals].[B1_STR_SUFFIX_DIR] AS [B1_STR_SUFFIX_DIR],
+              [DCBC_ENTITY_BBL_Renewals].[B1_SITUS_CITY] AS [B1_SITUS_CITY],
+              [DCBC_ENTITY_BBL_Renewals].[B1_SITUS_STATE] AS [B1_SITUS_STATE],
+              [DCBC_ENTITY_BBL_Renewals].[B1_SITUS_ZIP] AS [B1_SITUS_ZIP],
+              [DCBC_ENTITY_BBL_Renewals].[License_Period] AS [License_Period],
+              [DCBC_ENTITY_BBL_Renewals].[OSR_Pin] AS [OSR_Pin],
+              [DCBC_ENTITY_BBL_Renewals].[CofO_Number] AS [CofO_Number],
+              [DCBC_ENTITY_BBL_Renewals].[Review_Necessary] AS [Review_Necessary],
+              [DCBC_ENTITY_BBL_Renewals].[CofO_IssueDate] AS [CofO_IssueDate],
+              [DCBC_ENTITY_BBL_Renewals].[H_O_P_Number] AS [H_O_P_Number],
+              [DCBC_ENTITY_BBL_Renewals].[H_O_P_Issue_Date] AS [H_O_P_Issue_Date],
+              [DCBC_ENTITY_BBL_Renewals].[E_HOP_Number] AS [E_HOP_Number],
+              [DCBC_ENTITY_BBL_Renewals].[E_HOP_Issue_Date] AS [E_HOP_Issue_Date],
+              [DCBC_ENTITY_BBL_Renewals].[Contact_Business_Name] AS [Contact_Business_Name],
+              [DCBC_ENTITY_BBL_Renewals].[Contact_FirstName] AS [Contact_FirstName],
+              [DCBC_ENTITY_BBL_Renewals].[Contact_MiddleName] AS [Contact_MiddleName],
+              [DCBC_ENTITY_BBL_Renewals].[Contact_LastName] AS [Contact_LastName],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_Address1] AS [Billing_Address1],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_Address2] AS [Billing_Address2],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_Address3] AS [Billing_Address3],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_CITY] AS [Billing_CITY],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_STATE] AS [Billing_STATE],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_ZIP] AS [Billing_ZIP],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_BUSINESS_NAME] AS [OwnrApplicant_BUSINESS_NAME],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_FNAME] AS [OwnrApplicant_FNAME],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_MNAME] AS [OwnrApplicant_MNAME],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_LNAME] AS [OwnrApplicant_LNAME],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_Address1] AS [OwnrApplicant_Address1],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_Address2] AS [OwnrApplicant_Address2],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_Address3] AS [OwnrApplicant_Address3],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_CITY] AS [OwnrApplicant_CITY],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_STATE] AS [OwnrApplicant_STATE],
+              [DCBC_ENTITY_BBL_Renewals].[OwnrApplicant_ZIP] AS [OwnrApplicant_ZIP],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_BUSINESS_NAME] AS [RegAgent_BUSINESS_NAME],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_FNAME] AS [RegAgent_FNAME],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_MNAME] AS [RegAgent_MNAME],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_LNAME] AS [RegAgent_LNAME],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_Address1] AS [RegAgent_Address1],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_Address2] AS [RegAgent_Address2],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_Address3] AS [RegAgent_Address3],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_CITY] AS [RegAgent_CITY],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_STATE] AS [RegAgent_STATE],
+              [DCBC_ENTITY_BBL_Renewals].[RegAgent_ZIP] AS [RegAgent_ZIP],
+              [DCBC_ENTITY_BBL_Renewals].[Attr_TRADE_NAME] AS [Attr_TRADE_NAME],
+              [DCBC_ENTITY_BBL_Renewals].[Business_Org] AS [Business_Org],
+              [DCBC_ENTITY_BBL_Renewals].[Billing_Contact_REC_DATE] AS [Billing_Contact_REC_DATE],
+              [DCBC_ENTITY_BBL_Renewals].[Reg_Agent_REC_DATE] AS [Reg_Agent_REC_DATE],
+              [DCBC_ENTITY_BBL_Renewals].[Bus_Ownr_Applicant_REC_DATE] AS [Bus_Ownr_Applicant_REC_DATE],
+              [DCBC_ENTITY_BBL_Renewals].[Attr_TradeName_REC_DATE] AS [Attr_TradeName_REC_DATE],
+              [DCBC_ENTITY_BBL_Renewals].[Attr_BusOrg_REC_DATE] AS [Attr_BusOrg_REC_DATE],
+              [DCBC_ENTITY_BBL_Renewals].[Org_Number] AS [Org_Number]
+              FROM [dbo].[DCBC_ENTITY_BBL_Renewals] AS [DCBC_ENTITY_BBL_Renewals]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_CBE" EntityType="Self.DCBC_ENTITY_CBE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_CBE].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_CBE].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_CBE].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_CBE].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_CBE].[LsdbeID] AS [LsdbeID],
+              [DCBC_ENTITY_CBE].[CompanyID] AS [CompanyID],
+              [DCBC_ENTITY_CBE].[BusinessName] AS [BusinessName],
+              [DCBC_ENTITY_CBE].[BusinessAddress] AS [BusinessAddress],
+              [DCBC_ENTITY_CBE].[BusinessAddressShort] AS [BusinessAddressShort],
+              [DCBC_ENTITY_CBE].[BusinessPhone] AS [BusinessPhone],
+              [DCBC_ENTITY_CBE].[BusinessFax] AS [BusinessFax],
+              [DCBC_ENTITY_CBE].[BusinessEmail] AS [BusinessEmail],
+              [DCBC_ENTITY_CBE].[GIS_Ward] AS [GIS_Ward],
+              [DCBC_ENTITY_CBE].[CertificationExpiry] AS [CertificationExpiry],
+              [DCBC_ENTITY_CBE].[NIGPAppID] AS [NIGPAppID],
+              [DCBC_ENTITY_CBE].[TradeDivAppID] AS [TradeDivAppID],
+              [DCBC_ENTITY_CBE].[BAPAppID] AS [BAPAppID],
+              [DCBC_ENTITY_CBE].[BusinessStructure] AS [BusinessStructure],
+              [DCBC_ENTITY_CBE].[IncorporationDate] AS [IncorporationDate],
+              [DCBC_ENTITY_CBE].[BusinessDescription] AS [BusinessDescription],
+              [DCBC_ENTITY_CBE].[BusinessContact] AS [BusinessContact],
+              [DCBC_ENTITY_CBE].[LSDBE_Number] AS [LSDBE_Number],
+              [DCBC_ENTITY_CBE].[RefPoints] AS [RefPoints],
+              [DCBC_ENTITY_CBE].[RefPointsDesc] AS [RefPointsDesc],
+              [DCBC_ENTITY_CBE].[BusinessAddress1] AS [BusinessAddress1],
+              [DCBC_ENTITY_CBE].[BusinessAddress2] AS [BusinessAddress2],
+              [DCBC_ENTITY_CBE].[BusinessCity] AS [BusinessCity],
+              [DCBC_ENTITY_CBE].[BusinessState] AS [BusinessState],
+              [DCBC_ENTITY_CBE].[BusinessZip1] AS [BusinessZip1],
+              [DCBC_ENTITY_CBE].[BusinessZip2] AS [BusinessZip2],
+              [DCBC_ENTITY_CBE].[LSDBEBusinessOptions] AS [LSDBEBusinessOptions],
+              [DCBC_ENTITY_CBE].[BusinessWebsite] AS [BusinessWebsite],
+              [DCBC_ENTITY_CBE].[Lsdbe_PersonAppID] AS [Lsdbe_PersonAppID],
+              [DCBC_ENTITY_CBE].[MailingAddress] AS [MailingAddress],
+              [DCBC_ENTITY_CBE].[PublicContact] AS [PublicContact]
+              FROM [dbo].[DCBC_ENTITY_CBE] AS [DCBC_ENTITY_CBE]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_Cof_O" EntityType="Self.DCBC_ENTITY_Cof_O" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_Cof_O].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_Cof_O].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_Cof_O].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_Cof_O].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_Cof_O].[As_of_Date] AS [As_of_Date],
+              [DCBC_ENTITY_Cof_O].[B1_APP_TYPE_ALIAS] AS [B1_APP_TYPE_ALIAS],
+              [DCBC_ENTITY_Cof_O].[b1_Alt_ID] AS [b1_Alt_ID],
+              [DCBC_ENTITY_Cof_O].[B1_APPL_STATUS] AS [B1_APPL_STATUS],
+              [DCBC_ENTITY_Cof_O].[DCBC_Status] AS [DCBC_Status],
+              [DCBC_ENTITY_Cof_O].[B1_APPL_STATUS_DATE] AS [B1_APPL_STATUS_DATE],
+              [DCBC_ENTITY_Cof_O].[B1_HSE_NBR_START] AS [B1_HSE_NBR_START],
+              [DCBC_ENTITY_Cof_O].[B1_HSE_NBR_END] AS [B1_HSE_NBR_END],
+              [DCBC_ENTITY_Cof_O].[B1_HSE_FRAC_NBR_START] AS [B1_HSE_FRAC_NBR_START],
+              [DCBC_ENTITY_Cof_O].[B1_UNIT_START] AS [B1_UNIT_START],
+              [DCBC_ENTITY_Cof_O].[B1_STR_NAME] AS [B1_STR_NAME],
+              [DCBC_ENTITY_Cof_O].[B1_STR_SUFFIX] AS [B1_STR_SUFFIX],
+              [DCBC_ENTITY_Cof_O].[B1_STR_SUFFIX_DIR] AS [B1_STR_SUFFIX_DIR],
+              [DCBC_ENTITY_Cof_O].[B1_SITUS_CITY] AS [B1_SITUS_CITY],
+              [DCBC_ENTITY_Cof_O].[B1_SITUS_STATE] AS [B1_SITUS_STATE],
+              [DCBC_ENTITY_Cof_O].[B1_SITUS_ZIP] AS [B1_SITUS_ZIP],
+              [DCBC_ENTITY_Cof_O].[B1_SITUS_NBRHD] AS [B1_SITUS_NBRHD],
+              [DCBC_ENTITY_Cof_O].[Zoning_Use] AS [Zoning_Use],
+              [DCBC_ENTITY_Cof_O].[Medical_Marijuana_Dispensary] AS [Medical_Marijuana_Dispensary],
+              [DCBC_ENTITY_Cof_O].[SD_APP_DES] AS [SD_APP_DES],
+              [DCBC_ENTITY_Cof_O].[Status_DATE] AS [Status_DATE],
+              [DCBC_ENTITY_Cof_O].[REC_DATE] AS [REC_DATE]
+              FROM [dbo].[DCBC_ENTITY_Cof_O] AS [DCBC_ENTITY_Cof_O]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_CORP" EntityType="Self.DCBC_ENTITY_CORP" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_CORP].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_CORP].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_CORP].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_CORP].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_CORP].[REC_DATE] AS [REC_DATE],
+              [DCBC_ENTITY_CORP].[BizEntityId] AS [BizEntityId],
+              [DCBC_ENTITY_CORP].[FileNumber] AS [FileNumber],
+              [DCBC_ENTITY_CORP].[EntityStatus] AS [EntityStatus],
+              [DCBC_ENTITY_CORP].[EntityStatusDate] AS [EntityStatusDate],
+              [DCBC_ENTITY_CORP].[Locale] AS [Locale],
+              [DCBC_ENTITY_CORP].[Qualifier] AS [Qualifier],
+              [DCBC_ENTITY_CORP].[ModelType] AS [ModelType],
+              [DCBC_ENTITY_CORP].[BusinessName] AS [BusinessName],
+              [DCBC_ENTITY_CORP].[Suffix] AS [Suffix],
+              [DCBC_ENTITY_CORP].[BusniessAddressLine1] AS [BusniessAddressLine1],
+              [DCBC_ENTITY_CORP].[BusniessAddressLine2] AS [BusniessAddressLine2],
+              [DCBC_ENTITY_CORP].[BusniessAddressLine3] AS [BusniessAddressLine3],
+              [DCBC_ENTITY_CORP].[BusniessAddressLine4] AS [BusniessAddressLine4],
+              [DCBC_ENTITY_CORP].[BusinessCity] AS [BusinessCity],
+              [DCBC_ENTITY_CORP].[BusinessState] AS [BusinessState],
+              [DCBC_ENTITY_CORP].[ZipCode] AS [ZipCode],
+              [DCBC_ENTITY_CORP].[BusinessCountry] AS [BusinessCountry],
+              [DCBC_ENTITY_CORP].[RA_Name] AS [RA_Name],
+              [DCBC_ENTITY_CORP].[RA_Address1] AS [RA_Address1],
+              [DCBC_ENTITY_CORP].[RA_Address2] AS [RA_Address2],
+              [DCBC_ENTITY_CORP].[RA_Address3] AS [RA_Address3],
+              [DCBC_ENTITY_CORP].[RA_Address4] AS [RA_Address4],
+              [DCBC_ENTITY_CORP].[RA_City] AS [RA_City],
+              [DCBC_ENTITY_CORP].[RA_State] AS [RA_State],
+              [DCBC_ENTITY_CORP].[RA_ZipCode] AS [RA_ZipCode],
+              [DCBC_ENTITY_CORP].[RA_Email] AS [RA_Email],
+              [DCBC_ENTITY_CORP].[EffectiveDate] AS [EffectiveDate],
+              [DCBC_ENTITY_CORP].[ForeignDateOfOrganization] AS [ForeignDateOfOrganization],
+              [DCBC_ENTITY_CORP].[NextReportYear] AS [NextReportYear],
+              [DCBC_ENTITY_CORP].[ModelType_ORIGINAL] AS [ModelType_ORIGINAL]
+              FROM [dbo].[DCBC_ENTITY_CORP] AS [DCBC_ENTITY_CORP]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_LOOKUP_INDEX" EntityType="Self.DCBC_ENTITY_LOOKUP_INDEX" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_LOOKUP_INDEX].[DATA_SOURCE] AS [DATA_SOURCE],
+              [DCBC_ENTITY_LOOKUP_INDEX].[LOOKUP_TYPE] AS [LOOKUP_TYPE],
+              [DCBC_ENTITY_LOOKUP_INDEX].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_LOOKUP_INDEX].[LOOKUP_VALUE] AS [LOOKUP_VALUE],
+              [DCBC_ENTITY_LOOKUP_INDEX].[SEARCH_STRING] AS [SEARCH_STRING]
+              FROM [dbo].[DCBC_ENTITY_LOOKUP_INDEX] AS [DCBC_ENTITY_LOOKUP_INDEX]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_MultiColumn_LOOKUP_INDEX" EntityType="Self.DCBC_ENTITY_MultiColumn_LOOKUP_INDEX" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[DATA_SOURCE] AS [DATA_SOURCE],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[LicenseNumberOrig] AS [LicenseNumberOrig],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[LicenseNumberLookup] AS [LicenseNumberLookup],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[CompanyNameOrig] AS [CompanyNameOrig],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[CompanyNameLookup] AS [CompanyNameLookup],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[FirstNameOrig] AS [FirstNameOrig],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[FirstNameLookup] AS [FirstNameLookup],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[LastNameOrig] AS [LastNameOrig],
+              [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX].[LastNameLookup] AS [LastNameLookup]
+              FROM [dbo].[DCBC_ENTITY_MultiColumn_LOOKUP_INDEX] AS [DCBC_ENTITY_MultiColumn_LOOKUP_INDEX]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_OPLA" EntityType="Self.DCBC_ENTITY_OPLA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_OPLA].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_OPLA].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_OPLA].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_OPLA].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_OPLA].[BOARD_ABBREVIATION] AS [BOARD_ABBREVIATION],
+              [DCBC_ENTITY_OPLA].[LICENSE_PREFIX] AS [LICENSE_PREFIX],
+              [DCBC_ENTITY_OPLA].[LICENSE_NUMBER] AS [LICENSE_NUMBER],
+              [DCBC_ENTITY_OPLA].[LICENSE_ISSUE_DATE] AS [LICENSE_ISSUE_DATE],
+              [DCBC_ENTITY_OPLA].[LICENSE_EXPIRATION_DATE] AS [LICENSE_EXPIRATION_DATE],
+              [DCBC_ENTITY_OPLA].[LICENSE_STATUS_CODE] AS [LICENSE_STATUS_CODE],
+              [DCBC_ENTITY_OPLA].[Licensee_Name_1] AS [Licensee_Name_1],
+              [DCBC_ENTITY_OPLA].[Licensee_Name_2] AS [Licensee_Name_2],
+              [DCBC_ENTITY_OPLA].[Licensee_Name_3] AS [Licensee_Name_3],
+              [DCBC_ENTITY_OPLA].[Licensee_Name_4] AS [Licensee_Name_4],
+              [DCBC_ENTITY_OPLA].[BUSINESS_ADDRESS] AS [BUSINESS_ADDRESS],
+              [DCBC_ENTITY_OPLA].[BUSINESS_CITY] AS [BUSINESS_CITY],
+              [DCBC_ENTITY_OPLA].[BUSINESS_STATE] AS [BUSINESS_STATE],
+              [DCBC_ENTITY_OPLA].[BUSINESS_ZIP] AS [BUSINESS_ZIP],
+              [DCBC_ENTITY_OPLA].[BUSINESS_PHONE] AS [BUSINESS_PHONE],
+              [DCBC_ENTITY_OPLA].[HOME_ADDRESS] AS [HOME_ADDRESS],
+              [DCBC_ENTITY_OPLA].[HOME_CITY] AS [HOME_CITY],
+              [DCBC_ENTITY_OPLA].[HOME_STATE] AS [HOME_STATE],
+              [DCBC_ENTITY_OPLA].[HOME_ZIP] AS [HOME_ZIP],
+              [DCBC_ENTITY_OPLA].[HOME_PHONE] AS [HOME_PHONE],
+              [DCBC_ENTITY_OPLA].[Preferred_Address_Ind] AS [Preferred_Address_Ind],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_LICENSE_PREFIX1] AS [EMPLOYER_LICENSE_PREFIX1],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_LICENSE_NUMBER] AS [EMPLOYER_LICENSE_NUMBER],
+              [DCBC_ENTITY_OPLA].[Organization_EMPLOYER_NAME] AS [Organization_EMPLOYER_NAME],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_LICENSE_ISSUE_DATE] AS [EMPLOYER_LICENSE_ISSUE_DATE],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_LICENSE_EXPIRATION_DATE] AS [EMPLOYER_LICENSE_EXPIRATION_DATE],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_LICENSE_STATUS_CODE] AS [EMPLOYER_LICENSE_STATUS_CODE],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_ADDRESS] AS [EMPLOYER_ADDRESS],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_CITY] AS [EMPLOYER_CITY],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_STATE] AS [EMPLOYER_STATE],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_ZIP] AS [EMPLOYER_ZIP],
+              [DCBC_ENTITY_OPLA].[EMPLOYER_PHONE] AS [EMPLOYER_PHONE],
+              [DCBC_ENTITY_OPLA].[FULL_NAME] AS [FULL_NAME],
+              [DCBC_ENTITY_OPLA].[OPLA_LICENSE_CATEGORY] AS [OPLA_LICENSE_CATEGORY],
+              [DCBC_ENTITY_OPLA].[OPLA_SOURCE] AS [OPLA_SOURCE],
+              [DCBC_ENTITY_OPLA].[REC_DATE] AS [REC_DATE],
+              [DCBC_ENTITY_OPLA].[License_Board] AS [License_Board],
+              [DCBC_ENTITY_OPLA].[License_Type] AS [License_Type]
+              FROM [dbo].[DCBC_ENTITY_OPLA] AS [DCBC_ENTITY_OPLA]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_RESULTS_ABRA" EntityType="Self.DCBC_ENTITY_RESULTS_ABRA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_RESULTS_ABRA].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_RESULTS_ABRA].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_RESULTS_ABRA].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_RESULTS_ABRA].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_RESULTS_ABRA].[Serv_Prov_Code] AS [Serv_Prov_Code],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_PER_GROUP] AS [B1_PER_GROUP],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_PER_TYPE] AS [B1_PER_TYPE],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_PER_CATEGORY] AS [B1_PER_CATEGORY],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_APP_TYPE_ALIAS] AS [B1_APP_TYPE_ALIAS],
+              [DCBC_ENTITY_RESULTS_ABRA].[APP_STATUS_GROUP_CODE] AS [APP_STATUS_GROUP_CODE],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_SPECIAL_TEXT] AS [B1_SPECIAL_TEXT],
+              [DCBC_ENTITY_RESULTS_ABRA].[License_Number] AS [License_Number],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_TRACKING_NBR] AS [B1_TRACKING_NBR],
+              [DCBC_ENTITY_RESULTS_ABRA].[License_Status_Original] AS [License_Status_Original],
+              [DCBC_ENTITY_RESULTS_ABRA].[License_Status] AS [License_Status],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_APPL_STATUS_DATE] AS [B1_APPL_STATUS_DATE],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_CHECKBOX_TYPE] AS [B1_CHECKBOX_TYPE],
+              [DCBC_ENTITY_RESULTS_ABRA].[License_Expiration_Date] AS [License_Expiration_Date],
+              [DCBC_ENTITY_RESULTS_ABRA].[Valid_Thru_Date] AS [Valid_Thru_Date],
+              [DCBC_ENTITY_RESULTS_ABRA].[Posting_Date] AS [Posting_Date],
+              [DCBC_ENTITY_RESULTS_ABRA].[Class_Type] AS [Class_Type],
+              [DCBC_ENTITY_RESULTS_ABRA].[Class_Type_AttrValue] AS [Class_Type_AttrValue],
+              [DCBC_ENTITY_RESULTS_ABRA].[Establishment_Type] AS [Establishment_Type],
+              [DCBC_ENTITY_RESULTS_ABRA].[First_Name] AS [First_Name],
+              [DCBC_ENTITY_RESULTS_ABRA].[Middle_Name] AS [Middle_Name],
+              [DCBC_ENTITY_RESULTS_ABRA].[Last_Name] AS [Last_Name],
+              [DCBC_ENTITY_RESULTS_ABRA].[Full_Name] AS [Full_Name],
+              [DCBC_ENTITY_RESULTS_ABRA].[Relation] AS [Relation],
+              [DCBC_ENTITY_RESULTS_ABRA].[Business_Name] AS [Business_Name],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_PRIMARY_ADDR_FLG] AS [B1_PRIMARY_ADDR_FLG],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_HSE_NBR_START] AS [B1_HSE_NBR_START],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_HSE_NBR_END] AS [B1_HSE_NBR_END],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_HSE_FRAC_NBR_START] AS [B1_HSE_FRAC_NBR_START],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_HSE_FRAC_NBR_END] AS [B1_HSE_FRAC_NBR_END],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_UNIT_START] AS [B1_UNIT_START],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_STR_NAME] AS [B1_STR_NAME],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_STR_SUFFIX] AS [B1_STR_SUFFIX],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_STR_SUFFIX_DIR] AS [B1_STR_SUFFIX_DIR],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_SITUS_CITY] AS [B1_SITUS_CITY],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_SITUS_STATE] AS [B1_SITUS_STATE],
+              [DCBC_ENTITY_RESULTS_ABRA].[B1_SITUS_ZIP] AS [B1_SITUS_ZIP],
+              [DCBC_ENTITY_RESULTS_ABRA].[Rec_Type] AS [Rec_Type]
+              FROM [dbo].[DCBC_ENTITY_RESULTS_ABRA] AS [DCBC_ENTITY_RESULTS_ABRA]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_RESULTS_BBL" EntityType="Self.DCBC_ENTITY_RESULTS_BBL" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_RESULTS_BBL].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_RESULTS_BBL].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_RESULTS_BBL].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_RESULTS_BBL].[License_Status] AS [License_Status],
+              [DCBC_ENTITY_RESULTS_BBL].[License_Number] AS [License_Number],
+              [DCBC_ENTITY_RESULTS_BBL].[Premise_Address] AS [Premise_Address],
+              [DCBC_ENTITY_RESULTS_BBL].[Corporation_Name] AS [Corporation_Name],
+              [DCBC_ENTITY_RESULTS_BBL].[Trade_Name] AS [Trade_Name],
+              [DCBC_ENTITY_RESULTS_BBL].[License_Expiration_Date] AS [License_Expiration_Date],
+              [DCBC_ENTITY_RESULTS_BBL].[License_Category] AS [License_Category],
+              [DCBC_ENTITY_RESULTS_BBL].[License_Endorsement_Category] AS [License_Endorsement_Category]
+              FROM [dbo].[DCBC_ENTITY_RESULTS_BBL] AS [DCBC_ENTITY_RESULTS_BBL]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_RESULTS_CBE" EntityType="Self.DCBC_ENTITY_RESULTS_CBE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_RESULTS_CBE].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_RESULTS_CBE].[Last_Update] AS [Last_Update],
+              [DCBC_ENTITY_RESULTS_CBE].[Company_Name] AS [Company_Name],
+              [DCBC_ENTITY_RESULTS_CBE].[Business_Address] AS [Business_Address],
+              [DCBC_ENTITY_RESULTS_CBE].[Business_Phone] AS [Business_Phone],
+              [DCBC_ENTITY_RESULTS_CBE].[Business_Email] AS [Business_Email],
+              [DCBC_ENTITY_RESULTS_CBE].[Expiration_Date] AS [Expiration_Date],
+              [DCBC_ENTITY_RESULTS_CBE].[Organization_Type] AS [Organization_Type],
+              [DCBC_ENTITY_RESULTS_CBE].[Company_Description] AS [Company_Description],
+              [DCBC_ENTITY_RESULTS_CBE].[Business_Contact] AS [Business_Contact],
+              [DCBC_ENTITY_RESULTS_CBE].[CBE_Number] AS [CBE_Number],
+              [DCBC_ENTITY_RESULTS_CBE].[Preference_Points_Summary] AS [Preference_Points_Summary],
+              [DCBC_ENTITY_RESULTS_CBE].[Preference_Points_Detail] AS [Preference_Points_Detail]
+              FROM [dbo].[DCBC_ENTITY_RESULTS_CBE] AS [DCBC_ENTITY_RESULTS_CBE]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_RESULTS_Corp" EntityType="Self.DCBC_ENTITY_RESULTS_Corp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_RESULTS_Corp].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_RESULTS_Corp].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_RESULTS_Corp].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_RESULTS_Corp].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_RESULTS_Corp].[BusinessName] AS [BusinessName],
+              [DCBC_ENTITY_RESULTS_Corp].[Suffix] AS [Suffix],
+              [DCBC_ENTITY_RESULTS_Corp].[Locale] AS [Locale],
+              [DCBC_ENTITY_RESULTS_Corp].[ModelType] AS [ModelType],
+              [DCBC_ENTITY_RESULTS_Corp].[EntityStatus] AS [EntityStatus],
+              [DCBC_ENTITY_RESULTS_Corp].[EntityStatusDate] AS [EntityStatusDate],
+              [DCBC_ENTITY_RESULTS_Corp].[Address] AS [Address],
+              [DCBC_ENTITY_RESULTS_Corp].[EffectiveDate] AS [EffectiveDate],
+              [DCBC_ENTITY_RESULTS_Corp].[NextReportYear] AS [NextReportYear],
+              [DCBC_ENTITY_RESULTS_Corp].[FileNumber] AS [FileNumber]
+              FROM [dbo].[DCBC_ENTITY_RESULTS_Corp] AS [DCBC_ENTITY_RESULTS_Corp]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DCBC_ENTITY_RESULTS_OPLA" EntityType="Self.DCBC_ENTITY_RESULTS_OPLA" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [DCBC_ENTITY_RESULTS_OPLA].[DCBC_ENTITY_ID] AS [DCBC_ENTITY_ID],
+              [DCBC_ENTITY_RESULTS_OPLA].[REC_STATUS] AS [REC_STATUS],
+              [DCBC_ENTITY_RESULTS_OPLA].[LAST_UPDATE] AS [LAST_UPDATE],
+              [DCBC_ENTITY_RESULTS_OPLA].[DCBC_ENTITY_SOURCE] AS [DCBC_ENTITY_SOURCE],
+              [DCBC_ENTITY_RESULTS_OPLA].[License_Type] AS [License_Type],
+              [DCBC_ENTITY_RESULTS_OPLA].[License_Board] AS [License_Board],
+              [DCBC_ENTITY_RESULTS_OPLA].[LICENSE_NUMBER] AS [LICENSE_NUMBER],
+              [DCBC_ENTITY_RESULTS_OPLA].[LICENSE_ISSUE_DATE] AS [LICENSE_ISSUE_DATE],
+              [DCBC_ENTITY_RESULTS_OPLA].[EXPIRATION_DATE] AS [EXPIRATION_DATE],
+              [DCBC_ENTITY_RESULTS_OPLA].[LICENSE_STATUS] AS [LICENSE_STATUS],
+              [DCBC_ENTITY_RESULTS_OPLA].[Licensee_Name] AS [Licensee_Name],
+              [DCBC_ENTITY_RESULTS_OPLA].[ADDRESS] AS [ADDRESS],
+              [DCBC_ENTITY_RESULTS_OPLA].[Employer_City_State_Zip] AS [Employer_City_State_Zip],
+              [DCBC_ENTITY_RESULTS_OPLA].[Preferred_Address_Ind] AS [Preferred_Address_Ind],
+              [DCBC_ENTITY_RESULTS_OPLA].[EMPLOYER_LICENSE_DESCRIPTION] AS [EMPLOYER_LICENSE_DESCRIPTION],
+              [DCBC_ENTITY_RESULTS_OPLA].[EMPLOYER_LICENSE_NUMBER] AS [EMPLOYER_LICENSE_NUMBER],
+              [DCBC_ENTITY_RESULTS_OPLA].[Organization_EMPLOYER_NAME] AS [Organization_EMPLOYER_NAME],
+              [DCBC_ENTITY_RESULTS_OPLA].[EMPLOYER_LICENSE_ISSUE_DATE] AS [EMPLOYER_LICENSE_ISSUE_DATE],
+              [DCBC_ENTITY_RESULTS_OPLA].[EMPLOYER_LICENSE_EXPIRATION_DATE] AS [EMPLOYER_LICENSE_EXPIRATION_DATE],
+              [DCBC_ENTITY_RESULTS_OPLA].[EMPLOYER_LICENSE_STATUS] AS [EMPLOYER_LICENSE_STATUS],
+              [DCBC_ENTITY_RESULTS_OPLA].[FULL_NAME] AS [FULL_NAME],
+              [DCBC_ENTITY_RESULTS_OPLA].[OPLA_LICENSE_CATEGORY] AS [OPLA_LICENSE_CATEGORY],
+              [DCBC_ENTITY_RESULTS_OPLA].[OPLA_SOURCE] AS [OPLA_SOURCE]
+              FROM [dbo].[DCBC_ENTITY_RESULTS_OPLA] AS [DCBC_ENTITY_RESULTS_OPLA]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OSub_Category_Checklist" EntityType="Self.OSub_Category_Checklist" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [OSub_Category_Checklist].[OSub_Category] AS [OSub_Category],
+              [OSub_Category_Checklist].[OSub_Description] AS [OSub_Description],
+              [OSub_Category_Checklist].[UnitTwo] AS [UnitTwo]
+              FROM [dbo].[OSub_Category_Checklist] AS [OSub_Category_Checklist]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBL_ETL_Address_And_Parcel" EntityType="Self.TBL_ETL_Address_And_Parcel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [TBL_ETL_Address_And_Parcel].[L1_PARCEL_NBR] AS [L1_PARCEL_NBR],
+              [TBL_ETL_Address_And_Parcel].[L1_HSE_NBR_START] AS [L1_HSE_NBR_START],
+              [TBL_ETL_Address_And_Parcel].[L1_HSE_NBR_END] AS [L1_HSE_NBR_END],
+              [TBL_ETL_Address_And_Parcel].[L1_HSE_FRAC_NBR_START] AS [L1_HSE_FRAC_NBR_START],
+              [TBL_ETL_Address_And_Parcel].[L1_HSE_FRAC_NBR_END] AS [L1_HSE_FRAC_NBR_END],
+              [TBL_ETL_Address_And_Parcel].[L1_UNIT_START] AS [L1_UNIT_START],
+              [TBL_ETL_Address_And_Parcel].[L1_UNIT_END] AS [L1_UNIT_END],
+              [TBL_ETL_Address_And_Parcel].[L1_UNIT_TYPE] AS [L1_UNIT_TYPE],
+              [TBL_ETL_Address_And_Parcel].[L1_STR_NAME] AS [L1_STR_NAME],
+              [TBL_ETL_Address_And_Parcel].[L1_STR_PREFIX] AS [L1_STR_PREFIX],
+              [TBL_ETL_Address_And_Parcel].[L1_STR_SUFFIX] AS [L1_STR_SUFFIX],
+              [TBL_ETL_Address_And_Parcel].[L1_STR_SUFFIX_DIR] AS [L1_STR_SUFFIX_DIR],
+              [TBL_ETL_Address_And_Parcel].[L1_INSP_DISTRICT_PREFIX] AS [L1_INSP_DISTRICT_PREFIX],
+              [TBL_ETL_Address_And_Parcel].[L1_INSP_DISTRICT] AS [L1_INSP_DISTRICT],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_NBRHD_PREFIX] AS [L1_SITUS_NBRHD_PREFIX],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_NBRHD] AS [L1_SITUS_NBRHD],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_CITY] AS [L1_SITUS_CITY],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_COUNTY] AS [L1_SITUS_COUNTY],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_STATE] AS [L1_SITUS_STATE],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_ZIP] AS [L1_SITUS_ZIP],
+              [TBL_ETL_Address_And_Parcel].[L1_SITUS_COUNTRY] AS [L1_SITUS_COUNTRY],
+              [TBL_ETL_Address_And_Parcel].[L1_ADDR_STATUS] AS [L1_ADDR_STATUS],
+              [TBL_ETL_Address_And_Parcel].[L1_ADDR_DESC] AS [L1_ADDR_DESC],
+              [TBL_ETL_Address_And_Parcel].[L1_UDF1] AS [L1_UDF1],
+              [TBL_ETL_Address_And_Parcel].[L1_UDF2] AS [L1_UDF2],
+              [TBL_ETL_Address_And_Parcel].[L1_UDF3] AS [L1_UDF3],
+              [TBL_ETL_Address_And_Parcel].[L1_UDF4] AS [L1_UDF4],
+              [TBL_ETL_Address_And_Parcel].[L1_FULL_ADDRESS] AS [L1_FULL_ADDRESS]
+              FROM [dbo].[TBL_ETL_Address_And_Parcel] AS [TBL_ETL_Address_And_Parcel]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BblLicenseView" EntityType="Self.BblLicenseView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [BblLicenseView].[Application Unique ID] AS [Application Unique ID],
+              [BblLicenseView].[Full Name] AS [Full Name],
+              [BblLicenseView].[Applicant Name] AS [Applicant Name],
+              [BblLicenseView].[Online App License Status] AS [Online App License Status],
+              [BblLicenseView].[Application/License No.] AS [Application/License No.],
+              [BblLicenseView].[Application Type] AS [Application Type],
+              [BblLicenseView].[App_Type] AS [App_Type],
+              [BblLicenseView].[License Period] AS [License Period],
+              [BblLicenseView].[ApplicationFee] AS [ApplicationFee],
+              [BblLicenseView].[EndorsementFee] AS [EndorsementFee],
+              [BblLicenseView].[LicenseFee] AS [LicenseFee],
+              [BblLicenseView].[RAOFee] AS [RAOFee],
+              [BblLicenseView].[ESFFee] AS [ESFFee],
+              [BblLicenseView].[EHOP Fees] AS [EHOP Fees],
+              [BblLicenseView].[TotalAmount] AS [TotalAmount],
+              [BblLicenseView].[Payment Transaction ID] AS [Payment Transaction ID],
+              [BblLicenseView].[Payment Transaction Date] AS [Payment Transaction Date],
+              [BblLicenseView].[CH Self Certificate Signature] AS [CH Self Certificate Signature],
+              [BblLicenseView].[CH Self Certificate Date] AS [CH Self Certificate Date],
+              [BblLicenseView].[CH Self Certificate Type] AS [CH Self Certificate Type],
+              [BblLicenseView].[Self Certificate (One-Family)] AS [Self Certificate (One-Family)],
+              [BblLicenseView].[Certificate of Occupancy Number] AS [Certificate of Occupancy Number],
+              [BblLicenseView].[Home Occupation Number] AS [Home Occupation Number],
+              [BblLicenseView].[EHOP Number] AS [EHOP Number],
+              [BblLicenseView].[EHOP Issue Date] AS [EHOP Issue Date],
+              [BblLicenseView].[EHOP Attested By] AS [EHOP Attested By],
+              [BblLicenseView].[EHOP Occupation Type] AS [EHOP Occupation Type],
+              [BblLicenseView].[EHOP Issuance Status] AS [EHOP Issuance Status],
+              [BblLicenseView].[First Name] AS [First Name],
+              [BblLicenseView].[Middle Name] AS [Middle Name],
+              [BblLicenseView].[Last Name] AS [Last Name],
+              [BblLicenseView].[Organization Name] AS [Organization Name],
+              [BblLicenseView].[Full Address Line 1] AS [Full Address Line 1],
+              [BblLicenseView].[Address Line 2] AS [Address Line 2],
+              [BblLicenseView].[City] AS [City],
+              [BblLicenseView].[State] AS [State],
+              [BblLicenseView].[Zip Code] AS [Zip Code],
+              [BblLicenseView].[Country/Region] AS [Country/Region],
+              [BblLicenseView].[Email] AS [Email],
+              [BblLicenseView].[Business Organization***] AS [Business Organization***],
+              [BblLicenseView].[Trade Name (If applicable)] AS [Trade Name (If applicable)],
+              [BblLicenseView].[Tax ID Number] AS [Tax ID Number],
+              [BblLicenseView].[FEIN/SSN] AS [FEIN/SSN],
+              [BblLicenseView].[Prim.Street Number] AS [Prim.Street Number],
+              [BblLicenseView].[Prim.Street Name] AS [Prim.Street Name],
+              [BblLicenseView].[StreetType] AS [StreetType],
+              [BblLicenseView].[Quadrant] AS [Quadrant],
+              [BblLicenseView].[Unit Type***] AS [Unit Type***],
+              [BblLicenseView].[Suite/Unit Number] AS [Suite/Unit Number],
+              [BblLicenseView].[PCity] AS [PCity],
+              [BblLicenseView].[PState] AS [PState],
+              [BblLicenseView].[Country**] AS [Country**],
+              [BblLicenseView].[PZip] AS [PZip],
+              [BblLicenseView].[Phone] AS [Phone],
+              [BblLicenseView].[Premise Address Verified] AS [Premise Address Verified],
+              [BblLicenseView].[Parcel.Premise Suffix] AS [Parcel.Premise Suffix],
+              [BblLicenseView].[Parcel.Premise Ward] AS [Parcel.Premise Ward],
+              [BblLicenseView].[Parcel.Premise ANC] AS [Parcel.Premise ANC],
+              [BblLicenseView].[Parcel.Premise Zone] AS [Parcel.Premise Zone],
+              [BblLicenseView].[Parcel.Premise SSL] AS [Parcel.Premise SSL],
+              [BblLicenseView].[Billing.Org/Buss. Name] AS [Billing.Org/Buss. Name],
+              [BblLicenseView].[Billing.ContactFirstName] AS [Billing.ContactFirstName],
+              [BblLicenseView].[Billing.ContactMiddleName] AS [Billing.ContactMiddleName],
+              [BblLicenseView].[Billing.ContactLastName] AS [Billing.ContactLastName],
+              [BblLicenseView].[Billing.Address 1] AS [Billing.Address 1],
+              [BblLicenseView].[Billing.Address 2 ] AS [Billing.Address 2 ],
+              [BblLicenseView].[Billing.Address 3] AS [Billing.Address 3],
+              [BblLicenseView].[Billing.City] AS [Billing.City],
+              [BblLicenseView].[Billing.State] AS [Billing.State],
+              [BblLicenseView].[Billing.Country***] AS [Billing.Country***],
+              [BblLicenseView].[Billing.Zip] AS [Billing.Zip],
+              [BblLicenseView].[Billing.Phone] AS [Billing.Phone],
+              [BblLicenseView].[Billing.Email] AS [Billing.Email],
+              [BblLicenseView].[Agent.Org/Buss. Name] AS [Agent.Org/Buss. Name],
+              [BblLicenseView].[Contact First Name] AS [Contact First Name],
+              [BblLicenseView].[Contact Middle Name] AS [Contact Middle Name],
+              [BblLicenseView].[Contact Last Name] AS [Contact Last Name],
+              [BblLicenseView].[Street Address] AS [Street Address],
+              [BblLicenseView].[Address Line  2 ] AS [Address Line  2 ],
+              [BblLicenseView].[ContactAgent_City] AS [ContactAgent_City],
+              [BblLicenseView].[ContactAgent_State] AS [ContactAgent_State],
+              [BblLicenseView].[ContactAgent_Country] AS [ContactAgent_Country],
+              [BblLicenseView].[ContactAgent_ZipCode] AS [ContactAgent_ZipCode],
+              [BblLicenseView].[Corp.Telephone] AS [Corp.Telephone],
+              [BblLicenseView].[ContactAgent_Email] AS [ContactAgent_Email],
+              [BblLicenseView].[FileNumber] AS [FileNumber],
+              [BblLicenseView].[Company Name] AS [Company Name],
+              [BblLicenseView].[Employee Name] AS [Employee Name],
+              [BblLicenseView].[Company Buss. Lic Number] AS [Company Buss. Lic Number],
+              [BblLicenseView].[Date of Birth] AS [Date of Birth],
+              [BblLicenseView].[Place of Birth] AS [Place of Birth],
+              [BblLicenseView].[Height] AS [Height],
+              [BblLicenseView].[Weight] AS [Weight],
+              [BblLicenseView].[Hair Color] AS [Hair Color],
+              [BblLicenseView].[Eyes Color] AS [Eyes Color],
+              [BblLicenseView].[Drivers License] AS [Drivers License],
+              [BblLicenseView].[State of License] AS [State of License],
+              [BblLicenseView].[License Expiration Date] AS [License Expiration Date],
+              [BblLicenseView].[Created Date] AS [Created Date],
+              [BblLicenseView].[UpDated Date] AS [UpDated Date]
+              FROM [dbo].[BblLicenseView] AS [BblLicenseView]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BblLicenseView2" EntityType="Self.BblLicenseView2" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [BblLicenseView2].[Application] AS [Application],
+              [BblLicenseView2].[Primary Category] AS [Primary Category],
+              [BblLicenseView2].[Class] AS [Class],
+              [BblLicenseView2].[Pri. Units] AS [Pri. Units],
+              [BblLicenseView2].[Pri. Units Description] AS [Pri. Units Description],
+              [BblLicenseView2].[Pri. Units 2] AS [Pri. Units 2],
+              [BblLicenseView2].[Pri. Units Description 2] AS [Pri. Units Description 2],
+              [BblLicenseView2].[Secondary Category] AS [Secondary Category],
+              [BblLicenseView2].[Sec. Units] AS [Sec. Units],
+              [BblLicenseView2].[Sec. Units Description] AS [Sec. Units Description],
+              [BblLicenseView2].[SubCategoryName] AS [SubCategoryName],
+              [BblLicenseView2].[Created Date] AS [Created Date],
+              [BblLicenseView2].[UpDated Date] AS [UpDated Date]
+              FROM [dbo].[BblLicenseView2] AS [BblLicenseView2]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BblLicenseView3" EntityType="Self.BblLicenseView3" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [BblLicenseView3].[Application Unique ID] AS [Application Unique ID],
+              [BblLicenseView3].[License Number] AS [License Number],
+              [BblLicenseView3].[Full Name] AS [Full Name],
+              [BblLicenseView3].[Online App License Status] AS [Online App License Status],
+              [BblLicenseView3].[Renewal License No.] AS [Renewal License No.],
+              [BblLicenseView3].[Primary Category] AS [Primary Category],
+              [BblLicenseView3].[License Renewal Period] AS [License Renewal Period],
+              [BblLicenseView3].[ApplicationFee] AS [ApplicationFee],
+              [BblLicenseView3].[Endorsement Fee] AS [Endorsement Fee],
+              [BblLicenseView3].[LicenseFee] AS [LicenseFee],
+              [BblLicenseView3].[RAO Fee] AS [RAO Fee],
+              [BblLicenseView3].[ESFFee] AS [ESFFee],
+              [BblLicenseView3].[Penalty Fee (Lapse)] AS [Penalty Fee (Lapse)],
+              [BblLicenseView3].[Penalty Fee (Expired)] AS [Penalty Fee (Expired)],
+              [BblLicenseView3].[TotalAmount] AS [TotalAmount],
+              [BblLicenseView3].[Expiration_Date] AS [Expiration_Date],
+              [BblLicenseView3].[Payment Transaction ID] AS [Payment Transaction ID],
+              [BblLicenseView3].[Transaction Payment Date] AS [Transaction Payment Date],
+              [BblLicenseView3].[Created Date] AS [Created Date],
+              [BblLicenseView3].[UpDated Date] AS [UpDated Date],
+              [BblLicenseView3].[Org_Number] AS [Org_Number]
+              FROM [dbo].[BblLicenseView3] AS [BblLicenseView3]
+            </DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BblLicenseView4" EntityType="Self.BblLicenseView4" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>
+              SELECT
+              [BblLicenseView4].[APPID] AS [APPID],
+              [BblLicenseView4].[Application/License No.] AS [Application/License No.],
+              [BblLicenseView4].[FileName] AS [FileName],
+              [BblLicenseView4].[SubmissionFileLocation] AS [SubmissionFileLocation],
+              [BblLicenseView4].[DocumentSubmissionType] AS [DocumentSubmissionType],
+              [BblLicenseView4].[CategoryName] AS [CategoryName],
+              [BblLicenseView4].[MasterCategoryDocId] AS [MasterCategoryDocId],
+              [BblLicenseView4].[SubmissionType] AS [SubmissionType],
+              [BblLicenseView4].[Agency] AS [Agency],
+              [BblLicenseView4].[Agency_FullName] AS [Agency_FullName],
+              [BblLicenseView4].[Div] AS [Div],
+              [BblLicenseView4].[DivisionFullName] AS [DivisionFullName],
+              [BblLicenseView4].[SupportingDocuments] AS [SupportingDocuments],
+              [BblLicenseView4].[ShortDocName] AS [ShortDocName],
+              [BblLicenseView4].[Description] AS [Description],
+              [BblLicenseView4].[Created Date] AS [Created Date],
+              [BblLicenseView4].[UpDated Date] AS [UpDated Date]
+              FROM [dbo].[BblLicenseView4] AS [BblLicenseView4]
+            </DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_dbo_UserClaim_dbo_User_UserId" Association="Self.FK_dbo_UserClaim_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaim" EntitySet="UserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserLogin_dbo_User_UserId" Association="Self.FK_dbo_UserLogin_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

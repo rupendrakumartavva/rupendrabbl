@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    @*<style type="text/css" >
+        body,td,th {font-family: Arial, Helvetica, sans-serif;font-size: 12px;color: #333; }
+        body {background: darkgray  center;margin-left: 0px;margin-top: 8px;margin-right: 0px;margin-bottom: 0px;text-align:justify;}
+        .Main {
+            color: yellow;
+            font-size: 50px;
+        }
+
+        .Main1 {
+            color: red;
+            font-size: 50px;
+        }
+    </style>*@
+    <title>PDF Generation</title>
+
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["API"]/PdfTemplates/Test.css" rel="stylesheet" />
+</head>
+<body >
+
+    <div id="background">
+        <p id="bg-text">Background</p>
+    </div>
+
+    <div id="content">
+       foreach(var i in @Test)
+        {
+     
+        }
+       
+        <h1 class="Main">Hello @Model.Title</h1>
+        <p class="Main1">@Model.Text</p>
+    </div>
+
+
+</body>
+</html>

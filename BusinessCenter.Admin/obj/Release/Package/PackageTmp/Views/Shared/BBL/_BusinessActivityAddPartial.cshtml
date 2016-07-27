@@ -1,0 +1,169 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.BusinessActivityViewModel
+<form>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+    <p style="text-align: center;color:#339900;font-size:19px;margin-bottom:10px;"><span id="msg">@ViewBag.Status</span></p>
+    @*<p>@Html.HiddenFor(Model => Model.ActivityID, new { id = "activityid" })</p>*@
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Business Activity ")
+               
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group ">
+                @Html.EditorFor(model => model.Activity.ActivityName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "activityname",
+                                       name = "activityname",
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''"
+                                   }
+                               })
+              
+                @*<p style="text-align: center; font-size: 24px;" class="error-message error"><span id="errormsg"></span></p>*@
+                <span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="errormsg"></span>
+            </div>
+        </div>
+    </div>
+    <div id="radio-div">
+        <input type="radio" value="active"/>Active
+        <input type="radio" value="active" />InActive
+    </div>
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnCreate" class="btn btn-default">Add Business Activity</button>
+        <button type="submit" id="btnClear" class="btn btn-default">Clear</button>
+    </div>
+</form>
+@*<div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin-top:60px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body homemodal-body">
+                <h3 class='error_message'> </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<script>
+    $(window).click(function () {
+        msg.innerHTML = "";
+    });
+
+
+    $(":input").on("focus", function () {
+        errormsg.innerHTML = "";
+        msg.innerHTML = "";
+    });
+    
+    $(":input").on("keyup", function () {
+        errormsg.innerHTML = "";
+        msg.innerHTML = "";
+    });
+    $(document).ready(function () {
+        $("#radio-div").css('display','none');
+    });
+    $("#edit-btn").click(function () {
+        $("#radio-div").css('display', 'block');
+    });
+    $("#btnClear").click(function (e) {
+        e.preventDefault();
+        $("#activityname").val("");
+        msg.innerHTML = "";
+    });
+    $("#activityname").blur(function (e) {
+        if ($("#activityname").val().length > 100) {
+            errormsg.innerHTML = "Business Activity can be no longer than 100 characters";
+            errormsg.style.color = "Red";
+        } else if ($("#activityname").val().length < 5 && $("#activityname").val().length != 0) {
+
+            errormsg.innerHTML = "Business Activity must be at least five(5) characters long";
+            errormsg.style.color = "Red";
+        }
+    });
+    $("#btnCreate").click(function (e) {
+        msg.innerHTML = "";
+        e.preventDefault();
+        if ($("#activityname").val() == '') {
+            errormsg.innerHTML = "Business Activity is required";
+            errormsg.style.color = "Red";
+            return false;
+        }
+        else {
+            CreateBusinessActivity();
+        }
+    });
+    function CreateBusinessActivity() {
+       
+        if ($("#activityname").val().length>100) {
+            errormsg.innerHTML = "Business Activity can be no longer than 100 characters";
+            errormsg.style.color = "Red";
+        }
+        else if ($("#activityname").val().length < 5) {
+
+            errormsg.innerHTML = "Business Activity must be at least five(5) characters long";
+            errormsg.style.color = "Red";
+        }
+        else {
+            var apptype = '';
+            if ($('#active').is(':checked')) {
+                apptype = "1";
+            }
+            else if ($('#inactive').is(':checked')) {
+                apptype = "0";
+            }
+            console.log(apptype);
+            var activitydata = {
+                ActivityName: $("#activityname").val(),
+                APP_Type: apptype
+            };
+            $.ajax({
+                url: '/BBL/BusinessActivities',
+                type: "Post",
+                data: activitydata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+    }
+    function editSuccess(data) {
+        if (data.status == "SessionExipred") {
+            window.location.href = '/Account/SessionExpiry';
+        }
+       else if (data.status == "success") {
+           // console.log("HI");
+            GetAll();
+            $("#activityname").val("");
+            //if (data.response == "inserted") {
+            //    msg.innerHTML = "Business Activity has been added successfully";
+            //}
+            //else if (data.response == "exists")
+            //{
+            //    msg.innerHTML = "This Business Activity already exist, please choose another";
+            //    msg.style.color = "Red";
+            //}
+          
+        }
+        return false;
+    }
+    function editFailure(data) {
+      //  console.log("error");
+        return false;
+    }
+   
+</script>

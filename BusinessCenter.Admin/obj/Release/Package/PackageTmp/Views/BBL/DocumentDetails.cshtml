@@ -1,0 +1,301 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@using System.Globalization
+@model BusinessCenter.Data.BblLicenseView4
+@{
+    ViewBag.Title = "DCRA - Document Details";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("BBL", "ApplicationReview", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Queue", "Queue", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">
+            Document Details
+        </span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" class="heading">Document Details</h2>
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form">
+        <div class="container">
+            <div id="dvMainsection">
+                <div class="search_form">
+                    <div class="login_form register_form" style="background-color: #fff;">
+                        <div class="container">
+                            <div class="row" style="margin-left: 20px;" id="doc-list">
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Application/License No. :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.Application_License_No_ != "")
+                                        {
+                                            @Html.DisplayFor(model => model.Application_License_No_)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>File Name :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left" >
+                                        @if (Model.FileName != "")
+                                        {
+                                            @Html.DisplayFor(model => model.FileName)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Submission File Location :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.SubmissionFileLocation != null)
+                                        {
+                                            @Html.DisplayFor(model => model.SubmissionFileLocation)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Document Submission Type :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.DocumentSubmissionType != "")
+                                        {
+                                            @Html.DisplayFor(model => model.DocumentSubmissionType)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Category Name :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.CategoryName != "")
+                                        {
+                                            @Html.DisplayFor(model => model.CategoryName)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Master Category DocId :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.MasterCategoryDocId != 0)
+                                        {
+                                            @Html.DisplayFor(model => model.MasterCategoryDocId)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Submission Type :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.SubmissionType != "")
+                                        {
+                                            @Html.DisplayFor(model => model.SubmissionType)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Agency :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.Agency != "")
+                                        {
+                                            @Html.DisplayFor(model => model.Agency)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Agency Full Name :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.Agency_FullName != "")
+                                        {
+                                            @Html.DisplayFor(model => model.Agency_FullName)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        <div class="form-group ">
+                                            <strong>Div :</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                        @if (Model.Div != "")
+                                        {
+                                            @Html.DisplayFor(model => model.Div)
+                                        }
+                                        else
+                                        {
+                                            <strong>-</strong>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    <div class="form-group ">
+                                        <strong>Division Full Name :</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    @if (Model.DivisionFullName != "")
+                                    {
+                                        @Html.DisplayFor(model => model.DivisionFullName)
+                                    }
+                                    else
+                                    {
+                                        <strong>-</strong>
+                                    }
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    <div class="form-group ">
+                                        <strong>SupportingDocuments :</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    @if (Model.SupportingDocuments != "")
+                                    {
+                                        @Html.DisplayFor(model => model.SupportingDocuments)
+                                    }
+                                    else
+                                    {
+                                        <strong>-</strong>
+                                    }
+                                </div>
+                            </div>
+
+                                <div class="clearfix businesslicense-pad">
+                                   <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    <div class="form-group ">
+                                        <strong>Short Document Name :</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    @if (Model.ShortDocName != "")
+                                    {
+                                        @Html.DisplayFor(model => model.ShortDocName)
+                                    }
+                                    else
+                                    {
+                                        <strong>-</strong>
+                                    }
+                                </div>
+                              
+
+                            </div>
+                            <div class="clearfix businesslicense-pad">
+                                <div class="col-md-3 col-sm-3 col-xs-12 text-left">
+                                    <div class="form-group ">
+                                        <strong>Description :</strong>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12 text-left">
+                                    @if (Model.Description != null)
+                                    {
+                                        @Html.DisplayFor(model => model.Description)
+                                    }
+                                    else
+                                    {
+                                        <strong>-</strong>
+                                    }
+                                </div>
+                            </div>
+
+
+                                    <div class="row">
+                                        <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                                            <button type="submit" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Submission Queue Details</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+<script>
+    $("#btnBack").click(function () {
+        window.location.href = "/BBL/Queue";
+    });
+</script>

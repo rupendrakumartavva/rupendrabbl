@@ -1,0 +1,147 @@
+﻿@using System.Globalization
+@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Admin.Models.CategoryFeeModel>
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Fee Code</th>
+                        <th class="text-center">Start Range</th>
+                        <th class="text-center">End Range</th>
+                        <th class="text-center">License Fee</th>
+                        <th class="text-center">Tier</th>
+                      @if ((int) Session["Admincount"] == 3)
+                      {
+                          <th class="text-center">Edit</th>
+                      }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="8">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow">
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p class="paracol12 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.Fee_Code)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p class="paracol12 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.Start)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p class="paracol12 paratabcol1">
+                                        <span>
+                                            @Html.DisplayFor(modelitem => item.End)
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p class="paracol12 paratabcol1">
+                                        <span>
+                                            @string.Format(new CultureInfo("en-US"), "{0:C}", item.License_Fee)
+
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p class="paracol12 paratabcol1">
+                                        @if (item.Tier != null)
+                                        {
+                                            <span>
+                                                @Html.DisplayFor(modelitem => item.Tier)
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>NA</span>
+                                        }
+                                    </p>
+                                </td>
+                             @if ((int) Session["Admincount"] == 3)
+                             {
+                                 <td class="col1-tab col1 Superadmingrid usercol">
+                                     <p style="font-size: 14px;" class=" paratabcol2">
+                                         <span>
+                                            <a href="javascript:void(0)" onclick="UpdateCategoryFeePartial('@item.OSub_Category') " id="edit-btn">Edit</a>
+                                        </span>
+                                     </p>
+                                 </td>
+                             }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Styles -->
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+
+<!-- Javascript and Jquery Section -->
+<script type="text/javascript" class="init">
+    // This Event is executed when Page is loaded
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        $('#datasearch').DataTable({
+            "ordering": false
+        });
+        $("#datasearch_length").hide();
+        $("#datasearch_filter").hide();
+        if ($('#datasearch td').attr('colspan') == '8') {
+            $("#datasearch_info").hide();
+            $("#datasearch_paginate").hide();
+        }
+    });
+</script>
+
+

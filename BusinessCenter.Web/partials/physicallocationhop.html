@@ -1,0 +1,713 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to validate the Home Occupancy Permit (HOP) for the business to be licensed</strong>
+                    </p>
+
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                            Enter your Home Occupancy Permit Number in the <img src="../images/Hop_image.png" style="height: 30px; width: 119px;" /> box as it appears on your the document, to include letters and numbers.
+                        </li>
+                        <li>
+                            Select the <button type="button" class="btn btn-primary" style="cursor: default; pointer-events: none"><span class="glyphicon glyphicon-search padding-small"></span> Search for Hop </button>   button.
+                        </li>
+                        <li>
+                            A screen will unfold that displays the Business Premise address that corresponds to that Home Occupancy Permit number you have entered.
+                        </li>
+                        <li>
+                            You must verify whether the information displayed correctly or incorrectly corresponds to the premise address of the business that to be licensed by selecting the  <img src="../images/Correct_Incorrect.png" style="height: 28px; width: 158px;" />  button.
+                        </li>
+                    </ul>
+
+                    <p class="terms_text srch_filter">
+                        <strong>If the information is correct,</strong> a message will appear on your screen <img src="../images/ThankQ.png" style="height: 19px; width: 127px;" /> and you will be able to select the <button id="btn_revise1" class="btn btn-default  btnnextColor btn-next" style="cursor: default; pointer-events: none">Next</button> button to continue to the next part of the application.
+                    </p>
+
+                    <p class="terms_text">
+                        <strong> If the information is incorrect or key information is missing</strong> from the displayed data:
+                    </p>
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                           You may indicate that some or all of the information is incorrect by selecting the incorrect radio button <img src="../images/Correct_Incorrect_Select.png" style="height: 28px; width: 158px;" />
+                        </li>
+                        <li>
+                           If key information (e.g., street number, street name, quadrant, zip code) is missing, the verification will automatically label the information as incorrect <img src="../images/Correct_Incorrect_Select.png" style="height: 28px; width: 158px;"/>
+                        </li>
+                        <li>
+                            The missing field(s) will be highlighted in <b style="color: red;">bold red</b>
+                        </li>
+                        <li>
+                            You will be required to select the checkbox <img src="../images/Upload_Hop_Howto.png" style="height: 21px; width: 228px;"/>
+                        </li>
+                        <li>
+                            A data entry screen will unfold for you to enter the full and accurate business premises address information.
+                        </li>
+                        <li>
+                            The Home Occupancy Permit will automatically be added to your list of required Supporting Documents, where you can upload a copy.
+                        </li>
+                    </ul>
+
+                    <p class="terms_text srch_filter">
+                        Once you have entered all of the requested information a message will appear on your screen <img src="../images/ThankQ.png" style="height: 19px; width: 127px;" />
+                        and you will be able to select the <button id="btn_revise2" class="btn btn-default  btnnextColor btn-next" style="cursor: default; pointer-events: none">Next  </button> button to continue to the next part of the application.
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="PhysicalLocationHopController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Business Premises Address</div>
+                    <div class="panel-body">
+                        <div class="page-desc-content">
+                            <!--<p class="panel-body-text">
+                                Given your previous responses, you indicate your business will be home based. If you already have a Home Occupancy Permit (HOP), please enter the HOP# number below and select the &quot;Search for HOP&quot; button.
+                            </p>-->
+                            <p class="panel-body-text">
+                                Please enter your Home Occupancy Permit (HOP) number below as it appears on your permit and select the "Search for HOP" button.
+                            </p>
+                            <p>
+                                Read more about HOP requirements on the Zoning website: <a href="http://dcra.dc.gov/service/zoning-dcra" target="_blank">http://dcra.dc.gov/service/zoning-dcra</a>
+                            </p>
+                            <br />
+                        </div>
+                        <div ng-show="vm.hop.searchDetails.Status=='NODATA'" class="col-sm-offset-1 col-md-10 alert clearfix error_text margin_t" role="alert">
+                            <span aria-hidden="true"></span>
+                            <!-- The HOP: <strong>{{vm.hop.number}}</strong> you entered did not match Zoning database records. Please , check your entry and try again. If your entry does not return a record a second time, please select the “I opt to submit my HOP with my Supporting Documents” check box and type in your Home Address.-->
+                            The HOP # you entered does not match our records. Please, check your entry and try again. If your entry does not match, please select the "I will upload my HOP with my Supporting Documents" check box and type in your Business Premises Address.
+                        </div>
+                        <div style="clear: both"></div>
+                        <div ng-show="vm.addresscorrect==false" class="col-sm-offset-1 col-md-10 alert alert-danger clearfix" role="alert">
+                            <span aria-hidden="true"></span>
+                            In order to correct address information on your Home Occupancy Permit, you will have to contact the Office of Zoning prior to submitting your Business License Application. Please select Return to Checklist and visit the DC Office of Zoning at 1100 4th St SW or call them at 202-442-4400.
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="error_msg" class="text-center" style="color: red" autofocus="focus" tabindex="-1"></div>
+                        <!--<fieldset>-->
+                        <div class="search_form form_wrapper">
+                            <form role="form" method="post" id="vm.contact_us" autocomplete="off" name="vm.contact_us" novalidate ng-submit="vm.reg_form_validate()">
+                                <div class="clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                        <label class="input_addon_label">Home Occupancy Permit Number</label>
+                                        <div class="input-group">
+                                            <input type="text" spellcheck="false" class="form-control" data-ng-model="vm.hop.number" placeholder="Enter all letters and/or numbers as they appear." name="permitnumber"
+                                                   id="permitnumber" required ng-focus="vm.setErrorMsg('error_msg')" ng-change="vm.checkSearchZoning()" ng-maxlength="240">
+                                            <span class="input-group-btn">
+                                                <button id="submit_cancel" class="btn btn-primary" data-ng-click="vm.searchZoning()">
+                                                    <span class="glyphicon glyphicon-search padding-small"></span>
+                                                    <span class="hidden-sm hidden-xs">Search for HOP</span>
+                                                </button>
+                                            </span>
+                                        </div>
+
+                                        <div class="error-container" ng-show="vm.contact_us.permitnumber.$dirty && vm.contact_us.permitnumber.$invalid">
+                                            <small class="error-message" ng-show="vm.contact_us.permitnumber.$error.maxlength">
+                                                HOP Number exceeds maximum length of 240 characters.
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-md-5 col-sm-5 col-xs-12 ">
+                                        <div class="form-group" ng-class="{'has-error':vm.contact_us.datepicker.$invalid && vm.submitted }">
+                                            <label>Date of Issuance</label>
+                                            <div class="dropdown" style="margin-top: -10px;">
+                                                <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target=".dropdown-menu" aria-expanded="true">
+                                                    <div class="input-group" style="width:100%">
+                                                        <input type="text" spellcheck="false" placeholder="MM/DD/YYYY" class="form-control" data-ng-model="vm.hop.date" name="datepicker" required ng-pattern="/^((0?[13578]|10|12)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[01]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1}))|(0?[2469]|11)(-|\/)(([1-9])|(0[1-9])|([12])([0-9]?)|(3[0]?))(-|\/)((19)([2-9])(\d{1})|(20)([01])(\d{1})|([8901])(\d{1})))$/m" ng-maxlength="10" ng-focus="vm.setErrorMsg('error_msg')"><span class="input-group-addon" data-ng-class="{true:'cursorDefault'}[vm.disableBasedOnUpload==true]"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                    </div>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <datetimepicker data-ng-model="vm.hop.date" required data-datetimepicker-config="{ startView:'day', minView:'day' }" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)" ng-click="vm.setErrorMsg('error_msg')" ng-focus="vm.setErrorMsg('error_msg')" />
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="error-container" ng-show="vm.contact_us.datepicker.$dirty && vm.contact_us.datepicker.$invalid">
+                                            <small class="error-message" ng-show="vm.contact_us.datepicker.$error.maxlength">
+                                                Date is invalid.
+                                            </small>
+                                            <small class="error-message" ng-show="vm.contact_us.datepicker.$error.required">
+                                            </small>
+                                            <small class="error-message" ng-show="vm.contact_us.datepicker.$error.pattern">
+                                                Date is invalid.
+                                            </small>
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </form>
+                            <!--<div class="line"></div>-->
+                        </div>
+                        <div class="panel-center_div">
+
+                            <!--<div class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+                                <button style="width: 100% !important" id="submit_cancel" class="btn btn-default" data-ng-click="vm.searchZoning(vm.submitted=true)">
+                                    <span class="glyphicon glyphicon-search padding-small"></span>
+                                    Search for HOP
+                                </button>
+                            </div>-->
+
+                            <button id="submit_associate" class="btn btn-default hidden-class" data-ng-click="vm.navToDetermineeHOPEligibility()">Determine eHOP Eligibility</button>
+                        </div>
+
+                        <div id="dvSubLoadingSection" style="display: none; text-align: center;">
+
+                            <div class="center">
+                                <p>
+                                    Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="dvSubMainsection" style="margin-top: 25px">
+
+                            <div data-ng-show="vm.searchmatch && vm.hop.searchDetails.Status!='NODATA'" class=" col-md-offset-3 clearfix">
+                                <div class="col-sm-8 col-xl-8 col-xs-12">
+                                    <div class="panel panel-default collapse_panels ">
+                                        <div class="panel-heading" style="padding: 2% 1%; background-color: #E4E2E2;">
+                                            <p style="text-align: center;">Business Premises Address </p>
+                                        </div>
+                                        <div class="panel-body">
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.AddressNumber=='']">Street # : </span> {{vm.hop.searchDetails.AddressNumber!=""?vm.hop.searchDetails.AddressNumber:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span>Street Suffix : </span>{{vm.hop.searchDetails.AddressNumberSufix!="NA"?vm.hop.searchDetails.AddressNumberSufix:''}}
+                                            </p>
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.StreetName=='']">Street Name : </span> {{vm.hop.searchDetails.StreetName!=""?vm.hop.searchDetails.StreetName:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.StreetType=='']">Street Type : </span> {{vm.hop.searchDetails.StreetType!=""?vm.hop.searchDetails.StreetType:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.Quadrant=='']">Quadrant : </span> {{vm.hop.searchDetails.Quadrant!=""?vm.hop.searchDetails.Quadrant:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span>UnitType : </span> {{vm.hop.searchDetails.UnitType}}
+                                            </p>
+
+                                            <p>
+                                                <span>Unit : </span> {{vm.hop.searchDetails.Unit}}
+                                            </p>
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.City=='']">City : </span> {{vm.hop.searchDetails.City!=""?vm.hop.searchDetails.City:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.State=='']">State : </span> {{vm.hop.searchDetails.State!=""?vm.hop.searchDetails.State:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span ng-class="{true:'search_missing_cofo_hop'}[vm.hop.searchDetails.Zip=='']">Zip Code : </span> {{vm.hop.searchDetails.Zip!=""?vm.hop.searchDetails.Zip:vm.incorrectSearch()}}
+                                            </p>
+
+                                            <p>
+                                                <span>Phone: </span> {{vm.hop.searchDetails.Telephone}}
+                                            </p>
+
+                                            <p>
+                                                Please confirm this information matches your HOP by selecting "Correct." If this information does not match your HOP select "Incorrect."
+                                            </p>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <div class="form-type-radio  form-item form-group">
+                                                <div id="edit-questions-23488" class="form-radios ">
+                                                    <div class="form-type-radio pre_appscreenquestion form-item radio corp-radio-error-hightlight"
+                                                         tabindex="0" ng-class="{'has-error': vm.correctSearch==undefined && vm.submitted }">
+                                                        <div class="radiobtn corp-radio-error" id="uniform-edit-questions-23488-22">
+                                                            <span ng-class="{true:'checked'}[vm.correctSearch]">
+                                                                <input type="radio" id="true"
+                                                                       name="true"
+                                                                       checked="checked" class="form-radio" data-ng-class="{true:'cursorNotAllowed'}[vm.disableCorrect==true]" ng-disabled="vm.disableCorrect"
+                                                                       style="opacity: 0;" ng-click="vm.toggleRadio('true')">
+                                                            </span>
+                                                        </div>
+                                                        <label for="business_address_correct" tabindex="-1">Correct </label>
+                                                    </div>
+                                                    <div class="form-type-radio pre_appscreenquestion form-item radio corp-radio-error-hightlight" tabindex="0" ng-class="{'has-error': vm.correctSearch==undefined && vm.submitted }">
+                                                        <div class="radiobtn corp-radio-error" id="uniform-edit-questions-23488-222">
+                                                            <span ng-class="{false:'checked'}[vm.correctSearch]">
+                                                                <input type="radio" id="false"
+                                                                       name="" value=""
+                                                                       class="form-radio" checked="checked" data-ng-class="{true:'cursorNotAllowed'}[vm.disableBasedOnUpload==true]"
+                                                                       style="opacity: 0;" ng-click="vm.toggleRadio('false')">
+                                                            </span>
+                                                        </div>
+                                                        <label for="business_address_incorrect" tabindex="-1">Incorrect </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="error_text" id="errormsg"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix single_checkbox_set">
+
+                                <div data-ng-show="vm.correctSearch==true" class="col-sm-offset-1 col-md-10 alert  text-center color-success-message" role="alert">
+                                    <span aria-hidden="true"></span>
+                                    Thank you. Please select &quot;Next&quot;.
+                                </div>
+                                <div data-ng-show="vm.correctSearch==false && vm.incorrectCount==1" class="col-sm-offset-1 col-md-10 alert  clearfix error_text" role="alert">
+                                    <span aria-hidden="true"></span>
+                                    Your Home Occupancy Permit information in our records is incomplete. Please select the "I will upload my HOP with my supporting Documents" checkbox below and provide the information requested. You will also need to submit a copy of your HOP with your other supporting documents on the Checklist page.
+                                </div>
+                                <div data-ng-show="vm.correctSearch==false && vm.incorrectCount==0 && !vm.notMapped_Database" class="col-sm-offset-1 col-md-10 alert  clearfix error_text" role="alert">
+                                    <span aria-hidden="true"></span>
+                                    Please select the "I will upload my HOP with my Supporting Documents" check box below and enter the correct Premises Address information in the fields provided. You will need to upload your HOP with your other supporting documents.
+                                </div>
+                                <div class="col-sm-offset-1 col-md-10 alert  clearfix error_text" data-ng-show="vm.notMapped_Database==true">
+                                    The address on your HOP ({{vm.notMapped_Properties}}) does not match a valid address in the DCRA database. Please select the "I will upload my HOP with my supporting Documents" checkbox and complete the address fields below.
+                                    <div class="highlight" tabindex="-1"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12 form-type-checkbox clearfix col-md-offset-3 single_checkbox_set" data-ng-if="vm.correctSearch==false || vm.hop.searchDetails.Status=='NODATA'">
+                                <div class="form-type-checkbox form-item-screening-question-autoparttowing form-item checkbox" ng-class="{'has-error':vm.uploadType!=true && vm.submitted }">
+                                    <div class="checker">
+                                        <span ng-class="{true:'checked'}[vm.uploadType]">
+                                            <input type="checkbox" id="uploadType"
+                                                   name=""
+                                                   ng-click="vm.toggleCheckbox('uploadType')"
+                                                   value="1" class="form-checkbox" style="opacity: 0;">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="checkbox_question">
+                                    <label tabindex="-1">I will upload my HOP with my Supporting Documents</label>
+                                </div>
+                                <div class="checkbox_question">
+                                    <div id="hop_msg" class="text-center error_msg" style="color: red"></div>
+                                </div>
+                            </div>
+                            <!--</fieldset>-->
+                            <div style="clear: both"></div>
+                            <div class="clearfix">
+                                <div class="col-sm-6 col-xl-6 col-xs-12 col-md-offset-3 no-pad" ng-show="vm.uploadType==true">
+                                    <div class="panel panel-default collapse_panels ">
+                                        <div class="panel-heading" style="padding: 2% 1%; background-color: #E4E2E2;">
+                                            <p style="text-align: center;">Business Premises Address (Entered by Customer) </p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <form role="form" id="vm.corpnorregadd_form" autocomplete="off" name="vm.corpnorregadd_form" novalidate>
+                                                <div class="form_wrapper">
+
+                                                    <div class="clearfix">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.countrydd.$invalid && vm.submitted }">
+                                                                <label>Country</label>
+                                                                <select name="countrydd" data-ng-model="vm.hopinfo.Country" disabled required>
+                                                                    <option value="" selected disabled>Select One</option>
+                                                                    <option ng-repeat="country in vm.Countries" disabled value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                            <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.corpnorregadd_form.Street.$invalid && vm.submitted }">
+                                                                <label>Street Address</label>
+                                                                <div class="inner-addon right-addon">
+                                                                    <i class="glyphicon glyphicon-refresh gly-spin" id="streetaddress" style="display: none"></i>
+                                                                    <input type="text" spellcheck="false"
+                                                                           id="Street" name="Street"
+                                                                           class="form-control"
+                                                                           placeholder="For Example: 123 Main"
+                                                                           autocomplete="off"
+                                                                           typeahead="f.FullAddress for f in vm.Address | filter:$viewValue:vm.startsWith"
+                                                                           typeahead-test="vm.dataavail"
+                                                                           typeahead-on-select="vm.getrelatedAddress($item)"
+                                                                           data-ng-model="vm.hopinfo.Street"
+                                                                           ng-change="vm.getSuggestions(vm.corpnorregadd_form.Street.$viewValue,'streetaddress')"
+                                                                           ng-maxlength="100"
+                                                                           data-ng-trim="false"
+                                                                           required>
+                                                                </div>
+
+                                                                <div class="error-container" ng-show="vm.corpnorregadd_form.Street.$dirty && vm.corpnorregadd_form.Street.$invalid">
+
+                                                                    <small class="error-message" ng-show="vm.corpnorregadd_form.Street.$error.maxlength">
+                                                                        Street exceeds maximum length of 100 characters.
+                                                                    </small>
+                                                                </div>
+                                                                <!--<div class="error_text margin_px" id="firstName" autofocus="focus" tabindex="-1"></div>-->
+                                                            </div>
+                                                            <div id="noDataErrorMessage" ng-show="vm.not_valid_Address" style="color: red; font-weight: 300; font-size: 18px; text-align: center;">
+                                                                Entered Address is not a valid DC Address
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.AddressNumber.$invalid && vm.submitted }">
+                                                                <label>Street #</label>
+                                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.AddressNumber" ng-disabled="vm.fieldsDisable"
+                                                                       name="AddressNumber" id="AddressNumber" ng-focus="vm.setErrorMsg('error_msg')" required ng-pattern="/^[0-9]+$/" ng-maxlength="9" spellcheck="false">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.AddressNumber.$dirty && vm.corpnorregadd_form.AddressNumber.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumber.$error.pattern">
+                                                                    Street # must be numeric
+                                                                </small>
+
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumber.$error.maxlength">
+                                                                    Street # Code exceeds maximum length of 9 characters.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group">
+                                                                <label>Street Suffix</label>
+                                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.AddressNumberSufix"
+                                                                       name="AddressNumberSufix" id="AddressNumberSufix" ng-focus="vm.setErrorMsg('error_msg')" spellcheck="false" ng-disabled="vm.fieldsDisable">
+                                                            </div>
+                                                            <!--<div class="error-container" ng-show="vm.corpnorregadd_form.AddressNumberSufix.$dirty && vm.corpnorregadd_form.AddressNumberSufix.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumberSufix.$error.pattern">
+                                                                    Street Sufix must be numeric
+                                                                </small>
+
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.AddressNumberSufix.$error.maxlength">
+                                                                    Street Sufix Code exceeds maximum length of 9 characters.
+                                                                </small>
+                                                            </div>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.StreetName.$invalid && vm.submitted }">
+                                                                <label>Street Name</label>
+                                                                <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.StreetName"
+                                                                       name="StreetName" id="StreetName" ng-focus="vm.setErrorMsg('error_msg')" required ng-maxlength="40" spellcheck="false" ng-disabled="vm.fieldsDisable">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.StreetName.$dirty && vm.corpnorregadd_form.StreetName.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.StreetName.$error.maxlength">
+                                                                    Street Name exceeds maximum length of 40 characters.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.StreetType.$invalid && vm.submitted }">
+                                                                <label>Street Type </label>
+                                                                <select name="StreetType"
+                                                                        data-ng-model="vm.hopinfo.StreetType" required ng-disabled="vm.fieldsDisable">
+                                                                    <option value="" disabled>Select One</option>
+                                                                    <option ng-repeat="street in vm.StreetTypes" value="{{street.StreetCode}}">{{street.StreetType}}</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.StreetType.$dirty && vm.corpnorregadd_form.StreetType.$invalid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.ehopeligibility.$invalid && vm.submitted }">
+                                                                <label>Quadrant</label>
+                                                                <select name="ehopeligibility" data-ng-model="vm.hopinfo.Quadrant" required id="quadrant" ng-disabled="vm.fieldsDisable">
+                                                                    <option value="" disabled> Select One</option>
+                                                                    <option value="NE">NE</option>
+                                                                    <option value="NW">NW</option>
+                                                                    <option value="SE">SE</option>
+                                                                    <option value="SW">SW</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.ehopeligibility.$dirty && vm.corpnorregadd_form.ehopeligibility.$invalid">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group">
+                                                                <label>Unit Type</label>
+                                                                <!--<input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.UnitType" ng-maxlength="5"
+                                                                name="UnitType" id="UnitType" ng-pattern="/^[a-zA-Z\s]+$/">-->
+                                                                <select name="physicallocationhop" data-ng-init="vm.hopinfo.UnitType=0" data-ng-model="vm.hopinfo.UnitType" ng-disabled="vm.fieldsDisable">
+                                                                    <option value="" selected>Select One</option>
+                                                                    <option value="APT">APT</option>
+                                                                    <option value="BLDG">BLDG</option>
+                                                                    <option value="STE">STE</option>
+                                                                    <option value="UNIT">UNIT</option>
+                                                                    <option value="NONE">NONE</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--<div class="error-container" ng-show="vm.corpnorregadd_form.UnitType.$dirty && vm.corpnorregadd_form.UnitType.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.UnitType.$error.pattern">
+                                                                    Unit Type accepts only alphabets.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.UnitType.$error.maxlength">
+                                                                    Unit Type exceeds maximum length of 5 characters
+                                                                </small>
+                                                            </div>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group">
+                                                                <label>Unit</label>
+                                                                <input type="text" spellcheck="false" class="form-control" placeholder="" data-ng-model="vm.hopinfo.Unit" ng-maxlength="10"
+                                                                       name="Unit" id="Unit" ng-disabled="vm.fieldsDisable">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Unit.$dirty && vm.corpnorregadd_form.Unit.$invalid">
+                                                                <!--<small class="error-message" ng-show="vm.corpnorregadd_form.Unit.$error.pattern">
+                                                                    Unit accepts only numerics.
+                                                                </small>-->
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Unit.$error.maxlength">
+                                                                    Unit exceeds maximum length of 10 characters.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.city.$invalid && vm.submitted }">
+                                                                <label>City</label>
+                                                                <input type="text" spellcheck="false" class="form-control noselect" placeholder="" data-ng-model="vm.hopinfo.City"
+                                                                       name="city" id="city" ng-maxlength="30" required ng-pattern="/^[a-zA-Z\s ]+$/" ng-disabled="vm.fieldsDisable">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.city.$dirty && vm.corpnorregadd_form.city.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.city.$error.pattern">
+                                                                    City accepts only alphabets.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.city.$error.maxlength">
+                                                                    City exceeds maximum length of 30 characters
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.state.$invalid && vm.submitted }">
+                                                                <label>State</label>
+                                                                <input type="text" spellcheck="false" class="form-control noselect" placeholder="" data-ng-model="vm.hopinfo.State"
+                                                                       name="state" id="state" ng-maxlength="30" required ng-pattern="/^[a-zA-Z\s ]+$/" ng-disabled="vm.fieldsDisable">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.state.$dirty && vm.corpnorregadd_form.state.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.state.$error.pattern">
+                                                                    State accepts only alphabets.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.state.$error.maxlength">
+                                                                    State exceeds maximum length of 30 characters
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.Zip.$invalid && vm.submitted }">
+                                                                <label>Zip Code</label>
+                                                                <input type="text" spellcheck="false" class="form-control" placeholder="" data-ng-model="vm.hopinfo.Zip"
+                                                                       name="Zip" id="Zip" ng-maxlength="5" required ng-pattern="/^[0-9]+$/" ng-minlength="5" ng-disabled="vm.fieldsDisable">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Zip.$dirty && vm.corpnorregadd_form.Zip.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Zip.$error.pattern">
+                                                                    Please enter numbers only.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Zip.$error.maxlength">
+                                                                    Zip Code exceeds maximum length of 5 characters.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Zip.$error.minlength">
+                                                                    Zip Code must be 5 digits
+                                                                </small>
+                                                            </div>
+                                                            <!--<div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.countrydd.$invalid && vm.submitted }">
+                                                                <label>Country</label>
+
+                                                                <select name="countrydd" data-ng-model="vm.hopinfo.Country" disabled required>
+                                                                    <option value="" selected disabled>Select One</option>
+                                                                    <option ng-repeat="country in vm.Countries" disabled value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                                </select>
+                                                            </div>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                            <div class="form-group" ng-class="{'has-error':vm.corpnorregadd_form.Phone.$invalid && vm.submitted }">
+                                                                <label>Telephone</label>
+                                                                <input type="text" class="form-control" placeholder="optional" data-ng-model="vm.hopinfo.Telephone" spellcheck="false"
+                                                                       name="Phone" id="Phone" ng-maxlength="10" ng-trim="false" ng-pattern="/^[0-9]+$/" ng-minlength="10">
+                                                            </div>
+                                                            <div class="error-container" ng-show="vm.corpnorregadd_form.Phone.$dirty && vm.corpnorregadd_form.Phone.$invalid">
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Phone.$error.pattern">
+                                                                    Please enter numbers only.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Phone.$error.maxlength">
+                                                                    Telephone Number exceeds the maximum length of 10 characters.
+                                                                </small>
+                                                                <small class="error-message" ng-show="vm.corpnorregadd_form.Phone.$error.minlength">
+                                                                    Telephone must have 10 digits.
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!--<div class="form_wrapper">
+                                                <div class="clearfix">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                        <div class="form-group restrictDropdownMenu">
+                                                            <label>Street</label>
+                                                            <div class="inner-addon right-addon">
+                                                                <i class="glyphicon glyphicon-refresh gly-spin" id="streetaddress" style="display: none"></i>
+                                                                <input type="text" data-ng-model="vm.hopinfo.Street" typeahead="f for f in vm.StreetDetails | filter:$viewValue" class="form-control" ng-change="vm.getSuggestions(vm.hopinfo.Street,'streetaddress')" typeahead-test="vm.dataavail" ng-blur="vm.checktabpress('streetaddress')" ng-focus="vm.setErrorMsg('error_msg')">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Street Name</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.StreetName"
+                                                                   name="email" id="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Street Type </label>
+                                                            <select name="ehopeligibility" ng-init="vm.hopinfo.streetype='ALLEY'" ng-focus="vm.setErrorMsg('error_msg')" data-ng-model="vm.hopinfo.StreetType" data-ng-options="street for street in vm.StreetTypes track by street" ng-change="vm.testvalue()"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Quadrant</label>
+                                                            <select name="ehopeligibility" data-ng-model="vm.hopinfo.Quadrant">
+                                                                <option value="" selected>Select One</option>
+                                                                <option value="NE">NE</option>
+                                                                <option value="NW">NW</option>
+                                                                <option value="SE">SE</option>
+                                                                <option value="SW">SW</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Unit Type</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.UnitType" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   name="UnitType" id="email11">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Unit</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.Unit" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   name="Unit" id="email1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>City</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.City" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   name="city" id="city">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>State</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.State" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   name="state" id="state">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Zip</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.Zip" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   name="phone" id="phone">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                        <div class="form-group">
+                                                            <label>Telephone</label>
+                                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.hopinfo.Telephone" ng-focus="vm.setErrorMsg('error_msg')"
+                                                                   name="email" id="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pre-checkquestion pre-checkquestion-question col-md-12 col-xs-12" style="margin-left: 50px;">
+                        <button id="btn_exit_no_save1" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                        <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')">Exit</button>
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist')">Return to Checklist</button>
+                        <button id="btn_revise" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToNextStepfromhop('',vm.submitted=true)" ng-disabled="vm.not_valid_Address" ng-class="{true:'disablecolor'}[vm.not_valid_Address]">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="hopPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-ng-click="vm.dontNavigate()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                             c
+
+                            <h3 class='error_message'></h3>
+                            r_
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-button" ng-click="vm.navigateAnyway()">Ok</button>
+                            <button type="button" class="close-button" ng-click="vm.dontNavigate()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

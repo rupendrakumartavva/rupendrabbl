@@ -1,0 +1,704 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div data-ng-controller="MyBBLController as vm">
+    <div id="dvLoadingSection">
+        <div class="center">
+            <p>
+                Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+            </p>
+        </div>
+    </div>
+    <div id="dvMainsection" style="display: none">
+        <div class="container headerBreadcrumb">
+            <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">BBL</span>
+        </div>
+        <div class="page_title scr_title" ng-show="vm.businessList[0].BBLServiceCount[0].Total > 0">
+            <div class="container">
+                <div class="row">
+                    <h2 tabindex="0">My Basic Business Licenses</h2>
+                    <p>
+                        <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                            Help With This Page (Click Here)
+                        </span>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="well info-content">
+                            <p class="text-center">
+                                <strong>This page is where all online Basic Business Licenses are applied for, renewed, displayed and managed.</strong>
+                            </p>
+                            <ul class="terms_text" style="padding-left: 100px;">
+                                <li>
+                                    Return to this page to access your BBL applications and to renew existing licenses online.
+                                </li>
+                                <li>
+                                    This page will be blank until an application is in progress or an existing license is added to the page and is ready for renewal.
+                                </li>
+                            </ul>
+                            <p class="terms_text srch_filter">
+                                <strong> To Apply for a New License </strong> select the <button class="cursorDefault pointer_events_none">
+                                    <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                                </button> button. Instructions on the next steps will be provided on each page.
+                            </p>
+                            <p class="terms_text srch_filter">
+                                <strong> To Renew an Existing License </strong> online, you must have a PIN number from the renewal letter sent from DCRA. Renewal letters are sent 90 days prior to the license expiration date.
+                            </p>
+                            <p class="terms_text srch_filter" style="padding-left:4em">
+                                Once you have received a renewal letter, select the <button class="cursorDefault pointer_events_none">
+                                    <span class="glyphicon glyphicon-plus"></span> Renew An Existing License
+                                </button> button. Instructions on the next steps will be provided on each page.
+                            </p>
+                            <p class="terms_text">
+                                <strong>To Continue an Application in Progress</strong> select the <img src="../images/accessapplication.png" style="height: 40px; width: 100px;" />
+                                button to resume work on the application.
+                            </p>
+                            <p class="terms_text">
+                                <strong>To View and Print Licenses and Permits</strong> select the icon <img src="../images/pdf.jpg" style="height: 30px; width: 40px;" />
+                                to open a printable version of approved Basic Business Licenses and Expedited Home Occupancy Permits (EHOP).
+                            </p>
+                            <p class="terms_text">
+                                <strong>To Filter the View of Licenses</strong> select a blue button to show only those licenses in each category or type a filter word in the keyword search field.  Select "Clear Filter" to clear the filter view.
+                            </p>
+                            <p class="terms_text">
+                                <img src="../images/FilterTab.png" style="width: 1000px;" />
+                            </p>
+                            <p class="terms_text">
+                                <strong> Glossary of Terms for Licenses Displayed on this Page</strong>
+                            </p>
+                            <div class="newbbl-info-steps">
+                                <ul class="terms_text srch_filter" style="padding-left: 70px;">
+                                    <li>
+                                        <strong>License/Application #:</strong> This field will display the unique identifier associated with the user's un-submitted application in progress, submitted application under review, and approved or existing license number
+
+
+                                        <ul class="howtotext">
+                                            <li><strong>DAPP:</strong> the alpha-numeric identifier for an un-submitted draft application. </li>
+                                            <li><strong>LAPP or IAPP:</strong> the alpha-numeric identifier for an application that has been successfully submitted and is under review. </li>
+                                            <li><strong>License Number:</strong> the numeric identifier of an existing or approved license.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Expiration Date:</strong> This field will display the expiration date of a license that has been approved.
+                                    </li>
+                                    <li>
+                                        <strong> Licensee (First & Last Name):</strong> The field will display name of the applicant.
+                                    </li>
+                                    <li>
+                                        <strong> Business Name:</strong> This field will display the name of the your Business.
+                                    </li>
+                                    <li>
+                                        <strong> Submitted Date:</strong> This field will display the date that you successfully paid and submitted the application for review or renewal.
+                                    </li>
+                                    <li>
+                                        <strong>Status Date:</strong> This field will display the date of the most recent change in the status in your license application or business license (see Status for a list of status types, below)
+                                    </li>
+                                    <li>
+                                        <strong>Trade Name:</strong> This field will display the trade name of the business, if applicable.
+                                    </li>
+                                    <li>
+                                        <strong> Premise Address:</strong> This field will display the Address of the business that is being licensed.
+                                    </li>
+                                    <li>
+                                        <strong>License Categories:</strong> This field will display the license category of the application.
+                                    </li>
+                                    <li>
+                                        <strong>Status:</strong> This field will display the status of your application. The types of statuses are:
+                                        <ul class="howtotext">
+                                            <li>
+                                                <strong>Draft Application in Progress:</strong> A partially completed application that has not been submitted to DCRA for review.
+                                            </li>
+                                            <li>
+                                                <strong>Under Review:</strong> A completed application that has been submitted to DCRA with supporting documents requiring review and validation.
+                                            </li>
+                                            <li>
+                                                <strong>Deficient:</strong> A completed application that has been reviewed and has been returned to the customer with a request for corrections or additional information.
+                                            </li>
+                                            <li>
+                                                <strong>Abandoned:</strong> An application with one or more deficiencies that were not resolved within 30 calendar days of the original submission date. Fees are not refundable for applications that were Abandoned. The customer will have to submit a new application if they wish to receive a business license.
+                                            </li>
+                                            <li>
+                                                <strong>Denied:</strong> An application that did not comply with all requirements for the specific license category, including but not limited to Clean Hands requirements, failed inspections, failed background checks, etc.
+                                            </li>
+                                            <li>
+                                                <strong>Appealed:</strong> An application originally denied that has been appealed by the customer.
+                                            </li>
+                                            <li>
+                                                <strong>Active:</strong> A business license with more than 90 days prior to its expiration date.
+                                            </li>
+                                            <li>
+                                                <strong>Expiring Soon:</strong> A license within 90 days or less of its expiration date that is eligible for renewal.
+                                            </li>
+                                            <li>
+                                                <strong>Lapsed:</strong> A license between one to thirty days past its expiration date will be assessed a $250.00 penalty fee in addition to the renewal fee.
+                                            </li>
+                                            <li>
+                                                <strong>Expired:</strong> A license between 31 to 180 days past its expiration date will be assessed a $500.00 penalty fee in addition to the renewal fee.
+                                            </li>
+                                            <li>
+                                                <strong>Unable to Renew:</strong> A license that expired more than 180 days ago may not be renewed. The business owner must apply for a new license and pay all outstanding fees on the expired license.
+                                            </li>
+                                            <li>
+                                                <strong>Canceled:</strong> A license that has been canceled by the customer—typically when a business has ceased operations.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="terms_text">
+                                <div class="login_form my_form">
+                                    <span class="terms_text"> If you need additional help, review the</span>
+                                    <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                                    <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="search_form">
+                        <div class="login_form my_form">
+                            <!--<a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" title="My DC Business Center User Guide" class="btn btn-default read_btn">My BBLs User Guide</a>-->
+                        </div>
+                    </p>
+                    <div class="col-md-12 col-sm-12 col-xs-12" tabindex="0">
+                        <p>
+                            Below is a list of your online Basic Business Licenses and applications. Licenses that will expire soonest are at the top of the page. Use the keyword search feature or filter buttons to see Draft Applications in progress. <span>Please reference the "Help With This Page" link above for detailed assistance with this page</span>.
+                        </p>
+                    </div>
+                    <!--<p class="info-text">
+                        Any licenses due for renewal within 90 days or less are highlighted in <span style="color:red;">Red Text</span>. Licenses are sorted from the earliest expiration date to the latest expiration
+                        date. Some fields will not update until after submission and payment for a license application.
+                    </p>-->
+                </div>
+            </div>
+        </div>
+        <div class="page_title scr_title" ng-show="vm.businessList[0].BBLServiceCount[0].Total ==0">
+            <div class="container">
+                <div class="row">
+                    <h2 tabindex="0">My Basic Business Licenses</h2>
+                    <p>
+                        <span tabindex="0" id="toggleicon_nolicenses" onclick="toggleclick('toggleicon_nolicenses')" aria-expanded="false" aria-controls="collapseExample_nolicenses" class="cursor_type" onkeypress="    testKey(event)">
+                            Help With This Page (Click Here)
+                        </span>
+                    </p>
+                    <div class="collapse" id="collapseExample_nolicenses">
+
+                        <div class="well info-content">
+                            <p class="text-center">
+                                <strong>This page is where all online Basic Business Licenses are applied for, renewed, displayed and managed.</strong>
+                            </p>
+                            <ul class="terms_text" style="padding-left: 100px;">
+                                <li>
+                                    Return to this page to access your BBL applications and to renew existing licenses online.
+                                </li>
+                                <li>
+                                    This page will be blank until an application is in progress or an existing license is added to the page and is ready for renewal.
+                                </li>
+                            </ul>
+                            <p class="terms_text srch_filter">
+                                <strong> To Apply for a New License </strong> select the <button class="cursorDefault pointer_events_none">
+                                    <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                                </button> button. Instructions on the next steps will be provided on each page.
+                            </p>
+                            <p class="terms_text srch_filter">
+                                <strong> To Renew an Existing License </strong> online, you must have a PIN number from the renewal letter sent from DCRA. Renewal letters are sent 90 days prior to the license expiration date.
+                            </p>
+                            <p class="terms_text srch_filter" style="padding-left:4em">
+                                Once you have received a renewal letter, select the <button class="cursorDefault pointer_events_none">
+                                    <span class="glyphicon glyphicon-plus"></span> Renew An Existing License
+                                </button> button. Instructions on the next steps will be provided on each page.
+                            </p>
+                            <p class="terms_text">
+                                <strong>To Continue an Application in Progress</strong> select the <img src="../images/accessapplication.png" style="height: 40px; width: 100px;" />
+                                button to resume work on the application.
+                            </p>
+                            <p class="terms_text">
+                                <strong>To View and Print Licenses and Permits</strong> select the icon <img src="../images/pdf.jpg" style="height: 30px; width: 40px;" />
+                                to open a printable version of approved Basic Business Licenses and Expedited Home Occupancy Permits (EHOP).
+                            </p>
+                            <p class="terms_text">
+                                <strong>To Filter the View of Licenses</strong> select a blue button to show only those licenses in each category or type a filter word in the keyword search field.  Select "Clear Filter" to clear the filter view.
+                            </p>
+                            <p class="terms_text">
+                                <img src="../images/FilterTab.png" style="width: 1000px;" />
+                            </p>
+                            <p class="terms_text">
+                                <strong> Glossary of Terms for Licenses Displayed on this Page</strong>
+                            </p>
+                            <div class="newbbl-info-steps">
+                                <ul class="terms_text srch_filter" style="padding-left: 70px;">
+                                    <li>
+                                        <strong>License/Application #:</strong> This field will display the unique identifier associated with the user's un-submitted application in progress, submitted application under review, and approved or existing license number
+
+
+                                        <ul class="howtotext">
+                                            <li><strong>DAPP:</strong> the alpha-numeric identifier for an un-submitted draft application. </li>
+                                            <li><strong>LAPP or IAPP:</strong> the alpha-numeric identifier for an application that has been successfully submitted and is under review. </li>
+                                            <li><strong>License Number:</strong> the numeric identifier of an existing or approved license.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Expiration Date:</strong> This field will display the expiration date of a license that has been approved.
+                                    </li>
+                                    <li>
+                                        <strong> Licensee (First & Last Name):</strong> The field will display name of the applicant.
+                                    </li>
+                                    <li>
+                                        <strong> Business Name:</strong> This field will display the name of the your Business.
+                                    </li>
+                                    <li>
+                                        <strong> Submitted Date:</strong> This field will display the date that you successfully paid and submitted the application for review or renewal.
+                                    </li>
+                                    <li>
+                                        <strong>Status Date:</strong> This field will display the date of the most recent change in the status in your license application or business license (see Status for a list of status types, below)
+                                    </li>
+                                    <li>
+                                        <strong>Trade Name:</strong> This field will display the trade name of the business, if applicable.
+                                    </li>
+                                    <li>
+                                        <strong> Premise Address:</strong> This field will display the Address of the business that is being licensed.
+                                    </li>
+                                    <li>
+                                        <strong>License Categories:</strong> This field will display the license category of the application.
+                                    </li>
+                                    <li>
+                                        <strong>Status:</strong> This field will display the status of your application. The types of statuses are:
+                                        <ul class="howtotext">
+                                            <li>
+                                                <strong>Draft Application in Progress:</strong> A partially completed application that has not been submitted to DCRA for review.
+                                            </li>
+                                            <li>
+                                                <strong>Under Review:</strong> A completed application that has been submitted to DCRA with supporting documents requiring review and validation.
+                                            </li>
+                                            <li>
+                                                <strong>Deficient:</strong> A completed application that has been reviewed and has been returned to the customer with a request for corrections or additional information.
+                                            </li>
+                                            <li>
+                                                <strong>Abandoned:</strong> An application with one or more deficiencies that were not resolved within 30 calendar days of the original submission date. Fees are not refundable for applications that were Abandoned. The customer will have to submit a new application if they wish to receive a business license.
+                                            </li>
+                                            <li>
+                                                <strong>Denied:</strong> An application that did not comply with all requirements for the specific license category, including but not limited to Clean Hands requirements, failed inspections, failed background checks, etc.
+                                            </li>
+                                            <li>
+                                                <strong>Appealed:</strong> An application originally denied that has been appealed by the customer.
+                                            </li>
+                                            <li>
+                                                <strong>Active:</strong> A business license with more than 90 days prior to its expiration date.
+                                            </li>
+                                            <li>
+                                                <strong>Expiring Soon:</strong> A license within 90 days or less of its expiration date that is eligible for renewal.
+                                            </li>
+                                            <li>
+                                                <strong>Lapsed:</strong> A license between one to thirty days past its expiration date will be assessed a $250.00 penalty fee in addition to the renewal fee.
+                                            </li>
+                                            <li>
+                                                <strong>Expired:</strong> A license between 31 to 180 days past its expiration date will be assessed a $500.00 penalty fee in addition to the renewal fee.
+                                            </li>
+                                            <li>
+                                                <strong>Unable to Renew:</strong> A license that expired more than 180 days ago may not be renewed. The business owner must apply for a new license and pay all outstanding fees on the expired license.
+                                            </li>
+                                            <li>
+                                                <strong>Canceled:</strong> A license that has been canceled by the customer—typically when a business has ceased operations.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="terms_text">
+                                <div class="login_form my_form">
+                                    <span class="terms_text"> If you need additional help, review the</span>
+                                    <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                                    <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                                </div>
+                            </p>
+                        </div>
+
+                    </div>
+                    <p class="search_form">
+                        <div class="login_form my_form">
+                            <!--<a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn">My BBLs User Guide</a>-->
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="search_form" ng-show="vm.businessList[0].BBLServiceCount[0].Total ==0">
+            <div class="login_form register_form no-bbls">
+                <div class="container">
+                    <p>
+                        This page is where your online Basic Business Licenses (BBLs) are applied for, renewed, managed and displayed.
+                    </p>
+                    <p>
+                        Return to this page to access your BBL applications and to renew existing licenses online.
+                    </p>
+                    <p>
+                        Currently the page is empty.
+                    </p>
+                    <p>
+                        Please select the Help With This Page link for instructions on how to add a business licenses to your account. Or select one of the buttons to Renew or Apply.
+                    </p>
+                    <div class="row">
+                        <div class="form_wrapper">
+                            <form role="form" method="post" id="contact_us">
+                                <div class="clearfix">
+                                    <!--<div class="panel panel-default">
+                                        <div class="panel-heading">   <span class="pull-left">My Basic Business Licenses </span>  <span class="badge">0</span> Saved BBLs</div>
+                                    </div>-->
+                                </div>
+                                <div class="col-xs-12 line"></div>
+                                <button id="submit_associate" class="btn btn-default" ng-click="vm.navToAssociateBusinessLicense()"><span class="glyphicon glyphicon-plus"></span> Renew An Existing License</button>
+                                <button id="submit_applynewlicense" class="btn btn-default" ng-click="vm.navToApplyNewLicense()"><span class="glyphicon glyphicon-plus"></span> Apply for a new License</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search_tag apply-renew-btns" ng-show="vm.businessList[0].BBLServiceCount[0].Total > 0">
+            <div class="container">
+                <div class="col-md-6 col-sm-12 col-xs-12 no-pad">
+                    <p>
+                        <span>{{(vm.businessList[0].BblServiceList | filter:vm.mybblfilter).length}}</span> Record<span ng-show="vm.businessList[0].BBLServiceCount[0].Total > 1" style="color:#707070">s</span> displayed
+                    </p>
+                    <!--<p ng-show="vm.businessList[0].BBLServiceCount[0].Total > 1">
+                        <span>{{vm.businessList[0].BBLServiceCount[0].Total}}</span> Records displayed
+                    </p>-->
+                </div>
+                    <div class="dash-buttn col-md-6 col-sm-8 col-xs-10 no-pad-right">
+                        <div class="col-sm-6 col-xs-12 no-pad-right">
+                            <button id="submit_associate" class="btn btn-default"
+                                    ng-click="vm.navToAssociateBusinessLicense()">
+                                <span class="glyphicon glyphicon-plus"></span> Renew An Existing License
+                            </button>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 no-pad-right">
+                            <button id="submit_applynewlicense" class="btn btn-default" ng-click="vm.navToApplyNewLicense()">
+                                <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="search_result labels-space" ng-show="vm.businessList[0].BBLServiceCount[0].Total > 0">
+            <div class="container srch_filter">
+                <div class="col-md-7 col-sm-11 col-xs-12 center_div color_r" ng-show="vm.filterByStatusKeyword.length > 100" id="KeyWord">Your keyword search can be no longer than 100 characters maximum.</div>
+                <div class="col-xs-12 no-pad">
+                    <label class="no-pad" style="float:left">Filter: &nbsp;</label>
+                    <div class="btn_wrapper filter_alignment">
+                        <button id="Draft" ng-click="vm.filterByStatus('Draft Application In Progress','Draft')"
+                                ng-disabled="vm.setDisabled(vm.businessList[0].BBLServiceCount[0].Draft,'Draft')">
+                            Draft Application In Progress
+                            <span>({{vm.businessList[0].BBLServiceCount[0].Draft}})</span>
+                        </button>
+                        <button id="Expiring" ng-click="vm.filterByStatus('Eligible for Renewal','Expiring')"
+                                ng-disabled="vm.setDisabled(vm.businessList[0].BBLServiceCount[0].ExpirySoon,'Expiring')">
+                            <!--Expiring Soon-->
+                            Eligible for Renewal
+                            <span>({{vm.businessList[0].BBLServiceCount[0].ExpirySoon}})</span>
+                        </button>
+                        <button id="Review" ng-click="vm.filterByStatus('Under Review','Review')"
+                                ng-disabled="vm.setDisabled(vm.businessList[0].BBLServiceCount[0].UnderReview,'Review')">
+                            Under Review
+                            <span>({{vm.businessList[0].BBLServiceCount[0].UnderReview}})</span>
+                        </button>
+                        <button id="Active" ng-click="vm.filterByStatus('Active','Active')"
+                                ng-disabled="vm.setDisabled(vm.businessList[0].BBLServiceCount[0].Active,'Active')">
+                            Active
+                            <span>({{vm.businessList[0].BBLServiceCount[0].Active}})</span>
+                        </button>
+                        <button id="eHOP" ng-click="vm.filterByStatus('eHOP','eHOP')"
+                                ng-disabled="vm.setDisabled(vm.businessList[0].BBLServiceCount[0].eHOP,'eHOP')">
+                            eHOP
+                            <span>({{vm.businessList[0].BBLServiceCount[0].eHOP}})</span>
+                        </button>
+                        <input type="text" placeholder="Enter Keyword" ng-model="vm.filterByStatusKeyword" id="keywordfield" ng-change="vm.ShowMessage()" style="padding-right: 2px; display: inline;">
+                        <button ng-click="vm.filterByStatus('')">Clear Filter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container srch_filter filterehoplist">
+                <section dir-paginate="businessItem in vm.businessList[0].BblServiceList | filter:vm.mybblfilter | itemsPerPage: vm.itemPage" current-page="vm.currentPage" id="{{businessItem.EntityId}}">
+                    <div class="container">
+                        <div class="innerRow">
+                            <div class="col-md-1 col-sm-12 col-xs-12 center">
+                                <!--<a style="cursor: pointer" ng-click="vm.navToBblSubmissionOrder(businessItem.MasterId)" ng-show="(businessItem.Status=='ACTIVE'||businessItem.Status=='Active') && (businessItem.UserAssociateType=='S')">
+                                    <img src="../images/pdf.jpg" style="height: 40px; width: 40px;" />
+                                </a>
+                                <a style="cursor: pointer" ng-click="vm.navToBblRenewelOrder(businessItem.MasterId)" ng-show="(businessItem.Status=='ACTIVE'||businessItem.Status=='Active') && (businessItem.UserAssociateType=='A')">
+                                    <img src="../images/pdf.jpg" style="height: 40px; width: 40px;" />
+                                </a>-->
+                                <a style="cursor: pointer" ng-click="vm.navToBblSubmissionOrder(businessItem.MasterId)" ng-show="(businessItem.Status.toUpperCase()=='ACTIVE') && (businessItem.UserAssociateType=='S') && (businessItem.APP_Type != 'I') && (businessItem.ShowActivePdf == 'YES')">
+                                    <img src="../images/pdf.jpg" style="height: 40px; width: 40px;" />
+                                </a>
+                                <a style="cursor: pointer" ng-click="vm.navToBblRenewelOrder(businessItem.MasterId)" ng-show="(businessItem.Status.toUpperCase()=='ACTIVE' || businessItem.Status.toUpperCase()=='EXPIRING SOON') && (businessItem.UserAssociateType=='A') && (businessItem.APP_Type != 'I')&& (businessItem.ShowActivePdf == 'YES')">
+                                    <img src="../images/pdf.jpg" style="height: 40px; width: 40px;" />
+                                </a>
+                                <div class="col-sm-1 arrow arrow-bbl no-pad hidden-xs" style="position: relative" ng-show="{{businessItem.IsEhop}}">
+                                    <span class="arrow-right see-details" id="expandid" style="vertical-align: bottom; margin-left: -10px;" ng-click="vm.expandCollapse($event)"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 no-pad">
+                                <p><span>License/ Application # : </span> {{businessItem.LicNumber}} </p>
+                                <p>
+                                    <span>Expiration Date : </span> {{businessItem.ExpDate}}
+                                </p>
+                                <p ng-show="businessItem.LicenseeFirstLastName.trim()!='NA'">
+                                    <span> Licensee (First & Last Name) : </span>
+                                    {{businessItem.LicenseeFirstLastName }}
+                                </p>
+                                <p ng-show="businessItem.LicenseeFirstLastName.trim()=='NA'">
+                                    <span> Licensee (First & Last Name) : </span>
+                                    {{businessItem.LicenseeFirstLastName }}
+                                </p>
+                                <p>
+                                    <span> Business Name : </span> {{businessItem.BusinessName}}
+                                </p>
+                                <!--<p ng-show="businessItem.BusinessName ==''">
+                                    <span> Business Name : </span> NA
+                                </p>-->
+                                <p>
+                                    <span> Submitted Date : </span> {{businessItem.PaymentDate}}
+                                </p>
+                                <p>
+                                    <span> Status date : </span> {{businessItem.AppStatusdate}}
+                                </p>
+                                <p ng-show="{{businessItem.IsEhop}}">
+                                    <span> EHOP Number : </span> {{businessItem.EhopNumber}}
+                                </p>
+                                <!--<p ng-show="{{businessItem.I
+                                sEhop}}"><span>Download :<a style="cursor:pointer" ng-click="vm.navToEhopConfirm(businessItem.MasterId)">Ehop </a> </span></p>-->
+                                </
+                                div>
+                            </div>
+                            <div class="col-sm-4 no-pad">
+                                <p ng-show="businessItem.TradeName !='' && businessItem.UserAssociateType!='A'"><span>Trade Name : </span> {{businessItem.TradeName }} </p>
+                                <p ng-show="businessItem.TradeName =='' && businessItem.UserAssociateType=='S'"><span>Trade Name : </span> NA </p>
+                                <p ng-show="businessItem.UserAssociateType=='A'"><span>Trade Name : </span> {{businessItem.TradeName }} </p>
+                                <p><span>Premises Address : </span> {{businessItem.PremiseAddress}} </p>
+                                <p><span> License Categories  : </span> {{businessItem.LicTypes}}</p>
+                                <p ng-show="businessItem.SubCategory!='NA'"><span> Sub-Category  : </span> {{businessItem.SubCategory}}</p>
+                                <div ng-switch="businessItem.Status">
+                                    <div ng-switch-when="Expiring Soon">
+                                        <p>
+                                            <span> Status : </span><span style="color: red; font-weight: 400;font-size: 15px;">{{businessItem.Status}}</span>
+                                            <!--<span style="position: relative; padding: 20px 0px 0px 0px;" class="help_text_modal_invoke" title="Active: 760-91 Days prior to Expiration Date (For a two year license) OR 1,460-91 Days prior to Expiration Date (For a four year license)
+                                            Expiring Soon: 90-0 Days PRIOR to Expiration Date
+                                            Lapsed: 1-30 Days AFTER Expiration Date
+                                            Expired: 31-180 Days AFTER Expiration Date
+                                            Renewal Not Allowed: 181 or more days AFTER Expiration Date" ng-click="vm.helpClickCORP()">
+                                                <span></span>
+                                            </span>-->
+                                            <br />
+                                            <span class="lookup-status" ng-click="vm.lookUpStatus()">
+                                                Look Up Statuses (Here)
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-default>
+                                        <p>
+                                            <span> Status : </span> {{businessItem.Status}}
+                                            <!--<span style="position: relative; padding: 20px 0px 0px 0px;" class="help_text_modal_invoke" title="Active: 760-91 Days prior to Expiration Date (For a two year license) OR 1,460-91 Days prior to Expiration Date (For a four year license)
+                                            Expiring Soon: 90-0 Days PRIOR to Expiration Date
+                                            Lapsed: 1-30 Days AFTER Expiration Date
+                                            Expired: 31-180 Days AFTER Expiration Date
+                                            Renewal Not Allowed: 181 or more Days AFTER Expiration Date" ng-click="vm.helpClickCORP()"><span></span></span>-->
+                                            <br />
+                                            <span class="lookup-status" ng-click="vm.lookUpStatus()">
+                                                Look Up Statuses (Here)
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 center  no-pad bbl">
+                                <div ng-switch="businessItem.Status">
+                                    <div ng-switch-when="Expiring Soon">
+                                        <span>{{businessItem.LrenNumber}}</span><br />
+                                        <p>
+                                            <a href="javascript:void(0)" ng-click="vm.navToRenewalConfirm(businessItem.EntityId,businessItem.LicNumber,businessItem.UserBblServiceId)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title cursor_type"
+                                               tabindex="0">Renew</a>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="Draft Application In Progress">
+                                        <p ng-show="businessItem.CategoryStatus">
+                                            <a ng-mousedown="vm.checkrightClick($event,businessItem.MasterId)" ng-click="vm.navToAppChecklist(businessItem.MasterId)" class=" easy-breadcrumb_segment easy-breadcrumb_segment-title cursor_type"
+                                               tabindex="0">Access Application Checklist</a>
+                                        </p>
+                                        <p ng-show="!businessItem.CategoryStatus">
+                                            Access Application Checklist
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="Under Review">
+                                        <p>
+                                            <span></span>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="Lapsed">
+                                        <span>{{businessItem.LrenNumber}}</span><br />
+                                        <p>
+                                            <a href="javascript:void(0)" ng-click="vm.navToRenewalConfirm(businessItem.EntityId,businessItem.LicNumber,businessItem.UserBblServiceId)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title cursor_type"
+                                               tabindex="0">Renew</a>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="Expired">
+                                        <span>{{businessItem.LrenNumber}}</span><br />
+                                        <p>
+                                            <a href="javascript:void(0)" ng-click="vm.navToRenewalConfirm(businessItem.EntityId,businessItem.LicNumber,businessItem.UserBblServiceId)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title cursor_type"
+                                               tabindex="0">Renew</a>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="Active">
+                                        <p>
+                                            <span class="easy-breadcrumb_segment easy-breadcrumb_segment-title no-textDecoration" tabindex="0"></span>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="UnderReview">
+                                        <p>
+                                            <span class="easy-breadcrumb_segment easy-breadcrumb_segment-title no-textDecoration" tabindex="0"></span>
+                                        </p>
+                                    </div>
+                                    <div ng-switch-when="Unable to Be Renewed">
+                                        <p>
+                                            <span class="easy-breadcrumb_segment easy-breadcrumb_segment-title no-textDecoration" tabindex="0"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 col-xs-12 center">
+                                <p ng-click="vm.navToRemove(businessItem.EntityId,businessItem.LicNumber)" class="cursor_type" ng-show="businessItem.LicNumber.indexOf('DAPP')!=-1">Remove from My View</p>
+                            </div>
+                        </div>
+                        <div class="details no-pad" style="display: block" ng-show="businessItem.MultipleLicense.length>1">
+                            <div class="clearfix">
+                                <div class="col-sm-3 col-md-3 no-pad">
+                                    <h4> Multiple License Categories :</h4>
+                                </div>
+                                <p class="col-sm-9 no-pad"> {{businessItem.MultipleLicense}} </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-12 " ng-show="!businessItem.CategoryStatus && businessItem.Status=='Draft Application In Progress'">
+                            <p class="error_text"><strong>The License category(ies) selected in the Application are now in Inactive Status and hence this application cannot be processed further. Please check the applicable License categories and apply for a new License.</strong></p>
+                        </div>
+                    </div>
+                    <div class="container ehop details no-pad" style="display:none">
+                        <div class="innerRow">
+                            <div class="col-md-1 col-sm-12 col-xs-12 center">
+                                <a style="cursor: pointer" ng-click="vm.navToEhopConfirm(businessItem.MasterId)" ng-show="(businessItem.IsEhop)&&(businessItem.Status=='UNDER REVIEW'||businessItem.Status=='Under Review'||businessItem.Status=='Active')"> <img src="../images/pdf.jpg" style="height: 40px; width: 40px;" /> </a>
+                            </div>
+                            <div class="col-sm-4 no-pad">
+                                <p ng-show="{{businessItem.IsEhop}}">
+                                    <span> EHOP Number : </span> {{businessItem.EhopNumber}}
+                                </p>
+                                <p ng-show="businessItem.LicenseeFirstLastName.trim()!='NA'">
+                                    <span> Licensee (First & Last Name) : </span>
+                                    {{businessItem.LicenseeFirstLastName }}
+                                </p>
+                                <p ng-show="businessItem.LicenseeFirstLastName.trim()=='NA'">
+                                    <span> Licensee (First & Last Name) : </span>
+                                    {{businessItem.LicenseeFirstLastName }}
+                                </p>
+                                <p ng-show="businessItem.BusinessName !=''">
+                                    <span> Business Name : </span> {{businessItem.BusinessName}}
+                                </p>
+                                <p ng-show="businessItem.BusinessName ==''">
+                                    <span> Business Name : </span> NA
+                                </p>
+                            </div>
+                            <div class="col-sm-4 no-pad">
+                                <p ng-show="businessItem.TradeName !=''">
+                                    <span>Trade Name : </span> {{businessItem.TradeName}}
+                                </p>
+                                <p ng-show="businessItem.TradeName ==''">
+                                    <span>Trade Name : </span> NA
+                                </p>
+                                <p>
+                                    <span>Premises Address : </span> {{businessItem.PremiseAddress}}
+                                </p>
+                                <p>
+                                    <span> License Categories  : </span> Expedited Home Occupancy Permit
+                                </p>
+                                <p>
+                                    <span> Status : </span>{{businessItem.Status=='Under Review'?'Active':businessItem.Status}}<br />
+                                    <span class="lookup-status" ng-click="vm.lookUpStatus()">
+                                        Look Up Statuses (Here)
+                                    </span>
+                                    <!--<span style="position: relative; padding: 20px 0px 0px 0px;" class="help_text_modal_invoke"
+                                                                              title="Active: 760-91 Days prior to Expiration Date (For a two year license) OR 1,460-91 Days prior to Expiration Date (For a four year license)
+                                    Expiring Soon: 90-0 Days PRIOR to Expiration Date
+                                    Lapsed: 1-30 Days AFTER Expiration Date
+                                    Expired: 31-180 Days AFTER Expiration Date
+                                    Renewal Not Allowed: 181 or more Days AFTER Expiration Date"
+                                                                              ng-click="vm.helpClickCORP()">
+                                                                            <span>
+                                                                            </span>
+                                                                        </span>-->
+                                </p>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 center  no-pad bbl">
+                                <p>
+                                    <span> </span>
+                                </p>
+                            </div>
+                            <div class="col-sm-1 col-xs-12 center">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section ng-show="(vm.businessList[0].BblServiceList | filter:vm.mybblfilter).length==0" id="noResultsKey">
+                    <div class="container">
+                        <div class="innerRow">
+                            <div class="col-md-4 col-xs-12 col-sm-12">
+                                <p class="text-danger text_align error_text">No Results found</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="container">
+                    <div class="col-sm-6 search_page no-pad">
+                        <label>Show Records per page</label>
+                        <select id="myselectbbl" ng-model="vm.confirmed" ng-options="contentNum.num for contentNum in vm.contentSection" ng-change="vm.selectOption()"></select>
+                    </div>
+                    <nav class="pull-right">
+                        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"
+                                                 template-url="partials/dirPagination.tpl.html"></dir-pagination-controls>
+                    </nav>
+                </div>
+                <!--<div class="col-xs-12 line" style="margin: 15px 0;"></div>-->
+                <!--<div class="col-md-offset-3">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                            <button id="submit_associate" class="btn btn-default"
+                                    ng-click="vm.navToAssociateBusinessLicense()">
+                                <span class="glyphicon glyphicon-plus"></span> Renew An Existing License
+                            </button>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                            <button id="submit_applynewlicense" class="btn btn-default" ng-click="vm.navToApplyNewLicense()">
+                                <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                            </button>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="delete_message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="vm.cancel_delete()" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="messagePopup">
+                        <p class="text-danger text-center" id="modelMessage"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-dismiss="modal" ng-click="vm.delete_record()" id="delete_record">Yes</button>
+                    <button type="button" class="close-button" data-dismiss="modal" ng-click="vm.cancel_delete()" id="cancel_delete">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

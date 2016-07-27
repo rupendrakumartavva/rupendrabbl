@@ -1,0 +1,261 @@
+<div ng-include src="'partials/header.html'"></div>
+
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Pre-Application Questions</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Pre-Application Questions</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong> The Pre-Application Questions collect the user's information to determine the requirements for their Business License before they start the application.</strong>
+                    </p><br />
+                    <p class="terms_text srch_filter">
+                        <strong>*NOTE*</strong> Pre-Application questions about license categories, business location and structure will vary based upon the type of Basic Business License being applied for and the answers the user provides. You will only be asked about the license categories and questions that pertain to your license application.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        <b>Glossary of Pre-Application Terms and Features</b>
+                    </p>
+                    <ul class="terms_text srch_filter" style="padding-left: 100px;">
+                        <li>
+                            <strong>Primary Business Activity:</strong> Select one option. Click on the <a style="text-decoration: underline; font-weight: 400; color: #337ab7;" class="cursorDefault pointer_events_none">(Look Up Business Activities and License Categories Here) </a>  to see the Primary License Categories associated with the Primary Business Activities.
+                        </li>
+                        <li>
+                            <strong> Primary Business License Category:</strong> Select one option.
+                        </li>
+                        <li>
+                            <strong>Secondary Business License Categories:</strong> If applicable, select all options that apply.
+                            <ul class="howtotext">
+                                <li>
+                                    If no secondary categories apply, select the
+                                    <button class="cursorDefault pointer_events_none">
+                                        None
+                                    </button>
+                                    button to proceed to the next step.
+                                </li>
+                                <li>
+                                    If you select one or more secondary categories, select the
+                                    <button class="cursorDefault pointer_events_none">
+                                        Done
+                                    </button>
+                                    button to proceed to the next step.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong> General Business Sub Categories:</strong> If applicable, select one option.
+                        </li>
+                        <li>
+                            <strong> Corporate Registration:</strong> State if the business you are applying for already has registered with the DCRA's Corporations Division
+                        </li>
+                        <li>
+                            <strong> Business Structure:</strong> Select one option from the pull down menu.
+                        </li>
+                        <li>
+                            <strong>Trade Name:</strong> If applicable, enter your business' Trade Name (also referred to as a "Doing Business As (DBA)" Name or Alias in other jurisdictions).
+                        </li>
+                        <li>
+                            <strong>Quantity:</strong> If applicable, enter the quantity associated with your business (e.g. Hotel Rooms, Restaurant Seats, Gasoline Pumps)
+                        </li>
+                        <li>
+                            <strong>Duration of License:</strong> Select if you want your license to last two or four years before expiring. Please note the expiration date on the supporting documents needed to qualify for a basic business license.
+                        </li>
+                        <li>
+                            <strong>Location:</strong> Select whether the business that you are applying for is Located in the District of Columbia.
+                        </li>
+                        <li>
+                            <strong>Home Based Business:</strong> If applicable, designate if your business will be located in your home or not.
+                        </li>
+                        <li>
+                            <strong>Home Occupancy Permit (HOP):</strong> If your business is Home Based, designate if you already have an HOP or not.
+                        </li>
+                        <li> <strong>Tax Identification Number:</strong> Select whether the tax ID associated with your business is an FEIN or an SSN.</li>
+                    </ul>
+                    <p class="terms_text srch_filter">
+                        To revise information on a previous page select the <button class="cursorDefault pointer_events_none">
+                            Back
+                        </button> button.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        To continue to the next page select the <button class="cursorDefault pointer_events_none btnnextColor">
+                            Next<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button> button.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        To exit the application but NOT save any information, select the <button class="cursorDefault pointer_events_none">
+                            Exit
+                        </button> button.
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12 startwizard" tabindex="0">
+                <p>
+                    Please select your business activity, license categories, and provide answers to all Pre-Application Questions.  Based upon your responses, the system will generate a checklist of the information and documents you will need to complete and submit your application.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="timeLineWrapper clearfix">
+            <div class="progress_steps">
+                <div class="timeLine"></div>
+                <a class="active" href="">
+                    <div class="timeline_list step1">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 1</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Pre-Application Questions</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step2">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 2</p>
+                            <p class="step_no">Application Checklist</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step3">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 3</p>
+                            <p class="step_no">Information Verification</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step4">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 4</p>
+                            <p class="step_no">Payment</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step5">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 5</p>
+                            <p class="step_no">Receipt and Next Steps</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection" style="display: none;">
+    <div data-ng-controller="PreAppQuestionsController as vm">
+        <div class=" register_form">
+            <div class="quetion_wrapper">
+                <div class="container">
+                    <div class="error_msg text-center" ng-show="vm.NothingSelected" tabindex="-1">Select ONE Primary Business License Category.</div>
+                    <div class="single_checkbox_set">
+                        <div class="clearfix">
+                            <div class="col-md-12 col-sm-12 col-xs-12 question_title">
+                                <h2 tabindex="0">Select ONE Primary Business License Category </h2>
+                            </div>
+                            <div class="col-md-11 col-md-offset-1 col-sm-12 col-xs-12">
+                                <div class="col-md-6 col-sm-12 col-xs-12 form-type-checkbox clearfix" data-ng-repeat="category in vm.categories">
+                                    <div class="form-type-radio  form-item form-group">
+                                        <div id="edit-questions-23488" class="form-radios form-radio-label">
+                                            <div class="form-type-radio form-radio-align pre_appscreenquestion form-item radio" tabindex="0" style="height:11px;">
+                                                <div class="radiobtn" style="height:16px;">
+                                                    <span id="{{category.PrimaryID}}">
+                                                        <input type="radio" id="c{{category.PrimaryID}}"
+                                                               name="{{category.PrimaryID}}"
+                                                               ng-click="vm.toggleRadio(category.PrimaryID)"
+                                                               value="{{category}}" class="form-checkbox" style="opacity: 0;">
+                                                    </span>
+                                                </div>
+                                                <label tabindex="-1">{{category.Description}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- start -->
+        <div class="container">
+            <div class="row step_change_buttons ">
+                <div class="col-md-6 col-lg-6 col-xs-6">
+                    <button class="btn btn-default perv_button" ng-click="vm.navToPrevious_Step()">
+                        <span class="glyphicon glyphicon-chevron-left"></span>Back
+                    </button>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xs-6">
+                    <button class="btn btn-default pull-right next_button btn form-submit" id="edit-submit-button" name="op" value="Next" type="submit" ng-click="vm.navToPreAppQues_Step3()">Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade preapp_modal" id="preappque" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class='error_message'></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="vm.continueToNavigate()">Yes</button>
+                        <button type="button" class="close-button" ng-click="vm.continueToApply()">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div ng-include src="'partials/footer.html'"></div>

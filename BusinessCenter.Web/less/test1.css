@@ -1,0 +1,9 @@
+.mybbltest {
+  font-size: x-large;
+}
+.mybbltest .p {
+  font-family: "Open Sans", sans-serif;
+}
+.mybbltest .p .spn {
+  color: #003f5e;
+}

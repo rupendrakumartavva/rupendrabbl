@@ -1,0 +1,442 @@
+﻿
+
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+@using System.Web.Mvc.Html
+@using System;
+@using System.Reflection.Emit
+
+@*@model IEnumerable<businesscenter.data.models.searchdata>*@
+@model BusinessCenter.Api.Models.SearchDataMvcViewModel
+@{
+    Layout = null;
+}
+
+
+<html>
+<head>
+    <title>title</title>
+
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/style.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/temp.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bbl.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/flexslider.css" />
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/fileinput.css">
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/customstyle.css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .ir {
+            display: table;
+            width: 100%;
+        }
+
+           .search_result section>.container .ir > div {
+                display: table-cell !important;
+                float: none;
+                vertical-align: middle;
+            }
+
+           /*.search_result section>.container .ir>div {
+               display:block !important;margin-bottom:15px;
+
+           }*/
+
+            /*.dt {
+                color:#6e6b6b;font-size:12px;font-weight:400;line-height:25px;margin:20px 0 0;display:none;padding:20px 0 0;
+            }
+            .search_result .dt h4{text-align:right;padding-right:10px;margin:0px}
+            .search_result .dt .topBorder{border-top:1px solid  #e2e2e2;margin:0 4% 20px}
+            .search_result .dt p{line-height:15px}*/
+
+                .dt {
+            color: #6e6b6b;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 25px;
+            margin: 20px 0 0;
+            display: none;
+            padding: 20px 0 0;
+        }
+
+        .search_result .dt h4 {
+            text-align: right;
+            padding-right: 10px;
+            margin: 0px;
+        }
+
+        .search_result .dt .topBorder {
+            border-top: 1px solid #e2e2e2;
+            margin: 0 4% 20px;
+        }
+
+        .search_result .dt p {
+            line-height: 15px;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    @*<div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2>Quick Search Results</h2>
+                <p>
+                    <span tabindex="0" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        How To Use This Page<span class="glyphicon glyphicon-chevron-down" id="toggleicon"></span>
+                    </span>
+                </p>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    @if (Model.UserServiceModel.CompanyName != "")
+                    {
+                        <label>
+                            <span class="data_name">Business Name :</span> <span> @Model.SearchData.CompanyName</span>
+                        </label>
+                    }
+
+                    @if (Model.UserServiceModel.LicenseName != "")
+                    {
+                        <label>
+                            <span class="data_name">License Number : </span> <span> @Model.SearchData.LicenseName</span>
+                        </label>
+                    }
+
+                    @if (Model.UserServiceModel.FirstName != "")
+                    {
+                        <label>
+                            <span class="data_name">First Name : </span> <span> @Model.SearchData.FirstName</span>
+                        </label>
+                    }
+                    @if (Model.UserServiceModel.LastName != "")
+                    {
+                        <label>
+                            <span class="data_name">Last Name : </span> <span> @Model.SearchData.LastName</span>
+                        </label>
+                    }
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    @if (Model.SearchCritiria.Length != 0)
+                    {
+                        <span class="data_name">Search Criteria :</span>
+                        foreach (var searchtype in Model.SearchCritiria)
+                        {
+                            if (searchtype == "All")
+                            {
+                                <label id="exceptall"> @searchtype </label>
+                                break;
+                            }
+                            else
+                            {
+                                <div>
+                                    <label id="exceptall"> @searchtype</label>
+                                </div>
+                            }
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+    <div class="page_title scr_title" id="x">
+        <div class="container">
+            <div class="row">
+                <h2>My Saved Search Results</h2>
+                <p><span aria-expanded="false" onclick="toggleclick('toggleicon')" aria-controls="collapseExample" class="cursor_type" tabindex="0" onkeypress="testKey(event)">How To Use This Page<span class="glyphicon glyphicon-chevron-down" id="toggleicon"></span></span></p>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dvMainsection">
+        <div class="search_tag">
+            <div class="container">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+                    <p>
+                        <span>@Model.LicenseCounts.RecordCount</span> Records displayed
+                    </p>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  no-pad-right dash-buttn ">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12   no-pad-right">
+                        <a class="btn btn-default">Search again</a>
+                    </div>
+
+                </div>
+
+            </div>
+            @if (@Model.LicenseCounts.ExcededCount == 1)
+            {
+                <div class="container">
+                    <p style="font-size:14px;">
+                        You exceeded the maximum of 100 search results per category for : [<span style="color: #124f87;font-size:14px;">@Model.LicenseCounts.ExcededRegulatoryEntities.Substring(1)</span>].
+                        Please narrow your search.
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="search_result">
+            <div class="container srch_filter">
+                @*<div class="col-md-7 col-sm-11 col-xs-12 center_div error_text" id="KeyWord" ng-show="filterByTypeKeyword.length > 100">
+                        Your keyword search can be no longer than 100 characters maximum.
+                    </div>*@
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad">
+                    <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-pad">Filter:</label>
+                    <div class="btn_wrapper">
+
+                        <button id="BBL"> BBL <span>(@Model.LicenseCounts.BBLCount)</span></button>
+
+
+                        <button id="OPLA"> OPLA <span>(@Model.LicenseCounts.OPLACount)</span></button>
+                        <button id="ABRA"> ABRA <span>(@Model.LicenseCounts.ABRACount)</span></button>
+                        <button id="CBE"> CBE <span>(@Model.LicenseCounts.CBECount)</span></button>
+                        <button id="CORP"> CORP <span>(@Model.LicenseCounts.CORPCount)</span></button>
+                    </div>
+                    <input type="text" spellcheck="false" placeholder="Enter Keyword" id="keywordfield" value="@Model.Keyword">
+                    <button ng-click="filterByType('')">Clear Filter</button>
+                    <span class="pull-right cursor_type" id="top" ng-click="scrollPage('bottom')"><i class="glyphicon glyphicon-arrow-down" data-toggle="tooltip" data-placement="right" title="Bottom"></i></span>
+                </div>
+            </div>
+
+
+            @if (Model.SearchResult.Count == 0)
+            {
+                <section>
+                    <div class="container">
+                        <div class="innerRow">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <p class="text-danger error_text text_align">No Results Found</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+            else
+            {
+                <div id="divData">
+                    @foreach (var item in Model.SearchResult)
+                    {
+                        <section>
+                            <div class=" container">
+
+
+                                <div class="ir">
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                        <img src="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/images/arrow-bottom.png">
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0;">
+                                        <p>
+                                            <span>
+                                                @item.LeftNameTop
+                                            </span>
+                                            @item.LeftNameResultTop
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @item.LeftNameMiddle
+                                            </span>
+                                            @item.LeftNameResultMiddle
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @item.LeftNameBottom
+                                            </span>
+                                            @item.LeftNameResultBottom
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @item.LeftNameMiddleLabel1
+                                            </span>
+                                            @item.LeftNameMiddle1Text
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0;">
+                                        <p>
+                                            <span>
+                                                @item.MiddleNameTop
+                                            </span>
+                                        </p>
+                                        <div>
+                                            @item.MiddleNameResultTop
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0;">
+                                        <p>
+                                            <span>
+                                                @item.RightNameTop
+                                            </span>
+                                            @item.RightNameResultTop
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @item.RightNameMiddle1
+                                            </span>
+                                            @item.RightNameResultMiddle1
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @item.RightNameMiddle2
+                                            </span>
+                                            <span>
+                                                @if ((item.RightNameResultMiddle2 == "REVOKED") || (item.RightNameResultMiddle2 == "EXPIRED") || (item.RightNameResultMiddle2 == "Expired"))
+                                                {
+                                                    <span ng-switch-when="REVOKED" class="error_text status-size">
+
+                                                        @item.RightNameResultMiddle2
+                                                    </span>
+                                                }
+                                                @*<span ng-switch-when="EXPIRED" class="error_text status-size">
+                                                        {{searchItem.RightNameResultMiddle2}}
+                                                    </span>*@
+                                                else
+                                                {
+                                                    <span ng-switch-default class="active">
+                                                        @item.RightNameResultMiddle2
+
+                                                    </span>
+                                                }
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span ng-switch="searchItem.Source">
+                                                @item.RightNameBottom
+                                            </span>
+                                            @item.RightNameResultBottom
+
+                                        </p>
+                                        <p>
+                                            <span>@*Last Retrieved On :*@  @item.LastUpdateDateName </span>
+                                            @item.LastUpdateDate
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:0;">
+                                        <button disabled class="bbl src_full_name">@*{{searchItem.SourceFullName}}*@ @item.SourceFullName</button>
+                                        <!--<button class="bbl">{{searchItem.Source}}</button>-->
+                                    </div>
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:0;text-align:center">
+                                        @*@if (item.WishList == true)
+                                        {*@
+                                        <span tabindex="0" class="cursor_type glyphicon glyphicon-heart save_ico">
+                                            <p class="heart_text1">
+                                                Remove
+                                            </p>
+                                        </span>
+                                        @*}
+            else
+            {
+                <span tabindex="0" class="cursor_type glyphicon glyphicon-heart-empty save_ico">
+                    <p class="heart_text1">
+                        Save
+                    </p>
+                </span>
+
+            }*@
+
+                                    </div>
+                                </div>
+
+
+                                <div class="dt" style="display:block;padding:0;">
+                                    <div class="topBorder"></div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4 ng-switch="searchItem.Source">
+                                                @item.Expantion1
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @item.ExpantionResult1
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @item.Expantion2
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @item.ExpantionResult2
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @item.Expantion3
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @item.ExpantionResult3
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @item.Expantion4
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @item.ExpantionResult4
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @item.Expantion5
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @item.ExpantionResult5
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </section>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

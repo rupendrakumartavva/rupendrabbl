@@ -1,0 +1,41 @@
+﻿@model BusinessCenter.Admin.Models.ReSendMail
+@{
+    ViewBag.Title = "forgotpasswordstaus";
+}
+<div class="container headerBreadcrumb">
+    <a href="javascript:void(0)">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    @Html.ActionLink("DC Business Center", "Login", "Account")
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Login</span>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Forgot Password</span>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Password Status</span>
+</div>
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0" id="page_heading">Verify your Email to reset your password</h2>
+        </div>
+    </div>
+</div>
+<div class="register_form">
+    <div class="container">
+        <div class="verify-mail">
+            <h3 id="password_status">You are almost done. A link has been sent to your registered email to reset your passowrd.</h3>
+            <p class="resend-email">
+                <div id="resend_Email_text"> Can't find the email?</div>
+                @Ajax.ActionLink("Resend verification email", "ResendEmail", "Account", new { userid = Model.UserId, code = Model.Code, email = Model.EmailAddress, fullname = Model.FullName }, null,
+                 new AjaxOptions
+                 {
+                     UpdateTargetId = "page_heading", // <-- DOM element ID to update
+                     InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                     HttpMethod = "GET" // <-- HTTP method
+                 })
+        </div>
+    </div>
+</div>
+
+
+

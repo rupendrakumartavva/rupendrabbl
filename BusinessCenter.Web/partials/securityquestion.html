@@ -1,0 +1,183 @@
+<!--<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="javascript:void(0)" ng-click="navToHome()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" ng-click="navToLogin()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" ng-click="navToLogin()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Login</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" ng-click="navToforgotusername()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Forgot Username</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Security Questions</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Security Questions</h2>
+            <p>How To Use This Page <img src="images/titlearrow.png"></p>
+        </div>
+    </div>
+</div>
+<form>
+<div class="register_form col-xs-12">
+    <div class="form_wrapper" id="divUserQuestion">
+        <div class="security-question">
+            <p class="forgot">Please answer all three (3) of the following security questions to retrieve your password. You answered these questions during your registration process.</p>
+            <div class="clearfix">
+                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="form-group">
+                        <p ng-model=" forgotpass.SecurityQuestion1"> {{SecurityQuestion1}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Answer" auto-focus style="text-align:left" name="subject1" id="ans1" ng-model="forgotpass.securityanswer1">
+                        <div class="error-container" ng-show="contact_us.subject1.$dirty && contact_us.subject1.$invalid">
+                            <small class="error-message" ng-show="contact_us.subject1.$error.required">
+                                Security answer is required
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="form-group">
+                        <p ng-model=" forgotpass.SecurityQuestion2">{{SecurityQuestion2}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Answer" name="subject2" id="ans2" style="text-align:left" ng-model="forgotpass.securityanswer2">
+                        <div class="error-container" ng-show="contact_us.subject2.$dirty && contact_us.subject2.$invalid">
+                            <small class="error-message" ng-show="contact_us.subject2.$error.required">
+                                Security answer is required
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="form-group">
+                        <p ng-model=" forgotpass.SecurityQuestion3"> {{SecurityQuestion3}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Answer" name="subject3" id="ans3" style="text-align:left" ng-model="forgotpass.securityanswer3">
+                        <div class="error-container" ng-show="contact_us.subject3.$dirty && contact_us.subject3.$invalid">
+                            <small class="error-message" ng-show="contact_us.subject3.$error.required">
+                                Security answer is required
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="center_div" id="divbutton2">
+        <button id="submit_contact" ng-click="forgotPassword()" class="btn btn-default login">SUBMIT</button>
+        <p>Don't have an account? <a ng-click="navToRegister()" href="javascript:void(0)">Get Started</a>.</p>
+    </div>
+</div>
+    </form>
+<div ng-include src="'partials/footer.html'"></div>-->
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb" id="headingPassword1">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/login" ng-click="navToLogin()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Login</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/forgotpassword" ng-click="navToforgotpassword()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Forgot Password</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Security Questions</span>
+</div>
+<div class="page_title scr_title" id="title1">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Security Questions</h2>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... your saved data Loading <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div class="login_form forgot_password">
+        <div class="container">
+            <div class="form_wrapper" id="form1">
+                <form role="form" method="post" id="contact_us" name="contact_us">
+                    <div class="register_form col-xs-12">
+                        <div class="form_wrapper" id="divUserQuestion">
+                            <div class="security-question">
+                                <p class="forgot">Please answer all three (3) of the following security questions to retrieve your password. You answered these questions during your registration process.</p>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <p ng-model=" forgotpass.SecurityQuestion1"> {{SecurityQuestion1}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control text_left" placeholder="Answer" auto-focus name="subject1" id="ans1" ng-model="forgotpass.securityanswer1">
+                                            <div class="error-container" ng-show="contact_us.subject1.$dirty && contact_us.subject1.$invalid">
+                                                <small class="error-message" ng-show="contact_us.subject1.$error.required">
+                                                    Security answer is required
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <p ng-model=" forgotpass.SecurityQuestion2">{{SecurityQuestion2}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control text_left" placeholder="Answer" name="subject2" id="ans2" ng-model="forgotpass.securityanswer2">
+                                            <div class="error-container" ng-show="contact_us.subject2.$dirty && contact_us.subject2.$invalid">
+                                                <small class="error-message" ng-show="contact_us.subject2.$error.required">
+                                                    Security answer is required
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <p ng-model=" forgotpass.SecurityQuestion3"> {{SecurityQuestion3}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control text_left" placeholder="Answer" name="subject3" id="ans3" ng-model="forgotpass.securityanswer3">
+                                            <div class="error-container" ng-show="contact_us.subject3.$dirty && contact_us.subject3.$invalid">
+                                                <small class="error-message" ng-show="contact_us.subject3.$error.required">
+                                                    Security answer is required
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center_div" id="divbutton2">
+                            <button id="submit_contact" ng-click="forgotPassword()" class="btn btn-default login">SUBMIT</button>
+                            <p>Don't have an account? <a ng-click="navToRegister()" href="javascript:void(0)">Get Started</a>.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--</div>-->
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

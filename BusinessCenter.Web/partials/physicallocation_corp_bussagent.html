@@ -1,0 +1,211 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Business Information</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Business Information</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to validate your Registered Agent information. </strong>
+                    </p>
+                    <p>
+                        You must identify if the display of Registered Agent information correctly or incorrectly corresponds to your current Corporate Registration by selecting the appropriate button <img src="../images/Correct_Incorrect.png" style="height: 28px; width: 158px;" /> .
+                    </p>
+
+                    <p class="terms_text srch_filter">
+                        <span class="num_color"> If the information is correct </span>a message will appear on your screen <img src="../images/ThankQ.png" style="height: 19px; width: 127px;" />  and you will be able to select the  <button class="btn btn-default btnnextColor btn-next cursorDefault pointer_events_none" style="color: #ffffff;">
+                            Next
+                        </button> button to continue to the next part of the application.
+                    </p>
+                    <p class="terms_text ">
+                        <span class="num_color"> If the information is incorrect  </span>you must work the Corporations Division within the Department of Consumer and Regulatory Affairs to make all corrections before returning to repeat this step in the BBL application process.
+                    </p>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="PhysicalLocationCorpBussAgentConroller as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Corporate Registration</div>
+                    <div class="panel-body">
+                        <div class="page-desc-content">
+                            <p class="panel-body-text">
+                                <!--Given your previous responses, your business Is already registered with the Corporations Division. Please review and confirm the accuracy of your Registered Agent below.-->
+                                Please review and confirm the accuracy of your Registered Agent information below.
+                            </p>
+                            <p class="panel-body-text">
+                                Read more about Registered Agent requirements on the Corporations Division website: <a href="https://corp.dcra.dc.gov/Account.aspx/LogOn?ReturnUrl=%2fHome.aspx" target="_blank">https://corp.dcra.dc.gov/Account.aspx/LogOn?ReturnUrl=%2fHome.aspx</a>
+                            </p>
+                        </div>
+                        <div class="margin-top-corp">
+                            <div id="error_msg" class="error_text text-center" tabindex="-1"></div>
+                            <div class="col-sm-6 col-xl-6 col-xs-12 col-md-offset-3">
+                                <div class="panel panel-default collapse_panels" style="border-radius: 10px;">
+                                    <div class="panel-heading" style="padding: 2% 1%; background-color: #E4E2E2;">
+                                        <p style="text-align: center;">Registered Agent Address</p>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>
+                                            <span>First Name: </span>{{vm.Businessdata[0].FirstName}}
+                                        </p>
+                                        <p>
+                                            <span>Middle Name: </span>{{vm.Businessdata[0].MiddleName}}
+                                        </p>
+                                        <p>
+                                            <span>Last Name: </span>{{vm.Businessdata[0].LastName}}
+                                        </p>
+
+                                        <p>
+                                            <span>Organization Name: </span>{{vm.Businessdata[0].BusinessName}}
+                                        </p>
+
+                                        <p>
+                                            <span> Street Address: </span> {{vm.Businessdata[0].BusinessAddressLine1}}
+                                        </p>
+                                        <!--<p>
+                                            <span> Street #: </span>{{vm.Businessdata[0].AddressNumber}}
+                                        </p>-->
+                                        <p>
+                                            <span> Address Line 2: </span>{{vm.Businessdata[0].AddressNumber}}
+                                        </p>
+                                        <!--<p>
+                                            <span> Street Type: </span> {{vm.Businessdata[0].BusinessAddressLine3}}
+                                        </p>
+                                        <p>
+                                            <span> Quadrant: </span> {{vm.Businessdata[0].Quardrant}}
+                                        </p>
+                                        <p>
+                                            <span> Unit: </span> {{vm.Businessdata[0].Unit}}
+                                        </p>-->
+                                        <p>
+                                            <span>City: </span>{{vm.Businessdata[0].BusinessCity}}
+                                        </p>
+
+                                        <p>
+                                            <span>State: </span>{{vm.Businessdata[0].BusinessState}}
+                                        </p>
+                                        <p>
+                                            <span>Country: </span>{{vm.Businessdata[0].BusinessCountry}}
+                                        </p>
+                                        <p>
+                                            <span>Zip Code: </span>{{vm.Businessdata[0].ZipCode}}
+                                        </p>
+
+                                        <p>
+                                            <span>TelePhone: </span>{{vm.Businessdata[0].Telphone}}
+                                        </p>
+
+                                        <p>
+                                            <span>Email: </span>{{vm.Businessdata[0].Email}}
+                                        </p>
+
+                                        <p>
+                                            Does this information match your Corporate Registration?.
+                                        </p>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="form-type-radio  form-item form-group">
+                                            <div id="comapny_hq_addr" class="form-radios ">
+                                                <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+                                                    <div class="radiobtn" id="comapny_hq_addr_radiobtn">
+                                                        <span ng-class="{true:'checked'}[vm.busiaddresscorrect]">
+                                                            <input type="radio" id="business_address_correct" name="comapny_hq_addr_verify" class="form-radio" style="opacity: 0;" data-ng-click="vm.togglebusiness('business_address_correct')">
+                                                        </span>
+                                                    </div>
+                                                    <label for="comapny_hq_addr_radio_correct" tabindex="-1">Correct </label>
+                                                </div>
+                                                <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+                                                    <div class="radiobtn" id="comapny_hq_addr_radiobtn_correct">
+                                                        <span ng-class="{false:'checked'}[vm.busiaddresscorrect]">
+                                                            <input type="radio" id="business_address_incorrect" name="comapny_hq_addr_verify" class="form-radio" style="opacity: 0;" data-ng-click="vm.togglebusiness('business_address_incorrect')">
+                                                        </span>
+                                                    </div>
+                                                    <label for="comapny_hq_addr_radio_incorrect" tabindex="-1">Incorrect </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-11 col-xl-11 col-xs-12 col-md-offset-1" ng-show="vm.busiaddresscorrect==false" style="color: red">
+                            To correct information on your Corporate Registration, you must contact the Corporations Division prior to submitting your Business License application. Please select [Return to Checklist] and visit the DCRA Corporations Division at 1100 4th St., SW or call 202-442-4400.
+                        </div>
+
+                        <div class="col-sm-11 col-xl-11 col-xs-12 col-md-offset-1 text-center color-success-message" ng-show="vm.busiaddresscorrect==true">
+                            Thank you. Please select Next.
+                        </div>
+                        <div class="pre-checkquestion form_button_footer pre-checkquestion-question col-md-12 col-xs-12" tabindex="-1">
+                            <button id="btn_exit_no_back" class="btn btn-default" data-ng-click="vm.navToBack()">Back</button>
+                            <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl')">Exit</button>
+
+                            <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist')">
+                                Return to Checklist
+                            </button>
+                            <button id="btn_revise" class="btn btn-default  btnnextColor btn-next" ng-class="{true:'disablecolor'}[vm.busiaddresscorrect==false]" data-ng-click="vm.navToMailingAddress()" ng-disabled="vm.busiaddresscorrect==false">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="agentPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-ng-click="vm.dontNavigate()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class='error_message'></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="vm.navigateAnyway()">Ok</button>
+                        <button type="button" class="close-button" ng-click="vm.dontNavigate()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

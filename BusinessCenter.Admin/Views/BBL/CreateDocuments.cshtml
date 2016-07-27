@@ -1,0 +1,462 @@
+﻿@model BusinessCenter.Admin.Models.DocumentsModel
+@{
+    ViewBag.Title = "DCRA - Primary Category Creation";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("BBL", "ApplicationReview", "BBL")*@
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Metadata</span>
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Activity", "BusinessActivities", "BBL")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = Request.QueryString["activityId"], }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @*@Html.ActionLink("Primary Category", "PrimaryCategories", "BBL", new { activityId = Request.QueryString["activityId"] },activityId=1850DF4F-D97D-471C-B26F-F44E04BA288B null)*@
+
+        @Html.ActionLink("Document", "Documents", "BBL", new { categoryId = Request.QueryString["categoryId"], type = Request.QueryString["type"], activityId = Request.QueryString["activityId"] }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Create Document</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Create Document</h2>
+            </div>
+
+        </div>
+    </div>
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper reg-err-placement">
+
+                        <h2 id="primary-status" style="color: #339900; height:30px"> <span id="statusmsg">@ViewBag.Status</span></h2>
+                        <form method="post" id="Document-add">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+                            @Html.HiddenFor(model => model.CategoryName)
+                            @Html.HiddenFor(model => model.PrimaryID)
+                            @Html.HiddenFor(model => model.ActivityID)
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        Primary Category Name:
+                                        <strong>
+                                            @Html.DisplayFor(model => model.CategoryName)
+                                        </strong>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Agency ")
+
+                                    </div>
+
+
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Division ")
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Agency, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "Agency",
+                                            name = "Agency",
+                                            placeholder = "",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''"
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.Agency, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Div, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "Division",
+                                            name = "Division",
+                                            placeholder = "",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''"
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.Div, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Agency Full Name ")
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Agency_FullName, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            id = "Agencyfullname",
+                                            name = "Agencyfullname",
+                                            placeholder = "",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''"
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.Agency_FullName, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Division Full Name ")
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.EditorFor(model => model.DivisionFullName, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "",
+                                            name = "DivisionFullName",
+                                            id = "DivisionFullName",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''"
+
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.DivisionFullName, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Short Document Name ")
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.EditorFor(model => model.ShortDocName, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "",
+                                            name = "ShortDocName",
+                                            id = "ShortDocName",
+                                            onfocus = "this.placeholder = ''",
+                                            onblur = "this.placeholder = ''"
+
+                                        }
+                                    })
+                                        @Html.ValidationMessageFor(model => model.ShortDocName, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Supporting Documents ")
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.SupportingDocuments, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "SupportingDocuments",
+                                       name = "SupportingDocuments",
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''"
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.SupportingDocuments, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Description ")
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.Description, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "Description",
+                                       name = "Description",
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''"
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "error-message error", id = "errormsg" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    <span style="padding-right:20px;">Initial License</span>
+                                    @Html.RadioButtonFor(model => model.InitialLicense, "Y", new { id = "rbInitialyes" })
+                                    <span style="padding-left:1px"></span>
+                                    @Html.Label("Yes")
+
+                                    <span style="padding-left:12px"></span>
+                                    @Html.RadioButtonFor(model => model.InitialLicense, "N", new { id = "rbInitialyes" })
+                                    <span style="padding-left:1px"></span>
+                                    @Html.Label("No")
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.InitialLicense, "", new { @class = "error-message error", id = "errormsg" })
+
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    <span style="padding-right:20px;">Post Licensure</span>
+
+                                    @Html.RadioButtonFor(model => model.PostLicensure, "Y", new { id = "rbpostlicyes" })
+                                    <span style="padding-left:1px"></span>
+                                    @Html.Label("Yes")
+
+                                    <span style="padding-left:12px"></span>
+                                    @Html.RadioButtonFor(model => model.PostLicensure, "N", new { id = "rbpostlicyes" })
+                                    <span style="padding-left:1px"></span>
+                                    @Html.Label("No")
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.PostLicensure, "", new { @class = "error-message error", id = "errormsg" })
+
+                                </div>
+
+                            </div>
+                           
+                            <br />
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    <span style="padding-right: 60px;">Renewal</span>
+
+                                    @Html.RadioButtonFor(model => model.Renewal, "Y", new { id = "rbrenewalyes" })
+                                    <span style="padding-left: 1px"></span>
+                                    @Html.Label("Yes")
+
+                                    <span style="padding-left: 12px"></span>
+                                    @Html.RadioButtonFor(model => model.Renewal, "N", new { id = "rbrenewalyes" })
+                                    <span style="padding-left: 1px"></span>
+                                    @Html.Label("No")
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.Renewal, "", new { @class = "error-message error", id = "errormsg" })
+
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    <span style="padding-right: 2px;">Allow for Primary License</span>
+
+                                    @Html.RadioButtonFor(model => model.IsPrimaryCategoryDoc, true, new { id = "rbIsPrimaryCategoryDocYes" })
+                                    <span style="padding-left:1px"></span>
+                                    @Html.Label("Yes")
+
+                                    <span style="padding-left:12px"></span>
+                                    @Html.RadioButtonFor(model => model.IsPrimaryCategoryDoc, false, new { id = "rbIsPrimaryCategoryDocYes" })
+                                    <span style="padding-left:1px"></span>
+                                    @Html.Label("No")
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.IsPrimaryCategoryDoc, "", new { @class = "error-message error", id = "errormsg" })
+
+                                </div>
+                            </div>
+                         
+                            <br />
+                            <div class="clearfix">
+                                <div class="col-md-7 col-sm-12 col-xs-12 text-left">
+                                    <span style="padding-right: 2px;">Allow for Secondary License</span>
+
+                                    @Html.RadioButtonFor(model => model.IsSecondaryLicenseDoc, true, new { id = "rbIsSecondaryLicenseDocYes" })
+                                    <span style="padding-left: 1px"></span>
+                                    @Html.Label("Yes")
+
+                                    <span style="padding-left: 12px"></span>
+                                    @Html.RadioButtonFor(model => model.IsSecondaryLicenseDoc, false, new { id = "rbIsSecondaryLicenseDocYes" })
+                                    <span style="padding-left: 1px"></span>
+                                    @Html.Label("No")
+
+
+                                </div>
+
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-left">
+                                    @Html.ValidationMessageFor(model => model.IsSecondaryLicenseDoc, "", new { @class = "error-message error", id = "errormsg" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="pre-checkquestion col-md-12 col-xs-12 ">
+                                <button type="submit" id="btnCreate" class="btn btn-default">Add Document</button>
+
+                                <button type="reset" id="btnClear" class="btn btn-default">Clear</button>
+
+                            </div>
+                            <div class="row">
+                                <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                                    <button type="button" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Document(<span style="text-transform:lowercase;margin-left:-5px;">s</span>)</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+@if (ViewBag.IsDocumentCreate == "true")
+{
+    <script>
+        $(function () {
+            $('.homemodal-body h3.error_message').empty().append('Document Created Successfully');
+            $("#registermodal-container").modal('show');
+        });
+        $(".yes-btn").on("click", function () {
+            $('#registermodal-container').modal('hide');
+            var url1 = "/BBL/CreateDocuments?categoryId=" + $("#PrimaryID").val() + "&" + "type=primary&activityId=" + $("#ActivityID").val();
+            window.location.href = url1;
+
+
+        });
+    </script>
+    @*<style>
+            #Description {
+                text-align: left;
+            }
+        </style>*@                                                                }
+<style>
+    #btnBack {
+        text-transform: inherit;
+    }
+
+    #Description {
+        margin-bottom: 2px !important;
+        text-align: left;
+    }
+</style>
+
+<script>
+    $(":input").on("focus", function () {
+        statusmsg.innerHTML = "";
+    });
+    $(":input").on("blur", function () {
+        $(this.form).validate().element(this);
+    });
+    $("#btnClear").click(function (e) {
+        e.preventDefault();
+        $("#Document-add").trigger('reset');
+        statusmsg.innerHTML = "";
+        $('.error-message').each(function () {
+            $(this).empty();
+        });
+    });
+
+    $("#btnCreate").click(function () {
+        $(this.form).validate().element(this);
+    });
+
+    $("#btnBack").click(function () {
+
+        var url = window.location.href;
+        var id = url.substring(url.lastIndexOf('=') + 1);
+        var hash = url.substring(url.indexOf('?') + 1);
+        var strarr = hash.split('&');
+        var url1 = "/BBL/Documents?" + strarr[0] + "&" + strarr[1] + "&" + strarr[2];
+        window.location.href = url1;
+
+    });
+
+</script>
+

@@ -1,0 +1,64 @@
+﻿@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.DashBoardViewModel
+<div>
+    <table class="table table-striped table-bordered  table-responsive dataTable smartgrid" id="rolecountDetails" role="grid">
+        <thead>
+            <tr>
+                <th class="text-center">Role</th>
+                <th class="text-center">Count</th>
+                <th class="text-center">Last Login Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.RoleDetails.Count == 0)
+            {
+                <tr>
+                    <td colspan="3">No record(s) found</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model.RoleDetails)
+                {
+                    <tr>
+                        <td class="loginsbyrole text-center">
+                            @if(item.Role == "User")
+                            {
+                                <span>Customer</span>
+                            }
+                            else { 
+                            @Html.DisplayFor(modelItem => item.Role)
+                            }
+                        </td>
+                        <td class="loginsbyrole text-center">
+                            @Html.DisplayFor(modelItem => item.cnt)
+                        </td>
+                        <td class="loginsbyrole text-center">
+                            <span>@Html.DisplayFor(modelItem => item.CreatedDate)</span>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" class="init">4
+    var loginUsersRoleCount = '';
+    $(document).ready(function () {
+       window.alert = function () { /* do nothing here */ }
+        loginUsersRoleCount = $('#rolecountDetails').DataTable({
+            "ordering": false,
+            "pageLength": 5,
+            stateSave: true
+        });
+        $("#rolecountDetails_length").hide();
+        $("#rolecountDetails_filter").hide();
+
+        if ($('#rolecountDetails td').attr('colspan') == '3') {
+            $("#rolecountDetails_info").hide();
+            $("#rolecountDetails_paginate").hide();
+        } else {
+        }
+    });
+</script>

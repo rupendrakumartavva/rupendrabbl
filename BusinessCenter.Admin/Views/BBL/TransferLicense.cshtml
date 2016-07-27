@@ -1,0 +1,325 @@
+﻿@{
+    ViewBag.Title = "DCRA - Transfer License";
+}
+@using System.Web.UI.WebControls
+@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.SubmissionTransferViewModel
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Customer", "CustomerHome", "Admin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("BBL Dashboard", "UserSubmissions", "BBL", new { userId = @ViewBag.UserId }, null)
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Transfer License</span>
+    </div>
+    //using (Html.BeginForm("TransferLicense", "BBL", FormMethod.Post))
+    //{
+
+
+
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Transfer BBL License</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper reg-err-placement">
+                        <h2 id="primary-status"> @ViewBag.Status</h2>
+
+                       @using (Html.BeginForm("TransferLicense", "BBL", FormMethod.Post))
+                        {
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                                    <div class="form-group ">
+
+                                        License/Application # :
+                                        <strong>
+                                            @Html.DisplayFor(model => model.SubmissionLicense)
+                                            @Html.HiddenFor(model => model.SubmissionLicense)
+                                        </strong>
+                                    </div>
+                                    <div class="form-group ">
+
+                                        Account ID :
+                                        <strong>
+                                            @Html.DisplayFor(model => model.LoggedUserName)
+                                            @Html.HiddenFor(model => model.LoggedUserName)
+                                        </strong>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        Transfer From :
+                                        <strong>
+                                            @ViewBag.UserName
+                                        </strong>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "Please complete all required fields", new { @class = "error-message error " })
+
+
+
+
+                            @*<span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="unitmsg">@ViewBag.Errorme</span>
+                                <p style="text-align: center; color: red; font-size: 19px; margin-bottom: 10px;"><span id="msg">@ViewBag.Status </span></p>*@
+                            <span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="msgunit">@ViewBag.requiredmsg</span>
+                            @*<p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px; height: 50px;"><span id="successmsg">@ViewBag.Statusmsg</span></p>*@
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <p>
+                                        @Html.HiddenFor(model => model.UserId)
+                                        @Html.HiddenFor(model => model.submissiontransfer.FromUserId, new { id = "userid" })
+                                        @Html.HiddenFor(model => model.submissiontransfer.MasterId)
+@*@Html.HiddenFor(model => model.submissiontransfer.ToUserId)*@
+                                        @*@Html.HiddenFor(model => model.submissiontransfer.ReasonForTransfer)*@
+
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Transfer To :")
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group reg-err-placement">
+
+                                        @*@Html.TextBox("searchTerm", null, new
+                                            {
+                                                @class = "form-control",
+                                                placeholder = "",
+                                                name = "txtSearch",
+                                                id = "txtSearch",
+                                                onfocus = "this.placeholder = ''",
+                                                onblur = "this.placeholder = ''"
+                                            })*@
+                                        @Html.EditorFor(model => model.submissiontransfer.TransferToUserName, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    @class = "form-control",
+                                                    id = "TransferToUserName",
+                                                    name = "TransferToUserName",
+                                                    placeholder = "",
+                                                    TextAlign = "left",
+                                                    onfocus = "this.placeholder = ''",
+                                                    onblur = "this.placeholder = ''"
+
+                                                }
+                                            })
+
+                                        @*@Html.DropDownListFor(model => model.submissiontransfer.ToUserId, new SelectList(ViewBag.Users, "UserId", "UserName"), "Select One", new { @class = "form-control  custom-dropdown", id = "feecode-dropdown", name = "feecode-dropdown", style = "cursor: inherit;" })*@
+                                        @Html.ValidationMessageFor(model => model.submissiontransfer.ToUserId, "", new { @class = "error-message error" })
+                                        <span style="font-size: 16px; color: #f00; font-weight: 300;" class="error-message error" id="invaliduser">@ViewBag.invaliduser</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Reason for Transferring :")
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.submissiontransfer.ReasonForTransfer, new
+                                            {
+                                                htmlAttributes = new
+                                                {
+                                                    @class = "form-control",
+                                                    id = "Description",
+                                                    name = "Description",
+                                                    placeholder = "",
+                                                    TextAlign = "left",
+                                                    onfocus = "this.placeholder = ''",
+                                                    onblur = "this.placeholder = ''"
+
+                                                }
+                                            })
+                                        @Html.ValidationMessageFor(model => model.submissiontransfer.ReasonForTransfer, "", new { @class = "error-message error", id = "errormsg" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+
+                                <button type="button" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back</button>
+                                <button type="submit" id="btnCreate" class="btn btn-default">Transfer License</button>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    if (IsPost)
+    {
+        if (ViewBag.IsLicenseTransfer == true)
+        {
+            <script>
+                $(function () {
+
+
+                    var msg = '@ViewBag.LicenseNumber' + " " + " is successfully transferred from" + " " + '@ViewBag.UserName' + " " + "to" + " " + '@ViewBag.ToUserName';
+
+
+                    $('.homemodal-body h3.error_message').empty().append(msg);
+
+
+                    $("#registermodal-container").modal('show');
+                });
+                $(".yes-btn").on("click", function () {
+                    $('#registermodal-container').modal('hide');
+
+
+
+                });
+            </script>
+        }
+    }
+
+
+
+    <style>
+        #Description {
+            text-align: left;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select {
+            cursor: inherit;
+        }
+    </style>
+
+
+
+    <script>
+        $("#btnCreate").click(function () {
+            $('input').trigger('reset');
+            $('select').trigger('reset');
+        });
+        $(window).click(function () {
+            msgunit.innerHTML = ""; 
+            invaliduser.innerHTML = "";
+        });
+
+        $("#btnBack").click(function () {
+
+            
+            var url = "/BBL/CustomerSubmissions?userId=" + $("#UserId").val();
+            window.location.href = url;
+
+        });
+    </script>
+    //}
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+<script>
+     $(document).ready(function () {
+  
+    });
+
+    $('#TransferToUserName').autocomplete(
+        {
+
+            minLength: 1,
+            source: function (request, response) {
+                var url = "/BBL/GetTransferUsers";
+   
+                $.getJSON(url, { term: request.term }, function (data) {
+                    var isexpired = false;
+
+               
+                    data.forEach(function (data) {
+                        //   console.log(data);
+                        if (data == 'Session Expired')
+                        {
+                            window.location.href = '/Account/SessionExpiry';
+                            isexpired = true;
+                            return true;
+                        }
+                   
+                    });
+                    if (isexpired == false) {
+                        response(data);
+                       
+                        $(".ui-helper-hidden-accessible ").css("display", "none");
+                    }
+                })
+            }
+            
+        });
+           
+
+    // })
+
+  
+</script>
+<style>
+   
+    .ui-autocomplete {
+        list-style-type: none;
+        width: 600px;
+    }
+</style>
+
+
+
+
+

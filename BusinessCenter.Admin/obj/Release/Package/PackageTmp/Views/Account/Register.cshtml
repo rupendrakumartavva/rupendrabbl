@@ -1,0 +1,543 @@
+﻿@model BusinessCenter.Admin.Models.RegisterUserModel
+@{
+    ViewBag.Title = "DCRA - Registration";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (!string.IsNullOrEmpty(TempData["Registertype"].ToString()))
+    {
+        if (TempData["Registertype"].ToString() == "S")
+        {
+            <div class="container headerBreadcrumb">
+                @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                @Html.ActionLink("Superadmin", "Home", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Create New Superadmin</span>
+            </div>
+            <div class="page_title scr_title">
+                <div class="container">
+                    <div class="row">
+                        <h2 tabindex="0"> Create New Superadmin</h2>
+                    </div>
+                </div>
+            </div>
+        }
+
+        if (TempData["Registertype"].ToString() == "M")
+        {
+            <div class="container headerBreadcrumb">
+                @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                @Html.ActionLink("Manager", "ManagerHome", "Admin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Create New Manager</span>
+            </div>
+            <div class="page_title scr_title">
+                <div class="container">
+                    <div class="row">
+                        <h2 tabindex="0"> Create New Manager</h2>
+                    </div>
+                </div>
+            </div>
+        }
+
+        if (TempData["Registertype"].ToString() == "A")
+        {
+            <div class="container headerBreadcrumb">
+                @Html.ActionLink("Home", "Dashboard", "Admin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                @if ((int)Session["Admincount"] == 3)
+                {
+                    @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+                }
+                else
+                {
+                    @Html.ActionLink("Business Center Admin Portal", "Dashboard", "Admin")
+                }
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                @Html.ActionLink("Admin", "Home", "Admin")
+                <span class="easy-breadcrumb_segment-separator"> / </span>
+                <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Create New Admin</span>
+            </div>
+            <div class="page_title scr_title">
+                <div class="container">
+                    <div class="row">
+                        <h2 tabindex="0">Create New Admin</h2>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                @if (TempData["Registertype"].ToString() == "S")
+                {
+                <p>Create a Superadmin account for My DC Business Center by filling in all fields below.</p>
+                }
+               else if (TempData["Registertype"].ToString() == "M")
+            {
+                <p>Create a Manager account for My DC Business Center by filling in all fields below.</p>
+            }
+            else
+               {
+                <p>Create a Admin  account for My DC Business Center by filling in all fields below.</p>
+               }
+
+                <div class="row">
+                    <div class="form_wrapper reg-err-placement">
+                        @*@using (Html.BeginForm("Register", "Account", new { utype = TempData["Registertype"].ToString() }, FormMethod.Post, new { role = "form" }))
+                            {*@
+                        <form>
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+                            @*@Session["SelectedPage"].ToString()*@
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.FirstName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "FName",
+                                       name = "Name",
+                                       placeholder = "First Name",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'First Name'"
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.EditorFor(model => model.LastName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Last Name",
+                                       name = "lname",
+                                       id = "Lname",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Last Name'"
+
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.EditorFor(model => model.Email, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Email",
+                                       name = "phone",
+                                       id = "Email",
+                                       onblur = "EmailAvailability(this)",
+                                       onfocus = "this.placeholder = ''",
+
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error-message error" })
+                                        <label id="lblename" style="font-size: 16px; color: #f00; font-weight:300;" class="error-message error"></label>
+                                        @if (IsPost)
+                                        {
+                                            if (Model.EmailStatusMsg != null)
+                                            {
+                                        <span style="font-size: 16px; color: #f00; font-weight:300;" id="emailStatusMsg">@Model.EmailStatusMsg</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group reg-err-placement">
+                                        @Html.EditorFor(model => model.UserName, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Username",
+                                       name = "username",
+                                       id = "Uname",
+                                       onblur = "UserAvailability(this)",
+                                       onfocus = "this.placeholder = ''"
+
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "error-message error" })
+
+                                        <label id="lbluname" style="font-size: 16px; color: #f00; font-weight:300;" class="error-message error"></label>
+                                        @if (IsPost)
+                                        {
+                                            if (Model.StatusMsg != null)
+                                            {
+                                        <span style="font-size: 16px; color: #f00; font-weight:300;" class="error-message error" id="StatusMsg">@Model.StatusMsg</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Password, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Password",
+                                       name = "password",
+                                       id = "Pass",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Password'"
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.ConfirmPassword, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       placeholder = "Confirm Password",
+                                       name = "conf_password",
+                                       id = "Cpass",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = 'Confirm Password'"
+                                   }
+                               })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <p class="forgot"></p>
+                            </div>
+                            @*<div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.Address, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           id = "Address",
+                                           name = "Address",
+                                           placeholder = "Address",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'Address'"
+                                       }
+                                   })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "error-message error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.City, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           placeholder = "City",
+                                           name = "City",
+                                           id = "City",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'City'"
+                                       }
+                                   })
+                                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "error-message error" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.State, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           placeholder = "State",
+                                           name = "State",
+                                           id = "State",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'State'"
+                                       }
+                                   })
+                                            @Html.ValidationMessageFor(model => model.State, "", new { @class = "error-message error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.PostalCode, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           placeholder = "Postal Code",
+                                           name = "PostalCode",
+                                           id = "PostalCode",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'Postal Code'"
+                                       }
+                                   })
+                                            @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "error-message error" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.MobileNumber, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           placeholder = "Mobile Number",
+                                           name = "MobileNumber",
+                                           id = "MobileNumber",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'Mobile Number'"
+                                       }
+                                   })
+                                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "error-message error" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="col-xs-12">
+                                <div class="center_div">
+                                    <input type="submit" value="Create Account" id="btnRegister" class="btn btn-default" />
+                                </div>
+                            </div>
+
+                        </form>
+                        @*}*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Hidden("HiddenName", null, new { @class = "hiddencss" });
+
+    <script>
+        // prevent this page from creating additional dialogs
+        $("#btnRegister").click(function (e) {
+            e.preventDefault();
+            //  now trigger the form validation, result is 1 or 0
+            var result = $('form').valid();
+            if (result == 1) {
+                RegisterAccount();
+            }
+            //else { console.log("hi");}
+        });
+        function RegisterAccount() {
+            var profiledata = {
+                UserName: $("#Uname").val(), Email: $("#Email").val(), FirstName: $("#FName").val(),
+                LastName: $('#Lname').val(), Password: $('#Pass').val(), ConfirmPassword: $('#Cpass').val(),
+                utype: "@TempData["Registertype"].ToString()"
+            };
+            $.ajax({
+                url: '/Account/Register',
+                type: "Post",
+                data: profiledata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+        function editSuccess(data) {
+            //case "SessionExipred":
+            //                window.location.href = '/Account/SessionExpiry';
+            console.log(data.status);
+            if (data.status == "SessionExipred") {
+                window.location.href = '/Account/SessionExpiry';
+            }
+            else {
+                if ($('.hiddencss').text() == "Email") {
+                }
+                else if ($('.hiddencss').text() == "Uname") {
+                }
+                else {
+                    $('input').trigger('reset');
+                    $("#Uname").val("");
+                    $("#Email").val("");
+                    $("#FName").val("");
+                    $("#Lname").val("");
+                    $("#Pass").val("");
+                    $("#Cpass").val("");
+                    //$("#Address").val("");
+                    //$('#City').val("");
+                    //$("#State").val("");
+                    //$("#MobileNumber").val("");
+                    //$("#PostalCode").val("");
+                }
+                return false;
+                //}
+            }
+        }
+        function editFailure(data) {
+            //  alert("error");
+            return false;
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#lbluname').hide();
+            $('#lblename').hide();
+        });
+        $(":input").on("blur", function () {
+            $(this.form).validate().element(this);
+        });
+
+
+        $("#Uname").keyup(function () {
+            $('#StatusMsg').hide();
+            $('#lbluname').hide();
+            $('#lbluname').innerHTML = "";
+            if ($('#Uname').val() == '') {
+                $('#lbluname').hide();
+
+            } else {
+                UserAvailability();
+            }
+        });
+        $("#Email").keyup(function () {
+            $('#lblename').innerHTML = "";
+            $('#lblename').hide();
+            var regExEmail = /^[a-zA-Z0-9._%+-]+(@@dc+\.gov)$/;
+            if (!regExEmail.test($('#Email').val())) {
+
+                $('#lblename').hide();
+
+            } else {
+                $('#emailStatusMsg').hide();
+                EmailAvailability();
+                if ($('#Email').val() == "") {
+
+                    $('#lblename').hide();
+                }
+            }
+        });
+
+        function UserAvailability(obj) {
+            obj.placeholder = 'Username';
+            var User = {
+                UserName: $('#Uname').val()
+            };
+            $.ajax({
+                type: "POST",
+                url: "/SuperAdmin/CheckUserAvailable",
+                data: User,
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    //  alert("HI");
+                }
+            });
+        }
+        function OnSuccess(data) {
+            switch (data.status) {
+                case "False":
+                    $('#lbluname').show();
+                    lbluname.style.color = "red";
+                    lbluname.innerHTML = "This username is already registered in our system. Please select a new username";
+                    return true;
+                    break;
+                case "True":
+                    $('#lbluname').hide();
+                    break;
+                case "SessionExipred":
+                    window.location.href = '/Account/SessionExpiry';
+                    break;
+            }
+        }
+
+        function EmailAvailability(obj) {
+            //  var validateEmail = "'^[a-zA-Z0-9._%+-]+(@@dc+\.gov)$'";
+            var regExEmail = /^[a-zA-Z0-9._%+-]+(@@dc+\.gov)$/;
+            if (regExEmail.test($('#Email').val())) {
+
+                obj.placeholder = 'Email';
+                var User = {
+                    Email: $('#Email').val(),
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/SuperAdmin/CheckUserEmailAvailable",
+                    data: User,
+                    dataType: "json",
+                    success: OnEmailSuccess,
+                    failure: function (response) {
+                    }
+                });
+            } else {
+
+                lblename.innerHTML = "";
+                $('#lbluname').hide();
+            }
+        }
+
+        function OnEmailSuccess(data) {
+
+            switch (data.status) {
+                case "True":
+                    //lblename.style.display = "block";
+                    $('#lblename').show();
+                    lblename.style.color = "red";
+                    lblename.innerHTML = "This email is already in our system. Please select another email address";
+                    break;
+                case "False":
+                    $('#lblename').hide();
+                    break;
+                case "SessionExipred":
+                    window.location.href = '/Account/SessionExpiry';
+                    break;
+            }
+            //  }
+        }
+
+    </script>
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+

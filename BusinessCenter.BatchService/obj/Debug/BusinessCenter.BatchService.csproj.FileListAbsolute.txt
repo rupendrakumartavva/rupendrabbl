@@ -1,0 +1,11 @@
+D:\DCBusinessCenter\BusinessCenter.BatchService\bin\Debug\BusinessCenter.BatchService.exe.config
+D:\DCBusinessCenter\BusinessCenter.BatchService\bin\Debug\BusinessCenter.BatchService.exe
+D:\DCBusinessCenter\BusinessCenter.BatchService\bin\Debug\BusinessCenter.BatchService.pdb
+D:\DCBusinessCenter\BusinessCenter.BatchService\bin\Debug\Newtonsoft.Json.dll
+D:\DCBusinessCenter\BusinessCenter.BatchService\bin\Debug\Newtonsoft.Json.xml
+D:\DCBusinessCenter\BusinessCenter.BatchService\obj\Debug\BusinessCenter.BatchService.csproj.BusinessCenter.BatchService.exe.config
+D:\DCBusinessCenter\BusinessCenter.BatchService\obj\Debug\BusinessCenter.BatchService.BusinessCenterInstaller.resources
+D:\DCBusinessCenter\BusinessCenter.BatchService\obj\Debug\BusinessCenter.BatchService.csproj.GenerateResource.Cache
+D:\DCBusinessCenter\BusinessCenter.BatchService\obj\Debug\BusinessCenter.BatchService.exe
+D:\DCBusinessCenter\BusinessCenter.BatchService\obj\Debug\BusinessCenter.BatchService.pdb
+D:\DCBusinessCenter\BusinessCenter.BatchService\obj\Debug\BusinessCenter.BatchService.csprojResolveAssemblyReference.cache

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5F16E5E-2A08-472E-8713-B9136E25B1E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessCenter.Service</RootNamespace>
+    <AssemblyName>BusinessCenter.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BusinessCenter.Common">
+      <HintPath>..\BusinessCenter.Common\bin\Debug\BusinessCenter.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="BusinessCenter.Data">
+      <HintPath>..\BusinessCenter.Data\bin\Debug\BusinessCenter.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\SearchInputAll.cs" />
+    <Compile Include="Implementation\BBLAssociateService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementation\BusinessInformationService.cs" />
+    <Compile Include="Implementation\CofoHopDetailsService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implementation\DocumentsView4Service.cs" />
+    <Compile Include="Implementation\MailTemplateService.cs" />
+    <Compile Include="Implementation\Portal_Content_ErrorsService.cs" />
+    <Compile Include="Implementation\RenewalView3Service.cs" />
+    <Compile Include="Implementation\SubmissionDocumentToAccelaService.cs" />
+    <Compile Include="Implementation\SubmissionGeneratedDocumentService.cs" />
+    <Compile Include="Implementation\EtlAddressAndParcelService.cs" />
+    <Compile Include="Implementation\FeeCodeMapService.cs" />
+    <Compile Include="Implementation\MasterBusinessActivityService.cs" />
+    <Compile Include="Implementation\MasterCategoryPhysicalLocationService.cs" />
+    <Compile Include="Implementation\MasterCountryService.cs" />
+    <Compile Include="Implementation\MastereHopEligibilityService.cs" />
+    <Compile Include="Implementation\MasterStateService.cs" />
+    <Compile Include="Implementation\MyServiceDetails.cs" />
+    <Compile Include="Implementation\MasterPrimaryCategoryService.cs" />
+    <Compile Include="Implementation\OSubCategoryFeeService.cs" />
+    <Compile Include="Implementation\RenewalService.cs" />
+    <Compile Include="Implementation\SearchKeywordService.cs" />
+    <Compile Include="Implementation\SearchService.cs" />
+    <Compile Include="Implementation\MasterSecondaryLicenseCategoryService.cs" />
+    <Compile Include="Implementation\SecondaryCategory.cs" />
+    <Compile Include="Implementation\SecurityQuestionService.cs" />
+    <Compile Include="Implementation\SubmissionCofoHopeHopAddressService.cs" />
+    <Compile Include="Implementation\SubmissionCategoryService.cs" />
+    <Compile Include="Implementation\SubmissionDocumentService.cs" />
+    <Compile Include="Implementation\SubmissionIndividualService.cs" />
+    <Compile Include="Implementation\SubmissionMasterService.cs" />
+    <Compile Include="Implementation\SubmissionQuestionService.cs" />
+    <Compile Include="Implementation\SubmissionSelfCertificationService.cs" />
+    <Compile Include="Implementation\SubmissionTaxRevenueService.cs" />
+    <Compile Include="Implementation\SubmissionToAccelaService.cs" />
+    <Compile Include="Implementation\MasterSubCategoryService.cs" />
+    <Compile Include="Implementation\UserManagerService.cs" />
+    <Compile Include="Implementation\UserPasswordTrackingService.cs" />
+    <Compile Include="Interface\IBBLAdminService.cs" />
+    <Compile Include="Interface\IBBLAssociateService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interface\IBusinessInformationService.cs" />
+    <Compile Include="Interface\ICofoHopDetailsService.cs" />
+    <Compile Include="Interface\IDocumentsView4Service.cs" />
+    <Compile Include="Interface\IMailTemplateService.cs" />
+    <Compile Include="Interface\IPortal_Content_ErrorsService.cs" />
+    <Compile Include="Interface\IRenewalView3Service.cs" />
+    <Compile Include="Interface\ISubmissionDocumentToAccelaService.cs" />
+    <Compile Include="Interface\ISubmissionGeneratedDocumentService.cs" />
+    <Compile Include="Interface\IEtlAddressAndParcelService.cs" />
+    <Compile Include="Interface\IFeeCodeMapService.cs" />
+    <Compile Include="Interface\IMasterBusinessActivityService.cs" />
+    <Compile Include="Interface\IMasterCategoryPhysicalLocationService.cs" />
+    <Compile Include="Interface\IMasterCountryService.cs" />
+    <Compile Include="Interface\IMastereHopEligibilityService.cs" />
+    <Compile Include="Interface\IMasterStateService.cs" />
+    <Compile Include="Interface\IMyServiceDetails.cs" />
+    <Compile Include="Interface\IMasterPrimaryCategoryService.cs" />
+    <Compile Include="Interface\IOSubCategoryFeeService.cs" />
+    <Compile Include="Interface\IRenewalService.cs" />
+    <Compile Include="Interface\ISearchKeywordService.cs" />
+    <Compile Include="Interface\ISearchService.cs" />
+    <Compile Include="Interface\IMasterSecondaryLicenseCategoryService.cs" />
+    <Compile Include="Interface\ISecurityQuestionsService.cs" />
+    <Compile Include="Interface\ISubmissionCofoHopeHopAddressService.cs" />
+    <Compile Include="Interface\ISubmissionCategoryService.cs" />
+    <Compile Include="Interface\ISubmissionDocumentService.cs" />
+    <Compile Include="Interface\ISubmissionIndividualService.cs" />
+    <Compile Include="Interface\ISubmissionMasterService.cs" />
+    <Compile Include="Interface\ISubmissionQuestionService.cs" />
+    <Compile Include="Interface\ISubmissionSelfCertificationService.cs" />
+    <Compile Include="Interface\ISubmissionTaxRevenueService.cs" />
+    <Compile Include="Interface\ISubmissionToAccelaService.cs" />
+    <Compile Include="Interface\IMasterSubCategoryService.cs" />
+    <Compile Include="Interface\IUserManagerService.cs" />
+    <Compile Include="Interface\IUserPasswordTrackingService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

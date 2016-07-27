@@ -1,0 +1,166 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renew</span>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Add An Existing License</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">
+                Add An Existing Business License to My DC Business Center Account
+            </h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page provides the data entry screen for the BBL renewal information you receive in the Renewal Application Instructions and Renewal Bill sent from the Department of Consumer and Regulatory Affairs (DCRA). </strong>
+                    </p><br />
+                    <p class="terms_text">
+                        Within ninety (90) days of the expiration of your existing Basic Business License you will receive in the mail a <b>Renewal Application Instructions and Renewal Bill</b> from the Department of Consumer and Regulatory Affairs.
+                    </p>
+
+                    <p>
+                        Use this document to enter the information into the appropriate fields:
+                    </p>
+
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                            <b>PIN</b> stands for Personal Identification Number and is printed on your renewal bill.
+                        </li>
+                        <li>
+                            <b>License Number</b>	is the BBL license number and is printed on your renewal bill.
+                        </li>
+                        <li>
+                            <b>Tax Number (FEIN/SSN)</b> ) is the Federal Employer Identification Number of your business or, in some cases, your Social Security Number.  Your tax number is NOT printed on your renewal bill.  Enter your tax number using dashes for the appropriate format  <img src="../images/fein_ssn.png" style="height: 28px; width: 250px;" />
+                        </li>
+                    </ul><br />
+                    <p class="terms_text srch_filter">
+                        Select the <button id="btn_revise2" class="btn btn-default btnnextColor btn-next" style="cursor: default; pointer-events: none">Next </button>   button to search for the existing BBL that corresponds to the information you entered.
+                    </p>
+
+                    <p class="terms_text">
+                        <strong>*Note* </strong>  For security purposes, a BBL can only be viewed/added to one person's My DC Business Center account.  Once a BBL is added to one individual's account, the license cannot be added to a second account.  To change the access privileges to a BBL, contact the DCRA Help Desk at (202) 442-4400.
+                    </p><br />
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+
+<div id="dvMainsection">
+    <div class="search_form">
+        <div class="login_form register_form">
+            <div data-ng-controller="AssociateBBLController as vm">
+
+                <div class="container">
+                    <div class="page-desc-content">
+                        <p>
+                            Please enter your PIN # and License # as they appear on the letter you received from DCRA along with the associated FEIN or SSN number.
+                        </p>
+                    </div>
+                    <div ng-show="vm.togglepinvalmsg" class="col-sm-offset-1 col-md-10 error_text" role="alert">
+                        <span aria-hidden="true"></span>
+                        Your input does not match any records in our database.
+                        Please double check your entry and try again. If you are still having issues,
+                        please contact DCRA at 202-442-4400 for further assistance.
+                    </div>
+                    <div ng-show="vm.responseData=='Already Associate'" class="col-sm-offset-1 col-md-10 error_text" role="alert" id="alreadyAssociated">
+                        <span aria-hidden="true"></span>
+                        This license has already been added and is displayed in your My BBLs page. Please recheck.
+                        It is possible that someone else within your company could have added this license to a separate My DC Business Center account.
+                        A license can only be added to one My DC Business Center account. Please contact DCRA at 202-442-4400 for further assistance.
+                    </div>
+                    <div class="row">
+                        <div class="form_wrapper">
+                            <form role="form" id="vm.associatebblform" name="vm.associatebblform" autocomplete="off" novalidate>
+                                <div class="clearfix">
+                                    <div class="col-sm-offset-2 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Pin Number:</label>
+                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.pinnumber" name="pinnumber" id="pinNumber" data-ng-focus="vm.hideError()" spellcheck="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class=" col-sm-offset-2 col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label>License Number:</label>
+                                            <input type="text" class="form-control" placeholder="" data-ng-model="vm.licnumber" name="licnumber" id="licNumber" data-ng-focus="vm.hideError()" spellcheck="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class=" col-sm-offset-2 col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label>Tax Number (FEIN or SSN):</label>
+                                            <!--<span style="position: relative; padding: 20px 0px 0px 0px;" class="help_text_modal_invoke" title="Please enter FEIN(##-#######) or SSN(###-##-####)." ng-click="vm.helpClickCORP()"><span></span></span>-->
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder=""
+                                                   name="taxnumber"
+                                                   data-ng-model="vm.taxnumber"
+                                                   id="taxNumber"
+                                                   data-ng-focus="vm.hideError()"
+                                                   spellcheck="false"
+                                                   ng-pattern="/^[0-9-]+$/"
+                                                   required>
+                                        </div>
+                                        <div class="form-group">
+                                            <span>
+                                                <strong style="font-size: 15px;">Note : </strong><span style="font-style: italic; font-size: 14px;"> FEIN:(##-#######), SSN:(###-##-####)</span>
+                                            </span>
+                                        </div>
+                                        <div class="error-container" ng-show="vm.associatebblform.taxnumber.$dirty && vm.associatebblform.taxnumber.$invalid">
+                                            <small class="error-message" ng-show="vm.associatebblform.taxnumber.$error.pattern">
+                                                Please enter numbers only.
+                                            </small>
+                                            <small class="error-message" ng-show="vm.associatebblform.taxnumber.$error.improperformat && !vm.associatebblform.taxnumber.$error.pattern">
+                                                <span>FEIN/SSN format is invalid.</span>
+                                            </small>
+                                            <!--<small class="error-message" ng-show="vm.associatebblform.taxnumber.$error.improperformat && !vm.associatebblform.taxnumber.$error.pattern">
+                                                <span>FEIN/SSN format exceeds maxlength of 11 inputs</span>
+                                            </small>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 line"></div>
+                                <div class="center_div">
+                                    <button id="submit_cancel" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+                                    <button id="submit_association" class="btn btn-default btnnextColor btn-next" ng-click="vm.navToAssociateBBL()">Next</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

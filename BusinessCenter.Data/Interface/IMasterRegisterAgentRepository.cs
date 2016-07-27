@@ -1,0 +1,14 @@
+﻿using BusinessCenter.Data.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BusinessCenter.Data.Interface
+{
+  public interface IMasterRegisterAgentRepository
+    {
+      IEnumerable<DCBC_ENTITY_CORP> FindByID(GeneralBusiness cofoHopDetailsModel);
+    }
+}

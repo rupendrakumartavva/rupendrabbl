@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{967116DD-920B-424F-AC4D-C5A1E6626017}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessCenter.Web</RootNamespace>
+    <AssemblyName>BusinessCenter.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".idea\misc.xml" />
+    <Content Include=".idea\modules.xml" />
+    <Content Include=".idea\vcs.xml" />
+    <Content Include=".idea\watcherTasks.xml" />
+    <Content Include=".idea\workspace.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="css\app.css" />
+    <Content Include="css\bbl.css" />
+    <Content Include="css\bootstrap-datetimepicker.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\customstyle.css" />
+    <Content Include="css\datetimepicker.css" />
+    <Content Include="css\fileinput.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\overrides.css" />
+    <Content Include="css\print.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\temp.css" />
+    <Content Include="css\variables.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\accessapplication.png" />
+    <Content Include="images\arrow-bottom.png" />
+    <Content Include="images\arrow-right.png" />
+    <Content Include="images\arrow-top.png" />
+    <Content Include="images\camera-loader.gif" />
+    <Content Include="images\captcha.jpg" />
+    <Content Include="images\ChcekBoxSelect.png" />
+    <Content Include="images\ChcekBox_HowtoUse.png" />
+    <Content Include="images\checkbox_block.png" />
+    <Content Include="images\Cofo_image.png" />
+    <Content Include="images\Cofo_Textbox.png" />
+    <Content Include="images\Cofo_UploadDocument.png" />
+    <Content Include="images\collapse-down.png" />
+    <Content Include="images\collapse-icon.png" />
+    <Content Include="images\collapse-up.png" />
+    <Content Include="images\compliance-checker.jpg" />
+    <Content Include="images\compliance.jpg" />
+    <Content Include="images\Correct_Incorrect.png" />
+    <Content Include="images\Correct_Incorrect_Select.png" />
+    <Content Include="images\crate-bg-white.png" />
+    <Content Include="images\crate-bg.png" />
+    <Content Include="images\dashborad_icon.jpg" />
+    <Content Include="images\dashborad_icon.png" />
+    <Content Include="images\dc-ss_detail_banner.png" />
+    <Content Include="images\dcgov_logo.png" />
+    <Content Include="images\dc_about_img1.jpg" />
+    <Content Include="images\dc_about_img2.jpg" />
+    <Content Include="images\dc_apply_icon.png" />
+    <Content Include="images\dc_briefcase_icon.png" />
+    <Content Include="images\dc_business_action_icon1.png" />
+    <Content Include="images\dc_business_action_icon2.png" />
+    <Content Include="images\dc_business_action_icon3.png" />
+    <Content Include="images\dc_business_action_icon4.png" />
+    <Content Include="images\dc_business_action_icon5.png" />
+    <Content Include="images\dc_business_action_icon6.png" />
+    <Content Include="images\dc_business_center.jpg" />
+    <Content Include="images\dc_business_resource_bg.jpg" />
+    <Content Include="images\dc_calender_next.png" />
+    <Content Include="images\dc_calender_prev.png" />
+    <Content Include="images\dc_carousel_next.png" />
+    <Content Include="images\dc_carousel_prev.png" />
+    <Content Include="images\dc_checkbox.png" />
+    <Content Include="images\dc_checkboxes.jpg" />
+    <Content Include="images\dc_collapse_icon.gif" />
+    <Content Include="images\dc_collapse_icon.png" />
+    <Content Include="images\dc_collapse_icon1.png" />
+    <Content Include="images\dc_collapse_icon2.png" />
+    <Content Include="images\dc_contactus_call_icon.png" />
+    <Content Include="images\dc_contactus_email_icon.png" />
+    <Content Include="images\dc_contactus_find_icon.png" />
+    <Content Include="images\dc_contactus_hour_icon.png" />
+    <Content Include="images\dc_contact_link_icon.png" />
+    <Content Include="images\dc_continue_wizard_clipboard.png" />
+    <Content Include="images\dc_customar_tip.png" />
+    <Content Include="images\dc_download_icon.png" />
+    <Content Include="images\dc_download_pdf_icon.png" />
+    <Content Include="images\dc_email_icon.png" />
+    <Content Include="images\dc_faq_search_icon.png" />
+    <Content Include="images\dc_feed_icon.png" />
+    <Content Include="images\dc_footer_bottom_bg.png" />
+    <Content Include="images\dc_footer_top_bg.png" />
+    <Content Include="images\dc_help_icon.png" />
+    <Content Include="images\dc_home_welcome_img.png" />
+    <Content Include="images\dc_iCal_icon.png" />
+    <Content Include="images\dc_icon_faqs.png" />
+    <Content Include="images\dc_icon_glossary.png" />
+    <Content Include="images\dc_icon_quick_start.png" />
+    <Content Include="images\dc_icon_quick_start_title.png" />
+    <Content Include="images\dc_location_link_icon.png" />
+    <Content Include="images\dc_logo.png" />
+    <Content Include="images\dc_logo_bkp.png" />
+    <Content Include="images\dc_lookup_business_icon1.png" />
+    <Content Include="images\dc_lookup_business_icon1_0.png" />
+    <Content Include="images\dc_lookup_business_icon1_4.png" />
+    <Content Include="images\dc_lookup_business_icon2.png" />
+    <Content Include="images\dc_lookup_business_icon3.png" />
+    <Content Include="images\dc_lookup_business_icon4.png" />
+    <Content Include="images\dc_lookup_search.png" />
+    <Content Include="images\dc_maintain_business_clipboard.png" />
+    <Content Include="images\dc_meet_jackie.png" />
+    <Content Include="images\dc_meet_jackie1.png" />
+    <Content Include="images\dc_need_help_icon.png" />
+    <Content Include="images\dc_need_help_popup_icon.png" />
+    <Content Include="images\dc_news_cal_icon.png" />
+    <Content Include="images\dc_no_video.jpg" />
+    <Content Include="images\dc_open_icon.gif" />
+    <Content Include="images\dc_open_icon.png" />
+    <Content Include="images\dc_play_video.png" />
+    <Content Include="images\dc_popular_link_icon.png" />
+    <Content Include="images\dc_popular_renewal_icon1.png" />
+    <Content Include="images\dc_popular_renewal_icon2.png" />
+    <Content Include="images\dc_print_page_icon.png" />
+    <Content Include="images\dc_quick_start_guide_icon_white.png" />
+    <Content Include="images\dc_radio.png" />
+    <Content Include="images\dc_result_address_icon.png" />
+    <Content Include="images\dc_result_application_icon.png" />
+    <Content Include="images\dc_result_phone_icon.png" />
+    <Content Include="images\dc_result_to_top.png" />
+    <Content Include="images\dc_result_web_icon.png" />
+    <Content Include="images\dc_save_wiz_icon.png" />
+    <Content Include="images\dc_search_arrow.png" />
+    <Content Include="images\dc_search_help.png" />
+    <Content Include="images\dc_search_icon.png" />
+    <Content Include="images\dc_see_guide_icon.png" />
+    <Content Include="images\dc_ss_andrew_lopez.png" />
+    <Content Include="images\dc_ss_deborah_douglas.png" />
+    <Content Include="images\dc_ss_detail_image.png" />
+    <Content Include="images\dc_ss_detail_owner.png" />
+    <Content Include="images\dc_ss_detail_samantha.png" />
+    <Content Include="images\dc_ss_john_tomson.png" />
+    <Content Include="images\dc_ss_manuel_jobs.png" />
+    <Content Include="images\dc_ss_monoca_anderson.png" />
+    <Content Include="images\dc_ss_samantha_karldon.png" />
+    <Content Include="images\dc_start_business_clipboard.png" />
+    <Content Include="images\dc_start_business_flag.png" />
+    <Content Include="images\dc_start_maintain_clipboard.png" />
+    <Content Include="images\dc_start_page_img.png" />
+    <Content Include="images\dc_start_page_img_old.png" />
+    <Content Include="images\dc_success_img_dummy.jpg" />
+    <Content Include="images\dc_success_img_overlay.png" />
+    <Content Include="images\dc_success_stosr_detail_dummy.jpg" />
+    <Content Include="images\dc_use_wizard_clipboard.png" />
+    <Content Include="images\dc_video_bg.jpg" />
+    <Content Include="images\dc_video_bg1.jpg" />
+    <Content Include="images\dc_video_bg2.jpg" />
+    <Content Include="images\dc_visit_site_icon.png" />
+    <Content Include="images\dropdown_block.png" />
+    <Content Include="images\ehopsignature.png" />
+    <Content Include="images\fein_ssn.png" />
+    <Content Include="images\FilterTab.png" />
+    <Content Include="images\firstfield.png" />
+    <Content Include="images\hide-details.jpg" />
+    <Content Include="images\hide-details.png" />
+    <Content Include="images\Hop_image.png" />
+    <Content Include="images\Howto_Corp_Number.png" />
+    <Content Include="images\Howto_Pre-ApplicationQuestion.png" />
+    <Content Include="images\Howto_Renewal.png" />
+    <Content Include="images\HOw_ToTax_Revenue.png" />
+    <Content Include="images\How_To_CorpOnline.png" />
+    <Content Include="images\How_to_Ehop_Attach.png" />
+    <Content Include="images\How_to_Ehop_Error.png" />
+    <Content Include="images\How_to_Ehop_Next.png" />
+    <Content Include="images\How_To_PLandBS.png" />
+    <Content Include="images\How_to_Renewal_Corp.png" />
+    <Content Include="images\How_To_SupportingDocument.png" />
+    <Content Include="images\How_To_TaxAndRevenue.png" />
+    <Content Include="images\H_To_HOP.png" />
+    <Content Include="images\icon-doc-inperson.jpg" />
+    <Content Include="images\faq_bottm_contact_icon.png" />
+    <Content Include="images\grid-icon.png" />
+    <Content Include="images\heart.png" />
+    <Content Include="images\help_question_icon.png" />
+    <Content Include="images\home-carousel-up-arrow.png" />
+    <Content Include="images\hreatgreen.png" />
+    <Content Include="images\icon-accordion_collapse.png" />
+    <Content Include="images\icon-accordion_expand.png" />
+    <Content Include="images\icon-download.png" />
+    <Content Include="images\icon-email.png" />
+    <Content Include="images\icon-guide.png" />
+    <Content Include="images\icon-location.png" />
+    <Content Include="images\icon-needHelp.png" />
+    <Content Include="images\icon-needHelp_small.png" />
+    <Content Include="images\icon-onlineApplication.png" />
+    <Content Include="images\icon-phone.png" />
+    <Content Include="images\icon-print.png" />
+    <Content Include="images\icon-quick_guide.png" />
+    <Content Include="images\icon-save.png" />
+    <Content Include="images\icon-web.png" />
+    <Content Include="images\iconSprite.png" />
+    <Content Include="images\jackie.jpg" />
+    <Content Include="images\loading-sm.gif" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\logo_dcbc_new.jpg" />
+    <Content Include="images\Lookup Business Info3.png" />
+    <Content Include="images\lren_number.png" />
+    <Content Include="images\mayor.png" />
+    <Content Include="images\melinda.png" />
+    <Content Include="images\melinda3.jpg" />
+    <Content Include="images\melinda_back.jpg" />
+    <Content Include="images\new_logo.jpg" />
+    <Content Include="images\pdf.jpg" />
+    <Content Include="images\portfolio.png" />
+    <Content Include="images\portfolio_bag.png" />
+    <Content Include="images\quickstartmap.png" />
+    <Content Include="images\removemyview.png" />
+    <Content Include="images\remove_doc.png" />
+    <Content Include="images\review-icon.png" />
+    <Content Include="images\sarrow.png" />
+    <Content Include="images\search_icon.jpg" />
+    <Content Include="images\search_icon.png" />
+    <Content Include="images\see-details.jpg" />
+    <Content Include="images\see-details.png" />
+    <Content Include="images\See_details_how.png" />
+    <Content Include="images\select_arrow.png" />
+    <Content Include="images\signature_box.png" />
+    <Content Include="images\sort.png" />
+    <Content Include="images\square_bullet.png" />
+    <Content Include="images\Supporting_Document_FileName.png" />
+    <Content Include="images\Supporting_Document_Howto.png" />
+    <Content Include="images\ThankQ.png" />
+    <Content Include="images\titlearrow.png" />
+    <Content Include="images\u100.png" />
+    <Content Include="images\u12.png" />
+    <Content Include="images\u128.png" />
+    <Content Include="images\u132.png" />
+    <Content Include="images\u134.png" />
+    <Content Include="images\u16.png" />
+    <Content Include="images\u20.png" />
+    <Content Include="images\u24.png" />
+    <Content Include="images\u45.png" />
+    <Content Include="images\u7.png" />
+    <Content Include="images\understood.png" />
+    <Content Include="images\Upload_Hop_Howto.png" />
+    <Content Include="index.html" />
+    <Content Include="js\app.js" />
+    <Content Include="js\controllers\AboutUsController.js" />
+    <Content Include="js\controllers\AccountRecoveryController.js" />
+    <Content Include="js\controllers\ApplicationChecklistController.js" />
+    <Content Include="js\controllers\AssociateBBLController.js" />
+    <Content Include="js\controllers\BBLRenewalInfoConfirmController.js" />
+    <Content Include="js\controllers\CorpNotRegisteredAddressController.js" />
+    <Content Include="js\controllers\CorpNotRegisteredAgentController.js" />
+    <Content Include="js\controllers\CorpReqRegisterController.js" />
+    <Content Include="js\controllers\CorpReqRegwithTradeController.js" />
+    <Content Include="js\controllers\DashboardController.js" />
+    <Content Include="js\controllers\DeleteAccountController.js" />
+    <Content Include="js\controllers\eHOPEligibilityController.js" />
+    <Content Include="js\controllers\eHOPHomeAddressController.js" />
+    <Content Include="js\controllers\OnefamilyRentalSelfCetificationController.js" />
+    <Content Include="js\controllers\RenewalSupportingDocsController.js" />
+    <Content Include="js\controllers\RenewalCleanHandsController.js" />
+    <Content Include="js\directives\fileUploadControl.js" />
+    <Content Include="js\directives\formAutofillFix.js" />
+    <Content Include="js\directives\toggleExpandCollapse.js" />
+    <Content Include="js\plugins\aes.js" />
+    <Content Include="js\plugins\angular-flexslider.js" />
+    <Content Include="js\plugins\angular-jquery-maskedinput.js" />
+    <Content Include="js\plugins\bootstrap.min.js" />
+    <Content Include="js\plugins\datetimepicker.js" />
+    <Content Include="js\plugins\dirPagination.js" />
+    <Content Include="js\plugins\equal.js" />
+    <Content Include="js\plugins\fileinput.js" />
+    <Content Include="js\plugins\fileinput_locale_es.js" />
+    <Content Include="js\plugins\FileSaver.js" />
+    <Content Include="js\plugins\FileSaver.min.js" />
+    <Content Include="js\plugins\jquery.flexslider-min.js" />
+    <Content Include="js\plugins\jquery.pajinate.js" />
+    <Content Include="js\plugins\jquery.uniform.js" />
+    <Content Include="js\plugins\main.js" />
+    <Content Include="js\plugins\moment.js" />
+    <Content Include="js\plugins\smart-table.debug.js" />
+    <Content Include="js\services\BBLSubmissionService.js" />
+    <Content Include="js\services\commonInjectors.js" />
+    <Content Include="js\services\MAR_validation_Service.js" />
+    <Content Include="js\services\popupFactory.js" />
+    <Content Include="js\services\renewalUtility.js" />
+    <Content Include="js\services\timerFactory.js" />
+    <Content Include="js\services\UtilityFactory.js" />
+    <Content Include="js\services\validations_errorsfactory.js" />
+    <Content Include="js\controllers\EmailConfirmationController.js" />
+    <Content Include="js\controllers\EmailVerification.js" />
+    <Content Include="js\controllers\ForgotPasswordController.js" />
+    <Content Include="js\controllers\ForgotUsernameController.js" />
+    <Content Include="js\controllers\HeaderController.js" />
+    <Content Include="js\controllers\HelpController.js" />
+    <Content Include="js\controllers\HomeController.js" />
+    <Content Include="js\controllers\IndividualBusinessLicenseController.js" />
+    <Content Include="js\controllers\InformationVerificationController.js" />
+    <Content Include="js\controllers\LoginController.js" />
+    <Content Include="js\controllers\LookupController.js" />
+    <Content Include="js\controllers\MyBBLController.js" />
+    <Content Include="js\controllers\NewBBLWelcomeController.js" />
+    <Content Include="js\controllers\NewPasswordController.js" />
+    <Content Include="js\controllers\NoPoBoxController.js" />
+    <Content Include="js\controllers\PageNotfoundController.js" />
+    <Content Include="js\controllers\PaymentController.js" />
+    <Content Include="js\controllers\PaymentFailureController.js" />
+    <Content Include="js\controllers\PhysicalLocationCofoController.js" />
+    <Content Include="js\controllers\PhysicalLocationCorpBussAgentConroller.js" />
+    <Content Include="js\controllers\PhysicalLocationHopController.js" />
+    <Content Include="js\controllers\physicallocMailingAddressController.js" />
+    <Content Include="js\controllers\PreAppQuestionsController.js" />
+    <Content Include="js\controllers\ProfileController.js" />
+    <Content Include="js\controllers\ProfileLogoutController.js" />
+    <Content Include="js\controllers\QuickSearchController.js" />
+    <Content Include="js\controllers\QuickSearchResultController.js" />
+    <Content Include="js\controllers\QuickSearchSaveController.js" />
+    <Content Include="js\controllers\ReceiptController.js" />
+    <Content Include="js\controllers\RegisterController.js" />
+    <Content Include="js\controllers\RenewalPaymentController.js" />
+    <Content Include="js\controllers\RenewalReceiptController.js" />
+    <Content Include="js\controllers\ReviewCheckListController.js" />
+    <Content Include="js\controllers\SearchResultController.js" />
+    <Content Include="js\controllers\SecurityQuestionController.js" />
+    <Content Include="js\controllers\SupportingDocsUploadController.js" />
+    <Content Include="js\controllers\TaxRevenueController.js" />
+    <Content Include="js\controllers\TermsServicesController.js" />
+    <Content Include="js\controllers\UserPreviousEmailConfirmationController.js" />
+    <Content Include="js\controllers\VerifyBusinessBeforeAssociationController.js" />
+    <Content Include="js\controllers\VerifyEmailController.js" />
+    <Content Include="js\directives\capitalisefilter.js" />
+    <Content Include="js\directives\currentpasswodcheck.js" />
+    <Content Include="js\directives\emailavailability.js" />
+    <Content Include="js\directives\emailavailableprofile.js" />
+    <Content Include="js\directives\inputvalidationdirective.js" />
+    <Content Include="js\directives\loadingspinner.js" />
+    <Content Include="js\directives\matchpassword.js" />
+    <Content Include="js\directives\recaptchadirective.js" />
+    <Content Include="js\plugins\uibootstrap.js" />
+    <Content Include="js\directives\useravailability.js" />
+    <Content Include="js\directives\usernamevalidation.js" />
+    <Content Include="js\services\localstorageService.js" />
+    <Content Include="js\services\authInterceptorService.js" />
+    <Content Include="js\services\authService.js" />
+    <Content Include="js\services\recaptchaservice.js" />
+    <Content Include="js\services\requestService.js" />
+    <Content Include="js\services\sessionFactory.js" />
+    <Content Include="js\services\templateCache.js" />
+    <Content Include="less\bbl.css" />
+    <Content Include="less\README.txt" />
+    <Content Include="less\style.css" />
+    <Content Include="less\test1.css" />
+    <Content Include="libs\angularjs\angular-mocks.js" />
+    <Content Include="libs\angularjs\angular-resource.js" />
+    <Content Include="libs\angularjs\angular-resource.min.js" />
+    <Content Include="libs\angularjs\angular-route.js" />
+    <Content Include="libs\angularjs\angular-route.min.js" />
+    <Content Include="libs\angularjs\angular.js" />
+    <Content Include="libs\angularjs\angular.min.js" />
+    <Content Include="libs\jquery\jquery-1.10.2.js" />
+    <Content Include="js\plugins\jquery.maskedinput.min.js" />
+    <Content Include="libs\jquery\jquery_1.x.js" />
+    <Content Include="libs\jquery\jquery_1.x.min.js" />
+    <Content Include="partials\aboutus.html" />
+    <Content Include="partials\accountrecovery.html" />
+    <Content Include="partials\applicationchecklist.html" />
+    <Content Include="partials\associatebbl.html" />
+    <Content Include="partials\bblrenewalinfoconfirm.html" />
+    <Content Include="partials\bblrenewalpayment.html" />
+    <Content Include="partials\corpnotregisteredaddress.html" />
+    <Content Include="partials\corpnotregisteredagent.html" />
+    <Content Include="partials\corpreqregisterfirst.html" />
+    <Content Include="partials\corpreqregwithtradesecond.html" />
+    <Content Include="partials\dashboard.html" />
+    <Content Include="partials\deleteaccount.html" />
+    <Content Include="partials\deletestatusmessage.html" />
+    <Content Include="partials\dirPagination.tpl.html" />
+    <Content Include="partials\DownloadEHop.html" />
+    <Content Include="partials\DownloadReceipt.html" />
+    <Content Include="partials\ehopeligibility.html" />
+    <Content Include="partials\ehophomeaddress.html" />
+    <Content Include="partials\ehophomepre_address.html" />
+    <Content Include="partials\emailconfirmation.html" />
+    <Content Include="partials\emailtemplate.html" />
+    <Content Include="partials\inconvenience.html" />
+    <Content Include="partials\footer.html" />
+    <Content Include="partials\forgotpassword.html" />
+    <Content Include="partials\forgotusername.html" />
+    <Content Include="partials\forgotusernamedisplay.html" />
+    <Content Include="partials\header.html" />
+    <Content Include="partials\help.html" />
+    <Content Include="partials\home.html" />
+    <Content Include="partials\individualbusinesslicense.html" />
+    <Content Include="partials\informationverification.html" />
+    <Content Include="partials\Lockout.html" />
+    <Content Include="partials\lockoutfrgtpwd.html" />
+    <Content Include="partials\lockoutfrgtuser.html" />
+    <Content Include="partials\lockoutSQ.html" />
+    <Content Include="partials\login.html" />
+    <Content Include="partials\lookup.html" />
+    <Content Include="partials\mybbl.html" />
+    <Content Include="partials\iecontent.html" />
+    <Content Include="partials\newbblwelcome.html" />
+    <Content Include="partials\newpassword.html" />
+    <Content Include="partials\nopobox.html" />
+    <Content Include="partials\onefamilyrentalselfcetification.html" />
+    <Content Include="partials\overlays\mediaOverlay.html" />
+    <Content Include="partials\pagenotfound.html" />
+    <Content Include="partials\PasswordExpiry.html" />
+    <Content Include="partials\Passwordresendmailverification.html" />
+    <Content Include="partials\passwordstatus.html" />
+    <Content Include="partials\payment.html" />
+    <Content Include="partials\paymentfailure.html" />
+    <Content Include="partials\physicallocationcofo.html" />
+    <Content Include="partials\physicallocationhop.html" />
+    <Content Include="partials\physicallocation_corp_bussagent.html" />
+    <Content Include="partials\physicallocation_corp_registration.html" />
+    <Content Include="partials\physicallocation_mailing_address.html" />
+    <Content Include="partials\templates\popuptemplate.html" />
+    <Content Include="partials\preappquestions_step4.html" />
+    <Content Include="partials\preappquestions_step1.html" />
+    <Content Include="partials\preappquestions_step2.html" />
+    <Content Include="partials\preappquestions_step3.html" />
+    <Content Include="partials\preappquestions_step5.html" />
+    <Content Include="partials\preappquestions_step6.html" />
+    <Content Include="partials\PreviousEmailVerification.html" />
+    <Content Include="partials\profile.html" />
+    <Content Include="partials\profileemailchanged.html" />
+    <Content Include="partials\profilelogout.html" />
+    <Content Include="partials\quicksearch.html" />
+    <Content Include="partials\quicksearchresult.html" />
+    <Content Include="partials\quicksearchsave.html" />
+    <Content Include="partials\receipt.html" />
+    <Content Include="partials\register.html" />
+    <Content Include="partials\renewalpayment.html" />
+    <Content Include="partials\renewalreceipt.html" />
+    <Content Include="partials\renewalsupportingdocsupload_step1.html" />
+    <Content Include="partials\renewalsupportingdocs_step2.html" />
+    <Content Include="partials\renewalcleanhandscertification.html" />
+    <Content Include="partials\reviewchecklist.html" />
+    <Content Include="partials\searchresult.html" />
+    <Content Include="partials\securityquestion.html" />
+    <Content Include="partials\Success.html" />
+    <Content Include="partials\supportingdocsupload_step1.html" />
+    <Content Include="partials\supportingdocsupload_step2.html" />
+    <Content Include="partials\taxrevenue.html" />
+    <Content Include="partials\terms.html" />
+    <Content Include="partials\test.html" />
+    <Content Include="partials\verifybusinessbeforeassociation.html" />
+    <Content Include="partials\verifyemail.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".idea\.name" />
+    <Content Include=".idea\BBL Phase1.iml" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="less\bbl.less" />
+    <Content Include="less\bootstrap.less" />
+    <Content Include="less\content.less" />
+    <Content Include="less\footer.less" />
+    <Content Include="less\header.less" />
+    <Content Include="less\overrides.less" />
+    <Content Include="less\style.less" />
+    <Content Include="less\test1.less" />
+    <Content Include="less\variables.less" />
+    <Content Include="README.md" />
+    <Content Include="HelpDoc\BBL_User_Guide.pdf" />
+    <Content Include="HelpDoc\BBL_User_Guide_V1.pdf" />
+    <Content Include="HelpDoc\BBL_User_Guide_V2.pdf" />
+    <Content Include="HelpDoc\UserGuide.pdf" />
+    <None Include="Properties\PublishProfiles\Angular.pubxml" />
+    <None Include="Properties\PublishProfiles\angularBBL-Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\AngularJs.pubxml" />
+    <None Include="Properties\PublishProfiles\AngularSite.pubxml" />
+    <None Include="Properties\PublishProfiles\BBL-Angular-Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\BBL.pubxml" />
+    <None Include="Properties\PublishProfiles\DCBCWEB.pubxml" />
+    <None Include="Properties\PublishProfiles\WEB.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8039</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8039/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

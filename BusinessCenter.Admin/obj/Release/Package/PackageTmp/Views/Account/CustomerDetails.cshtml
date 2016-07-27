@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "DCRA - User Details";
+}
+@using BusinessCenter.Admin.Helpers
+@model BusinessCenter.Admin.Models.RegisterJsonModel
+@if (Session["UserName"] != null)
+{
+    using (Html.BeginForm("CustomerProfile", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="container headerBreadcrumb">
+            @if ((int)Session["Admincount"] == 2)
+            {
+                @Html.ActionLink("Home", "Dashboard", "Admin")
+            }
+            else if ((int)Session["Admincount"] == 3)
+            {
+                @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+            }
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @if ((int)Session["Admincount"] == 2)
+            {
+                @Html.ActionLink("DC Business Center", "Dashboard", "Admin")
+            }
+            else if ((int)Session["Admincount"] == 3)
+            {
+                @Html.ActionLink("DC Business Center", "Dashboard", "SuperAdmin")
+            }
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            @Html.ActionLink("User", "CustomerHome", "Admin")
+            <span class="easy-breadcrumb_segment-separator"> / </span>
+            <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front"> Details</span>
+        </div>
+        <div class="page_title scr_title">
+            <div class="container">
+                <div class="row">
+                    <h2 tabindex="0">Details</h2>
+                </div>
+            </div>
+        </div>
+        <div class="login_form register_form user_profile">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper">
+                        <form role="form" method="post" id="contact_us" name="contact_us">
+                            <div class="form-section">
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <p>@Html.HiddenFor(Model => Model.UserId)</p>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Username</label>
+                                            @Html.EditorFor(model => model.UserName, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Primary Email</label>
+                                            @Html.EditorFor(model => model.Email, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            @Html.EditorFor(model => model.FirstName, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            @Html.EditorFor(model => model.LastName, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-section change-password">
+                                <p class="forgot">Security Questions</p>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label style="margin-bottom:17px">Question 1</label>
+                                            <br />
+                                            <span class="questions">
+                                                <strong>
+                                                    @Html.DisplayFor(model => model.SecurityQuestion1, new SelectList(ViewBag.Questions, "Question",
+                                                   "Question", ViewBag.Sq1))
+                                                </strong>
+                                            </span>
+                                            @Html.HiddenFor(model => model.SecurityQuestion1)
+
+                                            @Html.ValidationMessageFor(model => model.SecurityQuestion1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Answer 1 </label>
+                                            @Html.EditorFor(model => model.SecurityAnswer1, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.HiddenFor(model => model.SecurityAnswer1)
+                                            @Html.ValidationMessageFor(model => model.SecurityAnswer1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label style="margin-bottom:17px">Question 2 </label>
+                                            <br />
+                                            <strong>
+                                                @Html.DisplayFor(model => model.SecurityQuestion2, new SelectList(ViewBag.Questions, "Question",
+                                               "Question", ViewBag.Sq2))
+                                            </strong>
+                                            @Html.HiddenFor(model => model.SecurityQuestion2)
+                                            @Html.ValidationMessageFor(model => model.SecurityQuestion2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Answer 2 </label>
+                                            @Html.EditorFor(model => model.SecurityAnswer2, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.HiddenFor(model => model.SecurityAnswer2)
+                                            @Html.ValidationMessageFor(model => model.SecurityAnswer2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                        <div class="form-group">
+                                            <label style="margin-bottom:17px">Question 3 </label>
+                                            <br />
+                                            <strong>
+                                                @Html.DisplayFor(model => model.SecurityQuestion3, new SelectList(ViewBag.Questions, "Question",
+                                               "Question", ViewBag.Sq3))
+                                            </strong>
+                                            @Html.HiddenFor(model => model.SecurityQuestion3)
+                                            @Html.ValidationMessageFor(model => model.SecurityQuestion3, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label>Answer 3</label>
+                                            @Html.EditorFor(model => model.SecurityAnswer3, new
+                                       {
+                                           htmlAttributes = new
+                                           {
+                                               @class = "form-control",
+                                               @readonly = "readonly",
+                                               disabled = "disabled"
+                                           }
+                                       })
+                                            @Html.HiddenFor(model => model.SecurityAnswer3)
+                                            @Html.ValidationMessageFor(model => model.SecurityAnswer3, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="backbtn text-center" style="margin-bottom: 20px">
+                                    @Html.ActionLink("Back", "CustomerHome", "Admin", new { Type = ViewBag.UserType }, null)
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+
+
+

@@ -1,0 +1,134 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+
+<div class="container headerBreadcrumb">
+    <a href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Email Confirmation</span>
+</div>
+
+<div class="page_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Email Confirmation</h2>
+        </div>
+    </div>
+</div>
+
+<div data-ng-controller="EmailConfirmationController as vm">
+    <div class="physical-loc-form">
+        <div class="container">
+            <form role="form" method="post" id="vm.emailconfirmform" autocomplete="off" name="vm.emailconfirmForm" novalidate>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-left">Email Confirmation</div>
+                    <div class="panel-body">
+                        <div id="error_msg" class="error_text text-center" name="error_msg" autofocus="focus" tabindex="-1"></div>
+                        <div class="form_wrapper" style="font-size: 24px; font-weight: 400;">
+                            <div class="clearfix">
+                                <div class="col-sm-offset-3 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="form-group" ng-class="{'has-error':vm.emailconfirmForm.emailconfirm.$invalid && vm.submitted }">
+                                        <label>I would like my email confirmation to be sent to </label>
+                                        <input type="email" class="form-control" placeholder=""
+                                               data-ng-model="vm.emailconfirm" name="emailconfirm" ng-maxlength="50"
+                                               id="emailconfirm" ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/"
+                                               ng-focus="setErrorMsg('error_msg')" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-offset-3 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="error-container" ng-show="vm.emailconfirmForm.emailconfirm.$dirty && vm.emailconfirmForm.emailconfirm.$invalid">
+
+                                        <small class="error-message" ng-show="vm.emailconfirmForm.emailconfirm.$error.pattern">
+                                            Email Confirmation field must be a valid Email.
+                                        </small>
+                                        <small class="error-message" ng-show="vm.emailconfirmForm.emailconfirm.$error.required">
+                                            Email Confirmation field cannot be blank.
+                                        </small>
+                                        <small class="error-message" ng-show="vm.emailconfirmForm.emailconfirm.$error.maxlength">
+                                            Email Confirmation cannot be longer than 50 characters
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_checkbox_set">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix">
+                                <div class="form-type-checkbox form-item-screening-question-seondary-cigarette form-item checkbox">
+                                    <div class="checker" id="uniform-edit-screening-question-candy">
+                                        <span ng-class="{true:'checked'}[vm.uploadType]">
+                                            <input type="checkbox" id="cagreedall"
+                                                   name="agreedall"
+                                                   ng-click="vm.toggleCheckbox('agreedall')"
+                                                   value="1" class="form-checkbox" style="opacity: 0;" ng-focus="setErrorMsg('error_msg')" required>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="checkbox_question">
+                                    <label tabindex="-1">
+                                        I/We understand that,
+                                        anyone who makes a false statement on this form can be criminally
+                                        prosecuted: and, if convicted, fined up to $1000, imprisoned up to 180
+                                        days, or both, under D.C. Official Code §22-2405.
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-sm-offset-3 col-md-8 col-sm-8 col-xs-12">
+                                <div class="error-container" ng-show="vm.emailconfirmForm.agreedall.$dirty && vm.emailconfirmForm.agreedall.$invalid">
+                                    <small class="error-message" ng-show="vm.emailconfirmForm.agreedall.$error.required">
+                                        You need to agree the conditions.
+                                    </small>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form_wrapper" style="font-size: 24px; font-weight: 400;">
+                            <div class="clearfix">
+                                <div class="col-sm-offset-3 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="form-group" ng-class="{'has-error':vm.emailconfirmForm.signature.$invalid && vm.submitted }">
+                                        <label>Enter your full name as your signature  </label>
+                                        <input type="text" class="form-control" placeholder=""
+                                               data-ng-model="vm.signature" name="signature"
+                                               id="signature" ng-pattern="/^[a-zA-Z\s]+$/" ng-maxlength="50" ng-focus="setErrorMsg('error_msg')" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-sm-offset-3 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="error-container" ng-show="vm.paymentForm.signature.$dirty && vm.paymentForm.signature.$invalid">
+                                        <small class="error-message" ng-show="vm.emailconfirmForm.signature.$error.pattern">
+                                            Signature field accepts only alphabets.
+                                        </small>
+                                        <small class="error-message" ng-show="vm.emailconfirmForm.signature.$error.required">
+                                            Signature field cannot be blank.
+                                        </small>
+                                        <small class="error-message" ng-show="vm.emailconfirmForm.signature.$error.maxlength">
+                                            Signature cannot be longer than 50 characters
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pre-checkquestion col-md-11 col-xs-12 col-md-offset-1 text-center">
+                        <button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToReceipt(vm.submitted=true)">
+                            Submit
+                        </button>
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToChecklist()">
+                            Save and Return to Checklist
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+@using System.Web.Mvc.Html
+@using System;
+@using System.Reflection.Emit
+@model BusinessCenter.Api.Models.SearchDataMvcViewModel
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/style.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/temp.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bbl.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/flexslider.css" />
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/fileinput.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/customstyle.css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+    <style>
+        .ir {
+            display: table;
+            width: 100%;
+        }
+
+        .search_result section > .container .ir > div {
+            display: table-cell !important;
+            float: none;
+            vertical-align: middle;
+        }
+
+        /*.search_result section>.container .ir>div {
+               display:block !important;margin-bottom:15px;
+
+           }*/
+
+        .dt {
+            color: #6e6b6b;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 25px;
+            margin: 20px 0 0;
+            display: none;
+            padding: 20px 0 0;
+        }
+
+        .search_result .dt h4 {
+            text-align: right;
+            padding-right: 10px;
+            margin: 0px;
+        }
+
+        .search_result .dt .topBorder {
+            border-top: 1px solid #e2e2e2;
+            margin: 0 4% 20px;
+        }
+
+        .search_result .dt p {
+            line-height: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page_title scr_title" style="padding-top: 10px;">
+        <div class="container">
+            <div class="row">
+                <h2>Quick Search Results</h2>
+                <p>
+                    <span tabindex="0" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        How To Use This Page<span class="glyphicon glyphicon-chevron-down" id="toggleicon"></span>
+                    </span>
+                </p>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <!--<label style="color: #124f87; font-weight: 600">Search Criteria</label>-->
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    @if (!string.IsNullOrEmpty(@Model.SearchData.CompanyName))
+                    {
+                        <label>
+                            <span class="data_name">Business Name :</span> <span> @Model.SearchData.CompanyName</span>
+                        </label>
+                    }
+
+                    @if (!string.IsNullOrEmpty(@Model.SearchData.LicenseName))
+                    {
+                        <label>
+                            <span class="data_name">License Number : </span> <span> @Model.SearchData.LicenseName</span>
+                        </label>
+                    }
+
+                    @if (!string.IsNullOrEmpty(@Model.SearchData.FirstName))
+                    {
+                        <label>
+                            <span class="data_name">First Name : </span> <span> @Model.SearchData.FirstName</span>
+                        </label>
+                    }
+                    @if (!string.IsNullOrEmpty(@Model.SearchData.LastName))
+                    {
+                        <label>
+                            <span class="data_name">Last Name : </span> <span> @Model.SearchData.LastName</span>
+                        </label>
+                    }
+                </div>
+                <div class="col-sm-12 col-xs-12">
+                    @if (@Model.SearchCritiria.Length != 0)
+                    {
+                        <span class="data_name">Search Criteria :</span>
+                        foreach (var searchtype in @Model.SearchCritiria)
+                        {
+                            if (@searchtype == "All")
+                            {
+                                <label id="exceptall"> @searchtype </label>
+                                break;
+                            }
+                            else
+                            {
+                                <div>
+                                    <label id="exceptall"> @searchtype</label>
+                                </div>
+                            }
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dvMainsection">
+        <div class="search_tag">
+            <div class="container">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                    <p>
+                        @if (!String.IsNullOrEmpty(@Model.LicenseCounts.RecordCount))
+                        {
+                            <span>
+                                @Model.LicenseCounts.RecordCount
+                            </span>
+                        }
+                        else
+                        { <span>0</span>
+                        }
+                        <span>
+                            Records displayed
+                        </span>
+                    </p>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-pad-right dash-buttn ">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6  no-pad-right">
+                        <a class="btn btn-default">Search again</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-pad-right">
+                        <a class="btn btn-default">
+                            <img src="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/images/heart.png">My Saved Search Results
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+
+
+
+
+
+
+        <div class="search_result">
+            <div class="container srch_filter">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-pad">
+                    <label class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-pad">Filter:</label>
+                    <div class="btn_wrapper">
+                        @if (!String.IsNullOrEmpty(@Model.LicenseCounts.BBLCount))
+                        {
+                            <button id="BBL"> BBL <span>(@Model.LicenseCounts.BBLCount)</span></button>
+                        }
+                        else
+                        {  <button id="BBL"> BBL <span>(0)</span></button>  }
+
+                        @if (!String.IsNullOrEmpty(@Model.LicenseCounts.OPLACount))
+                        {
+                            <button id="OPLA"> OPLA <span>(@Model.LicenseCounts.OPLACount)</span></button>
+                        }
+                        else
+                        { <button id="OPLA"> OPLA <span>(0)</span></button> }
+
+                        @if (!String.IsNullOrEmpty(@Model.LicenseCounts.ABRACount))
+                        {
+                            <button id="ABRA"> ABRA <span>(@Model.LicenseCounts.ABRACount)</span></button>
+                        }
+                        else
+                        {  <button id="ABRA"> ABRA <span>(0)</span></button>}
+
+
+                        @if (!String.IsNullOrEmpty(@Model.LicenseCounts.CBECount))
+                        {
+                            <button id="CBE"> CBE <span>(@Model.LicenseCounts.CBECount)</span></button>
+                        }
+                        else
+                        {   <button id="CBE"> CBE <span>(0)</span></button> }
+
+
+                        @if (!String.IsNullOrEmpty(@Model.LicenseCounts.CORPCount))
+                        {
+                            <button id="CORP"> CORP <span>(@Model.LicenseCounts.CORPCount)</span></button>
+                        }
+                        else
+                        {  <button id="CORP"> CORP <span>(0)</span></button> }
+                    </div>
+                    @if (!String.IsNullOrEmpty(@Model.Keyword))
+                    {
+                        <input type="text" spellcheck="false" placeholder="Enter Keyword" id="keywordfield" value="@Model.Keyword">
+                    }
+                    else
+                    {
+                        <input type="text" spellcheck="false" placeholder="Enter Keyword" id="keywordfield" value="">
+                    }
+                    <button ng-click="filterByType('')">Clear Filter</button>
+                    <span class="pull-right cursor_type" id="top" ng-click="scrollPage('bottom')"><i class="glyphicon glyphicon-arrow-down" data-toggle="tooltip" data-placement="right" title="Bottom"></i></span>
+                </div>
+            </div>
+
+
+
+            @if (@Model.SearchResult.Count == 0)
+            {
+                <section>
+                    <div class="container">
+                        <div class="innerRow">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <p class="text-danger error_text text_align">No Results Found</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+            else
+            {
+                <div id="divData">
+
+                    @foreach (var item in @Model.SearchResult)
+                    {
+
+                        <section>
+                            <div class=" container">
+                                <div class="ir">
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                        <img src="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/images/arrow-bottom.png">
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0;">
+                                        <p>
+                                            <span>
+                                                @if (!String.IsNullOrEmpty(item.LeftNameTop))
+                                                {
+                                                  @item.LeftNameTop
+                                                }
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.LeftNameResultTop))
+                                            {
+                                                @item.LeftNameResultTop
+                                            }
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.LeftNameMiddle))
+                                            {
+                                               @item.LeftNameMiddle
+                                                }
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.LeftNameResultMiddle))
+                                            {
+                                           @item.LeftNameResultMiddle
+                                            }
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.LeftNameBottom))
+                                               {
+                                                    @item.LeftNameBottom
+                                                }
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.LeftNameResultBottom))
+                                            {
+                                           @item.LeftNameResultBottom
+                                            }
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.LeftNameMiddleLabel1))
+                                                {
+                                                    @item.LeftNameMiddleLabel1
+                                                }
+
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.LeftNameMiddle1Text))
+                                            {
+                                                @item.LeftNameMiddle1Text
+                                            }
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0;">
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.MiddleNameTop))
+                                                {
+
+                                                @item.MiddleNameTop
+                                                }
+                                            </span>
+                                        </p>
+                                        <div>
+                                            @if(!String.IsNullOrEmpty(item.MiddleNameResultTop))
+                                            {
+                                                @item.MiddleNameResultTop
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding:0;">
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.RightNameTop))
+                                                {
+                                                    @item.RightNameTop
+                                                }
+
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.RightNameResultTop))
+                                            {
+                                                @item.RightNameResultTop
+                                            }
+
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.RightNameMiddle1))
+                                                {
+                                                    @item.RightNameMiddle1
+                                                }
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.RightNameResultMiddle1))
+                                            {
+                                                @item.RightNameResultMiddle1
+                                            }
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.RightNameMiddle2))
+                                                {
+                                                    @item.RightNameMiddle2
+                                                }
+                                            </span>
+                                            <span>
+                                                @if (!string.IsNullOrEmpty(item.RightNameResultMiddle2))
+                                                {
+                                                if ((item.RightNameResultMiddle2 == "REVOKED") || (item.RightNameResultMiddle2 == "EXPIRED") || (item.RightNameResultMiddle2 == "Expired"))
+                                                {
+                                                    <span class="error_text status-size">
+
+                                                        @item.RightNameResultMiddle2
+                                                    </span>
+                                                }
+                                                @*<span ng-switch-when="EXPIRED" class="error_text status-size">
+                                                        {{searchItem.RightNameResultMiddle2}}
+                                                    </span>*@
+                                                else
+                                                {
+                                                    <span class="active">
+                                                        @item.RightNameResultMiddle2
+
+                                                    </span>
+                                                }
+                                                }
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @if(!String.IsNullOrEmpty(item.RightNameBottom))
+                                                {
+                                                    @item.RightNameBottom
+                                                }
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.RightNameResultBottom))
+                                            {
+                                                @item.RightNameResultBottom
+                                            }
+
+                                        </p>
+                                        <p>
+                                            <span>
+                                                @*Last Retrieved On :*@
+                                                @if(!String.IsNullOrEmpty(item.LastUpdateDateName))
+                                                {
+                                                    @item.LastUpdateDateName
+                                                }
+
+                                            </span>
+                                            @if(!String.IsNullOrEmpty(item.LastUpdateDate))
+                                            {
+                                                @item.LastUpdateDate
+                                            }
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:0;">
+                                        @if(!String.IsNullOrEmpty(item.SourceFullName))
+                                        {
+                                            <button disabled class="bbl src_full_name">@*{{searchItem.SourceFullName}}*@ @item.SourceFullName</button>
+                                        }
+                                    </div>
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="padding:0;text-align:center">
+                                        @if (item.WishList == true)
+                                        {
+                                            <span tabindex="0" class="cursor_type glyphicon glyphicon-heart save_ico">
+                                                <p class="heart_text1">
+                                                    Remove
+                                                </p>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span tabindex="0" class="cursor_type glyphicon glyphicon-heart-empty save_ico">
+                                                <p class="heart_text1">
+                                                    Save
+                                                </p>
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="dt" style="display:block;padding:0;">
+                                    <div class="topBorder"></div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4 ng-switch="searchItem.Source">
+                                                @if (!String.IsNullOrEmpty(item.Expantion1))
+                                                {
+                                                    @item.Expantion1
+                                                }
+                                                
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @if (!String.IsNullOrEmpty(item.ExpantionResult1))
+                                                {
+                                                    @item.ExpantionResult1
+                                                }
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @if (!String.IsNullOrEmpty(item.Expantion2))
+                                                {
+                                                    @item.Expantion2
+                                                }
+                                                
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @if(!String.IsNullOrEmpty(item.ExpantionResult2))
+                                                {
+                                                    @item.ExpantionResult2
+                                                }
+                                          
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @if (!String.IsNullOrEmpty(item.Expantion3))
+                                                {
+                                                    @item.Expantion3
+                                                }
+                                                
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @if (!String.IsNullOrEmpty(item.ExpantionResult3))
+                                                {
+                                                    @item.ExpantionResult3
+                                                }
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @if (!String.IsNullOrEmpty(item.Expantion4))
+                                                {
+                                                    @item.Expantion4
+                                                }
+                                                
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @if (!String.IsNullOrEmpty(item.ExpantionResult4))
+                                                {
+                                                    @item.ExpantionResult4
+                                                }
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding:0;">
+                                            <h4>
+                                                @if (!String.IsNullOrEmpty(item.Expantion5))
+                                                {
+                                                    @item.Expantion5
+                                                }
+                                              
+                                            </h4>
+                                        </div>
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="padding:0;">
+                                            <p>
+                                                @if (!String.IsNullOrEmpty(item.ExpantionResult5))
+                                                {
+                                                    @item.ExpantionResult5
+                                                }
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </section>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+﻿@using System.Activities.Expressions
+@if (Session["Login"] != null)
+{
+    <div id="navbar" class="navbar-collapse collapse" style="margin-top: 20px;">
+        <div class="row">
+            <ul class="nav navbar-nav smallMenu"></ul>
+            <ul class="global-menu nav navbar-nav navbar-right clearfix" id="header-nav">
+                @if ((int)Session["Admincount"] == 3)
+                {
+                    <li>@Html.ActionLink("Dashboard", "Dashboard", "SuperAdmin", null, new { id = "sad", @class = "activeclass" })</li>
+                    <li class="quicksearch">
+                        <a href="#" id="bbl" class="activemenuquick" data-toggle="dropdown">
+                            MetaData
+                        </a>
+                        <ul class="dropdown-menu" id="bbl-nav" style="left:-120px;">
+                            <li>@Html.ActionLink("Business Activities", "BusinessActivities", "BBL",null, new {id="businessactivity" })</li>
+                            <li>@Html.ActionLink("Errors", "Errors", "BBL", null, new { id = "ErrorContent" })</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Queue", "Queue", "BBL", null, new { id = "queue", @class = "adminGrids" })</li>
+                    <li class="account">
+                        <a href="#" id="accountmanagement" class="accountmenulink" data-toggle="dropdown">
+                            Account Management
+                        </a>
+                        <ul class="dropdown-menu" id="account-nav" style="left:7px;">
+                            <li>@Html.ActionLink("SuperAdmin", "Home", "SuperAdmin", null, new { id = "Superadminhome", @class = "superadminGrids" })</li>
+                            <li>@Html.ActionLink("Manager", "ManagerHome", "Admin", null, new { id = "admin", @class = "managerGrids" })</li>
+                            <li>@Html.ActionLink("Admin", "Home", "Admin", null, new { id = "admina", @class = "adminGrids" })</li>
+                            <li>@Html.ActionLink("Customer", "CustomerHome", "Admin", null, new { id = "Superadminuser", @class = "userGrids" })</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("AUDIT", "TransferAudit", "BBL", null, new { id = "Audit", @class = "adminGrids" })</li>
+
+                }
+                else if ((int)Session["Admincount"] == 4)
+                {
+                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Admin", null, new { id = "AdminDashboard" })</li>
+                    <li class="quicksearch">
+                        <a href="#" id="bbl" class="activemenuquick" data-toggle="dropdown">
+                            MetaData
+                        </a>
+                        <ul class="dropdown-menu" id="bbl-nav" style="left:-120px;">
+                            <li>@Html.ActionLink("Business Activities", "BusinessActivities", "BBL", new { type = "Activity" }, new { id = "businessactivity" })</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Customer", "CustomerHome", "Admin", null, new { id = "Adminuser" })</li>
+                    <li>@Html.ActionLink("AUDIT", "TransferAudit", "BBL", null, new { id = "Audit", @class = "adminGrids" })</li>
+
+                }
+                else if ((int)Session["Admincount"] == 2)
+                {
+                    <li>@Html.ActionLink("Customer", "CustomerHome", "Admin", null, new { id = "Adminuser" })</li>
+
+                }
+                <li class="quicksearch">
+                    <a href="#" id="bbl1" class="activemenuquick1" data-toggle="dropdown">
+                        SETTINGS
+                    </a>
+                    <ul class="dropdown-menu" id="bbl-nav1" style="left:-120px;">
+                        <li>@Html.ActionLink("Profile", "MyProfile", "Account", new { type = "Activity" }, new { id = "myprofile" })</li>
+                        <li>
+                            <a href="#" id="logout-hyp" data-toggle="dropdown" style="font-size: 12px;">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="global-menu nav navbar-nav navbar-right clearfix"></ul>
+        </div>
+    </div>
+}
+
+<div class="modal fade modaldiv" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin-top:60px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class='error_message'> </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button  yes-btn" id="yesbtn">Yes</button>
+                <button type="button" class="close-button  no-btn" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#ErrorContent").click(function (e) {
+        e.preventDefault();
+        window.location.href = '@Url.Action("Errors", "BBL")';
+    });
+
+    $(".activemenuquick")
+      .mouseover(function () {
+          $(".activemenuquick").next(".dropdown-menu").show();
+      })
+      .mouseout(function () {
+          $(".activemenuquick").next(".dropdown-menu").show();
+          if ($(".activemenuquick").next(".dropdown-menu").is(':hover')) {
+              $(".activemenuquick").next(".dropdown-menu").show();
+
+          }
+          else {
+              $(".activemenuquick").next(".dropdown-menu").hide();
+          }
+      });
+
+    $(".activemenuquick").next(".dropdown-menu")
+      .mouseover(function () {
+          $(".activemenuquick").next(".dropdown-menu").show();
+      })
+      .mouseout(function () {
+
+          $(".activemenuquick").next(".dropdown-menu").hide();
+      });
+
+    $(".activemenuquick").next(".dropdown-menu")
+   .mouseover(function () {
+       $(".activemenuquick").next(".dropdown-menu").show();
+   })
+   .mouseout(function () {
+       $(".activemenuquick").next(".dropdown-menu").hide();
+   });
+    $(".activemenuquick1")
+    .mouseover(function () {
+        $(".activemenuquick1").next(".dropdown-menu").show();
+    })
+    .mouseout(function () {
+        $(".activemenuquick1").next(".dropdown-menu").show();
+        if ($(".activemenuquick1").next(".dropdown-menu").is(':hover')) {
+            $(".activemenuquick1").next(".dropdown-menu").show();
+        }
+        else {
+            $(".activemenuquick1").next(".dropdown-menu").hide();
+        }
+    });
+
+    $(".activemenuquick1").next(".dropdown-menu")
+      .mouseover(function () {
+          $(".activemenuquick1").next(".dropdown-menu").show();
+      })
+      .mouseout(function () {
+          $(".activemenuquick1").next(".dropdown-menu").hide();
+      });
+
+    // Account Management
+    $("#accountmanagement").click(function (e) {
+        e.preventDefault();
+    });
+
+    $(".accountmenulink")
+     .mouseover(function () {
+         $(".accountmenulink").next(".dropdown-menu").show();
+     })
+     .mouseout(function () {
+         $(".accountmenulink").next(".dropdown-menu").show();
+         if ($(".accountmenulink").next(".dropdown-menu").is(':hover')) {
+             $(".accountmenulink").next(".dropdown-menu").show();
+         }
+         else {
+             $(".accountmenulink").next(".dropdown-menu").hide();
+         }
+     });
+
+    $(".accountmenulink").next(".dropdown-menu")
+      .mouseover(function () {
+          $(".accountmenulink").next(".dropdown-menu").show();
+      })
+      .mouseout(function () {
+          $(".accountmenulink").next(".dropdown-menu").hide();
+      });
+
+    $(".errormenulink")
+    .mouseover(function () {
+        $(".errormenulink").next(".dropdown-menu").show();
+    })
+    .mouseout(function () {
+        $(".errormenulink").next(".dropdown-menu").show();
+        if ($(".errormenulink").next(".dropdown-menu").is(':hover')) {
+            $(".errormenulink").next(".dropdown-menu").show();
+        }
+        else {
+            $(".errormenulink").next(".dropdown-menu").hide();
+        }
+    });
+
+    $(".errormenulink").next(".dropdown-menu")
+      .mouseover(function () {
+          $(".errormenulink").next(".dropdown-menu").show();
+      })
+      .mouseout(function () {
+          $(".errormenulink").next(".dropdown-menu").hide();
+      });
+</script>
+<script>
+    $("#logout-hyp").click(function (e) {
+        e.preventDefault();
+        $('.modal-body h3.error_message').empty().append('Are you sure you wish to log out?');
+        $('.modaldiv').modal('show');
+    });
+    $("#yesbtn").on("click", function () {
+        $.ajax({
+            url: '/Account/Logout',
+            type: "Get",
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $('#modal-container').modal('hide');
+                   
+                    localStorage.Lgoggein = false;
+                    localStorage.ApplicationStart = false;
+                    localStorage.ApplicationLoggedout = "logoutclicked";
+                    window.location.href = '@Url.Action("Login","Account")';
+                }
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    });
+</script>
+
+
+<style>
+    #logout-hyp {
+        font-family: "Open Sans",sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+    }
+
+    #bbl-nav li {
+        /*margin-left: 30px;*/
+    }
+    
+        #bbl-nav li a {
+            padding-left: 17px;
+            padding-right: 30px;
+        }
+
+    #account-nav li a {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    #bbl-nav li a, #account-nav li a {
+        background-color: #1f598d;
+        border: 1px solid #1f598d;
+        color: #fff;
+        font-weight: 600;
+    }
+
+        #bbl-nav li a:hover, #bbl-nav li a:focus, #account-nav li a:hover, #account-nav li a:focus {
+            background-color: #f1f2f3;
+            border: 1px solid #f1f2f3;
+            color: #1f598d;
+            font-weight: 600;
+        }
+
+    #nobbl {
+        border-bottom: 2px solid transparent;
+        color: #707070;
+        display: inline-block;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0;
+        padding: 0 0 20px;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+</style>
+
+<script>
+    $("#bbl-nav").css("margin-left", "100px");
+    $("#transfer-nav").css("margin-left", "100px");
+</script>

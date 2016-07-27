@@ -1,0 +1,188 @@
+﻿@model BusinessCenter.Admin.Models.PortaContentModel
+@{
+    ViewBag.Title = "DCRA - Update Error";
+}
+@if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <div class="container headerBreadcrumb">
+        @Html.ActionLink("Home", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        @Html.ActionLink("Business Center Admin Portal", "Dashboard", "SuperAdmin")
+        <span class="easy-breadcrumb_segment-separator">/</span>
+        <span href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Update Error</span>
+    </div>
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Update Error Message</h2>
+            </div>
+        </div>
+    </div>
+    <div id="dvMainsection">
+        <div class="login_form register_form">
+            <div class="container">
+                <div class="row">
+                    <div class="form_wrapper reg-err-placement">
+                        <h2 id="primary-status"> @ViewBag.Status</h2>
+                        @*<form method="post">*@
+                        @using (Html.BeginForm("UpdateError", "BBL", new { messageId = Request.QueryString["messageId"] }, FormMethod.Post, new { id = "postform" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "error-message error" })
+                            <p style="text-align: center; color:red; font-size: 19px; margin-bottom: 10px;"><span id="msg">@ViewBag.Status </span></p>
+                            <p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;height:50px;"><span id="successmsg">@ViewBag.Statusmsg</span></p>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Message Type")
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.MessageType, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "messagetype",
+                                name = "messagetype",
+                                //placeholder = "Primary Category",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Primary Category'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.MessageType, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Short Name")
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.ShortName, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "shortname",
+                                name = "shortname",
+                                //placeholder = "Primary Category",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Primary Category'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.ShortName, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group " style="text-align: left;">
+                                        @Html.Label("Error Message")
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group ">
+                                        @Html.EditorFor(model => model.ErrrorMessage, new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                id = "errormessage",
+                                name = "errormessage",
+                                //placeholder = "Primary Category",
+                                //onfocus = "this.placeholder = ''",
+                                //onblur = "this.placeholder = 'Primary Category'"
+                            }
+                        })
+                                        @Html.ValidationMessageFor(model => model.ErrrorMessage, "", new { @class = "error-message error" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+
+                                <button type="button" id="btnBack" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>  Back</button>
+                                <button type="submit" id="btnCreate" class="btn btn-default">Update Error Message</button>
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade registermodaldiv" id="registermodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="margin-top:60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body homemodal-body">
+                    <h3 class='error_message'> </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button  yes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Hidden("HiddenName", null, new { @class = "hiddencss" });
+
+    <script>
+        $("#btnBack").click(function () {
+            window.location.href = "/BBL/Errors";
+        });
+    </script>
+    if (IsPost)
+    {
+        if (ViewBag.IsUpadateError == true)
+        {
+            <script>
+                $(function () {
+                    $('.homemodal-body h3.error_message').empty().append('Error is Upadated successfully');
+                    $("#registermodal-container").modal('show');
+                });
+                $(".yes-btn").on("click", function () {
+                    $('#registermodal-container').modal('hide');
+
+
+
+                });
+            </script>
+        }
+    }
+}
+else
+{
+    Response.Redirect("/Account/Login");
+}
+

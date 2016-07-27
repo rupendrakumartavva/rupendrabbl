@@ -1,0 +1,242 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" ng-click="vm.navToApply()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Determine eHOP Eligibility</span>
+</div>
+
+<div data-ng-controller="eHOPEligibilityController as vm">
+    <div class="page_title page_title_help scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">Determine eHOP Eligibility</h2>
+                <p>
+                    <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        Help With This Page (Click Here)
+                    </span>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="well info-content">
+                        <p class="text-center">
+                            <strong>This page is used to determine if you are Eligible for an Expedited Home Occupancy Permit (eHOP) which can be applied for and issued as part of this BBL Application.</strong>
+                        </p>
+
+                        <p class="terms_text">
+                            1. Select the drop down menu to view options for describing your business.
+                        </p>
+                        <p class="terms_text">
+                            2. From the checklist that will appear, select all conditions that apply to your business.
+                        </p>
+                        <p class="terms_text">
+                            3. Attest that the information you provided is accurate and truthful <img src="../images/How_to_Ehop_Attach.png" style="height: 28px; width: 195px;" />
+                        </p>
+
+                        <p class="terms_text srch_filter">
+                            4. Select the  <button id="btn_revise2" class="btn btn-default" style="cursor: default; pointer-events: none; text-transform: none;">Confirm EHOP Eligibility</button> button to determine if you are eligible.
+                        </p>
+
+                        <p class="terms_text">
+                            <strong>If you are eligible for an eHOP</strong>
+                        </p>
+                        <ul class="terms_text" style="padding-left: 80px;">
+                            <li>
+                                The following message will display <img src="../images/How_to_Ehop_Next.png" style="height: 33px; width: 206px;" />
+                            </li>
+                            <li>
+                               A copy of your eHOP will display on your My BBLs page once the corresponding Basic Business License is paid for and approved.
+                            </li>
+                        </ul>
+                        <p class="terms_text">
+                            <strong> If you are ineligible for an eHOP </strong>
+                        </p>
+                        <ul class="terms_text" style="padding-left: 80px;">
+                            <li>
+                                The following message will display <img src="../images/How_to_Ehop_Error.png" style="height: 35px; width: 379px;" />
+                            </li>
+                        </ul>
+
+                        <p class="terms_text">
+                            <div class="login_form my_form">
+                                <span class="terms_text"> If you need additional help, review the</span>
+                                <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                                <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoadingSection">
+        <div class="center">
+            <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+        </div>
+    </div>
+    <div id="dvMainsection">
+        <section class="register_form">
+            <div class="container">
+                <fieldset ng-disabled="vm.EditDisable">
+                    <div class="row">
+                        <div class="eheight col-sm-12">
+                            <h4>
+                                Based on your responses so far, you may be eligible to apply for an Expedited Home Occupancy
+                                Permit (eHOP):
+                            </h4>
+                            <div class="form-section">
+                                <div class="clearfix">
+                                    <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12 ">
+                                        <div class="form-group question_title">
+                                            <p class="text_lf">Is your business one of the following:</p>
+                                            <select name="ehopeligibility" style="line-height: 36px;" data-ng-model="vm.ehopeligibility.type" ng-change="vm.ehopoption()">
+                                                <option value="" selected disabled>Select One</option>
+                                                <option value="1">
+                                                    Home office of a business person
+                                                </option>
+                                                <option value="2">
+                                                    Home office of a salesperson
+                                                </option>
+                                                <option value="3">
+                                                    Independent consultant, journalist, and writer
+                                                </option>
+                                                <option value="4">
+                                                    Typing, word processing or computing programming services
+                                                </option>
+                                                <option value="5">
+                                                    Telemarketing services
+                                                </option>
+                                                <option value="6">None of the Above</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="error_msg" class="error_text text-center error_msg" tabindex="-1"></div>
+                            </div>
+                            <div ng-show="vm.ehopeligibility.type !=''">
+                                <div ng-show="vm.ehopeligibility.type != '6'" class="well well-lg">
+                                    <div class="quetion_wrapper ehop">
+                                        <div class="container">
+                                            <div class="single_checkbox_set">
+                                                <div class="clearfix">
+                                                    <div class="col-md-11 col-sm-12 col-xs-12 lead ehop-section-header">
+                                                        <h3 tabindex="0" class="lead ehop-section-header">Check all of the conditions that apply</h3>
+                                                    </div>
+                                                    <div class="col-md-11 col-md-offset-0 col-sm-12 col-xs-12 col-md-offset-0">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix checkbox" data-ng-repeat="category in vm.categories">
+                                                            <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                                                <div class="checker">
+                                                                    <span id="{{category.id}}" ng-class="{true:'checked'}[vm.checked]">
+                                                                        <input type="checkbox" id="c{{category.id}}" ng-disabled="vm.EditDisable"
+                                                                               name="{{category.name}}"
+                                                                               ng-click="vm.toggleCheckbox(category.id)"
+                                                                               value="1" class="form-checkbox" style="opacity: 0;">
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="checkbox_question">
+                                                                <label tabindex="-1" style="padding-left: 5px;">{{category.name}}</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--<h3 class="col-md-11 col-sm-12 col-xs-12 lead ehop-section-header">Attestation</h3>-->
+                                            <div class="single_checkbox_set">
+                                                <div class="clearfix">
+                                                    <div class="col-md-11 col-sm-12 col-xs-12 lead ehop-section-header">
+                                                        <h3 tabindex="0" class="lead ehop-section-header">Attestation</h3>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-0">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix checkbox">
+                                                            <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox" ng-class="{'has-error':vm.checked!=true && vm.submitted && vm.attestationchecked!=true}">
+                                                                <div class="checker">
+                                                                    <span ng-class="{true:'checked'}[vm.checked]">
+                                                                        <input type="checkbox" id="cattestation"
+                                                                               name="attestation"
+                                                                               ng-click="vm.toggleCheckbox('attestation')"
+                                                                               ng-model="vm.attestationchecked" ng-disabled="vm.EditDisable" class="form-checkbox" style="opacity: 0;">
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="checkbox_question">
+                                                                <label tabindex="-1" style="padding-left: 5px;">
+                                                                    I attest that the eligibility information I have provided is true and accurate.
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix col-md-12 col-xs-12 col-sm-12">
+                                                <div ng-show="vm.attestation" class="col-sm-offset-1 col-md-10 alert error_text" role="alert">
+                                                    <span aria-hidden="true"></span>
+                                                    Please perform Attestation.
+                                                </div>
+                                            </div>
+                                            <div ng-show="vm.ehopeligibility.type != '6'" class="login_form register_form " id="ehopbtn-div">
+                                                <div class="">
+                                                    <button id="btn_apply_ehop" class="btn btn-default" data-ng-click="vm.confirmEhop(vm.submitted=true)">
+                                                        Confirm eHOP Eligibility
+                                                    </button>
+                                                </div>
+                                                <div ng-show="vm.successMsg" class="text-center col-md-12 alert color-success-message" role="alert" style="margin-top:-20px;margin-left:-15px;">
+                                                    <span aria-hidden="true"></span>
+                                                    You are Eligible for an eHOP. Please select Next.
+                                                </div>
+                                                <div ng-show="vm.togglepinvalmsg || vm.ehopeligibility.type == '6'" class="text-center col-sm-offset-1 col-md-10 alert error_text" role="alert" style="color:green;margin-top:-40px;">
+                                                    <span aria-hidden="true"></span>
+                                                    {{vm.currentpage_errors.ehop_inEligible}}
+                                                    <!--Given your response, you are ineligible for an Expedited Home Occupancy Permit.  Please select [Return to Checklist] and visit the DC Office of Zoning at 1100 4th St., SW or call 202-442-4400 to obtain an HOP.-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="ehop_nav_button">
+                    <div ng-show="vm.ehopeligibility.type != ''">
+                        <div class="pre-checkquestion pre-checkquestion-question col-md-12 col-sm-12 col-xs-12" ng-show="vm.ehopeligibility.type != ''" style="margin-bottom: 15px;margin-left: 50px;">
+                            <button id="btn_exit_no_save1" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                            <button id="btn_exit_no_save" class="btn btn-default" data-dismiss="modal" data-ng-click="vm.checkAndExit('mybbl',vm.submitted=true)">Exit</button>
+                            <button id="btn_create_checklist" class="btn btn-default" data-dismiss="modal" data-ng-click="vm.checkAndExit('appchecklist',vm.submitted=true)">
+                                Return to Checklist
+                            </button>
+                            <button id="btn_revise" class="btn btn-default btnnextColor btn-next" data-dismiss="modal" data-ng-click="vm.navToeHOPBusinessAddress('',vm.submitted=true)" ng-disabled="vm.ehopeligibility.type == '6' || vm.togglepinvalmsg ">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="ehopEligibility" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class='error_message'></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="close-button" ng-click="vm.navigateAnyway()">Ok</button>
+                                <button type="button" class="close-button" ng-click="vm.dontNavigate()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Modal -->
+<!-- Footer Starts -->
+<div ng-include src="'partials/footer.html'"></div>

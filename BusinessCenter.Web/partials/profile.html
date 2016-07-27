@@ -1,0 +1,310 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Profile</span>
+</div>
+
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+
+<div id="dvMainsection">
+    <div class="page_title scr_title">
+        <div class="container">
+            <div class="row">
+                <h2>Profile</h2>
+                <p>
+                    <span aria-expanded="false"  aria-controls="collapseExample" class="cursor_type" tabindex="0"  id="toggleicon">
+                        Help With This Page (Click Here)
+                    </span>
+                    <!--<span tabindex="0">
+                        Help With This Page (Click Here)
+                    </span>-->
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="login_form register_form user_profile">
+        <div class="container">
+            <div class="row">
+                <div class="form_wrapper">
+                    <form role="form" method="post" id="update_form" name="update_form" autocomplete="off" novalidate>
+                        <div class="form-section">
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" spellcheck="false" class="form-control ng-$invalid ng-$dirty" placeholder="First Name" name="fname" id="Fname" ng-model="profile.FirstName" ng-minlength="1" ng-maxlength="80" ng-pattern="/^[a-zA-Z\s]+$/" required>
+                                        <div class="error-container" ng-show="update_form.fname.$dirty && update_form.fname.$invalid">
+                                            <small class="error-message" ng-show="update_form.fname.$error.pattern">
+                                                First Name accepts only alphabets.
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.fname.$error.required">
+                                                First Name field cannot be blank .
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.fname.$error.minlength">
+                                                First Name should be minimum 1 character
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.fname.$error.maxlength">
+                                                First Name entered exceeds the maximum length of 80 characters.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" spellcheck="false" class="form-control ng-$invalid ng-$dirty" placeholder="Last Name" name="lname" id="lname" ng-model="profile.LastName" ng-minlength="1" ng-maxlength="80" ng-pattern="/^[a-zA-Z\s]+$/" required>
+                                        <div class="error-container" ng-show="update_form.lname.$dirty && update_form.lname.$invalid">
+                                            <small class="error-message" ng-show="update_form.lname.$error.required">
+                                                Last Name field cannot be blank
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.lname.$error.pattern">
+                                                Last Name accepts only alphabets.
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.lname.$error.minlength">
+                                                Last Name should be minimum 1 character
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.lname.$error.maxlength">
+                                                Last Name entered exceeds the maximum length of 80 characters.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" spellcheck="false" class="form-control noselect" placeholder="errollaw0123" ng-disabled="true" name="username" id="username" ng-model="profile.UserName">
+                                        <div class="error-container" ng-show="update_form.username.$dirty && update_form.username.$invalid">
+                                            <small class="error-message" ng-show="update_form.username.$error.required">
+                                                Name field cannot be blank
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.username.$error.pattern">
+                                                UserName Should be in alphanumeric with minimum of 5 characters
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.username.$error.minlength">
+                                                UserName Should be in alphanumeric with minimum of 5 characters
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" spellcheck="false" class="form-control" placeholder="Enter Email Address" name="Email" id="Email" required ng-model="profile.Email" ng-focus="clearErrorMsg()" />
+                                        <div class="error_text" id="emailerror"></div>
+                                        <div class="error-container" ng-show="update_form.Email.$dirty && update_form.Email.$invalid">
+                                            <small class="error-message" ng-show="update_form.Email.$error.required">
+                                                Email field cannot be blank
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.Email.$error.minlength">
+                                                Your email is required to be at least 3 characters
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.Email.$error.email">
+                                                Please enter a valid email address.
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.Email.$error.maxlength">
+                                                Your email cannot be longer than 20 characters
+                                            </small>
+                                            <small class="error-message" ng-if="update_form.$error.unique">
+                                                This email is already in our system. Please select another email address.
+                                            </small>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section change-password">
+                            <p class="forgot">Change Password</p>
+                            <div class="forgot profile_type" id="password_error_msg"></div>
+                            <div class="clearfix">
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Current Password</label>
+                                        <input type="password" spellcheck="false" class="form-control" placeholder="" name="Password" id="pwd" ng-model="profile.Password"
+                                               ng-maxlength="80" ng-uniquepwd121 ng-blur="checkExisting()" ng-focus="clearPasswordMsg()">
+                                        <div class="error-container" ng-show="update_form.Password.$dirty && update_form.Password.$invalid">
+                                            <small class="error-message" ng-show="update_form.$error.unique121">
+                                                Current password is incorrect
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <!--ng-change="onchange(profile.NewPassword,profile.Password)"ng-change="onchange(profile.NewPassword,profile.Password)"-->
+                                        <input type="password" spellcheck="false" class="form-control" placeholder="" name="npassword" id="npassword" ng-model="profile.NewPassword"
+                                               ng-pattern="/^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?\d)|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?\d)(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?\d)(?=.*?[^a-zA-Z0-9])).{8,}$/"
+                                               ng-minlength="8" ng-blur="checkExisting('newpassword')" ng-focus="clearConfirm()">
+                                        <div class="error-container" ng-show="update_form.npassword.$dirty && update_form.npassword.$invalid">
+                                            <small class="error-message" ng-show="update_form.npassword.$error.minlength">
+                                                Password must be at least 8 characters long.
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.npassword.$error.pattern">
+                                                Please make sure that your password contains all of
+                                                the following:
+                                                1. The password is at least eight (8) characters long.
+                                                2. The password contains characters from at least three of the following four
+                                                categories:
+                                                3. English uppercase characters (A- Z)
+                                                4. English lowercase characters (a- z)
+                                                5. Base 10 digits (0- 9)
+                                                6. Special or Punctuation Characters (Example: !, $,#,or%)
+                                            </small>
+
+                                            <small class="error-message" ng-show="update_form.npassword.$error.maxlength">
+                                                Password exceeds maximum length of 80 characters long.
+                                            </small>
+                                            <small class="error-message" ng-show="update_form.Password.$error.pwmatch">
+                                                Passwords don't match.
+                                            </small>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Confirm New Password</label>
+                                        <input type="password" spellcheck="false" class="form-control" placeholder="" name="cnpassword" id="cnpassword" ng-model="profile.ConfirmPassword" ng-focus="clearConfirm()" ng-blur="cnfmerror()">
+                                        <div class="forgot profile_type" id="confPassword"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section change-password">
+                            <p class="forgot">Security Questions</p>
+                            <div class="forgot profile_type" id="answer_msg"></div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Question 1<span> (Choose a question from list below) </span></label>
+                                        <select ng-model="profile.SecurityQuestion1" data-ng-change="ifQuestionSelected('dropdown1')"
+                                                name="securityquestion1" id="dropdown1"
+                                                ng-options="question.question as question.question for question in Questions" required>
+                                            <option value="" disabled>Select One</option>
+                                        </select>
+                                        <div class="error-container" ng-show="update_form.securityquestion1.$dirty && update_form.securityquestion1.$invalid">
+                                            <small class="error-message" ng-show="update_form.securityquestion1.$error.required">
+                                                Please select three security questions
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Answer 1 <span> (Enter your answer) </span></label>
+                                        <input type="text" spellcheck="false" class="form-control" placeholder="" name="subject" id="ans1" ng-model="profile.SecurityAnswer1" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Question 2 <span> (Choose a question from list below) </span></label>
+                                        <select ng-model="profile.SecurityQuestion2" data-ng-change="ifQuestionSelected('dropdown2')"
+                                                name="securityquestion2" id="dropdown2"
+                                                ng-options="question.question as question.question for question in Questions" required>
+                                            <option value="" disabled>Select One</option>
+                                        </select>
+                                        <div class="error-container" ng-show="update_form.securityquestion2.$dirty && update_form.securityquestion2.$invalid">
+                                            <small class="error-message" ng-show="update_form.securityquestion2.$error.required">
+                                                Please select three security questions
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Answer 2 <span> (Enter your answer) </span></label>
+                                        <input type="text" spellcheck="false" class="form-control" placeholder="" name="subject2" id="ans2" ng-model="profile.SecurityAnswer2" required>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="form-group">
+                                        <label>Question 3 <span> (Choose a question from list below) </span></label>
+                                        <select ng-model="profile.SecurityQuestion3" data-ng-change="ifQuestionSelected('dropdown3')"
+                                                id="dropdown3" ng-options="question.question as question.question for question in Questions"
+                                                name="securityquestion3" required>
+                                            <option value="" disabled>Select One</option>
+                                        </select>
+                                        <div class="error-container" ng-show="update_form.securityquestion3.$dirty && update_form.securityquestion3.$invalid">
+                                            <small class="error-message" ng-show="update_form.securityquestion3.$error.required">
+                                                Please select three security questions
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Answer 3 <span> (Enter your answer) </span></label>
+                                        <input type="text" spellcheck="false" class="form-control" placeholder="" name="subject3" id="ans3" ng-model="profile.SecurityAnswer3" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="center_div">
+                                <button id="submit_signup" class="btn btn-default" ng-click="updateProfile()">Save & Update</button>
+                                <button id="submit_signup1" class="btn btn-default" ng-click="deleteUser()">Delete Account</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Starts -->
+<div ng-include src="'partials/footer.html'"></div>
+
+
+
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closemodal()"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="delete_message">Submit</button>
+                <button type="button" class="btn btn-primary" id="deleteaccount_perm">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="validatepassword" tabindex="-1" role="dialog" aria-hidden="true" ng-keydown="esc($event)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="btn" name="btn" ng-click="replaceemail()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="text_align">Password Authentication</h3>
+            </div>
+            <div class="modal-body text_align">
+                <h4>Please enter your current password to receive the confirmation mail on your new email address.</h4>
+                <input type="password" spellcheck="false" class="form-control form_prof" placeholder="Password" ng-model="currentPassword" />
+                <div class="error_msg" id="validationerror"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="validatePassword()">Ok</button>
+                <button type="button" class="btn btn-primary" ng-click="cancel_validation()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

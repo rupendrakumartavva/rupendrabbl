@@ -1,0 +1,255 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renew</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">BBL Renewal Information Confirmation</h2>
+
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page initiates the BBL renewal process and confirms the Corporate Registration associated with the license.</strong>
+                    </p>
+
+
+
+                    <ul class="terms_text" style="padding-left: 100px;">
+                        <li>
+                            Review the information for the Basic Business License to be renewed for accuracy and completeness.
+                        </li>
+                        <li>
+                            Enter your  corporate  registration file number into the provided field, as it appears on your corporate registration to include numbers and letters and select  <button type="button" class="btn btn-primary" style="cursor: default; pointer-events: none;text-transform: capitalize"><span class="glyphicon glyphicon-search padding-small"></span> Search Corp Online </button> . (Older Corporate Registration File Numbers may consist of all numbers)
+                        </li>
+                    </ul>
+
+                    <p class="terms_text srch_filter">
+                        <strong> If your company is registered with the DCRA Corporations Division and is in an "Active" status:</strong>
+                    </p>
+
+                    <ul class="terms_text srch_filter" style="padding-left: 100px;">
+                        <li>
+                        If your corporate registration number is valid and the registration is active, you will receive the following message  <img src="../images/How_To_CorpOnline.png" style="height: 24px; width: 372px;" /> .
+                        </li>
+                        <li>
+                            Select <button id="btn_revise5" class="btn btn-default btnnextColor" style="cursor: default; pointer-events: none; text-transform: none;">Next</button> to proceed.
+                        </li>
+                    </ul>
+                    <p class="terms_text">
+                        <strong>If your company is registered with the DCRA Corporations Division and is in any status OTHER THAN an "Active" status:</strong>
+                    </p>
+
+                    <ul class="terms_text srch_filter" style="padding-left: 100px;">
+                        <li>
+                           If your corporate registration number is valid and the registration is any status other than active, you will receive the following message 
+                            <p style="border: 1px solid blue; color: red;">  According to DCRA's Corporations Division,your Corporate Registration status is not currently ACTIVE. Please, select Return to My BBL's and contact DCRA's Corporations Division at 202-442-4400 to resolve any open issues  prior to submitting your renewal.</p>
+
+
+
+                        </li>
+                        <li>
+                            Select <button id="btn_revise2" class="btn btn-default" style="cursor: default; pointer-events: none; text-transform: none;">Return To My BBLs</button> and contact the Corporations Division.
+
+
+                        </li>
+                    </ul>
+
+                    <p class="terms_text">
+                        <strong>If your company is not registered with the DCRA Corporations Division:</strong>
+                    </p>
+
+                    <ul class="terms_text srch_filter" style="padding-left: 100px;">
+                        <li>
+                            Check the box stating <img src="../images/How_to_Renewal_Corp.png" style="height: 18px; width: 279px;" />   and select <button id="btn_revise6" class="btn btn-default btnnextColor" style="cursor: default; pointer-events: none;text-transform: none;">Next</button> .
+                        </li>
+                        <li>
+                            <strong>*Note*</strong>   If you are required to have corporate registration and do not have one, you will not be able to renew your Basic Business License until a valid corporate registration has been obtained.  
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+
+<div id="dvMainsection">
+
+    <div data-ng-controller="BBLRenewalInfoConfirmController as vm">
+        <div class="search_form">
+            <div class="login_form register_form">
+                <div class="container">
+                    <p ng-show="vm.businessinfo.licenseCategorystatus=='NoCategory'" style="color: red">
+                        We are unable to process the application. Please contact DCRA at 202-442-4400 for assistance.
+                    </p>
+                    <div class="page-desc-content">
+                        <p>
+                            Please <strong>Confirm</strong> this is the business you wish to renew: by selecting the &quot;<strong>Next</strong>&quot;
+                            button.
+                        </p>
+                        </div>
+                        <div class="row">
+                            <div class="form_wrapper">
+                                <form role="form" method="post" id="contact_us">
+                                    <div class="well well-lg">
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">License #: </span> {{vm.businessinfo.licenseNumber}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">First Name: </span> {{vm.businessinfo.fName}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">Last Name: </span> {{vm.businessinfo.lName}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">Business Name: </span> {{vm.businessinfo.businessName}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">Trade Name: </span> {{vm.businessinfo.tradeName}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">Business Structure: </span> {{vm.businessinfo.businessNameStructure}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">Expiration Date: </span> {{vm.businessinfo.expDate}}
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="text_clr">
+                                                <span class="text_color">Status: </span> {{vm.businessinfo.applicationstatus}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <form role="form" method="post" id="vm.renew_form" name="vm.renew_form" autocomplete="off" novalidate>
+                            <div class="renewal-footer-wrapper">
+
+                                <div class="col-md-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="text_ContentDec">
+                                            If your business is registered with the DCRA Corporations Division,
+                                            please provide the <strong>File Number</strong> as it appears on your Corporate Registration,
+                                            to include all letters and numbers and select the "Search Corp Online" button.
+                                        </span>
+                                    </div>
+                                    <div class="search_form form_wrapper">
+                                        <div class="clearfix">
+                                            <div class="col-sm-12 col-xs-12">
+                                                <div class="input-group login_form" ng-class="{'has-error':vm.corp.number == undefined && !vm.corpnotregistered && (vm.search==true || vm.submitted==true) }">
+                                                    <input class="form-control"
+                                                           spellcheck="false"
+                                                           type="text"
+                                                           placeholder="Enter all letters and/or numbers as they appear."
+                                                           name="corpnumber"
+                                                           ng-focus="vm.setErrorMsg('error_msg')"
+                                                           ng-disabled="vm.corpnotregistered || vm.numberfromdb"
+                                                           ng-change="vm.corpmodalchanged()"
+                                                           data-ng-model="vm.corp.number" required>
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary"
+                                                                type="button"
+                                                                id="search_corp_online"
+                                                                data-ng-click="vm.getCorpRegInfo(vm.search=true)"
+                                                                style="height:50px;font-size:16px"
+                                                                ng-disabled="vm.corpnotregistered"
+                                                                ng-class="{true:'disablecolor'}[vm.corpnotregistered]">
+                                                            <span class="glyphicon glyphicon-search"></span><span class="hidden-sm hidden-xs"> Search Corp Online</span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                                <div class="error-container" ng-show="vm.renew_form.corpnumber.$dirty && vm.renew_form.corpnumber.$invalid">
+                                                    <small class="error-message" ng-show="vm.renew_form.corpnumber.$error.pattern">
+                                                        Corp Number accepts only alphanumerics
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="quetion_wrapper col-md-12 single_checkbox_set">
+                                        <div class="renew-checkbox-space clearfix" style="padding-left: 25px;">
+                                            <div class="form-type-checkbox form-item-screening-question-autoparttowing form-item checkbox" ng-class="{'has-error':vm.corpnotregistered == false && vm.submitted && vm.corp.number==undefined }">
+                                                <div class="checker" id="uniform-edit-screening-question-utoparttowing">
+                                                    <span ng-class="{true:'checked'}[vm.corpnotregistered]">
+                                                        <input type="checkbox" id="notregisteredcorpdivision"
+                                                               name="screening-question-utoparttowing"
+                                                               data-ng-model="vm.corpnotregistered"
+                                                               ng-change="vm.checkboxupdated()"
+                                                               value="1" class="form-checkbox" style="opacity: 0;" ng-disabled="vm.corp.number!=undefined">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox_confirm">
+                                                <label tabindex="-1" style="margin-top: -6px;">
+                                                    I am not registered with the DCRA
+                                                    Corporations Division.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                    <div id="error_msg" class="error_text" style="margin-top:10px"></div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-xs-12 line"></div>
+                        <!---->
+                        <div class="center margin_width">
+                            <button id="submit_cancel" class="btn btn-default" ng-click="vm.navToCancelBBLAssociation()">
+                                Return to My BBLs
+                            </button>
+                            <button id="submit_associate" class="btn btn-default btnnextColor btn-next"
+                                    ng-class="{true:'disablecolor'}[vm.businessinfo.licenseCategorystatus=='NoCategory' || (vm.searchcorponlinebuttonclicked && !vm.isActiveCorpNumber)]"
+                                    ng-disabled="vm.businessinfo.licenseCategorystatus=='NoCategory' || (vm.searchcorponlinebuttonclicked && !vm.isActiveCorpNumber)"
+                                    ng-click="vm.insertAndnavigate(vm.submitted=true)">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-include src="'partials/footer.html'"></div>

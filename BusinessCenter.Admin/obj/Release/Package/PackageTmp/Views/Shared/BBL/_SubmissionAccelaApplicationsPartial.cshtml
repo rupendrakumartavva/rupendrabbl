@@ -1,0 +1,318 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Common.SubmissiontoAccelaDetails>
+@*<div class="row">*@
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="applicationtable" role="grid">
+                <thead>
+                <tr>
+                    <th class="text-center">License/Application#</th>
+                    <th class="text-center">Created Date</th>
+                    <th class="text-center">App. Completed</th>
+                    <th class="text-center">App. Created</th>
+                    <th class="text-center">App. Fee Matched</th>
+                    <th class="text-center">Renewal Payment Updated</th>
+                    <th class="text-center">Renewal Fee Matched</th>
+                    <th class="text-center">All Documents Updated</th>
+                    <th class="text-center">Ehop Created</th>
+                    <th class="text-center">Process
+                     Completed</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="10">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow text-center">
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    <p style="font-size: 14px;" class="paracol2 paratabcol2">
+                                        <span>
+                                            @if (item.Type == "S")
+                                            {
+                                                <span>
+                                                    @Html.ActionLink(item.LicenseNumber, "BusinessComapreData", "BBL", new { appId = item.MasterId.Trim() }, new { @class = "bus-details" })
+                                                </span>
+                                                
+                                            }
+                                            else
+                                            {
+                                                @*<span style="color: #124f87;font-size:19px;font-weight:400;">
+                                                    @item.LicenseNumber
+                                                 
+                                                </span>*@
+                                                @*<span>*@
+                                                    <span>
+                                                        @Html.ActionLink(item.LicenseNumber, "RenewalLicenseDetails", "BBL", new { appId = item.MasterId.Trim() }, new { @class = "bus-details" })
+                                                    </span>
+                                                @*</span>*@
+                                            }
+                                            <br/>
+                                            <span style="font-size: 14px;">
+                                                @item.FullName
+</span>
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    <p style="font-size: 13px;" class="paracol1 paratabcol1">
+                                        <span>
+                                            @item.CreatedDate
+
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+
+
+                                    @if (item.ApplicationCompleted == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>@*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+
+
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.ApplicationCreated == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.ApplicationFeeMatched == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.RenewalPaymentUpdated == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.RenewalFeeMatched == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.AllDocumentsUpdated == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.EhopCreated == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align: center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.ProcessCompleted == true)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                @Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                @*@Html.Image("~/images/InActive.png", "InActive")*@
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                            
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+@*</div>*@
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+
+@if (Model.Count() == 0)
+{
+
+}
+else
+{
+<script type="text/javascript" class="init">
+    var tableData = '';
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#applicationtable').DataTable({
+            "ordering": false,
+            "pageLength": 15,
+            stateSave: true
+        });
+        $("#applicationtable_length").hide();
+        $("#applicationtable_filter").hide();
+        if ($('#applicationtable td').attr('colspan') == '8') {
+            $("#applicationtable_info").hide();
+            $("#applicationtable_paginate").hide();
+        } else {
+        }
+    });
+
+    $(" #btnCreate").on('click', function (e) {
+        tableData.state.clear();
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('businessActivities') || $(this).hasClass('paginate_button') || $(this).hasClass('updatebusinessactivity') || $(this).hasClass('activestatus')) {
+        } else {
+            //console.log("working");
+            //alert("working");
+            tableData.state.clear();
+        }
+    });
+
+    function clearTableState() {
+        tableData.state.clear();
+    }
+
+    $("#edit-btn").click(function () {
+        $("#btncreate").text("Update");
+        $("#btncreate").text("Update");
+    });
+</script>
+}
+

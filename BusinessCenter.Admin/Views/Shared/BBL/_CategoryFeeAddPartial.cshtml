@@ -1,0 +1,416 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.CategoryFeeModel
+           @if (Model != null)
+           {
+
+
+               <form name="form" id="form">
+                   @Html.ValidationSummary(true, "", new {@class = "error-message error"})
+                   @Html.HiddenFor(model => model.OSub_Category, new { id = "hiddencategoryid" })
+                   @Html.HiddenFor(model => model.OSub_Description, new { id = "hiddendescr" })
+                   @Html.HiddenFor(model => model.UnitOne, new { id = "hiddenunitone" })
+                   <p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;"><span id="msg"></span></p>
+                   @*<div class="clearfix">
+                       <div class="col-md-12 col-sm-12 col-xs-12">
+                           <div class="form-group ">
+                               Primary Category Name
+                               <strong>
+                                 
+                                   @Html.DisplayFor(model => model.OSub_Description, new
+                                   {
+                                       htmlAttributes = new
+                                       {
+                                           @class = "form-control",
+                                           id = "category",
+                                           name = "Category",
+                                           placeholder = "Category",
+                                           onfocus = "this.placeholder = ''",
+                                           onblur = "this.placeholder = 'Category'"
+                                       }
+                                   })
+                               </strong>
+                           </div>
+                       </div>
+                   </div>*@
+                   <p style="text-align: center; font-size: 24px; margin-bottom: 10px;" class="error-message error"><span id="errormsg"></span></p>
+                   <div class="clearfix">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                           <div class="form-group " style="text-align: left;">
+                               @Html.Label("Start Range ")
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group " style="text-align: left;">
+                               @Html.Label("End Range ")
+                           </div>
+                       </div>
+                   </div>
+                   <div class="clearfix">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                           <div class="form-group ">
+                               @if (Model.Start != null)
+                               {
+                                   @Html.TextBoxFor(model => model.Start, new
+                                   {
+                                       @class = "form-control",
+                                       id = "start",
+                                       name = "Start",
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''",
+                                       disabled = "disabled"
+                                   })
+                                   @Html.HiddenFor(model => model.Start, new {id = "hiddenstart"})
+                               }
+                               else
+                               {
+                                   @Html.TextBox("Start", "0", new
+                                   {
+                                       @class = "form-control",
+                                       id = "start",
+                                       name = "Start",
+                                       placeholder = "",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''",
+                                       disabled = "disabled"
+                                   })
+                                   @Html.HiddenFor(model => model.Start, new {id = "hiddenstart"})
+                               }
+                               @Html.ValidationMessageFor(model => model.Start, "", new {@class = "error-message error"})
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group reg-err-placement">
+                               @Html.TextBoxFor(model => model.End, new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "",
+                                   name = "End",
+                                   id = "end",
+                                   maxlength = "5",
+                                   onfocus = "this.placeholder = ''",
+                                   onblur = "this.placeholder = ''"
+                               })
+                               @Html.ValidationMessageFor(model => model.End, "", new {@class = "error-message error"})
+                           </div>
+                       </div>
+                   </div>
+                   <div class="clearfix">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                           <div class="form-group " style="text-align: left;">
+                               @Html.Label("License Fee ")
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group " style="text-align: left;">
+                               @Html.Label("Tier ")<span style="font-size: 16px; font-style: italic">(Optional)</span>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="clearfix">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                           <div class="form-group ">
+                               @Html.EditorFor(model => model.License_Fee, new
+                               {
+                                   htmlAttributes = new
+                                   {
+                                       @class = "form-control",
+                                       id = "licensefee",
+                                       name = "License_Fee",
+                                       placeholder = "",
+                                       maxlength = "14",
+                                       onfocus = "this.placeholder = ''",
+                                       onblur = "this.placeholder = ''"
+                                   }
+                               })
+                               @Html.ValidationMessageFor(model => model.License_Fee, "", new {@class = "error-message error"})
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group reg-err-placement">
+                               @Html.TextBoxFor(model => model.Tier, new
+                               {
+                                   @class = "form-control",
+                                   placeholder = "",
+                                   name = "Tier",
+                                   id = "tier",
+                                   onfocus = "this.placeholder = ''",
+                                   onblur = "this.placeholder = ''"
+                               })
+                               @Html.ValidationMessageFor(model => model.Tier, "", new {@class = "error-message error"})
+                           </div>
+                       </div>
+                   </div>
+                   <div class="clearfix">
+                       <div class="col-md-6 col-sm-6 col-xs-12">
+                           <div class="form-group " style="text-align: left;">
+                               @Html.Label("Endorsment Fee ")
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group " style="text-align: left;">
+                               @Html.Label("Fee Code ")
+                           </div>
+                       </div>
+                   </div>
+                   <div class="clearfix">
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group ">
+                               @Html.TextBox("Endorsmentfee", "$25.00", new
+                               {
+                                   @class = "form-control",
+                                   id = "Endorsmentfee",
+                                   name = "Endorsmentfee",
+                                   placeholder = "",
+                                   onfocus = "this.placeholder = ''",
+                                   onblur = "this.placeholder = ''",
+                                   disabled = "disabled"
+                               })
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-sm-6 col-xs-12 ">
+                           <div class="form-group reg-err-placement">
+                               @Html.DropDownListFor(model => model.Fee_Code, Enum.GetNames(typeof (BusinessCenter.Admin.Models.FeeCode)).Select(e => new SelectListItem {Text = e, Value = e}), "Select One", new {@class = "form-control  custom-dropdown", id = "feecode-dropdown", name = "feecode-dropdown", disabled = "disabled"})
+                               @Html.ValidationMessageFor(model => model.Fee_Code, "", new {@class = "error-message error"})
+                           </div>
+                       </div>
+                   </div>
+                   <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+                       <button type="submit" id="btnCreateCategory" class="btn btn-default">Add Category Fee</button>
+                       <button type="submit" id="btnClear" class="btn btn-default">Clear</button>
+                   </div>
+                   <br/>
+               </form>
+
+               <!-- Javascript and Jquery Section -->
+               <script>
+                   // This Event is executed when Page is loaded
+                   $(function() {
+                       // This line below is to disable select one option in select element
+                       $("select option[value='']").prop('disabled', true);
+
+                       errormsg.innerHTML = "";
+                       var selopt = $("#feecode-dropdown option:selected").text();
+                       var start = $("#start").val();
+                       if (selopt == 'S') {
+                           $('#tier').prop('disabled', "disabled");
+                       } else {
+                           $('#tier').prop('disabled', false);
+                       }
+                       if (selopt == 'S' || selopt == 'C') {
+                           $('#end').prop('disabled', "disabled");
+                           $('#btnCreateCategory').prop('disabled', 'disabled');
+                           $('#btnCreateCategory').css('background-color', 'white');
+                           $('#btnCreateCategory').css('color', 'blue');
+                       }
+                   });
+
+                   $("#tier").blur(function(e) {
+                       var selopt = $("#feecode-dropdown option:selected").text();
+                       if ($("#tier").val() != '' && selopt == "T") {
+                           $('#end').val("99999");
+                           $('#end').prop('disabled', "disabled");
+
+                           //$("#feecode-dropdown option:selected").removeAttr("selected");
+                           $("#feecode-dropdown").val('TA');
+                           //$("#feecode-dropdown").prop('disabled', "disabled");
+                       }
+
+                       if ($("#tier").val() == '' && selopt == "T") {
+                           $('#end').prop('disabled', false);
+                           // $('#end').val('');
+                       }
+
+                       if ($("#tier").val() == '' && selopt == "TA") {
+                           $('#end').prop('disabled', false);
+                           $('#end').val('');
+                           $("#feecode-dropdown").val('T');
+                       }
+
+                       var start = $("#start").val();
+                       var end = $("#end").val();
+                       if (parseInt(end) <= parseInt(start)) {
+                           errormsg.innerHTML = "End Range must be greater than Start Range";
+                           errormsg.style.color = "Red";
+                           return false;
+                       }
+                   });
+
+                   //$("#tier").change(function () {
+                   //    var tier = $("#tier").val();
+                   //    if (tier != "") {
+                   //        $('#end').val() = "99999";
+                   //    }
+                   //    else
+                   //    {
+
+                   //    }
+                   //});
+
+                   $("#end").keypress(function(e) {
+                       errormsg.innerHTML = "";
+                   });
+
+                   $("#end").blur(function(e) {
+                       msg.innerHTML = "";
+                       errormsg.innerHTML = "";
+                       var start = $("#start").val();
+                       var end = $("#end").val();
+                       if (parseInt(end) <= parseInt(start)) {
+                           errormsg.innerHTML = "End Range should be greater than Start Range";
+                           errormsg.style.color = "Red";
+                           return false;
+                       } else {
+                           errormsg.innerHTML = "";
+                       }
+                       if (parseInt(end) > '99999') {
+                           msg.innerHTML = "";
+                           errormsg.innerHTML = "End range must be less than 99999";
+                           errormsg.style.color = "Red";
+                       } else {
+                           msg.innerHTML = "";
+                       }
+                   });
+
+                   $("#btnClear").click(function(e) {
+                       e.preventDefault();
+                       $("#form").trigger('reset');
+                       $('.error-message').each(function() {
+                           $(this).empty();
+                       });
+                       msg.innerHTML = "";
+                       errormsg.innerHTML = "";
+                   });
+
+                   $("#btnCreateCategory").click(function(e) {
+                       msg.innerHTML = "";
+                       errormsg.innerHTML = "";
+                       e.preventDefault();
+                       console.log("hit");
+                       var start = $("#start").val();
+                       var end = $("#end").val();
+
+                       if ($("#Fee_Code").val() == '' || $("#end").val() == '' || $("#licensefee").val() == '') {
+                           console.log("hit11111");
+                           errormsg.innerHTML = "Please fill all the required fields";
+                           errormsg.style.color = "Red";
+                           //$(".field-validation-error").innerHTML = "";
+                           //error-message
+                           return false;
+                       }
+
+                       if (parseInt($("#end").val()) > '99999') {
+                           msg.innerHTML = "";
+                           errormsg.innerHTML = "End range must be less than 99999";
+                           errormsg.style.color = "Red";
+                           return false;
+                       } else if (parseInt(end) <= parseInt(start)) {
+                           errormsg.innerHTML = "End Range should be greater than Start Range";
+                           errormsg.style.color = "Red";
+                           return false;
+                       }
+                       //else if(parseInt(end) == '99999' &&  $("#tier").val()=="") {
+                       //    msg.innerHTML = "";
+                       //    errormsg.innerHTML = "Please enter Tier value";
+                       //    errormsg.style.color = "Red";
+                       //    return false;
+                       //}
+                       else if ($("#licensefee").val().length > '10') {
+                           msg.innerHTML = "";
+                           errormsg.innerHTML = "License Fee must not be greater than 10 digits";
+                           errormsg.style.color = "Red";
+                           return false;
+                       } else {
+                           CreateCategoryFee();
+                       }
+                   });
+
+                   function CreateCategoryFee() {
+                       console.log('entered');
+                       var categoryfeedata = {
+                           OSub_Category: $("#hiddencategoryid").val(),
+                           OSub_Description: $("#hiddendescr").val(),
+                           Fee_Code: $("#feecode-dropdown option:selected").text(),
+                           Start: $("#start").val(),
+                           End: $("#end").val(),
+                           License_Fee: $("#licensefee").val(),
+                           Tier: $("#tier").val(),
+                           App_Type: $("#App_Type").val() ,  
+                          UnitOne:$("#hiddenunitone").val()
+                       };
+                       $.ajax({
+                           url: '/BBL/CategoryFees',
+                           type: "Post",
+                           data: categoryfeedata,
+                           success: editSuccess,
+                           error: editFailure
+                       });
+                   }
+
+                   function editSuccess(data) {
+                       if (data.status == "SessionExipred")
+                       {
+                           window.location.href = '/Account/SessionExpiry';
+                       }
+                     else if (data.status == "success") {
+                           GetAll();
+                           if (data.response == "inserted") {
+                               $("#hiddendescr").val("");
+                               $("#category").val("");
+                               $("#feecode").val("");
+                               $("#hiddenstart").val("");
+                               $("#start").val("");
+                               $("#end").val("");
+                               $("#licensefee").val("");
+                               $("#tier").val("");
+                               //  App_Type: $("#App_Type").val("");
+                               CategoryFeeAddPartial();
+                               msg.innerHTML = "Category Fee added Successfully";
+                           } else if (data.response == "exists") {
+                               msg.innerHTML = "This Category Fee already exist, please choose another";
+                           }
+                           return false;
+                       }
+                       return false;
+                   }
+
+                   function editFailure(data) {
+                       console.log("error");
+                       return false;
+                   }
+
+                   // To restrict the decimals to 2, which stops the digit to be entering.
+                   //$('#licensefee').keypress(function (e) {
+                   //    var character = String.fromCharCode(e.keyCode);
+                   //    var newValue = this.value + character;
+                   //    if (isNaN(newValue) || hasDecimalPlace(newValue, 3)) {
+                   //        e.preventDefault();
+                   //        return false;
+                   //    }
+                   //});
+
+                   //function hasDecimalPlace(value, x) {
+                   //    var pointIndex = value.lastIndexOf('.');
+                   //    return pointIndex >= 0 && pointIndex < value.length - x;
+                   //}
+
+                   $(window).click(function() {
+                       errormsg.innerHTML = "";
+                   });
+
+               </script>
+
+               <style>
+                    <style>
+            select::-ms-expand {
+    display: none;
+}
+    </style>
+               </style>
+
+           }
+           @*else
+           {
+               
+           }*@

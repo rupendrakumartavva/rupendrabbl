@@ -1,0 +1,337 @@
+<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a href="" data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Quick Search</span>
+</div>
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2>Quick Search </h2>
+            <p>
+                <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="    testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to search for regulatory information on DC business and professional entities, including, business licenses, corporate registrations, Certified Business Enterprises, professional licenses and alcoholic beverage licenses. The search can be conducted across multiple data sources concurrently. </strong>
+                    </p>
+                    <p class="terms_text">
+                        Conduct a Quick Search by entering search terms into the appropriate search fields.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Quick Search Parameters: </strong> Search terms can be entered in one of two ways:
+                    </p>
+                    <p class="terms_text leftside">
+                        <span class="num_color"> 1.</span> Enter a complete license number in the License # field OR
+                    </p>
+                    <p class="terms_text leftside">
+                        <span class="num_color"> 2.</span> Enter search terms in one or more of the following fields: Business Name, First Name, Last Name
+                    </p>
+                    <p class="terms_text">
+                        <strong> Special Characters: </strong> Special characters are allowed in all fields. Only hyphen is allowed in License Number field.
+                    </p>
+                    <p class="terms_text">
+                        <strong> *Note* </strong> If all fields are left blank, no results will be displayed.
+                    </p>
+                    <p class="terms_text">
+                        <strong>Wildcard Searches: </strong>A wildcard search allows you to enter partial search terms by using the asterisk (*) in your search terms. For example, you might only know a few letters of a business name. You can enter the letters that you know along with an asterisk.
+                    </p>
+                    <p class="terms_text">You can conduct a wildcard search in any of the following ways:</p>
+                    <p class="terms_text leftside1">
+                        <ul class="terms_text leftside1">
+                            <li>
+                                <span>Placing an asterisk after the first three letters of the field (Ex. Res*). The search results could include the word Restaurant or Reserve.</span>
+                            </li>
+                            <li>
+                                <span> Placing an asterisk as the first character of a field followed by at least three (3) letters (E.g. *bby). The search results could include the word Lobby or Hobby.</span>
+                            </li>
+                            <li>
+                                <span> Placing an asterisk at both ends of the field with at least three (3) characters in between the asterisks (E.g.*obb*). This would return words that contain "obb" like Lobby and Hobbit.</span>
+                            </li>
+                        </ul>
+                    </p>
+                    <p class="terms_text">
+                        You cannot conduct a wildcard search in any of the following ways:
+                    </p>
+                    <p class="terms_text leftside1">
+                        <ul class="terms_text leftside1">
+                            <li>
+                                <span>Placing an asterisk in the middle of a phrase (Ex. Lo*by).</span>
+                            </li>
+                            <li>
+                                <span> Wildcard searches in the License # field.</span>
+                            </li>
+                        </ul>
+                    </p>
+                    <p class="terms_text">
+                        <strong> Search Criteria:</strong> Select one or more data sources that you would like to search.
+                    </p>
+                    <p class="terms_text leftside1">
+                        <ul class="terms_text leftside1">
+                            <li>
+                                <span> By default, no data sources are selected.</span>
+                            </li>
+                            <li>
+                                <span> To search across all data sources, check the "Search All" checkbox.</span>
+                            </li>
+                        </ul>
+                    </p>
+                    <p class="terms_text">
+                        Select Search Criteria
+                    <p>
+                        <ul class="terms_text leftside1">
+                            <li>
+                                <span>Business License</span>
+                            </li>
+                            <li>
+                                <span>Corporate Registration</span>
+                            </li>
+                            <li>
+                                <span>Professional License</span>
+                            </li>
+                            <li>
+                                <span>Certified Business Enterprise</span>
+                            </li>
+                            <li>
+                                <span>Alcoholic Beverage License</span>
+                            </li>
+                            <li> <span>Search All</span></li>
+                        </ul>
+                    </p>
+                    <p class="terms_text">
+                        Click the <strong>"Search"</strong>  button
+                    </p>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/UserGuide.pdf" target="_blank" class="btn btn-default read_btn"> Quick Search User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <p class="search_form">
+                <div class="login_form my_form">
+                    <a href="../HelpDoc/UserGuide.pdf" target="_blank" class="btn btn-default read_btn">Quick Search User Guide</a>
+                </div>
+            </p>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div class="search_form">
+        <div class="login_form register_form">
+            <div class="container">
+                <p>Use the Quick Search to access information on the Licenses, Certifications, and Registrations shown in the "Select Search Criteria" area below.</p>
+                <p>Search using a complete License Number or using any combination of the Business Name, First Name, Last Name fields.</p>
+                <div class="row">
+                    <div class="form_wrapper">
+                        <div id="error_msg" class="error_text margin_px" autofocus="focus" tabindex="-1"></div>
+                        <form role="form" id="contact_us" name="contact_us" autocomplete="off" novalidate>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>License#</label>
+                                        <input type="text" spellcheck="false" class="form-control" name="licenseName" id="LlicenseName" ng-readonly="enableLicense" ng-model="search.licenseName" ng-change="disableOtherThanLicense()" ng-focus="setErrorMsg()">
+                                        <div class="error_text" id="licenseName" autofocus="focus" tabindex="-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <hr class="hrline float_left" /><div class="align-or"><strong>OR</strong></div><hr class="hrline" />
+                                </div>
+                            </div><div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group restrictDropdownMenu">
+                                        <label>Business Name</label>
+                                        <div class="inner-addon right-addon">
+                                            <i class="glyphicon glyphicon-refresh gly-spin" id="Company"></i>
+                                            <input type="text" spellcheck="false" id="searchitemid" 
+                                                   ng-model="search.companyName" ng-change="getSuggestions(search.companyName,'Company')" 
+                                                   typeahead="c for c in Company | filter:$viewValue | limitTo:100" class="form-control" typeahead-test="dataavail" 
+                                                   ng-blur="checktabpress('Company')"
+                                                   ng-trim="false">
+                                        </div>
+                                        <div class="error_text margin_px" id="companyName" autofocus="focus" tabindex="-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group restrictDropdownMenu">
+                                        <label>First Name</label>
+                                        <div class="inner-addon right-addon">
+                                            <i class="glyphicon glyphicon-refresh gly-spin" id="FirstName"></i>
+                                            <input type="text" spellcheck="false" id="searchitemfn"
+                                                   ng-model="search.firstName" typeahead="f for f in FirstName | filter:$viewValue | limitTo:100"
+                                                   class="form-control" ng-change="getSuggestions(search.firstName,'FirstName')" typeahead-test="dataavail"
+                                                   ng-blur="checktabpress('FirstName')" ng-trim="false">
+                                        </div>
+                                        <div class="error_text margin_px" id="firstName" autofocus="focus" tabindex="-1"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="form-group restrictDropdownMenu">
+                                        <label>Last Name</label>
+                                        <div class="inner-addon right-addon">
+                                            <i class="glyphicon glyphicon-refresh gly-spin" id="LastName"></i>
+                                            <input type="text" spellcheck="false" id="searchitemln" ng-model="search.lastName"
+                                                   typeahead="l for l in LastName | filter:$viewValue | limitTo:100" class="form-control"
+                                                   ng-change="getSuggestions(search.lastName,'LastName')" typeahead-test="dataavail"
+                                                   ng-blur="checktabpress('LastName')" ng-trim="false">
+                                        </div>
+                                        <!--<input type="text" class="form-control" placeholder="Last Name" name="lastName" id="UlastName" ng-readonly="truefalse" ng-change="disableLicense()" ng-model-options="{ updateOn: 'blur' }" ng-model="search.lastName" ng-minlength="3" ng-maxlength="30" ng-pattern="/^[a-zA-Z0-9*]+$/">-->
+                                        <!--<autocomplete ng-model="search.lastName" attrs.inputclass="form-control" attr-inputid="searchitemln" id="lastNameId" click-activation="true" data="LastName" on-type="doSomething" ng-change="disableLicense()" on-select="doSomethingElse" ng-keyup="getSuggestions(search.lastName,'LastName')"></autocomplete>-->
+                                        <div class="error_text margin_px" id="lastName" tabindex="-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 text_left"><p class="forgot">Select Search Criteria:</p></div>
+
+
+                            <div class="search_option clearfix remove_border">
+                                <div id="error_msgforChcekBox" class="error_text" autofocus="focus" tabindex="-1"></div>
+
+                                <div class="single_checkbox_set">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix">
+                                        <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[BBL]">
+                                                    <input type="checkbox" ng-model="BBL" id="permittype1" ng-checked="bblcheck"
+                                                           ng-disabled="disablecheckbox" name="BBL" ng-change="check_checkBox('BBL',BBL)"
+                                                           class="form-checkbox" style="opacity: 0;">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question quicksearch">
+                                            <label tabindex="-1">Business License</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xs-12 col-md-12 col-sm-12 form-type-checkbox clearfix">
+                                        <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[CORP]">
+                                                    <input type="checkbox" ng-model="CORP" id="permittype2" ng-checked="corpcheck"
+                                                           ng-disabled="disablecheckbox" ng-change="check_checkBox('CORP',CORP)">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question quicksearch">
+                                            <label tabindex="-1">Corporate Registration</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-12 col-sm-12 form-type-checkbox clearfix">
+                                        <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[OPLA]">
+                                                    <input type="checkbox" ng-model="OPLA" id="permittype3" ng-checked="oplacheck" ng-disabled="disablecheckbox" ng-change="check_checkBox('OPLA',OPLA)">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question quicksearch">
+                                            <label tabindex="-1">Professional License</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-12 col-sm-12 form-type-checkbox clearfix">
+                                        <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[CBE]">
+                                                    <input type="checkbox" ng-model="CBE" id="permittype4" ng-checked="cbecheck"
+                                                           ng-disabled="disablecheckbox" ng-change="check_checkBox('CBE',CBE)">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question quicksearch">
+                                            <label tabindex="-1"> Certified Business Enterprise</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-12 col-md-12 col-sm-12 form-type-checkbox clearfix">
+                                        <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[ABRA]">
+                                                    <input type="checkbox" ng-model="ABRA" id="permittype5" ng-checked="abracheck" ng-disabled="disablecheckbox" ng-change="check_checkBox('ABRA',ABRA)">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question quicksearch">
+                                            <label tabindex="-1">Alcoholic Beverage License</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-12 col-sm-12 form-type-checkbox clearfix">
+                                        <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                                            <div class="checker">
+                                                <span ng-class="{true:'checked'}[selectAll]">
+                                                    <input type="checkbox" ng-model="selectAll" id="test" ng-change="check_checkBox('All',selectAll)">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox_question quicksearch">
+                                            <label class="noborder" tabindex="-1">Search All</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <!--<div class="col-xs-12 col-md-12 col-sm-12 form-type-checkbox clearfix checkbox">
+                <div class=" form-type-checkbox form-item-screening-question-secondary-bakery form-item checkbox">
+                    <div class="checker">
+                        <span ng-class="{true:'checked'}[BBL]"></span>
+                        <input type="checkbox" ng-model="BBL" id="permittype1" ng-checked="bblcheck"
+                               ng-disabled="disablecheckbox" name="BBL" ng-change="check_checkBox('BBL',BBL)"
+                               class="form-checkbox" style="opacity: 0;">
+                    </div>
+                </div>
+                <div class="checkbox_question">
+                    <label tabindex="-1" style="padding-left: 5px;">Business License</label>
+                </div>
+            </div>-->
+
+                            </div>
+                            <div class="col-xs-12 line"></div>
+                            <div class="center_div">
+                                <button id="submit_signup" class="btn btn-default" ng-click="search_validate(search)">SEARCH</button>
+                                <button id="submit_search" class="btn btn-default print-link" type="button" ng-click="navToQuickSearchSave()"><img src="../images/heart.png"> My Saved Search Results</button>
+                            </div>
+                            <div class="center_div database_search">
+                                <a href="https://business.dc.gov/research_business_info" class="">Go To Detailed Database Search.</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="helpTextModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

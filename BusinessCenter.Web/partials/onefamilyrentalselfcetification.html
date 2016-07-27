@@ -1,0 +1,239 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" ng-click="vm.navToApply()" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">One Family Dwelling Self Certification</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">One Family Dwelling Self Certification</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" aria-expanded="false" id="toggleicon" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is used to for property owners or the accountable person to certify that the one family dwelling to be licensed is in compliance with all applicable laws and regulations pertaining to that property.</strong>
+                    </p>
+
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li>
+                            Select the correct radio button (Yes or No) to indicate whether the property is currently occupied.
+                        </li>
+                        <li>
+                            Read the list of criteria to which you will attest.
+                        </li>
+                        <li>
+                            Select the Check Box next to the Full Name box.
+                        </li>
+                        <li>
+                            Type in the full name of the Property Owner (e.g. John Q Public)
+                        </li>
+                        <li>
+                            Re-enter the full name of the Property Owner as entered in the first field as your signature.
+                        </li>
+                        <li class="srch_filter">
+                            Select the <button class="cursorDefault pointer_events_none btnnextColor" style="text-transform: none;"> Next </button>  button to continue with your application.
+                        </li>
+                    </ul>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection" style="display: none;">
+    <div data-ng-controller="OnefamilyRentalSelfCetificationController as vm">
+        <div class="physical-loc-form">
+            <div class="container">
+                <div class="panel-body">
+                    <div class="row">
+                        <div id="error_msg" class="text-center" style="color:red" autofocus="focus" tabindex="-1"></div>
+                        <div class="search_form form_wrapper onefamilyrental">
+                            <form role="form" name="vm.onefamilyrental" autocomplete="off" id="vm.onefamilyrental" novalidate>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6">
+                                    <p style="float:left;margin:5px 35px 0 0;">* Is property occupied</p>
+                                    <div class="form-type-radio  form-item form-group">
+                                        <div id="edit-questions-23488" class="form-radios ">
+                                            <div class="form-type-radio pre_appscreenquestion form-item radio"
+                                                 tabindex="0">
+                                                <div class="radiobtn" id="uniform-edit-questions-23488-22">
+                                                    <span ng-class="{true:'checked'}[vm.selfCertification.IsPropertyOccupied]" style="margin-right:15px;float:left">
+                                                        <input type="radio" id="property_status" name="property_status"
+                                                               class="form-radio"
+                                                               style="opacity: 0;z-index:1000;"
+                                                               value="true"
+                                                               ng-model="vm.selfCertification.IsPropertyOccupied"
+                                                               required>
+                                                    </span>
+                                                </div>
+                                                <label tabindex="-1">Yes</label>
+                                            </div>
+                                            <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+                                                <div class="radiobtn" id="uniform-edit-questions-23488-222">
+                                                    <span ng-class="{false:'checked'}[vm.selfCertification.IsPropertyOccupied]">
+                                                        <input type="radio" id="property_status"
+                                                               name="property_status"
+                                                               class="form-radio"
+                                                               style="opacity: 0;z-index:1000;"
+                                                               value="false"
+                                                               ng-model="vm.selfCertification.IsPropertyOccupied"
+                                                               required>
+                                                    </span>
+                                                </div>
+                                                <label tabindex="-1">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-12">
+
+                                    <p>By signing this Self Certification, I hereby affirm that I:</p>
+                                    <p>
+                                        1. recognize that non­compliance with all applicable laws and regulations of the District of Columbia may lead to personal liability for the violations,
+                                    </p>
+                                    <p>
+                                        2. recognize that non­compliance with all applicable laws and regulations may be grounds for legal liability from my tenants,
+                                    </p>
+                                    <p>
+                                        3. certify that my ceiling height is 7 feet in required spaces,
+                                    </p>
+
+                                    <p>
+                                        4. certify that all exit doors are readily openable from the inside without the need for keys, tools, special knowledge or effort
+                                    </p>
+                                    <p>
+                                        5. certify that all required emergency escape and rescue openings are operational from the inside of the room without the use of keys or tools, (Bars, grilles,
+                                        gates or similar devices must be releasable or removable from the inside without the use of a key, tool, or force greater than that which is required for normal
+                                        operation of the escape and rescue opening.)
+                                    </p>
+                                    <p>
+                                        6. certify that hardwired smoke detectors are installed in the immediate vicinity of the sleeping areas and are functional,
+                                    </p>
+                                    <p>
+                                        7. agree to provide access for any and all subsequent regulatory/compliance inspections within 30 days of the issuance of this license including obtaining signed
+                                        consent from the legal occupant,
+                                    </p>
+                                    <p>
+                                        8. understand that if I do not provide access for the inspections, the agency will secure a search warrant to complete the inspection and my license may be
+                                        revoked,
+                                    </p>
+
+                                    <p>
+                                        9. agree to have any cited code violations corrected, reinspected, and approved by DCRA within the time specified in the notification.
+                                    </p>
+
+                                    <div class="clearfix"></div><br />
+                                    <div ng-class="{'has-error':vm.onefamilyrental.comfirm.$invalid && vm.submitted }">
+                                        <div class="checker" style="margin-top: 5px;">
+                                            <span ng-class="{true:'checked'}[vm.selfCertification.confirm]">
+                                                <input type="checkbox" id="comfirm"
+                                                       name="comfirm"
+                                                       class="form-checkbox" style="opacity: 0;"
+                                                       data-ng-model="vm.selfCertification.confirm"
+                                                       required>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <p style="float:left;padding:0 3px 0 3px"> I,</p>
+
+                                    <div style="float:left" ng-class="{'has-error':vm.onefamilyrental.FullName.$invalid && vm.submitted }">
+                                        <p class="self_certification_fullname">
+
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder=""
+                                                   name="FullName"
+                                                   id="FullName"
+                                                   data-ng-model="vm.selfCertification.FullName"
+                                                   ng-change="vm.checkSignWithFullName()"
+                                                   required
+                                                   ng-pattern="/^[a-zA-Z-.'`\s]+$/"
+                                                   spellcheck="false">
+                                        </p>
+                                        <div class="error-container" ng-show="vm.onefamilyrental.FullName.$dirty && vm.onefamilyrental.FullName.$invalid">
+                                            <small class="error-message" ng-show="vm.onefamilyrental.FullName.$error.pattern">
+                                                Please enter letters or the following special characters only (- . ' `). <br />
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <p>
+
+                                        &nbsp; (full name) declare that the information provided is accurate, true and complete to the best of my knowledge and belief. I
+                                        further declare that I have the authority to represent the property owner to complete this application and sign on behalf of the company and/or persons listed as
+                                        owners. I understand that if such information and/or claims contained in this application are false, I am subject to the penalty provisions of DC Law 22­2405. Any
+                                        fraud or misrepresentation on an application shall be grounds for automatic rejection of the application and/or civil administrative penalties. I understand that failure to
+                                        provide full disclosure of any of the requested or required information may result in rejection of this application for approval.
+                                    </p>
+                                    <p>
+                                        The landlord / operator is required to be aware of Lead Based Paint notification requirements. Go to <a href="http://www.epa.gov/lead" target="_blank">www.epa.gov/lead</a> & <a href="http://www.hud.gov/offices/lead" target="_blank">www.hud.gov/offices/lead</a> for more
+                                        information.
+                                    </p>
+                                    <br />
+
+                                    <label for="signature" style="float:left;margin:5px 15px 0 0;">Enter your full name as signature</label>
+                                    <div class="col-md-4" ng-class="{'has-error':vm.onefamilyrental.signature.$invalid && vm.submitted }">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder=""
+                                               name="signature"
+                                               id="signature"
+                                               required
+                                               style="margin-left:-15px;"
+                                               data-ng-model="vm.selfCertification.signature"
+                                               ng-change="vm.checkSignWithFullName()"
+                                               spellcheck="false">
+                                        <div class="error_message" ng-show="vm.signatureMismatch" style="color:red">Signature did not match with full name</div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <p>
+                                        Self Certification on: {{vm.SelfCertificationDate}}
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="pre-checkquestion form_button_footer pre-checkquestion-question col-md-12 col-sm-12 col-xs-12">
+                        <button id="btn_exit_Back" class="btn btn-default" data-ng-click="vm.navToBack()">Back </button>
+                        <button id="btn_exit_no_save" class="btn btn-default" data-ng-click="vm.checkAndExit('mybbl',vm.submitted=true)">Exit</button>
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.checkAndExit('appchecklist',vm.submitted=true)">
+                            Return to Checklist
+                        </button>
+                        <!--<button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToNextStepfromcofo()" ng-show="vm.correctSearch=='true' || vm.uploadType">Next</button>-->
+                        <button id="btn_revise" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToMailingAddress(vm.submitted=true)">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

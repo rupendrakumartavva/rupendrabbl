@@ -1,0 +1,371 @@
+﻿@model BusinessCenter.Admin.Models.AccountViewModel
+@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Username</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Unlock</th>
+                        <th class="text-center">Reset Password</th>
+                        <th class="text-center">Deactivate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.AllSuperAdmins.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="8" id="noRecords"></td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.AllSuperAdmins)
+                        {
+                            if (((string)Session["UserName"]).ToUpper() == item.UserName.ToUpper())
+                            {
+                                <tr class="tablerow tabrow">
+                                    <td class="col3-tab col3 Superadmingrid usercol">
+                                        <p style="" class="paracol3 paratabcol3">
+                                            <span>
+                                                @Html.DisplayFor(modelItem => item.UserName)
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col3-tab col3 Superadmingrid usercol">
+                                        <p style=" " class="paracol3 paratabcol3">
+                                            <span>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col2-tab col2 Superadmingrid usercol">
+                                        <p style="" class="paracol2 paratabcol2">
+                                            <span>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        <p style="color: green; font-size: 14px;" class="paracol1 paratabcol1">
+                                            <span>
+                                                Active&nbsp;@Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        <p style="color: Red; font-size: 14px;" class="paracol1 paratabcol1">
+                                            <span>
+                                                @Html.Image("~/images/unlockImg.png", "Lock")
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        <p style="color: blue; font-size: 18px;" class="paracol1 paratabcol1">
+                                            <span>
+                                                Reset
+                                                <img src="~/images/key.png" width="28" height="28" />
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        <p style="color: blue; font-size: 14px;" class="paracol1 paratabcol1">
+                                            <span>
+                                                --
+                                            </span>
+                                        </p>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr class="tablerow tabrow">
+                                    <td class="col3-tab col3 Superadmingrid usercol">
+                                        <p style="" class="paracol3 paratabcol3">
+                                            <span>
+                                                @*@Html.ActionLink(item.UserName, "Profile", "Account", new { UserId = item.Gui, len = item.length }, null)*@
+                                                @Html.ActionLink(item.UserName, "Profile", "Account", new { UserId = item.UserId.Trim(), type = "S" }, new { @class = "navProfile" })
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col3-tab col3 Superadmingrid usercol">
+                                        <p style="" class="paracol3 paratabcol3">
+                                            <span>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col2-tab col2 Superadmingrid usercol">
+                                        <p style=" " class="paracol2 paratabcol2">
+                                            <span>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </span>
+                                        </p>
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        @if (item.IsDelete == false)
+                                        {
+                                            <p style="color: green; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+                                                    Active&nbsp;@Html.Image("~/images/active.png", "Active")
+                                                </span>
+                                            </p>
+                                        }
+                                        else if (item.IsDelete == true)
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+                                                    Inactive&nbsp;@Html.Image("~/images/InActive.png", "InActive")
+                                                </span>
+                                            </p>
+                                        }
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        @if (item.LockoutEnabled == false || item.LockoutEnabled.ToString() == "false")
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+                                                    @Html.Image("~/images/unlockImg.png", "Lock")
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+                                                    @*@Html.ImageLink("~/images/Lock.png", "Unlock", "Unlock", "Lock", "Account", new
+                                                        {
+                                                            id = item.UserId,
+                                                            Type = Model.UserType,
+                                                            userRole = "SuperAdmin"
+                                                        })*@
+                                                    @*<a href="javascript:void(0)" onclick="ShowLockDialog('@item.UserId', '@Model.UserType','SuperAdmin') ">
+                                                            @Html.Image("~/images/Lock.png", "Unlock")
+                                                        </a>*@
+
+                                                    <a href="javascript:void(0)" onclick="ShowLockDialog('@item.UserId', '@Model.UserType','SuperAdmin')">
+                                                        @Html.Image("~/images/Lock.png", "Unlock")
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        @if (item.IsDelete == false && item.LockoutEnabled == false)
+                                        {
+                                            <p style="color: blue; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+
+                                                    @*<a href="javascript:void(0)" onclick="ShowResetDialog('@item.Gui', '@item.length','@item.FirstName','@item.LastName') ">Reset</a>*@
+                                                    <a href="javascript:void(0)" onclick="ShowResetDialog('@item.UserId.Trim()','@item.FirstName','@item.LastName') " class="navReset">Reset</a>
+
+                                                    <a href="javascript:void(0)" onclick="ShowResetDialog('@item.UserId.Trim()','@item.FirstName','@item.LastName') " class="resetkeyimglink">
+                                                        @Html.Image("~/images/key.png", "Reset password")
+
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: blue; font-size: 18px;" class="paracol1 paratabcol1">
+                                                <span>
+                                                    Reset
+                                                    <img src="~/images/key.png" width="28" height="28" />
+                                                </span>
+                                            </p>
+                                        }
+
+                                    </td>
+                                    <td class="col1-tab col1 Superadmingrid usercol">
+                                        @if (item.IsDelete == false)
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+
+
+                                                    @*<a href="javascript:void(0)" onclick="ShowDialog('@item.Gui', '@item.length','@Model.UserType') ">
+                                                            @Html.Image("~/images/delete.png", "Deleted")
+                                                        </a>*@
+                                                    <a href="javascript:void(0)" onclick="ShowDialog('@item.UserId','@Model.UserType') ">
+                                                        @Html.Image("~/images/delete.png", "Deleted")
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: Red; font-size: 14px;" class="paracol1 paratabcol1">
+                                                <span>
+                                                    @Html.Image("~/images/close_delete.png", "Delete")
+                                                </span>
+                                            </p>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade homeresetmodaldiv" id="Homeresetmodal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin-top:60px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body homeresetmodal-body">
+                <h3 class='error_message'> </h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button  resetyes-btn" id="submit_btn" data-dismiss="modal">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    .resetkeyimglink img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+
+<script type="text/javascript">
+    var tableData = '';
+
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#datasearch').DataTable({
+            "ordering": false,
+            stateSave: true
+        });
+        $("#datasearch_length").hide();
+        $("#datasearch_filter").hide();
+        if ($('#datasearch td').attr('colspan') == '8') {
+            $("#datasearch_info").hide();
+            $("#datasearch_paginate").hide();
+        }
+    });
+
+    $(" #btnCreate").on('click', function (e) {
+        tableData.state.clear();
+        localStorage.removeItem("selectedRadio");
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('superadminGrids') || $(this).hasClass('paginate_button') || $(this).hasClass('navReset')) {
+        } else {
+            tableData.state.clear();
+            localStorage.removeItem("selectedRadio");
+        }
+    });
+</script>
+
+<script>
+    //   Password reset link has been sent to ‘s mail id
+    var glbresetGui;
+    var glbresetlen;
+    var glbresetfirstname;
+    var glbresetlastnam;
+    function ShowResetDialog(UserId, FirstName, LastName) {
+
+        // Do not show this confirmation pop up again for the Current session.
+        glbresetGui = UserId;
+        glbresetfirstname = FirstName;
+        glbresetlastname = LastName;
+        ResetPassword(glbresetGui, glbresetfirstname, glbresetlastname);
+    }
+
+    function ResetPassword(Gui, firstname, lastname) {
+        $("#example_wrapper").css({ 'opacity': '0.5' });
+        $.ajax({
+            url: '/Account/ForgotpasswordstausNew',
+            type: 'Get',
+            data: { UserId: Gui, FirstName: firstname, LastName: lastname },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#example_wrapper").css({ 'opacity': '' });
+                    $('.homeresetmodal-body h3.error_message').empty().append('Password reset link has been sent to ' + firstname + ' ' + lastname + '‘s mail id');
+                    $('.homeresetmodaldiv').modal('show');
+                }
+                // $('#Homeresetmodal-container').modal('hide');
+                // location.reload();
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data));
+            }
+        });
+    }
+
+    function Resetpassword() {
+        $.ajax({
+            url: '/SuperAdmin/UserDashboardPartial',
+            type: 'Get',
+            cache: false,
+            data: { id: $('#userid').val(), recordtype: 'BBL' },
+            success: function (data) {
+                var sessionId = $(data).find('#Session_Expired').text();
+                if (sessionId == 'Session Expired') {
+                    window.location.href = '/Account/SessionExpiry';
+                } else {
+                    $("#search_result").empty().append(data);
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+
+

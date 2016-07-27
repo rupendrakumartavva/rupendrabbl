@@ -1,0 +1,368 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Pre-Application Questions</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Pre-Application Questions</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong> The Pre-Application Questions collect the user's information to determine the requirements for their Business License before they start the application.</strong>
+                    </p><br />
+                    <p class="terms_text srch_filter">
+                        <strong>*NOTE*</strong> Pre-Application questions about license categories, business location and structure will vary based upon the type of Basic Business License being applied for and the answers the user provides. You will only be asked about the license categories and questions that pertain to your license application.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        <b>Glossary of Pre-Application Terms and Features</b>
+                    </p>
+                    <ul class="terms_text srch_filter" style="padding-left: 100px;">
+                        <li>
+                            <strong>Primary Business Activity:</strong> Select one option. Click on the <a style="text-decoration: underline; font-weight: 400; color: #337ab7;" class="cursorDefault pointer_events_none">(Look Up Business Activities and License Categories Here) </a>  to see the Primary License Categories associated with the Primary Business Activities.
+                        </li>
+                        <li>
+                            <strong> Primary Business License Category:</strong> Select one option.
+                        </li>
+                        <li>
+                            <strong>Secondary Business License Categories:</strong> If applicable, select all options that apply.
+                            <ul class="howtotext">
+                                <li>
+                                    If no secondary categories apply, select the
+                                    <button class="cursorDefault pointer_events_none">
+                                        None
+                                    </button>
+                                    button to proceed to the next step.
+                                </li>
+                                <li>
+                                    If you select one or more secondary categories, select the
+                                    <button class="cursorDefault pointer_events_none">
+                                        Done
+                                    </button>
+                                    button to proceed to the next step.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong> General Business Sub Categories:</strong> If applicable, select one option.
+                        </li>
+                        <li>
+                            <strong> Corporate Registration:</strong> State if the business you are applying for already has registered with the DCRA's Corporations Division
+                        </li>
+                        <li>
+                            <strong> Business Structure:</strong> Select one option from the pull down menu.
+                        </li>
+                        <li>
+                            <strong>Trade Name:</strong> If applicable, enter your business' Trade Name (also referred to as a "Doing Business As (DBA)" Name or Alias in other jurisdictions).
+                        </li>
+                        <li>
+                            <strong>Quantity:</strong> If applicable, enter the quantity associated with your business (e.g. Hotel Rooms, Restaurant Seats, Gasoline Pumps)
+                        </li>
+                        <li>
+                            <strong>Duration of License:</strong> Select if you want your license to last two or four years before expiring. Please note the expiration date on the supporting documents needed to qualify for a basic business license.
+                        </li>
+                        <li>
+                            <strong>Location:</strong> Select whether the business that you are applying for is Located in the District of Columbia.
+                        </li>
+                        <li>
+                            <strong>Home Based Business:</strong> If applicable, designate if your business will be located in your home or not.
+                        </li>
+                        <li>
+                            <strong>Home Occupancy Permit (HOP):</strong> If your business is Home Based, designate if you already have an HOP or not.
+                        </li>
+                        <li> <strong>Tax Identification Number:</strong> Select whether the tax ID associated with your business is an FEIN or an SSN.</li>
+                    </ul>
+                    <p class="terms_text srch_filter">
+                        To revise information on a previous page select the <button class="cursorDefault pointer_events_none">
+                            Back
+                        </button> button.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        To continue to the next page select the <button class="cursorDefault pointer_events_none btnnextColor">
+                            Next<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button> button.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        To exit the application but NOT save any information, select the <button class="cursorDefault pointer_events_none">
+                            Exit
+                        </button> button.
+                    </p>
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12 startwizard" tabindex="0">
+
+                <p>
+                    Please select your business activity, license categories, and provide answers to all Pre-Application Questions.  Based upon your responses, the system will generate a checklist of the information and documents you will need to complete and submit your application.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="timeLineWrapper clearfix">
+            <div class="progress_steps">
+                <div class="timeLine"></div>
+                <a class="active" href="">
+                    <div class="timeline_list step1">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 1</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Pre-Application Questions</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step2">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 2</p>
+                            <p class="step_no">Application Checklist</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step3">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 3</p>
+                            <p class="step_no">Information Verification</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step4">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 4</p>
+                            <p class="step_no">Payment</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step5">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 5</p>
+                            <p class="step_no">Receipt and Next Steps</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="PreAppQuestionsController as vm">
+        <div class="quetion_wrapper register_form user_profile">
+
+            <div class="container">
+                <div class="container error_msg text-center" ng-show="vm.step4validation" id="errorText" tabindex="-1">Please provide all requested data and select [Next].</div>
+                <div class="row">
+                    <div class="form_wrapper form_font_adjustment">
+                        <form role="form" method="post" autocomplete="off" id="contact_us" name="vm.contact_us">
+                            <div ng-repeat="question in vm.categories[0].SubQuestion">
+
+                                <div ng-switch="question.Type">
+                                    <div ng-switch-when="Dropdown" ng-class="{'YES':'hidden-class' , 'NO':'show-class'}[vm.categories[0].SubQuestion[$index-1].Answer== '']">
+                                        <div class="form-section">
+                                            <div class="clearfix">
+                                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                                    <div class="form-group question_title" ng-class="{'has-error':question.Answer=='' || question.Answer=='Select One' && vm.step4validation  }">
+                                                        <h2 ng-class="{true:'preapp_disable_que_color'}[$index>vm.disable_items_from]">{{question.Question}}</h2>
+                                                        <select id="{{$index}}"
+                                                                ng-init="question.Answer = question.Answer == '' ? question.Option[0].BusinessStructureOption : question.Answer"
+                                                                ng-model="question.Answer"
+                                                                ng-options="opt.BusinessStructureOption as opt.BusinessStructureOption for opt in question.Option"
+                                                                ng-change="vm.checkSelection_Disable(question.Answer,$index)"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                                    <div class="form-group question_title text-center">
+                                                        <div class="error_msg" id="error{{$index}}"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="RadioButton">
+
+                                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="question.Question.indexOf('located in')!=-1 && question.keyIdentifying!='YES'">
+                                            <p class="text_weight">Location</p>
+                                        </div>
+                                        <div class="form-section-radiogroup" ng-class="{'hidden-class': question.keyIdentifying=='YES'|| (question.Question.indexOf('Home')!=-1 && vm.categories[0].SubQuestion[$index-1].Question.indexOf(' located in the District of Columbia')!=-1) ? vm.categories[0].SubQuestion[$index-1].Answer!='YES' :false || question.Question.indexOf('(HOP)')!=-1?vm.categories[0].SubQuestion[$index-1].Answer!='YES' :false}">
+                                            <div class="clearfix">
+                                                <div ng-hide="true">
+                                                    <div ng-if="question.Question.indexOf('HOP')!=-1">
+                                                        {{ vm.categories[0].IseHOP= question.Answer == "No" ? false : true}}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="question.Question.indexOf('Corporations Division')!=-1">
+                                                    <p class="text_weight">Corporation Registration</p>
+                                                </div>
+
+                                                <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                                    <div ng-if="question.Question.indexOf('FEIN')!=-1">
+                                                        <div ng-hide="true"> {{ vm.categories[0].IsFEIN = question.Answer == "FEIN" ? true : false}}</div>
+                                                        <p class="text_weight">Tax Identification Number</p>
+                                                    </div>
+                                                    <div ng-if="question.Question.indexOf('(4)')!=-1">
+                                                        <p class="text_weight"> Duration of License</p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h2 ng-class="{true:'preapp_disable_que_color'}[$index>vm.disable_items_from]">{{question.Question}}</h2>
+                                                        <div class="col-md-6 col-md-offset-3">
+                                                            <div class="form-type-radio  form-item form-group">
+                                                                <div id="edit-questions-23488" class="form-radios">
+                                                                    <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+                                                                        <div class="radiobtn" id="uniform-edit-questions-23488-22">
+
+                                                                            <span ng-class="{'checked':question.Answer== question.Option[0].BusinessStructureOption}">
+                                                                                <input type="radio" id="r{{$index}}1"
+                                                                                       name="questions[23488]" ng-value="question.Option[0].BusinessStructureOption"
+                                                                                       checked="checked" class="form-radio"
+                                                                                       ng-change="vm.setNextAnswer($index)"
+                                                                                       style="opacity: 0;" ng-model="question.Answer"
+                                                                                       ng-disabled="$index>vm.disable_items_from"
+                                                                                       ng-class="{true:'cursorNotAllowed'}[$index>vm.disable_items_from]">
+                                                                            </span>
+                                                                        </div>
+                                                                        <label class="labelalignment" tabindex="-1">{{question.Option[0].BusinessStructureOption.indexOf('(')!=-1? "2 year" :question.Option[0].BusinessStructureOption }} </label>
+                                                                    </div>
+                                                                    <div class="form-type-radio pre_appscreenquestion form-item radio" tabindex="0">
+                                                                        <div class="radiobtn" id="uniform-edit-questions-23488-222">
+                                                                            <span ng-class="{'checked':question.Answer==question.Option[1].BusinessStructureOption}">
+                                                                                <input type="radio" id="r{{$index}}0"
+                                                                                       name="questions[23488]" ng-value="question.Option[1].BusinessStructureOption"
+                                                                                       checked="checked" class="form-radio" ng-change="vm.setNextAnswer($index)"
+                                                                                       style="opacity: 0;" ng-model="question.Answer"
+                                                                                       ng-disabled="$index>vm.disable_items_from"
+                                                                                       ng-class="{true:'cursorNotAllowed'}[$index>vm.disable_items_from]">
+                                                                            </span>
+                                                                        </div>
+                                                                        <label class="labelalignment" tabindex="-1">{{question.Option[0].BusinessStructureOption.indexOf('(')!=-1? "4 year" :question.Option[1].BusinessStructureOption}} </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-section" ng-switch-when="Textbox" ng-class="{'YES':'hidden-class' , 'NO':'show-class'}[vm.categories[0].SubQuestion[$index-2].Answer== '']">
+                                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="question.Question.indexOf('How many')!=-1 && vm.categories[0].SubQuestion[$index-1].Question.indexOf('How many')==-1">
+                                            <p class="text_weight">Quantity</p>
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12" ng-if="(question.Question.indexOf('business owner')!=-1)||question.Question.indexOf('employee name')!=-1">
+                                            <p class="text_weight">Business Owner</p>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                                <div class="form-group question_title" ng-class="{true:'has-error'}[question.Answer=='' && vm.step4validation && question.Question.indexOf('Trade')==-1]">
+                                                    <h2 ng-class="{true:'preapp_disable_que_color'}[$index>vm.disable_items_from]">{{question.Question}}</h2>
+                                                    <input type="text" spellcheck="false" class="has-error"
+                                                           placeholder="{{question.Question.indexOf('Trade')!=-1 ? 'Leave Blank if you have no Trade Name.':''}}"
+                                                           name="totalseats" id="totalseats{{$index}}" ng-model="question.Answer"
+                                                           ng-disabled="$index>vm.disable_items_from"
+                                                           ng-class="{true:'trade_name_textbox',false:'form-control'}[question.Question.indexOf('Trade')!=-1]"
+                                                           ng-change="question.Question.indexOf('Business Owner')==-1 ? vm.checkRange($index):''">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
+                                                <div class="form-group question_title text-center error_msg" id="e{{$index}}">
+                                                    <div id="er{{$index}}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- start -->
+                            <div class="container">
+                                <div class="row step_change_buttons " style="border-top:none">
+                                    <div class="col-md-6 col-lg-6 col-xs-6">
+                                        <button class="btn btn-default perv_button" ng-click="vm.navToPrevious_Step()">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>Back
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xs-6">
+                                        <button class="btn btn-default pull-right next_button btn form-submit"
+                                                id="edit-submit-button"
+                                                name="op"
+                                                value="Next"
+                                                ng-disabled="vm.stopnavigation"
+                                                ng-class="{true:'disablecolor'}[vm.stopnavigation]"
+                                                type="submit" ng-click="vm.navToPreAppQues_Step6()">
+                                            Next<span class="glyphicon glyphicon-chevron-right"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade preapp_modal" id="preappque" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class='error_message'></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" ng-click="vm.continueToNavigate()">yes</button>
+                        <button type="button" class="close-button" ng-click="vm.continueToApply()">no</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>

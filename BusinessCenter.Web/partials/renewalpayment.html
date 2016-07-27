@@ -1,0 +1,736 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Renew</span>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Payment</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Basic Business License Renewal Payment</h2>
+            <p>
+                <span tabindex="0" onclick="toggleclick('toggleicon')" id="toggleicon"  aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>This page is to make payment to renew a Basic Business License.</strong>
+                    </p>
+                    <p class="terms_text">The grand total cost to renew your license is displayed at the top of the page.</p>
+                    <p class="terms_text"><strong> *Note* </strong>  Any late fees associate with the renew are also displayed. </p>
+                    <p class="terms_text">Select the type of credit card you will use from the pull down menu of accepted cards.</p>
+                    <p class="terms_text">Enter your credit card number, expiration date and security code in the appropriate fields.</p>
+                    <p class="terms_text">Enter and re-enter the email address to receive your payment receipt.</p>
+                    <p class="terms_text">Use the radio buttons to select the billing address for your credit card, which can be the displayed address from your license application or another address that you will be asked to type into the appropriate fields.</p>
+                    <p class="terms_text">In order to move forward from this page you must select the <img src="../images/understood.png" style="height: 19px; width: 165px;" /> box stating that you making any false statements in your renewal may make you subject to criminal prosecution.</p>
+
+                    <p class="terms_text srch_filter">
+                        Select the <button id="btn_revise2" class="btn btn-default" style="cursor: default; pointer-events: none">Submit</button> button to complete the transaction.
+                    </p>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> <span id="loading">Please wait....</span> <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection">
+    <div data-ng-controller="RenewalPaymentController as vm">
+
+        <div class="bbl-paymnet-wrapper">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body text-center">
+                                <p class="total-payment-header">
+                                    Total Fee for your Business
+                                    License Renewal:
+                                </p>
+                                <p class="font_szrenpay">{{vm.paymentBillingDetails.GrandTotalAmount| currency}}</p>
+                                <span ng-show="vm.paymentBillingDetails.Extradays=='Expired'">
+                                    <i>
+                                        As your License status is Expired, late fee of $500 is added.
+                                    </i>
+                                </span>
+                                <span ng-show="vm.paymentBillingDetails.Extradays=='Lapsed'">
+                                    <i>
+                                        As your License status is Lapsed, late fee of $250 is added.
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="group-panel-wrapper">
+                                <div class="group-panel-content">
+                                    <form role="form" method="post" id="vm.paymentform" name="vm.paymentform" novalidate autocomplete="off">
+                                        <div class="panel-body">
+                                            <div id="error_msg" class="error_text text-center" name="error_msg" autofocus="focus" tabindex="-1" style="margin: 10px 0;"></div>
+                                            <div class="col-sm-6 col-md-6 col-xs-12 payment-card-section">
+                                                <p style="padding: 2%; font-weight: 600;">Credit Card Information</p>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-1 col-md-11 col-sm-11 col-xs-12">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.cardtype.$invalid && vm.submitted }">
+                                                            <label>Card Type</label>
+                                                            <select name="cardtype" data-ng-model="vm.CardType" ng-focus="vm.setErrorMsg('error_msg')" ng-disabled="vm.examptAllfee" ng-required="!vm.examptAllfee">
+                                                                <option value="" selected>Select Card Type</option>
+                                                                <option value="1">
+                                                                    Visa
+                                                                </option>
+                                                                <option value="2">
+                                                                    Mastercard
+                                                                </option>
+                                                                <option value="3">Discover</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-1 col-md-11 col-sm-11 col-xs-12">
+                                                        <div class="form-group no-margin-bottom">
+                                                            <label>Name on Card</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                                   data-ng-model="vm.hiddencardname" name="hiddenname"
+                                                                   id="hiddenid">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-1 col-md-11 col-sm-11 col-xs-12">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.nameoncard.$invalid && vm.submitted }">
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                                   data-ng-model="vm.nameoncard" name="nameoncard" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z\s]+$/"
+                                                                   id="nameoncard" ng-focus="vm.setErrorMsg('error_msg')" ng-disabled="vm.examptAllfee" ng-required="!vm.examptAllfee">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-1 col-md-11 col-sm-11 col-xs-12">
+                                                        <div class="error-container" ng-show="vm.paymentform.nameoncard.$dirty && vm.paymentform.nameoncard.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.nameoncard.$error.pattern">
+                                                                Please enter letters only.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.nameoncard.$error.required">
+
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.nameoncard.$error.maxlength">
+                                                                Card Name entered exceeds the maximum length of 50 characters.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-1 col-md-11 col-sm-11 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.cardnumber.$invalid && vm.submitted }">
+                                                            <label>Card Number</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder="" data-mask="9999-9999-9999-9999" ng-change="vm.creditcardclear()"
+                                                                   data-ng-model="vm.cardnumber" name="cardnumber" id="cardnumber" ng-minlength="16"
+                                                                   ng-pattern="/^[0-9-]+$/" ng-focus="vm.setErrorMsg('error_msg')" ng-disabled="vm.examptAllfee" ng-required="!vm.examptAllfee">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-1 col-md-11 col-sm-11 col-xs-12 ">
+                                                        <div class="error-container" ng-show="vm.paymentform.cardnumber.$dirty && vm.paymentform.cardnumber.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.cardnumber.$error.pattern">
+                                                                Card Number accepts only numbers.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.cardnumber.$error.maxlength">
+                                                                Card Number must be 16 digits
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <p style="margin-left: 26%; margin-bottom: -5%;">Expiration Date</p>
+                                                    <div class="col-sm-offset-1 col-md-4 col-sm-4 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.cardexpdate.$invalid && vm.submitted }">
+                                                            <label>&nbsp;</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder="MM" ng-change="vm.ValidateDate()" maxlength="2" ng-minlength="2" minlength="2" ng-pattern="/^[0-9]+$/"
+                                                                   data-ng-model="vm.cardexpdate"
+                                                                   name="cardexpdate" id="cardexpdate" ng-focus="vm.setErrorMsg('error_msg')" ng-disabled="vm.examptAllfee" ng-required="!vm.examptAllfee">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.year.$invalid && vm.submitted }">
+                                                            <label>&nbsp;</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder="YYYY" maxlength="4" ng-change="vm.ValidateDate()" ng-minlength="4"
+                                                                   ng-pattern="/^[0-9]+$/"
+                                                                   data-ng-model="vm.year"
+                                                                   minlength="4"
+                                                                   name="year" id="year"
+                                                                   data-ng-disabled="vm.examptAllfee"
+                                                                   ng-required="!vm.examptAllfee" ng-focus="vm.setErrorMsg('error_msg')">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-offset-1 col-md-12 col-sm-12 col-xs-12 hidden-lg hidden-md hidden-sm" style="margin-bottom: 15px;">
+                                                        <div class="error-container" ng-show="vm.paymentform.cardexpdate.$dirty && vm.paymentform.cardexpdate.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.cardexpdate.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.cardexpdate.$error.minlength">
+                                                                Entered month must be in <strong>MM</strong> format.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.cardexpdate.$error.validexpirationdate">
+                                                                Please enter a valid Expiration Date.
+                                                            </small>
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.paymentform.year.$dirty && vm.paymentform.year.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.year.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.year.$error.minlength">
+                                                                Entered year must be in <strong>YYYY</strong> format.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.securitycode.$invalid && vm.submitted }">
+                                                            <label>Security Code</label>
+                                                            <input type="password" spellcheck="false"
+                                                                   class="form-control" placeholder=""
+                                                                   maxlength="3"
+                                                                   minlength="3"
+                                                                   ng-maxlength="3" ng-minlength="3" ng-pattern="/^[0-9]+$/"
+                                                                   data-ng-model="vm.securitycode"
+                                                                   name="securitycode" id="securitycode" ng-disabled="vm.examptAllfee" ng-required="!vm.examptAllfee">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class=" col-md-offset-1 col-md-12  col-sm-12 col-xs-12 " style="margin-bottom: 15px;">
+                                                        <div class="error-container hidden-xs" ng-show="vm.paymentform.securitycode.$dirty && vm.paymentform.securitycode.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.securitycode.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+                                                            
+                                                            <small class="error-message" ng-show="vm.paymentform.securitycode.$error.minlength">
+                                                                Security code must be 3 digits.
+                                                            </small>
+                                                        </div>
+                                                        <div class="error-container hidden-xs" ng-show="vm.paymentform.cardexpdate.$dirty && vm.paymentform.cardexpdate.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.cardexpdate.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+
+                                                            <small class="error-message" ng-show="vm.paymentform.cardexpdate.$error.minlength">
+                                                                Entered month must be in <strong>MM</strong> format.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.cardexpdate.$error.validexpirationdate">
+                                                                Please enter a valid Expiration Date.
+                                                            </small>
+                                                        </div>
+                                                        <div class="error-container" ng-show="vm.paymentform.year.$dirty && vm.paymentform.year.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.year.$error.pattern">
+                                                                Please enter numbers only.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.year.$error.required">
+
+                                                            </small>
+                                                            
+                                                            <small class="error-message" ng-show="vm.paymentform.year.$error.minlength">
+                                                                Entered year must be in <strong>YYYY</strong> format.
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-sm-5 col-md-5 col-xs-12 payment-address-wrapper">
+                                                <p>
+                                                    Below is the mailing address on file with your Business License. Please indicate if this is the address associated with the credit card you will use to renew your Business License.
+                                                </p>
+                                                <hr />
+                                                <p class="text_payment">
+                                                    <span class="payment_color" style="color: #808080">Name : </span> {{vm.paymentBillingDetails.NameofLicense}}
+                                                </p>
+                                                <p class="text_payment">
+                                                    <span class="payment_color">Business Name : </span>
+                                                    {{vm.paymentBillingDetails.BusinessOwnerName}}
+
+                                                </p>
+
+                                                <p class="text_payment">
+                                                    <span class="payment_color">Street Address : </span>
+                                                    {{vm.paymentBillingDetails.BblAddress}}
+                                                </p>
+
+                                                <p class="text_payment">
+                                                    <span class="payment_color">City :  </span>
+                                                    {{vm.paymentBillingDetails.BblCity}}
+                                                </p>
+
+                                                <p class="text_payment">
+                                                    <span class="payment_color">State :  </span>
+
+                                                    {{vm.paymentBillingDetails.BblState}}
+                                                </p>
+                                                <p class="text_payment">
+                                                    <span class="payment_color">Zip Code :  </span>
+                                                    {{vm.paymentBillingDetails.BblZip}}
+                                                </p>
+
+                                                <p class="text_payment">
+                                                    <span class="payment_color">Telephone :  </span>
+                                                    {{vm.paymentBillingDetails.MailingTelePhone}}
+                                                </p>
+
+                                                <p class="text_payment">
+                                                    <span class="payment_color">Email :  </span>
+                                                    {{vm.paymentBillingDetails.MailingEmail}}
+                                                </p>
+                                                <hr />
+                                                <div class="form-type-radio form-item form-group">
+                                                    <div id="edit-questions-23488" class="form-radios">
+                                                        <div class="form-type-radio col-md-12 pre_appscreenquestion form-item radio" tabindex="0" style="width: 100%">
+                                                            <div class="radiobtn" id="uniform-edit-questions-23488-22" style="margin-top: 2.7%;">
+                                                                <span ng-class="{true:'checked'}[vm.billingaddress]">
+                                                                    <input type="radio" id="true" name="true"
+                                                                           ng-checked="true" class="form-radio"
+                                                                           data-ng-model="vm.billingaddress"
+                                                                           data-ng-value="true"
+                                                                           style="opacity: 0;" ng-click="vm.toggleRadio()" checked="checked">
+                                                                </span>
+                                                            </div>
+                                                            <label for="true" tabindex="-1">
+                                                                Use My Mailing Address as my Billing Address
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div id="edit-questions-23489" class="form-radios" style="width: 100%">
+                                                        <div class="form-type-radio col-md-12 pre_appscreenquestion form-item radio" tabindex="0" style="width: 100%">
+                                                            <div class="radiobtn" id="uniform-edit-questions-23488-222" style="margin-top: 2.7%;">
+                                                                <span ng-class="{false:'checked'}[vm.billingaddress]">
+                                                                    <input type="radio" id="false"
+                                                                           name="false" value=""
+                                                                           class="form-radio"
+                                                                           data-ng-model="vm.billingaddress"
+                                                                           data-ng-value="false"
+                                                                           style="opacity: 0;" ng-click="vm.toggleRadio()">
+                                                                </span>
+                                                            </div>
+                                                            <label for="false" tabindex="-1">
+                                                                Use a Different Billing Address
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-show="!vm.billingaddress">
+                                                <div class="clearfix">
+                                                    <div class="col-md-offset-2 col-sm-8 col-xl-8 col-xs-12" id="premiseaddr">
+
+                                                        <div class="clearfix">
+                                                            <div class="panel panel-default collapse_panels ">
+                                                                <div class="panel-heading" style="padding: 2% 1%; background-color: #E4E2E2;">
+                                                                    <p style="text-align: center;">Different Billing Address</p>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="form_wrapper">
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group" ng-class="{'has-error':vm.paymentform.countrydd.$invalid && vm.submitted }">
+                                                                                    <label>Country</label>
+                                                                                    <select name="countrydd" data-ng-model="vm.country" ng-change="vm.selectcountryoption()" ng-required="!vm.billingaddress">
+                                                                                        <option value="" selected disabled>Select One</option>
+                                                                                        <option ng-repeat="country in vm.Countries" value="{{country.CountryCode}}">{{country.CountryName}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.paymentform.businessname.$invalid && vm.submitted }">
+                                                                                    <label>Business Name</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="bname" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.businessname" class="form-control"
+                                                                                               ng-maxlength="65" id="businessname" name="businessname"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.businessname.$dirty && vm.paymentform.businessname.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.businessname.$error.maxlength">
+                                                                                            Business Name exceeds maximum length of 65 characters.
+                                                                                        </small>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.paymentform.firstname.$invalid && vm.submitted }">
+                                                                                    <label>First Name</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="fname" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.firstname" class="form-control"
+                                                                                               ng-maxlength="15" id="firstname" name="firstname"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress" ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.firstname.$dirty && vm.paymentform.firstname.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.firstname.$error.maxlength">
+                                                                                            First Name exceeds maximum length of 15 characters.
+                                                                                        </small>
+                                                                                        <small class="error-message" ng-show="vm.paymentform.firstname.$error.pattern">
+                                                                                            Please enter letters or the following special characters only (- . ' `).
+                                                                                        </small>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu">
+                                                                                    <label>Middle Name</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="mname" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.middlename" class="form-control"
+                                                                                               ng-maxlength="15" id="middlename" name="middlename" placeholder="optional"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')" ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.middlename.$dirty && vm.paymentform.middlename.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.middlename.$error.maxlength">
+                                                                                            Middle Name exceeds maximum length of 15 characters.
+                                                                                        </small>
+                                                                                        <small class="error-message" ng-show="vm.paymentform.middlename.$error.pattern">
+                                                                                            Please enter letters or the following special characters only (- . ' `).
+                                                                                        </small>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.paymentform.lastname.$invalid && vm.submitted }">
+                                                                                    <label>Last Name</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="lname" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.lastname" class="form-control"
+                                                                                               ng-maxlength="15" id="lastname" name="lastname"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress"
+                                                                                               ng-pattern="/^[a-zA-Z-.'`\s]+$/">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.lastname.$dirty && vm.paymentform.lastname.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.lastname.$error.maxlength">
+                                                                                            Last Name exceeds maximum length of 15 characters.
+                                                                                        </small>
+                                                                                        <small class="error-message" ng-show="vm.paymentform.lastname.$error.pattern">
+                                                                                            Please enter letters or the following special characters only (- . ' `).
+                                                                                        </small>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        
+
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu" ng-class="{'has-error':vm.paymentform.address1.$invalid && vm.submitted }">
+                                                                                    <label>Address 1</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="add1" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.address1" class="form-control"
+                                                                                               ng-maxlength="65" id="address1" name="address1"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.address1.$dirty && vm.paymentform.address1.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.address1.$error.maxlength">
+                                                                                            Address 1 exceeds maximum length of 65 characters.
+                                                                                        </small>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu">
+                                                                                    <label>Address 2</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="add2" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.adress2" class="form-control"
+                                                                                               ng-maxlength="65" id="address2" name="address2" placeholder="optional"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.address2.$dirty && vm.paymentform.address2.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.address2.$error.maxlength">
+                                                                                            Address 2 exceeds maximum length of 65 characters.
+                                                                                        </small>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                                                                <div class="form-group restrictDropdownMenu">
+                                                                                    <label>Address 3</label>
+                                                                                    <div class="inner-addon right-addon">
+                                                                                        <i class="glyphicon glyphicon-refresh gly-spin" id="add3" style="display: none"></i>
+                                                                                        <input type="text" spellcheck="false" data-ng-model="vm.diffRenewalPayment.address3" class="form-control"
+                                                                                               ng-maxlength="65" id="address3" name="address3" placeholder="optional"
+                                                                                               ng-focus="vm.setErrorMsg('error_msg')">
+                                                                                    </div>
+                                                                                    <div class="error-container" ng-show="vm.paymentform.address3.$dirty && vm.paymentform.address3.$invalid">
+                                                                                        <small class="error-message" ng-show="vm.paymentform.address3.$error.maxlength">
+                                                                                            Address 3 exceeds maximum length of 65 characters.
+                                                                                        </small>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                                                <div class="form-group" ng-class="{'has-error':vm.paymentform.city.$invalid && vm.submitted }">
+                                                                                    <label>City</label>
+                                                                                    <input type="text" spellcheck="false" class="form-control" placeholder="" data-ng-model="vm.diffRenewalPayment.city"
+                                                                                           name="city" id="city" ng-maxlength="30" ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress" ng-pattern="/^[a-zA-Zs\s]+$/">
+                                                                                </div>
+                                                                                <div class="error-container" ng-show="vm.paymentform.city.$dirty && vm.paymentform.city.$invalid">
+                                                                                    <small class="error-message" ng-show="vm.paymentform.city.$error.pattern">
+                                                                                        Please enter letters only.
+                                                                                    </small>
+                                                                                    <small class="error-message" ng-show="vm.paymentform.city.$error.maxlength">
+                                                                                        City exceeds maximum length of 30 characters.
+                                                                                    </small>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12 " ng-show="vm.selectStateDropdown">
+                                                                                <div class="form-group" ng-class="{'has-error':vm.paymentform.state.$invalid && vm.submitted }">
+                                                                                    <label>State</label>
+                                                                                    <input type="text" spellcheck="false" class="form-control" placeholder="optional" data-ng-model="vm.diffRenewalPayment.state"
+                                                                                           name="state" id="state" ng-maxlength="30" ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress && !vm.selectStateDropdown" ng-pattern="/^[a-zA-Z\s]+$/">
+                                                                                </div>
+                                                                                <div class="error-container" ng-show="vm.paymentform.state.$dirty && vm.paymentform.state.$invalid">
+                                                                                    <small class="error-message" ng-show="vm.paymentform.state.$error.pattern">
+                                                                                        Please enter letters only.
+                                                                                    </small>
+                                                                                    <small class="error-message" ng-show="vm.paymentform.state.$error.maxlength">
+                                                                                        State exceeds maximum length of 30 characters.
+                                                                                    </small>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12 " ng-show="!vm.selectStateDropdown">
+                                                                                <div class="form-group" ng-class="{'has-error':vm.paymentform.StatesAdded.$invalid && vm.submitted }">
+                                                                                    <label>State</label>
+
+                                                                                    <select name="StatesAdded" id="StatesAdded" data-ng-model="vm.diffRenewalPayment.state" ng-required="!vm.billingaddress && !vm.selectStateDropdown">
+                                                                                        <option value="" selected>Select One</option>
+                                                                                        <option ng-repeat="state in vm.StatesList" value="{{state.StateCode}}">{{state.StateCode}}</option>
+                                                                                    </select>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            
+
+                                                                        </div>
+
+                                                                        <div class="clearfix">
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                                                <div class="form-group" ng-class="{'has-error':vm.paymentform.zip.$invalid && vm.submitted }">
+                                                                                    <label>Zip Code</label>
+                                                                                    <input type="text" spellcheck="false" class="form-control" placeholder="" data-ng-model="vm.diffRenewalPayment.zip"
+                                                                                           name="zip" ng-trim="false" id="zip" ng-focus="vm.setErrorMsg('error_msg')" ng-required="!vm.billingaddress" data-ng-change="vm.checkZipMaxLength()"
+                                                                                           ng-pattern="vm.validations_wrt_contry.zip.pattern">
+                                                                                </div>
+
+                                                                                <div class="error-container" ng-show="vm.paymentform.zip.$dirty && vm.paymentform.zip.$invalid">
+                                                                                    <small class="error-message" ng-show="vm.paymentform.zip.$error.pattern">
+                                                                                        {{vm.validations_wrt_contry.zip.maxlength==100?"Please enter valid Zip Code using Numbers, alphabets, space or hyphen.":"Please enter numbers only."}}
+                                                                                    </small>
+                                                                                    <small class="error-message" ng-show="vm.diffRenewalPayment.zip!=undefined && vm.paymentform.zip.$error.customminlength && !vm.paymentform.zip.$error.pattern">
+                                                                                        Zip must have {{vm.validations_wrt_contry.zip.minlength}} digits.
+                                                                                    </small>
+                                                                                    <small class="error-message" ng-show="vm.paymentform.zip.$error.customlength && !vm.paymentform.zip.$error.pattern">
+                                                                                        Zip Code exceeds the maximum length of {{vm.validations_wrt_contry.zip.maxlength}} characters.
+                                                                                    </small>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                                                <div class="form-group" ng-class="{'has-error':vm.paymentform.telephone.$invalid && vm.submitted }">
+                                                                                    <label>Telephone</label>
+                                                                                    <input type="text" class="form-control" placeholder="" data-ng-model="vm.diffRenewalPayment.Telephone" spellcheck="false"
+                                                                                           name="telephone" ng-trim="false" id="telephone" ng-focus="setErrorMsg('error_msg')"
+                                                                                           ng-required="!vm.billingaddress" data-ng-change="vm.checkTelephoneMaxLength()" ng-pattern="vm.validations_wrt_contry.telephone.pattern">
+                                                                                </div>
+
+                                                                                <div class="error-container" ng-show="vm.paymentform.telephone.$dirty && vm.paymentform.telephone.$invalid">
+                                                                                    <small class="error-message" ng-show="vm.paymentform.telephone.$error.pattern">
+                                                                                        {{vm.validations_wrt_contry.telephone.maxlength==100?"Please enter valid Telephone using Numbers, space, plus or hyphen.":"Please enter numbers only."}}
+
+                                                                                    </small>
+                                                                                    <small class="error-message" ng-show="vm.diffRenewalPayment.Telephone!=undefined && vm.paymentform.telephone.$error.customminlength && !vm.paymentform.telephone.$error.pattern">
+                                                                                        Telephone must have {{vm.validations_wrt_contry.telephone.minlength}} digits.
+                                                                                    </small>
+                                                                                    <small class="error-message" ng-show="vm.paymentform.telephone.$error.customlength && !vm.paymentform.telephone.$error.pattern">
+                                                                                        Telephone exceeds the maximum length of {{vm.validations_wrt_contry.telephone.maxlength}} characters.
+                                                                                    </small>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form_wrapper" style="font-size: 24px; font-weight: 400;">
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.email.$invalid && vm.submitted }">
+                                                            <label>I would like my email confirmation to be sent to </label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                                   data-ng-model="vm.email" name="email" ng-maxlength="65"
+                                                                   id="email" ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-zA-Z]{2,6}(?:\.[a-zA-Z]{2})?)$/"
+                                                                   ng-focus="vm.setErrorMsg('error_msg')" required data-ng-keyup="vm.emailconfirmcase()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 text-center">
+                                                        <div class="error-container" text-center ng-show="vm.paymentform.email.$dirty && vm.paymentform.email.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.email.$error.pattern">
+                                                                Please enter a valid email address.
+                                                            </small>
+                                                            <small class="error-message" text-center ng-show="vm.paymentform.email.$error.mismatch">
+                                                                Emails do not match
+                                                            </small>
+                                                            <small class="error-message" text-center ng-show="vm.paymentform.email.$error.maxlength">
+                                                                Email Confirmation cannot be longer than 65 characters
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.confirmemail.$invalid && vm.submitted }">
+                                                            <label>Confirm Email</label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                                   data-ng-model="vm.emailconfirm" name="confirmemail"
+                                                                   id="confirmemail" data-ng-keyup="vm.emailconfirmcase()"
+                                                                   ng-focus="vm.setErrorMsg('error_msg')" required>
+                                                        </div>
+                                                        <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12 text-center">
+                                                            <div class="error-container" text-center ng-show="vm.paymentform.confirmemail.$dirty && vm.paymentform.confirmemail.$invalid">
+                                                                <small class="error-message" text-center ng-show="vm.paymentform.confirmemail.$error.mismatch">
+                                                                    Emails do not match
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="height: 8px;"></div>
+                                            <div class="single_checkbox_set">
+                                                <div class="col-md-12 col-sm-12 col-xs-12 form-type-checkbox clearfix">
+                                                    <div class="form-type-checkbox form-item-screening-question-seondary-cigarette form-item checkbox" ng-class="{'has-error':vm.paymentform.agreedall.$invalid && vm.submitted }">
+                                                        <div class="checker" id="uniform-edit-screening-question-candy" style="margin-top: -5px;">
+                                                            <span ng-class="{true:'checked'}[vm.declaration]">
+                                                                <input type="checkbox" id="cagreedall"
+                                                                       name="agreedall"
+                                                                       ng-model="vm.declaration"
+                                                                       value="1" class="form-checkbox" style="opacity: 0;"
+                                                                       ng-focus="vm.setErrorMsg('error_msg')" required>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkbox_question">
+                                                        <label tabindex="-1">
+                                                            I/We understand that,
+                                                            anyone who makes a false statement on this form can be criminally
+                                                            prosecuted: and, if convicted, fined up to $1000, imprisoned up to 180
+                                                            days, or both, under D.C. Official Code &sect;22-2405.
+                                                        </label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form_wrapper" style="font-size: 24px; font-weight: 400;">
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                                        <div class="form-group" ng-class="{'has-error':vm.paymentform.signature.$invalid && vm.submitted }">
+                                                            <label><span style="font-size:24px;font-weight:600">Signature:</span> Enter your full name as your signature </label>
+                                                            <input type="text" spellcheck="false" class="form-control" placeholder=""
+                                                                   data-ng-model="vm.signature" name="signature"
+                                                                   id="signature" ng-pattern="/^[a-zA-Z\s]+$/" ng-maxlength="50"
+                                                                   ng-focus="vm.setErrorMsg('error_msg')" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="col-sm-offset-2 col-md-8 col-sm-8 col-xs-12">
+                                                        <div class="error-container" ng-show="vm.paymentform.signature.$dirty && vm.paymentform.signature.$invalid">
+                                                            <small class="error-message" ng-show="vm.paymentform.signature.$error.pattern">
+                                                                Signature field accepts only alphabets.
+                                                            </small>
+                                                            <small class="error-message" ng-show="vm.paymentform.signature.$error.maxlength">
+                                                                Signature cannot be longer than 50 characters
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="pre-checkquestion col-md-8 col-sm-8 col-xs-12 col-md-offset-4 col-sm-offset-4">
+                        <button id="btn_create_checklist" class="btn btn-default" data-ng-click="vm.navToMyBBLs()">
+                            Exit
+                        </button>
+                        <button id="btn_revise" class="btn btn-default" data-ng-click="vm.navToReceipt(vm.submitted=true)">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 payment_submit_infotext">
+                        Click &quot;Submit&quot; button only once and don't hit the Browser's back button at any time until the payment processing is complete.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'partials/footer.html'"></div>
+

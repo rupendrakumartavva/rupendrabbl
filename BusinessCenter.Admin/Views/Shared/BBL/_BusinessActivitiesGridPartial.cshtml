@@ -1,0 +1,217 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model IEnumerable<BusinessCenter.Admin.Models.ActivityModel>
+<div class="row">
+    <div id="example_wrapper" class="dataTables_wrapper">
+        <div class="table table-responsive" style="overflow: hidden;">
+            <table class="dataTable table table-striped table-bordered  tableborder  smartgrid" id="datasearch" role="grid">
+                <thead>
+                    <tr>
+                        <th class="text-center">Business Activity</th>
+                        <th class="text-center">Primary Categories</th>
+                        <th class="text-center">Status</th>
+                        @*<th class="text-center">Edit</th>*@
+                        <th class="text-center">Activate/Deactivate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="8">No record(s) found</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="tablerow tabrow text-center">
+                                <td class="col4-tab col4 Superadmingrid usercol">
+                                    @if ((int) Session["Admincount"] == 3)
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+
+                                            <a href="javascript:void(0)" onclick="UpdateActivity('@item.ActivityID', '@item.APP_Type') " id="edit-btn" class="updatebusinessactivity">
+                                                @item.ActivityName
+                                            </a>
+                                        </span>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+
+                                                <a href="" style="cursor: default;pointer-events: none"  class="updatebusinessactivity">
+                                                    @item.ActivityName
+                                                </a>
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col2-tab col2 Superadmingrid usercol">
+                                    @if (item.APP_Type.Trim() == "1")
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align: center">
+                                                @Html.ActionLink("Primary Categories", "PrimaryCategories", "BBL", new { activityId = item.ActivityID },new {  onclick = "clearTableState();" })
+                                            </span>
+                                        </p>
+
+                                    }
+                                    else
+                                    {
+                                        <p style="font-size: 18px;" class="paracol12 paratabcol1">
+                                            <span style="text-align: center">Primary Categories</span>
+                                        </p>
+                                    }
+                                </td>
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if (item.APP_Type.Replace(System.Environment.NewLine, "").ToString().Trim() == "1")
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span style="text-align:center">
+
+                                                Active&nbsp;@Html.Image("~/images/active.png", "Active")
+                                            </span>
+                                        </p>
+                                    }
+                                    else if (item.APP_Type.Replace(System.Environment.NewLine, "").ToString().Trim() == "0")
+                                    {
+                                        <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                            <span>
+                                                Inactive&nbsp;@Html.Image("~/images/InActive.png", "InActive")
+                                            </span>
+                                        </p>
+                                    }
+                                </td>
+
+                                <td class="col1-tab col1 Superadmingrid usercol">
+                                    @if ((int) Session["Admincount"] == 3)
+                                    {
+                                        if (item.APP_Type.Trim() == "1")
+                                        {
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                <a href="javascript:void(0)" onclick="ShowDialog('@item.ActivityID', '@item.ActivityName') " title="Deactivate" class="activestatus">
+                                                    @Html.Image("~/images/delete.png", "Deleted")
+                                                </a>
+                                            </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                <a href="javascript:void(0)" onclick="ShowUpdate('@item.ActivityID', '@item.ActivityName') " title="Activate" class="activestatus">
+                                                    @Html.Image("~/images/active.png", "Active")
+                                                </a>
+                                            </span>
+                                            </p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (item.APP_Type.Trim() == "1")
+                                        {
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                    <a href="" style="cursor: default;pointer-events: none" title="Deactivate" class="activestatus">
+                                                        @Html.Image("~/images/delete.png", "Deleted")
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p style="font-size: 14px;" class="paracol12 paratabcol1">
+                                                <span>
+                                                    <a href="" style="cursor:default;pointer-events: none" title="Activate" class="activestatus">
+                                                        @Html.Image("~/images/active.png", "Active")
+                                                    </a>
+                                                </span>
+                                            </p>
+                                        }
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        padding-top: 0.55em !important;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0em 0em !important;
+        }
+
+    .paginate_button .previous {
+        font-size: 19px !important;
+    }
+
+    .paginate_button .next {
+        font-size: 19px !important;
+    }
+
+    .dataTables_paginate .paging_simple_numbers {
+        font-size: 19px !important;
+    }
+
+    .login_form a {
+        font-size: 19px !important;
+    }
+
+    table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+    }
+
+    .login_form p {
+        margin-bottom: 0;
+    }
+</style>
+<script type="text/javascript" class="init">
+    var tableData = '';
+    $(document).ready(function () {
+        window.alert = function () { /* do nothing here */ }
+        tableData = $('#datasearch').DataTable({
+            "ordering": false,
+            stateSave: true
+        });
+        $("#datasearch_length").hide();
+        $("#datasearch_filter").hide();
+        if ($('#datasearch td').attr('colspan') == '8') {
+            $("#datasearch_info").hide();
+            $("#datasearch_paginate").hide();
+        } else {
+        }
+    });
+
+    $(" #btnCreate").on('click', function (e) {
+        tableData.state.clear();
+    });
+
+    $("a").on('click', function (e) {
+        if ($(this).hasClass('businessActivities') || $(this).hasClass('paginate_button') || $(this).hasClass('updatebusinessactivity') || $(this).hasClass('activestatus')) {
+        } else {
+            //console.log("working");
+            //alert("working");
+            tableData.state.clear();
+        }
+    });
+
+    function clearTableState() {
+        tableData.state.clear();
+    }
+
+    $("#edit-btn").click(function () {
+        $("#btncreate").text("Update");
+        $("#btncreate").text("Update");
+    });
+</script>

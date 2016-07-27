@@ -1,0 +1,246 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript">
+        // <![CDATA[Sitename - dcbcadmin.codeitinc.com,Version = 3.9.83 and Launch Date = 02-01-2016. // ]]>
+    </script>
+
+    <meta http-equiv="Cache-Control" content="private" max-age=108000, pre-check=108000 />
+    <meta http-equiv="Pragma" content="private" />
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/style.css" rel="stylesheet" />
+    <link href="../../css/bbl.css" rel="stylesheet" />
+
+    <script src="../../styles/libs/jquery-1.10.2.js"></script>
+    <script src="../../styles/libs/jquery-1.10.2.min.js"></script>
+    <script src="../../styles/js/bootstrap.min.js"></script>
+    <script src="../../styles/libs/jquery-ui.min.js"></script>
+    <script src="../../styles/js/moment.js"></script>
+    <script src="../../styles/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../datatable/jquery.dataTables.min.js"></script>
+    <script src="../../Scripts/headerhighlighting.js"></script>
+    <script>
+        window.onbeforeunload = confirmExit;
+
+        function confirmExit() {
+            if (window.event.clientY < 0 && window.event.clientY < -80) {
+                var xmlhttp;
+                if (window.ActiveXObject) { // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    xmlhttp.open("GET", "AbandonSession.aspx", false);
+                    xmlhttp.send();
+                }
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                    xmlhttp.open("GET", "AbandonSession.aspx", false);
+                    xmlhttp.send();
+                }
+            }
+        }
+
+        function KeepSessionAlive() {
+            $.ajax({
+                url: '/Account/KeepSessionAlive',
+                type: 'Get',
+                cache: false,
+                //data: { AllData: $('#InActive').val() },
+                success: function (data) {
+
+                },
+                error: function () {
+                }
+            });
+        };
+
+        function GetUtcTimeWithSeconds() {
+            var k = moment.utc().format('YYYY-MM-DD HH:mm:ss');
+            var y = moment(k).unix();
+            return y;
+        }
+
+        $(document).ready(function () {
+            @*var sessionVariable = '@HttpContext.Current.Session["ApplicationStart"].ToString()';
+            if (sessionVariable === "Yes") {*@
+            console.log(localStorage.ApplicationStart);
+            if (localStorage.ApplicationStart == "true") {
+                localStorage.setItem("seconds", 0);
+                localStorage.setItem("lastlytouched", GetUtcTimeWithSeconds());
+
+                setInterval(function () {
+
+                    var timeExpiredSecondValue = (parseInt(GetUtcTimeWithSeconds()) - parseInt(localStorage.getItem("lastlytouched")));
+
+                    localStorage.setItem("CountValue", timeExpiredSecondValue);
+                    if (parseInt(localStorage.getItem("CountValue")) * 1000 >= 1800 * 1000) {
+                      //  $('#logoutidalog').modal('hide');
+                        localStorage.ApplicationStart = "false";
+                        
+                        window.location.href = '/Account/Signout';
+
+                    } else if (parseInt(localStorage.getItem("CountValue")) * 1000 >= 1380 * 1000) {
+                        $('#logoutidalog .modal-body').html("<h3 class='success'>You have been inactive for 23 minutes. In 7 minutes you will be automatically logged out</h3>");
+                        $('#logoutidalog').modal('show');
+
+                    }
+                    else {
+                        $('#logoutidalog').modal('hide');
+                    }
+
+                }, 1000);
+
+                $.ajaxSetup({
+                    dataFilter: function (data, type) {
+                        localStorage.setItem("seconds", 0);
+                        localStorage.setItem("previoustime", GetUtcTimeWithSeconds());
+                        localStorage.setItem("lastlytouched", GetUtcTimeWithSeconds());
+                        return data;
+                    }
+                });
+
+                $(document).find('body').on('keydown DOMMouseScroll mousewheel mousedown touchstart scroll', function () {
+                    if (localStorage.ApplicationStart == "true") {
+                        KeepSessionAlive();
+
+                        localStorage.setItem("previoustime", GetUtcTimeWithSeconds());
+                        localStorage.setItem("seconds", 0);
+                        localStorage.setItem("lastlytouched", GetUtcTimeWithSeconds());
+                    }
+                });
+
+                $("#logoff").click(function () {
+                    localStorage.setItem("CountValue", 0);
+                    $('#logoutidalog').modal('hide');
+                    localStorage.ApplicationStart = "false";
+                    localStorage.ApplicationLoggedout = "AuthenticatedOut";
+                    window.location.href = '/Account/Signout';
+                });
+                $("#continue").click(function (e) {
+                    $('#logoutidalog').modal('hide');
+                    localStorage.ApplicationStart = "true";
+                    KeepSessionAlive();
+                    localStorage.setItem("CountValue", 0);
+                    localStorage.setItem("previoustime", GetUtcTimeWithSeconds());
+                    localStorage.setItem("seconds", 0);
+                    localStorage.setItem("lastlytouched", GetUtcTimeWithSeconds());
+                });
+            }
+            //}
+           
+        });
+
+        setInterval(function () {
+            console.log("interveal started");
+            if (localStorage.ApplicationLoggedout == "logoutclicked" || localStorage.ApplicationLoggedout == "AuthenticatedOut") {
+                if (localStorage.ApplicationStart != "true")
+                    {
+                localStorage.Lgoggein = false;
+                localStorage.ApplicationStart = false;
+                localStorage.ApplicationLoggedout = "appstart";
+                window.location.href = '/Account/Login';
+                     
+                    }
+            }
+        }, 1000);
+    </script>
+
+</head>
+<body onload="geturl()" id="mainbody">
+
+    <div class="mainNavigation">
+        <div class="container">
+            <nav class="navbar navbar-default no-pad-left" role="navigation">
+                <div class="navbar-header col-lg-3 col-md-3 col-sm-3 col-xs-12 no-pad-left no-pad-right">
+                    <div class="col-sm-12 col-xs-9">
+                        <h1 class="header_logo" tabindex="-1">
+                            <a href="https://business.dc.gov/home" role="link">
+                                <img tabindex="-1" src="../../images/dc_logo.png" alt="DCRA Business Center" class="img-responsive">
+                            </a>
+                        </h1>
+                    </div>
+                    @if (Session["Login"] != null)
+                    {
+                        <div class="col-xs-3 hidden-lg hidden-md hidden-sm pull-right">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <script type="text/javascript">
+                            localStorage.Lgoggein = false;
+                        </script>
+                    }
+
+
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9">
+                    <div class="row">
+                        @Html.Partial("_HeaderMenuPartial")
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <footer>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 ">
+                        <p tabindex="0" style="font-size: 14px;">Copyright © 2015 DC Department of Consumer and Regulatory Affairs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="logoutidalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" id="logoff">Log Off</button>
+                    <button type="button" data-dismiss="modal" class="btn" id="continue">Continue Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/jqueryval")"></script>
+    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/jqueryval")"></script>
+    @Styles.Render("~/css/css", "~/styles/libs", "~/datatable/datatable")
+</body>
+</html>

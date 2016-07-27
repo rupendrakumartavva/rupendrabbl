@@ -1,0 +1,425 @@
+<div ng-include src="'partials/header.html'"></div>
+
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="#/newbblwelcome" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Apply</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Application Checklist</span>
+</div>
+
+<div class="page_title scr_title">
+    <div class="container">
+        <div class="row">
+            <h2 tabindex="0">Application Checklist</h2>
+            <p>
+                <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                    Help With This Page (Click Here)
+                </span>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="well info-content">
+                    <p class="text-center">
+                        <strong>The Application Checklist page displays and captures a tailored list of the information and documentation you will need to submit to complete Basic Business License application.</strong>
+                    </p>
+                    <ul class="terms_text" style="padding-left: 80px;">
+                        <li>
+                            The Application Checklist page is the user's "home page" while the required information for your BBL application is collected.
+                        </li>
+                        <li>
+                            You can save an incomplete Checklist and resume work on it later. You can return to your Checklist from the My BBLs Page using the link  <img src="../images/accessapplication.png" style="height: 40px; width: 100px;" />
+                        </li>
+                    </ul>
+
+                    <p class="terms_text">
+                        As valid information is entered, the Checklist will automatically acknowledge it by "checking off" <img src="../images/ChcekBox_HowtoUse.png" /> the appropriate item on the Checklist.
+                    </p>
+                    <p class="terms_text srch_filter">
+                        Once you have completed the Application Checklist and all items are "checked off," the grey <button class="cursorDefault pointer_events_none disablecolor" style="text-transform: none;"> Next</button>
+                        button will turn green and become active <button class="cursorDefault pointer_events_none btnnextColor" style="text-transform: none;"> Next </button> for you to advance to the next step.
+                    </p>
+
+                    <p>
+                        <strong> Navigation to Data Entry Screens</strong>
+                    </p>
+
+                    <ul class="terms_text srch_filter" style="padding-left: 80px;">
+                        <li>
+                            <strong> Review Pre-Application Questions</strong> answers you provided using the link <strong>
+                                <u> Review Your Answers to the Pre-Applications Questions (Here)</u>
+                            </strong>.
+
+                            <ul class="howtotext">
+                                <li>
+                                    <strong> *Note*</strong> <b>you will be unable to alter the Pre-Application information at this point.</b>
+                                </li>
+                                <li>
+                                    If you notice an error in an answer to a Pre-Application Question:
+                                </li>
+                            </ul>
+                            <ul>
+                                <li> <strong>1.</strong>&nbsp;&nbsp;&nbsp;Return to the My Basic Business License Page</li>
+                                <li>
+                                    <strong> 2.</strong>&nbsp;&nbsp;&nbsp;Select the <img src="../images/removemyview.png" style="height: 40px; width: 40px;" />
+                                    button on the erroneous record
+                                </li>
+                                <li>
+                                    <strong>3.</strong>&nbsp;&nbsp;&nbsp; Start a new application with the
+                                    <button class="cursorDefault pointer_events_none" style="text-transform: none;">
+                                        <span class="glyphicon glyphicon-plus"></span> APPLY FOR NEW LICENSE
+                                    </button>
+                                    button where corrections can be made.
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <strong> Access the data entry fields </strong>to provide using the hyperlinks provided
+                            <ul class="howtotext">
+                                <li>
+                                    Select the <strong><u>Enter Information about Your Business (Here)</u></strong> link to enter required information about the location and structure of your business.
+                                </li>
+                                <li>
+                                    Select the <strong><u>Upload Supporting Documents (Here)</u></strong> link to upload the required Supporting Documents.
+                                </li>
+                                <li>
+                                    Select the <strong><u>Enter Tax and Revenue Information (Here)</u></strong> link to provide required information and to complete the Clean Hands Attestation on the day you pay for and submit your Application.  If you save and return to your Draft Application on another day, you will need to check and sign the Attestation form again.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p class="terms_text srch_filter">
+                        You can save and exit at any time using the <button class="cursorDefault pointer_events_none" style="text-transform: none;"> Exit </button> button.
+                    </p>
+
+                    <p class="terms_text srch_filter">
+                        If you wish to download a copy of the page as a PDF, you must select the <button class="cursorDefault pointer_events_none" style="text-transform: none;"> Download a PDF of this Page </button> button.
+                    </p>
+
+                    <p class="terms_text">
+                        <strong> When the Checklist is Complete:</strong>
+                    </p>
+
+                    <ul class="terms_text srch_filter" style="padding-left: 80px;">
+                        <li>
+                            All items listed will display a <img src="../images/ChcekBox_HowtoUse.png" /> indicating that the information has been accurately provided
+                        </li>
+                        <li>
+                            The <button class="cursorDefault pointer_events_none btnnextColor" style="text-transform: none;"> Next </button> button at the bottom of the page will turn green and become active.
+                        </li>
+                    </ul>
+
+                    <p class="terms_text">
+                        <div class="login_form my_form">
+                            <span class="terms_text"> If you need additional help, review the</span>
+                            <a href="../HelpDoc/BBL_User_Guide.pdf" target="_blank" class="btn btn-default read_btn"> My BBLs User Guide</a>
+                            <span class="terms_text"> or contact the DCRA Help Desk at <strong>(202) 442-4400</strong>.</span>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12" tabindex="0">
+
+                <p>
+                    Below is a checklist of the information you must provide to complete your application.  To complete your application, select the links below to enter required information.  You can save and return to this page at any time. <span class="text-hilight-weight"> Please reference the "Help With This Page" link above for detailed assistance with this page.</span>
+                </p>
+            </div>
+            <!--<br />-->
+            <!--<span class="howtouse_note">Select the "How To Use This Page" button at the top of the page to learn how to use the BBL Online Application system.</span>-->
+            <!--<p>
+                Based on your responses to the Pre-Application Questions, the following information and documents are required to complete your Basic Business License Application.  Click each Section Heading below, for example, Physical Location and Business Structure to complete that section.
+            </p>-->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="timeLineWrapper clearfix">
+            <div class="progress_steps">
+                <div class="timeLine"></div>
+                <a class="active" href="">
+                    <div class="timeline_list step1">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 1</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Pre-Application Questions</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="active" tabindex="-1">
+                    <div class="timeline_list step2">
+                        <span class="inCircle activeCir"></span>
+                        <div class="step_detail">
+                            <p class="step_no active">
+                                <strong>Step 2</strong>
+                            </p>
+                            <p class="step_no">
+                                <strong>Application Checklist</strong>
+                            </p>
+                            <p class="step_text active"></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step3">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 3</p>
+                            <p class="step_no">Information Verification</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step4">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 4</p>
+                            <p class="step_no">Payment</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+                <a class="" tabindex="-1">
+                    <div class="timeline_list step5">
+                        <span class="inCircle "></span>
+                        <div class="step_detail">
+                            <p class="step_no ">Step 5</p>
+                            <p class="step_no">Receipt and Next Steps</p>
+                            <p class="step_text "></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dvLoadingSection">
+
+    <div class="center">
+        <p>
+            Please wait... <img src="../images/camera-loader.gif" alt="not showing" />
+        </p>
+    </div>
+</div>
+<div id="dvMainsection">
+
+    <div data-ng-controller="ApplicationChecklistController as vm">
+
+        <div class="login_form preapp-checklist alignchecbox" id="printdiv">
+            <div class="container">
+                <div class="panel-group" id="app-checklist">
+                    <div>
+                        <p class="checklist_success_msg" ng-show="vm.supportingDocsData[0].CheckedStatus==true"><strong>Your Checklist is complete!  Select the "Continue to Info Verification" button to proceed.</strong></p>
+                        <div class="panel panel-default">
+                            <div class="error-message" style="color: red; font-size: 16px; text-align: left; font-weight: 200; padding-left: 28px; margin: 10px 0 10px 0;" ng-show="vm.MasterTextRevenueIsCleanHand==true" id="taxrevenue_cleanhands">
+                                According to Office of Tax and Revenue (OTR) records, the FEIN you entered is not in compliance with the District of Columbia's Clean Hands requirements. Please click on Tax and Revenue link below to know how to proceed further.
+                            </div>
+
+                            <div class="error-message" style="color: red; font-size: 16px;text-align: left;font-weight:200; padding-left: 28px; margin: 10px 0 10px 0;" ng-show="vm.CorpChangeStatus=='Dcbc_Corp_Status_Changed'||vm.CorpChangeStatus=='DCBC_CORP_STATUS_CHANGED'" id="corp_statusChange">
+                                According to the Corporations Divisions files, the Status of your Corporate Information is <strong>{{vm.validateCorpFileStatus| capitalize}}</strong>. You must resolve any open issues prior to submitting your Business License Application. Please visit the DCRA Corporations Division at 1100 4th St SW or call them at <strong>202-442-4400</strong>.
+                            </div>
+                            <div class="panel-heading text-left">
+                                <a href="javascript:void(0)" data-ng-click="vm.navToPreAppQues()"><strong><u>Review Your Answers to the Pre-Applications Questions (Here)</u></strong></a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-left">
+                                <a href="javascript:void(0)" data-ng-click="vm.navToPhysicalLoc()"><strong><u>Enter Information about Your Business (Here)</u></strong></a>
+                            </div>
+                            <div class="panel-body panel-collapse checklist-item">
+                                <ul class=" list-unstyled text-left">
+                                    <li ng-show="vm.supportingDocsData[0].IsCof && vm.supportingDocsData[0].IsDocforCofo==false" id="cofo">
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsSubmissionCofo]"></span> Certificate of Occupancy
+                                    </li>
+                                    <li ng-show="vm.supportingDocsData[0].IsHop && vm.supportingDocsData[0].IsSubmissioneHop==false && vm.supportingDocsData[0].IsDocforHop==false" id="hop">
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsSubmissionHop]"></span>  Home Occupancy Permit
+                                    </li>
+                                    <li ng-show="vm.supportingDocsData[0].IsSubmissioneHop==true" id="ehop">
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsSubmissioneHop]"></span>  Expedited Home Occupancy Permit
+                                    </li>
+                                    <li ng-show="vm.supportingDocsData[0].IsSubmissioneHop==false && vm.supportingDocsData[0].IsBusinessMustbeinDC==true && vm.supportingDocsData[0].IsHomeBased==true &&  vm.supportingDocsData[0].IsHop==false" id="acquireehop">
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsSubmissioneHop]"></span> You may be eligible to acquire an eHOP
+                                    </li>
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsBPAddress]"></span>  Business Premises Address (No PO Box)
+                                    </li>
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsCorporateRegistration]"></span> Corporate Information
+                                    </li>
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsBHAddress]"></span>  Business Headquarters Address
+                                        <!--<span class="glyphicon glyphicon-unchecked"></span> Business Headquarters Address-->
+                                    </li>
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsResidentAgent]"></span>  Registered or Resident Agent Information
+                                    </li>
+                                    <li ng-show="vm.supportingDocsData[0].IsCategorySelfCertification">
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsSelfCertification]"></span>  One Family Dwelling Self Certification
+                                    </li>
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsMailAddress]"></span>  Mailing Address
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" ng-show="vm.supportingDocsData[0].IsIndividual" id="individuallicense">
+                            <div class="panel-heading text-left">
+                                <a href="javascript:void(0)" ng-class="{true:'disable_listitem appchecklist_disable_item_color'}[vm.IsIndividualPhysicallocDataFilled]" data-ng-click="vm.navToIndividualBusinessLic()"><strong><u>Enter Employer/Employee Information (Here)</u></strong></a>
+                                <!--<span ng-show="!vm.IsIndividualPhysicallocDataFilled">(Select link to provide or review required information)</span>-->
+                                <span ng-show="vm.IsIndividualPhysicallocDataFilled">(Complete the Corporate Information section to enable this link)</span>
+                            </div>
+                            <div class="panel-body panel-collapse checklist-item">
+                                <ul class=" list-unstyled text-left">
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].IsIndividualValid && !vm.IsIndividualPhysicallocDataFilled ]"></span> Employer/Employee Information
+                                        <!--<span id="individual" class="glyphicon glyphicon-unchecked"></span> Employee Information-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-left" ng-show="vm.supportingDocsData[0].BblServiceDoc.length==0" id="supportingdocs">
+                                <a href="javascript:void(0)" ng-disabled="vm.supportingDocsData[0].BblServiceDoc.length==0" class="not-active"><strong><u>Upload Supporting Documents (Here)</u></strong></a>
+                            </div>
+                            <div class="panel-heading   text-left" ng-show="vm.supportingDocsData[0].BblServiceDoc.length>0" id="supportingdocslength">
+                                <a href="javascript:void(0)" data-ng-click="vm.navToUploadDocs(vm.supportingDocsData[0].DocSubType)"><strong><u>Upload Supporting Documents (Here)</u></strong></a>
+                            </div>
+                            <div class="panel-body panel-collapse checklist-item">
+                                <section ng-repeat="appChecklistItem in vm.supportingDocsData[0].BblServiceDoc" id="{{appChecklistItem.Id}}">
+
+                                    <div class="container1">
+                                        <div class="innerRow">
+                                            <div class="col-sm-1  no-pad">
+
+                                                <span id="online{{$index}}" ng-show="vm.supportingDocsData[0].DocSubType!='IN'" ng-class="{true: 'glyphicon glyphicon-ok',false:'glyphicon glyphicon-unchecked'}[appChecklistItem.IsUpload]"></span>
+                                                <img id="inperson{{$index}}" src="../images/icon-doc-inperson.jpg" ng-show="vm.supportingDocsData[0].DocSubType=='IN'" style="height: 30px; width: 35px; margin: 10px;" />
+                                            </div>
+                                            <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                                <p>
+                                                    <span>Document Required</span>
+
+                                                    <div>
+                                                        {{appChecklistItem.DocRequired}}
+                                                    </div>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-12"></div>
+                                            <div class="col-sm-4 col-xs-12 no-pad ">
+
+                                                <p>
+                                                    <span>Agency : </span>
+                                                    {{appChecklistItem.Agency}}
+                                                </p>
+
+                                                <p>
+                                                    <span> Division : </span>{{appChecklistItem.Division}}
+                                                </p>
+                                            </div>
+
+                                            <div class="col-sm-3 col-xs-12 no-pad">
+
+                                                <p>
+                                                    <span>License Code : </span>
+                                                    {{appChecklistItem.CategoryCode}}
+                                                </p>
+
+                                                <p>
+                                                    <span>Endorsement : </span>
+                                                    {{appChecklistItem.Endorsement}}
+                                                </p>
+
+                                                <p>
+
+                                                <p>
+                                                    <span> License : </span>{{appChecklistItem.License}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-offset-1 col-md-11 col-sm-12 col-xs-12 no-pad">
+                                            <p ng-show="appChecklistItem.UploadFileName !=''" id="file{{$index}}">
+                                                <span>File Name :</span> {{appChecklistItem.UploadFileName }}
+                                            </p>
+                                        </div>
+
+                                        <div class=" col-sm-12 col-xs-12 row-separator">
+                                            <div class="top-border"> </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section ng-show="vm.supportingDocsData[0].BblServiceDoc.length==0" id="noResultsKey">
+                                    <div class="container">
+                                        <div class="innerRow">
+                                            <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                                                <p class="text-danger error_text ">No Supporting Documents Required</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-left">
+                                <a href="javascript:void(0)" ng-class="{true:'disable_listitem appchecklist_disable_item_color'}[vm.isPhysicallocDataFilled]" data-ng-click="vm.navToTaxRevenue()"><strong><u>Enter Tax and Revenue Information (Here)</u></strong></a>
+                                <span ng-show="!vm.isPhysicallocDataFilled && !vm.supportingDocsData[0].IsTaxReattested">(Complete all other Checklist Items before completing this section)</span>
+                                <span ng-show="vm.isPhysicallocDataFilled && !vm.supportingDocsData[0].IsTaxReattested">(Complete all other Checklist Items before completing this section)</span>
+                                <span ng-show="vm.supportingDocsData[0].IsTaxReattested">(Complete the Clean Hands Attestation on the day you pay for and submit your Application)</span>
+                            </div>
+                            <div class="panel-body panel-collapse checklist-item">
+                                <ul class="list-unstyled text-left">
+                                    <li>
+                                        <span ng-class="{false:'glyphicon glyphicon-unchecked',true:'glyphicon glyphicon-ok'}[vm.supportingDocsData[0].ISFEINSSN && !vm.isPhysicallocDataFilled]"></span> Clean Hands Self Certification
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pre-checkquestion col-md-12 col-xs-12 buttons_info" id="infobtns" style="margin-bottom: 20px;">
+
+                            <div class="clearfix"></div>
+                            <div class="col-sm-12 col-xs-12 col-md-4">
+                                <button id="btn_create_checklist" class="btn btn-default-chcek" ng-click="vm.navSaveandExit();">
+                                    Exit
+                                </button>
+                            </div>
+                            <div class=" col-sm-12 col-xs-12 col-md-4">
+                                <button id="btn_exit_no_save" class="btn btn-default-chcek" ng-click="vm.printChecklist();">Download a PDF of this Page</button>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12" id="infoverify-btns">
+                                <button id="btn_revise" class="btn btn-default btnnextColor btn-next" data-ng-click="vm.navToInfoVerification()" ng-class="{true:'disablecolor'}[vm.supportingDocsData[0].CheckedStatus!=true ]" ng-disabled="vm.supportingDocsData[0].CheckedStatus!=true">Next</button>
+                            </div>
+                        </div>
+                        <!--<div class="pre-checkquestion col-md-12 col-xs-12 buttons_info" id="infobtns" style="margin-bottom: 20px;">
+                            <div class="col-md-4 col-sm-12 col-xs-12 col-md-offset-4" id="infoverify-btns">
+                                <button id="btn_revise" class="btn btn-default-chcek" data-ng-click="vm.navToInfoVerification()" ng-class="{true:'disablecolor'}[vm.supportingDocsData[0].CheckedStatus!=true ]" ng-disabled="vm.supportingDocsData[0].CheckedStatus!=true">Continue to Info Verification</button>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-sm-12 col-xs-12 col-md-4 col-md-offset-2">
+                                <button id="btn_create_checklist" class="btn btn-default-chcek" ng-click="vm.navSaveandExit();">
+                                    Save and Exit to My BBLs
+                                </button>
+                            </div>
+                            <div class=" col-sm-12 col-xs-12 col-md-4">
+                                <button id="btn_exit_no_save" class="btn btn-default-chcek" ng-click="vm.printChecklist();">Download a PDF of this Page</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include src="'partials/footer.html'"></div>

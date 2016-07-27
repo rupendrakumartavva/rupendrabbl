@@ -1,0 +1,208 @@
+﻿@using BusinessCenter.Admin.Helpers
+@using BusinessCenter.Admin.Common;
+@model BusinessCenter.Admin.Models.SecondaryViewModel
+<form>
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new {@class = "error-message error"})
+    <p style="text-align: center; color: #339900; font-size: 19px; margin-bottom: 10px;"><span id="msg"></span></p>
+
+    <div class="clearfix">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group " style="text-align: left;">
+                @Html.Label("Secondary Category Name ")
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="form-group ">
+
+
+            @Html.TextBox("searchTerm", null, new
+            {
+                @class = "form-control",
+                placeholder = "",
+                name = "txtSearch",
+                id = "txtSearch",
+                onfocus = "this.placeholder = ''",
+                onblur = "this.placeholder = ''"
+            })
+            @Html.ValidationMessageFor(model => model.Secondary.SecondaryLicenseCategory, "", new {@class = "error-message error"})
+            <p style="text-align: center; font-size: 24px;" class="error-message error"><span id="errormsg"></span></p>
+        </div>
+
+    </div>
+    <div class=" pre-checkquestion col-md-12 col-xs-12 ">
+        <button type="submit" id="btnCreate" class="btn btn-default">Add Secondary Category</button>
+        <button type="button" id="btnClear" class="btn btn-default">Clear</button>
+    </div>
+    <br/>
+</form>
+
+
+<script>
+    var url = window.location.href;
+    var id = url.substring(url.lastIndexOf('=') + 1);
+    $(":input").on("focus", function () {
+        errormsg.innerHTML = "";
+        // msg.innerHTML = "";
+    });
+    $(":input").on("keyup", function () {
+        errormsg.innerHTML = "";
+        msg.innerHTML = "";
+    });
+
+    $(window).click(function () {
+        msg.innerHTML = "";
+    });
+    $("#btnCreate").click(function (e) {
+       
+        msg.innerHTML = "";
+       e.preventDefault();
+        //  now trigger the form validation, result is 1 or 0
+        var result = $('form').valid();
+        if (result == 1) {
+            CreateSecondaryCategory();
+        }
+    });
+    $("#btnClear").click(function (e) {
+        e.preventDefault();
+        $("#txtSearch").val("");
+        msg.innerHTML = "";
+    });
+    function CreateSecondaryCategory() {
+    
+        if ($("#txtSearch").val() == '') {
+            errormsg.innerHTML = "Secondary Category Name is required";
+            errormsg.style.color = "Red";
+            return false;
+        }
+        if ($("#txtSearch").val().length > 100) {
+            errormsg.innerHTML = "Secondary Category can be no longer than 100 characters";
+            errormsg.style.color = "Red";
+            return false;
+        }
+        else {
+            var secondarydata = {
+                SecondaryLicenseCategory: $("#txtSearch").val(),
+                PrimaryID: id,
+                Status: true
+            };
+            $.ajax({
+                url: '/BBL/SecondaryCategories',
+                type: "Post",
+                data: secondarydata,
+                success: editSuccess,
+                error: editFailure
+            });
+        }
+    }
+    function editSuccess(data) {
+        var sessionId = $(data).find('#Session_Expired').text();
+        if (sessionId == 'Session Expired') {
+            window.location.href = '/Account/SessionExpiry';
+        } else {
+            if (data.status == "success") {
+
+                GetAll();
+                //$('input').trigger('reset');
+                $("#txtSearch").val("");
+           
+        
+        }
+            return false;
+
+        }
+    }
+    function editFailure(data) {
+        alert("error");
+        return false;
+    }
+
+  
+</script>
+
+
+<script type="text/javascript">
+  //  $(document).ready(function () {
+        @*$("#txtSearch").autocomplete({
+            source: '@Url.Action("GetPrimaries")',
+            minLength: 1,
+            type: "POST",
+            //success: function (event, ui) {
+            //    if (ui.item.label != 'Session Expired')
+            //    {               
+            //        window.location.href = '/Account/SessionExpiry';
+            //        return false;
+            //    }
+            //},
+            //  maxRows: 1,
+
+            select: function (event, ui) {
+                if (ui.item.label != 'Session Expired')
+                {
+                    //console.log(event);
+                    //alert('you have selected ');
+                    $('#txtSearch').val(ui.item.label);
+
+                    //  var primarydescr = $("#txtSearch").val();
+                    var descr = ui.item.label;
+                    //  GetAllSecondaries(descr);
+
+                    return false;
+                }
+                else {
+                    window.location.href = '/Account/SessionExpiry';
+                    return false;
+                }
+           
+            }
+        });*@
+    // });
+
+    $("#txtSearch").autocomplete({
+        minLength: 1,
+        source: function (request, response) {
+            var url = "/BBL/GetPrimaries";
+   
+            $.getJSON(url, { term: request.term }, function (data) {
+                var isexpired = false;
+
+               
+                data.forEach(function (data) {
+                 //   console.log(data);
+                    if (data == 'Session Expired')
+                    {
+                        window.location.href = '/Account/SessionExpiry';
+                        isexpired = true;
+                        return true;
+                    }
+                   
+                });
+                if (isexpired == false) {
+                    response(data);
+                    $(".ui-helper-hidden-accessible ").css("display", "none");
+                }
+            })
+        }
+       
+       
+    });
+
+   
+
+
+
+   
+</script>
+<style>
+        /*ui-menu
+        .ui-menu-item {
+        list-style-type: none;
+    }*/
+
+        .ui-autocomplete {
+            list-style-type: none;
+            width: 700px;
+        }
+</style>

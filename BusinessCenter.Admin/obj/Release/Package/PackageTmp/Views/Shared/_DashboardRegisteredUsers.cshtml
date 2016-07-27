@@ -1,0 +1,71 @@
+﻿@if ((int)Session["Admincount"] == 3)
+{
+    <div class="top-tables-hyp">
+        <h4 class="blueheading" style="margin-top: -15px; margin-bottom: 12px;">Today's Registered Users</h4>
+        <table class="table table-striped table-bordered smartgrid">
+            <thead>
+                <tr>
+                    <th class="text-center">User Type</th>
+                    <th class="text-center">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="summarytables text-center">Superadmin</td>
+                    <td class="summarytables text-center">
+                        <span>
+                            @ViewBag.SuperAdminTodayRegistered
+                        </span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Manager</td>
+                    <td class="summarytables text-center">
+                        <span>@ViewBag.ManagerTodayRegistered </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Admin</td>
+                    <td class="summarytables text-center">
+                        <span>@ViewBag.AdminTodayRegistered </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="summarytables text-center">Customer</td>
+                    <td class="summarytables text-center">
+                        <span>@ViewBag.EmpTodayRegistered</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+else if ((int)Session["Admincount"] == 2  || (int)Session["Admincount"] == 4)
+{
+    <div class="top-tables-hyp">
+        <h4 class="blueheading">Today's Registered Users</h4>
+        <table class="table table-striped table-bordered smartgrid">
+            <thead>
+                <tr>
+                    <th class="text-center">UserType</th>
+                    <th class="text-center">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*<tr>
+                    <td class="summarytables text-center">Admin</td>
+                    <td class="summarytables text-center">
+                        <span>@ViewBag.AdminTodayRegistered </span>
+                    </td>
+                </tr>*@
+                <tr>
+                    <td class="summarytables text-center">Customer</td>
+                    <td class="summarytables text-center">
+                        <span>@ViewBag.EmpTodayRegistered</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}

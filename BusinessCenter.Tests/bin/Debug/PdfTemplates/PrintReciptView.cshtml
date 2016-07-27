@@ -1,0 +1,702 @@
+﻿<!DOCTYPE html>
+@using System.Globalization;
+@model BusinessCenter.Data.Model.ReceiptModel
+
+@{
+    Layout = null;
+}
+
+
+
+<html>
+<head>
+    <title>title</title>
+
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/style.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/temp.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/less/bbl.css">
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/flexslider.css" />
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/fileinput.css">
+
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/customstyle.css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="@System.Configuration.ConfigurationManager.AppSettings["siteAddress"]/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $('.panel-body >h1').each(function (ndx, ele) {
+            if (ele.offsetWidth < ele.scrollWidth) {
+
+                $(ele).css('font-size', Math.ceil($(ele).width() / 10) + 5);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div class="page_title" style="padding:2px 0 2px;">
+            <div class="container">
+                <div class="row">
+                    @if (Model.SubmitTypeFrom.ToUpper() != "RENEW")
+                    {
+                        <h2 tabindex="0">Basic Business License Receipt</h2>
+                    }
+                    else
+                    {
+                        <h2 tabindex="0">Basic Business License Renewal Receipt</h2>
+                    }
+
+                </div>
+            </div>
+        </div>
+@if (Model.SubmitTypeFrom.ToUpper() != "RENEW")
+                        {
+        <div class="container">
+            <div class="row">
+                <div class="timeLineWrapper clearfix">
+                    <div class="progress_steps">
+                        <div class="timeLine"></div>
+                        <a class="active" href="">
+                            <div class="timeline_list step1">
+                                <span class="inCircle activeCir"></span>
+                                <div class="step_detail">
+                                    <p class="step_no active">
+                                        <strong>Step 1</strong>
+                                    </p>
+                                    <p class="step_no">
+                                        <strong>Pre-Application Questions</strong>
+                                    </p>
+                                    <p class="step_text active"></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="active" tabindex="-1">
+                            <div class="timeline_list step2">
+                                <span class="inCircle activeCir"></span>
+                                <div class="step_detail">
+                                    <p class="step_no active">
+                                        <strong>Step 2</strong>
+                                    </p>
+                                    <p class="step_no">
+                                        <strong>Application Checklist</strong>
+                                    </p>
+                                    <p class="step_text active"></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="" tabindex="-1">
+                            <div class="timeline_list step3">
+                                <span class="inCircle activeCir"></span>
+                                <div class="step_detail">
+                                    <p class="step_no active">
+                                        <strong>Step 3</strong>
+                                    </p>
+                                    <p class="step_no">
+                                        <strong>Information Verification</strong>
+                                    </p>
+                                    <p class="step_text active"></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="" tabindex="-1">
+                            <div class="timeline_list step4">
+                                <span class="inCircle activeCir"></span>
+                                <div class="step_detail">
+                                    <p class="step_no active">
+                                        <strong>Step 4</strong>
+                                    </p>
+                                    <p class="step_no">
+                                        <strong>Payment</strong>
+                                    </p>
+                                    <p class="step_text active"></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="" tabindex="-1">
+                            <div class="timeline_list step5">
+                                <span class="inCircle activeCir"></span>
+                                <div class="step_detail">
+                                    <p class="step_no active">
+                                        <strong>Step 5</strong>
+                                    </p>
+                                    <p class="step_no">
+                                        <strong>Receipt and Next Steps</strong>
+                                    </p>
+                                    <p class="step_text "></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+        <div class="wizard_form" id="printdiv" style="padding:2px;">
+            <div class="container">
+                <div class="row">
+                    <div class="result_top_block" tabindex="0">
+
+                        @if (Model.SubmitTypeFrom.ToUpper() == "RENEW")
+                        {
+                            if (Model.DocType == "")
+                            {
+                                <p id="documenttypenone">
+                                    <strong class="text-success">Your Transaction is Complete! </strong> An email confirming this
+                                    transaction has been sent to <a href="mailto:+@Model.PaymentMailId+" style="text-decoration: underline; color: green"> @Model.PaymentMailId </a>.
+                                    
+                                </p>
+                            }
+                            else
+                            {
+                                <p ng-show="vm.documenttype=='IN' || vm.documenttype=='ON'" id="documenttype">
+                                    <strong class="text-success">Your Transaction is Complete! </strong> An email confirming this
+                                    transaction has been sent to <a href="mailto:+@Model.PaymentMailId+" style="text-decoration: underline; color: green"> @Model.PaymentMailId </a>.
+
+                                </p>
+                            }
+
+                        }
+                        else
+                        {
+                            if (Model.DocType == "")
+                            {
+                                <p>
+                                    <strong class="text-success">Your Transaction is Complete!. </strong> An email confirming this
+                                    transaction has been sent to <a href="mailto:+@Model.PaymentMailId+" style="text-decoration: underline; color: green"> @Model.PaymentMailId </a>.
+                                    <strong>
+
+                                        Your License has been
+                                        APPROVED!
+                                    </strong> The email you will receive includes instructions on how to download an
+                                    electronic copy of your Basic Business License in PDF Format .
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    <strong class="text-success">Your Transaction is Complete! </strong> An email confirming this
+                                    transaction has been sent to <a href="mailto:+@Model.PaymentMailId+" style="text-decoration: underline; color: green"> @Model.PaymentMailId </a>.
+                                </p>
+                            }
+                        }
+
+
+
+
+                    </div>
+                </div>
+                <div class="collapse_panels" id="collapse_panels">
+
+                    <div class="panel-group" id="checkListAccordion" role="tablist" aria-multiselectable="true">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading row" role="tab" id="heading1">
+                                <div class="panel-title">
+                                    <div class="checkListTostart section-space">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bot_border gradient-header" tabindex="0">
+                                            <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-md-6 col-xs-6 bot-space">
+                                                <p>
+                                                    <span>Online Submission Number : </span>
+                                                    @Model.SubNumber
+                                                <p>
+                                                <p>
+                                                    <span>Amount Charged : </span>
+                                                    @string.Format(new CultureInfo("en-US"), "{0:C}", @Model.TotalFee) <span class="small "><em>(all fees are nonrefundable)</em> </span>
+                                                </p>
+                                                <p>
+                                                    <span>Payment ID : </span>
+                                                    @Model.TransactionId
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-4 no-pad">
+                                                @if (Model.CardNumber != "")
+                                                {
+                                                    <p>
+                                                        <span>Receipt Date : </span>
+                                                        @Model.ReceiptDate
+                                                    </p>
+
+                                                }
+                                                @if (!string.IsNullOrEmpty(Model.CardNumber))
+                                                {
+                                                    <p>
+                                                        <span>Credit Card : </span>
+                                                        @Model.CardNumber
+                                                    </p>
+
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default clearfix">
+                                <div class="panel-body panel-collapse checklist-item reciept_documents_status">
+                                    <div style="border-bottom: 2px solid #124f87; margin-bottom: 10px;">
+                                        @if (Model.IsEhopAllowed)
+                                        {
+
+                                            <p>
+                                                Note: A copy of your Expedited Home Occupancy Permit (EHOP) may be downloaded from your My BBLs page.
+                                                Please select the link to <a href="https://mybusiness.dc.gov/" style="color: blue">[PUBLIC LINK TO mybusiness.dc.gov]</a>
+                                                and select My BBLs when you arrive on your Dashboard Page. You may need to log into the site if you are not already logged in.
+                                            </p>
+
+                                        }
+
+                                        @if (Model.DocType != "" && Model.DocType == "IN")
+                                        {
+
+                                            <p>
+                                                You elected to submit required supporting documents in person at the DCRA Service Center.
+                                                You must submit those documents within 30 Calendar Days
+                                                of this online submission. Failure to submit these documents by
+                                                <strong style="color: red;"> @Model.ExceptedFinalCheckingDate</strong> may result in your application being
+                                                rejected.
+                                            </p>
+
+                                        }
+
+                                        @if ((Model.DocType != "IN") && (Model.DocType != ""))
+                                        {
+
+                                            <p>
+                                                The DCRA Business License Administration will review your application and all supporting documents submitted online. <span class="allow_business_note">
+    Please allow one business day for the processing of your application to begin.
+</span> The
+                                                review will be completed within <strong>2 Business Days.</strong>
+                                                <ul>
+@if (Model.SubmitTypeFrom.ToUpper() != "RENEW")
+                                                    {
+                                                    <li>
+                                                        <span style="color:#00AEF3">Successful Application:</span>
+                                                        If all requested information and documents are approved, you will receive your license via US Mail within
+                                                        <strong><span style="color:red">5 to 7</span> Business Days</strong> of the completion of the Review. You will also receive an email containing instructions on how to download a
+                                                        PDF of your license.
+                                                    </li>
+                                                    }
+else
+{
+    <li>
+        <span style="color: #00AEF3">
+            Successful Renewal:
+        </span> If all requested information and documents are approved, you will receive your license via US Mail within <strong><span style="color:red;"> 5 to 7</span> Business Days </strong> of the completion of the Review. You will also receive an email containing instructions on how to download a PDF of your license.
+    </li>
+}
+                                                    @if (Model.SubmitTypeFrom.ToUpper() != "RENEW")
+                                                    {
+                                                        <li>
+                                                            <span style="color:#00AEF3">Incomplete Application:</span> If any additional information is required, you will receive an email at the email address listed above in this
+                                                            receipt indicating what information needs to be provided. You will have <strong>30 Calendar Days</strong> to provide the additional information.
+                                                            If the additional information is not provided, your application may be rejected at that point.
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            <span style="color: #00AEF3">
+                                                                Incomplete Renewal:
+                                                            </span> If any additional information is required, you will receive an email at the email address listed above in this receipt indicating what information needs to be provided. You will have <strong> 30 Calendar Days </strong> to provide the additional information. If the additional information is not provided, your application may be rejected at that point.
+                                                        </li>
+                                                    }
+@if (Model.SubmitTypeFrom.ToUpper() != "RENEW")
+                                                    {
+                                                    <li>
+                                                        <span style="color:#00AEF3">Rejected Application:</span> If your application is rejected, you will receive an email at the email address listed above in this receipt
+                                                        explaining why your application was insufficient and how you may appeal the agency's decision.
+                                                    </li>
+                                                    }
+else
+{
+    <li>
+        <span style="color: #00AEF3">
+            Rejected Renewal:
+        </span> If your application is rejected, you will receive an email at the email address listed above in this receipt explaining why your application was insufficient and how you may appeal the agency’s decision.
+    </li>
+}
+     
+
+                                                    @*<li>
+                                                        <span class="allow_business_note">
+                                                            Please allow one business day for the processing of your application to begin.
+                                                        </span>
+                                                    </li>*@
+
+                                                </ul>
+                                            </p>
+
+                                        }
+                                        <p>
+                                            <ul>
+                                                <li>
+                                                    <strong>Note: </strong>Reference the Online Submission Number to identify your application.
+                                                </li>
+                                            </ul>
+
+
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div id="collapse1" class="panel-collapse open in" aria-labelledby="heading1"
+                                 style="overflow: hidden; display: block;">
+
+                                <div class="business-activities-wrapper">
+                                    <div class="row">
+
+                                        <div class="col-md-16 col-sm-16 col-xl-16 col-xs-16 col-md-offset-5 col-sm-offset-5 col-xs-offset-5">
+                                            <div class="panel  text-center grand_total">
+                                                <div class="panel-body">
+                                                    @*<h1>@string.Format(new CultureInfo("en-US"), "{0:C}", Model.TotalFee)</h1>*@
+                                                    <h1 style="text-align: center; margin-top: 4px;" id="grandamount">$ @Model.GrandTotals</h1>
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <span>
+                                                        Grand<br /> Total
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @if (@Model.SubmitTypeFrom == "RENEW")
+                                    {
+
+                                        if (@Model.ExtraAmount.ToString().Contains("500"))
+                                        {
+                                            <div class="center_div text-center topBorder" style="margin-bottom: 10px;">
+                                                <span>
+                                                    <i>
+                                                        As your License status is Expired, late fee of $500 is added.
+                                                    </i>
+                                                </span>
+
+                                            </div>
+                                        }
+
+                                        if (@Model.ExtraAmount.ToString().Contains("250"))
+                                        {
+                                            <div class="center_div text-center topBorder" style="margin-bottom: 10px;">
+                                                <span>
+                                                    <i>
+                                                        As your License status is Lapsed, late fee of $250 is added.
+                                                    </i>
+                                                </span>
+                                            </div>
+                                        }
+
+                                    }
+                                    <div style="clear: both;"></div>
+
+                                    <div class="row">
+                                        <div class="panel-body">
+                                            <div class="search_result adjust_font">
+                                                <div>
+                                                    @foreach (var item in Model.ServiceCheckList)
+                                                    {
+                                                        <section class="clearfix">
+                                                            <div class="preappgrid container">
+
+                                                                <div class="innerRow">
+                                                                    <div class="col-sm-1 col-md-1 col-xs-1 arrow no-pad" style="float: left">
+                                                                        <span class="arrow-bottom"></span>
+                                                                    </div>
+                                                                    <div class="col-sm-3 col-md-3 col-xs-3 no-pad bbl" style="float: left">
+                                                                        <label>Endorsement</label>
+                                                                        <div>
+
+                                                                            <p style="font-size:15px;">
+                                                                                @item.Endorsement
+                                                                            </p>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4 col-xs-4 col-md-4 no-pad" style="float: left">
+                                                                        <p>
+                                                                            <span>Category ID : </span>
+                                                                            @item.CategoryCode
+                                                                        </p>
+                                                                        <p>
+                                                                            <span>License Category : </span>
+                                                                            @item.LicenseCategory
+                                                                        </p>
+                                                                        @if (item.SubCategoryName != "" && item.SubCategoryName != null)
+                                                                        {
+                                                                            <p>
+                                                                                <span>Sub-Category : </span>
+                                                                                @item.SubCategoryName
+                                                                            </p>
+                                                                        }
+
+
+                                                                        <!--<p><span> {{feeDetailsItem.endorsementTitle}}
+                : </span> {{feeDetailsItem.endorsement}}</p>-->
+                                                                    </div>
+
+
+
+                                                                    <div class="col-sm-4 col-xs-4 col-md-4 no-pad" style="float: left">
+                                                                        <p>
+                                                                            <span>Units : </span>
+
+                                                                            @item.Units
+                                                                        <p>
+                                                                        <p>
+                                                                            <span>License Duration : </span>
+                                                                            @if (item.LicenseDuration.ToUpper().Trim() == "FOUR (4) YEAR")
+                                                                            {
+
+                                                                                <span>4 Year</span>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span>2 Year</span>
+                                                                            }
+
+                                                                        </p>
+                                                                        <p>
+                                                                            <span>Total Fee : </span>
+                                                                            <strong>@string.Format(new CultureInfo("en-US"), "{0:C}", item.TotalFee) </strong>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="details no-pad" style="margin-top: 20px; display: block;">
+                                                                    <div class="topBorder col-md-offset-1"></div>
+                                                                    <div class="col-md-offset-2">
+                                                                        <div class="col-sm-10 no-pad text-center">
+                                                                            <p>
+
+                                                                                <span>Application Fee : </span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.ApplicationFee)
+
+                                                                            </p>
+                                                                            <p>
+                                                                                <span>Endorsement Fee : </span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.EndorsementFee)
+                                                                            </p>
+                                                                            <p>
+                                                                                <span>Category License Fee  : </span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.CategoryLicenseFee)
+                                                                            </p>
+
+                                                                        </div>
+                                                                        <div class="col-sm-10 no-pad text-center">
+
+                                                                            <div class="topBorder col-md-offset-2"></div>
+                                                                            <p>
+                                                                                <span>Sub Total : </span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.SubTotal)
+                                                                            </p>
+                                                                            <p class="hidden-sm hidden-xs">
+                                                                                <span>10% Tech Fee  : </span>@string.Format(new CultureInfo("en-US"), "{0:C}", item.TechFee)
+                                                                            </p>
+                                                                            <p class="visible-sm visible-xs">
+                                                                                <span>10% Tech Fee  : </span> @string.Format(new CultureInfo("en-US"), "{0:C}", item.TechFee)
+                                                                            </p>
+                                                                            @if (item.LapsedFee != 0 && item.ExpiryFee == 0)
+                                                                {
+                                                                        <p>
+                                                                            <span>Late Fee : </span>$250.00
+                                                                        </p>
+                                                                        @*@string.Format(new CultureInfo("en-US"), "{0:C}", item.LapsedFee)*@
+                                                                }
+                                                                            @if (item.ExpiryFee != 0 && item.LapsedFee != 0)
+                                                                    {
+                                                                        <p>
+                                                                            <span> Late Fee : </span> $500.00
+                                                                        </p>
+                                                                        @*>@string.Format(new CultureInfo("en-US"), "{0:C}", item.ExpiryFee)*@
+                                                                    }
+
+                                                                            @if (item.LicenseCategory == "Apartment" || item.LicenseCategory == "One Family Rental")
+                                                                    {
+
+                                                                        <p style="font-size: 14px;">
+                                                                            <strong> Category License Fee includes an RAO fee of $43.00/unit.</strong>
+                                                                        </p>
+
+                                                                    }
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </section>
+                                                    }
+                                                    @if (Model.Isehop)
+                                                    {
+                                                        <div class="col-sm-12 text-center no-pad">
+                                                            <p style="font-size: 14px;">
+                                                                <strong>
+                                                                    ** An eHOP fee of $72.60 ($66.00 (eHOP fee)+ 10% Technology Fee)
+                                                                    was added to the Grand Total displayed above.
+                                                                </strong>
+                                                            </p>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @if (Model.DocType == "IN")
+                    {
+                        <div class="panel panel-default" id="inperson">
+                            <div class="panel-heading row" role="tab" id="heading3">
+                                <div class="panel-title">
+                                    <div class="checkListTostart">
+                                        <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 bot_border" tabindex="0">
+                                            <h3>Supporting Documents </h3>
+                                        </div>
+                                        <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 btn_cont bot_border">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse in" aria-labelledby="heading3">
+                                <div class="panel-body" tabindex="-1">
+                                    @if (Model.DocumentList.Count() == 0)
+                                    {
+                                        <section id="noResultsKey">
+
+                                            <div class="container1">
+                                                <div class="innerRow">
+                                                    <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                                                        <p class="text-danger error_text ">No Supporting Documents Required</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    }
+                                    else
+                                    {
+
+                                        foreach (var item in Model.DocumentList.Select((x, i) => new { Data = x, Index = i }))
+                                        {
+                                            <section>
+                                                <div class="container1">
+                                                    <div class="innerRow">
+                                                        <div class="col-sm-1 no-pad">
+                                                            <span>@(item.Index + 1)</span>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-12 no-pad bbl">
+                                                            <p>
+                                                                <span>Document Required</span>
+                                                            </p>
+                                                            <div>
+                                                                @item.Data.DocRequired
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-1 col-xs-12"></div>
+                                                        <div class="col-sm-4 col-xs-12 no-pad ">
+                                                            <p>
+                                                                <span>Agency : </span>
+                                                                @item.Data.Agency
+
+                                                            </p>
+                                                            <p>
+                                                                <span> Division : </span>@item.Data.Division
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-sm-3 col-xs-12 no-pad">
+                                                            <p>
+                                                                <span>License Code : </span>
+                                                                @item.Data.CategoryCode
+                                                            </p>
+                                                            <p>
+                                                                <span> License : </span>@item.Data.License
+                                                            </p>
+                                                        </div>
+
+
+                                                        <div class="clearfix col-md-12 no-pad">
+                                                            <div class="clearfix col-sm-12 col-md-2 no-pad"></div>
+                                                            <div class="clearfix col-sm-12 col-md-11 no-pad col-lg-offset-1">
+                                                                <p>
+                                                                    @if (Model.DocType != "" && Model.DocType == "IN")
+                                                                    {
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.Data.UploadFileName != "" && item.Data.UploadFileName != null)
+                                                                        {
+                                                                            <span>File Name :</span>
+                                                                            @*@Html.ActionLink(@item.Data.UploadFileName, "Download", "BBL", new { fileId = @item.Data.UploadFileName }, null)*@
+                                                                        }
+
+                                                                    }
+                                                                </p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-12 col-xs-12">
+                                                            <div class="grid-row-line"></div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </section>
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    @*<div class="panel panel-default" id="anyNow">
+                            <div class="panel-body panel-collapse checklist-item reciept_documents_status">
+                                <p>
+                                    <ul>
+                                        <li>
+                                            <span>
+                                                <strong>Note: </strong>Reference the Online Submission Number to identify your application.
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+
+
+</body>
+</html>
+<script>
+    var text = $('#grandamount').text();
+    var charsLength = text.length;
+
+
+    if (charsLength > 9 && charsLength <= 12) {
+        $(".grand_total").css("width", "130%");
+    }
+    else if (charsLength > 12) {
+        $(".grand_total").css("width", "160%");
+    }
+
+
+
+ 
+</script>

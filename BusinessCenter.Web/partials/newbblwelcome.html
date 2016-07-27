@@ -1,0 +1,746 @@
+<div ng-include src="'partials/header.html'"></div>
+<div data-ng-controller="NewBBLWelcomeController as vm">
+    <div class="container headerBreadcrumb">
+        <a data-ng-mousedown="navtoHome($event)" href="" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <a href="#/mybbl" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">BBL</a>
+        <span class="easy-breadcrumb_segment-separator"> / </span>
+        <span href="#" class="easy-breadcrumb_segment easy-breadcrumb_segment-front">How To Use</span>
+    </div>
+    <div class="page_title page_title_help scr_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0">How to Use the Basic Business License Online Application</h2>
+                <p>
+                    <span tabindex="0" id="toggleicon" onclick="toggleclick('toggleicon')" aria-expanded="false" aria-controls="collapseExample" class="cursor_type" onkeypress="testKey(event)">
+                        Help With This Page (Click Here)
+                    </span>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="well info-content">
+                        <p class="text-center">
+                            <strong>This page lists important information about how the Basic Business License online works.</strong>
+                        </p>
+                        <p class="terms_text">
+                            Select the <img src="../images/see-details.png" class="welcome_text-see-image" /> link next to each category to help you understand how to use the BBL Online system.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dvLoadingSection">
+
+        <div class="center">
+            <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+        </div>
+    </div>
+    <div id="dvMainsection">
+
+        <section class="apply-new-welcome register_form">
+            <div class="container">
+                <!--<div class="row">-->
+                <div class="eheight col-sm-12">
+                    <p class="center welcome_text contentaline">
+                        Welcome to the Basic Business License (BBL) Online Application. You can submit an application, make payments, renew a license, and print your Basic Business License online.Below is key information to help you understand how to use this BBL Online system. Select <img src="../images/see-details.png" class="welcome_text-see-image" /> to read the instructions inside each section. Start a new BBL application by selecting the "Next" button.
+                    </p>
+                    <!--<p class="center welcome_text">
+                    </p>
+                    <p class="center welcome_text">
+                    </p>
+                    <p class="center welcome_text">
+                    </p>-->
+                    <div class="collapse_panels getstarted_info" id="collapse_panels">
+                        <div class="panel-group" id="checkListAccordion" role="tablist" aria-multiselectable="true">
+                            <!--<p>Here’s how to get started: </p>-->
+                            <!--<ol>
+                                <li>
+                                    Obtain the items you will most likely need:
+                                    <ul class="terms_text padding_left">
+                                        <li><span>A valid Corporation Registration for the business needing a license (you will need the file number) (<a href="https://corp.dcra.dc.gov/Account.aspx/LogOn?ReturnUrl=%2fHome.aspx">https://corp.dcra.dc.gov/Account.aspx/LogOn?ReturnUrl=%2fHome.aspx</a>) </span></li>
+                                        <li><span>A Current Registered or Resident Agent.  (Please learn about specific requirements from <a href="https://corp.dcra.dc.gov/Account.aspx/LogOn?ReturnUrl=%2fHome.aspx">https://corp.dcra.dc.gov/Account.aspx/LogOn?ReturnUrl=%2fHome.aspx</a>) </span></li>
+                                        <li><span>A federal Employer Identification Number (FEIN) or Social Security Number (SSN) associated with your business (<a href="https://www.irs.gov/Businesses/Small-Businesses-&-Self-Employed/Apply-for-an-Employer-Identification-Number-(EIN)-Online">https://www.irs.gov/Businesses/Small-Businesses-&-Self-Employed/Apply-for-an-Employer-Identification-Number-(EIN)-Online</a> )</span></li>
+                                        <li><span>A Certificate of Occupancy (CofO) or Home Occupancy Permit (HOP) for the premise address of the business (<a href="http://dcra.dc.gov/service/zoning-dcra">http://dcra.dc.gov/service/zoning-dcra</a> ) </span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Consider any special circumstances:
+                                    <ul class="terms_text padding_left">
+                                        <li>
+                                            Individual licenses should be applied for by the employer of the individual.  Upon approval, the individual employee must visit DCRA to obtain an Identification Card.  Individual licenses will not display a PDF copy on the My BBLs Page.
+                                        </li>
+                                        <li><span>A Rental Accommodations Division (RAD) Registration/Claim of Exemption Form must be filed AFTER your Basic Business License is complete <i>if you are renting a one family, two family, or multiple unit (3+ units) apartment building</i> (<a href="http://dhcd.dc.gov/publication/form-1-rad-registration-claim-exemption-form">http://dhcd.dc.gov/publication/form-1-rad-registration-claim-exemption-form</a> ) </span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Additional necessary items will be identified for you as you continue the application process.
+                                </li>
+                                <li>
+                                    Ensure your license can be applied for online by clicking the <span class="info-glyphicon glyphicon glyphicon-triangle-bottom"></span> below to review the list of Licenses Not Available Online.
+                                </li>
+                                <li>
+                                    Select the &quot;How To Use This Page&quot; button at the top of the page to learn how to use the BBL Online Application system.
+                                </li>
+                                <li>
+                                    Start your application by selecting the &quot;Next&quot; button at the bottom of the page.
+                                </li>
+                            </ol>-->
+                            <!--<p>
+                                If you have additional questions please reference the &quot;How to Use This Page&quot; link at the top of this page.
+                            </p>-->
+
+                            <div class="panel" style="background:none;">
+                                <div class="row step_change_buttons_Welcome">
+                                    <div class="col-md-6 col-lg-6 col-xs-6">
+                                        <button id="submit_associate" class="btn btn-default perv_button" ng-click="vm.navToExit()">
+                                            <span class="glyphicon glyphicon-chevron-left"></span> Exit
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xs-6">
+                                        <button id="submit_cancel" class="btn btn-default pull-right next_button btn form-submit" ng-click="vm.navToPreAppQues()">
+                                            Next <span class="glyphicon glyphicon-chevron-right"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="applybusiness-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>1. Steps to APPLY for a Basic Business License Online </h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#applybusiness"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="applybusiness" class="panel-collapse collapse collapse" aria-labelledby="applybusiness-heading">
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <p>The BBL online application will direct you to pages that apply to your specific type of license. </p>
+                                                    <ul class="text_term srch_filter newbbl-welcome">
+                                                        <li>
+                                                            <span>
+                                                                To begin an application for a new business license, select the <button class="btn btn-default cursorDefault pointer_events_none">
+                                                                    <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                                                                </button>  button on the My Basic Business Licenses page (My BBLs Page).
+                                                            </span>
+                                                        </li>
+                                                        <li><span>Read the<strong> How to Use the Basic Business License Online Application</strong> to help you understand the online application process and how to complete your BBL application.</span></li>
+                                                        <li><span>Select <button class="btn btn-default cursorDefault pointer_events_none btnnextColor" style="text-transform: none; color: #ffffff;font-size: 16px;"> Next <span class="glyphicon glyphicon-chevron-right" style="color: #ffffff; font-size: 16px;"></span> </button>  to begin the application.</span></li>
+                                                    </ul>
+                                                    <p>
+                                                        <strong style="font-weight: 600;">There are five (5) steps to the application for a new Basic Business License:</strong>
+                                                    </p>
+                                                    <div class="newbbl-info-steps">
+                                                        <p>
+                                                            <strong> Step 1: Answer Pre-Application Questions.</strong> Pre-Application Questions should only take you a few minutes to complete.
+                                                        </p>
+                                                        <ul class="newbbl-welcome">
+                                                            <li><span>	Your answers to the Pre-Application Questions enable the system to generate a "Checklist" of the information and documents you will need to complete your application for a Basic Business License (Step 2 of the BBL application process). </span></li>
+                                                            <li>
+                                                                <span>	You will be asked to confirm your responses to the Pre-Application Questions on the “License Category and Fee Confirmation" page. </span>
+                                                                <ul>
+                                                                    <li style="list-style-type: circle;"><span class="srch_filter">To make changes from this page select the <button class="btn btn-default  cursorDefault pointer_events_none" style="text-transform: none;color: #ffffff; font-size: 16px; "> <span class="glyphicon glyphicon-chevron-left" style="color: #ffffff; font-size: 16px;"></span> Back </button>  button.</span> </li>
+                                                                </ul>
+                                                            </li>
+
+                                                            <li>
+                                                                <span>Confirm your information is correct and select the <button class="btn btn-default btnnextColor btn-next newwelcomeButton_Howtouse_help cursorDefault pointer_events_none btnnextColor" style="text-transform: none; color: #ffffff;font-size: 16px;"> Next <span class="glyphicon glyphicon-chevron-right" style="color: #ffffff; font-size: 16px;"></span></button>   button to generate your Checklist.</span>
+                                                                <ul>
+                                                                    <li style="list-style-type: circle;"><span> Once you select the <button class="btn btn-default btnnextColor btn-next cursorDefault pointer_events_none btnnextColor" style="text-transform: none; color: #ffffff;font-size: 16px;"> Next <span class="glyphicon glyphicon-chevron-right" style="color: #ffffff; font-size: 16px;"></span></button>  button to generate your Checklist, you will not be able to change the Pre-Application information provided for the application.</span></li>
+                                                                    <li style="list-style-type: circle;">
+                                                                        <span> If you notice an error in an answer to a Pre-Application Question AFTER you have generated your Checklist: </span>
+                                                                        <ul class="text_term srch_filter numbers_color">
+                                                                            <li><span>Return to the My Basic Business License Page </span> </li>
+                                                                            <li><span>Select the   button on the erroneous record </span> </li>
+                                                                            <li>
+                                                                                <span>
+                                                                                    Start a new application with the <button class="cursorDefault pointer_events_none">
+                                                                                        <span class="glyphicon glyphicon-plus"></span> Apply for a New License
+                                                                                    </button>  button where corrections can be made.
+                                                                                </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            <strong> Step 2: Complete Your Checklist.</strong>  The Checklist serves as your primary page for the BBL application until all required information is entered and payment has been made.
+                                                        </p>
+                                                        <ul class="newbbl-welcome">
+                                                            <li><span>	On the Checklist, navigate to the data entry screens using  user-friendly <a class="cursorDefault pointer_events_none" style="text-decoration: none;color: #337ab7">hyperlinks</a>. </span></li>
+                                                            <li><span>	The Checklist will acknowledge entry of valid information with a "check" <img src="../images/ChcekBox_HowtoUse.png" />  next to the appropriate item on the Checklist.</span></li>
+                                                            <li><span>	You can save an incomplete Checklist and resume working on it later by accessing it through the My BBLs Page.</span></li>
+                                                            <li><span>	Once all items on the Checklist are "checked off,” you can advance to the next steps.</span></li>
+                                                        </ul>
+                                                        <p>
+                                                            <strong>Step 3: Verify Application Information.</strong> You are requested to verify your application information for accuracy and veracity before making payment.
+                                                        </p>
+                                                        <ul class="newbbl-welcome">
+                                                            <li><span>	At this point, you can return to the Checklist to modify data if necessary.  </span></li>
+                                                        </ul>
+                                                        <p>
+                                                            <strong> Step 4: Make Payment.</strong> (credit card only) Your application is submitted to DCRA for review with your payment and cannot be edited online thereafter.
+                                                        </p>
+                                                        <p>
+                                                            <strong>  Step 5: Receive Receipt and Next Steps. </strong>  A receipt of your payment and a summary of the application can be printed from the screen and will be automatically emailed to you when payment is successfully made.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="renewbusiness-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>2.	Steps to RENEW a Basic Business License Online </h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#renew-business"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="renew-business" class="panel-collapse collapse collapse" aria-labelledby="renewbusiness-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <p>
+                                                        <strong style="color: #337ab7">*Note*</strong>Online BBL renewals must be completed in one session.
+                                                    </p>
+                                                    <div class="newbbl-info-steps">
+                                                        <p>
+                                                            <strong> Step 1: Receive Renewal Letter In The Mail.</strong>
+                                                        </p>
+                                                        <ul class="newbbl-welcome">
+                                                            <li><span>	Online renewals of BBLs created outside of the online system can occur only upon receiving a renewal notification from the Department of Consumer and Regulatory Affairs (DCRA).</span></li>
+                                                            <li><span>	The Department of Consumer and Regulatory Affairs mails BBL renewal notices within 90 days of the license expiration date.</span></li>
+                                                        </ul>
+                                                        <p>
+                                                            <strong> Step 2: Add Your License To Your My Basic Business Licenses Page ("My BBLs" page). </strong>
+                                                        </p>
+                                                        <ul class="text_term srch_filter newbbl-welcome">
+                                                            <li>
+                                                                <span>
+                                                                    From the My BBLs page select <button class="cursorDefault pointer_events_none">
+                                                                        <span class="glyphicon glyphicon-plus"></span> Renew An Existing License
+                                                                    </button>.
+                                                                </span>
+                                                            </li>
+                                                            <li><span>	Enter the PIN number and license number from DCRA Renewal Letter, and the tax id associated with the business.</span></li>
+                                                            <li><span>	A display of the license information associated with the information entered will appear.</span></li>
+                                                            <li>
+                                                                <span>
+                                                                    If the information is correct, select <button class="btn btn-default btnnextColor btn-next cursorDefault pointer_events_none">
+                                                                        Add Business
+                                                                    </button> to add the license to your my BBL's page and begin the renewal process.
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                        <p>
+                                                            <strong> Step 3: Renew Your BBL. </strong>
+                                                        </p>
+                                                        <ul class="newbbl-welcome">
+                                                            <li><span>	A display of the license information associated with the information entered will appear again.</span></li>
+                                                            <li><span>	Enter the appropriate corporate registration information.</span></li>
+                                                            <li><span>	Upload the required supporting documents, if any.</span></li>
+                                                        </ul>
+                                                        <p>
+                                                            <strong> Step 4: Make Payment (credit card only). </strong>
+                                                        </p>
+                                                        <p>
+                                                            <strong> Step 5: Receive Receipt and Next Steps. </strong>
+                                                        </p>
+                                                        <ul class="newbbl-welcome">
+                                                            <li><span>	A receipt of payment as well as a summary of the license renewal content will be emailed to you and can be printed from on-screen.</span></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <p>
+                                                        <strong style="color: #337ab7">Future Renewals.</strong> Once a license is added to your "My BBLs" page you will receive future renewal notifications on your "Dashboard" page and your "My BBLs" page 90 days prior to the license expiration date without having to wait for a renewal letter in the mail.
+                                                    </p>
+                                                    <p>
+                                                        At that time, from the "My BBLs" page select the <img src="../images/Howto_Renewal.png" />  link to renew your license directly from the "My BBLs" page.
+                                                    </p>
+                                                    <p>
+                                                        <strong style="color: #337ab7">*Note*</strong>  A BBL can only be added to one My DC Business Center account at a time.  Once a BBL is added to an account it cannot be added to a second account, and can only be reassigned to from one account to another.  To reassign a BBL from one person's account to another's you must contact DCRA Help Desk at (202) 442-4400.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="individualbusiness-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>3.	Steps to Apply for an INDIVIDUAL License Online </h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#individual-business"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="individual-business" class="panel-collapse collapse collapse" aria-labelledby="individualbusiness-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <p><strong style="color: #337ab7">*Note*</strong> Individual licenses are to be applied for by the company that employs the individual.</p>
+                                                    <ul class="newbbl-welcome">
+                                                        <li><span>	Each employee will require a separate Individual Business License and therefore a separate Individual license application will be needed for each employee</span></li>
+                                                    </ul>
+
+                                                    <p>
+                                                        The Individual application will require the following information:
+                                                    </p>
+                                                    <ul class="numbers newbbl-welcome">
+                                                        <li><span>The active Basic Business License number for the company that employs the individual.</span></li>
+                                                        <li><span>The Registered Agent information for the company that employs the individual.</span></li>
+                                                        <li>
+                                                            <span>Information about the employee:</span>
+                                                            <ul class="newbbl-welcome li-alpha">
+                                                                <li><span>Date of Birth</span></li>
+                                                                <li><span>Height</span></li>
+                                                                <li><span>Weight</span></li>
+                                                                <li><span>Hair Color</span></li>
+                                                                <li><span>Eye Color</span></li>
+                                                                <li><span>Driver's License Number or Non-Driver Government Issued Identification Number</span></li>
+                                                                <li><span>Driver's License/Non-Driver ID Expiration Date</span></li>
+                                                                <li><span>Driver's License/Non-Driver ID State of Issuance.</span></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                    <p>
+                                                        Individual license information will display on the My BBLs page of the company applicant who completed the online license.
+                                                    </p>
+                                                    <p>
+                                                        Individual Licenses will not display a PDF copy of the license on the My BBLs Page.
+                                                    </p>
+                                                    <p>
+                                                        Upon approval, the individual employee must visit DCRA to obtain an Identification Card.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default clearfix">
+                                <div class="panel-heading row" role="tab" id="keyPages-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>4.	Key Pages in the Application </h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#keyPages"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="keyPages" class="panel-collapse collapse collapse" aria-labelledby="keyPages-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <p><strong>Dashboard Page.</strong>  The homepage of your My DC Business Center account is referred to as your “Dashboard.”</p>
+                                                    <ul class="newbbl-welcome">
+                                                        <li>	<span>Your Dashboard provides a one-stop location to track and maintain regulatory information you have saved to your personal DC Business Center account.</span></li>
+
+                                                        <li><span>	You will be taken to the Dashboard when you log into the DC Business Center and when you exit an application within the DC Business Center. </span></li>
+                                                    </ul>
+
+                                                    <p>
+                                                        <strong> My Basic Business Licenses Page ("My BBLs" page).</strong>  From your Dashboard, you can apply for, add, renew, and take action on your BBLs from the My Basic Business Licenses page or "My BBLs" page.
+                                                    </p>
+                                                    <ul class="newbbl-welcome">
+                                                        <li><span><strong style="color: #337ab7">*Note*</strong> Online renewals of BBLs created outside of the online system can occur only upon receiving a renewal notification from the Department of Consumer and Regulatory Affairs, which are mailed within 90 days of the license expiration date.</span></li>
+                                                    </ul>
+                                                    <p>
+                                                        <strong> Checklist Page.</strong> Answering the Pre-Application questions contained in Step 1 of the application process enables the system to generate a Checklist of the information and documents you will need to complete your application for a Basic Business License.
+                                                    </p>
+                                                    <ul class="newbbl-welcome">
+                                                        <li><span>When applying for a new BBL, the Checklist serves as your primary page for the BBL application while you collect and enter all required information and until payment has been made.</span></li>
+
+                                                        <li><span>You can start a BBL application at any time and finish it later at your convenience by returning to the Checklist page of your application.</span></li>
+
+                                                        <li><span>The Checklist page is accessed from the My Basic Business Licenses page ("My BBLs" page) <img src="../images/accessapplication.png" alt="not showing" /> .</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="helpFeatures-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>5.	Help Features </h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#helpFeatures"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="helpFeatures" class="panel-collapse collapse collapse" aria-labelledby="helpFeatures-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <!--<ul class="newbbl-welcome">-->
+                                                    <p><strong>Page Headers and Instructions.</strong> Each page is identified with a clear, descriptive page header and provides concise instructions in plain language.</p>
+                                                    <p> <strong>"Help With This Page".</strong> Each page contains tailored and context-specific Help instructions that can be accessed using the link, "<a style="text-decoration: underline;" class="cursorDefault pointer_events_none">Help With This Page (Click Here)</a>."</p>
+                                                    <p><strong>Supplemental Information. </strong> Additional information can be found using the "<a style="text-decoration: underline; color: #337ab7;" class="cursorDefault pointer_events_none">(See Details)</a>" link for terminology definitions and reference data, and to change the display of information from a summary to a detailed view.  When relevant, information on where to obtain further assistance is provided.</p>
+                                                    <!--</ul>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="navigationFeatures-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>6.	Navigation Features</h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#navigationFeatures"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="navigationFeatures" class="panel-collapse collapse collapse" aria-labelledby="navigationFeatures-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <!--<ul class="newbbl-welcome">-->
+                                                    <p>
+                                                        <strong>Breadcrumb.</strong>  A Breadcrumb is a navigation tool that creates a graphic trail of live links to the web pages you visit throughout the DC Business Center.  It provides a way to always identify your current location and to trace back to your starting page.
+                                                    </p>
+                                                    <p>
+                                                        The Breadcrumb is located in the upper left corner of the page under the DC Business Center logo <img src="../images/dc_logo.png" alt="not showing" style="width: 100px; height: 40px;" />
+                                                    </p>
+                                                    <p>
+                                                        <strong>BBL Application Navigation Bar. </strong>  Each page of the BBL online application contains a navigation bar to track your progress through the five (5) steps of the BBL application.
+                                                    </p>
+                                                    <!--</ul>-->
+                                                    <img src="../images/Steps.png" alt="not showing" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="specialLicense-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>7. Special License Requirements</h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#specialLicense"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="specialLicense" class="panel-collapse collapse collapse" aria-labelledby="specialLicense-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <p>Special License Requirements (Steps that are needed in addition to submitting a BBL Application)</p>
+
+                                                    <ul class="newbbl-welcome">
+                                                        <li><span><strong> Individual License: </strong> Individual licenses should be applied for by the employer of the individual. Upon approval, the individual employee must visit DCRA to obtain an Identification Card. Individual licenses will not display a PDF copy on the My BBLs Page.</span></li>
+                                                        <li><span><strong> One, Two or Three Family Rentals:</strong><span style="font-style: italic;"> If you are renting a one family, two family, or multiple unit (3+ units) apartment building </span> a Rental Accommodations Division (RAD) Registration/Claim of Exemption Form must be filed AFTER your Basic Business License is complete and submitted online.<a href="http://dhcd.dc.gov/publication/form-1-rad-registration-claim-exemption-form " target="_blank"> (http://dhcd.dc.gov/publication/form-1-rad-registration-claim-exemption-form )</a></span></li>
+                                                        <li><span><strong> Outdoor Dealership and Parking Facilities:</strong> Applicants for Motor Vehicle Dealerships, Parking Facilities, and Used Car Lots<strong> with any part of a facility outdoors</strong> are required to obtain and upload as part of the online application a copy of the Land Plat from the Surveyor’s Office, (202) 442-4566, 1100 4th Street, SW, 2nd Floor, Washington, DC 20024.</span></li>
+                                                        <li><span><strong> Indoor Dealership and Parking Facilities:</strong> Applicants for Motor Vehicle Dealerships, Parking Facilities, and Used Car Lots <strong>that are completely indoors</strong> are required to draft and upload as part of the online application a letter stating that the facility is 100 percent indoors.</span></li>
+                                                        <li><span><strong> Pesticide Applicator License: </strong> Applications for a Pesticide Applicator must have their business activity inspected and/or receive approval to operate by the District Department of the Environment (DDOE), Toxic Substances Division. AFTER your Basic Business License is complete and submitted online, applicants must contact DDOE at 1200 1st Street N.E., 5th Floor, Washington, DC 20002 or (202) 535-2299 for DDOE certification and approval procedures. The final Pesticide Applicator License ID Card will be issued by DDOE.</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading row" role="tab" id="licenseCategories-heading">
+                                    <div class="panel-title">
+                                        <div class="checkListTostart">
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                <h3>8.	License Categories Not Available Online </h3>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button bot_border">
+                                                <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#licenseCategories"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="licenseCategories" class="panel-collapse collapse collapse" aria-labelledby="licenseCategories-heading">
+
+                                    <div class="panel-body" tabindex="-1">
+                                        <div class="business-activities-wrapper">
+                                            <div class="row license_list">
+                                                <div class="panel col-md-offset-0">
+                                                    <p>The following licenses must be applied for in person at DCRA’s License Center, 1100 4th St. SW, 2nd Floor, Washington, DC 20024.</p>
+                                                    <span class="licence_heading">A</span>
+                                                    <ul>
+                                                        <li><span>Amusement Park</span></li>
+                                                        <li><span>Athletic Exhibition</span></li>
+                                                        <li><span>Auction Sales DPW MPD (DC Government only)</span></li>
+                                                        <li><span>Auction Sales Temporary</span></li>
+                                                        <li><span>Auctioneer DC (DC Government only)</span></li>
+                                                        <li><span>Auctioneer Temporary</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">B</span>
+                                                    <ul>
+                                                        <li><span>Bowling Alley</span></li>
+                                                        <li><span>Bulk Fuel Above Ground Tank</span></li>
+                                                        <li><span>Bulk Fuel Below Ground Tank</span></li>
+                                                        <li><span>Bulk Fuel Metering</span></li>
+                                                        <li><span>Bulk Fuel Storage</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">C</span>
+                                                    <ul>
+                                                        <li><span>Candy Manufacturing</span></li>
+                                                        <li><span>Carnival and Fair</span></li>
+                                                        <li><span>Circus</span></li>
+                                                        <li><span>Commission Merchant Food</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">E</span>
+                                                    <ul>
+                                                        <li><span>Explosives (Retail)</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">F</span>
+                                                    <ul>
+                                                        <li><span>Fireworks Sales</span></li>
+                                                        <li><span>Fireworks Sales Temp</span></li>
+                                                        <li><span>Fireworks Wholesale</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">G</span>
+                                                    <ul>
+                                                        <li><span>Game Table</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">H</span>
+                                                    <ul>
+                                                        <li><span>Horse Drawn Carriage</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">I</span>
+                                                    <ul>
+                                                        <li><span>Ice Cream Manufacturer</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">K</span>
+                                                    <ul>
+                                                        <li><span>Kerosene Sales</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">M</span>
+                                                    <ul>
+                                                        <li><span>Motion Picture Theatre</span></li>
+                                                        <li><span>Motor Vehicle Reinspection Station</span></li>
+                                                        <li><span>Motor Vehicle Reinspector</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">O</span>
+                                                    <ul>
+                                                        <li><span>Outdoor Signs</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">P</span>
+                                                    <ul>
+                                                        <li><span>Pesticide Dealer RSTD-USE</span></li>
+                                                        <li><span>Pesticide Public Applicator</span></li>
+                                                        <li><span>Pesticide Public Operator</span></li>
+                                                        <li><span>Public School Cafeteria</span></li>
+                                                        <li><span>Pyroxylin</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">S</span>
+                                                    <ul>
+                                                        <li><span>Security Agency</span></li>
+                                                        <li><span>Security Person</span></li>
+                                                        <li><span>Skating Rink</span></li>
+                                                        <li><span>Solvent Sales</span></li>
+                                                        <li><span>Special Events</span></li>
+                                                        <li><span>Swimming Pool DC (DC Government only)</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">T</span>
+                                                    <ul>
+                                                        <li><span>Temp Secondhand Dealers</span></li>
+                                                        <li><span>Temporary Auctioneer</span></li>
+                                                        <li><span>Two Family Rental</span></li>
+                                                    </ul>
+                                                    <span class="licence_heading">V</span>
+                                                    <ul>
+                                                        <li><span>Varsol Sales</span></li>
+                                                        <li><span>Vendor (A) (food)</span></li>
+                                                        <li><span>Vendor (B) (non-food goods)</span></li>
+                                                        <li><span>Vendor (C) (agricultural products)</span></li>
+                                                        <li><span>Vendor (D) (services)</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="panel panel-default">
+                                    <div class="panel-heading row" role="tab" id="renewbusiness-heading">
+                                        <div class="panel-title">
+                                            <div class="checkListTostart">
+                                                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 bot_border" tabindex="0">
+                                                    <h3>2.	Steps to RENEW a Basic Business License Online </h3>
+                                                </div>
+                                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 collapse_button">
+                                                    <div toggle-icon tabindex="0" aria-label="Press return key to toggle Collapsible Panel" class="expandIcon see-details collapsed" data-toggle="collapse" data-target="#renew-business"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="renew-business" class="panel-collapse collapse collapse" aria-labelledby="renewbusiness-heading">
+
+                                        <div class="panel-body" tabindex="-1">
+                                            <div class="business-activities-wrapper">
+                                                <div class="row license_list">
+                                                    <div class="panel col-md-offset-0">
+                                                        <p>The following licenses must be applied for in person at DCRA’s License Center, 1100 4th St. SW, 2nd Floor, Washington, DC 20024</p>
+                                                        <span class="licence_heading">A</span>
+                                                        <ul>
+                                                            <li><span>Amusement Park</span></li>
+                                                            <li><span>Athletic Exhibition</span></li>
+                                                            <li><span>Auction Sales DPW MPD (DC Government only)</span></li>
+                                                            <li><span>Auction Sales Temporary</span></li>
+                                                            <li><span>Auctioneer DC (DC Government only)</span></li>
+                                                            <li><span>Auctioneer Temporary</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">B</span>
+                                                        <ul>
+                                                            <li><span>Bowling Alley</span></li>
+                                                            <li><span>Bulk Fuel Above Ground Tank</span></li>
+                                                            <li><span>Bulk Fuel Below Ground Tank</span></li>
+                                                            <li><span>Bulk Fuel Metering</span></li>
+                                                            <li><span>Bulk Fuel Storage</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">C</span>
+                                                        <ul>
+                                                            <li><span>Candy Manufacturing</span></li>
+                                                            <li><span>Carnival and Fair</span></li>
+                                                            <li><span>Circus</span></li>
+                                                            <li><span>Commission Merchant Food</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">E</span>
+                                                        <ul>
+                                                            <li><span>Explosives (Retail)</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">F</span>
+                                                        <ul>
+                                                            <li><span>Fireworks Sales</span></li>
+                                                            <li><span>Fireworks Sales Temp</span></li>
+                                                            <li><span>Fireworks Wholesale</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">G</span>
+                                                        <ul>
+                                                            <li><span>Game Table</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">H</span>
+                                                        <ul>
+                                                            <li><span>Horse Drawn Carriage</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">I</span>
+                                                        <ul>
+                                                            <li><span>Ice Cream Manufacturer</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">K</span>
+                                                        <ul>
+                                                            <li><span>Kerosene Sales</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">M</span>
+                                                        <ul>
+                                                            <li><span>Motion Picture Theatre</span></li>
+                                                            <li><span>Motor Vehicle Reinsp. Station</span></li>
+                                                            <li><span>Motor Vehicle Reinspector</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">O</span>
+                                                        <ul>
+                                                            <li><span>Outdoor Signs</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">P</span>
+                                                        <ul>
+                                                            <li><span>Pesticide Dealer RSTD-USE</span></li>
+                                                            <li><span>Pesticide Public Applicator</span></li>
+                                                            <li><span>Pesticide Public Operator</span></li>
+                                                            <li><span>Public School Cafeteria</span></li>
+                                                            <li><span>Pyroxylin</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">S</span>
+                                                        <ul>
+                                                            <li><span>Security Agency</span></li>
+                                                            <li><span>Security Person</span></li>
+                                                            <li><span>Skating Rink</span></li>
+                                                            <li><span>Solvent Sales</span></li>
+                                                            <li><span>Special Events</span></li>
+                                                            <li><span>Swimming Pool DC (DC Government only)</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">T</span>
+                                                        <ul>
+                                                            <li><span>Temp Secondhand Dealers</span></li>
+                                                            <li><span>Temporary Auctioneer</span></li>
+                                                            <li><span>Two Family Rental</span></li>
+                                                        </ul>
+                                                        <span class="licence_heading">V</span>
+                                                        <ul>
+                                                            <li><span>Varsol Sales</span></li>
+                                                            <li><span>Vendor (A) (food)</span></li>
+                                                            <li><span>Vendor (B) (non-food goods)</span></li>
+                                                            <li><span>Vendor (C) (agricultural products)</span></li>
+                                                            <li><span>Vendor (D) (services)</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                        </div>
+                    </div>
+                </div>
+                <!--/div>-->
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Footer Starts -->
+<div ng-include src="'partials/footer.html'"></div>

@@ -1,0 +1,35 @@
+﻿<div ng-include src="'partials/header.html'"></div>
+<div class="container headerBreadcrumb">
+    <a data-ng-mousedown="navtoHome($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">Home</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <a href="javascript:void(0)" data-ng-mousedown="navToMyDCBC($event)" class="easy-breadcrumb_segment easy-breadcrumb_segment-title" tabindex="0">My DC Business Center</a>
+    <span class="easy-breadcrumb_segment-separator"> / </span>
+    <span  class="easy-breadcrumb_segment easy-breadcrumb_segment-front">Registration Status</span>
+</div>
+<div id="dvLoadingSection">
+    <div class="center">
+        <p> Please wait... <img src="../images/camera-loader.gif" alt="not showing" /></p>
+    </div>
+</div>
+<div id="dvMainsection" class="display">
+    <div class="page_title">
+        <div class="container">
+            <div class="row">
+                <h2 tabindex="0" id="headermessage"></h2>
+            </div>
+        </div>
+    </div>
+    <div class="register_form">
+        <div class="container">
+            <div class="verify-mail">
+                <p>
+                    <div id="message"></div>
+                    <div id="loginlink"><a href="#/login" ng-click="navToLogin()">click here</a> to Login.</div>
+                    <div id="registerlink"><a href="#/register" ng-click="navToRegister()">click here</a> to Register.</div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Starts -->
+<div ng-include src="'partials/footer.html'"></div>
