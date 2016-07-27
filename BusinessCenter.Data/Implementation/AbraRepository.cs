@@ -14,7 +14,7 @@ namespace BusinessCenter.Data.Implementation
         }
 
         /// <summary>
-        /// This method is used to retrive enitre Alcoholic Beverage License(ABRA) records
+        /// This method is used to retrive enitre Alcoholic Beverage License(ABRA) records.
         /// </summary>
         /// <returns>All ABRA Records</returns>
         public IEnumerable<DCBC_ENTITY_ABRA> GeArbraLookupAll()
