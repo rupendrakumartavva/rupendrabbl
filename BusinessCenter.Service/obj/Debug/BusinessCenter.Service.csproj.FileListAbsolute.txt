@@ -11,3 +11,16 @@ D:\DCBusinessCenter\BusinessCenter.Service\bin\Debug\Omu.ValueInjecter.xml
 D:\DCBusinessCenter\BusinessCenter.Service\obj\Debug\BusinessCenter.Service.csprojResolveAssemblyReference.cache
 D:\DCBusinessCenter\BusinessCenter.Service\obj\Debug\BusinessCenter.Service.dll
 D:\DCBusinessCenter\BusinessCenter.Service\obj\Debug\BusinessCenter.Service.pdb
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\BusinessCenter.Service.dll
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\BusinessCenter.Service.pdb
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\BusinessCenter.Common.dll
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\BusinessCenter.Data.dll
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\EntityFramework.dll
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\Omu.ValueInjecter.dll
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\BusinessCenter.Common.pdb
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\BusinessCenter.Data.pdb
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\EntityFramework.xml
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\bin\Debug\Omu.ValueInjecter.xml
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\obj\Debug\BusinessCenter.Service.csprojResolveAssemblyReference.cache
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\obj\Debug\BusinessCenter.Service.dll
+C:\Users\CodeIT\Desktop\rupendrabbl\BusinessCenter.Service\obj\Debug\BusinessCenter.Service.pdb

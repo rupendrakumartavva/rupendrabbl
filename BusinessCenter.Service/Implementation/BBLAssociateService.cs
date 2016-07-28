@@ -129,7 +129,7 @@ namespace BusinessCenter.Service.Implementation
         //public void UpdateUserAssociate(BblAsscoiateService bblassociate)
         //{ _repository.UpdateUserAssociate(bblassociate); }
         /// <summary>
-        ///
+        ///This method 
         /// </summary>
         /// <param name="bblService"></param>
         /// <returns></returns>
